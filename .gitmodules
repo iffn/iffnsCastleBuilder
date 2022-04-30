@@ -1,3 +1,6 @@
 [submodule "Assets/iffnsBaseSystem"]
 	path = Assets/iffnsBaseSystem
 	url = https://github.com/iffn/iffnsBaseSystem.git
+[submodule "Assets/iffnsStuff/iffnsCastleImporter"]
+	path = Assets/iffnsStuff/iffnsCastleImporter
+	url = https://github.com/iffn/iffnsCastleImporter.git
