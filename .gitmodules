@@ -1,0 +1,3 @@
+[submodule "Assets/iffnsBaseSystem"]
+	path = Assets/iffnsBaseSystem
+	url = https://github.com/iffn/iffnsBaseSystem.git

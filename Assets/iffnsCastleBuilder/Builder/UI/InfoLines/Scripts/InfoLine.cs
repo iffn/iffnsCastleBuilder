@@ -1,0 +1,41 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class InfoLine : ControlLine
+{
+    public Text ValueText;
+
+    public string Value
+    {
+        get
+        {
+            return ValueText.text;
+        }
+
+        set
+        {
+            ValueText.text = value;
+        }
+    }
+
+
+    // Use this for initialization
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    // Update is called once per frame
+    protected override void Update()
+    {
+        base.Update();
+    }
+
+    new public void SetUp(string text)
+    {
+        base.SetUp(text);
+
+    }
+}

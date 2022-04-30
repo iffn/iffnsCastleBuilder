@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4caa9f6d985159441b011e8fd19dec4b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - currentBuilderController: {instanceID: 0}
+  - linkedExporterUI: {instanceID: 0}
+  - EmptyTemplate: {fileID: 6334693080223711077, guid: 165c655b5261a3248ba3008c6b56ef25, type: 3}
+  - MeshTemplate: {fileID: 1999832733947725788, guid: 40790498cf7be7e4981fdd462e4d8a18, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

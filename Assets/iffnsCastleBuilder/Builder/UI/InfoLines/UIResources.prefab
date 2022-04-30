@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2807649185580236958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7359534135784501279}
+  - component: {fileID: 4836183029885686298}
+  m_Layer: 0
+  m_Name: UIResources
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7359534135784501279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2807649185580236958}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 575.6112, y: 357.44614, z: 37.333992}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4836183029885686298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2807649185580236958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b783f8638899f1f4e9af509b839b233c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonLineTemplate: {fileID: 114015914205984936, guid: 19b53330f0b55a44cae845cc0ad4d08f, type: 3}
+  InfoLineTemplate: {fileID: 114118054199775996, guid: 645a90a988ccf6e4ebde4667fd19e6cf, type: 3}
+  InputLineSmallTemplate: {fileID: 114375707053458002, guid: d2371bde6134c1a4f877c85bdcb4283d, type: 3}
+  InputLineLargeTemplate: {fileID: 114556284794321266, guid: 3e6eba2ff6fbe3948ba11b2d0923f35b, type: 3}
+  InputLineBool: {fileID: 7627278933919932860, guid: 05f0a6e83b3be28488b0d487508a1363, type: 3}
+  Vector2IntLineTemplate: {fileID: 8002676694463815721, guid: 977f97a8633ddf042ba55d9185b25a88, type: 3}
+  Vector3LineTemplate: {fileID: 114255113949372504, guid: eb7a850d1f20545478764fa95564d6a2, type: 3}
+  TextLineTemplate: {fileID: 114606864444728678, guid: e21b0069e9d8c1d4b9369fbcaac83a32, type: 3}
+  SelectLineSmallTemplate: {fileID: 3188906134070341573, guid: c3916959adde87c479c448c3b12d2229, type: 3}
+  SelectLineLargeTemplate: {fileID: 3188906134070341573, guid: 6f098e8a634fdc443873bcf448632241, type: 3}

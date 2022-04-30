@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:export-ydpi="96"
+   inkscape:export-xdpi="96"
+   inkscape:export-filename="C:\Users\iffn1\Documents\UnityProjects\CastleBuilder2\Assets\iffns RPG\Elements\Buildings\HumanBuildings\UI\Icons\Dark\EmptyBlock-Dark.png"
+   sodipodi:docname="EmptyBlock-Dark.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   id="svg1397"
+   version="1.1"
+   viewBox="0 0 100 100"
+   height="100mm"
+   width="100mm">
+  <defs
+     id="defs1391">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="Arrow1Lstart"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path2844" />
+    </marker>
+    <linearGradient
+       id="linearGradient3996"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#333333;stop-opacity:1;"
+         offset="0"
+         id="stop3994" />
+    </linearGradient>
+    <linearGradient
+       osb:paint="gradient"
+       id="linearGradient1729-1-1">
+      <stop
+         id="stop1725"
+         offset="0"
+         style="stop-color:#e2e2e2;stop-opacity:1;" />
+      <stop
+         id="stop1727"
+         offset="1"
+         style="stop-color:#e2e2e2;stop-opacity:0;" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-maximized="1"
+     inkscape:window-y="-8"
+     inkscape:window-x="-8"
+     inkscape:window-height="1017"
+     inkscape:window-width="1920"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="g3786"
+     inkscape:document-units="mm"
+     inkscape:cy="265.93862"
+     inkscape:cx="182.66834"
+     inkscape:zoom="1.4"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata1394">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <g
+       transform="translate(-308.00235,-423.69703)"
+       id="g3786"
+       style="fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-opacity:1">
+      <rect
+         ry="0"
+         style="fill:none;fill-opacity:1;stroke:#dddddd;stroke-width:1.28084;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:3.84252, 3.84252;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+         id="rect1815-9-5-5-11-6-9"
+         width="36.605747"
+         height="33.717995"
+         x="332.90634"
+         y="-751.42957"
+         transform="matrix(-0.89686512,0.44230415,-0.91705117,-0.39876955,0,0)" />
+      <g
+         transform="matrix(2.475495,0,0,2.4784982,-389.18285,145.90258)"
+         id="g1931"
+         style="fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-opacity:1" />
+      <rect
+         transform="matrix(-0.89686512,0.44230415,-0.91705117,-0.39876955,0,0)"
+         y="-803.06622"
+         x="385.70554"
+         height="33.717995"
+         width="36.605747"
+         id="rect1815-9-5-5-11-6"
+         style="fill:none;fill-opacity:1;stroke:#dddddd;stroke-width:1.28083856;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:3.84251568,3.84251568;stroke-opacity:1;paint-order:fill markers stroke;stroke-dashoffset:0"
+         ry="0" />
+    </g>
+  </g>
+</svg>

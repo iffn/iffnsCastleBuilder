@@ -1,0 +1,61 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
+public class InputLineBool : ControlLine
+{
+    public Toggle InputToggle;
+
+    MailboxLineBool boolLine;
+    IBaseObject lineOwner;
+
+    
+
+    // Use this for initialization
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    // Update is called once per frame
+    protected override void Update()
+    {
+        base.Update();
+    }
+
+    /*
+    public void SetUp(string text, UnityEngine.Events.UnityAction<string> ReturnFunctionScript)
+    {
+        base.SetUp(text);
+
+        InputToggle.onValueChanged.AddListener(ReturnFunctionScript);
+
+    }
+    */
+
+    public void SetUp(MailboxLineBool boolLine, IBaseObject lineOwner, List<DelegateLibrary.VoidFunction> additionalCalls = null)
+    {
+        this.boolLine = boolLine;
+        this.lineOwner = lineOwner;
+        //this.controller = controller;
+
+        base.SetUp(boolLine.Name);
+
+        InputToggle.isOn = boolLine.Val;
+        InputToggle.onValueChanged.AddListener(ChangeBoolLineValue);
+
+        this.additionalCalls = additionalCalls;
+    }
+
+
+    public void ChangeBoolLineValue(bool newValue)
+    {
+        boolLine.Val = newValue;
+
+        if (lineOwner != null) lineOwner.ApplyBuildParameters();
+
+        RunAllAdditionalCalls();
+    }
+}
