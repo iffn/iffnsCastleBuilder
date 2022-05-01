@@ -51,7 +51,7 @@ public class MeshTester : MonoBehaviour
         TestingMesh.Add (MeshGenerator.MeshesFromLines.KnitLines(firstLine: firstLine, secondLine: secondLine, isClosed: true));
         */
 
-        TestingMesh.Add (MeshGenerator.MeshesFromLines.Extrude(firstLine: firstLine, offset: Vector3.up, isClosed: true, isSealed: false, smoothTransition: true));
+        TestingMesh.Add (MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: firstLine, offset: Vector3.up, isClosed: true, isSealed: false, smoothTransition: true));
     }
 
     void SetFlatArc()
@@ -121,7 +121,7 @@ public class MeshTester : MonoBehaviour
 
         //VerticesHolder guideLine = MeshGenerator.Lines.FullCircle(radius: 2f, numberOfEdges: 24);
 
-        TestingMesh.Add(MeshGenerator.MeshesFromLines.Extrude(sectionLine: section, guideLine: guideLine, sectionIsClosed: true, guideIsClosed: false));
+        TestingMesh.Add(MeshGenerator.MeshesFromLines.ExtrudeAlong(sectionLine: section, guideLine: guideLine, sectionIsClosed: true, guideIsClosed: false));
     }
 
     void SetFrontArc()
@@ -153,7 +153,7 @@ public class MeshTester : MonoBehaviour
     {
         VerticesHolder arc = MeshGenerator.Lines.ArcAroundZ(radius: 3, angleDeg: 180, numberOfEdges: 12);
 
-        TestingMesh.Add(MeshGenerator.MeshesFromLines.Extrude(firstLine: arc, offset: Vector3.forward * 2, isClosed: false, isSealed: false, smoothTransition: true));
+        TestingMesh.Add(MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: arc, offset: Vector3.forward * 2, isClosed: false, isSealed: false, smoothTransition: true));
 
         TestingMesh.FlipTriangles();
     }
@@ -168,7 +168,7 @@ public class MeshTester : MonoBehaviour
 
         //VerticesHolder firstLine = MeshGenerator.Lines.FullCircle(radius: 1, numberOfEdges: 4);
 
-        TestingMesh.Add(MeshGenerator.MeshesFromLines.Extrude(firstLine: firstLine, offset: Vector3.up * 2, isClosed: true, isSealed: false, smoothTransition: true));
+        TestingMesh.Add(MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: firstLine, offset: Vector3.up * 2, isClosed: true, isSealed: false, smoothTransition: true));
 
         List<Vector2> UVs = new List<Vector2>();
 

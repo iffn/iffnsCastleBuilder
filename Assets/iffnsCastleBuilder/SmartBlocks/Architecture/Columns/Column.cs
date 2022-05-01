@@ -287,7 +287,7 @@ public class Column : OnFloorObject
                     circularColumnLine = MeshGenerator.Lines.FullCircle(radius: BlockSize / 2, numberOfEdges: fullCircleVertices);
                     circularColumnLine.Rotate(Quaternion.LookRotation(Vector3.up, Vector3.right));
                     circularColumnLine.Scale(new Vector3(size.x + 1, 0, size.y + 1));
-                    ColumnMesh.Add(MeshGenerator.MeshesFromLines.Extrude(firstLine: circularColumnLine, offset: Vector3.up * columnHeight, isClosed: true, isSealed: false, smoothTransition: true));
+                    ColumnMesh.Add(MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: circularColumnLine, offset: Vector3.up * columnHeight, isClosed: true, isSealed: false, smoothTransition: true));
                     break;
 
                 case ColumnTypes.Box:
@@ -332,7 +332,7 @@ public class Column : OnFloorObject
 
                     circularColumnLine.Scale(new Vector3(gridSize.x, 0, gridSize.y));
 
-                    ColumnMesh.Add(MeshGenerator.MeshesFromLines.Extrude(firstLine: circularColumnLine, offset: Vector3.up * columnHeight, isClosed: AnglePreference == QuarterAngleTypes.Deg360, isSealed: false, smoothTransition: true));
+                    ColumnMesh.Add(MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: circularColumnLine, offset: Vector3.up * columnHeight, isClosed: AnglePreference == QuarterAngleTypes.Deg360, isSealed: false, smoothTransition: true));
                     break;
 
                 case ColumnTypes.Box:

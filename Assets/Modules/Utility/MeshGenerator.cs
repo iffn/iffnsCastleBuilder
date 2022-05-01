@@ -133,6 +133,19 @@ public static class MeshGenerator
             return returnValue;
         }
 
+        public static TriangleMeshInfo CylinderAroundCenterWithoutCap(float radius, float length, Vector3 direction, int numberOfEdges)
+        {
+            VerticesHolder circle = Lines.FullCircle(radius: radius, numberOfEdges: numberOfEdges);
+
+            TriangleMeshInfo returnValue = MeshesFromLines.ExtrudeLinear(firstLine: circle, offset: Vector3.forward * length, isClosed: true, isSealed: true, smoothTransition: true);
+
+            returnValue.Move(length * 0.5f * Vector3.back);
+
+            returnValue.Rotate(Quaternion.LookRotation(direction));
+
+            return returnValue;
+        }
+
         public static TriangleMeshInfo PointsClockwiseAroundStartPoint(Vector3 startPoint, List<Vector3> points)
         {
             List<Vector3> usedPoints = new List<Vector3>(points);
@@ -182,6 +195,9 @@ public static class MeshGenerator
     {
         public static TriangleMeshInfo KnitLines(VerticesHolder firstLine, VerticesHolder secondLine, bool isClosed, bool isSealed, bool smoothTransition)
         {
+            // IsClosed = First and last point should be closed -> True if closed shape
+            // IsSealed = Smooth transition between first first and last point
+            //SmoothTransition = 
 
             TriangleMeshInfo returnValue = new TriangleMeshInfo();
 
@@ -648,7 +664,7 @@ public static class MeshGenerator
             return returnValue;
         }
 
-        public static TriangleMeshInfo Extrude(VerticesHolder firstLine, Vector3 offset, bool isClosed, bool isSealed, bool smoothTransition)
+        public static TriangleMeshInfo ExtrudeLinear(VerticesHolder firstLine, Vector3 offset, bool isClosed, bool isSealed, bool smoothTransition)
         {
             VerticesHolder secondLine = new VerticesHolder(firstLine);
 
@@ -659,7 +675,7 @@ public static class MeshGenerator
             return returnValue;
         }
 
-        public static TriangleMeshInfo Extrude(VerticesHolder sectionLine, VerticesHolder guideLine, bool sectionIsClosed, bool guideIsClosed)
+        public static TriangleMeshInfo ExtrudeAlong(VerticesHolder sectionLine, VerticesHolder guideLine, bool sectionIsClosed, bool guideIsClosed)
         {
             List<VerticesHolder> sections = new List<VerticesHolder>();
 

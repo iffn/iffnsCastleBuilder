@@ -516,7 +516,7 @@ public class HorizontalArc : OnFloorObject
         {
             VerticesHolder outerArc = CreateCutoffArc(radii: size, cutoffRange: CutoffRangeRotated);
             outerArc.Reverse();
-            OuterArc = MeshGenerator.MeshesFromLines.Extrude(firstLine: outerArc, offset: Vector3.up * wallHeight, isClosed: false, isSealed: false, smoothTransition: true);
+            OuterArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: outerArc, offset: Vector3.up * wallHeight, isClosed: false, isSealed: false, smoothTransition: true);
 
             Vector3 RadiusStartingPoint = new Vector3(CutoffRangeRotated.x, 0, Mathf.Sqrt(size.y * size.y - CutoffRangeRotated.x * CutoffRangeRotated.x));
             Vector3 RadiusEndingPoint = new Vector3(Mathf.Sqrt(size.x * size.x - CutoffRangeRotated.y * CutoffRangeRotated.y), 0, CutoffRangeRotated.y);
@@ -597,7 +597,7 @@ public class HorizontalArc : OnFloorObject
         void CreateOuterGrid()
         {
             VerticesHolder innerArc = CreateCutoffArc(radii: size, cutoffRange: CutoffRangeRotated);
-            OuterArc = MeshGenerator.MeshesFromLines.Extrude(firstLine: innerArc, offset: Vector3.up * wallHeight, isClosed: false, isSealed: false, smoothTransition: true);
+            OuterArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: innerArc, offset: Vector3.up * wallHeight, isClosed: false, isSealed: false, smoothTransition: true);
 
             Vector3 currentStartPoint = innerArc.Vertices[^1];
             Vector3 currentEndPoint = currentStartPoint;

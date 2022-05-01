@@ -30,7 +30,7 @@ public class BaseLadder : MonoBehaviour
         {
             List<UnityMeshManager> returnList = new List<UnityMeshManager>();
 
-            returnList.AddRange(steps);
+            //returnList.AddRange(steps);
             returnList.AddRange(Edges);
 
             return returnList;

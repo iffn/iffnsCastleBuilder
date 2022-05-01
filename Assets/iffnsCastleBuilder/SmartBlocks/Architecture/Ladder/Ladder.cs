@@ -13,7 +13,7 @@ public class Ladder : OnFloorObject
         }
     }
 
-    [SerializeField] BaseLadder LinkedBaseLadder;
+    //[SerializeField] BaseLadder LinkedBaseLadder;
 
     //BuildParameters
     MailboxLineVector2Int BottomLeftPositionParam;
@@ -83,7 +83,8 @@ public class Ladder : OnFloorObject
 
         SetupEditButtons();
 
-        
+        //UnmanagedMeshes.Clear();
+        //UnmanagedMeshes.AddRange(LinkedBaseLadder.UnmanagedStaticMeshes);
     }
 
     public void CompleteSetupWithBuildParameters(FloorController linkedFloor, Vector2Int bottomLeftPosition, Vector2Int topRightPosition)
@@ -93,7 +94,7 @@ public class Ladder : OnFloorObject
         BottomLeftPositionParam.Val = bottomLeftPosition;
         TopRightPositionParam.Val = topRightPosition;
 
-        LinkedBaseLadder.Setup(mainObject: this, edgeMaterial: EdgeMaterialParam, stepMaterial: StepMaterialParam);
+        //LinkedBaseLadder.Setup(mainObject: this, edgeMaterial: EdgeMaterialParam, stepMaterial: StepMaterialParam);
     }
 
     public override void ResetObject()
@@ -113,24 +114,77 @@ public class Ladder : OnFloorObject
         NonOrderedPlaytimeUpdate();
     }
 
+    [SerializeField] float DistanceBetweenSteps = 0.5f;
+    [SerializeField] float SideThickness = 0.1f;
+    [SerializeField] float StepThickness = 0.1f;
+
+    public void AddStaticMesh(TriangleMeshInfo staticMesh)
+    {
+        if (staticMesh == null) return;
+
+        StaticMeshManager.AddTriangleInfo(staticMesh);
+    }
+
     public override void ApplyBuildParameters()
     {
+        failed = false;
+
         ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
 
         Vector2Int gridSize = ModificationNodeOrganizer.ParentOrientationGridSize;
 
         if (gridSize.x == 0 && gridSize.y == 0)
         {
+            failed = true;
             return;
         }
 
-        float size = ModificationNodeOrganizer.ObjectOrientationSize;
+        float width = ModificationNodeOrganizer.ObjectOrientationSize;
+        float height = LinkedFloor.CompleteFloorHeight; //ToDo: Multi floor ladder
 
-        
-        LinkedBaseLadder.SetMainParameters(width: size, height: LinkedFloor.CompleteFloorHeight);
+        TriangleMeshInfo OriginSide = new TriangleMeshInfo();
+        TriangleMeshInfo OtherSide = new TriangleMeshInfo();
+        TriangleMeshInfo Steps = new TriangleMeshInfo();
 
+        void FinishMesh()
+        {
+            OriginSide.MaterialReference = EdgeMaterialParam;
+            OtherSide.MaterialReference = EdgeMaterialParam;
+            Steps.MaterialReference = StepMaterialParam;
+
+            AddStaticMesh(OriginSide);
+            AddStaticMesh(OtherSide);
+            AddStaticMesh(Steps);
+
+            BuildAllMeshes();
+        }
+
+        OriginSide = MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(SideThickness, height, SideThickness));
+        OtherSide = OriginSide.Clone;
+
+        OriginSide.Move(new Vector3((-width + SideThickness) * 0.5f, height * 0.5f, 0));
+        OtherSide.Move(new Vector3((width - SideThickness) * 0.5f, height * 0.5f, 0));
+
+        int numberOfSteps = (int)(height / DistanceBetweenSteps);
+
+        TriangleMeshInfo baseStep = MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: StepThickness * 0.5f, length: width, direction: Vector3.right, numberOfEdges: 12);
+
+        //baseStep.Move(width * 0.5f * Vector3.left);
+
+        for (int i = 0; i < numberOfSteps; i++)
+        {
+            baseStep.Move(DistanceBetweenSteps * Vector3.up);
+            Steps.Add(baseStep.Clone);
+        }
+
+        FinishMesh();
+
+        //LinkedBaseLadder.SetMainParameters(width: size, height: LinkedFloor.CompleteFloorHeight);
+
+        /*
         UnmanagedMeshes.Clear();
         UnmanagedMeshes.AddRange(LinkedBaseLadder.UnmanagedStaticMeshes);
+        */
     }
 
     void SetupEditButtons()
