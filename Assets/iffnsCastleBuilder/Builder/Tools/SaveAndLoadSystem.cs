@@ -50,6 +50,9 @@ public class SaveAndLoadSystem : MonoBehaviour
             return;
         }
 
+        int storedFloorNumber = CurrentBuilding.CurrentFloorNumber;
+        CurrentBuilding.CurrentFloorNumber = 0;
+
         //System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
         StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(completeFileLocation: completeFileLocation, baseObject: CurrentBuilding);
 
@@ -58,6 +61,8 @@ public class SaveAndLoadSystem : MonoBehaviour
 
         CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.Done;
         CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Done;
+        
+        CurrentBuilding.CurrentFloorNumber = storedFloorNumber;
 
         ToolController.CurrentNavigationTools.UpdateUI();
     }
