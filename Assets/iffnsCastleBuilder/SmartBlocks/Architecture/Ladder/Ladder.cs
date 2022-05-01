@@ -18,11 +18,19 @@ public class Ladder : OnFloorObject
     //BuildParameters
     MailboxLineVector2Int BottomLeftPositionParam;
     MailboxLineVector2Int TopRightPositionParam;
-
-    NodeGridWallOrganizer ModificationNodeOrganizer;
+    MailboxLineDistinctUnnamed NumberOfFloorsParam;
+    MailboxLineRanged HeightOvershootParam;
+    MailboxLineRanged DistanceBetweenStepsParam;
 
     MailboxLineMaterial EdgeMaterialParam;
     MailboxLineMaterial StepMaterialParam;
+
+    NodeGridWallOrganizer ModificationNodeOrganizer;
+
+
+    [SerializeField] float SideThickness = 0.05f;
+    [SerializeField] float StepThickness = 0.05f;
+
 
     public override ModificationOrganizer Organizer
     {
@@ -58,6 +66,45 @@ public class Ladder : OnFloorObject
         }
     }
 
+    public int NumberOfFloors
+    {
+        get
+        {
+            return NumberOfFloorsParam.Val;
+        }
+        set
+        {
+            NumberOfFloorsParam.Val = value;
+            ApplyBuildParameters();
+        }
+    }
+
+    public float HeightOvershoot
+    {
+        get
+        {
+            return HeightOvershootParam.Val;
+        }
+        set
+        {
+            HeightOvershootParam.Val = value;
+            ApplyBuildParameters();
+        }
+    }
+
+    public float DistanceBetweenSteps
+    {
+        get
+        {
+            return DistanceBetweenStepsParam.Val;
+        }
+        set
+        {
+            DistanceBetweenStepsParam.Val = value;
+            ApplyBuildParameters();
+        }
+    }
+
     public override void Setup(IBaseObject linkedFloor)
     {
         base.Setup(linkedFloor);
@@ -66,10 +113,12 @@ public class Ladder : OnFloorObject
 
         BottomLeftPositionParam = new MailboxLineVector2Int(name: "Bottom Left Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
         TopRightPositionParam = new MailboxLineVector2Int(name: "Top Right Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
-        
+        NumberOfFloorsParam = new MailboxLineDistinctUnnamed(name: "Number of floors", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 100, Min: 1, DefaultValue: 1);
+        HeightOvershootParam = new MailboxLineRanged(name: "Height overshoot [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 5, Min: 0, DefaultValue: 1.1f);
+        DistanceBetweenStepsParam = new MailboxLineRanged(name: "Distance between steps [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 2f, Min: 0.1f, DefaultValue: 0.5f);
+
         EdgeMaterialParam = new MailboxLineMaterial(name: "Edge material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultWoodSolid);
         StepMaterialParam = new MailboxLineMaterial(name: "Step material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultWoodSolid);
-
 
         NodeGridPositionModificationNode firstNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
         firstNode.Setup(linkedObject: this, value: BottomLeftPositionParam);
@@ -114,10 +163,6 @@ public class Ladder : OnFloorObject
         NonOrderedPlaytimeUpdate();
     }
 
-    [SerializeField] float DistanceBetweenSteps = 0.5f;
-    [SerializeField] float SideThickness = 0.1f;
-    [SerializeField] float StepThickness = 0.1f;
-
     public void AddStaticMesh(TriangleMeshInfo staticMesh)
     {
         if (staticMesh == null) return;
@@ -140,7 +185,27 @@ public class Ladder : OnFloorObject
         }
 
         float width = ModificationNodeOrganizer.ObjectOrientationSize;
+
         float height = LinkedFloor.CompleteFloorHeight; //ToDo: Multi floor ladder
+
+        if (LinkedFloor.FloorsAbove >= 0)
+        {
+            if (NumberOfFloors > 1)
+            {
+                int usedNumberOfFloors = NumberOfFloors;
+
+                if (usedNumberOfFloors > LinkedFloor.FloorsAbove + 1) usedNumberOfFloors = LinkedFloor.FloorsAbove + 1;
+
+                for (int i = LinkedFloor.FloorNumber + 1; i < LinkedFloor.FloorNumber + usedNumberOfFloors; i++)
+                {
+                    FloorController floor = LinkedFloor.LinkedBuildingController.Floor(i);
+
+                    height += floor.CompleteFloorHeight;
+                }
+            }
+        }
+
+        float sideHeight = height + HeightOvershoot;
 
         TriangleMeshInfo OriginSide = new TriangleMeshInfo();
         TriangleMeshInfo OtherSide = new TriangleMeshInfo();
@@ -159,11 +224,11 @@ public class Ladder : OnFloorObject
             BuildAllMeshes();
         }
 
-        OriginSide = MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(SideThickness, height, SideThickness));
+        OriginSide = MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(SideThickness, sideHeight, SideThickness));
         OtherSide = OriginSide.Clone;
 
-        OriginSide.Move(new Vector3((-width + SideThickness) * 0.5f, height * 0.5f, 0));
-        OtherSide.Move(new Vector3((width - SideThickness) * 0.5f, height * 0.5f, 0));
+        OriginSide.Move(new Vector3((-width + SideThickness) * 0.5f, sideHeight * 0.5f, 0));
+        OtherSide.Move(new Vector3((width - SideThickness) * 0.5f, sideHeight * 0.5f, 0));
 
         int numberOfSteps = (int)(height / DistanceBetweenSteps);
 

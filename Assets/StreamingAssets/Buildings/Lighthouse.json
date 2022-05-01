@@ -29523,6 +29523,17 @@
 					"Main side material": "PolyHaven-sandstone_blocks_05",
 					"Other side material": "PolyHaven-sandstone_blocks_05",
 					"Roof type": "FullAngledSquareRoof"
+				},
+				{
+					"Type": "Ladder",
+					"Name": "",
+					"Bottom Left Position": [10, 34],
+					"Top Right Position": [0, 2],
+					"Number of floors": 1,
+					"Height overshoot [m]": 1.1,
+					"Distance between steps [m]": 0.5,
+					"Edge material": "PolyHaven-plywood",
+					"Step material": "PolyHaven-plywood"
 				}
 			]
 		},
@@ -34383,6 +34394,17 @@
 					"Floor material": "PolyHaven-wood_planks_dirt",
 					"Block type": "Floor",
 					"Edge type": "InnerGrid"
+				},
+				{
+					"Type": "Ladder",
+					"Name": "",
+					"Bottom Left Position": [12, 39],
+					"Top Right Position": [2, 0],
+					"Number of floors": 2,
+					"Height overshoot [m]": 1.1,
+					"Distance between steps [m]": 0.5,
+					"Edge material": "PolyHaven-plywood",
+					"Step material": "PolyHaven-plywood"
 				}
 			]
 		},
