@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7747112754423260850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7361468140479603884}
+  - component: {fileID: 1397969349139341087}
+  m_Layer: 0
+  m_Name: ModificationNodeLibraryIntegrator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7361468140479603884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7747112754423260850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.9361329, y: 1.9388726, z: -6.732706}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1397969349139341087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7747112754423260850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c06e02c81af4ec4ea5ef2d5c5aa58b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radiusModificationNodeTemplate: {fileID: 3592077671503685366, guid: 6ef0a33566993744ca66aa43c4250cf2, type: 3}
+  blockGridPositionModificationNodeTemplate: {fileID: 1788889836685047813, guid: ea5acb5840ca1974597e2dd295a4710d, type: 3}
+  nodeGridPositionModificationNodeTemplate: {fileID: 102635556606193095, guid: b892929d3c329e14fbe192baf1d741cc, type: 3}
+  gridRadiusModificationNodeTemplate: {fileID: 8323154788981138058, guid: 8deaccad28588e748a9c5f2d44bc908d, type: 3}
+  gridOrientationNodeTemplate: {fileID: 369082997871840530, guid: b915b657cbe12764fbfbb9215f97fc60, type: 3}
+  nodeWallEditMododeTemplate: {fileID: 4394707402526015413, guid: 769904ef34d90c34b97b78532085c5fa, type: 3}
+  nodeWallRemoveNodeTemplate: {fileID: 243080830127066121, guid: 73551e003d5924c4a9a380e0f8287773, type: 3}
+  nodeWallMultiModNodeTemplate: {fileID: 4973648639987961721, guid: 870fe9fc6339e1a46b791f9389bc614a, type: 3}
