@@ -2,7 +2,7 @@
 	"Type": "Building",
 	"Name": "",
 	"Negative floors": 0,
-	"Grid size": [15, 15],
+	"Grid size": [15, 16],
 	"Floors":
 	[
 		{
@@ -19,8 +19,8 @@
 					{
 						"Type": "Node wall",
 						"Name": "",
-						"Start position": [12, 2],
-						"End position": [9, 2],
+						"Start position": [12, 3],
+						"End position": [9, 3],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					}
@@ -1152,6 +1152,81 @@
 					"Type": "Virtual block",
 					"Name": "",
 					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "Virtual block",
+					"Name": "",
+					"Block type": "Empty"
 				}
 			],
 			"On floor objects":
@@ -1159,7 +1234,7 @@
 				{
 					"Type": "Circular roof",
 					"Name": "",
-					"Center position": [8, 9],
+					"Center position": [8, 10],
 					"Outer Radii": [3, -2],
 					"Edges between": 8,
 					"Thickness": 0.1,
@@ -1173,7 +1248,7 @@
 				{
 					"Type": "Window",
 					"Name": "",
-					"Bottom Left Position": [9, 2],
+					"Bottom Left Position": [9, 3],
 					"Top Right Position": [-3, 0],
 					"Bottom height [m]": 0.75,
 					"Window height [m]": 1.25,
@@ -1186,7 +1261,7 @@
 				{
 					"Type": "Window",
 					"Name": "",
-					"Bottom Left Position": [4, 8],
+					"Bottom Left Position": [4, 9],
 					"Top Right Position": [0, 0],
 					"Bottom height [m]": 0.75,
 					"Window height [m]": 1.25,
