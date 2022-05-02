@@ -17,7 +17,7 @@ public class TriangularRoof : OnFloorObject
     MailboxLineVector2Int SecondPositionParam;
     MailboxLineVector2Int ThirdPositionParam;
     MailboxLineRanged HeightParam;
-    MailboxLineRanged ThicknessParam;
+    MailboxLineRanged HeightThicknessParam;
     MailboxLineDistinctNamed RoofTypeParam;
     MailboxLineBool RaiseToFloorParam;
 
@@ -72,19 +72,6 @@ public class TriangularRoof : OnFloorObject
             (int)roofType);
     }
 
-    public float Thickness
-    {
-        get
-        {
-            return ThicknessParam.Val;
-        }
-        set
-        {
-            ThicknessParam.Val = value;
-            ApplyBuildParameters();
-        }
-    }
-
     public float Height
     {
         get
@@ -94,6 +81,19 @@ public class TriangularRoof : OnFloorObject
         set
         {
             HeightParam.Val = value;
+            ApplyBuildParameters();
+        }
+    }
+
+    public float HeightThickness
+    {
+        get
+        {
+            return HeightThicknessParam.Val;
+        }
+        set
+        {
+            HeightThicknessParam.Val = value;
             ApplyBuildParameters();
         }
     }
@@ -119,7 +119,7 @@ public class TriangularRoof : OnFloorObject
         SecondPositionParam = new MailboxLineVector2Int(name: "Second position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
         ThirdPositionParam = new MailboxLineVector2Int(name: "Third position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
         HeightParam = new MailboxLineRanged(name: "Height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 10f, Min: 0.2f, DefaultValue: 2f);
-        ThicknessParam = new MailboxLineRanged(name: "Thickness", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1f / 3, Min: 0.001f, DefaultValue: 0.1f);
+        HeightThicknessParam = new MailboxLineRanged(name: "Height thickness", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1f, Min: 0.001f, DefaultValue: 0.1f);
         RaiseToFloorParam = new MailboxLineBool(name: "Raise to floor", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: true);
         OutsideMaterial = new MailboxLineMaterial(name: "Outside material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultRoof);
         InsideMaterial = new MailboxLineMaterial(name: "Inside material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultCeiling);
@@ -172,6 +172,7 @@ public class TriangularRoof : OnFloorObject
         NonOrderedPlaytimeUpdate();
     }
 
+
     public override void ApplyBuildParameters()
     {
         failed = false;
@@ -197,7 +198,7 @@ public class TriangularRoof : OnFloorObject
 
         if (failed) return;
 
-        //Outer roof
+        //Outer roof without height
         List<Vector3> outerPoints = new List<Vector3>()
         {
             new Vector3(ModificationNodeOrganizer.FirstClockwiseOffsetPosition.x, 0, ModificationNodeOrganizer.FirstClockwiseOffsetPosition.y),
@@ -205,29 +206,30 @@ public class TriangularRoof : OnFloorObject
             Vector3.zero,
         };
 
-        List<Vector3> innerPoints = new List<Vector3>()
-        {
-            new Vector3(ModificationNodeOrganizer.SecondClockwiseOffsetPosition.x, 0, ModificationNodeOrganizer.SecondClockwiseOffsetPosition.y),
-            new Vector3(ModificationNodeOrganizer.FirstClockwiseOffsetPosition.x, 0, ModificationNodeOrganizer.FirstClockwiseOffsetPosition.y),
-            Vector3.zero,
-        };
+        List<Vector3> innerPoints = new List<Vector3>();
 
-        
-
+        //Point positions
         switch (RoofType)
         {
             case RoofTypes.TwoAreLow:
-                innerPoints[0] -= innerPoints[0].normalized * Thickness;
-                innerPoints[1] -= innerPoints[1].normalized * Thickness;
                 outerPoints[2] += Vector3.up * Height;
-                innerPoints[2] += Vector3.up * (Height - Thickness);
+
+                innerPoints.Add(new Vector3(ModificationNodeOrganizer.SecondClockwiseOffsetPosition.x, 0, ModificationNodeOrganizer.SecondClockwiseOffsetPosition.y));
+                innerPoints.Add(new Vector3(ModificationNodeOrganizer.FirstClockwiseOffsetPosition.x, 0, ModificationNodeOrganizer.FirstClockwiseOffsetPosition.y));
+                innerPoints.Add(Vector3.zero);
+
+                innerPoints[0] -= (HeightThickness / Height) * innerPoints[0];
+                innerPoints[1] -= (HeightThickness / Height) * innerPoints[1];
+                innerPoints[2] += Vector3.up * (Height - HeightThickness);
                 break;
             case RoofTypes.TwoAreHigh:
                 outerPoints[0] += Vector3.up * Height;
                 outerPoints[1] += Vector3.up * Height;
-                innerPoints[2] += (innerPoints[0] + innerPoints[1]).normalized * Thickness;
-                innerPoints[0] += Vector3.up * (Height - Thickness);
-                innerPoints[1] += Vector3.up * (Height - Thickness);
+
+                innerPoints.Add(outerPoints[1] + HeightThickness * Vector3.down);
+                innerPoints.Add(outerPoints[0] + HeightThickness * Vector3.down);
+                innerPoints.Add((HeightThickness / Height) * new Vector3(outerPoints[0].x, 0, outerPoints[0].z));
+                innerPoints.Add((HeightThickness / Height) * new Vector3(outerPoints[1].x, 0, outerPoints[1].z));
 
                 break;
             default:
@@ -237,26 +239,43 @@ public class TriangularRoof : OnFloorObject
         RoofOutside = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(outerPoints);
         RoofInside = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(innerPoints);
 
-        RoofWrapper.Add(MeshGenerator.MeshesFromLines.KnitLines(firstLine: new VerticesHolder(new List<Vector3>() {innerPoints[1], innerPoints[0], innerPoints[2] }), secondLine: new VerticesHolder(outerPoints), isClosed: true, isSealed: false, smoothTransition: false));
-
-
-
-        if (RoofType == RoofTypes.TwoAreLow)
+        //Wrapper
+        switch (RoofType)
         {
-            RotateUVs(RoofOutside);
-
-            RotateUVs(RoofInside);
+            case RoofTypes.TwoAreLow:
+                RoofWrapper.Add(MeshGenerator.MeshesFromLines.KnitLines(
+                    firstLine: new VerticesHolder(new List<Vector3>() { innerPoints[1], innerPoints[0], innerPoints[2] }),
+                    secondLine: new VerticesHolder(outerPoints),
+                    isClosed: true, isSealed: false, smoothTransition: false));
+                break;
+            case RoofTypes.TwoAreHigh:
+                RoofWrapper.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() { outerPoints[1], outerPoints[0] , innerPoints[1], innerPoints[0]}));
+                RoofWrapper.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() { outerPoints[2], outerPoints[1] , innerPoints[0], innerPoints[3]}));
+                RoofWrapper.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() { outerPoints[0], outerPoints[2] , innerPoints[2], innerPoints[1]}));
+                RoofWrapper.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() { outerPoints[2], innerPoints[3], innerPoints[2]}));
+                break;
+            default:
+                break;
         }
-        else if (RoofType == RoofTypes.TwoAreHigh)
-        {
-            //ToDo: Optimize
-            RotateUVs(RoofOutside);
-            RotateUVs(RoofOutside);
-            RotateUVs(RoofOutside);
 
-            RotateUVs(RoofInside);
-            RotateUVs(RoofInside);
-            RotateUVs(RoofInside);
+        //Rotate UVs
+        switch (RoofType)
+        {
+            case RoofTypes.TwoAreLow:
+                RotateUVs(RoofOutside);
+                RotateUVs(RoofInside);
+                break;
+            case RoofTypes.TwoAreHigh:
+                //ToDo: Optimize
+                RotateUVs(RoofOutside);
+                RotateUVs(RoofOutside);
+                RotateUVs(RoofOutside);
+                RotateUVs(RoofInside);
+                RotateUVs(RoofInside);
+                RotateUVs(RoofInside);
+                break;
+            default:
+                break;
         }
 
         if (RaiseToFloor)
@@ -281,94 +300,6 @@ public class TriangularRoof : OnFloorObject
 
             info.UVs = UVs;
         }
-
-        //Old code
-        /*
-        //Roof inside
-        List<Vector3> innerPoints = new List<Vector3>()
-        {
-            new Vector3(ModificationNodeOrganizer.FirstClockwiseOffsetPosition.x, 0, ModificationNodeOrganizer.FirstClockwiseOffsetPosition.y),
-            new Vector3(ModificationNodeOrganizer.SecondClockwiseOffsetPosition.x, 0, ModificationNodeOrganizer.SecondClockwiseOffsetPosition.y),
-            Vector3.zero
-        };
-
-        float height = Height - Thickness;
-
-        switch (RoofType)
-        {
-            case RoofTypes.TwoAreLow:
-                innerPoints[2] += Vector3.up * height;
-                break;
-            case RoofTypes.TwoAreHigh:
-                innerPoints[0] += Vector3.up * height;
-                innerPoints[1] += Vector3.up * height;
-                break;
-            default:
-                break;
-        }
-
-        RoofInside = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(innerPoints);
-        RoofInside.FlipTriangles();
-
-        //Roof outside
-        List<Vector3> outerPoints = new List<Vector3>(innerPoints);
-
-        switch (RoofType)
-        {
-            case RoofTypes.TwoAreLow:
-                outerPoints[2] += Vector3.up * Thickness;
-                outerPoints[0] += outerPoints[0].normalized * Thickness;
-                outerPoints[1] += outerPoints[1].normalized * Thickness;
-                break;
-            case RoofTypes.TwoAreHigh:
-                outerPoints[2] = Vector3.up * Thickness;
-                outerPoints[0] += Vector3.up * Thickness;
-                outerPoints[1] += Vector3.up * Thickness;
-                break;
-            default:
-                break;
-        }
-
-        RoofOutside = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(outerPoints);
-
-        if(RoofType == RoofTypes.TwoAreLow)
-        {
-            RotateUVs(RoofOutside);
-
-            RotateUVs(RoofInside);
-        }
-        else if(RoofType == RoofTypes.TwoAreHigh)
-        {
-            //ToDo: Optimize
-            RotateUVs(RoofOutside);
-            RotateUVs(RoofOutside);
-            RotateUVs(RoofOutside);
-            
-            RotateUVs(RoofInside);
-            RotateUVs(RoofInside);
-            RotateUVs(RoofInside);
-        }
-
-        Edge12 = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() {outerPoints[0], outerPoints[2], innerPoints[2], innerPoints[0] });
-        Edge23 = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() {outerPoints[1], outerPoints[0], innerPoints[0], innerPoints[1] });
-        Edge31 = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() {outerPoints[2], outerPoints[1], innerPoints[1], innerPoints[2] });
-
-        void RotateUVs(TriangleMeshInfo info)
-        {
-            List<Vector2> UVs;
-
-            UVs = info.UVs;
-
-            for (int i = 0; i < UVs.Count; i++)
-            {
-                UVs[i] = new Vector2(-UVs[i].y, UVs[i].x);
-            }
-
-            info.UVs = UVs;
-        }
-
-        FinishMeshes();
-        */
     }
     public override void MoveOnGrid(Vector2Int offset)
     {

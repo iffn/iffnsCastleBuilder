@@ -17,6 +17,7 @@ public class RectangularRoof : OnFloorObject
     MailboxLineVector2Int FirstBlockPositionParam;
     MailboxLineVector2Int SecondBlockPositionParam;
     MailboxLineRanged HeightParam;
+    MailboxLineRanged HeightThicknessParam;
     MailboxLineRanged RoofOvershootParam;
     MailboxLineDistinctNamed RoofTypeParam;
     MailboxLineBool RaiseToFloorParam;
@@ -64,6 +65,19 @@ public class RectangularRoof : OnFloorObject
         set
         {
             HeightParam.Val = value;
+            ApplyBuildParameters();
+        }
+    }
+
+    public float HeightThickness
+    {
+        get
+        {
+            return HeightThicknessParam.Val;
+        }
+        set
+        {
+            HeightThicknessParam.Val = value;
             ApplyBuildParameters();
         }
     }
@@ -147,6 +161,7 @@ public class RectangularRoof : OnFloorObject
         FirstBlockPositionParam = new MailboxLineVector2Int(name: "First Block Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
         SecondBlockPositionParam = new MailboxLineVector2Int(name: "Second Block Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
         HeightParam = new MailboxLineRanged(name: "Roof height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 10, Min: 0.5f, DefaultValue: 2);
+        HeightThicknessParam = new MailboxLineRanged(name: "Height thickness", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1f, Min: 0.001f, DefaultValue: 0.1f);
         RoofOvershootParam = new MailboxLineRanged(name: "Roof overshoot [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 10, Min: 0f, DefaultValue: 0);
         RaiseToFloorParam = new MailboxLineBool(name: "Raise to floor", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: true);
         OutsideMaterialParam = new MailboxLineMaterial(name: "Outside material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultRoof);
@@ -207,7 +222,7 @@ public class RectangularRoof : OnFloorObject
         StaticMeshManager.AddTriangleInfo(staticMesh);
     }
 
-    float roofThickness = 0.1f;
+    
 
     public override void ApplyBuildParameters()
     {
@@ -234,8 +249,6 @@ public class RectangularRoof : OnFloorObject
         TriangleMeshInfo RoofOutside = new TriangleMeshInfo();
         TriangleMeshInfo RoofInside = new TriangleMeshInfo();
         TriangleMeshInfo RoofWrapper = new TriangleMeshInfo();
-        //TriangleMeshInfo FrontWall = new TriangleMeshInfo();
-        //TriangleMeshInfo BackWall = new TriangleMeshInfo();
 
         void FinishMesh()
         {
@@ -246,27 +259,22 @@ public class RectangularRoof : OnFloorObject
             AddStaticMesh(RoofOutside);
             AddStaticMesh(RoofInside);
             AddStaticMesh(RoofWrapper);
-            //AddStaticMesh(FrontWall);
-            //AddStaticMesh(BackWall);
         }
-        //Base parameters
-        float roofAngle = Mathf.Atan(Height / size.x);
-        float topAngle = Mathf.PI * 0.5f - roofAngle;
 
-        float xOffset = roofThickness / Mathf.Sin(roofAngle);
-        float heightOffset = roofThickness / Mathf.Sin(topAngle);
+        //Offset calculation
+        float xOffset = HeightThickness * size.x / Height;
 
         //Roof outside
         RoofOutside = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * size.y, secondLine: new Vector3(-size.x, Height, 0), UVOffset: Vector2.zero);
         RoofOutside.Move(Vector3.right * size.x);
 
         //Roof inside
-        RoofInside = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.back * size.y, secondLine: new Vector3(-size.x + xOffset, Height - heightOffset, 0), UVOffset: Vector2.zero);
+        RoofInside = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.back * size.y, secondLine: new Vector3(-size.x + xOffset, Height - HeightThickness, 0), UVOffset: Vector2.zero);
         RoofInside.Move(new Vector3(size.x - xOffset, 0, size.y));
 
         //Top wrapper
-        TriangleMeshInfo tempWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.back * size.y, secondLine: Vector3.up * heightOffset, UVOffset: Vector2.zero);
-        tempWrapper.Move(new Vector3(0, Height - heightOffset, size.y));
+        TriangleMeshInfo tempWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.back * size.y, secondLine: Vector3.up * HeightThickness, UVOffset: Vector2.zero);
+        tempWrapper.Move(new Vector3(0, Height - HeightThickness, size.y));
         RoofWrapper.Add(tempWrapper);
 
         //Bottom wrapper
@@ -277,7 +285,7 @@ public class RectangularRoof : OnFloorObject
         //Side wrapper 1
         tempWrapper = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>()
         {
-            new Vector3(0, Height - heightOffset, 0),
+            new Vector3(0, Height - HeightThickness, 0),
             new Vector3(0, Height, 0),
             new Vector3(size.x, 0, 0),
             new Vector3(size.x - xOffset, 0, 0),
@@ -298,50 +306,6 @@ public class RectangularRoof : OnFloorObject
         }
 
         FinishMesh();
-
-        //Old code
-        /*
-        float h = height;
-        float t = roofThickness;
-        float w = size.x;
-
-        float h2 = h * h;
-        float t2 = t * t;
-        float w2 = w * w;
-
-        float rootTerm = Mathf.Sqrt(h2 * t2 * (h2 - t2 + w2));
-
-        float xDiff = (rootTerm + t2 * w) / (h2 - t2);
-        float yDiff = (h2 * t2 - w * rootTerm) / (h * t2 - h * w2);
-
-        float innerWidth = size.x;
-        float innerHeight = height - yDiff;
-        float outerWidth = size.x + xDiff;
-        float outerHeight = height;
-
-        //Roof outside
-        Vector3 outerRoofOffset = new Vector3(outerWidth, -outerHeight);
-        outerRoofOffset += outerRoofOffset.normalized * roofOvershoot;
-
-        RoofOutside = MeshGenerator.FilledShapes.RectangleAtCorner(Vector3.back * size.y, secondLine: outerRoofOffset, UVOffset: Vector2.zero);
-        //RoofOutside.Move(Vector3.up * outerHeight + Vector3.forward * size.y * 0.5f);
-        //RoofOutside.Move(new Vector3(size.x * 0.5f, outerHeight, size.y * 0.5f));
-        RoofOutside.RotateAllUVsCWAroundOrigin(angleDeg: 180);
-        RoofOutside.Move(new Vector3(0, outerHeight, size.y));
-
-        Vector3 innerRoofOffset = new Vector3(innerWidth, -innerHeight);
-        innerRoofOffset += innerRoofOffset.normalized * roofOvershoot;
-        RoofInside = MeshGenerator.FilledShapes.RectangleAtCorner(Vector3.forward * size.y, secondLine: innerRoofOffset, UVOffset: Vector2.zero);
-        //RoofInside.Move(Vector3.up * innerHeight + Vector3.back * size.y * 0.5f);
-        //RoofInside.Move(new Vector3(size.x * 0.5f, innerHeight, size.y * 0.5f));
-        RoofInside.RotateAllUVsCWAroundOrigin(angleDeg: 180);
-        RoofInside.Move(new Vector3(0, innerHeight, 0));
-
-        //RoofWrapper.Move(new Vector3(size.x * 0.5f, 0, size.y * 0.5f));
-        //FrontWall.Move(new Vector3(size.x * 0.5f, 0, size.y * 0.5f));
-        //BackWall.Move(new Vector3(size.x * 0.5f, 0, size.y * 0.5f));
-        FinishMesh();
-        */
     }
 
     void UpdateFullRoof(Vector2 size)
@@ -362,11 +326,7 @@ public class RectangularRoof : OnFloorObject
         }
 
         float halfWidth = size.x * 0.5f;
-        float roofAngle = Mathf.Atan(Height / (size.x * 0.5f));
-        float topAngle = Mathf.PI * 0.5f - roofAngle;
-
-        float xOffset = roofThickness / Mathf.Sin(roofAngle);
-        float heightOffset = roofThickness / Mathf.Sin(topAngle);
+        float xOffset = HeightThickness * halfWidth / Height;
 
         TriangleMeshInfo tempShape;
 
@@ -380,18 +340,18 @@ public class RectangularRoof : OnFloorObject
         RoofOutside.Add(tempShape);
 
         //Roof inside
-        tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.back * size.y, secondLine: new Vector3(-halfWidth + xOffset, Height - heightOffset, 0), UVOffset: Vector2.zero);
+        tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.back * size.y, secondLine: new Vector3(-halfWidth + xOffset, Height - HeightThickness, 0), UVOffset: Vector2.zero);
         tempShape.Move(new Vector3(size.x - xOffset, 0, size.y));
         RoofInside.Add(tempShape);
 
-        tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * size.y, secondLine: new Vector3(halfWidth - xOffset, Height - heightOffset, 0), UVOffset: Vector2.zero);
+        tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * size.y, secondLine: new Vector3(halfWidth - xOffset, Height - HeightThickness, 0), UVOffset: Vector2.zero);
         tempShape.Move(Vector3.right * xOffset);
         RoofInside.Add(tempShape);
 
         //Side wrapper 1
         tempShape = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>()
         {
-            new Vector3(halfWidth, Height - heightOffset, 0),
+            new Vector3(halfWidth, Height - HeightThickness, 0),
             new Vector3(xOffset, 0, 0),
             new Vector3(0, 0, 0),
             new Vector3(halfWidth, Height, 0),
@@ -414,111 +374,6 @@ public class RectangularRoof : OnFloorObject
         }
 
         FinishMesh();
-
-        //Old code
-        /*
-        //Roof solved with Wolfram: https://www.wolframalpha.com/input/?i=Solve%5B%7Bcos%28a%29%3D%3Dt%2Fy%2C+sin%28a%29%3D%3Dt%2Fx%2C+tan%28a%29%3D%3Dh%2F%28w%2Bx%29%7D%2C+%7Bx%2Cy%2Ca%7D%5D
-
-        float h = height;
-        float t = roofThickness;
-        float w = size.x * 0.5f;
-
-        float h2 = h * h;
-        float t2 = t * t;
-        float w2 = w * w;
-
-        float rootTerm = Mathf.Sqrt(h2*t2*(h2-t2+w2));
-
-        float xDiff = (rootTerm + t2 * w) / (h2 - t2);
-        float yDiff = (h2 * t2 - w * rootTerm) / (h * t2 - h * w2);
-
-        float innerWidth = size.x * 0.5f;
-        float innerHeight = height - yDiff;
-        float outerWidth = size.x * 0.5f + xDiff;
-        float outerHeight = height;
-
-        //Roof outside
-        Vector3 outerRoofOffset = new Vector3(outerWidth, -outerHeight);
-        outerRoofOffset += outerRoofOffset.normalized * roofOvershoot;
-
-        RoofOutside = MeshGenerator.FilledShapes.RectangleAtCorner(Vector3.back * size.y, secondLine: outerRoofOffset, UVOffset: Vector2.zero);
-        RoofOutside.Move(Vector3.up * outerHeight + Vector3.forward * size.y * 0.5f);
-        RoofOutside.RotateAllUVsCWAroundOrigin(angleDeg: 180);
-
-        TriangleMeshInfo secondRoofSide = RoofOutside.CloneFlipped;
-        secondRoofSide.Scale(new Vector3(-1, 1, 1));
-        secondRoofSide.FlipAllUVsHorizontallyAroundOrigin();
-        RoofOutside.Add(secondRoofSide);
-
-        Vector3 innerRoofOffset = new Vector3(innerWidth, -innerHeight);
-        innerRoofOffset += innerRoofOffset.normalized * roofOvershoot;
-        RoofInside = MeshGenerator.FilledShapes.RectangleAtCorner(Vector3.forward * size.y, secondLine: innerRoofOffset, UVOffset: Vector2.zero);
-        RoofInside.Move(Vector3.up * innerHeight + Vector3.back * size.y * 0.5f);
-        RoofInside.RotateAllUVsCWAroundOrigin(angleDeg: 180);
-
-        secondRoofSide = RoofInside.CloneFlipped;
-        secondRoofSide.Scale(new Vector3(-1, 1, 1));
-        secondRoofSide.FlipAllUVsHorizontallyAroundOrigin();
-        RoofInside.Add(secondRoofSide);
-
-        //Walls
-        List<Vector3> ClockwiseWallPoints = new List<Vector3>();
-        ClockwiseWallPoints.Add(Vector3.up * innerHeight);
-        ClockwiseWallPoints.Add(Vector3.right * innerWidth);
-        ClockwiseWallPoints.Add(Vector3.left * innerWidth);
-
-        FrontWall = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(ClockwiseWallPoints);
-        FrontWall.Move(Vector3.back * (size.y * 0.5f));
-
-        TriangleMeshInfo secondFrontWallInfo = FrontWall.Clone;
-        secondFrontWallInfo.Move(Vector3.forward * (size.y - wallThickness));
-        FrontWall.Add(secondFrontWallInfo);
-
-        BackWall= FrontWall.CloneFlipped;
-        BackWall.Move(Vector3.forward * wallThickness);
-
-        FrontWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: linkedRoof.transform, originObjectForUV: originObject);
-        BackWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: linkedRoof.transform, originObjectForUV: originObject);
-
-        //Wrapper
-        List<Vector3> ClockwiseFrontWrapperPoints = new List<Vector3>();
-        ClockwiseFrontWrapperPoints.Add(Vector3.up * innerHeight);
-        ClockwiseFrontWrapperPoints.Add(Vector3.left * innerWidth + new Vector3(-outerRoofOffset.normalized.x, outerRoofOffset.normalized.y, outerRoofOffset.normalized.z) * roofOvershoot);
-        ClockwiseFrontWrapperPoints.Add(Vector3.left * outerWidth + new Vector3(-outerRoofOffset.normalized.x, outerRoofOffset.normalized.y, outerRoofOffset.normalized.z) * roofOvershoot);
-        ClockwiseFrontWrapperPoints.Add(Vector3.up * outerHeight);
-        ClockwiseFrontWrapperPoints.Add(Vector3.right * outerWidth + outerRoofOffset.normalized * roofOvershoot);
-        ClockwiseFrontWrapperPoints.Add(Vector3.right * innerWidth + outerRoofOffset.normalized * roofOvershoot);
-
-        TriangleMeshInfo frontWrapper = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(ClockwiseFrontWrapperPoints);
-        frontWrapper.Move(Vector3.back * (size.y * 0.5f));
-        frontWrapper.GenerateUVMeshBasedOnCardinalDirections(meshObject: linkedRoof.transform, originObjectForUV: originObject);
-
-        TriangleMeshInfo backWrapper = frontWrapper.CloneFlipped;
-        backWrapper.Move(Vector3.forward * size.y);
-        backWrapper.GenerateUVMeshBasedOnCardinalDirections(meshObject: linkedRoof.transform, originObjectForUV: originObject);
-
-        TriangleMeshInfo bottomWrapper = MeshGenerator.FilledShapes.RectangleAroundCenter(baseLine: Vector3.left * xDiff, secondLine: Vector3.forward * size.y);
-        bottomWrapper.Move(Vector3.right * (innerWidth + xDiff / 2));
-        TriangleMeshInfo otherBottomWrapper = bottomWrapper.Clone;
-        bottomWrapper.Move(outerRoofOffset.normalized * roofOvershoot);
-        otherBottomWrapper.Move(Vector3.left * (innerWidth * 2 + xDiff));
-        otherBottomWrapper.Move(new Vector3(-outerRoofOffset.normalized.x, outerRoofOffset.normalized.y, outerRoofOffset.normalized.z) * roofOvershoot);
-        bottomWrapper.Add(otherBottomWrapper);
-        bottomWrapper.GenerateUVMeshBasedOnCardinalDirections(meshObject: linkedRoof.transform, originObjectForUV: originObject);
-
-        RoofWrapper = new TriangleMeshInfo();
-        RoofWrapper.Add(frontWrapper);
-        RoofWrapper.Add(backWrapper);
-        RoofWrapper.Add(bottomWrapper);
-
-        RoofOutside.Move(new Vector3(size.x * 0.5f, 0, size.y * 0.5f));
-        RoofInside.Move(new Vector3(size.x * 0.5f, 0, size.y * 0.5f));
-        RoofWrapper.Move(new Vector3(size.x * 0.5f, 0, size.y * 0.5f));
-        FrontWall.Move(new Vector3(size.x * 0.5f, 0, size.y * 0.5f));
-        BackWall.Move(new Vector3(size.x * 0.5f, 0, size.y * 0.5f));
-
-        FinishMesh();
-        */
     }
 
 

@@ -34398,7 +34398,7 @@
 				{
 					"Type": "Ladder",
 					"Name": "",
-					"Bottom Left Position": [12, 39],
+					"Bottom Left Position": [12, 37],
 					"Top Right Position": [2, 0],
 					"Number of floors": 2,
 					"Height overshoot [m]": 1.1,
