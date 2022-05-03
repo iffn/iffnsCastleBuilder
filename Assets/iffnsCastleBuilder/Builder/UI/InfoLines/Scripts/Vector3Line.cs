@@ -1,67 +1,72 @@
-﻿using System.Collections;
+﻿using iffnsStuff.iffnsBaseSystemForUnity;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Vector3Line : ControlLine {
-
-    public InputField InputFieldX;
-    public InputField InputFieldY;
-    public InputField InputFieldZ;
-
-    MailboxLineVector3 currentVector3Line;
-
-    IBaseObject lineOwner;
-
-    //BuilderController controller;
-
-
-    // Use this for initialization
-    public void SetUp(MailboxLineVector3 vector3Line, IBaseObject partToUpdateBuildParameters, List<DelegateLibrary.VoidFunction> additionalCalls = null)
-    //public void SetUp(MailboxLineVector3 vector3Line, BaseObject partToUpdateBuildParameters, BuilderController controller)
+namespace iffnsStuff.iffnsCastleBuilder
+{
+    public class Vector3Line : ControlLine
     {
-        this.currentVector3Line = vector3Line;
-        this.lineOwner = partToUpdateBuildParameters;
-        //this.controller = controller;
 
-        base.SetUp(vector3Line.Name);
+        public InputField InputFieldX;
+        public InputField InputFieldY;
+        public InputField InputFieldZ;
 
-        InputFieldX.text = vector3Line.Val.x.ToString();
-        InputFieldX.onEndEdit.AddListener(ChangeXValue);
+        MailboxLineVector3 currentVector3Line;
 
-        InputFieldY.text = vector3Line.Val.y.ToString();
-        InputFieldY.onEndEdit.AddListener(ChangeYValue);
+        IBaseObject lineOwner;
 
-        InputFieldZ.text = vector3Line.Val.z.ToString();
-        InputFieldZ.onEndEdit.AddListener(ChangeZValue);
+        //BuilderController controller;
 
-        this.additionalCalls = additionalCalls;
-    }
 
-    public void ChangeXValue(string value)
-    {
-        currentVector3Line.Val = new Vector3(float.Parse(value), currentVector3Line.Val.y, currentVector3Line.Val.z);
+        // Use this for initialization
+        public void SetUp(MailboxLineVector3 vector3Line, IBaseObject partToUpdateBuildParameters, List<DelegateLibrary.VoidFunction> additionalCalls = null)
+        //public void SetUp(MailboxLineVector3 vector3Line, BaseObject partToUpdateBuildParameters, BuilderController controller)
+        {
+            currentVector3Line = vector3Line;
+            lineOwner = partToUpdateBuildParameters;
+            //this.controller = controller;
 
-        if(lineOwner != null) lineOwner.ApplyBuildParameters();
+            base.SetUp(vector3Line.Name);
 
-        RunAllAdditionalCalls();
-    }
+            InputFieldX.text = vector3Line.Val.x.ToString();
+            InputFieldX.onEndEdit.AddListener(ChangeXValue);
 
-    public void ChangeYValue(string value)
-    {
-        currentVector3Line.Val = new Vector3(currentVector3Line.Val.x, float.Parse(value), currentVector3Line.Val.z); ;
+            InputFieldY.text = vector3Line.Val.y.ToString();
+            InputFieldY.onEndEdit.AddListener(ChangeYValue);
 
-        if (lineOwner != null) lineOwner.ApplyBuildParameters();
+            InputFieldZ.text = vector3Line.Val.z.ToString();
+            InputFieldZ.onEndEdit.AddListener(ChangeZValue);
 
-        RunAllAdditionalCalls();
-    }
+            this.additionalCalls = additionalCalls;
+        }
 
-    public void ChangeZValue(string value)
-    {
-        currentVector3Line.Val = new Vector3(currentVector3Line.Val.x, currentVector3Line.Val.y, float.Parse(value));
+        public void ChangeXValue(string value)
+        {
+            currentVector3Line.Val = new Vector3(float.Parse(value), currentVector3Line.Val.y, currentVector3Line.Val.z);
 
-        if (lineOwner != null) lineOwner.ApplyBuildParameters();
+            if (lineOwner != null) lineOwner.ApplyBuildParameters();
 
-        RunAllAdditionalCalls();
+            RunAllAdditionalCalls();
+        }
+
+        public void ChangeYValue(string value)
+        {
+            currentVector3Line.Val = new Vector3(currentVector3Line.Val.x, float.Parse(value), currentVector3Line.Val.z); ;
+
+            if (lineOwner != null) lineOwner.ApplyBuildParameters();
+
+            RunAllAdditionalCalls();
+        }
+
+        public void ChangeZValue(string value)
+        {
+            currentVector3Line.Val = new Vector3(currentVector3Line.Val.x, currentVector3Line.Val.y, float.Parse(value));
+
+            if (lineOwner != null) lineOwner.ApplyBuildParameters();
+
+            RunAllAdditionalCalls();
+        }
     }
 }

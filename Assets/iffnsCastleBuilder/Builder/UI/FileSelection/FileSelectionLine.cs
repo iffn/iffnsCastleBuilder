@@ -3,42 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FileSelectionLine : MonoBehaviour
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    public Button selectButton;
-
-    public Text titleText;
-
-    string fileName;
-    public string FileName
+    public class FileSelectionLine : MonoBehaviour
     {
-        get
+        public Button selectButton;
+
+        public Text titleText;
+
+        string fileName;
+        public string FileName
         {
-            return fileName;
+            get
+            {
+                return fileName;
+            }
         }
-    }
 
-    public string Title
-    {
-        get
+        public string Title
         {
-            return titleText.text;
+            get
+            {
+                return titleText.text;
+            }
+            set
+            {
+                titleText.text = value;
+            }
         }
-        set
+
+        public delegate void ButtonFunction(string fileName);
+
+        public void Setup(string fileName, string title, ButtonFunction buttonFunction)
         {
-            titleText.text = value;
+            this.fileName = fileName;
+            Title = title;
+
+            selectButton.onClick.AddListener(delegate { buttonFunction(fileName); });
         }
+
+
     }
-
-    public delegate void ButtonFunction(string fileName);
-
-    public void Setup(string fileName, string title, ButtonFunction buttonFunction)
-    {
-        this.fileName = fileName;
-        this.Title = title;
-
-        selectButton.onClick.AddListener(delegate { buttonFunction(fileName); });
-    }
-
-
 }

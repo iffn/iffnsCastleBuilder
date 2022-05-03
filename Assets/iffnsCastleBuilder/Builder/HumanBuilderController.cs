@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HumanBuilderController : MonoBehaviour
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    public HumanBuildingTestWorldController WorldController;
-
-    public HumanBuildingController CurrentBuilding;
-    public BuildingToolController CurrentBuildingToolController;
-
-    public void Setup(HumanBuildingTestWorldController worldController)
+    public class HumanBuilderController : MonoBehaviour
     {
-        CurrentBuildingToolController.Setup();
+        public HumanBuildingTestWorldController WorldController;
 
-        this.WorldController = worldController;
-    }
+        [HideInInspector] public HumanBuildingController CurrentBuilding;
+        public BuildingToolController CurrentBuildingToolController;
 
-    public void UpdateIU()
-    {
+        public void Setup(HumanBuildingTestWorldController worldController)
+        {
+            CurrentBuildingToolController.Setup();
 
+            WorldController = worldController;
+        }
+
+        public void UpdateIU()
+        {
+
+        }
     }
 }

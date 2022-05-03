@@ -1,61 +1,52 @@
+using iffnsStuff.iffnsBaseSystemForUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class InputLineBool : ControlLine
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    public Toggle InputToggle;
-
-    MailboxLineBool boolLine;
-    IBaseObject lineOwner;
-
-    
-
-    // Use this for initialization
-    protected override void Start()
+    public class InputLineBool : ControlLine
     {
-        base.Start();
-    }
+        public Toggle InputToggle;
 
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
+        MailboxLineBool boolLine;
+        IBaseObject lineOwner;
 
-    /*
-    public void SetUp(string text, UnityEngine.Events.UnityAction<string> ReturnFunctionScript)
-    {
-        base.SetUp(text);
+        // Use this for initialization
+        protected override void Start()
+        {
+            base.Start();
+        }
 
-        InputToggle.onValueChanged.AddListener(ReturnFunctionScript);
+        // Update is called once per frame
+        protected override void Update()
+        {
+            base.Update();
+        }
 
-    }
-    */
+        public void SetUp(MailboxLineBool boolLine, IBaseObject lineOwner, List<DelegateLibrary.VoidFunction> additionalCalls = null)
+        {
+            this.boolLine = boolLine;
+            this.lineOwner = lineOwner;
+            //this.controller = controller;
 
-    public void SetUp(MailboxLineBool boolLine, IBaseObject lineOwner, List<DelegateLibrary.VoidFunction> additionalCalls = null)
-    {
-        this.boolLine = boolLine;
-        this.lineOwner = lineOwner;
-        //this.controller = controller;
+            base.SetUp(boolLine.Name);
 
-        base.SetUp(boolLine.Name);
+            InputToggle.isOn = boolLine.Val;
+            InputToggle.onValueChanged.AddListener(ChangeBoolLineValue);
 
-        InputToggle.isOn = boolLine.Val;
-        InputToggle.onValueChanged.AddListener(ChangeBoolLineValue);
+            this.additionalCalls = additionalCalls;
+        }
 
-        this.additionalCalls = additionalCalls;
-    }
+        public void ChangeBoolLineValue(bool newValue)
+        {
+            boolLine.Val = newValue;
 
+            if (lineOwner != null) lineOwner.ApplyBuildParameters();
 
-    public void ChangeBoolLineValue(bool newValue)
-    {
-        boolLine.Val = newValue;
-
-        if (lineOwner != null) lineOwner.ApplyBuildParameters();
-
-        RunAllAdditionalCalls();
+            RunAllAdditionalCalls();
+        }
     }
 }

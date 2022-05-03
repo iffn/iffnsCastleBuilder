@@ -1,18 +1,22 @@
+using iffnsStuff.iffnsBaseSystemForUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class NodeWallModificationNode : ModificationNode
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    List<NodeWall> linkedWalls;
-
-    protected NodeWallSystem linkedSystem;
-
-    public override bool ColliderActivationState
+    public abstract class NodeWallModificationNode : ModificationNode
     {
-        set
-        {
+        List<NodeWall> linkedWalls;
 
+        protected NodeWallSystem linkedSystem;
+
+        public override bool ColliderActivationState
+        {
+            set
+            {
+
+            }
         }
     }
 }

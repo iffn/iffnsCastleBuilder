@@ -1,231 +1,235 @@
-﻿using System.Collections;
+﻿using iffnsStuff.iffnsBaseSystemForUnity;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModificationNodeLibraryIntegrator : MonoBehaviour
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    [SerializeField] RadiusModificationNode radiusModificationNodeTemplate = null;
-    [SerializeField] BlockGridPositionModificationNode blockGridPositionModificationNodeTemplate = null;
-    [SerializeField] NodeGridPositionModificationNode nodeGridPositionModificationNodeTemplate = null;
-    [SerializeField] GridRadiusModificationNode gridRadiusModificationNodeTemplate = null;
-    [SerializeField] GridOrientationNode gridOrientationNodeTemplate = null;
-    [SerializeField] NodeWallEditModNode nodeWallEditMododeTemplate = null;
-    [SerializeField] NodeWallRemoveNode nodeWallRemoveNodeTemplate = null;
-    [SerializeField] NodeWallMultiModNode nodeWallMultiModNodeTemplate = null;
-
-    public RadiusModificationNode RadiusModificationNodeTemplate
+    public class ModificationNodeLibraryIntegrator : MonoBehaviour
     {
-        get
+        [SerializeField] RadiusModificationNode radiusModificationNodeTemplate = null;
+        [SerializeField] BlockGridPositionModificationNode blockGridPositionModificationNodeTemplate = null;
+        [SerializeField] NodeGridPositionModificationNode nodeGridPositionModificationNodeTemplate = null;
+        [SerializeField] GridRadiusModificationNode gridRadiusModificationNodeTemplate = null;
+        [SerializeField] GridOrientationNode gridOrientationNodeTemplate = null;
+        [SerializeField] NodeWallEditModNode nodeWallEditMododeTemplate = null;
+        [SerializeField] NodeWallRemoveNode nodeWallRemoveNodeTemplate = null;
+        [SerializeField] NodeWallMultiModNode nodeWallMultiModNodeTemplate = null;
+
+        public RadiusModificationNode RadiusModificationNodeTemplate
         {
-            return radiusModificationNodeTemplate;
+            get
+            {
+                return radiusModificationNodeTemplate;
+            }
         }
-    }
-    public BlockGridPositionModificationNode BlockGridPositionModificationNodeTemplate
-    {
-        get
+        public BlockGridPositionModificationNode BlockGridPositionModificationNodeTemplate
         {
-            return blockGridPositionModificationNodeTemplate;
+            get
+            {
+                return blockGridPositionModificationNodeTemplate;
+            }
         }
-    }
 
-    public NodeGridPositionModificationNode NodeGridPositionModificationNodeTemplate
-    {
-        get
+        public NodeGridPositionModificationNode NodeGridPositionModificationNodeTemplate
         {
-            return nodeGridPositionModificationNodeTemplate;
+            get
+            {
+                return nodeGridPositionModificationNodeTemplate;
+            }
         }
-    }
 
-    public GridRadiusModificationNode GridRadiusModificationNodeTemplate
-    {
-        get
+        public GridRadiusModificationNode GridRadiusModificationNodeTemplate
         {
-            return gridRadiusModificationNodeTemplate;
+            get
+            {
+                return gridRadiusModificationNodeTemplate;
+            }
         }
-    }
 
-    public GridOrientationNode GridOrientationNodeTemplate
-    {
-        get
+        public GridOrientationNode GridOrientationNodeTemplate
         {
-            return gridOrientationNodeTemplate;
+            get
+            {
+                return gridOrientationNodeTemplate;
+            }
         }
-    }
 
-    public NodeWallEditModNode NodeWallEditMododeTemplate
-    {
-        get
+        public NodeWallEditModNode NodeWallEditMododeTemplate
         {
-            return nodeWallEditMododeTemplate;
+            get
+            {
+                return nodeWallEditMododeTemplate;
+            }
         }
-    }
 
-    public NodeWallRemoveNode NodeWallRemoveNodeTemplate
-    {
-        get
+        public NodeWallRemoveNode NodeWallRemoveNodeTemplate
         {
-            return nodeWallRemoveNodeTemplate;
+            get
+            {
+                return nodeWallRemoveNodeTemplate;
+            }
         }
-    }
 
-    public NodeWallMultiModNode NodeWallMultiModNodeTemplate
-    {
-        get
+        public NodeWallMultiModNode NodeWallMultiModNodeTemplate
         {
-            return nodeWallMultiModNodeTemplate;
+            get
+            {
+                return nodeWallMultiModNodeTemplate;
+            }
         }
-    }
 
-    public void Setup()
-    {
-        ModificationNodeLibrary.Setup(integrator: this);
-    }
-}
-
-public static class ModificationNodeLibrary
-{
-    //Setup
-    static ModificationNodeLibraryIntegrator integrator;
-
-    public static void Setup(ModificationNodeLibraryIntegrator integrator)
-    {
-        ModificationNodeLibrary.integrator = integrator;
-    }
-
-
-    //RadiusModificationNode
-    public static RadiusModificationNode RadiusModificationNodeTemplate
-    {
-        get
+        public void Setup()
         {
-            return integrator.RadiusModificationNodeTemplate;
+            ModificationNodeLibrary.Setup(integrator: this);
         }
     }
 
-    public static RadiusModificationNode NewRadiusModificationNode
+    public static class ModificationNodeLibrary
     {
-        get
-        {
-            return GameObject.Instantiate(RadiusModificationNodeTemplate).transform.GetComponent<RadiusModificationNode>();
-        }
-    }
+        //Setup
+        static ModificationNodeLibraryIntegrator integrator;
 
-    //BlockGridModificationNode
-    public static BlockGridPositionModificationNode BlockGridPositionModificationNodeTemplate
-    {
-        get
+        public static void Setup(ModificationNodeLibraryIntegrator integrator)
         {
-            return integrator.BlockGridPositionModificationNodeTemplate;
+            ModificationNodeLibrary.integrator = integrator;
         }
-    }
 
-    public static BlockGridPositionModificationNode NewBlockGridPositionModificationNode
-    {
-        get
+
+        //RadiusModificationNode
+        public static RadiusModificationNode RadiusModificationNodeTemplate
         {
-            return GameObject.Instantiate(BlockGridPositionModificationNodeTemplate).transform.GetComponent<BlockGridPositionModificationNode>();
+            get
+            {
+                return integrator.RadiusModificationNodeTemplate;
+            }
         }
-    }
 
-    //NodeGridModificationNode
-    public static NodeGridPositionModificationNode NodeGridPositionModificationNodeTemplate
-    {
-        get
+        public static RadiusModificationNode NewRadiusModificationNode
         {
-            return integrator.NodeGridPositionModificationNodeTemplate;
+            get
+            {
+                return GameObject.Instantiate(RadiusModificationNodeTemplate).transform.GetComponent<RadiusModificationNode>();
+            }
         }
-    }
 
-    public static NodeGridPositionModificationNode NewNodeGridPositionModificationNode
-    {
-        get
+        //BlockGridModificationNode
+        public static BlockGridPositionModificationNode BlockGridPositionModificationNodeTemplate
         {
-            return GameObject.Instantiate(NodeGridPositionModificationNodeTemplate).transform.GetComponent<NodeGridPositionModificationNode>();
+            get
+            {
+                return integrator.BlockGridPositionModificationNodeTemplate;
+            }
         }
-    }
 
-    //GridRadiusModificationNode
-    public static GridRadiusModificationNode GridRadiusModificationNodeTemplate
-    {
-        get
+        public static BlockGridPositionModificationNode NewBlockGridPositionModificationNode
         {
-            return integrator.GridRadiusModificationNodeTemplate;
+            get
+            {
+                return GameObject.Instantiate(BlockGridPositionModificationNodeTemplate).transform.GetComponent<BlockGridPositionModificationNode>();
+            }
         }
-    }
 
-    public static GridRadiusModificationNode NewGridRadiusModificationNode
-    {
-        get
+        //NodeGridModificationNode
+        public static NodeGridPositionModificationNode NodeGridPositionModificationNodeTemplate
         {
-            return GameObject.Instantiate(GridRadiusModificationNodeTemplate).transform.GetComponent<GridRadiusModificationNode>();
+            get
+            {
+                return integrator.NodeGridPositionModificationNodeTemplate;
+            }
         }
-    }
 
-    //GridOrientationNode
-    public static GridOrientationNode GridOrientationNodeTemplate
-    {
-        get
+        public static NodeGridPositionModificationNode NewNodeGridPositionModificationNode
         {
-            return integrator.GridOrientationNodeTemplate;
+            get
+            {
+                return GameObject.Instantiate(NodeGridPositionModificationNodeTemplate).transform.GetComponent<NodeGridPositionModificationNode>();
+            }
         }
-    }
 
-    public static GridOrientationNode NewGridOrientationNode
-    {
-        get
+        //GridRadiusModificationNode
+        public static GridRadiusModificationNode GridRadiusModificationNodeTemplate
         {
-            return GameObject.Instantiate(GridOrientationNodeTemplate).transform.GetComponent<GridOrientationNode>();
+            get
+            {
+                return integrator.GridRadiusModificationNodeTemplate;
+            }
         }
-    }
 
-    //NodeWallEditModNode
-    public static NodeWallEditModNode NodeWallEditMododeTemplate
-    {
-        get
+        public static GridRadiusModificationNode NewGridRadiusModificationNode
         {
-            return integrator.NodeWallEditMododeTemplate;
+            get
+            {
+                return GameObject.Instantiate(GridRadiusModificationNodeTemplate).transform.GetComponent<GridRadiusModificationNode>();
+            }
         }
-    }
 
-    public static NodeWallEditModNode NewNodeWallEditModode
-    {
-        get
+        //GridOrientationNode
+        public static GridOrientationNode GridOrientationNodeTemplate
         {
-            return GameObject.Instantiate(NodeWallEditMododeTemplate).transform.GetComponent<NodeWallEditModNode>();
+            get
+            {
+                return integrator.GridOrientationNodeTemplate;
+            }
         }
-    }
 
-    //NodeWallEditModNode
-    public static NodeWallRemoveNode NodeWallRemoveNodeTemplate
-    {
-        get
+        public static GridOrientationNode NewGridOrientationNode
         {
-            return integrator.NodeWallRemoveNodeTemplate;
+            get
+            {
+                return GameObject.Instantiate(GridOrientationNodeTemplate).transform.GetComponent<GridOrientationNode>();
+            }
         }
-    }
 
-    public static NodeWallRemoveNode NewNodeWallRemoveNode
-    {
-        get
+        //NodeWallEditModNode
+        public static NodeWallEditModNode NodeWallEditMododeTemplate
         {
-            return GameObject.Instantiate(NodeWallRemoveNodeTemplate).transform.GetComponent<NodeWallRemoveNode>();
+            get
+            {
+                return integrator.NodeWallEditMododeTemplate;
+            }
         }
-    }
 
-    //NodeWallEditModNode
-    public static NodeWallMultiModNode NodeWallMultiModNodeTemplate
-    {
-        get
+        public static NodeWallEditModNode NewNodeWallEditModode
         {
-            return integrator.NodeWallMultiModNodeTemplate;
+            get
+            {
+                return GameObject.Instantiate(NodeWallEditMododeTemplate).transform.GetComponent<NodeWallEditModNode>();
+            }
         }
-    }
 
-    public static NodeWallMultiModNode NewNodeWallMultiModNode
-    {
-        get
+        //NodeWallEditModNode
+        public static NodeWallRemoveNode NodeWallRemoveNodeTemplate
         {
-            return GameObject.Instantiate(NodeWallMultiModNodeTemplate).transform.GetComponent<NodeWallMultiModNode>();
+            get
+            {
+                return integrator.NodeWallRemoveNodeTemplate;
+            }
+        }
+
+        public static NodeWallRemoveNode NewNodeWallRemoveNode
+        {
+            get
+            {
+                return GameObject.Instantiate(NodeWallRemoveNodeTemplate).transform.GetComponent<NodeWallRemoveNode>();
+            }
+        }
+
+        //NodeWallEditModNode
+        public static NodeWallMultiModNode NodeWallMultiModNodeTemplate
+        {
+            get
+            {
+                return integrator.NodeWallMultiModNodeTemplate;
+            }
+        }
+
+        public static NodeWallMultiModNode NewNodeWallMultiModNode
+        {
+            get
+            {
+                return GameObject.Instantiate(NodeWallMultiModNodeTemplate).transform.GetComponent<NodeWallMultiModNode>();
+            }
         }
     }
 }

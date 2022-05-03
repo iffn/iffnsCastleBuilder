@@ -2,62 +2,65 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeWallNode
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    NodeWallSystem linkedNodeWallSystem;
-
-    public NodeWallSystem LinkedSystem
+    public class NodeWallNode
     {
-        get
+        NodeWallSystem linkedNodeWallSystem;
+
+        public NodeWallSystem LinkedSystem
         {
-            return linkedNodeWallSystem;
+            get
+            {
+                return linkedNodeWallSystem;
+            }
         }
-    }
 
-    Vector2Int indexPosition;
+        Vector2Int indexPosition;
 
-    
-    Vector2 localPosition2D;
 
-    public Vector2 LocalPosition2D
-    {
-        get
+        Vector2 localPosition2D;
+
+        public Vector2 LocalPosition2D
         {
-            return localPosition2D;
+            get
+            {
+                return localPosition2D;
+            }
         }
-    }
-    
 
-    Vector3 localPosition3D;
 
-    public Vector3 LocalPosition3D
-    {
-        get
+        Vector3 localPosition3D;
+
+        public Vector3 LocalPosition3D
         {
-            return localPosition3D;
+            get
+            {
+                return localPosition3D;
+            }
         }
-    }
 
-    public Vector2Int Coordinate
-    {
-        get
+        public Vector2Int Coordinate
         {
-            return indexPosition;
+            get
+            {
+                return indexPosition;
+            }
         }
-    }
 
-    public List<NodeWall> EndPoints;
-    public List<NodeWall> IntermediatePoints;
+        public List<NodeWall> EndPoints;
+        public List<NodeWall> IntermediatePoints;
 
-    public NodeWallNode(Vector2Int indexPosition, NodeWallSystem linkedNodeWallSystem)
-    {
-        this.indexPosition = indexPosition;
-        this.linkedNodeWallSystem = linkedNodeWallSystem;
+        public NodeWallNode(Vector2Int indexPosition, NodeWallSystem linkedNodeWallSystem)
+        {
+            this.indexPosition = indexPosition;
+            this.linkedNodeWallSystem = linkedNodeWallSystem;
 
-        this.localPosition3D = linkedNodeWallSystem.LinkedFloor.GetLocalNodePositionFromNodeIndex(indexPosition);
-        this.localPosition2D = new Vector2(localPosition3D.x, localPosition3D.z);
+            localPosition3D = linkedNodeWallSystem.LinkedFloor.GetLocalNodePositionFromNodeIndex(indexPosition);
+            localPosition2D = new Vector2(localPosition3D.x, localPosition3D.z);
 
-        EndPoints = new List<NodeWall>();
-        IntermediatePoints = new List<NodeWall>();
+            EndPoints = new List<NodeWall>();
+            IntermediatePoints = new List<NodeWall>();
+        }
     }
 }

@@ -2,45 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeWallRemoveNode : NodeWallModificationNode
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    NodeWall linkedWall;
-    Vector2Int thisCoordinate;
-    Vector2Int otherCoordinate;
-
-    public void Setup(NodeWall linkedWall)
+    public class NodeWallRemoveNode : NodeWallModificationNode
     {
-        this.linkedWall = linkedWall;
+        NodeWall linkedWall;
+        Vector2Int thisCoordinate;
+        Vector2Int otherCoordinate;
 
-        linkedSystem = linkedWall.LinkedSystem;
-    }
-        
-    public override void UpdatePosition()
-    {
-        FloorController linkedFloor = linkedWall.LinkedSystem.LinkedFloor;
+        public void Setup(NodeWall linkedWall)
+        {
+            this.linkedWall = linkedWall;
 
-        Vector3 thisPosition = linkedFloor.GetLocalNodePositionFromNodeIndex(linkedWall.StartPosition);
-        Vector3 otherPosition = linkedFloor.GetLocalNodePositionFromNodeIndex(linkedWall.EndPosition);
+            linkedSystem = linkedWall.LinkedSystem;
+        }
 
-        transform.localPosition = (thisPosition + otherPosition) * 0.5f + Vector3.up * linkedFloor.CompleteFloorHeight * 0.5f;
-        transform.localRotation = Quaternion.LookRotation(thisPosition - otherPosition, Vector3.up);
+        public override void UpdatePosition()
+        {
+            FloorController linkedFloor = linkedWall.LinkedSystem.LinkedFloor;
 
-        float width = linkedSystem.WallThickness + widthOvershoot * 2;
-        transform.localScale = new Vector3(width, transform.localScale.y, transform.localScale.z);
-        //Warning: UpdteNodeSize calls UpdatePosition() -> Do not add here
-    }
+            Vector3 thisPosition = linkedFloor.GetLocalNodePositionFromNodeIndex(linkedWall.StartPosition);
+            Vector3 otherPosition = linkedFloor.GetLocalNodePositionFromNodeIndex(linkedWall.EndPosition);
 
-    /*
-    public override void UpdateNodeSize()
-    {
-        UpdatePosition();
-    }
-    */
+            transform.localPosition = (thisPosition + otherPosition) * 0.5f + Vector3.up * linkedFloor.CompleteFloorHeight * 0.5f;
+            transform.localRotation = Quaternion.LookRotation(thisPosition - otherPosition, Vector3.up);
 
-    public void RemoveNodeWall()
-    {
-        linkedWall.DestroyObject();
-        linkedWall.LinkedSystem.HideModificationNodes();
-        linkedWall.LinkedSystem.ShowModificationNodes(activateCollider: true);
+            float width = linkedSystem.WallThickness + widthOvershoot * 2;
+            transform.localScale = new Vector3(width, transform.localScale.y, transform.localScale.z);
+            //Warning: UpdteNodeSize calls UpdatePosition() -> Do not add here
+        }
+
+        /*
+        public override void UpdateNodeSize()
+        {
+            UpdatePosition();
+        }
+        */
+
+        public void RemoveNodeWall()
+        {
+            linkedWall.DestroyObject();
+            linkedWall.LinkedSystem.HideModificationNodes();
+            linkedWall.LinkedSystem.ShowModificationNodes(activateCollider: true);
+        }
     }
 }

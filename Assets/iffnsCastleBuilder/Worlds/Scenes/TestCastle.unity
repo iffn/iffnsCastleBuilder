@@ -166,12 +166,12 @@ MonoBehaviour:
   DynamicMeshManagers: []
   UnmanagedMeshes: []
   UsuallyActiveColliders: []
-  CurrentResourceLibraryIntegrator: {fileID: 5140697780917173685, guid: 23c72d0600a89184b9c273d878c1ca3e, type: 3}
   CurrentColorLibraryIntegrator: {fileID: -266685979666704735, guid: 2aec31764b641a549a5dd4473393f1ed, type: 3}
-  CurrentModificationNodeLibraryIntegrator: {fileID: 1397969349139341087, guid: c48c9a0c1d1fc234c9427fd0ec3e27be, type: 3}
   CurrentUnityPrefabLibaryIntegrator: {fileID: 3215071645787363577, guid: fd36e397598a7514dab1e51c078fc554, type: 3}
-  CurrentMaterialLibraryIntegrator: {fileID: 1325046766489969367, guid: 54834faf2443bef42af9b7c8df9eff22, type: 3}
   BuildingGridSize: {x: 15, y: 15}
+  CurrentModificationNodeLibraryIntegrator: {fileID: 1397969349139341087, guid: c48c9a0c1d1fc234c9427fd0ec3e27be, type: 3}
+  CurrentResourceLibraryIntegrator: {fileID: 5140697780917173685, guid: 23c72d0600a89184b9c273d878c1ca3e, type: 3}
+  CurrentMaterialLibraryIntegrator: {fileID: 1325046766489969367, guid: 54834faf2443bef42af9b7c8df9eff22, type: 3}
   CurrentBuilderController: {fileID: 389953154}
 --- !u!4 &1196912510
 Transform:
@@ -443,6 +443,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8440203239413538674
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2466109207583951009, guid: 225755e08ff1e7f4485a979d50f3d23f, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466109207583951009, guid: 225755e08ff1e7f4485a979d50f3d23f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.5857344
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466109207583951009, guid: 225755e08ff1e7f4485a979d50f3d23f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5380425
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466109207583951009, guid: 225755e08ff1e7f4485a979d50f3d23f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.13186797
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466109207583951009, guid: 225755e08ff1e7f4485a979d50f3d23f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466109207583951009, guid: 225755e08ff1e7f4485a979d50f3d23f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466109207583951009, guid: 225755e08ff1e7f4485a979d50f3d23f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466109207583951009, guid: 225755e08ff1e7f4485a979d50f3d23f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466109207583951009, guid: 225755e08ff1e7f4485a979d50f3d23f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466109207583951009, guid: 225755e08ff1e7f4485a979d50f3d23f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466109207583951009, guid: 225755e08ff1e7f4485a979d50f3d23f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358715751798465120, guid: 225755e08ff1e7f4485a979d50f3d23f, type: 3}
+      propertyPath: m_Name
+      value: CastleResources
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 225755e08ff1e7f4485a979d50f3d23f, type: 3}
 --- !u!1001 &9043763559545176103
 PrefabInstance:
   m_ObjectHideFlags: 0

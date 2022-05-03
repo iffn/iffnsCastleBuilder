@@ -1,111 +1,115 @@
-﻿using System.Collections;
+﻿using iffnsStuff.iffnsBaseSystemForUnity;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class InputLine : ControlLine
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    public InputField InputField;
-
-    MailboxLineString stringLine;
-    MailboxLineRanged rangedLine;
-    MailboxLineDistinctUnnamed distinctUnnamedLine;
-    IBaseObject lineOwner;
-
-    //BuilderController controller;
-
-    // Use this for initialization
-    protected override void Start()
+    public class InputLine : ControlLine
     {
-        base.Start();
-    }
+        public InputField InputField;
 
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
+        MailboxLineString stringLine;
+        MailboxLineRanged rangedLine;
+        MailboxLineDistinctUnnamed distinctUnnamedLine;
+        IBaseObject lineOwner;
 
-    public void SetUp(string text, UnityEngine.Events.UnityAction<string> ReturnFunctionScript, List<DelegateLibrary.VoidFunction> additionalCalls = null)
-    {
-        base.SetUp(text);
+        //BuilderController controller;
 
-        InputField.onEndEdit.AddListener(ReturnFunctionScript);
+        // Use this for initialization
+        protected override void Start()
+        {
+            base.Start();
+        }
 
-        this.additionalCalls = additionalCalls;
-    }
+        // Update is called once per frame
+        protected override void Update()
+        {
+            base.Update();
+        }
 
-    //public void SetUp(MailboxLineString stringLine, BaseObject lineOwner, BuilderController controller)
-    public void SetUp(MailboxLineString stringLine, IBaseObject lineOwner, List<DelegateLibrary.VoidFunction> additionalCalls = null)
-    {
-        this.stringLine = stringLine;
-        this.lineOwner = lineOwner;
-        //this.controller = controller;
+        public void SetUp(string text, UnityAction<string> ReturnFunctionScript, List<DelegateLibrary.VoidFunction> additionalCalls = null)
+        {
+            base.SetUp(text);
 
-        base.SetUp(stringLine.Name);
+            InputField.onEndEdit.AddListener(ReturnFunctionScript);
 
-        InputField.text = stringLine.Val;
-        InputField.onEndEdit.AddListener(ChangeStringLineValue);
+            this.additionalCalls = additionalCalls;
+        }
 
-        this.additionalCalls = additionalCalls;
-    }
+        //public void SetUp(MailboxLineString stringLine, BaseObject lineOwner, BuilderController controller)
+        public void SetUp(MailboxLineString stringLine, IBaseObject lineOwner, List<DelegateLibrary.VoidFunction> additionalCalls = null)
+        {
+            this.stringLine = stringLine;
+            this.lineOwner = lineOwner;
+            //this.controller = controller;
 
-    //public void SetUp(MailboxLineRanged rangedLine, BaseObject lineOwner, BuilderController controller)
-    public void SetUp(MailboxLineRanged rangedLine, IBaseObject lineOwner, List<DelegateLibrary.VoidFunction> additionalCalls = null)
-    {
-        this.rangedLine = rangedLine;
-        this.lineOwner = lineOwner;
-        //this.controller = controller;
+            base.SetUp(stringLine.Name);
 
-        base.SetUp(rangedLine.Name);
+            InputField.text = stringLine.Val;
+            InputField.onEndEdit.AddListener(ChangeStringLineValue);
 
-        InputField.contentType = InputField.ContentType.DecimalNumber;
-        InputField.text = rangedLine.Val.ToString();
-        InputField.onEndEdit.AddListener(ChangeRangedLineValue);
+            this.additionalCalls = additionalCalls;
+        }
 
-        this.additionalCalls = additionalCalls;
-    }
+        //public void SetUp(MailboxLineRanged rangedLine, BaseObject lineOwner, BuilderController controller)
+        public void SetUp(MailboxLineRanged rangedLine, IBaseObject lineOwner, List<DelegateLibrary.VoidFunction> additionalCalls = null)
+        {
+            this.rangedLine = rangedLine;
+            this.lineOwner = lineOwner;
+            //this.controller = controller;
 
-    public void SetUp(MailboxLineDistinctUnnamed distinctUnnamedLine, IBaseObject lineOwner, List<DelegateLibrary.VoidFunction> additionalCalls = null)
-    {
-        this.distinctUnnamedLine = distinctUnnamedLine;
-        this.lineOwner = lineOwner;
+            base.SetUp(rangedLine.Name);
 
-        base.SetUp(distinctUnnamedLine.Name);
+            InputField.contentType = InputField.ContentType.DecimalNumber;
+            InputField.text = rangedLine.Val.ToString();
+            InputField.onEndEdit.AddListener(ChangeRangedLineValue);
 
-        InputField.contentType = InputField.ContentType.IntegerNumber;
-        InputField.text = distinctUnnamedLine.Val.ToString();
-        InputField.onEndEdit.AddListener(ChangeDistinctUnnamedLineValue);
+            this.additionalCalls = additionalCalls;
+        }
 
-        this.additionalCalls = additionalCalls;
-    }
+        public void SetUp(MailboxLineDistinctUnnamed distinctUnnamedLine, IBaseObject lineOwner, List<DelegateLibrary.VoidFunction> additionalCalls = null)
+        {
+            this.distinctUnnamedLine = distinctUnnamedLine;
+            this.lineOwner = lineOwner;
+
+            base.SetUp(distinctUnnamedLine.Name);
+
+            InputField.contentType = InputField.ContentType.IntegerNumber;
+            InputField.text = distinctUnnamedLine.Val.ToString();
+            InputField.onEndEdit.AddListener(ChangeDistinctUnnamedLineValue);
+
+            this.additionalCalls = additionalCalls;
+        }
 
 
-    public void ChangeStringLineValue(string newString)
-    {
-        stringLine.Val = newString;
+        public void ChangeStringLineValue(string newString)
+        {
+            stringLine.Val = newString;
 
-        if (lineOwner != null) lineOwner.ApplyBuildParameters();
+            if (lineOwner != null) lineOwner.ApplyBuildParameters();
 
-        RunAllAdditionalCalls();
-    }
+            RunAllAdditionalCalls();
+        }
 
-    public void ChangeRangedLineValue(string newString)
-    {
-        rangedLine.Val = float.Parse(newString);
+        public void ChangeRangedLineValue(string newString)
+        {
+            rangedLine.Val = float.Parse(newString);
 
-        if (lineOwner != null) lineOwner.ApplyBuildParameters();
+            if (lineOwner != null) lineOwner.ApplyBuildParameters();
 
-        RunAllAdditionalCalls();
-    }
+            RunAllAdditionalCalls();
+        }
 
-    public void ChangeDistinctUnnamedLineValue(string newString)
-    {
-        distinctUnnamedLine.Val = int.Parse(newString);
+        public void ChangeDistinctUnnamedLineValue(string newString)
+        {
+            distinctUnnamedLine.Val = int.Parse(newString);
 
-        if (lineOwner != null) lineOwner.ApplyBuildParameters();
+            if (lineOwner != null) lineOwner.ApplyBuildParameters();
 
-        RunAllAdditionalCalls();
+            RunAllAdditionalCalls();
+        }
     }
 }

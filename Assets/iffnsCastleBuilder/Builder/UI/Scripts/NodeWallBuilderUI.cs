@@ -2,48 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeWallBuilderUI : MonoBehaviour
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    [SerializeField] NodeWallBuilderTool CurrentNodeWallBuilderTool;
-
-    [SerializeField] VectorButton LineButton;
-    [SerializeField] VectorButton RectangleButton;
-    [SerializeField] VectorButton EditButton;
-
-    public void SetToolType(VectorButton ClickedButton)
+    public class NodeWallBuilderUI : MonoBehaviour
     {
-        LineButton.Highlight = false;
-        RectangleButton.Highlight = false;
-        EditButton.Highlight = false;
-        ClickedButton.Highlight = true;
+        [SerializeField] NodeWallBuilderTool CurrentNodeWallBuilderTool;
 
-        if(ClickedButton == LineButton)
-        {
-            CurrentNodeWallBuilderTool.CurrentToolType = NodeWallBuilderTool.ToolType.Line;
-        }
-        else if (ClickedButton == RectangleButton)
-        {
-            CurrentNodeWallBuilderTool.CurrentToolType = NodeWallBuilderTool.ToolType.Rectangle;
-        }
-        else if (ClickedButton == EditButton)
-        {
-            CurrentNodeWallBuilderTool.CurrentToolType = NodeWallBuilderTool.ToolType.Edit;
-        }
-        else
-        {
-            Debug.LogWarning("Error: Node wall button not known, name = " + ClickedButton.name);
-        }
-    }
+        [SerializeField] VectorButton LineButton;
+        [SerializeField] VectorButton RectangleButton;
+        [SerializeField] VectorButton EditButton;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        SetToolType(LineButton);
-    }
+        public void SetToolType(VectorButton ClickedButton)
+        {
+            LineButton.Highlight = false;
+            RectangleButton.Highlight = false;
+            EditButton.Highlight = false;
+            ClickedButton.Highlight = true;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            if (ClickedButton == LineButton)
+            {
+                CurrentNodeWallBuilderTool.CurrentToolType = NodeWallBuilderTool.ToolType.Line;
+            }
+            else if (ClickedButton == RectangleButton)
+            {
+                CurrentNodeWallBuilderTool.CurrentToolType = NodeWallBuilderTool.ToolType.Rectangle;
+            }
+            else if (ClickedButton == EditButton)
+            {
+                CurrentNodeWallBuilderTool.CurrentToolType = NodeWallBuilderTool.ToolType.Edit;
+            }
+            else
+            {
+                Debug.LogWarning("Error: Node wall button not known, name = " + ClickedButton.name);
+            }
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            SetToolType(LineButton);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }

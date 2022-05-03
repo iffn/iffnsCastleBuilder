@@ -2,52 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using iffnsStuff.iffnsBaseSystemForUnity;
 
-public class Vector2IntLine : ControlLine
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    public InputField InputFieldX;
-    public InputField InputFieldY;
-
-    MailboxLineVector2Int currentVector2IntLine;
-
-    IBaseObject lineOwner;
-
-    //BuilderController controller;
-
-    //public void SetUp(MailboxLineVector2Int vector2IntLine, BaseObject partToUpdateBuildParameters, BuilderController controller)
-    public void SetUp(MailboxLineVector2Int vector2IntLine, IBaseObject partToUpdateBuildParameters, List<DelegateLibrary.VoidFunction> additionalCalls = null)
+    public class Vector2IntLine : ControlLine
     {
-        this.currentVector2IntLine = vector2IntLine;
-        this.lineOwner = partToUpdateBuildParameters;
-        //this.controller = controller;
+        public InputField InputFieldX;
+        public InputField InputFieldY;
 
-        base.SetUp(vector2IntLine.Name);
+        MailboxLineVector2Int currentVector2IntLine;
 
-        InputFieldX.text = vector2IntLine.Val.x.ToString();
-        InputFieldX.onEndEdit.AddListener(ChangeXValue);
+        IBaseObject lineOwner;
 
-        InputFieldY.text = vector2IntLine.Val.y.ToString();
-        InputFieldY.onEndEdit.AddListener(ChangeYValue);
+        //BuilderController controller;
 
-        this.additionalCalls = additionalCalls;
-    }
+        //public void SetUp(MailboxLineVector2Int vector2IntLine, BaseObject partToUpdateBuildParameters, BuilderController controller)
+        public void SetUp(MailboxLineVector2Int vector2IntLine, IBaseObject partToUpdateBuildParameters, List<DelegateLibrary.VoidFunction> additionalCalls = null)
+        {
+            currentVector2IntLine = vector2IntLine;
+            lineOwner = partToUpdateBuildParameters;
+            //this.controller = controller;
 
-    public void ChangeXValue(string value)
-    {
-        currentVector2IntLine.Val = new Vector2Int(int.Parse(value), currentVector2IntLine.Val.y);
+            base.SetUp(vector2IntLine.Name);
 
-        if(lineOwner != null) lineOwner.ApplyBuildParameters();
+            InputFieldX.text = vector2IntLine.Val.x.ToString();
+            InputFieldX.onEndEdit.AddListener(ChangeXValue);
 
-        RunAllAdditionalCalls();
-    }
+            InputFieldY.text = vector2IntLine.Val.y.ToString();
+            InputFieldY.onEndEdit.AddListener(ChangeYValue);
 
-    public void ChangeYValue(string value)
-    {
-        currentVector2IntLine.Val = new Vector2Int(currentVector2IntLine.Val.x, int.Parse(value));
+            this.additionalCalls = additionalCalls;
+        }
 
-        if (lineOwner != null) lineOwner.ApplyBuildParameters();
+        public void ChangeXValue(string value)
+        {
+            currentVector2IntLine.Val = new Vector2Int(int.Parse(value), currentVector2IntLine.Val.y);
 
-        RunAllAdditionalCalls();
+            if (lineOwner != null) lineOwner.ApplyBuildParameters();
+
+            RunAllAdditionalCalls();
+        }
+
+        public void ChangeYValue(string value)
+        {
+            currentVector2IntLine.Val = new Vector2Int(currentVector2IntLine.Val.x, int.Parse(value));
+
+            if (lineOwner != null) lineOwner.ApplyBuildParameters();
+
+            RunAllAdditionalCalls();
+        }
     }
 }
-

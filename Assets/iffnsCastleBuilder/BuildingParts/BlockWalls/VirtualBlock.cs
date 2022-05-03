@@ -1,217 +1,119 @@
-﻿using System.Collections;
+﻿using iffnsStuff.iffnsBaseSystemForUnity;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VirtualBlock : BaseVirtualObject
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    public const string staticIdentifierString = "Virtual block";
-
-    public override string IdentifierString
+    public class VirtualBlock : BaseVirtualObject
     {
-        get
-        {
-            return staticIdentifierString;
-        }
-    }
+        public const string staticIdentifierString = "Virtual block";
 
-    //Build parameters
-    public MailboxLineDistinctNamed BlockTypeParam;
-    public MailboxLineMaterial CeilingMaterialParam;
-    public MailboxLineMaterial FloorMaterialParam;
-    public MailboxLineMaterial LeftWallMaterialParam;
-    public MailboxLineMaterial RightWallMaterialParam;
-    public MailboxLineMaterial FrontWallMaterialParam;
-    public MailboxLineMaterial BackWallMaterialParam;
-
-    public Material CeilingMaterial
-    {
-        get
+        public override string IdentifierString
         {
-            if (CeilingMaterialParam == null) return null;
-            return CeilingMaterialParam.Val.LinkedMaterial;
-        }
-    }
-
-    public Material FloorMaterial
-    {
-        get
-        {
-            if (FloorMaterialParam == null) return null;
-            return FloorMaterialParam.Val.LinkedMaterial;
-        }
-    }
-
-    public Material LeftWallMaterial
-    {
-        get
-        {
-            if (LeftWallMaterialParam == null) return null;
-            return LeftWallMaterialParam.Val.LinkedMaterial;
-        }
-    }
-
-    public Material RightWallMaterial
-    {
-        get
-        {
-            if (RightWallMaterialParam == null) return null;
-            return RightWallMaterialParam.Val.LinkedMaterial;
-        }
-    }
-
-    public Material FrontWallMaterial
-    {
-        get
-        {
-            if (FrontWallMaterialParam == null) return null;
-            return FrontWallMaterialParam.Val.LinkedMaterial;
-        }
-    }
-
-    public Material BackWallMaterial
-    {
-        get
-        {
-            if (BackWallMaterialParam == null) return null;
-            return BackWallMaterialParam.Val.LinkedMaterial;
-        }
-    }
-
-    public void GenerateMailboxLinesBasedOnShapeInfo()
-    {
-        if (!CurrentShapeInfo.HasFloorAndCeiling)
-        {
-            if (CeilingMaterialParam != null)
+            get
             {
-                CeilingMaterialParam.Destroy();
-                CeilingMaterialParam = null;
-            }
-
-            if (FloorMaterialParam != null)
-            {
-                FloorMaterialParam.Destroy();
-                FloorMaterialParam = null;
-            }
-
-            if (LeftWallMaterialParam != null)
-            {
-                LeftWallMaterialParam.Destroy();
-                LeftWallMaterialParam = null;
-            }
-
-            if (RightWallMaterialParam != null)
-            {
-                RightWallMaterialParam.Destroy();
-                RightWallMaterialParam = null;
-            }
-
-            if (FrontWallMaterialParam != null)
-            {
-                FrontWallMaterialParam.Destroy();
-                FrontWallMaterialParam = null;
-            }
-
-            if (BackWallMaterialParam != null)
-            {
-                BackWallMaterialParam.Destroy();
-                BackWallMaterialParam = null;
+                return staticIdentifierString;
             }
         }
-        else
-        {
-            if (CeilingMaterialParam == null)
-            {
-                CeilingMaterialParam = new MailboxLineMaterial(name: "Ceiling material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultCeiling);
-                
-            }
 
-            if (FloorMaterialParam == null)
+        //Build parameters
+        public MailboxLineDistinctNamed BlockTypeParam;
+        public MailboxLineMaterial CeilingMaterialParam;
+        public MailboxLineMaterial FloorMaterialParam;
+        public MailboxLineMaterial LeftWallMaterialParam;
+        public MailboxLineMaterial RightWallMaterialParam;
+        public MailboxLineMaterial FrontWallMaterialParam;
+        public MailboxLineMaterial BackWallMaterialParam;
+
+        public Material CeilingMaterial
+        {
+            get
             {
-                switch (BlockType)
+                if (CeilingMaterialParam == null) return null;
+                return CeilingMaterialParam.Val.LinkedMaterial;
+            }
+        }
+
+        public Material FloorMaterial
+        {
+            get
+            {
+                if (FloorMaterialParam == null) return null;
+                return FloorMaterialParam.Val.LinkedMaterial;
+            }
+        }
+
+        public Material LeftWallMaterial
+        {
+            get
+            {
+                if (LeftWallMaterialParam == null) return null;
+                return LeftWallMaterialParam.Val.LinkedMaterial;
+            }
+        }
+
+        public Material RightWallMaterial
+        {
+            get
+            {
+                if (RightWallMaterialParam == null) return null;
+                return RightWallMaterialParam.Val.LinkedMaterial;
+            }
+        }
+
+        public Material FrontWallMaterial
+        {
+            get
+            {
+                if (FrontWallMaterialParam == null) return null;
+                return FrontWallMaterialParam.Val.LinkedMaterial;
+            }
+        }
+
+        public Material BackWallMaterial
+        {
+            get
+            {
+                if (BackWallMaterialParam == null) return null;
+                return BackWallMaterialParam.Val.LinkedMaterial;
+            }
+        }
+
+        public void GenerateMailboxLinesBasedOnShapeInfo()
+        {
+            if (!CurrentShapeInfo.HasFloorAndCeiling)
+            {
+                if (CeilingMaterialParam != null)
                 {
-                    case BlockTypes.Floor:
-                        FloorMaterialParam = new MailboxLineMaterial(name: "Top cap material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultWoodPlanks);
-                        break;
-                    case BlockTypes.Wall:
-                        FloorMaterialParam = new MailboxLineMaterial(name: "Top cap material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultStoneBricks);
-                        break;
+                    CeilingMaterialParam.Destroy();
+                    CeilingMaterialParam = null;
                 }
-            }
 
-            if(CurrentShapeInfo.LeftWallType == ShapeInfo.WallTypes.None)
-            {
+                if (FloorMaterialParam != null)
+                {
+                    FloorMaterialParam.Destroy();
+                    FloorMaterialParam = null;
+                }
+
                 if (LeftWallMaterialParam != null)
                 {
                     LeftWallMaterialParam.Destroy();
                     LeftWallMaterialParam = null;
                 }
-            }
-            else
-            {
-                if (LeftWallMaterialParam == null)
-                {
-                    switch (BlockType)
-                    {
-                        case BlockTypes.Floor:
-                            LeftWallMaterialParam = new MailboxLineMaterial(name: "Left wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultWoodSolid);
-                            break;
-                        case BlockTypes.Wall:
-                            LeftWallMaterialParam = new MailboxLineMaterial(name: "Left wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultStoneBricks);
-                            break;
-                    }
-                }
-            }
 
-            if (CurrentShapeInfo.RightWallType == ShapeInfo.WallTypes.None)
-            {
                 if (RightWallMaterialParam != null)
                 {
                     RightWallMaterialParam.Destroy();
                     RightWallMaterialParam = null;
                 }
-            }
-            else
-            {
-                if (RightWallMaterialParam == null)
-                {
-                    switch (BlockType)
-                    {
-                        case BlockTypes.Floor:
-                            RightWallMaterialParam = new MailboxLineMaterial(name: "Right wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultWoodSolid);
-                            break;
-                        case BlockTypes.Wall:
-                            RightWallMaterialParam = new MailboxLineMaterial(name: "Right wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultStoneBricks);
-                            break;
-                    }
-                }
-            }
 
-            if (CurrentShapeInfo.FrontWallType == ShapeInfo.WallTypes.None)
-            {
                 if (FrontWallMaterialParam != null)
                 {
                     FrontWallMaterialParam.Destroy();
                     FrontWallMaterialParam = null;
                 }
-            }
-            else
-            {
-                if (FrontWallMaterialParam == null)
-                {
-                    switch (BlockType)
-                    {
-                        case BlockTypes.Floor:
-                            FrontWallMaterialParam = new MailboxLineMaterial(name: "Front wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultWoodSolid);
-                            break;
-                        case BlockTypes.Wall:
-                            FrontWallMaterialParam = new MailboxLineMaterial(name: "Front wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultStoneBricks);
-                            break;
-                    }
-                }
-            }
 
-            if (CurrentShapeInfo.BackWallType == ShapeInfo.WallTypes.None)
-            {
                 if (BackWallMaterialParam != null)
                 {
                     BackWallMaterialParam.Destroy();
@@ -220,253 +122,355 @@ public class VirtualBlock : BaseVirtualObject
             }
             else
             {
-                if (BackWallMaterialParam == null)
+                if (CeilingMaterialParam == null)
+                {
+                    CeilingMaterialParam = new MailboxLineMaterial(name: "Ceiling material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultCeiling);
+
+                }
+
+                if (FloorMaterialParam == null)
                 {
                     switch (BlockType)
                     {
                         case BlockTypes.Floor:
-                            BackWallMaterialParam = new MailboxLineMaterial(name: "Back wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultWoodSolid);
+                            FloorMaterialParam = new MailboxLineMaterial(name: "Top cap material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodPlanks);
                             break;
                         case BlockTypes.Wall:
-                            BackWallMaterialParam = new MailboxLineMaterial(name: "Back wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultStoneBricks);
+                            FloorMaterialParam = new MailboxLineMaterial(name: "Top cap material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
                             break;
+                    }
+                }
+
+                if (CurrentShapeInfo.LeftWallType == ShapeInfo.WallTypes.None)
+                {
+                    if (LeftWallMaterialParam != null)
+                    {
+                        LeftWallMaterialParam.Destroy();
+                        LeftWallMaterialParam = null;
+                    }
+                }
+                else
+                {
+                    if (LeftWallMaterialParam == null)
+                    {
+                        switch (BlockType)
+                        {
+                            case BlockTypes.Floor:
+                                LeftWallMaterialParam = new MailboxLineMaterial(name: "Left wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodSolid);
+                                break;
+                            case BlockTypes.Wall:
+                                LeftWallMaterialParam = new MailboxLineMaterial(name: "Left wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
+                                break;
+                        }
+                    }
+                }
+
+                if (CurrentShapeInfo.RightWallType == ShapeInfo.WallTypes.None)
+                {
+                    if (RightWallMaterialParam != null)
+                    {
+                        RightWallMaterialParam.Destroy();
+                        RightWallMaterialParam = null;
+                    }
+                }
+                else
+                {
+                    if (RightWallMaterialParam == null)
+                    {
+                        switch (BlockType)
+                        {
+                            case BlockTypes.Floor:
+                                RightWallMaterialParam = new MailboxLineMaterial(name: "Right wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodSolid);
+                                break;
+                            case BlockTypes.Wall:
+                                RightWallMaterialParam = new MailboxLineMaterial(name: "Right wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
+                                break;
+                        }
+                    }
+                }
+
+                if (CurrentShapeInfo.FrontWallType == ShapeInfo.WallTypes.None)
+                {
+                    if (FrontWallMaterialParam != null)
+                    {
+                        FrontWallMaterialParam.Destroy();
+                        FrontWallMaterialParam = null;
+                    }
+                }
+                else
+                {
+                    if (FrontWallMaterialParam == null)
+                    {
+                        switch (BlockType)
+                        {
+                            case BlockTypes.Floor:
+                                FrontWallMaterialParam = new MailboxLineMaterial(name: "Front wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodSolid);
+                                break;
+                            case BlockTypes.Wall:
+                                FrontWallMaterialParam = new MailboxLineMaterial(name: "Front wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
+                                break;
+                        }
+                    }
+                }
+
+                if (CurrentShapeInfo.BackWallType == ShapeInfo.WallTypes.None)
+                {
+                    if (BackWallMaterialParam != null)
+                    {
+                        BackWallMaterialParam.Destroy();
+                        BackWallMaterialParam = null;
+                    }
+                }
+                else
+                {
+                    if (BackWallMaterialParam == null)
+                    {
+                        switch (BlockType)
+                        {
+                            case BlockTypes.Floor:
+                                BackWallMaterialParam = new MailboxLineMaterial(name: "Back wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodSolid);
+                                break;
+                            case BlockTypes.Wall:
+                                BackWallMaterialParam = new MailboxLineMaterial(name: "Back wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
+                                break;
+                        }
                     }
                 }
             }
         }
-    }
 
-    public ShapeInfo CurrentShapeInfo { get; private set; }
+        public ShapeInfo CurrentShapeInfo { get; private set; }
 
-    public class ShapeInfo
-    {
-        public enum WallTypes
+        public class ShapeInfo
         {
-            None,
-            Floor,
-            WallFull,
-            WallCutoff
-        }
-
-        public VirtualBlock LinkedBlock { get; private set; }
-
-        public WallTypes RightWallType = WallTypes.None;
-        public WallTypes LeftWallType = WallTypes.None;
-        public WallTypes FrontWallType = WallTypes.None;
-        public WallTypes BackWallType = WallTypes.None;
-
-        bool hasFloorAndCeiling = false;
-
-        public ShapeInfo(VirtualBlock linkedBlock)
-        {
-            this.LinkedBlock = linkedBlock;
-        }
-
-        public bool HasFloorAndCeiling
-        {
-            set
+            public enum WallTypes
             {
-                if (!value)
-                {
-                    RightWallType = WallTypes.None;
-                    LeftWallType = WallTypes.None;
-                    FrontWallType = WallTypes.None;
-                    BackWallType = WallTypes.None;
-                }
-
-                hasFloorAndCeiling = value;
+                None,
+                Floor,
+                WallFull,
+                WallCutoff
             }
+
+            public VirtualBlock LinkedBlock { get; private set; }
+
+            public WallTypes RightWallType = WallTypes.None;
+            public WallTypes LeftWallType = WallTypes.None;
+            public WallTypes FrontWallType = WallTypes.None;
+            public WallTypes BackWallType = WallTypes.None;
+
+            bool hasFloorAndCeiling = false;
+
+            public ShapeInfo(VirtualBlock linkedBlock)
+            {
+                LinkedBlock = linkedBlock;
+            }
+
+            public bool HasFloorAndCeiling
+            {
+                set
+                {
+                    if (!value)
+                    {
+                        RightWallType = WallTypes.None;
+                        LeftWallType = WallTypes.None;
+                        FrontWallType = WallTypes.None;
+                        BackWallType = WallTypes.None;
+                    }
+
+                    hasFloorAndCeiling = value;
+                }
+                get
+                {
+                    return hasFloorAndCeiling;
+                }
+            }
+        }
+
+        public VirtualBlock(IBaseObject superObject) : base(superObject: superObject)
+        {
+            linkedFloorController = superObject as FloorController;
+            SetupBuildParameters();
+
+            CurrentShapeInfo = new ShapeInfo(linkedBlock: this);
+        }
+
+        public VirtualBlock(int xPosition, int zPosition, FloorController linkedFloorController, BlockTypes blockType) : base(superObject: linkedFloorController)
+        {
+            position = new Vector2Int(xPosition, zPosition);
+
+            this.linkedFloorController = linkedFloorController;
+
+            SetupBuildParameters();
+
+            BlockType = blockType;
+
+            CurrentShapeInfo = new ShapeInfo(linkedBlock: this);
+        }
+
+        public void DefinePositionValue(Vector2Int position)
+        {
+            this.position = position;
+        }
+
+        public override void ResetObject()
+        {
+            baseReset();
+        }
+
+        Vector2Int position;
+
+        public Vector2Int Coordinate
+        {
             get
             {
-                return hasFloorAndCeiling;
+                return new Vector2Int(position.x, position.y);
             }
         }
-    }
 
-    public VirtualBlock(IBaseObject superObject) : base(superObject: superObject)
-    {
-        this.linkedFloorController = superObject as FloorController;
-        SetupBuildParameters();
+        //Fixed parameters
+        //int xPosition;
 
-        CurrentShapeInfo = new ShapeInfo(linkedBlock: this);
-    }
-
-    public VirtualBlock(int xPosition, int zPosition, FloorController linkedFloorController, BlockTypes blockType) : base(superObject: linkedFloorController)
-    {
-        position = new Vector2Int(xPosition, zPosition);
-
-        this.linkedFloorController = linkedFloorController;
-
-        SetupBuildParameters();
-
-        this.BlockType = blockType;
-
-        CurrentShapeInfo = new ShapeInfo(linkedBlock: this);
-    }
-
-    public void DefinePositionValue(Vector2Int position)
-    {
-        this.position = position;
-    }
-
-    public override void ResetObject()
-    {
-        baseReset();
-    }
-
-    Vector2Int position;
-
-    public Vector2Int Coordinate
-    {
-        get
+        public int XCoordinate
         {
-            return new Vector2Int(position.x, position.y);
-        }
-    }
-
-    //Fixed parameters
-    //int xPosition;
-
-    public int XCoordinate
-    {
-        get
-        {
-            return position.x;
-        }
-    }
-
-    //int zPosition;
-    public int ZCoordinate
-    {
-        get
-        {
-            return position.y;
-        }
-    }
-
-    public Vector3 BottomLeftNodePosition
-    {
-        get
-        {
-            return linkedFloorController.GetLocalNodePositionFromNodeIndex(position);
-        }
-    }
-
-    FloorController linkedFloorController;
-    public FloorController LinkedFloorController
-    {
-        get
-        {
-            return linkedFloorController;
-        }
-    }
-
-    /*
-    public void SetupFixedParameters(int xPosition, int zPosition, FloorController linkedFloorController)
-    {
-        this.xPosition = xPosition;
-        this.zPosition = zPosition;
-        this.linkedFloorController = linkedFloorController;
-    }
-    */
-
-
-    public enum BlockTypes
-    {
-        Empty,
-        Floor,
-        Wall
-    }
-
-    public BlockTypes BlockType
-    {
-        get
-        {
-            BlockTypes returnValue = (BlockTypes)BlockTypeParam.Val;
-
-            return returnValue;
-        }
-        set
-        {
-            BlockTypes previousBlock = BlockType;
-
-            BlockTypeParam.Val = (int)value;
-
-            //Repaint
-            if(previousBlock == BlockTypes.Floor && value == BlockTypes.Wall)
+            get
             {
-                AssignValueToAllSides(newTop: MaterialLibrary.DefaultStoneBricks, newSide: MaterialLibrary.DefaultStoneBricks);
-            }
-            else if(previousBlock == BlockTypes.Wall && value == BlockTypes.Floor)
-            {
-                AssignValueToAllSides(newTop: MaterialLibrary.DefaultWoodPlanks, newSide: MaterialLibrary.DefaultWoodSolid);
+                return position.x;
             }
         }
-    }
 
-    void AssignValueToAllSides(MaterialManager newTop, MaterialManager newSide)
-    {
-        FloorMaterialParam.Val = newTop;
-        if (LeftWallMaterialParam != null) LeftWallMaterialParam.Val = newSide;
-        if (RightWallMaterialParam != null) RightWallMaterialParam.Val = newSide;
-        if (FrontWallMaterialParam != null) FrontWallMaterialParam.Val = newSide;
-        if (BackWallMaterialParam != null) BackWallMaterialParam.Val = newSide;
-    }
-
-    void SetupBlockTypeParam()
-    {
-        List<string> enumString = new List<string>();
-
-        int enumValues = System.Enum.GetValues(typeof(BlockTypes)).Length;
-
-        for (int i = 0; i < enumValues; i++) //Note, 
+        //int zPosition;
+        public int ZCoordinate
         {
-            BlockTypes type = (BlockTypes)i;
-
-            enumString.Add(type.ToString());
+            get
+            {
+                return position.y;
+            }
         }
 
-        BlockTypeParam = new MailboxLineDistinctNamed(
-            "Block type",
-            CurrentMailbox,
-            Mailbox.ValueType.buildParameter,
-            enumString,
-            0);
-    }
+        public Vector3 BottomLeftNodePosition
+        {
+            get
+            {
+                return linkedFloorController.GetLocalNodePositionFromNodeIndex(position);
+            }
+        }
 
-    void SetupBuildParameters()
-    {
-        //FloorOrWallTextureParam = new MailboxLineString("Floor or wall texture", CurrentMailbox, Mailbox.ValueType.buildParameter, "");
-        //CeilingTextureParam = new MailboxLineString("Ceiling texture", CurrentMailbox, Mailbox.ValueType.buildParameter, "");
+        FloorController linkedFloorController;
+        public FloorController LinkedFloorController
+        {
+            get
+            {
+                return linkedFloorController;
+            }
+        }
 
-        SetupBlockTypeParam();
+        /*
+        public void SetupFixedParameters(int xPosition, int zPosition, FloorController linkedFloorController)
+        {
+            this.xPosition = xPosition;
+            this.zPosition = zPosition;
+            this.linkedFloorController = linkedFloorController;
+        }
+        */
 
-        CeilingMaterialParam = new MailboxLineMaterial(name: "Ceiling material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultCeiling);
-        FloorMaterialParam = new MailboxLineMaterial(name: "Top cap material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultWoodPlanks);
-        FrontWallMaterialParam = new MailboxLineMaterial(name: "Front wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultStoneBricks);
-        BackWallMaterialParam = new MailboxLineMaterial(name: "Back wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultStoneBricks);
-        LeftWallMaterialParam = new MailboxLineMaterial(name: "Left wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultStoneBricks);
-        RightWallMaterialParam = new MailboxLineMaterial(name: "Right wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultStoneBricks);
-    }
+
+        public enum BlockTypes
+        {
+            Empty,
+            Floor,
+            Wall
+        }
+
+        public BlockTypes BlockType
+        {
+            get
+            {
+                BlockTypes returnValue = (BlockTypes)BlockTypeParam.Val;
+
+                return returnValue;
+            }
+            set
+            {
+                BlockTypes previousBlock = BlockType;
+
+                BlockTypeParam.Val = (int)value;
+
+                //Repaint
+                if (previousBlock == BlockTypes.Floor && value == BlockTypes.Wall)
+                {
+                    AssignValueToAllSides(newTop: DefaultCastleMaterials.DefaultStoneBricks, newSide: DefaultCastleMaterials.DefaultStoneBricks);
+                }
+                else if (previousBlock == BlockTypes.Wall && value == BlockTypes.Floor)
+                {
+                    AssignValueToAllSides(newTop: DefaultCastleMaterials.DefaultWoodPlanks, newSide: DefaultCastleMaterials.DefaultWoodSolid);
+                }
+            }
+        }
+
+        void AssignValueToAllSides(MaterialManager newTop, MaterialManager newSide)
+        {
+            FloorMaterialParam.Val = newTop;
+            if (LeftWallMaterialParam != null) LeftWallMaterialParam.Val = newSide;
+            if (RightWallMaterialParam != null) RightWallMaterialParam.Val = newSide;
+            if (FrontWallMaterialParam != null) FrontWallMaterialParam.Val = newSide;
+            if (BackWallMaterialParam != null) BackWallMaterialParam.Val = newSide;
+        }
+
+        void SetupBlockTypeParam()
+        {
+            List<string> enumString = new List<string>();
+
+            int enumValues = System.Enum.GetValues(typeof(BlockTypes)).Length;
+
+            for (int i = 0; i < enumValues; i++) //Note, 
+            {
+                BlockTypes type = (BlockTypes)i;
+
+                enumString.Add(type.ToString());
+            }
+
+            BlockTypeParam = new MailboxLineDistinctNamed(
+                "Block type",
+                CurrentMailbox,
+                Mailbox.ValueType.buildParameter,
+                enumString,
+                0);
+        }
+
+        void SetupBuildParameters()
+        {
+            //FloorOrWallTextureParam = new MailboxLineString("Floor or wall texture", CurrentMailbox, Mailbox.ValueType.buildParameter, "");
+            //CeilingTextureParam = new MailboxLineString("Ceiling texture", CurrentMailbox, Mailbox.ValueType.buildParameter, "");
+
+            SetupBlockTypeParam();
+
+            CeilingMaterialParam = new MailboxLineMaterial(name: "Ceiling material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultCeiling);
+            FloorMaterialParam = new MailboxLineMaterial(name: "Top cap material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodPlanks);
+            FrontWallMaterialParam = new MailboxLineMaterial(name: "Front wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
+            BackWallMaterialParam = new MailboxLineMaterial(name: "Back wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
+            LeftWallMaterialParam = new MailboxLineMaterial(name: "Left wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
+            RightWallMaterialParam = new MailboxLineMaterial(name: "Right wall material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
+        }
 
 
-    public void SetBuildParameters(BlockTypes blockType)
-    {
-        BlockType = blockType;
-    }
+        public void SetBuildParameters(BlockTypes blockType)
+        {
+            BlockType = blockType;
+        }
 
-    public override void ApplyBuildParameters()
-    {
-        NonOrderedApplyBuildParameters();
-    }
+        public override void ApplyBuildParameters()
+        {
+            NonOrderedApplyBuildParameters();
+        }
 
-    public override void InternalUpdate()
-    {
-        NonOrderedInternalUpdate();
-    }
+        public override void InternalUpdate()
+        {
+            NonOrderedInternalUpdate();
+        }
 
-    public override void PlaytimeUpdate()
-    {
-        NonOrderedPlaytimeUpdate();
+        public override void PlaytimeUpdate()
+        {
+            NonOrderedPlaytimeUpdate();
+        }
     }
 }

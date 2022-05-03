@@ -1,189 +1,193 @@
-﻿using System.Collections;
+﻿using iffnsStuff.iffnsBaseSystemForUnity;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeWall : BaseVirtualObject
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    public const string constIdentifierString = "Node wall";
-
-    MailboxLineVector2Int startPositionParam;
-    MailboxLineVector2Int endPositionParam;
-    public MailboxLineMaterial RightMaterialParam { get; private set; }
-    public MailboxLineMaterial LeftMaterialParam { get; private set; }
-    public List<NodeWallNode> NodesFromStartToEnd;
-    
-    NodeWallSystem linkedSystem;
-    public NodeWallSystem LinkedSystem
+    public class NodeWall : BaseVirtualObject
     {
-        get
-        {
-            return linkedSystem;
-        }
-    }
+        public const string constIdentifierString = "Node wall";
 
-    public override string IdentifierString
-    {
-        get
-        {
-            return constIdentifierString;
-        }
-    }
+        MailboxLineVector2Int startPositionParam;
+        MailboxLineVector2Int endPositionParam;
+        public MailboxLineMaterial RightMaterialParam { get; private set; }
+        public MailboxLineMaterial LeftMaterialParam { get; private set; }
+        public List<NodeWallNode> NodesFromStartToEnd;
 
-    public Vector2Int StartPosition
-    {
-        get
+        NodeWallSystem linkedSystem;
+        public NodeWallSystem LinkedSystem
         {
-            return startPositionParam.Val;
-        }
-        set
-        {
-            startPositionParam.Val = value;
-            linkedSystem.ApplyBuildParameters();
-        }
-    }
-
-    public Vector2Int EndPosition
-    {
-        get
-        {
-            return endPositionParam.Val;
-        }
-        set
-        {
-            endPositionParam.Val = value;
-            linkedSystem.ApplyBuildParameters();
-        }
-    }
-
-    public Vector2Int Offset
-    {
-        get
-        {
-            return EndPosition - StartPosition;
-        }
-    }
-
-    public void Move(Vector2Int offset)
-    {
-        Vector2Int newStartPosition = StartPosition + offset;
-        Vector2Int newEndPosition = EndPosition + offset;
-
-        if (newStartPosition.x > linkedSystem.NodeGridSize.x || newStartPosition.y > linkedSystem.NodeGridSize.y)
-        {
-            DestroyObject();
-            return;
-        }
-        if (newStartPosition.x < 0 || newStartPosition.y < 0)
-        {
-            DestroyObject();
-            return;
-        }
-        if (newEndPosition.x > linkedSystem.NodeGridSize.x || newEndPosition.y > linkedSystem.NodeGridSize.y)
-        {
-            DestroyObject();
-            return;
-        }
-        if (newEndPosition.x < 0 || newEndPosition.y < 0)
-        {
-            DestroyObject();
-            return;
+            get
+            {
+                return linkedSystem;
+            }
         }
 
-        StartPosition = newStartPosition;
-        EndPosition = newEndPosition;
-
-        //Reduce if nodes in between
-        /*
-        while (true)
+        public override string IdentifierString
         {
-            
+            get
+            {
+                return constIdentifierString;
+            }
+        }
+
+        public Vector2Int StartPosition
+        {
+            get
+            {
+                return startPositionParam.Val;
+            }
+            set
+            {
+                startPositionParam.Val = value;
+                linkedSystem.ApplyBuildParameters();
+            }
+        }
+
+        public Vector2Int EndPosition
+        {
+            get
+            {
+                return endPositionParam.Val;
+            }
+            set
+            {
+                endPositionParam.Val = value;
+                linkedSystem.ApplyBuildParameters();
+            }
+        }
+
+        public Vector2Int Offset
+        {
+            get
+            {
+                return EndPosition - StartPosition;
+            }
+        }
+
+        public void Move(Vector2Int offset)
+        {
+            Vector2Int newStartPosition = StartPosition + offset;
+            Vector2Int newEndPosition = EndPosition + offset;
 
             if (newStartPosition.x > linkedSystem.NodeGridSize.x || newStartPosition.y > linkedSystem.NodeGridSize.y)
             {
-                if(NodesFromStartToEnd.Count > 0)
-                {
-                    StartPosition = NodesFromStartToEnd[0].Coordinate;
-                    NodesFromStartToEnd.RemoveAt(0);
-                }
-                else
-                {
-                    DestroyObject();
-                }
+                DestroyObject();
+                return;
             }
-            //if (newEndPosition.x > linkedSystem.NodeGridSize.x || newEndPosition.y > linkedSystem.NodeGridSize.y)
+            if (newStartPosition.x < 0 || newStartPosition.y < 0)
+            {
+                DestroyObject();
+                return;
+            }
+            if (newEndPosition.x > linkedSystem.NodeGridSize.x || newEndPosition.y > linkedSystem.NodeGridSize.y)
+            {
+                DestroyObject();
+                return;
+            }
+            if (newEndPosition.x < 0 || newEndPosition.y < 0)
+            {
+                DestroyObject();
+                return;
+            }
+
+            StartPosition = newStartPosition;
+            EndPosition = newEndPosition;
+
+            //Reduce if nodes in between
+            /*
+            while (true)
+            {
+
+
+                if (newStartPosition.x > linkedSystem.NodeGridSize.x || newStartPosition.y > linkedSystem.NodeGridSize.y)
+                {
+                    if(NodesFromStartToEnd.Count > 0)
+                    {
+                        StartPosition = NodesFromStartToEnd[0].Coordinate;
+                        NodesFromStartToEnd.RemoveAt(0);
+                    }
+                    else
+                    {
+                        DestroyObject();
+                    }
+                }
+                //if (newEndPosition.x > linkedSystem.NodeGridSize.x || newEndPosition.y > linkedSystem.NodeGridSize.y)
+            }
+            */
+
+
         }
-        */
 
-        
-    }
-        
-    void SetMaterialLines()
-    {
-        RightMaterialParam = new MailboxLineMaterial(name: "Right material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultPlaster);
-        LeftMaterialParam = new MailboxLineMaterial(name: "Left material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: MaterialLibrary.DefaultPlaster);
-    }
-
-    public NodeWall(IBaseObject superObject) : base (superObject: superObject)
-    {
-        startPositionParam = new MailboxLineVector2Int(name: "Start position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
-        endPositionParam = new MailboxLineVector2Int(name: "End position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
-        SetMaterialLines();
-
-        NodesFromStartToEnd = new List<NodeWallNode>();
-
-        if(superObject is NodeWallSystem)
+        void SetMaterialLines()
         {
-            NodeWallSystem system = superObject as NodeWallSystem;
-
-            system.AddNodeWall(this);
-            linkedSystem = system;
+            RightMaterialParam = new MailboxLineMaterial(name: "Right material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
+            LeftMaterialParam = new MailboxLineMaterial(name: "Left material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
         }
-        else
+
+        public NodeWall(IBaseObject superObject) : base(superObject: superObject)
         {
-            Debug.LogWarning("Error: Super object of node wall is not a node wall system");
+            startPositionParam = new MailboxLineVector2Int(name: "Start position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
+            endPositionParam = new MailboxLineVector2Int(name: "End position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
+            SetMaterialLines();
+
+            NodesFromStartToEnd = new List<NodeWallNode>();
+
+            if (superObject is NodeWallSystem)
+            {
+                NodeWallSystem system = superObject as NodeWallSystem;
+
+                system.AddNodeWall(this);
+                linkedSystem = system;
+            }
+            else
+            {
+                Debug.LogWarning("Error: Super object of node wall is not a node wall system");
+            }
+
         }
-        
-    }
 
-    public NodeWall(NodeWallSystem linkedSystem, Vector2Int startPosition, Vector2Int endPosition) : base(superObject: linkedSystem)
-    {
-        startPositionParam = new MailboxLineVector2Int(name: "Start position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: startPosition);
-        endPositionParam = new MailboxLineVector2Int(name: "End position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: endPosition);
-        SetMaterialLines();
+        public NodeWall(NodeWallSystem linkedSystem, Vector2Int startPosition, Vector2Int endPosition) : base(superObject: linkedSystem)
+        {
+            startPositionParam = new MailboxLineVector2Int(name: "Start position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: startPosition);
+            endPositionParam = new MailboxLineVector2Int(name: "End position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: endPosition);
+            SetMaterialLines();
 
-        NodesFromStartToEnd = new List<NodeWallNode>();
+            NodesFromStartToEnd = new List<NodeWallNode>();
 
-        this.linkedSystem = linkedSystem;
-        linkedSystem.AddNodeWall(this);
-    }
+            this.linkedSystem = linkedSystem;
+            linkedSystem.AddNodeWall(this);
+        }
 
-    public override void ResetObject()
-    {
-        baseReset();
+        public override void ResetObject()
+        {
+            baseReset();
 
-        NodesFromStartToEnd.Clear();
-    }
+            NodesFromStartToEnd.Clear();
+        }
 
-    public override void DestroyObject()
-    {
-        base.DestroyObject();
+        public override void DestroyObject()
+        {
+            base.DestroyObject();
 
-        //linkedSystem.RemoveNodeWall(this);
-        linkedSystem.ApplyBuildParameters();
-    }
+            //linkedSystem.RemoveNodeWall(this);
+            linkedSystem.ApplyBuildParameters();
+        }
 
-    public override void ApplyBuildParameters()
-    {
-        NonOrderedApplyBuildParameters();
-    }
+        public override void ApplyBuildParameters()
+        {
+            NonOrderedApplyBuildParameters();
+        }
 
-    public override void InternalUpdate()
-    {
-        NonOrderedInternalUpdate();
-    }
+        public override void InternalUpdate()
+        {
+            NonOrderedInternalUpdate();
+        }
 
-    public override void PlaytimeUpdate()
-    {
-        NonOrderedPlaytimeUpdate();
+        public override void PlaytimeUpdate()
+        {
+            NonOrderedPlaytimeUpdate();
+        }
     }
 }

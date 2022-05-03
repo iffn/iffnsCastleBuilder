@@ -2,30 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallLineSelectorButton : VectorButton
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    public NavigationTools currentNavigationTools;
-
-    bool currentState = false;
-
-    public void ToggleButtonState()
+    public class WallLineSelectorButton : VectorButton
     {
-        currentState = !currentState;
+        public NavigationTools currentNavigationTools;
 
-        currentNavigationTools.SetBlockLineVisibility(currentState);
+        bool currentState = false;
 
-        Highlight = currentState;
-    }
+        public void ToggleButtonState()
+        {
+            currentState = !currentState;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+            currentNavigationTools.SetBlockLineVisibility(currentState);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            Highlight = currentState;
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }

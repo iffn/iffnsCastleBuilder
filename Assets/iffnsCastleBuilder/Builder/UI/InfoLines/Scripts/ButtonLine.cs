@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonLine : ControlLine
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    public Button button;
-
-    // Use this for initialization
-    protected override void Start()
+    public class ButtonLine : ControlLine
     {
-        base.Start();
-    }
+        public Button button;
 
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
+        // Use this for initialization
+        protected override void Start()
+        {
+            base.Start();
+        }
 
-    public void SetUp(string text, UnityEngine.Events.UnityAction call)
-    {
-        base.SetUp(text);
+        // Update is called once per frame
+        protected override void Update()
+        {
+            base.Update();
+        }
 
-        button.onClick.AddListener(call);
+        public void SetUp(string text, UnityEngine.Events.UnityAction call)
+        {
+            base.SetUp(text);
+
+            button.onClick.AddListener(call);
+        }
     }
 }

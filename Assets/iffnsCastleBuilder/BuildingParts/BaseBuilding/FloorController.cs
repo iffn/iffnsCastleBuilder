@@ -1,814 +1,818 @@
-﻿using System.Collections.Generic;
+﻿using iffnsStuff.iffnsBaseSystemForUnity;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorController : BaseGameObject
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    public const string constIdentifierString = "Floor";
-    public override string IdentifierString
+    public class FloorController : BaseGameObject
     {
-        get
+        public const string constIdentifierString = "Floor";
+        public override string IdentifierString
         {
-            return constIdentifierString;
-        }
-    }
-
-    //Unity assignments
-    [SerializeField] GameObject smartBlockHolder = null;
-    [SerializeField] GridScalerOrganizer GridScaleOrganizer;
-
-    BlockMeshBuilder floorMeshBuilder;
-    public void AddStaticMesh(TriangleMeshInfo staticMesh)
-    {
-        if (staticMesh.AllVerticesDirectly.Count == 0) return;
-
-        StaticMeshManager.AddTriangleInfo(staticMesh);
-    }
-
-    public void UpdateAllCradinalUVs()
-    {
-        StaticMeshManager.UpdateCardinalUVMapsForAllUnusedTriangleInfos(originObjectForUV: LinkedBuildingController.transform);
-    }
-
-    public BlockMeshBuilder FloorMeshBuilder
-    {
-        get
-        {
-            return floorMeshBuilder;
-        }
-    }
-    public GameObject SmartBlockHolder
-    {
-        get
-        {
-            return smartBlockHolder;
-        }
-    }
-    
-    public NodeWallSystem CurrentNodeWallSystem
-    {
-        get
-        {
-            return nodeWallSystemParam.SubObject as NodeWallSystem;
-        }
-    }
-    
-    //[SerializeField] HumanBuildingResources HumanBuildingResources;
-
-    //Build parameters
-    MailboxLineRanged bottomFloorHeightParam;
-    MailboxLineRanged wallBetweenHeightParam;
-    MailboxLineMultipleSubObject virtualBlocksParam;
-    MailboxLineMultipleSubObject onFloorObjectsParam;
-    MailboxLineSingleSubObject nodeWallSystemParam;
-    
-
-    HumanBuildingController buildingController;
-
-    public enum BlockDirections
-    {
-        Font,
-        Back,
-        Left,
-        Right
-    }
-
-    public HumanBuildingController LinkedBuildingController
-    {
-        get
-        {
-            return buildingController;
-        }
-    }
-
-    public bool CurrentFloor
-    {
-        get
-        {
-            return buildingController.CurrentFloorObject == this;
-        }
-    }
-
-    public int FloorNumber
-    {
-        get
-        {
-            return LinkedBuildingController.FloorNumberFromFloor(this);
-        }
-    }
-
-
-    public float BottomFloorHeight
-    {
-        get
-        {
-            return bottomFloorHeightParam.Val;
-        }
-    }
-
-    public float WallBetweenHeight
-    {
-        get
-        {
-            return wallBetweenHeightParam.Val;
-        }
-    }
-
-    public float CompleteFloorHeight
-    {
-        get
-        {
-            return BottomFloorHeight + WallBetweenHeight;
-        }
-    }
-
-    public float WallBetweenHeightWithScaler
-    {
-        get
-        {
-            if (CurrentFloor)
+            get
             {
-                return CompleteFloorHeight * LinkedBuildingController.WallDisplayHeightScaler - BottomFloorHeight;
-            }
-            else
-            {
-                return CompleteFloorHeight - BottomFloorHeight;
+                return constIdentifierString;
             }
         }
-    }
 
-    public float WallHeightWithScaler
-    {
-        get
+        //Unity assignments
+        [SerializeField] GameObject smartBlockHolder = null;
+        [SerializeField] GridScalerOrganizer GridScaleOrganizer;
+
+        BlockMeshBuilder floorMeshBuilder;
+        public void AddStaticMesh(TriangleMeshInfo staticMesh)
         {
-            if (CurrentFloor)
+            if (staticMesh.AllVerticesDirectly.Count == 0) return;
+
+            StaticMeshManager.AddTriangleInfo(staticMesh);
+        }
+
+        public void UpdateAllCradinalUVs()
+        {
+            StaticMeshManager.UpdateCardinalUVMapsForAllUnusedTriangleInfos(originObjectForUV: LinkedBuildingController.transform);
+        }
+
+        public BlockMeshBuilder FloorMeshBuilder
+        {
+            get
             {
-                return CompleteFloorHeight * LinkedBuildingController.WallDisplayHeightScaler;
+                return floorMeshBuilder;
             }
-            else
+        }
+        public GameObject SmartBlockHolder
+        {
+            get
             {
-                return CompleteFloorHeight;
+                return smartBlockHolder;
             }
         }
-    }
 
-    public float BlockSize
-    {
-        get
+        public NodeWallSystem CurrentNodeWallSystem
         {
-            return LinkedBuildingController.BlockSize;
-        }
-    }
-
-    public int FloorsAbove
-    {
-        get
-        {
-            return LinkedBuildingController.PositiveFloors - FloorNumber;
-        }
-    }
-
-    public bool IsTopFloor
-    {
-        get
-        {
-            return FloorsAbove == 0;
-        }
-    }
-
-    public FloorController FloorAbove
-    {
-        get
-        {
-            if (IsTopFloor) return null;
-            return LinkedBuildingController.Floor(floorNumber: FloorNumber + 1);
-        }
-    }
-
-    public bool IsCurrentFloor
-    {
-        get
-        {
-            return this == LinkedBuildingController.CurrentFloorObject;
-        }
-    }
-    
-    public float BaseHeightOfBlock(Vector2Int coordinate)
-    {
-        switch (BlockAtPosition(coordinate).BlockType)
-        {
-            case VirtualBlock.BlockTypes.Empty:
-                return 0;
-            case VirtualBlock.BlockTypes.Floor:
-                return BottomFloorHeight;
-            case VirtualBlock.BlockTypes.Wall:
-                return 0;
-            default:
-                Debug.LogWarning("Error: Block type not defined");
-                return 0;
-        }
-    }
-
-    public float BetweenFloorHeightOfBlock(Vector2Int coordinate)
-    {
-        switch (BlockAtPosition(coordinate).BlockType)
-        {
-            case VirtualBlock.BlockTypes.Empty:
-                return CompleteFloorHeight;
-            case VirtualBlock.BlockTypes.Floor:
-                return WallBetweenHeight;
-            case VirtualBlock.BlockTypes.Wall:
-                return CompleteFloorHeight;
-            default:
-                Debug.LogWarning("Error: Block type not defined");
-                return CompleteFloorHeight;
-        }
-    }
-
-    void SetupBuildParameters()
-    {
-        bottomFloorHeightParam = new MailboxLineRanged("Bottom floor height", CurrentMailbox, Mailbox.ValueType.buildParameter, 1f, 0.05f, 0.2f);
-        wallBetweenHeightParam = new MailboxLineRanged("Wall height", CurrentMailbox, Mailbox.ValueType.buildParameter, 5f, 0.5f, 2.2f);
-        virtualBlocksParam = new MailboxLineMultipleSubObject(valueName: "Floor matrix", CurrentMailbox);
-        onFloorObjectsParam = new MailboxLineMultipleSubObject("On floor objects", CurrentMailbox);
-        nodeWallSystemParam = new MailboxLineSingleSubObject("Node wall system", CurrentMailbox);
-    }
-
-    public override void ResetObject()
-    {
-        baseReset();
-
-        FloorMatrix.Clear();
-
-        CurrentNodeWallSystem.ResetObject();
-    }
-
-    //Block elements
-    readonly List<List<VirtualBlock>> FloorMatrix = new List<List<VirtualBlock>>();
-
-    public VirtualBlock BlockAtPosition(int xPos, int zPos)
-    {
-        if(xPos < 0 || xPos > buildingController.GridSize.x - 1
-            || zPos < 0 || zPos > buildingController.GridSize.y - 1)
-        {
-            return null;
-        }
-        else
-        {
-            return FloorMatrix[xPos][zPos];
-        }
-    }
-
-    public VirtualBlock BlockAtPosition(Vector2Int position)
-    {
-        int x = MathHelper.ClampInt(position.x, buildingController.GridSize.x - 1, 0);
-        int y = MathHelper.ClampInt(position.y, buildingController.GridSize.y - 1, 0);
-
-        return FloorMatrix[x][y];
-    }
-
-    List<VirtualBlock> AllBlocks
-    {
-        get
-        {
-            List<VirtualBlock> returnList = new List<VirtualBlock>();
-
-            foreach(IBaseObject block in virtualBlocksParam.SubObjects)
+            get
             {
-                if (!(block is VirtualBlock currentBlock))
+                return nodeWallSystemParam.SubObject as NodeWallSystem;
+            }
+        }
+
+        //[SerializeField] HumanBuildingResources HumanBuildingResources;
+
+        //Build parameters
+        MailboxLineRanged bottomFloorHeightParam;
+        MailboxLineRanged wallBetweenHeightParam;
+        MailboxLineMultipleSubObject virtualBlocksParam;
+        MailboxLineMultipleSubObject onFloorObjectsParam;
+        MailboxLineSingleSubObject nodeWallSystemParam;
+
+
+        HumanBuildingController buildingController;
+
+        public enum BlockDirections
+        {
+            Font,
+            Back,
+            Left,
+            Right
+        }
+
+        public HumanBuildingController LinkedBuildingController
+        {
+            get
+            {
+                return buildingController;
+            }
+        }
+
+        public bool CurrentFloor
+        {
+            get
+            {
+                return buildingController.CurrentFloorObject == this;
+            }
+        }
+
+        public int FloorNumber
+        {
+            get
+            {
+                return LinkedBuildingController.FloorNumberFromFloor(this);
+            }
+        }
+
+
+        public float BottomFloorHeight
+        {
+            get
+            {
+                return bottomFloorHeightParam.Val;
+            }
+        }
+
+        public float WallBetweenHeight
+        {
+            get
+            {
+                return wallBetweenHeightParam.Val;
+            }
+        }
+
+        public float CompleteFloorHeight
+        {
+            get
+            {
+                return BottomFloorHeight + WallBetweenHeight;
+            }
+        }
+
+        public float WallBetweenHeightWithScaler
+        {
+            get
+            {
+                if (CurrentFloor)
                 {
-                    Debug.LogWarning("Error, Sub object has the wrong type. List = " + virtualBlocksParam.ValueName);
-                    return returnList;
-                }
-
-                returnList.Add(currentBlock);
-            }
-
-            return returnList;
-        }
-    }
-
-
-    //Modify stuff
-    public void MoveStuffOnGrid(Vector2Int offset)
-    {
-        //Move blocks
-        if (offset.x > 0)
-        {
-            //Move right
-            for (int i = 0; i < virtualBlocksParam.NumberOfObjects; i++)
-            {
-                int a = i;
-                int b = LinkedBuildingController.GridSize.y;
-                int x = a / b;
-
-                int z = i % LinkedBuildingController.GridSize.y;
-                 
-                if(x < offset.x)
-                {
-                    virtualBlocksParam.SubObjects.Insert(0, new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
-                }
-                else if(x < LinkedBuildingController.GridSize.x)
-                {
-                    VirtualBlock block = virtualBlocksParam.SubObjects[i] as VirtualBlock;
-                    block.DefinePositionValue(new Vector2Int(x, z));
+                    return CompleteFloorHeight * LinkedBuildingController.WallDisplayHeightScaler - BottomFloorHeight;
                 }
                 else
                 {
-                    int objectsToRemove = virtualBlocksParam.NumberOfObjects - i;
-
-                    virtualBlocksParam.SubObjects.RemoveRange(i, objectsToRemove);
-                    break;
+                    return CompleteFloorHeight - BottomFloorHeight;
                 }
             }
         }
-        else if(offset.x < 0)
+
+        public float WallHeightWithScaler
         {
-            //Move left
-            int absOffsetX = -offset.x;
-
-            int initialNumberOfObjects = virtualBlocksParam.NumberOfObjects;
-
-            int objectsToRemove = LinkedBuildingController.GridSize.y * absOffsetX;
-            virtualBlocksParam.SubObjects.RemoveRange(0, objectsToRemove);
-
-            int numberOfObjectsToChange = initialNumberOfObjects - objectsToRemove;
-
-            for (int i = 0; i < initialNumberOfObjects; i++)
+            get
             {
-
-                int x = i / LinkedBuildingController.GridSize.x;
-                int z = i % LinkedBuildingController.GridSize.y;
-
-                if(i < numberOfObjectsToChange)
+                if (CurrentFloor)
                 {
-                    VirtualBlock block = virtualBlocksParam.SubObjects[i] as VirtualBlock;
-                    block.DefinePositionValue(new Vector2Int(x, z));
+                    return CompleteFloorHeight * LinkedBuildingController.WallDisplayHeightScaler;
                 }
                 else
                 {
-                    virtualBlocksParam.SubObjects.Add(new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
+                    return CompleteFloorHeight;
                 }
             }
         }
 
-        if(offset.y > 0)
+        public float BlockSize
         {
-            //Move up
-            int index = 0;
-
-            for (int x = 0; x < LinkedBuildingController.GridSize.x; x++)
+            get
             {
-                for (int z = 0; z < LinkedBuildingController.GridSize.y; z++)
+                return LinkedBuildingController.BlockSize;
+            }
+        }
+
+        public int FloorsAbove
+        {
+            get
+            {
+                return LinkedBuildingController.PositiveFloors - FloorNumber;
+            }
+        }
+
+        public bool IsTopFloor
+        {
+            get
+            {
+                return FloorsAbove == 0;
+            }
+        }
+
+        public FloorController FloorAbove
+        {
+            get
+            {
+                if (IsTopFloor) return null;
+                return LinkedBuildingController.Floor(floorNumber: FloorNumber + 1);
+            }
+        }
+
+        public bool IsCurrentFloor
+        {
+            get
+            {
+                return this == LinkedBuildingController.CurrentFloorObject;
+            }
+        }
+
+        public float BaseHeightOfBlock(Vector2Int coordinate)
+        {
+            switch (BlockAtPosition(coordinate).BlockType)
+            {
+                case VirtualBlock.BlockTypes.Empty:
+                    return 0;
+                case VirtualBlock.BlockTypes.Floor:
+                    return BottomFloorHeight;
+                case VirtualBlock.BlockTypes.Wall:
+                    return 0;
+                default:
+                    Debug.LogWarning("Error: Block type not defined");
+                    return 0;
+            }
+        }
+
+        public float BetweenFloorHeightOfBlock(Vector2Int coordinate)
+        {
+            switch (BlockAtPosition(coordinate).BlockType)
+            {
+                case VirtualBlock.BlockTypes.Empty:
+                    return CompleteFloorHeight;
+                case VirtualBlock.BlockTypes.Floor:
+                    return WallBetweenHeight;
+                case VirtualBlock.BlockTypes.Wall:
+                    return CompleteFloorHeight;
+                default:
+                    Debug.LogWarning("Error: Block type not defined");
+                    return CompleteFloorHeight;
+            }
+        }
+
+        void SetupBuildParameters()
+        {
+            bottomFloorHeightParam = new MailboxLineRanged("Bottom floor height", CurrentMailbox, Mailbox.ValueType.buildParameter, 1f, 0.05f, 0.2f);
+            wallBetweenHeightParam = new MailboxLineRanged("Wall height", CurrentMailbox, Mailbox.ValueType.buildParameter, 5f, 0.5f, 2.2f);
+            virtualBlocksParam = new MailboxLineMultipleSubObject(valueName: "Floor matrix", CurrentMailbox);
+            onFloorObjectsParam = new MailboxLineMultipleSubObject("On floor objects", CurrentMailbox);
+            nodeWallSystemParam = new MailboxLineSingleSubObject("Node wall system", CurrentMailbox);
+        }
+
+        public override void ResetObject()
+        {
+            baseReset();
+
+            FloorMatrix.Clear();
+
+            CurrentNodeWallSystem.ResetObject();
+        }
+
+        //Block elements
+        readonly List<List<VirtualBlock>> FloorMatrix = new List<List<VirtualBlock>>();
+
+        public VirtualBlock BlockAtPosition(int xPos, int zPos)
+        {
+            if (xPos < 0 || xPos > buildingController.GridSize.x - 1
+                || zPos < 0 || zPos > buildingController.GridSize.y - 1)
+            {
+                return null;
+            }
+            else
+            {
+                return FloorMatrix[xPos][zPos];
+            }
+        }
+
+        public VirtualBlock BlockAtPosition(Vector2Int position)
+        {
+            int x = MathHelper.ClampInt(position.x, buildingController.GridSize.x - 1, 0);
+            int y = MathHelper.ClampInt(position.y, buildingController.GridSize.y - 1, 0);
+
+            return FloorMatrix[x][y];
+        }
+
+        List<VirtualBlock> AllBlocks
+        {
+            get
+            {
+                List<VirtualBlock> returnList = new List<VirtualBlock>();
+
+                foreach (IBaseObject block in virtualBlocksParam.SubObjects)
                 {
-                    if(z < offset.y)
+                    if (!(block is VirtualBlock currentBlock))
                     {
-                        //Add blocks
-                        virtualBlocksParam.SubObjects.Insert(x * LinkedBuildingController.GridSize.y, new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
+                        Debug.LogWarning("Error, Sub object has the wrong type. List = " + virtualBlocksParam.ValueName);
+                        return returnList;
                     }
-                    else
+
+                    returnList.Add(currentBlock);
+                }
+
+                return returnList;
+            }
+        }
+
+
+        //Modify stuff
+        public void MoveStuffOnGrid(Vector2Int offset)
+        {
+            //Move blocks
+            if (offset.x > 0)
+            {
+                //Move right
+                for (int i = 0; i < virtualBlocksParam.NumberOfObjects; i++)
+                {
+                    int a = i;
+                    int b = LinkedBuildingController.GridSize.y;
+                    int x = a / b;
+
+                    int z = i % LinkedBuildingController.GridSize.y;
+
+                    if (x < offset.x)
                     {
-                        //Modifiy position
-                        VirtualBlock block = virtualBlocksParam.SubObjects[index] as VirtualBlock;
+                        virtualBlocksParam.SubObjects.Insert(0, new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
+                    }
+                    else if (x < LinkedBuildingController.GridSize.x)
+                    {
+                        VirtualBlock block = virtualBlocksParam.SubObjects[i] as VirtualBlock;
                         block.DefinePositionValue(new Vector2Int(x, z));
                     }
-
-                    index++;
-                }
-
-                //Remove blocks
-                virtualBlocksParam.SubObjects.RemoveRange(index, offset.y);
-            }
-        }
-        else if (offset.y < 0)
-        {
-            //Move down
-            int offsetYAbs = -offset.y;
-            int index = 0;
-
-            for (int x = 0; x < LinkedBuildingController.GridSize.x; x++)
-            {
-                for (int z = 0; z < LinkedBuildingController.GridSize.y; z++)
-                {
-                    if (z < LinkedBuildingController.GridSize.y - offsetYAbs)
+                    else
                     {
-                        //Modifiy position
-                        /*
-                        VirtualBlock block = virtualBlocksParam.SubObjects[index] as VirtualBlock;
+                        int objectsToRemove = virtualBlocksParam.NumberOfObjects - i;
+
+                        virtualBlocksParam.SubObjects.RemoveRange(i, objectsToRemove);
+                        break;
+                    }
+                }
+            }
+            else if (offset.x < 0)
+            {
+                //Move left
+                int absOffsetX = -offset.x;
+
+                int initialNumberOfObjects = virtualBlocksParam.NumberOfObjects;
+
+                int objectsToRemove = LinkedBuildingController.GridSize.y * absOffsetX;
+                virtualBlocksParam.SubObjects.RemoveRange(0, objectsToRemove);
+
+                int numberOfObjectsToChange = initialNumberOfObjects - objectsToRemove;
+
+                for (int i = 0; i < initialNumberOfObjects; i++)
+                {
+
+                    int x = i / LinkedBuildingController.GridSize.x;
+                    int z = i % LinkedBuildingController.GridSize.y;
+
+                    if (i < numberOfObjectsToChange)
+                    {
+                        VirtualBlock block = virtualBlocksParam.SubObjects[i] as VirtualBlock;
                         block.DefinePositionValue(new Vector2Int(x, z));
-                        Debug.Log("Defining block " + index + " at " + x + ", " + z);
-                        */
                     }
                     else
                     {
-                        //Add blocks
-                        //int index = x * LinkedBuildingController.GridSize.y + z + offsetYAbs;
-                        //Debug.Log("Inserting block " + x + ", " + z + " at index " + index);
-
-                        virtualBlocksParam.SubObjects.Insert(x * LinkedBuildingController.GridSize.y + z + offsetYAbs, new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty)); //X and Z positions not correct, reassigning below
-                    }
-
-                    index++;
-                }
-
-                //Remove blocks
-                virtualBlocksParam.SubObjects.RemoveRange(x * LinkedBuildingController.GridSize.y, offsetYAbs);
-            }
-            
-            UpdateMatrix(); //Resetting X Z references
-        }
-
-        //Move node walls
-        CurrentNodeWallSystem.MoveAllNodeWalls(offset);
-
-        //Move on floor objects
-        for(int i = 0; i< onFloorObjectsParam.SubObjects.Count; i++) //Foreach does not work since it breaks when objects are removed
-        {
-            OnFloorObject currentOnFloorObject = onFloorObjectsParam.SubObjects[i] as OnFloorObject;
-
-            if (currentOnFloorObject == null) continue;
-
-            currentOnFloorObject.MoveOnGrid(offset: offset);
-        }
-    }
-
-    public void ChangeBlockGrid(Vector2Int offset, Vector2Int oldGridSize)
-    {
-        //int currentGridSizeX = oldGridSize.x;
-
-        //Remove X
-        if (offset.x < 0)
-        {
-            //Remove blocks right
-            int index = (oldGridSize.x + offset.x) * oldGridSize.y;
-            int count = -oldGridSize.y * offset.x;
-
-            virtualBlocksParam.SubObjects.RemoveRange(index: index, count: count);
-
-            //currentGridSizeX += offset.x;
-        }
-
-        //Change Y
-        if (offset.y > 0)
-        {
-            //Add blocks up
-            for (int x = 0; x < oldGridSize.x; x++)
-            {
-                for (int y = oldGridSize.y; y < LinkedBuildingController.GridSize.y; y++)
-                {
-                    int insertPosition = x * LinkedBuildingController.GridSize.y + y;
-
-                    if (x != oldGridSize.x - 1)
-                    {
-                        virtualBlocksParam.SubObjects.Insert(index: insertPosition, item: new VirtualBlock(xPosition: x, zPosition: y, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
-                    }
-                    else
-                    {
-                        virtualBlocksParam.SubObjects.Add(new VirtualBlock(xPosition: x, zPosition: y, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
+                        virtualBlocksParam.SubObjects.Add(new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
                     }
                 }
             }
-        }
-        else if (offset.y < 0)
-        {
-            //Remove blocks up
-            for (int i = 0; i < virtualBlocksParam.SubObjects.Count; i++)
+
+            if (offset.y > 0)
             {
-                /*
-                int x = i / LinkedBuildingController.GridSize.x;
-                int z = i % LinkedBuildingController.GridSize.y;
-                */
+                //Move up
+                int index = 0;
 
-                VirtualBlock currentBlock = virtualBlocksParam.SubObjects[i] as VirtualBlock;
-
-                if (currentBlock.ZCoordinate >= LinkedBuildingController.GridSize.y)
+                for (int x = 0; x < LinkedBuildingController.GridSize.x; x++)
                 {
-                    virtualBlocksParam.SubObjects.RemoveAt(i);
-                    i--; //Check the same index again
+                    for (int z = 0; z < LinkedBuildingController.GridSize.y; z++)
+                    {
+                        if (z < offset.y)
+                        {
+                            //Add blocks
+                            virtualBlocksParam.SubObjects.Insert(x * LinkedBuildingController.GridSize.y, new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
+                        }
+                        else
+                        {
+                            //Modifiy position
+                            VirtualBlock block = virtualBlocksParam.SubObjects[index] as VirtualBlock;
+                            block.DefinePositionValue(new Vector2Int(x, z));
+                        }
+
+                        index++;
+                    }
+
+                    //Remove blocks
+                    virtualBlocksParam.SubObjects.RemoveRange(index, offset.y);
+                }
+            }
+            else if (offset.y < 0)
+            {
+                //Move down
+                int offsetYAbs = -offset.y;
+                int index = 0;
+
+                for (int x = 0; x < LinkedBuildingController.GridSize.x; x++)
+                {
+                    for (int z = 0; z < LinkedBuildingController.GridSize.y; z++)
+                    {
+                        if (z < LinkedBuildingController.GridSize.y - offsetYAbs)
+                        {
+                            //Modifiy position
+                            /*
+                            VirtualBlock block = virtualBlocksParam.SubObjects[index] as VirtualBlock;
+                            block.DefinePositionValue(new Vector2Int(x, z));
+                            Debug.Log("Defining block " + index + " at " + x + ", " + z);
+                            */
+                        }
+                        else
+                        {
+                            //Add blocks
+                            //int index = x * LinkedBuildingController.GridSize.y + z + offsetYAbs;
+                            //Debug.Log("Inserting block " + x + ", " + z + " at index " + index);
+
+                            virtualBlocksParam.SubObjects.Insert(x * LinkedBuildingController.GridSize.y + z + offsetYAbs, new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty)); //X and Z positions not correct, reassigning below
+                        }
+
+                        index++;
+                    }
+
+                    //Remove blocks
+                    virtualBlocksParam.SubObjects.RemoveRange(x * LinkedBuildingController.GridSize.y, offsetYAbs);
+                }
+
+                UpdateMatrix(); //Resetting X Z references
+            }
+
+            //Move node walls
+            CurrentNodeWallSystem.MoveAllNodeWalls(offset);
+
+            //Move on floor objects
+            for (int i = 0; i < onFloorObjectsParam.SubObjects.Count; i++) //Foreach does not work since it breaks when objects are removed
+            {
+                OnFloorObject currentOnFloorObject = onFloorObjectsParam.SubObjects[i] as OnFloorObject;
+
+                if (currentOnFloorObject == null) continue;
+
+                currentOnFloorObject.MoveOnGrid(offset: offset);
+            }
+        }
+
+        public void ChangeBlockGrid(Vector2Int offset, Vector2Int oldGridSize)
+        {
+            //int currentGridSizeX = oldGridSize.x;
+
+            //Remove X
+            if (offset.x < 0)
+            {
+                //Remove blocks right
+                int index = (oldGridSize.x + offset.x) * oldGridSize.y;
+                int count = -oldGridSize.y * offset.x;
+
+                virtualBlocksParam.SubObjects.RemoveRange(index: index, count: count);
+
+                //currentGridSizeX += offset.x;
+            }
+
+            //Change Y
+            if (offset.y > 0)
+            {
+                //Add blocks up
+                for (int x = 0; x < oldGridSize.x; x++)
+                {
+                    for (int y = oldGridSize.y; y < LinkedBuildingController.GridSize.y; y++)
+                    {
+                        int insertPosition = x * LinkedBuildingController.GridSize.y + y;
+
+                        if (x != oldGridSize.x - 1)
+                        {
+                            virtualBlocksParam.SubObjects.Insert(index: insertPosition, item: new VirtualBlock(xPosition: x, zPosition: y, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
+                        }
+                        else
+                        {
+                            virtualBlocksParam.SubObjects.Add(new VirtualBlock(xPosition: x, zPosition: y, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
+                        }
+                    }
+                }
+            }
+            else if (offset.y < 0)
+            {
+                //Remove blocks up
+                for (int i = 0; i < virtualBlocksParam.SubObjects.Count; i++)
+                {
+                    /*
+                    int x = i / LinkedBuildingController.GridSize.x;
+                    int z = i % LinkedBuildingController.GridSize.y;
+                    */
+
+                    VirtualBlock currentBlock = virtualBlocksParam.SubObjects[i] as VirtualBlock;
+
+                    if (currentBlock.ZCoordinate >= LinkedBuildingController.GridSize.y)
+                    {
+                        virtualBlocksParam.SubObjects.RemoveAt(i);
+                        i--; //Check the same index again
                         continue;
+                    }
                 }
             }
-        }
 
-        //Add blocks right
-        if (offset.x > 0)
-        {
-            for(int x = oldGridSize.x; x < LinkedBuildingController.GridSize.x; x++)
+            //Add blocks right
+            if (offset.x > 0)
             {
-                for(int z = 0; z < LinkedBuildingController.GridSize.y; z++)
+                for (int x = oldGridSize.x; x < LinkedBuildingController.GridSize.x; x++)
                 {
-                    virtualBlocksParam.SubObjects.Add(new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
+                    for (int z = 0; z < LinkedBuildingController.GridSize.y; z++)
+                    {
+                        virtualBlocksParam.SubObjects.Add(new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
+                    }
+                }
+
+                //currentGridSizeX += offset.x;
+            }
+
+            UpdateMatrix();
+        }
+
+        //Visibility
+        float wallHeightDisplayScaler = 1;
+
+        //Update complete display
+
+        //Above or below visibility
+        public enum FloorVisibilityTypes
+        {
+            topDown,
+            bottomUp
+        }
+
+        FloorVisibilityTypes floorVisibilityType;
+
+        public FloorVisibilityTypes FloorVisibilityType
+        {
+            set
+            {
+                //ToDo
+                floorVisibilityType = value;
+                ApplyBuildParameters();
+            }
+            get
+            {
+                return floorVisibilityType;
+            }
+        }
+
+        public override void Setup(IBaseObject superObject)
+        {
+            base.Setup(superObject);
+
+            floorMeshBuilder = new BlockMeshBuilder(linkedFloor: this);
+
+            buildingController = superObject as HumanBuildingController;
+
+            SetupBuildParameters();
+
+            //CurrentNodeWallSystem.Setup(linkedFloor: this);
+
+            GridScaleOrganizer.Setup(linkedController: LinkedBuildingController);
+            AddModificationNode(GridScaleOrganizer);
+        }
+
+        public void CompleteSetUpWithBuildParameters(HumanBuildingController buildingControler, VirtualBlock.BlockTypes blockType)
+        {
+            Setup(buildingControler);
+
+            for (int xPos = 0; xPos < LinkedBuildingController.GridSize.x; xPos++)
+            {
+                for (int zPos = 0; zPos < LinkedBuildingController.GridSize.y; zPos++)
+                {
+                    VirtualBlock block = new VirtualBlock(xPosition: xPos, zPosition: zPos, linkedFloorController: this, blockType: blockType);
+                    virtualBlocksParam.AddObject(block);
                 }
             }
 
-            //currentGridSizeX += offset.x;
+            NodeWallSystem nodeWallSystem = ResourceLibrary.TryGetBaseGameObjectFromStringIdentifier(NodeWallSystem.constIdentifierString, superObject: this) as NodeWallSystem;
+
+            nodeWallSystemParam.SubObject = nodeWallSystem;
+
+            //currentNodeWallSystem.Setup(superObject: this);
+
+            onFloorObjectsParam.ClearAndDestroySubObjects();
+
+            //CurrentNodeWallSystem.ResetSystem(); //Not needed, already done in setup
         }
 
-        UpdateMatrix();
-    }
-
-    //Visibility
-    float wallHeightDisplayScaler = 1;
-
-    //Update complete display
-
-    //Above or below visibility
-    public enum FloorVisibilityTypes
-    {
-        topDown,
-        bottomUp
-    }
-
-    FloorVisibilityTypes floorVisibilityType;
-
-    public FloorVisibilityTypes FloorVisibilityType
-    {
-        set
+        void UpdateMatrix()
         {
-            //ToDo
-            floorVisibilityType = value;
-            ApplyBuildParameters();
-        }
-        get
-        {
-            return floorVisibilityType;
-        }
-    }
+            int currentBlockIndex = 0;
+            List<IBaseObject> blocks = virtualBlocksParam.SubObjects;
 
-    public override void Setup(IBaseObject superObject)
-    {
-        base.Setup(superObject);
+            FloorMatrix.Clear();
 
-        floorMeshBuilder = new BlockMeshBuilder(linkedFloor: this);
-
-        buildingController = superObject as HumanBuildingController;
-
-        SetupBuildParameters();
-
-        //CurrentNodeWallSystem.Setup(linkedFloor: this);
-
-        GridScaleOrganizer.Setup(linkedController: LinkedBuildingController);
-        AddModificationNode(GridScaleOrganizer);
-    }
-
-    public void CompleteSetUpWithBuildParameters(HumanBuildingController buildingControler, VirtualBlock.BlockTypes blockType)
-    {
-        Setup(buildingControler);
-
-        for (int xPos = 0; xPos < LinkedBuildingController.GridSize.x; xPos++)
-        {
-            for (int zPos = 0; zPos < LinkedBuildingController.GridSize.y; zPos++)
+            for (int x = 0; x < buildingController.GridSize.x; x++)
             {
-                VirtualBlock block = new VirtualBlock(xPosition: xPos, zPosition: zPos, linkedFloorController: this, blockType: blockType);
-                virtualBlocksParam.AddObject(block);
+                FloorMatrix.Add(new List<VirtualBlock>());
+                for (int z = 0; z < buildingController.GridSize.y; z++)
+                {
+                    VirtualBlock currentBlock = blocks[currentBlockIndex] as VirtualBlock;
+
+                    FloorMatrix[FloorMatrix.Count - 1].Add(currentBlock);
+
+                    currentBlock.DefinePositionValue(new Vector2Int(x, z));
+
+                    currentBlockIndex++;
+                }
             }
         }
 
-        NodeWallSystem nodeWallSystem = ResourceLibrary.TryGetBaseGameObjectFromStringIdentifier(NodeWallSystem.constIdentifierString, superObject: this) as NodeWallSystem;
-
-        nodeWallSystemParam.SubObject = nodeWallSystem;
-
-        //currentNodeWallSystem.Setup(superObject: this);
-
-        onFloorObjectsParam.ClearAndDestroySubObjects();
-
-        //CurrentNodeWallSystem.ResetSystem(); //Not needed, already done in setup
-    }
-
-    void UpdateMatrix()
-    {
-        int currentBlockIndex = 0;
-        List<IBaseObject> blocks = virtualBlocksParam.SubObjects;
-
-        FloorMatrix.Clear();
-
-        for (int x = 0; x < buildingController.GridSize.x; x++)
+        public void GenerateFloorMesh() //Public for faster Block wall builder
         {
-            FloorMatrix.Add(new List<VirtualBlock>());
-            for (int z = 0; z < buildingController.GridSize.y; z++)
+            floorMeshBuilder.SetBlockInfo();
+
+            List<VirtualBlock> allBlocks = AllBlocks;
+
+            foreach (VirtualBlock block in allBlocks)
             {
-                VirtualBlock currentBlock = blocks[currentBlockIndex] as VirtualBlock;
+                block.GenerateMailboxLinesBasedOnShapeInfo();
+            }
 
-                FloorMatrix[FloorMatrix.Count - 1].Add(currentBlock);
+            floorMeshBuilder.GenerateMeshesBasedOnInfo();
 
-                currentBlock.DefinePositionValue(new Vector2Int(x, z));
+            BuildAllMeshes();
+        }
 
-                currentBlockIndex++;
+        public void RebuildBlockMeshes()
+        {
+            //System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
+            //watch.Start();
+            //Debug.Log("Time taken for rebuild = " + watch.ElapsedMilliseconds + "ms");
+
+            floorMeshBuilder.GenerateMeshesBasedOnInfo();
+            //Debug.Log("Time taken for generating info = " + watch.ElapsedMilliseconds + "ms");
+
+            //watch.Restart();
+
+            BuildAllMeshes();
+
+            //Debug.Log("Time taken for Building = " + watch.ElapsedMilliseconds + "ms");
+        }
+
+        float previousCompleteFloorHeight = 0;
+        public override void ApplyBuildParameters()
+        {
+            if (CompleteFloorHeight != previousCompleteFloorHeight)
+            {
+                LinkedBuildingController.UpdateFloorPositions();
+                previousCompleteFloorHeight = CompleteFloorHeight;
+            }
+
+            UpdateMatrix();
+
+            switch (floorVisibilityType)
+            {
+                case FloorVisibilityTypes.topDown:
+                    wallHeightDisplayScaler = buildingController.WallDisplayHeightScaler;
+                    break;
+                case FloorVisibilityTypes.bottomUp:
+                    wallHeightDisplayScaler = buildingController.WallDisplayHeightScaler;
+                    break;
+                default:
+                    Debug.LogWarning("Error when updating the floor visibility: FloorVisibilityType type not defined");
+                    break;
+            }
+
+            //Generate floor mesh
+            GenerateFloorMesh();
+
+            CurrentNodeWallSystem.ApplyBuildParameters();
+
+            //Update all smart blocks
+            for (int i = 0; i < onFloorObjectsParam.SubObjects.Count; i++)
+            {
+                onFloorObjectsParam.SubObjects[i].ApplyBuildParameters();
+            }
+
+        }
+
+        public override void InternalUpdate()
+        {
+            NonOrderedInternalUpdate();
+        }
+
+        public override void PlaytimeUpdate()
+        {
+            NonOrderedPlaytimeUpdate();
+        }
+
+        //Block selection
+        public Vector2Int GetBlockCoordinateFromImpact(Vector3 impactPointAbsolute, Vector3 normal)
+        {
+            Vector3 BlockPointAbsolute = impactPointAbsolute - 0.5f * buildingController.BlockSize * normal.normalized;
+
+            return GetBlockCoordinateFromCoordinateAbsolute(CoordinateAbsolute: BlockPointAbsolute);
+        }
+
+        public VirtualBlock GetBlockFromImpact(Vector3 impactPointAbsolute, Vector3 normal)
+        {
+            Vector3 BlockPointAbsolute = impactPointAbsolute - 0.5f * buildingController.BlockSize * normal.normalized;
+
+            return GetBlockFromCoordinateAbsolute(CoordinateAbsolute: BlockPointAbsolute);
+        }
+
+        public VirtualBlock GetBlockFromCoordinateAbsolute(Vector3 CoordinateAbsolute)
+        {
+            Vector3 CoordinateRelative = transform.InverseTransformPoint(CoordinateAbsolute);
+
+            return GetBlockFromCoordinateRelative(CoordinateRelative: CoordinateRelative);
+        }
+
+        public Vector2Int GetNodeCoordinateFromPositionAbsolute(Vector3 PositionAbsolute)
+        {
+            Vector3 CoordinateRelative = transform.InverseTransformPoint(PositionAbsolute);
+
+            return GetNodeCoordinateFromPositionRelative(PositionRelative: CoordinateRelative);
+        }
+
+        public Vector2Int GetBlockCoordinateFromCoordinateAbsolute(Vector3 CoordinateAbsolute)
+        {
+            Vector3 CoordinateRelative = transform.InverseTransformPoint(CoordinateAbsolute);
+
+
+
+            return GetBlockCoordinateFromCoordinateRelative(CoordinateRelative: CoordinateRelative);
+        }
+
+        public NodeWallNode GetNodeFromCoordinateAbsolute(Vector3 CoordinateAbsolute)
+        {
+            Vector3 CoordinateRelative = transform.InverseTransformPoint(CoordinateAbsolute);
+
+            return GetNodeFromCoordinateRelative(CoordinateRelative);
+        }
+
+        public NodeWallNode GetNodeFromCoordinateRelative(Vector3 CoordinateRelative)
+        {
+            int xPos = Mathf.RoundToInt(CoordinateRelative.x / buildingController.BlockSize);
+            int zPos = Mathf.RoundToInt(CoordinateRelative.z / buildingController.BlockSize);
+
+            /*
+            if (xPos > buildingController.GridSize.x || xPos < 0) return null;
+            if (zPos > buildingController.GridSize.y || zPos < 0) return null;
+            */
+
+            return CurrentNodeWallSystem.NodeFromCoordinate(new Vector2Int(xPos, zPos));
+        }
+
+        public Vector3 GetLocalNodePositionFromNodeIndex(Vector2Int nodeIndex)
+        {
+            Vector3 returnValue = new Vector3(nodeIndex.x, 0, nodeIndex.y) * LinkedBuildingController.BlockSize;
+            //Vector3 returnValue = new Vector3(-0.5f + blockIndex.x, 0, -0.5f + blockIndex.y) * LinkedBuildingController.BlockSize;
+
+            return returnValue;
+        }
+
+        public Vector3 NodePositionFromBlockIndex(Vector2Int blockIndex)
+        {
+            Vector3 returnValue = new Vector3(blockIndex.x, 0, blockIndex.y) * LinkedBuildingController.BlockSize;
+
+            return returnValue;
+        }
+
+        public Vector3 NodePositionFromBlockIndex(Vector2Int blockIndex, GridOrientation orientation)
+        {
+            switch (orientation.QuarterOrientation)
+            {
+                case GridOrientation.GridQuarterOrientations.XPosZPos:
+                    return new Vector3(blockIndex.x, 0, blockIndex.y) * LinkedBuildingController.BlockSize;
+
+                case GridOrientation.GridQuarterOrientations.XPosZNeg:
+                    return new Vector3(blockIndex.x, 0, 1f + blockIndex.y) * LinkedBuildingController.BlockSize;
+
+                case GridOrientation.GridQuarterOrientations.XNegZNeg:
+                    return new Vector3(1f + blockIndex.x, 0, 1f + blockIndex.y) * LinkedBuildingController.BlockSize;
+
+                case GridOrientation.GridQuarterOrientations.XNegZPos:
+                    return new Vector3(1f + blockIndex.x, 0, blockIndex.y) * LinkedBuildingController.BlockSize;
+
+                default:
+                    Debug.LogWarning("Error: Orientation not defined");
+                    return new Vector3(1f + blockIndex.x, 0, 1f + blockIndex.y) * LinkedBuildingController.BlockSize;
             }
         }
-    }
 
-    public void GenerateFloorMesh() //Public for faster Block wall builder
-    {
-        floorMeshBuilder.SetBlockInfo();
-
-        List<VirtualBlock> allBlocks = this.AllBlocks;
-
-        foreach (VirtualBlock block in allBlocks)
+        public Vector3 CenterPositionFromBlockIndex(Vector2Int blockIndex)
         {
-            block.GenerateMailboxLinesBasedOnShapeInfo();
+            Vector3 returnValue = new Vector3(blockIndex.x + 0.5f, 0, blockIndex.y + 0.5f) * LinkedBuildingController.BlockSize;
+
+            return returnValue;
         }
 
-        floorMeshBuilder.GenerateMeshesBasedOnInfo();
-        
-        BuildAllMeshes();
-    }
-
-    public void RebuildBlockMeshes()
-    {
-        //System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
-        //watch.Start();
-        //Debug.Log("Time taken for rebuild = " + watch.ElapsedMilliseconds + "ms");
-
-        floorMeshBuilder.GenerateMeshesBasedOnInfo();
-        //Debug.Log("Time taken for generating info = " + watch.ElapsedMilliseconds + "ms");
-        
-        //watch.Restart();
-
-        BuildAllMeshes();
-        
-        //Debug.Log("Time taken for Building = " + watch.ElapsedMilliseconds + "ms");
-    }
-
-    float previousCompleteFloorHeight = 0;
-    public override void ApplyBuildParameters()
-    {
-        if(CompleteFloorHeight != previousCompleteFloorHeight)
+        public Vector2Int GetBlockCoordinateFromCoordinateRelative(Vector3 CoordinateRelative)
         {
-            LinkedBuildingController.UpdateFloorPositions();
-            previousCompleteFloorHeight = CompleteFloorHeight;
+            int xPos = Mathf.RoundToInt(CoordinateRelative.x / buildingController.BlockSize - 0.5f);
+            int zPos = Mathf.RoundToInt(CoordinateRelative.z / buildingController.BlockSize - 0.5f);
+
+            return new Vector2Int(xPos, zPos);
         }
 
-        UpdateMatrix();
-
-        switch (floorVisibilityType)
+        public Vector2Int GetNodeCoordinateFromPositionRelative(Vector3 PositionRelative)
         {
-            case FloorVisibilityTypes.topDown:
-                wallHeightDisplayScaler = buildingController.WallDisplayHeightScaler;
-                break;
-            case FloorVisibilityTypes.bottomUp:
-                wallHeightDisplayScaler = buildingController.WallDisplayHeightScaler;
-                break;
-            default:
-                Debug.LogWarning("Error when updating the floor visibility: FloorVisibilityType type not defined");
-                break;
+            int xPos = Mathf.RoundToInt(PositionRelative.x / BlockSize);
+            int zPos = Mathf.RoundToInt(PositionRelative.z / BlockSize);
+
+            return new Vector2Int(xPos, zPos);
         }
 
-        //Generate floor mesh
-        GenerateFloorMesh();
-
-        CurrentNodeWallSystem.ApplyBuildParameters();
-
-        //Update all smart blocks
-        for(int i = 0; i < onFloorObjectsParam.SubObjects.Count; i++)
+        public VirtualBlock GetBlockFromCoordinateRelative(Vector3 CoordinateRelative)
         {
-            onFloorObjectsParam.SubObjects[i].ApplyBuildParameters();
+            int xPos = Mathf.RoundToInt(CoordinateRelative.x / buildingController.BlockSize - 0.5f);
+            int zPos = Mathf.RoundToInt(CoordinateRelative.z / buildingController.BlockSize - 0.5f);
+
+            /*
+            if (xPos > buildingController.GridSize.x || xPos < 0) return null;
+            if (zPos > buildingController.GridSize.y || zPos < 0) return null;
+            */
+
+            return BlockAtPosition(xPos: xPos, zPos: zPos);
         }
 
-    }
-
-    public override void InternalUpdate()
-    {
-        NonOrderedInternalUpdate();
-    }
-
-    public override void PlaytimeUpdate()
-    {
-        NonOrderedPlaytimeUpdate();
-    }
-
-    //Block selection
-    public Vector2Int GetBlockCoordinateFromImpact(Vector3 impactPointAbsolute, Vector3 normal)
-    {
-        Vector3 BlockPointAbsolute = impactPointAbsolute - 0.5f * buildingController.BlockSize * normal.normalized;
-
-        return GetBlockCoordinateFromCoordinateAbsolute(CoordinateAbsolute: BlockPointAbsolute);
-    }
-
-    public VirtualBlock GetBlockFromImpact(Vector3 impactPointAbsolute, Vector3 normal)
-    {
-        Vector3 BlockPointAbsolute = impactPointAbsolute - 0.5f * buildingController.BlockSize * normal.normalized;
-
-        return GetBlockFromCoordinateAbsolute(CoordinateAbsolute: BlockPointAbsolute);
-    }
-    
-    public VirtualBlock GetBlockFromCoordinateAbsolute(Vector3 CoordinateAbsolute)
-    {
-        Vector3 CoordinateRelative = transform.InverseTransformPoint(CoordinateAbsolute);
-
-        return GetBlockFromCoordinateRelative(CoordinateRelative: CoordinateRelative);
-    }
-
-    public Vector2Int GetNodeCoordinateFromPositionAbsolute(Vector3 PositionAbsolute)
-    {
-        Vector3 CoordinateRelative = transform.InverseTransformPoint(PositionAbsolute);
-
-        return GetNodeCoordinateFromPositionRelative(PositionRelative: CoordinateRelative);
-    }
-
-    public Vector2Int GetBlockCoordinateFromCoordinateAbsolute(Vector3 CoordinateAbsolute)
-    {
-        Vector3 CoordinateRelative = transform.InverseTransformPoint(CoordinateAbsolute);
-
-
-
-        return GetBlockCoordinateFromCoordinateRelative(CoordinateRelative: CoordinateRelative);
-    }
-
-    public NodeWallNode GetNodeFromCoordinateAbsolute(Vector3 CoordinateAbsolute)
-    {
-        Vector3 CoordinateRelative = transform.InverseTransformPoint(CoordinateAbsolute);
-
-        return GetNodeFromCoordinateRelative(CoordinateRelative);
-    }
-
-    public NodeWallNode GetNodeFromCoordinateRelative(Vector3 CoordinateRelative)
-    {
-        int xPos = Mathf.RoundToInt((CoordinateRelative.x) / buildingController.BlockSize);
-        int zPos = Mathf.RoundToInt((CoordinateRelative.z) / buildingController.BlockSize);
-
-        /*
-        if (xPos > buildingController.GridSize.x || xPos < 0) return null;
-        if (zPos > buildingController.GridSize.y || zPos < 0) return null;
-        */
-
-        return  CurrentNodeWallSystem.NodeFromCoordinate(new Vector2Int(xPos, zPos));
-    }
-
-    public Vector3 GetLocalNodePositionFromNodeIndex(Vector2Int nodeIndex)
-    {
-        Vector3 returnValue = new Vector3(nodeIndex.x, 0, nodeIndex.y) * LinkedBuildingController.BlockSize;
-        //Vector3 returnValue = new Vector3(-0.5f + blockIndex.x, 0, -0.5f + blockIndex.y) * LinkedBuildingController.BlockSize;
-
-        return returnValue;
-    }
-
-    public Vector3 NodePositionFromBlockIndex(Vector2Int blockIndex)
-    {
-        Vector3 returnValue = new Vector3(blockIndex.x, 0, blockIndex.y) * LinkedBuildingController.BlockSize;
-
-        return returnValue;
-    }
-
-    public Vector3 NodePositionFromBlockIndex(Vector2Int blockIndex, GridOrientation orientation)
-    {
-        switch (orientation.QuarterOrientation)
+        public void AddOnFloorObject(OnFloorObject newObject)
         {
-            case GridOrientation.GridQuarterOrientations.XPosZPos:
-                return new Vector3(blockIndex.x, 0, blockIndex.y) * LinkedBuildingController.BlockSize;
-
-            case GridOrientation.GridQuarterOrientations.XPosZNeg:
-                return new Vector3(blockIndex.x, 0, 1f + blockIndex.y) * LinkedBuildingController.BlockSize;
-
-            case GridOrientation.GridQuarterOrientations.XNegZNeg:
-                return new Vector3(1f + blockIndex.x, 0, 1f + blockIndex.y) * LinkedBuildingController.BlockSize;
-
-            case GridOrientation.GridQuarterOrientations.XNegZPos:
-                return new Vector3(1f + blockIndex.x, 0, blockIndex.y) * LinkedBuildingController.BlockSize;
-
-            default:
-                Debug.LogWarning("Error: Orientation not defined");
-                return new Vector3(1f + blockIndex.x, 0, 1f + blockIndex.y) * LinkedBuildingController.BlockSize;
+            onFloorObjectsParam.AddObject(newObject);
         }
-    }
-
-    public Vector3 CenterPositionFromBlockIndex(Vector2Int blockIndex)
-    {
-        Vector3 returnValue = new Vector3(blockIndex.x + 0.5f, 0, blockIndex.y + 0.5f) * LinkedBuildingController.BlockSize;
-
-        return returnValue;
-    }
-
-    public Vector2Int GetBlockCoordinateFromCoordinateRelative(Vector3 CoordinateRelative)
-    {
-        int xPos = Mathf.RoundToInt(CoordinateRelative.x / buildingController.BlockSize - 0.5f);
-        int zPos = Mathf.RoundToInt(CoordinateRelative.z / buildingController.BlockSize - 0.5f);
-
-        return new Vector2Int(xPos, zPos);
-    }
-    
-    public Vector2Int GetNodeCoordinateFromPositionRelative(Vector3 PositionRelative)
-    {
-        int xPos = Mathf.RoundToInt(PositionRelative.x / BlockSize);
-        int zPos = Mathf.RoundToInt(PositionRelative.z / BlockSize);
-
-        return new Vector2Int(xPos, zPos);
-    }
-
-    public VirtualBlock GetBlockFromCoordinateRelative(Vector3 CoordinateRelative)
-    {
-        int xPos = Mathf.RoundToInt(CoordinateRelative.x / buildingController.BlockSize - 0.5f);
-        int zPos = Mathf.RoundToInt(CoordinateRelative.z / buildingController.BlockSize - 0.5f);
-
-        /*
-        if (xPos > buildingController.GridSize.x || xPos < 0) return null;
-        if (zPos > buildingController.GridSize.y || zPos < 0) return null;
-        */
-
-        return BlockAtPosition(xPos: xPos, zPos: zPos);
-    }
-
-    public void AddOnFloorObject(OnFloorObject newObject)
-    {
-        onFloorObjectsParam.AddObject(newObject);
     }
 }

@@ -1,153 +1,157 @@
+using iffnsStuff.iffnsBaseSystemForUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TableGrid : OnFloorObject
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    public const string constIdentifierString = "Table Grid";
-    public override string IdentifierString
+    public class TableGrid : OnFloorObject
     {
-        get
+        public const string constIdentifierString = "Table Grid";
+        public override string IdentifierString
         {
-            return constIdentifierString;
+            get
+            {
+                return constIdentifierString;
+            }
         }
-    }
 
-    //Unity assignments
-    [SerializeField] TableBase CurrentTableBase;
+        //Unity assignments
+        [SerializeField] TableBase CurrentTableBase;
 
-    //Build parameters
-    MailboxLineVector2Int BottomLeftPositionParam;
-    MailboxLineVector2Int TopRightPositionParam;
+        //Build parameters
+        MailboxLineVector2Int BottomLeftPositionParam;
+        MailboxLineVector2Int TopRightPositionParam;
 
-    BlockGridRectangleOrganizer ModificationNodeOrganizer;
+        BlockGridRectangleOrganizer ModificationNodeOrganizer;
 
-    public override ModificationOrganizer Organizer
-    {
-        get
+        public override ModificationOrganizer Organizer
         {
-            return ModificationNodeOrganizer;
+            get
+            {
+                return ModificationNodeOrganizer;
+            }
         }
-    }
 
-    public Vector2Int BottomLeftPosition
-    {
-        get
+        public Vector2Int BottomLeftPosition
         {
-            return BottomLeftPositionParam.Val;
+            get
+            {
+                return BottomLeftPositionParam.Val;
+            }
+            set
+            {
+                BottomLeftPositionParam.Val = value;
+                ApplyBuildParameters();
+            }
         }
-        set
+
+        public Vector2Int TopRightPosition
         {
-            BottomLeftPositionParam.Val = value;
-            ApplyBuildParameters();
+            get
+            {
+                return TopRightPositionParam.Val;
+            }
+            set
+            {
+                TopRightPositionParam.Val = value;
+                ApplyBuildParameters();
+            }
         }
-    }
 
-    public Vector2Int TopRightPosition
-    {
-        get
+        public override void Setup(IBaseObject linkedFloor)
         {
-            return TopRightPositionParam.Val;
+            base.Setup(linkedFloor);
+
+            IsStructural = false;
+
+            BottomLeftPositionParam = new MailboxLineVector2Int(name: "Bottom Left Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
+            TopRightPositionParam = new MailboxLineVector2Int(name: "Top Right Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
+
+            BlockGridPositionModificationNode firstNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
+            firstNode.Setup(linkedObject: this, value: BottomLeftPositionParam);
+            FirstPositionNode = firstNode;
+
+            BlockGridPositionModificationNode secondNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
+            secondNode.Setup(linkedObject: this, value: TopRightPositionParam, relativeReferenceHolder: BottomLeftPositionParam);
+            SecondPositionNode = secondNode;
+
+            ModificationNodeOrganizer = new BlockGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
+
+            SetupEditButtons();
         }
-        set
+
+        public void CompleteSetupWithBuildParameters(FloorController linkedFloor, Vector2Int bottomLeftPosition, Vector2Int topRightPosition)
         {
-            TopRightPositionParam.Val = value;
-            ApplyBuildParameters();
+            Setup(linkedFloor);
+
+            BottomLeftPositionParam.Val = bottomLeftPosition;
+            TopRightPositionParam.Val = topRightPosition;
         }
-    }
 
-    public override void Setup(IBaseObject linkedFloor)
-    {
-        base.Setup(linkedFloor);
+        public override void ResetObject()
+        {
+            baseReset();
 
-        IsStructural = false;
+            ResetEditButtons();
+        }
 
-        BottomLeftPositionParam = new MailboxLineVector2Int(name: "Bottom Left Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
-        TopRightPositionParam = new MailboxLineVector2Int(name: "Top Right Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
+        public override void InternalUpdate()
+        {
+            NonOrderedInternalUpdate();
+        }
 
-        BlockGridPositionModificationNode firstNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
-        firstNode.Setup(linkedObject: this, value: BottomLeftPositionParam);
-        FirstPositionNode = firstNode;
+        public override void PlaytimeUpdate()
+        {
+            NonOrderedPlaytimeUpdate();
+        }
 
-        BlockGridPositionModificationNode secondNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
-        secondNode.Setup(linkedObject: this, value: TopRightPositionParam, relativeReferenceHolder: BottomLeftPositionParam);
-        SecondPositionNode = secondNode;
+        public override void ApplyBuildParameters()
+        {
+            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
+            CurrentTableBase.ApplyBuildParameters(ModificationNodeOrganizer.ObjectOrientationSize);
+        }
 
-        ModificationNodeOrganizer = new BlockGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
+        void SetupEditButtons()
+        {
+            AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Convert to float", delegate { ConvertToFloat(); }));
+            AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Flip Diagonally", delegate { ModificationNodeOrganizer.FlipDiagonally(); }));
+            AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Flip Vertical", delegate { ModificationNodeOrganizer.FlipVertical(); }));
+            AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Flip Horizontal", delegate { ModificationNodeOrganizer.FlipHorizontal(); }));
+            AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Rotate Counter-Clockwise", delegate { ModificationNodeOrganizer.RotateCounterClockwise(); }));
+            AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Rotate Clockwise", delegate { ModificationNodeOrganizer.RotateClockwise(); }));
+        }
 
-        SetupEditButtons();
-    }
+        /*
+        void RotateClockwise()
+        {
+            ModificationNodeOrganizer.RotateClockwise();
+        }
 
-    public void CompleteSetupWithBuildParameters(FloorController linkedFloor, Vector2Int bottomLeftPosition, Vector2Int topRightPosition)
-    {
-        Setup(linkedFloor);
+        void RotateCounterClockwise()
+        {
+            ModificationNodeOrganizer.RotateCounterClockwise();
+        }
 
-        BottomLeftPositionParam.Val = bottomLeftPosition;
-        TopRightPositionParam.Val = topRightPosition;
-    }
+        void FlipHorizontal()
+        {
+            ModificationNodeOrganizer.FlipHorizontal();
+        }
 
-    public override void ResetObject()
-    {
-        baseReset();
+        void FlipVertical()
+        {
+            ModificationNodeOrganizer.FlipVertical();
+        }
+        */
 
-        ResetEditButtons();
-    }
+        public override void MoveOnGrid(Vector2Int offset)
+        {
+            ModificationNodeOrganizer.MoveOnGrid(offset: offset);
+        }
 
-    public override void InternalUpdate()
-    {
-        NonOrderedInternalUpdate();
-    }
-
-    public override void PlaytimeUpdate()
-    {
-        NonOrderedPlaytimeUpdate();
-    }
-
-    public override void ApplyBuildParameters()
-    {
-        ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
-        CurrentTableBase.ApplyBuildParameters(ModificationNodeOrganizer.ObjectOrientationSize);
-    }
-
-    void SetupEditButtons()
-    {
-        AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Convert to float", delegate { ConvertToFloat(); }));
-        AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Flip Diagonally", delegate { ModificationNodeOrganizer.FlipDiagonally(); }));
-        AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Flip Vertical", delegate { ModificationNodeOrganizer.FlipVertical(); }));
-        AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Flip Horizontal", delegate { ModificationNodeOrganizer.FlipHorizontal(); }));
-        AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Rotate Counter-Clockwise", delegate { ModificationNodeOrganizer.RotateCounterClockwise(); }));
-        AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Rotate Clockwise", delegate { ModificationNodeOrganizer.RotateClockwise(); }));
-    }
-
-    /*
-    void RotateClockwise()
-    {
-        ModificationNodeOrganizer.RotateClockwise();
-    }
-
-    void RotateCounterClockwise()
-    {
-        ModificationNodeOrganizer.RotateCounterClockwise();
-    }
-
-    void FlipHorizontal()
-    {
-        ModificationNodeOrganizer.FlipHorizontal();
-    }
-
-    void FlipVertical()
-    {
-        ModificationNodeOrganizer.FlipVertical();
-    }
-    */
-
-    public override void MoveOnGrid(Vector2Int offset)
-    {
-        ModificationNodeOrganizer.MoveOnGrid(offset: offset);
-    }
-
-    void ConvertToFloat()
-    {
-        //ToDo
+        void ConvertToFloat()
+        {
+            //ToDo
+        }
     }
 }

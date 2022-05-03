@@ -2,96 +2,99 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridOrientation
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    GridForwardOrientations currentForwardOrientation;
+    public class GridOrientation
+    {
+        GridForwardOrientations currentForwardOrientation;
 
-    public enum GridForwardOrientations
-    {
-        ZPositive,
-        XPositive,
-        ZNegative,
-        XNegative
-    }
-    public enum GridQuarterOrientations
-    {
-        XPosZPos,
-        XPosZNeg,
-        XNegZNeg,
-        XNegZPos,
-    }
-
-    public GridOrientation(GridForwardOrientations forwardOrientation)
-    {
-        this.ForwardOrientation = forwardOrientation;
-    }
-
-    public GridOrientation(GridQuarterOrientations quarterOrientation)
-    {
-        this.QuarterOrientation = quarterOrientation;
-    }
-
-    public GridForwardOrientations ForwardOrientation
-    {
-        get
+        public enum GridForwardOrientations
         {
-            return currentForwardOrientation;
+            ZPositive,
+            XPositive,
+            ZNegative,
+            XNegative
         }
-        set
+        public enum GridQuarterOrientations
         {
-            currentForwardOrientation = value;
+            XPosZPos,
+            XPosZNeg,
+            XNegZNeg,
+            XNegZPos,
         }
-    }
 
-    public GridQuarterOrientations QuarterOrientation
-    {
-        get
+        public GridOrientation(GridForwardOrientations forwardOrientation)
         {
-            switch (currentForwardOrientation)
+            ForwardOrientation = forwardOrientation;
+        }
+
+        public GridOrientation(GridQuarterOrientations quarterOrientation)
+        {
+            QuarterOrientation = quarterOrientation;
+        }
+
+        public GridForwardOrientations ForwardOrientation
+        {
+            get
             {
-                case GridForwardOrientations.XPositive:
-                    return GridQuarterOrientations.XPosZNeg;
-
-                case GridForwardOrientations.XNegative:
-                    return GridQuarterOrientations.XNegZPos;
-
-                case GridForwardOrientations.ZPositive:
-                    return GridQuarterOrientations.XPosZPos;
-
-                case GridForwardOrientations.ZNegative:
-                    return GridQuarterOrientations.XNegZNeg;
-
-                default:
-                    Debug.LogWarning("Error: Orientation not defined");
-                    return GridQuarterOrientations.XPosZPos;
+                return currentForwardOrientation;
+            }
+            set
+            {
+                currentForwardOrientation = value;
             }
         }
-        set
+
+        public GridQuarterOrientations QuarterOrientation
         {
-            switch (value)
+            get
             {
-                case GridQuarterOrientations.XPosZPos:
-                    currentForwardOrientation = GridForwardOrientations.ZPositive;
-                    break;
+                switch (currentForwardOrientation)
+                {
+                    case GridForwardOrientations.XPositive:
+                        return GridQuarterOrientations.XPosZNeg;
 
-                case GridQuarterOrientations.XPosZNeg:
-                    currentForwardOrientation = GridForwardOrientations.XPositive;
-                    break;
+                    case GridForwardOrientations.XNegative:
+                        return GridQuarterOrientations.XNegZPos;
 
-                case GridQuarterOrientations.XNegZNeg:
-                    currentForwardOrientation = GridForwardOrientations.ZNegative;
-                    break;
+                    case GridForwardOrientations.ZPositive:
+                        return GridQuarterOrientations.XPosZPos;
 
-                case GridQuarterOrientations.XNegZPos:
-                    currentForwardOrientation = GridForwardOrientations.XNegative;
-                    break;
+                    case GridForwardOrientations.ZNegative:
+                        return GridQuarterOrientations.XNegZNeg;
 
-                default:
-                    Debug.LogWarning("Error: Orientation not defined");
-                    currentForwardOrientation = GridForwardOrientations.ZPositive;
-                    break;
+                    default:
+                        Debug.LogWarning("Error: Orientation not defined");
+                        return GridQuarterOrientations.XPosZPos;
+                }
+            }
+            set
+            {
+                switch (value)
+                {
+                    case GridQuarterOrientations.XPosZPos:
+                        currentForwardOrientation = GridForwardOrientations.ZPositive;
+                        break;
+
+                    case GridQuarterOrientations.XPosZNeg:
+                        currentForwardOrientation = GridForwardOrientations.XPositive;
+                        break;
+
+                    case GridQuarterOrientations.XNegZNeg:
+                        currentForwardOrientation = GridForwardOrientations.ZNegative;
+                        break;
+
+                    case GridQuarterOrientations.XNegZPos:
+                        currentForwardOrientation = GridForwardOrientations.XNegative;
+                        break;
+
+                    default:
+                        Debug.LogWarning("Error: Orientation not defined");
+                        currentForwardOrientation = GridForwardOrientations.ZPositive;
+                        break;
+                }
             }
         }
-    }
 
+    }
 }

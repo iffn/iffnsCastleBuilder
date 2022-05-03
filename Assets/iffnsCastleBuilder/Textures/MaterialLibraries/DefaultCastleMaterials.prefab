@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1425885359359728575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7716393093518772393}
+  - component: {fileID: 8897890073823971282}
+  m_Layer: 0
+  m_Name: DefaultCastleMaterials
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7716393093518772393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425885359359728575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.0226843, y: -1.6379284, z: 0.3996389}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8897890073823971282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425885359359728575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64215219c1f28d418a4546c9c23fe33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InvisibleMaterial: {fileID: 2100000, guid: aafd57a793bda794f9526ffc07925ee8, type: 2}
+  DefaultPlaster: {fileID: 2100000, guid: 75524f22b6358f549ae4f84a325a8de9, type: 2}
+  DefaultStoneBricks: {fileID: 2100000, guid: 86cf02d93994bcd4ab256192236030d7, type: 2}
+  DefaultWoodPlanks: {fileID: 2100000, guid: 925bd39cb6a2270409d68d239b547a1d, type: 2}
+  DefaultWoodSolid: {fileID: 2100000, guid: 48500509d915f184791c374d7724f3e1, type: 2}
+  DefaultCeiling: {fileID: 2100000, guid: 6a05b943ec5b69449bad3e2640030f6e, type: 2}
+  DefaultRoof: {fileID: 2100000, guid: e856bbc64a4c82c448999eb9a2713c7c, type: 2}
+  DefaultGlass: {fileID: 2100000, guid: cf608947d117b0f409bb7e56a83493d2, type: 2}

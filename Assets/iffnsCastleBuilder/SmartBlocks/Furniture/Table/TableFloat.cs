@@ -1,142 +1,146 @@
+using iffnsStuff.iffnsBaseSystemForUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TableFloat : OnFloorObject
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    public const string constIdentifierString = "Table Float";
-    public override string IdentifierString
+    public class TableFloat : OnFloorObject
     {
-        get
+        public const string constIdentifierString = "Table Float";
+        public override string IdentifierString
         {
-            return constIdentifierString;
+            get
+            {
+                return constIdentifierString;
+            }
         }
-    }
 
-    //Unity references
+        //Unity references
 
-    //Build parameters
-    MailboxLineVector2 BottomLeftPositionParam;
-    MailboxLineVector2 RelativeSizeParam;
-    MailboxLineRanged RotationParam;
+        //Build parameters
+        MailboxLineVector2 BottomLeftPositionParam;
+        MailboxLineVector2 RelativeSizeParam;
+        MailboxLineRanged RotationParam;
 
-    public override ModificationOrganizer Organizer
-    {
-        get
+        public override ModificationOrganizer Organizer
         {
-            return null;
+            get
+            {
+                return null;
+            }
         }
-    }
 
-    public Vector2 BottomLeftPosition
-    {
-        get
+        public Vector2 BottomLeftPosition
         {
-            return BottomLeftPositionParam.Val;
+            get
+            {
+                return BottomLeftPositionParam.Val;
+            }
+            set
+            {
+                BottomLeftPositionParam.Val = value;
+                ApplyBuildParameters();
+            }
         }
-        set
+
+        public Vector2 RelativeSize
         {
-            BottomLeftPositionParam.Val = value;
-            ApplyBuildParameters();
+            get
+            {
+                return RelativeSizeParam.Val;
+            }
+            set
+            {
+                RelativeSizeParam.Val = value;
+                ApplyBuildParameters();
+            }
         }
-    }
 
-    public Vector2 RelativeSize
-    {
-        get
+        public float Rotation
         {
-            return RelativeSizeParam.Val;
+            get
+            {
+                return RotationParam.Val;
+            }
+            set
+            {
+                RotationParam.Val = value % 360;
+                ApplyBuildParameters();
+            }
         }
-        set
+
+        public override void Setup(IBaseObject linkedFloor)
         {
-            RelativeSizeParam.Val = value;
-            ApplyBuildParameters();
-        }
-    }
+            base.Setup(linkedFloor);
 
-    public float Rotation
-    {
-        get
+            IsStructural = false;
+
+            BottomLeftPositionParam = new MailboxLineVector2(name: "Bottom left position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
+            RelativeSizeParam = new MailboxLineVector2(name: "Relative size", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
+            RotationParam = new MailboxLineRanged(name: "Rotation", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 360, Min: 0, DefaultValue: 0);
+
+            SetupEditButtons();
+
+            /*
+            GridPositionModificationNode firstNode = ModificationNodeLibrary.NewGridPositionModificationNode;
+            firstNode.Setup(linkedObject: this, value: BottomLeftPositionParam);
+            FirstPositionNode = firstNode;
+
+            GridPositionModificationNode secondNode = ModificationNodeLibrary.NewGridPositionModificationNode;
+            secondNode.Setup(linkedObject: this, value: RelativeSize, relativeReferenceHolder: BottomLeftPositionParam);
+            SecondPositionNode = secondNode;
+            */
+
+            //ModificationNodeLibrary.NewGridModificationNode.Setup(linkedObject: this, value: CutoffRangeParam, relativeReferenceHolder: CenterPositionParam, parent: this, modType: GridModificationNode.ModificationType.SizeAdjuster);
+
+        }
+
+        public void CompleteSetupWithBuildParameters(FloorController linkedFloor, Vector2Int bottomLeftPosition, Vector2Int topRightPosition)
         {
-            return RotationParam.Val;
+            Setup(linkedFloor);
+
+            BottomLeftPositionParam.Val = bottomLeftPosition;
+            RelativeSizeParam.Val = topRightPosition;
         }
-        set
+
+        public override void ResetObject()
         {
-            RotationParam.Val = value % 360;
-            ApplyBuildParameters();
+            baseReset();
+
+            ResetEditButtons();
         }
-    }
 
-    public override void Setup(IBaseObject linkedFloor)
-    {
-        base.Setup(linkedFloor);
+        public override void InternalUpdate()
+        {
+            NonOrderedInternalUpdate();
+        }
 
-        IsStructural = false;
+        public override void PlaytimeUpdate()
+        {
+            NonOrderedPlaytimeUpdate();
+        }
 
-        BottomLeftPositionParam = new MailboxLineVector2(name: "Bottom left position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
-        RelativeSizeParam = new MailboxLineVector2(name: "Relative size", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
-        RotationParam = new MailboxLineRanged(name: "Rotation", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 360, Min: 0, DefaultValue: 0);
+        public override void ApplyBuildParameters()
+        {
+            transform.localPosition = BottomLeftPosition;
+            transform.localRotation = Quaternion.Euler(Vector3.up * Rotation);
+            transform.localScale = new Vector3(RelativeSize.x, transform.localScale.y, RelativeSize.y);
+        }
 
-        SetupEditButtons();
+        void SetupEditButtons()
+        {
+            AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Convert to grid", delegate { ConvertToGrid(); }));
+        }
 
-        /*
-        GridPositionModificationNode firstNode = ModificationNodeLibrary.NewGridPositionModificationNode;
-        firstNode.Setup(linkedObject: this, value: BottomLeftPositionParam);
-        FirstPositionNode = firstNode;
+        public override void MoveOnGrid(Vector2Int offset)
+        {
+            BottomLeftPosition += BlockSize * new Vector2(offset.x, offset.y);
+        }
 
-        GridPositionModificationNode secondNode = ModificationNodeLibrary.NewGridPositionModificationNode;
-        secondNode.Setup(linkedObject: this, value: RelativeSize, relativeReferenceHolder: BottomLeftPositionParam);
-        SecondPositionNode = secondNode;
-        */
-
-        //ModificationNodeLibrary.NewGridModificationNode.Setup(linkedObject: this, value: CutoffRangeParam, relativeReferenceHolder: CenterPositionParam, parent: this, modType: GridModificationNode.ModificationType.SizeAdjuster);
-
-    }
-
-    public void CompleteSetupWithBuildParameters(FloorController linkedFloor, Vector2Int bottomLeftPosition, Vector2Int topRightPosition)
-    {
-        Setup(linkedFloor);
-
-        BottomLeftPositionParam.Val = bottomLeftPosition;
-        RelativeSizeParam.Val = topRightPosition;
-    }
-
-    public override void ResetObject()
-    {
-        baseReset();
-
-        ResetEditButtons();
-    }
-
-    public override void InternalUpdate()
-    {
-        NonOrderedInternalUpdate();
-    }
-
-    public override void PlaytimeUpdate()
-    {
-        NonOrderedPlaytimeUpdate();
-    }
-
-    public override void ApplyBuildParameters()
-    {
-        transform.localPosition = BottomLeftPosition;
-        transform.localRotation = Quaternion.Euler(Vector3.up * Rotation);
-        transform.localScale = new Vector3(RelativeSize.x, transform.localScale.y, RelativeSize.y);
-    }
-
-    void SetupEditButtons()
-    {
-        AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Convert to grid", delegate { ConvertToGrid(); }));
-    }
-
-    public override void MoveOnGrid(Vector2Int offset)
-    {
-        BottomLeftPosition += BlockSize * new Vector2(offset.x, offset.y);
-    }
-
-    void ConvertToGrid()
-    {
-        //ToDo
+        void ConvertToGrid()
+        {
+            //ToDo
+        }
     }
 }

@@ -3,28 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToggleLine : ControlLine
+namespace iffnsStuff.iffnsCastleBuilder
 {
-
-
-
-    // Use this for initialization
-    protected override void Start()
+    public class ToggleLine : ControlLine
     {
-        base.Start();
-    }
+        // Use this for initialization
+        protected override void Start()
+        {
+            base.Start();
+        }
 
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
+        // Update is called once per frame
+        protected override void Update()
+        {
+            base.Update();
+        }
     }
-
-    /*
-    public override void SetUp(string text)
-    {
-        base.SetUp(text);
-
-    }
-    */
 }

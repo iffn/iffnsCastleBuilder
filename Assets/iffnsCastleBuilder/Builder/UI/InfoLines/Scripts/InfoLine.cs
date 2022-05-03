@@ -3,39 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InfoLine : ControlLine
+namespace iffnsStuff.iffnsCastleBuilder
 {
-    public Text ValueText;
-
-    public string Value
+    public class InfoLine : ControlLine
     {
-        get
+        public Text ValueText;
+
+        public string Value
         {
-            return ValueText.text;
+            get
+            {
+                return ValueText.text;
+            }
+
+            set
+            {
+                ValueText.text = value;
+            }
         }
 
-        set
+        // Use this for initialization
+        protected override void Start()
         {
-            ValueText.text = value;
+            base.Start();
         }
-    }
 
+        // Update is called once per frame
+        protected override void Update()
+        {
+            base.Update();
+        }
 
-    // Use this for initialization
-    protected override void Start()
-    {
-        base.Start();
-    }
+        new public void SetUp(string text)
+        {
+            base.SetUp(text);
 
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
-
-    new public void SetUp(string text)
-    {
-        base.SetUp(text);
-
+        }
     }
 }
