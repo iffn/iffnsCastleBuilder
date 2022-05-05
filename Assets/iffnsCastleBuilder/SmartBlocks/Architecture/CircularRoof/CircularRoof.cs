@@ -337,26 +337,42 @@ namespace iffnsStuff.iffnsCastleBuilder
             BottomEdge.FlipTriangles();
 
             //Side edges
+
+
+
             if (Angle != Angles.Deg360)
             {
                 RightEdge = MeshGenerator.MeshesFromPoints.MeshFrom4Points(
                     Vector3.up * Height,
                     Vector3.up * (Height - Thickness * ratio),
-                    Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio - Thickness),
-                    Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio)
+                    Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.y + HeightOvershoot / ratio - Thickness),
+                    Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.y + HeightOvershoot / ratio)
                     );
-
-                LeftEdge = RightEdge.CloneFlipped;
 
                 switch (Angle)
                 {
                     case Angles.Deg90:
+                        LeftEdge = MeshGenerator.MeshesFromPoints.MeshFrom4Points(
+                            Vector3.up * Height,
+                            Vector3.up * (Height - Thickness * ratio),
+                            Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio - Thickness),
+                            Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio)
+                            );
+                        LeftEdge.FlipTriangles();
                         LeftEdge.Rotate(Quaternion.Euler(Vector3.up * 90));
                         break;
                     case Angles.Deg180:
+                        LeftEdge = RightEdge.CloneFlipped;
                         LeftEdge.Rotate(Quaternion.Euler(Vector3.up * 180));
                         break;
                     case Angles.Deg270:
+                        LeftEdge = MeshGenerator.MeshesFromPoints.MeshFrom4Points(
+                            Vector3.up * Height,
+                            Vector3.up * (Height - Thickness * ratio),
+                            Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio - Thickness),
+                            Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio)
+                            );
+                        LeftEdge.FlipTriangles();
                         LeftEdge.Rotate(Quaternion.Euler(Vector3.up * 270));
                         break;
                     case Angles.Deg360:
@@ -364,7 +380,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                     default:
                         break;
                 }
-
             }
 
             FinishMeshes();
