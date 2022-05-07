@@ -220,7 +220,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                     if (currentBlock.BlockType == VirtualBlock.BlockTypes.Wall)
                     {
-                        floor.Move(Vector3.up * LinkedFloor.CompleteFloorHeight);
+                        floor.Move(Vector3.up * LinkedFloor.WallHeightWithScaler);
                     }
                     else
                     {
@@ -337,11 +337,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                         heightOffset = 0;
                         break;
                     case VirtualBlock.ShapeInfo.WallTypes.WallFull:
-                        height = LinkedFloor.CompleteFloorHeight;
+                        height = LinkedFloor.WallHeightWithScaler;
                         heightOffset = 0;
                         break;
                     case VirtualBlock.ShapeInfo.WallTypes.WallCutoff:
-                        height = LinkedFloor.WallBetweenHeight;
+                        height = LinkedFloor.WallBetweenHeightWithScaler;
                         heightOffset = LinkedFloor.BottomFloorHeight;
                         break;
                     default:
