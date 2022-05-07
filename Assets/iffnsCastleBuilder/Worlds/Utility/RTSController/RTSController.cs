@@ -222,69 +222,75 @@ namespace iffnsStuff.iffnsUnityResources
                 }
             }
 
-            if (Input.GetAxis("Mouse ScrollWheel") != 0)
+            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) //Only scroll zoom if not over UI
             {
-                float ScrollInput = Input.GetAxis("Mouse ScrollWheel");
-
-                float maxScrollMultiplier = 1.15f;
-                float perspectiveScrollMultiplier = 1f - Input.GetAxis("Mouse ScrollWheel") * scrollSpeed * deltaTime;
-                if (perspectiveScrollMultiplier > maxScrollMultiplier) perspectiveScrollMultiplier = maxScrollMultiplier;
-                else if (perspectiveScrollMultiplier < 1f / maxScrollMultiplier) perspectiveScrollMultiplier = 1f / maxScrollMultiplier;
-
-                currentCameraOffset *= perspectiveScrollMultiplier;
-
-                switch (cameraPerspective)
+                if (Input.GetAxis("Mouse ScrollWheel") != 0)
                 {
-                    case CameraPerspectiveType.perpesctive:
-                        CameraMover.transform.localPosition = new Vector3(0, 0, currentCameraOffset);
-                        break;
-                    case CameraPerspectiveType.isometric:
-                        CameraMover.transform.localPosition = new Vector3(0, 0, isoCameraOffset);
-                        break;
-                    case CameraPerspectiveType.flying:
-                        CameraMover.transform.localPosition = new Vector3(0, 0, currentCameraOffset);
-                        break;
-                    default:
-                        break;
-                }
+                    //Ignore if over UI
 
+                    float ScrollInput = Input.GetAxis("Mouse ScrollWheel");
 
-                //CameraMover.transform.Translate(Vector3.forward * Input.GetAxis("Mouse ScrollWheel") * scrollIncrement * deltaTimer);
+                    float maxScrollMultiplier = 1.15f;
+                    float perspectiveScrollMultiplier = 1f - Input.GetAxis("Mouse ScrollWheel") * scrollSpeed * deltaTime;
+                    if (perspectiveScrollMultiplier > maxScrollMultiplier) perspectiveScrollMultiplier = maxScrollMultiplier;
+                    else if (perspectiveScrollMultiplier < 1f / maxScrollMultiplier) perspectiveScrollMultiplier = 1f / maxScrollMultiplier;
 
-                if (cameraPerspective == CameraPerspectiveType.isometric)
-                {
-                    mainCamera.orthographicSize = mainCamera.orthographicSize * perspectiveScrollMultiplier;
-                }
+                    currentCameraOffset *= perspectiveScrollMultiplier;
 
-                /*
-                public void ControlCamera()
-                {
-                    float sizeChange = -Input.GetAxis("Mouse ScrollWheel") * Camera.main.orthographicSize * cameraZoomSpeed;
-
-                    Camera.main.orthographicSize += sizeChange;
-
-                    //Calculate zoom movement to keep the mouse position on the same spot
-                    transform.Translate(new Vector3(
-                        -sizeChange * 2 * (Input.mousePosition.x / Screen.width - 0.5f) * Screen.width / Screen.height,    //x
-                        0,                                                                  //y
-                        -sizeChange * 2 * (Input.mousePosition.y / Screen.height - 0.5f)    //z
-                        ));
-
-                    //Middle mouse button movement
-                    if (Input.GetMouseButton(2))
+                    switch (cameraPerspective)
                     {
-
-                        transform.Translate(new Vector3(
-                        -Input.GetAxis("Mouse X") * Camera.main.orthographicSize * 0.05f * Screen.width / Screen.height,   //x
-                        0,                                                                  //y
-                        -Input.GetAxis("Mouse Y") * Camera.main.orthographicSize * 0.05f    //z
-                        ));
+                        case CameraPerspectiveType.perpesctive:
+                            CameraMover.transform.localPosition = new Vector3(0, 0, currentCameraOffset);
+                            break;
+                        case CameraPerspectiveType.isometric:
+                            CameraMover.transform.localPosition = new Vector3(0, 0, isoCameraOffset);
+                            break;
+                        case CameraPerspectiveType.flying:
+                            CameraMover.transform.localPosition = new Vector3(0, 0, currentCameraOffset);
+                            break;
+                        default:
+                            break;
                     }
 
-                    //float test = (float)Screen.width / (float)Screen.height;
+
+                    //CameraMover.transform.Translate(Vector3.forward * Input.GetAxis("Mouse ScrollWheel") * scrollIncrement * deltaTimer);
+
+                    if (cameraPerspective == CameraPerspectiveType.isometric)
+                    {
+                        mainCamera.orthographicSize = mainCamera.orthographicSize * perspectiveScrollMultiplier;
+                    }
+
+                    /*
+                    public void ControlCamera()
+                    {
+                        float sizeChange = -Input.GetAxis("Mouse ScrollWheel") * Camera.main.orthographicSize * cameraZoomSpeed;
+
+                        Camera.main.orthographicSize += sizeChange;
+
+                        //Calculate zoom movement to keep the mouse position on the same spot
+                        transform.Translate(new Vector3(
+                            -sizeChange * 2 * (Input.mousePosition.x / Screen.width - 0.5f) * Screen.width / Screen.height,    //x
+                            0,                                                                  //y
+                            -sizeChange * 2 * (Input.mousePosition.y / Screen.height - 0.5f)    //z
+                            ));
+
+                        //Middle mouse button movement
+                        if (Input.GetMouseButton(2))
+                        {
+
+                            transform.Translate(new Vector3(
+                            -Input.GetAxis("Mouse X") * Camera.main.orthographicSize * 0.05f * Screen.width / Screen.height,   //x
+                            0,                                                                  //y
+                            -Input.GetAxis("Mouse Y") * Camera.main.orthographicSize * 0.05f    //z
+                            ));
+                        }
+
+                        //float test = (float)Screen.width / (float)Screen.height;
+                    }
+                    */
                 }
-                */
             }
+            
 
             if (Input.GetKeyDown(KeyCode.Home))
             {
