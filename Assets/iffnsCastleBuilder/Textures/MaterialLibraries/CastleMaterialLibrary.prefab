@@ -47,3 +47,4 @@ MonoBehaviour:
   LibraryExtenders:
   - {fileID: 1716090402980055898, guid: 921f63a0b98565c4f83143e74139bb36, type: 3}
   - {fileID: 8897890073823971282, guid: 45a36e11cfa65a84ab83738992501029, type: 3}
+  - {fileID: 1716090402980055898, guid: b7346540cba67fb4fa22f71bf0d95281, type: 3}
