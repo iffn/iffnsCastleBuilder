@@ -737,7 +737,7 @@ public static class MeshGenerator
 
                 if(tanDirection.magnitude != 0)
                 {
-                    sections[sections.Count - 1].Rotate(Quaternion.LookRotation(forward: tanDirection /*, upwards: normDirection*/));
+                    sections[sections.Count - 1].Rotate(Quaternion.LookRotation(forward: tanDirection));
                 }
                 else
                 {
@@ -748,7 +748,7 @@ public static class MeshGenerator
             }
 
             sections.Add(new VerticesHolder(sectionLine));
-            sections[sections.Count - 1].Rotate(Quaternion.LookRotation(guideLine.Vertices[guideLine.Vertices.Count - 1] - guideLine.Vertices[guideLine.Vertices.Count - 2]/*, Vector3.up*/)); //ToDo: Improve if closed
+            sections[sections.Count - 1].Rotate(Quaternion.LookRotation(guideLine.Vertices[guideLine.Vertices.Count - 1] - guideLine.Vertices[guideLine.Vertices.Count - 2])); //ToDo: Improve if closed
             sections[sections.Count - 1].Move(guideLine.Vertices[guideLine.Vertices.Count - 1]);
 
             TriangleMeshInfo returnValue;

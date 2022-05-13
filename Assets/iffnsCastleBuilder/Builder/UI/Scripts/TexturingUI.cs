@@ -9,16 +9,20 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class TexturingUI : MonoBehaviour
     {
-        [SerializeField] PainterTool LinkedPainterTool;
-        [SerializeField] Shader UIShader = null;
-        [SerializeField] MaterialButton MaterialButtonTemplate = null;
+        [SerializeField] PainterTool linkedPainterTool;
+        [SerializeField] MaterialLibraryUI MaterialLibraryUITemplate = null;
         [SerializeField] VectorButton PainterButton = null;
         [SerializeField] VectorButton PaintSqureButton = null;
         [SerializeField] VectorButton PipetteButton = null;
-        [SerializeField] GameObject MaterialButtonHolder = null;
-        [SerializeField] MaterialList ExcludedMaterialList;
+        [SerializeField] GameObject MaterialLibraryHolder = null;
 
-        List<MaterialButton> MaterialButtons = new List<MaterialButton>();
+        List<MaterialLibraryUI> libraryUIs = new List<MaterialLibraryUI>();
+
+        public PainterTool LinkedPainterTool
+        {
+            get { return linkedPainterTool; }
+            set { linkedPainterTool = value; }
+        }
 
         void UnhighlightAllBlockTypeButtons()
         {
@@ -35,48 +39,44 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (ClickedButton == PainterButton)
             {
-                LinkedPainterTool.CurrentToolType = PainterTool.ToolType.Painter;
+                linkedPainterTool.CurrentToolType = PainterTool.ToolType.Painter;
             }
             else if (ClickedButton == PaintSqureButton)
             {
-                LinkedPainterTool.CurrentToolType = PainterTool.ToolType.PaintRectangle;
+                linkedPainterTool.CurrentToolType = PainterTool.ToolType.PaintRectangle;
             }
             else if (ClickedButton == PipetteButton)
             {
-                LinkedPainterTool.CurrentToolType = PainterTool.ToolType.Pipette;
+                linkedPainterTool.CurrentToolType = PainterTool.ToolType.Pipette;
             }
         }
 
-        public void SetMaterial(MaterialButton clickedButton)
-        {
-            LinkedPainterTool.currentMaterial = clickedButton.MaterialReference;
-
-            foreach (MaterialButton button in MaterialButtons)
-            {
-                button.Highlight = false;
-            }
-
-            clickedButton.Highlight = true;
-        }
 
         public void SetMaterial(MaterialManager manager)
         {
-            foreach (MaterialButton button in MaterialButtons)
+            bool found = false;
+
+            foreach (MaterialLibraryUI library in libraryUIs)
             {
-                if (button.MaterialReference == manager)
+                if (library.SetMaterialAndExpansion(manager))
                 {
-                    SetMaterial(button);
-                    break;
+                    found = true;
                 }
+            }
+
+            if (!found)
+            {
+                Debug.LogWarning("Error: Could not find material " + manager.Identifier + "in UI libraries");
             }
         }
 
         public void Setup()
         {
             SetToolType(PainterButton);
+            
+            List<MaterialLibraryExtenderTemplate> libraries = MaterialLibrary.AllLibraryExtendersForUser;
 
-            List<MaterialManager> managers = MaterialLibrary.AllMaterialManagers;
-
+            /*
             for(int i = 0; i<managers.Count; i++)
             {
                 MaterialManager manager = managers[i];
@@ -87,26 +87,17 @@ namespace iffnsStuff.iffnsCastleBuilder
                     i--;
                 }
             }
+            */
 
-            foreach (MaterialManager manager in managers)
+            foreach (MaterialLibraryExtenderTemplate library in libraries)
             {
-                Material uiMaterial = new Material(manager.LinkedMaterial);
-                uiMaterial.shader = UIShader;
+                MaterialLibraryUI currentLibraryUI = Instantiate(original: MaterialLibraryUITemplate.gameObject, parent: MaterialLibraryHolder.transform).GetComponent<MaterialLibraryUI>();
+                libraryUIs.Add(currentLibraryUI);
 
-                MaterialButton newButton = Instantiate(original: MaterialButtonTemplate.gameObject, parent: MaterialButtonHolder.transform).GetComponent<MaterialButton>();
-
-                MaterialButtons.Add(newButton);
-
-                newButton.SetMaterialReference(previewMaterial: uiMaterial, materialReference: manager);
-
-                newButton.transform.GetComponent<Button>().onClick.AddListener(delegate { SetMaterial(newButton); });
+                currentLibraryUI.Setup(library: library, linkedTexturingUI: this);
             }
 
-            //Remove invisible material
-            Destroy(MaterialButtons[0].gameObject);
-            MaterialButtons.RemoveAt(0);
-
-            SetMaterial(MaterialButtons[0]);
+            libraryUIs[0].ExpandAndActivateFirstMaterial();
         }
     }
 }
