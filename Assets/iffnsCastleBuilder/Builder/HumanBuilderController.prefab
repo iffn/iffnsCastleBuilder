@@ -201,7 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754f482902d1693499ab81cf406a23b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoUpdate: 0
 --- !u!1 &216290243865196094
 GameObject:
   m_ObjectHideFlags: 0
@@ -9289,8 +9288,6 @@ MonoBehaviour:
   PaintSqureButton: {fileID: 3151462263384836405}
   PipetteButton: {fileID: 4363549865123011267}
   MaterialLibraryHolder: {fileID: 209135273030690864}
-  ExcludedMaterialList: {fileID: 1869511402056820048, guid: c4325fc81b9b0b34fb3abc606bdac2cb, type: 3}
-  LinkedLayoutGroup: {fileID: 343065662264119823}
 --- !u!1 &7077429176033692920
 GameObject:
   m_ObjectHideFlags: 0
@@ -17280,7 +17277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8562781629845412771, guid: c78808a8b7a90074491320a78ba43411, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8562781629845412771, guid: c78808a8b7a90074491320a78ba43411, type: 3}
       propertyPath: m_AnchorMin.x
@@ -17288,7 +17285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8562781629845412771, guid: c78808a8b7a90074491320a78ba43411, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8562781629845412771, guid: c78808a8b7a90074491320a78ba43411, type: 3}
       propertyPath: m_SizeDelta.x
@@ -17328,11 +17325,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8562781629845412771, guid: c78808a8b7a90074491320a78ba43411, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8562781629845412771, guid: c78808a8b7a90074491320a78ba43411, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -524.59094
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8562781629845412771, guid: c78808a8b7a90074491320a78ba43411, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
