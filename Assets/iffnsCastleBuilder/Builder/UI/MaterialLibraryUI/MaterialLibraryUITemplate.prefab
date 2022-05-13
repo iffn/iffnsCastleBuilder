@@ -162,8 +162,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2970168562979647944}
   - component: {fileID: 5881447773792993399}
-  - component: {fileID: 7203690304443064160}
   - component: {fileID: 7720376826157659875}
+  - component: {fileID: 2872717665625524318}
   m_Layer: 5
   m_Name: MaterialLibraryUITemplate
   m_TagString: Untagged
@@ -200,39 +200,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5235798791228123583}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &7203690304443064160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5235798791228123583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!114 &7720376826157659875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +224,19 @@ MonoBehaviour:
   ExpandIcon: {fileID: 640222202097024695}
   MaterialButtonTemplate: {fileID: 3835544882348055355, guid: 46022fc7ba11d3f418e86452745df064, type: 3}
   UIShader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!114 &2872717665625524318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235798791228123583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 754f482902d1693499ab81cf406a23b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ControllSize: 1
 --- !u!1 &7277948620637980284
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,7 +695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7362762101086217960, guid: ae707ac0023538d488f065da8abee0cd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7362762101086217960, guid: ae707ac0023538d488f065da8abee0cd, type: 3}
       propertyPath: m_AnchorMin.x
@@ -716,7 +703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7362762101086217960, guid: ae707ac0023538d488f065da8abee0cd, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7362762101086217960, guid: ae707ac0023538d488f065da8abee0cd, type: 3}
       propertyPath: m_SizeDelta.x

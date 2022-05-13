@@ -146,7 +146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8064230501274472098}
-  - component: {fileID: 7586619498423084110}
+  - component: {fileID: 9010966745852163594}
   - component: {fileID: 343065662264119823}
   m_Layer: 5
   m_Name: Libraries
@@ -175,7 +175,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 0}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &7586619498423084110
+--- !u!114 &9010966745852163594
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

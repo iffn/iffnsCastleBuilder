@@ -24,6 +24,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 RectTransform element = child.GetComponent<RectTransform>();
 
+                if (!child.gameObject.activeSelf) continue;
+
                 element.localPosition = new Vector3(0, -currentSize, 0);
                 //element.localPosition = new Vector3(element.position.x, -currentSize, element.position.z);
 
