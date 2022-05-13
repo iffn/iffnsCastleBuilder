@@ -14174,7 +14174,8 @@
 					"Other steps top material": "PolyHaven-plywood",
 					"Steps front material": "PolyHaven-beige_wall_001",
 					"Side material": "PolyHaven-beige_wall_001",
-					"Back material": "PolyHaven-beige_wall_001"
+					"Back material": "PolyHaven-beige_wall_001",
+					"Raise to floor": true
 				},
 				{
 					"Type": "Ladder",
@@ -14471,6 +14472,16 @@
 					"Main side material": "PolyHaven-beige_wall_001",
 					"Other side material": "PolyHaven-beige_wall_001",
 					"Roof type": "HalfAngledSquareRoof"
+				},
+				{
+					"Type": "Railing arc",
+					"Name": "",
+					"Center coordinate": [67, 7],
+					"Radii coordinate": [70, 4],
+					"Cylinder distance target [m]": 2,
+					"Top material": "PolyHaven-plywood",
+					"Bottom material": "PolyHaven-plywood",
+					"Post material": "PolyHaven-plywood"
 				}
 			]
 		}

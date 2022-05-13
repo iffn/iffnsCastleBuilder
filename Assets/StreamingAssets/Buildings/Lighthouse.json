@@ -11623,7 +11623,8 @@
 					"Other steps top material": "PolyHaven-plywood",
 					"Steps front material": "PolyHaven-beige_wall_001",
 					"Side material": "PolyHaven-beige_wall_001",
-					"Back material": "PolyHaven-beige_wall_001"
+					"Back material": "PolyHaven-beige_wall_001",
+					"Raise to floor": true
 				},
 				{
 					"Type": "Door",
@@ -18068,7 +18069,8 @@
 					"Other steps top material": "PolyHaven-plywood",
 					"Steps front material": "PolyHaven-beige_wall_001",
 					"Side material": "PolyHaven-beige_wall_001",
-					"Back material": "PolyHaven-beige_wall_001"
+					"Back material": "PolyHaven-beige_wall_001",
+					"Raise to floor": true
 				},
 				{
 					"Type": "Vertical arc",
@@ -24391,7 +24393,8 @@
 					"Other steps top material": "PolyHaven-plywood",
 					"Steps front material": "PolyHaven-beige_wall_001",
 					"Side material": "PolyHaven-beige_wall_001",
-					"Back material": "PolyHaven-beige_wall_001"
+					"Back material": "PolyHaven-beige_wall_001",
+					"Raise to floor": true
 				},
 				{
 					"Type": "Counter",
@@ -29497,6 +29500,7 @@
 					"First Block Position": [20, 28],
 					"Second Block Position": [1, 0],
 					"Roof height [m]": 2,
+					"Height thickness": 0.1,
 					"Roof overshoot [m]": 0,
 					"Raise to floor": false,
 					"Outside material": "PolyHaven-roof_09",
@@ -43939,6 +43943,46 @@
 					"Floor material": "PolyHaven-wood_planks_dirt",
 					"Block type": "Floor",
 					"Edge type": "InnerGrid"
+				},
+				{
+					"Type": "Railing arc",
+					"Name": "",
+					"Center coordinate": [13, 35],
+					"Radii coordinate": [7, 41],
+					"Cylinder distance target [m]": 2,
+					"Top material": "PolyHaven-plywood",
+					"Bottom material": "PolyHaven-plywood",
+					"Post material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "Railing arc",
+					"Name": "",
+					"Center coordinate": [13, 35],
+					"Radii coordinate": [19, 41],
+					"Cylinder distance target [m]": 2,
+					"Top material": "PolyHaven-plywood",
+					"Bottom material": "PolyHaven-plywood",
+					"Post material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "Railing arc",
+					"Name": "",
+					"Center coordinate": [13, 35],
+					"Radii coordinate": [19, 29],
+					"Cylinder distance target [m]": 2,
+					"Top material": "PolyHaven-plywood",
+					"Bottom material": "PolyHaven-plywood",
+					"Post material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "Railing arc",
+					"Name": "",
+					"Center coordinate": [13, 35],
+					"Radii coordinate": [7, 29],
+					"Cylinder distance target [m]": 2,
+					"Top material": "PolyHaven-plywood",
+					"Bottom material": "PolyHaven-plywood",
+					"Post material": "PolyHaven-plywood"
 				}
 			]
 		}

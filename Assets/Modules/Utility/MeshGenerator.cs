@@ -146,6 +146,29 @@ public static class MeshGenerator
             return returnValue;
         }
 
+        public static TriangleMeshInfo CylinderCaps(float radius, float length, Vector3 direction, int numberOfEdges)
+        {
+            VerticesHolder circleLine = Lines.FullCircle(radius: radius, numberOfEdges: numberOfEdges);
+
+            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+
+            TriangleMeshInfo circle = MeshesFromLines.KnitLines(point: Vector3.zero, line: circleLine, isClosed: true);
+
+            circle.Move(length * 0.5f * Vector3.back);
+
+            returnValue.Add(circle);
+
+            circle.FlipTriangles();
+
+            circle.Move(length * Vector3.forward);
+            
+            returnValue.Add(circle);
+
+            returnValue.Rotate(Quaternion.LookRotation(direction));
+
+            return returnValue;
+        }
+
         public static TriangleMeshInfo PointsClockwiseAroundStartPoint(Vector3 startPoint, List<Vector3> points)
         {
             List<Vector3> usedPoints = new List<Vector3>(points);

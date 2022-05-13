@@ -24,9 +24,12 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineVector2Int CenterCoordinateParam;
         MailboxLineVector2Int RadiiCoordinateParam;
         MailboxLineRanged TargetDistanceBetweenCylindersParam;
+        MailboxLineMaterial TopMaterialParam;
+        MailboxLineMaterial BottomMaterialParam;
+        MailboxLineMaterial PostMaterialParam;
 
         readonly float railingHeight = 1.0f;
-        readonly float cylinderDiameter = 0.1f;
+        readonly float distanceBetweenPosts = 0.4f;
         readonly float baseHeight = 0.05f;
         readonly float topHeight = 0.05f;
         readonly float width = 0.1f;
@@ -37,10 +40,6 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             get
             {
-
-
-
-
                 return ModificationNodeOrganizer;
             }
         }
@@ -92,6 +91,10 @@ namespace iffnsStuff.iffnsCastleBuilder
             RadiiCoordinateParam = new MailboxLineVector2Int(name: "Radii coordinate", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             TargetDistanceBetweenCylindersParam = new MailboxLineRanged(name: "Cylinder distance target [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 20, Min: 0.1f, DefaultValue: 2);
 
+            TopMaterialParam = new MailboxLineMaterial(name: "Top material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodSolid);
+            BottomMaterialParam = new MailboxLineMaterial(name: "Bottom material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodSolid);
+            PostMaterialParam = new MailboxLineMaterial(name: "Post material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodSolid);
+
             NodeGridPositionModificationNode firstNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
             firstNode.Setup(linkedObject: this, value: CenterCoordinateParam);
             FirstPositionNode = firstNode;
@@ -135,33 +138,121 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            float a;
-            a = railingHeight;
-            a = cylinderDiameter;
-            a = baseHeight;
-            a = topHeight;
-            a = width;
-            Debug.Log("Arc railing updated");
+            failed = false;
 
-            List<UnityMeshManager> allMeshFilters = new List<UnityMeshManager>();
+            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
 
-            TriangleMeshInfo TopBorder = new TriangleMeshInfo();
-            TriangleMeshInfo BottomBorder = new TriangleMeshInfo();
-            TriangleMeshInfo RailingPostTemplate = new TriangleMeshInfo();
+            if (failed) return;
+
+            Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
+            Vector2 gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
+
+            if(gridSize.x == 0 || gridSize.y == 0)
+            {
+                BuildAllMeshes();
+
+                failed = true;
+                return;
+            }
+
+            TriangleMeshInfo arcMantleTop;
+            TriangleMeshInfo arcMantleBottom;
+            TriangleMeshInfo posts = new TriangleMeshInfo();
 
             void FinishMesh()
             {
-                StaticMeshManager.AddTriangleInfo(TopBorder);
-                StaticMeshManager.AddTriangleInfo(BottomBorder);
-                StaticMeshManager.AddTriangleInfo(RailingPostTemplate);
+                arcMantleTop.MaterialReference = TopMaterialParam;
+                arcMantleBottom.MaterialReference = BottomMaterialParam;
+                posts.MaterialReference = PostMaterialParam;
+
+                StaticMeshManager.AddTriangleInfo(arcMantleTop);
+                StaticMeshManager.AddTriangleInfo(arcMantleBottom);
+                StaticMeshManager.AddTriangleInfo(posts);
 
                 BuildAllMeshes();
             }
 
-            FinishMesh();
+            TriangleMeshInfo currentMesh;
 
-            //AllStaticMeshes.managedMeshes.AddRange();
-            UnmanagedMeshes.AddRange(allMeshFilters);
+            //Create circle
+            VerticesHolder arc = MeshGenerator.Lines.ArcAroundY(radius: 1, angleDeg: 90, numberOfEdges: 12);
+
+            //Scale
+            arc.Scale(new Vector3(size.x, 1, size.y));
+
+            //Railing rectangle
+            TriangleMeshInfo rectangle = MeshGenerator.FilledShapes.RectangleAroundCenter(baseLine: Vector3.right * width, secondLine: Vector3.up * topHeight);
+            arcMantleTop = MeshGenerator.MeshesFromLines.ExtrudeAlong(sectionLine: rectangle.VerticesHolder, guideLine: arc, sectionIsClosed: true, guideIsClosed: false, sharpGuideEdges: true);
+            arcMantleTop.Move((railingHeight - baseHeight * 0.5f) * Vector3.up);
+
+            rectangle = MeshGenerator.FilledShapes.RectangleAroundCenter(baseLine: Vector3.right * width, secondLine: Vector3.up * baseHeight);
+            arcMantleBottom = MeshGenerator.MeshesFromLines.ExtrudeAlong(sectionLine: rectangle.VerticesHolder, guideLine: arc, sectionIsClosed: true, guideIsClosed: false, sharpGuideEdges: true);
+            arcMantleBottom.Move((topHeight * 0.5f) * Vector3.up);
+
+            //Posts
+            TriangleMeshInfo postTemplate = new TriangleMeshInfo();
+
+            postTemplate.Add(MeshGenerator.FilledShapes.CylinderCaps(radius: width * 0.5f, length: railingHeight - MathHelper.SmallFloat * 2, direction: Vector3.up, numberOfEdges: 24));
+
+            postTemplate.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
+
+            postTemplate.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: width * 0.5f, length: railingHeight, direction: Vector3.up, numberOfEdges: 24));
+
+
+            currentMesh = postTemplate.Clone;
+            currentMesh.Move(new Vector3(size.x, 0, 0));
+            posts.Add(currentMesh);
+
+            currentMesh = postTemplate.Clone;
+            currentMesh.Move(new Vector3(0, 0, size.y));
+            posts.Add(currentMesh);
+
+            postTemplate = MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: width * 0.5f, length: railingHeight, direction: Vector3.up, numberOfEdges: 24);
+
+            //Posts along arc
+            float arcLength = 0;
+
+            List<float> arcLengths = new List<float>();
+
+            for(int i = 0; i < arc.Count - 1; i++)
+            {
+                arcLengths.Add(arcLength);
+                arcLength += (arc.Vertices[i + 1] - arc.Vertices[i]).magnitude;
+            }
+
+            arcLengths.Add(arcLength);
+
+            int numberOfPosts = (int)Mathf.Round(arcLength / distanceBetweenPosts);
+
+            float actualDistanceBetweenRailings = arcLength / numberOfPosts;
+
+            for(int postIndex = 1; postIndex < numberOfPosts; postIndex++)
+            {
+                float postDistance = actualDistanceBetweenRailings * postIndex;
+
+                int basePoint = 0;
+                float remainingDistacne = 0;
+
+                for(int arcPoint = 0; arcPoint < arcLengths.Count - 1; arcPoint++)
+                {
+                    if(postDistance < arcLengths[arcPoint])
+                    {
+                        basePoint = arcPoint;
+                        remainingDistacne = postDistance - arcLengths[arcPoint];
+                        break;
+                    }
+                }
+
+                Vector3 postPoint = arc.Vertices[basePoint] + remainingDistacne * (arc.Vertices[basePoint + 1] - arc.Vertices[basePoint]).normalized;
+
+                currentMesh = postTemplate.Clone;
+                currentMesh.Move(postPoint);
+                posts.Add(currentMesh);
+            }
+
+            posts.Move(railingHeight * 0.5f * Vector3.up);
+
+            FinishMesh();
         }
 
         void SetupEditButtons()
