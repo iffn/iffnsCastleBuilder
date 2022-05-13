@@ -159,6 +159,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             TriangleMeshInfo arcMantleBottom;
             TriangleMeshInfo posts = new TriangleMeshInfo();
 
+            //ToDo: Improve UV mesh
+
             void FinishMesh()
             {
                 arcMantleTop.MaterialReference = TopMaterialParam;
@@ -243,6 +245,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     }
                 }
 
+                //ToDo: Improve point accuracy
                 Vector3 postPoint = arc.Vertices[basePoint] + remainingDistacne * (arc.Vertices[basePoint + 1] - arc.Vertices[basePoint]).normalized;
 
                 currentMesh = postTemplate.Clone;
