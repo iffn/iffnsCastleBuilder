@@ -155,7 +155,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             arcLine.Scale(new Vector3(1, ArcHeight.Val / (size.x * 0.5f), 1));
             arcLine.Move(Vector3.up * FreeHeightSide.Val + Vector3.right * size.x * 0.5f);
 
-            InnerArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: arcLine, offset: Vector3.forward * size.y, isClosed: false, isSealed: false, smoothTransition: true);
+            InnerArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: arcLine, offset: Vector3.forward * size.y, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
             InnerArc.FlipTriangles();
 
             //Front wall

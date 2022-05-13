@@ -51,7 +51,7 @@ public class MeshTester : MonoBehaviour
         TestingMesh.Add (MeshGenerator.MeshesFromLines.KnitLines(firstLine: firstLine, secondLine: secondLine, isClosed: true));
         */
 
-        TestingMesh.Add (MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: firstLine, offset: Vector3.up, isClosed: true, isSealed: false, smoothTransition: true));
+        TestingMesh.Add (MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: firstLine, offset: Vector3.up, closeType: MeshGenerator.ShapeClosingType.closedWithSmoothEdge, smoothTransition: true));
     }
 
     void SetFlatArc()
@@ -68,7 +68,7 @@ public class MeshTester : MonoBehaviour
         outerLine.Scale(new Vector3(OuterRadii.x, 1, OuterRadii.y));
         innerLine.Scale(new Vector3(InnerRadii.x, 1, InnerRadii.y));
 
-        TestingMesh = MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerLine, secondLine: innerLine, isClosed: false, isSealed: false, smoothTransition: true);
+        TestingMesh = MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerLine, secondLine: innerLine, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
     }
 
     void SetTransition()
@@ -121,7 +121,7 @@ public class MeshTester : MonoBehaviour
 
         //VerticesHolder guideLine = MeshGenerator.Lines.FullCircle(radius: 2f, numberOfEdges: 24);
 
-        TestingMesh.Add(MeshGenerator.MeshesFromLines.ExtrudeAlong(sectionLine: section, guideLine: guideLine, sectionIsClosed: true, guideIsClosed: false));
+        TestingMesh.Add(MeshGenerator.MeshesFromLines.ExtrudeAlong(sectionLine: section, guideLine: guideLine, sectionIsClosed: true, guideIsClosed: false, sharpGuideEdges: true));
     }
 
     void SetFrontArc()
@@ -153,7 +153,7 @@ public class MeshTester : MonoBehaviour
     {
         VerticesHolder arc = MeshGenerator.Lines.ArcAroundZ(radius: 3, angleDeg: 180, numberOfEdges: 12);
 
-        TestingMesh.Add(MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: arc, offset: Vector3.forward * 2, isClosed: false, isSealed: false, smoothTransition: true));
+        TestingMesh.Add(MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: arc, offset: Vector3.forward * 2, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: true));
 
         TestingMesh.FlipTriangles();
     }
@@ -168,8 +168,9 @@ public class MeshTester : MonoBehaviour
 
         //VerticesHolder firstLine = MeshGenerator.Lines.FullCircle(radius: 1, numberOfEdges: 4);
 
-        TestingMesh.Add(MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: firstLine, offset: Vector3.up * 2, isClosed: true, isSealed: false, smoothTransition: true));
+        TestingMesh.Add(MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: firstLine, offset: Vector3.up * 2, closeType: MeshGenerator.ShapeClosingType.closedWithSharpEdge, smoothTransition: false));
 
+        /*
         List<Vector2> UVs = new List<Vector2>();
 
         UVs.Add(new Vector2(0, 0));
@@ -183,6 +184,7 @@ public class MeshTester : MonoBehaviour
         UVs.Add(new Vector2(2, 1));
         UVs.Add(new Vector2(3, 1));
         UVs.Add(new Vector2(4, 1));
+        */
 
         //TestingMesh.CurrentMeshFilter.mesh.uv = TestingMesh.TriangleInfo.UVs.ToArray();
 

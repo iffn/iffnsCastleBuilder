@@ -249,7 +249,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     RoofWrapper.Add(MeshGenerator.MeshesFromLines.KnitLines(
                         firstLine: new VerticesHolder(new List<Vector3>() { innerPoints[1], innerPoints[0], innerPoints[2] }),
                         secondLine: new VerticesHolder(outerPoints),
-                        isClosed: true, isSealed: false, smoothTransition: false));
+                        closingType: MeshGenerator.ShapeClosingType.closedWithSharpEdge, smoothTransition: false));
                     break;
                 case RoofTypes.TwoAreHigh:
                     RoofWrapper.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() { outerPoints[1], outerPoints[0], innerPoints[1], innerPoints[0] }));

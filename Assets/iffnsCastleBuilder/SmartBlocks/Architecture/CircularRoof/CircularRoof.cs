@@ -333,7 +333,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             RoofInside = MeshGenerator.MeshesFromLines.KnitLines(point: Vector3.up * (Height - Thickness * ratio), line: innerLine, isClosed: isClosed);
 
-            BottomEdge = MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerLine, secondLine: innerLine, isClosed: isClosed, isSealed: false, smoothTransition: true);
+            BottomEdge = MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerLine, secondLine: innerLine, closingType: MeshGenerator.ShapeClosingType.closedWithSmoothEdge, smoothTransition: true);
             BottomEdge.FlipTriangles();
 
             //Side edges

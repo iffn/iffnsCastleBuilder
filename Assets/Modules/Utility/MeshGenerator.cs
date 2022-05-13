@@ -137,7 +137,7 @@ public static class MeshGenerator
         {
             VerticesHolder circle = Lines.FullCircle(radius: radius, numberOfEdges: numberOfEdges);
 
-            TriangleMeshInfo returnValue = MeshesFromLines.ExtrudeLinear(firstLine: circle, offset: Vector3.forward * length, isClosed: true, isSealed: true, smoothTransition: true);
+            TriangleMeshInfo returnValue = MeshesFromLines.ExtrudeLinear(firstLine: circle, offset: Vector3.forward * length, closeType: ShapeClosingType.closedWithSmoothEdge, smoothTransition: true);
 
             returnValue.Move(length * 0.5f * Vector3.back);
 
@@ -191,13 +191,20 @@ public static class MeshGenerator
         }
     }
 
+    public enum ShapeClosingType
+    {
+        open,
+        closedWithSharpEdge,
+        closedWithSmoothEdge
+    }
+
     public static class MeshesFromLines
     {
-        public static TriangleMeshInfo KnitLines(VerticesHolder firstLine, VerticesHolder secondLine, bool isClosed, bool isSealed, bool smoothTransition)
+        public static TriangleMeshInfo KnitLines(VerticesHolder firstLine, VerticesHolder secondLine, ShapeClosingType closingType, bool smoothTransition)
         {
             // IsClosed = First and last point should be closed -> True if closed shape
             // IsSealed = Smooth transition between first first and last point
-            //SmoothTransition = 
+            // SmoothTransition = 
 
             TriangleMeshInfo returnValue = new TriangleMeshInfo();
 
@@ -224,8 +231,7 @@ public static class MeshGenerator
 
             if (smoothTransition)
             {
-                
-                if(isClosed && !isSealed)
+                if(closingType == ShapeClosingType.closedWithSharpEdge)
                 {
                     returnValue.VerticesHolder.Add(firstLine.Vertices);
                     returnValue.VerticesHolder.Add(firstLine.Vertices[0]);
@@ -252,7 +258,7 @@ public static class MeshGenerator
                         returnValue.Triangles.Add(new TriangleHolder(baseOffset: i, t1: 1, t2: firstLine.Count + 1, t3: firstLine.Count));
                     }
 
-                    if (isClosed)
+                    if (closingType != ShapeClosingType.open)
                     {
                         returnValue.Triangles.Add(new TriangleHolder(firstLine.Count - 1, 0, firstLine.Count * 2 - 1));
                         returnValue.Triangles.Add(new TriangleHolder(0, firstLine.Count, firstLine.Count * 2 - 1));
@@ -301,7 +307,7 @@ public static class MeshGenerator
                     returnValue.Add(MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[i], line: new List<Vector3>() {firstLine.Vertices[i + 1], firstLine.Vertices[i]}, isClosed: false));
                 }
 
-                if (isClosed)
+                if (closingType != ShapeClosingType.open)
                 {
                     //returnValue.Add(MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[secondLine.Count - 1], line: new List<Vector3>() { secondLine.Vertices[0], firstLine.Vertices[0], firstLine.Vertices[firstLine.Count - 1]}, isClosed: false));
                     returnValue.Add(MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[secondLine.Count - 1], line: new List<Vector3>() { secondLine.Vertices[0], firstLine.Vertices[0]}, isClosed: false));
@@ -566,6 +572,8 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo KnitLinesWithProximityPreference(VerticesHolder firstLine, VerticesHolder secondLine, bool isClosed)
         {
+            //ToDo: UVs
+
             TriangleMeshInfo returnValue = new TriangleMeshInfo();
 
             if (firstLine == null || secondLine == null)
@@ -664,23 +672,34 @@ public static class MeshGenerator
             return returnValue;
         }
 
-        public static TriangleMeshInfo ExtrudeLinear(VerticesHolder firstLine, Vector3 offset, bool isClosed, bool isSealed, bool smoothTransition)
+        public static TriangleMeshInfo ExtrudeLinear(VerticesHolder firstLine, Vector3 offset, ShapeClosingType closeType, bool smoothTransition)
         {
             VerticesHolder secondLine = new VerticesHolder(firstLine);
 
             secondLine.Move(offset);
 
-            TriangleMeshInfo returnValue = KnitLines(firstLine: firstLine, secondLine: secondLine, isClosed: isClosed, isSealed: isSealed, smoothTransition: smoothTransition);
+            TriangleMeshInfo returnValue = KnitLines(firstLine: firstLine, secondLine: secondLine, closingType: closeType, smoothTransition: smoothTransition);
 
             return returnValue;
         }
 
-        public static TriangleMeshInfo ExtrudeAlong(VerticesHolder sectionLine, VerticesHolder guideLine, bool sectionIsClosed, bool guideIsClosed)
+        public static TriangleMeshInfo ExtrudeAlong(VerticesHolder sectionLine, VerticesHolder guideLine, bool sectionIsClosed, bool guideIsClosed, bool sharpGuideEdges)
         {
             List<VerticesHolder> sections = new List<VerticesHolder>();
 
             sections.Add(new VerticesHolder(sectionLine));
-            sections[sections.Count - 1].Rotate(Quaternion.LookRotation(guideLine.Vertices[1] - guideLine.Vertices[0])); //ToDo: Improve if closed
+
+            Vector3 lookDirection = guideLine.Vertices[1] - guideLine.Vertices[0];
+
+            if (lookDirection.magnitude != 0)
+            {
+                sections[sections.Count - 1].Rotate(Quaternion.LookRotation(lookDirection, Vector3.up)); //ToDo: Improve if closed
+            }
+            else
+            {
+                Debug.LogWarning("Error: Distance between points is 0");
+            }
+                
             sections[sections.Count - 1].Move(guideLine.Vertices[0]);
 
             for (int i = 1; i < guideLine.Count - 1; i++)
@@ -693,17 +712,70 @@ public static class MeshGenerator
                 Vector3 tanDirection = (vecBehind).normalized + (vecAhead).normalized;
                 Vector3 normDirection = -tanDirection / 2 + vecBehind;
 
-                sections[sections.Count - 1].Rotate(Quaternion.LookRotation(forward: tanDirection, upwards: normDirection));
+                if(tanDirection.magnitude != 0)
+                {
+                    sections[sections.Count - 1].Rotate(Quaternion.LookRotation(forward: tanDirection /*, upwards: normDirection*/));
+                }
+                else
+                {
+                    Debug.LogWarning("Error: Distance between points is 0");
+                }
+
                 sections[sections.Count - 1].Move(guideLine.Vertices[i]);
             }
 
             sections.Add(new VerticesHolder(sectionLine));
-            sections[sections.Count - 1].Rotate(Quaternion.LookRotation(guideLine.Vertices[guideLine.Vertices.Count - 1] - guideLine.Vertices[guideLine.Vertices.Count - 2])); //ToDo: Improve if closed
+            sections[sections.Count - 1].Rotate(Quaternion.LookRotation(guideLine.Vertices[guideLine.Vertices.Count - 1] - guideLine.Vertices[guideLine.Vertices.Count - 2]/*, Vector3.up*/)); //ToDo: Improve if closed
             sections[sections.Count - 1].Move(guideLine.Vertices[guideLine.Vertices.Count - 1]);
 
-            TriangleMeshInfo returnValue = KnitLinesWithProximityPreference(sections: sections, sectionsAreClosed: sectionIsClosed, shapeIsClosed: guideIsClosed);
+            TriangleMeshInfo returnValue;
 
-            returnValue.FlipTriangles();
+            if (sharpGuideEdges)
+            {
+                List<VerticesHolder> guideElements = new List<VerticesHolder>();
+
+                for(int i = 0; i < sectionLine.Count; i++)
+                {
+                    guideElements.Add(new VerticesHolder());
+                }
+
+                for (int guideIndex = 0; guideIndex < guideElements.Count; guideIndex++)
+                {
+                    for (int sectionIndex = 0; sectionIndex < sections.Count; sectionIndex++)
+                    {
+                        guideElements[guideIndex].Add(sections[sectionIndex].Vertices[guideIndex]);
+                    }
+                }
+
+                returnValue = new TriangleMeshInfo();
+
+                ShapeClosingType closingType;
+                if (guideIsClosed)
+                {
+                    closingType = ShapeClosingType.closedWithSmoothEdge;
+                }
+                else
+                {
+                    closingType = ShapeClosingType.open;
+                }
+
+                for (int i = 0; i < guideElements.Count - 1; i++)
+                {
+                    returnValue.Add(KnitLines(firstLine: guideElements[i], secondLine: guideElements[i + 1], closingType: closingType, smoothTransition: true));
+                }
+
+                if (sectionIsClosed)
+                {
+                    returnValue.Add(KnitLines(firstLine: guideElements[guideElements.Count - 1], secondLine: guideElements[0], closingType: closingType, smoothTransition: true));
+                }
+
+            }
+            else
+            {
+                returnValue = KnitLinesWithProximityPreference(sections: sections, sectionsAreClosed: sectionIsClosed, shapeIsClosed: guideIsClosed);
+
+                returnValue.FlipTriangles();
+            }
 
             return returnValue;
         }

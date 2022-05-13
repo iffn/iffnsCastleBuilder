@@ -418,7 +418,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 Vector3 centerPoint = new Vector3(CutoffRangeRotated.x, 0, CutoffRangeRotated.y);
 
-                OuterArc = MeshGenerator.MeshesFromLines.KnitLines(firstLine: lowerArc, secondLine: upperArc, isClosed: false, isSealed: false, smoothTransition: true);
+                OuterArc = MeshGenerator.MeshesFromLines.KnitLines(firstLine: lowerArc, secondLine: upperArc, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
 
                 Ceiling = MeshGenerator.MeshesFromLines.KnitLines(point: centerPoint, line: lowerArc, isClosed: false);
                 Floor = MeshGenerator.MeshesFromLines.KnitLines(point: centerPoint + Vector3.up * wallHeight, line: upperArc, isClosed: false);
@@ -492,13 +492,13 @@ namespace iffnsStuff.iffnsCastleBuilder
                 upperOuterArc.Move(Vector3.up * wallHeight);
                 upperInnerArc.Move(Vector3.up * wallHeight);
 
-                OuterArc = MeshGenerator.MeshesFromLines.KnitLines(firstLine: lowerOuterArc, secondLine: upperOuterArc, isClosed: false, isSealed: false, smoothTransition: true);
-                InnerArc = MeshGenerator.MeshesFromLines.KnitLines(firstLine: lowerInnerArc, secondLine: upperInnerArc, isClosed: false, isSealed: false, smoothTransition: true);
+                OuterArc = MeshGenerator.MeshesFromLines.KnitLines(firstLine: lowerOuterArc, secondLine: upperOuterArc, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
+                InnerArc = MeshGenerator.MeshesFromLines.KnitLines(firstLine: lowerInnerArc, secondLine: upperInnerArc, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
 
                 OuterArc.FlipTriangles();
 
-                Ceiling = MeshGenerator.MeshesFromLines.KnitLines(firstLine: lowerOuterArc, secondLine: lowerInnerArc, isClosed: false, isSealed: false, smoothTransition: true);
-                Floor = MeshGenerator.MeshesFromLines.KnitLines(firstLine: upperInnerArc, secondLine: upperOuterArc, isClosed: false, isSealed: false, smoothTransition: true);
+                Ceiling = MeshGenerator.MeshesFromLines.KnitLines(firstLine: lowerOuterArc, secondLine: lowerInnerArc, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
+                Floor = MeshGenerator.MeshesFromLines.KnitLines(firstLine: upperInnerArc, secondLine: upperOuterArc, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
 
                 XWall = MeshGenerator.MeshesFromPoints.MeshFrom4Points(
                     lowerOuterArc.Vertices[0],
@@ -519,7 +519,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 VerticesHolder outerArc = CreateCutoffArc(radii: size, cutoffRange: CutoffRangeRotated);
                 outerArc.Reverse();
-                OuterArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: outerArc, offset: Vector3.up * wallHeight, isClosed: false, isSealed: false, smoothTransition: true);
+                OuterArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: outerArc, offset: Vector3.up * wallHeight, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
 
                 Vector3 RadiusStartingPoint = new Vector3(CutoffRangeRotated.x, 0, Mathf.Sqrt(size.y * size.y - CutoffRangeRotated.x * CutoffRangeRotated.x));
                 Vector3 RadiusEndingPoint = new Vector3(Mathf.Sqrt(size.x * size.x - CutoffRangeRotated.y * CutoffRangeRotated.y), 0, CutoffRangeRotated.y);
@@ -600,7 +600,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             void CreateOuterGrid()
             {
                 VerticesHolder innerArc = CreateCutoffArc(radii: size, cutoffRange: CutoffRangeRotated);
-                OuterArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: innerArc, offset: Vector3.up * wallHeight, isClosed: false, isSealed: false, smoothTransition: true);
+                OuterArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: innerArc, offset: Vector3.up * wallHeight, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
 
                 Vector3 currentStartPoint = innerArc.Vertices[^1];
                 Vector3 currentEndPoint = currentStartPoint;
