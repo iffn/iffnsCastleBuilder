@@ -8645,6 +8645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SunPlane: {fileID: 9113148376836864994}
   SunRotation: {fileID: 3832170766444181864}
+  LinkedLight: {fileID: 3328380431325502432}
 --- !u!1 &6529149781324125236
 GameObject:
   m_ObjectHideFlags: 0
@@ -17210,6 +17211,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3891293432677286795, guid: 16c2b6fec40326343a7435fc4296ad5e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5218607219839640249, guid: 16c2b6fec40326343a7435fc4296ad5e, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5874140835285192543, guid: 16c2b6fec40326343a7435fc4296ad5e, type: 3}

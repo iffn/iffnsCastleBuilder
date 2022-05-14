@@ -48,12 +48,32 @@ namespace iffnsStuff.iffnsUnityResources
             currentRigidbody.velocity += transform.rotation * speed;
         }
 
+        bool pauseState = false;
+
         // Update is called once per frame
         void Update()
         {
-            transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime);
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                pauseState = !pauseState;
+                Cursor.visible = pauseState;
 
-            Head.transform.Rotate(Vector3.left * Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime);
+                if (pauseState)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                }
+                else
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
+            }
+
+            if (!pauseState)
+            {
+                transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime);
+
+                Head.transform.Rotate(Vector3.left * Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime);
+            }
 
             currentRigidbody.velocity = new Vector3(0, currentRigidbody.velocity.y, 0);
 
