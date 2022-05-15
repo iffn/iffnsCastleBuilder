@@ -7,15 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class Column : OnFloorObject
     {
-        public const string constIdentifierString = "Column";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         //Settings:
         int fullCircleVertices = 32;
 

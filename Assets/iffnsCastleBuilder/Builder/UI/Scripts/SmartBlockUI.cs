@@ -63,7 +63,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (ClickedButton == RoofRectangular)
             {
-                CurrentSmartBlockBuilderTool.CurrentSmartBlockToolType = SmartBlockBuilderTool.SmartBlockToolType.RoofRectangular;
+                CurrentSmartBlockBuilderTool.CurrentSmartBlockToolType = SmartBlockBuilderTool.SmartBlockToolType.RectangularRoof;
             }
             else if (ClickedButton == RoofCircular)
             {
@@ -91,7 +91,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
             else if (ClickedButton == ArcVertical)
             {
-                CurrentSmartBlockBuilderTool.CurrentSmartBlockToolType = SmartBlockBuilderTool.SmartBlockToolType.ArcVertical;
+                CurrentSmartBlockBuilderTool.CurrentSmartBlockToolType = SmartBlockBuilderTool.SmartBlockToolType.VerticalArc;
             }
             else if (ClickedButton == RailingLinear)
             {
@@ -156,7 +156,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             switch (newSmartBlockToolType)
             {
-                case SmartBlockBuilderTool.SmartBlockToolType.RoofRectangular:
+                case SmartBlockBuilderTool.SmartBlockToolType.RectangularRoof:
                     RoofRectangular.Highlight = true;
                     break;
                 case SmartBlockBuilderTool.SmartBlockToolType.RoofCircular:
@@ -177,7 +177,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 case SmartBlockBuilderTool.SmartBlockToolType.Window:
                     Window.Highlight = true;
                     break;
-                case SmartBlockBuilderTool.SmartBlockToolType.ArcVertical:
+                case SmartBlockBuilderTool.SmartBlockToolType.VerticalArc:
                     ArcVertical.Highlight = true;
                     break;
                 case SmartBlockBuilderTool.SmartBlockToolType.RailingLinear:

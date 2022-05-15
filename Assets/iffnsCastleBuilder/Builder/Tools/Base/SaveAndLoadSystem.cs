@@ -125,7 +125,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             currentFileListWithoutEnding.Clear();
 
-            List<string> tempFileList = StaticSaveAndLoadSystem.GetFileListFromLocation(Type: HumanBuildingController.constIdentifierString, completeFileLocation: buildingFileLication, fileEnding: fileEnding);
+            List<string> tempFileList = StaticSaveAndLoadSystem.GetFileListFromLocation(Type: nameof(HumanBuildingController), completeFileLocation: buildingFileLication, fileEnding: fileEnding);
 
             foreach (string file in tempFileList)
             {

@@ -7,15 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class ChairGrid : OnFloorObject
     {
-        public const string constIdentifierString = "Chair Grid";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         //Unity references
         [SerializeField] ChairBase currentChairBase;
 

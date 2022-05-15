@@ -7,15 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class TableGrid : OnFloorObject
     {
-        public const string constIdentifierString = "Table Grid";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         //Unity assignments
         [SerializeField] TableBase CurrentTableBase;
 

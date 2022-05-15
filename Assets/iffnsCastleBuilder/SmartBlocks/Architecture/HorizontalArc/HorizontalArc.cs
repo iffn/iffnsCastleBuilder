@@ -7,15 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class HorizontalArc : OnFloorObject
     {
-        public const string constIdentifierString = "Horizontal arc";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         //Build parameters
         MailboxLineVector2Int CenterPositionParam;
         MailboxLineVector2Int OuterRadiiParam;
@@ -938,7 +929,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         //Helper function
         HorizontalArc CreateNewHorizontalArc()
         {
-            HorizontalArc returnValue = Instantiate(ResourceLibrary.TryGetTemplateFromStringIdentifier(constIdentifierString) as HorizontalArc);
+            HorizontalArc returnValue = Instantiate(ResourceLibrary.TryGetTemplateFromStringIdentifier(IdentifierString) as HorizontalArc);
 
             return returnValue;
         }

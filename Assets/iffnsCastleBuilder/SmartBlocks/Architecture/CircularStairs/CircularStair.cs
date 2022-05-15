@@ -6,15 +6,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class CircularStair : OnFloorObject
     {
-        public const string constIdentifierString = "Circular stairs";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         //Build parameters
         MailboxLineVector2Int PositiveCenterPositionParam;
         MailboxLineRanged OuterRadiusParam;

@@ -7,15 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class RailingLinear : OnFloorObject
     {
-        public const string constIdentifierString = "Railing linear";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         [SerializeField] UnityMeshManager TopBorder;
         [SerializeField] UnityMeshManager BottomBorder;
         [SerializeField] GameObject RailingPostTemplate;

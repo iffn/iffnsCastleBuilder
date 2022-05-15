@@ -7,15 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class CircularRoof : OnFloorObject
     {
-        public const string constIdentifierString = "Circular roof";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         //Assignments
 
         //Build parameters
@@ -451,7 +442,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         CircularRoof CreateNewHorizontalArc()
         {
-            CircularRoof returnValue = Instantiate(ResourceLibrary.TryGetTemplateFromStringIdentifier(constIdentifierString) as CircularRoof);
+            CircularRoof returnValue = Instantiate(ResourceLibrary.TryGetTemplateFromStringIdentifier(IdentifierString) as CircularRoof);
 
             return returnValue;
         }

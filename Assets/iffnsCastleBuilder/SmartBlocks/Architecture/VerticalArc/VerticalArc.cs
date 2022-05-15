@@ -7,17 +7,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class VerticalArc : OnFloorObject
     {
-        public const string constIdentifierString = "Vertical arc";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         //Assignments
-
 
         //Build parameters
         MailboxLineVector2Int BottomLeftPositionParam;

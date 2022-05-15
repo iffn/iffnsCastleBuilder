@@ -7,16 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class HumanBuildingController : BaseGameObject
     {
-        public const string constIdentifierString = "Building";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
-
         bool allowGridScaleModification = true;
         public bool AllowGridScaleModification
         {
@@ -309,7 +299,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             for (int i = 0; i < totalFloors; i++)
             {
-                FloorController floorTemplate = ResourceLibrary.TryGetTemplateFromStringIdentifier(identifier: FloorController.constIdentifierString) as FloorController;
+                FloorController floorTemplate = ResourceLibrary.TryGetTemplateFromStringIdentifier(identifier: nameof(FloorController)) as FloorController;
 
                 if (floorTemplate == null) Debug.LogWarning("Error");
 
@@ -471,7 +461,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         void AddFloor(AddingDirection direciton)
         {
-            FloorController floorTemplate = ResourceLibrary.TryGetTemplateFromStringIdentifier(identifier: FloorController.constIdentifierString) as FloorController;
+            FloorController floorTemplate = ResourceLibrary.TryGetTemplateFromStringIdentifier(identifier: nameof(FloorController)) as FloorController;
 
             if (floorTemplate == null) Debug.LogWarning("Error");
 

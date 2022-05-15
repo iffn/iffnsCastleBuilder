@@ -7,15 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class Window : OnFloorObject
     {
-        public const string constIdentifierString = "Window";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         [SerializeField] RectangularBaseWindow CurrentRectangularBaseWindow;
 
         //BuildParameters

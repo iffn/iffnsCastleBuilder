@@ -14,10 +14,10 @@ namespace iffnsStuff.iffnsCastleBuilder
             switch (identifier)
             {
                 //ToDo: Find best way to return objects
-                case VirtualBlock.staticIdentifierString:
+                case nameof(VirtualBlock):
                     returnValue = new VirtualBlock(superObject: superObject);
                     break;
-                case NodeWall.constIdentifierString:
+                case nameof(NodeWall):
                     returnValue = new NodeWall(superObject: superObject);
                     break;
                 default:

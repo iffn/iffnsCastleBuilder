@@ -7,16 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class VirtualBlock : BaseVirtualObject
     {
-        public const string staticIdentifierString = "Virtual block";
-
-        public override string IdentifierString
-        {
-            get
-            {
-                return staticIdentifierString;
-            }
-        }
-
         //Build parameters
         public MailboxLineDistinctNamed BlockTypeParam;
         public MailboxLineMaterial CeilingMaterialParam;

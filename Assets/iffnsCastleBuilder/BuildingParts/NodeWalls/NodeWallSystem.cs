@@ -7,15 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class NodeWallSystem : BaseGameObject
     {
-        public const string constIdentifierString = "Node Wall System";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         [SerializeField] UnityMeshManager NodeWallEndingCylinderTemplate;
         List<UnityMeshManager> NodeWallEndingCylinders = new List<UnityMeshManager>();
         List<NodeWallNode> CylinderNodes = new List<NodeWallNode>();

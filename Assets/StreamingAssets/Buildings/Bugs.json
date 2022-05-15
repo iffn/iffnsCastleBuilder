@@ -1,23 +1,23 @@
 {
-	"Type": "Building",
+	"Type": "HumanBuildingController",
 	"Name": "",
 	"Negative floors": 0,
 	"Grid size": [15, 16],
 	"Floors":
 	[
 		{
-			"Type": "Floor",
+			"Type": "FloorController",
 			"Name": "",
 			"Bottom floor height": 0.2,
 			"Wall height": 2.2,
 			"Node wall system":
 			{
-				"Type": "Node Wall System",
+				"Type": "NodeWallSystem",
 				"Name": "",
 				"Node walls":
 				[
 					{
-						"Type": "Node wall",
+						"Type": "NodeWall",
 						"Name": "",
 						"Start position": [12, 3],
 						"End position": [9, 3],
@@ -29,1202 +29,1202 @@
 			"Floor matrix":
 			[
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				},
 				{
-					"Type": "Virtual block",
+					"Type": "VirtualBlock",
 					"Name": "",
 					"Block type": "Empty"
 				}
@@ -1232,7 +1232,7 @@
 			"On floor objects":
 			[
 				{
-					"Type": "Circular roof",
+					"Type": "CircularRoof",
 					"Name": "",
 					"Center position": [8, 10],
 					"Outer Radii": [3, -2],

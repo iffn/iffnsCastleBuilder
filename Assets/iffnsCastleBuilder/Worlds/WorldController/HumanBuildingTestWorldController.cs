@@ -11,14 +11,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] ModificationNodeLibraryIntegrator CurrentModificationNodeLibraryIntegrator = null; //ToDo: Move to Builder library
         [SerializeField] ResourceLibraryIntegrator CurrentResourceLibraryIntegrator = null; //ToDo: Rename to Human building Resource Library
         [SerializeField] MaterialLibraryIntegrator CurrentMaterialLibraryIntegrator = null;
-        public override string IdentifierString
-        {
-            get
-            {
-                return "Test World Controller";
-            }
-        }
-
+        
         MailboxLineSingleSubObject currentBuildingParam;
 
         //public List<HumanBuildingController> HumanBuildingControllers;
@@ -51,7 +44,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         void SetupDefaultBuilding()
         {
-            CurrentBuilderController.CurrentBuilding = Instantiate(ResourceLibrary.TryGetTemplateFromStringIdentifier(HumanBuildingController.constIdentifierString) as HumanBuildingController);
+            CurrentBuilderController.CurrentBuilding = Instantiate(ResourceLibrary.TryGetTemplateFromStringIdentifier(nameof(HumanBuildingController)) as HumanBuildingController);
 
             CurrentBuilderController.CurrentBuilding.CompleteSetUpWithBuildParameters(superObject: this, gridSize: BuildingGridSize, negativeFloors: 0, totalFloors: 1);
 

@@ -7,16 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class Counter : OnFloorObject
     {
-
-        public const string constIdentifierString = "Counter";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         [SerializeField] BaseCounter LinkedBaseCounter;
 
         //BuildParameters

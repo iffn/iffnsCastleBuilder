@@ -7,15 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class TableFloat : OnFloorObject
     {
-        public const string constIdentifierString = "Table Float";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         //Unity references
 
         //Build parameters

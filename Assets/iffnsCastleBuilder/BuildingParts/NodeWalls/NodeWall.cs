@@ -7,8 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class NodeWall : BaseVirtualObject
     {
-        public const string constIdentifierString = "Node wall";
-
         MailboxLineVector2Int startPositionParam;
         MailboxLineVector2Int endPositionParam;
         public MailboxLineMaterial RightMaterialParam { get; private set; }
@@ -21,14 +19,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             get
             {
                 return linkedSystem;
-            }
-        }
-
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
             }
         }
 

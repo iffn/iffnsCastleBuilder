@@ -7,15 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class Ladder : OnFloorObject
     {
-        public const string constIdentifierString = "Ladder";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         //[SerializeField] BaseLadder LinkedBaseLadder;
 
         //BuildParameters

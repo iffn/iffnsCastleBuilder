@@ -7,16 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class RoofWall : OnFloorObject
     {
-        public const string constIdentifierString = "Roof wall";
-
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         MailboxLineVector2Int FirstCoordinatenParam;
         MailboxLineVector2Int SecondCoordinateParam;
         MailboxLineRanged HeightParam;

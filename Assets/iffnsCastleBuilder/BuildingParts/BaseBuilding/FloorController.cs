@@ -6,15 +6,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class FloorController : BaseGameObject
     {
-        public const string constIdentifierString = "Floor";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         //Unity assignments
         [SerializeField] GameObject smartBlockHolder = null;
         [SerializeField] GridScalerOrganizer GridScaleOrganizer;
@@ -566,7 +557,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
             }
 
-            NodeWallSystem nodeWallSystem = ResourceLibrary.TryGetBaseGameObjectFromStringIdentifier(NodeWallSystem.constIdentifierString, superObject: this) as NodeWallSystem;
+            NodeWallSystem nodeWallSystem = ResourceLibrary.TryGetBaseGameObjectFromStringIdentifier(nameof(NodeWallSystem), superObject: this) as NodeWallSystem;
 
             nodeWallSystemParam.SubObject = nodeWallSystem;
 

@@ -27,7 +27,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        SmartBlockToolType currentSmartBlockToolType = SmartBlockToolType.RoofRectangular;
+        SmartBlockToolType currentSmartBlockToolType = SmartBlockToolType.RectangularRoof;
         public SmartBlockToolType CurrentSmartBlockToolType
         {
             get
@@ -43,12 +43,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public enum SmartBlockToolType
         {
-            RoofRectangular,
+            RectangularRoof,
             RoofCircular,
             ArcHorizontal,
             Door,
             Window,
-            ArcVertical,
+            VerticalArc,
             RailingLinear,
             RailingArc,
             NonCardinalWall,
@@ -236,65 +236,65 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             switch (currentSmartBlockToolType)
             {
-                case SmartBlockToolType.RoofRectangular:
-                    currentIdentiefierString = RectangularRoof.constIdentifierString;
+                case SmartBlockToolType.RectangularRoof:
+                    currentIdentiefierString = nameof(RectangularRoof);
                     break;
                 case SmartBlockToolType.RoofCircular:
-                    currentIdentiefierString = CircularRoof.constIdentifierString;
+                    currentIdentiefierString = nameof(CircularRoof);
                     break;
                 case SmartBlockToolType.RectangularStair:
-                    currentIdentiefierString = RectangularStairs.constIdentifierString;
+                    currentIdentiefierString = nameof(RectangularStairs);
                     break;
                 case SmartBlockToolType.ArcHorizontal:
-                    currentIdentiefierString = HorizontalArc.constIdentifierString;
+                    currentIdentiefierString = nameof(HorizontalArc);
                     break;
                 case SmartBlockToolType.Door:
-                    currentIdentiefierString = Door.constIdentifierString;
+                    currentIdentiefierString = nameof(Door);
                     break;
                 case SmartBlockToolType.Window:
-                    currentIdentiefierString = Window.constIdentifierString;
+                    currentIdentiefierString = nameof(Window);
                     break;
-                case SmartBlockToolType.ArcVertical:
-                    currentIdentiefierString = VerticalArc.constIdentifierString;
+                case SmartBlockToolType.VerticalArc:
+                    currentIdentiefierString = nameof(VerticalArc);
                     break;
                 case SmartBlockToolType.RailingLinear:
-                    currentIdentiefierString = RailingLinear.constIdentifierString;
+                    currentIdentiefierString = nameof(RailingLinear);
                     break;
                 case SmartBlockToolType.RailingArc:
-                    currentIdentiefierString = RailingArc.constIdentifierString;
+                    currentIdentiefierString = nameof(RailingArc);
                     break;
                 case SmartBlockToolType.NonCardinalWall:
-                    currentIdentiefierString = NonCardinalWall.constIdentifierString;
+                    currentIdentiefierString = nameof(NonCardinalWall);
                     break;
                 case SmartBlockToolType.CircularStair:
-                    currentIdentiefierString = CircularStair.constIdentifierString;
+                    currentIdentiefierString = nameof(CircularStair);
                     break;
                 case SmartBlockToolType.Table:
-                    currentIdentiefierString = TableGrid.constIdentifierString;
+                    currentIdentiefierString = nameof(TableGrid);
                     break;
                 case SmartBlockToolType.Chair:
-                    currentIdentiefierString = ChairGrid.constIdentifierString;
+                    currentIdentiefierString = nameof(ChairGrid);
                     break;
                 case SmartBlockToolType.Bed:
-                    currentIdentiefierString = BedGrid.constIdentifierString;
+                    currentIdentiefierString = nameof(BedGrid);
                     break;
                 case SmartBlockToolType.Column:
-                    currentIdentiefierString = Column.constIdentifierString;
+                    currentIdentiefierString = nameof(Column);
                     break;
                 case SmartBlockToolType.Counter:
-                    currentIdentiefierString = Counter.constIdentifierString;
+                    currentIdentiefierString = nameof(Counter);
                     break;
                 case SmartBlockToolType.Ladder:
-                    currentIdentiefierString = Ladder.constIdentifierString;
+                    currentIdentiefierString = nameof(Ladder);
                     break;
                 case SmartBlockToolType.Triangle:
-                    currentIdentiefierString = Triangle.constIdentifierString;
+                    currentIdentiefierString = nameof(Triangle);
                     break;
                 case SmartBlockToolType.TriangularRoof:
-                    currentIdentiefierString = TriangularRoof.constIdentifierString;
+                    currentIdentiefierString = nameof(TriangularRoof);
                     break;
                 case SmartBlockToolType.RoofWall:
-                    currentIdentiefierString = RoofWall.constIdentifierString;
+                    currentIdentiefierString = nameof(RoofWall);
                     break;
                 default:
                     Debug.LogWarning("Error: Identifier type not yet yet");

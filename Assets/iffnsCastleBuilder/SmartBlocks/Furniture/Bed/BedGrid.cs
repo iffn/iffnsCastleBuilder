@@ -7,16 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class BedGrid : OnFloorObject
     {
-
-        public const string constIdentifierString = "Bed Grid";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         //Unity references
         [SerializeField] BedBase currentBaseBed;
 

@@ -7,15 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class RailingArc : OnFloorObject
     {
-        public const string constIdentifierString = "Railing arc";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         [SerializeField] SmartMeshManager TopBorder;
         [SerializeField] SmartMeshManager BottomBorder;
         [SerializeField] GameObject RailingPostTemplate;

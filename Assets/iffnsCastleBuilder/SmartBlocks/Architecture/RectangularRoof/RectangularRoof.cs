@@ -7,15 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class RectangularRoof : OnFloorObject
     {
-        public const string constIdentifierString = "Rectangular roof";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         //Mailbox lines
         MailboxLineVector2Int FirstBlockPositionParam;
         MailboxLineVector2Int SecondBlockPositionParam;

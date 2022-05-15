@@ -7,15 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class BedFloat : OnFloorObject
     {
-        public const string constIdentifierString = "Bed Float";
-        public override string IdentifierString
-        {
-            get
-            {
-                return constIdentifierString;
-            }
-        }
-
         //Unity references
 
         //Build parameters
