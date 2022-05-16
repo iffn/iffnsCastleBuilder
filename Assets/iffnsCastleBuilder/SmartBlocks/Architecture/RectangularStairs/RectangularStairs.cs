@@ -267,9 +267,9 @@ namespace iffnsStuff.iffnsCastleBuilder
                 {
                     int usedNumberOfFloors = NumberOfFloors;
 
-                    if (usedNumberOfFloors > LinkedFloor.FloorsAbove + 1) usedNumberOfFloors = LinkedFloor.FloorsAbove + 1;
+                    usedNumberOfFloors = Mathf.Clamp(value: usedNumberOfFloors, min: 1, max: LinkedFloor.FloorsAbove + 1);
 
-                    topFloorHeight = LinkedFloor.LinkedBuildingController.Floor(LinkedFloor.FloorNumber + usedNumberOfFloors).BottomFloorHeight;
+                    topFloorHeight = LinkedFloor.LinkedBuildingController.Floor(LinkedFloor.FloorNumber + usedNumberOfFloors - 1).BottomFloorHeight;
 
                     for (int i = LinkedFloor.FloorNumber + 1; i < LinkedFloor.FloorNumber + usedNumberOfFloors; i++)
                     {
@@ -371,7 +371,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             //Finish mesh
             FinishMesh();
-
         }
 
         public override void InternalUpdate()
