@@ -182,24 +182,38 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             Vector2Int gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
 
-            if (gridSize.x == 0)
+            if (gridSize.y == 0)
             {
+                failed = true;
                 return;
             }
 
-            switch (WallType)
+            triangleInfo = new List<TriangleMeshInfo>();
+
+            //Size
+            Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
+
+            float width;
+            float depth;
+
+
+            if (gridSize.x == 0)
             {
-                case NodeGridRectangleOrganizer.OrientationTypes.BlockGrid:
-                    CurrentRectangularBaseDoor.completeWidth = ModificationNodeOrganizer.ObjectOrientationSize.x;
-                    break;
-                case NodeGridRectangleOrganizer.OrientationTypes.NodeGrid:
-                    CurrentRectangularBaseDoor.completeWidth = ModificationNodeOrganizer.ParentOrientationSize.magnitude;
-                    break;
-                default:
-                    Debug.LogWarning("Error, enum case not defined");
-                    break;
+                width = size.y;
+                depth = LinkedFloor.CurrentNodeWallSystem.WallThickness;
+            }
+            else if (WallType == NodeGridRectangleOrganizer.OrientationTypes.NodeGrid)
+            {
+                width = size.magnitude;
+                depth = LinkedFloor.CurrentNodeWallSystem.WallThickness;
+            }
+            else
+            {
+                width = size.y;
+                depth = size.x;
             }
 
+            //Height
             float currentHeight = LinkedFloor.CompleteFloorHeight;
 
             int currentFloorNumber = LinkedFloor.FloorNumber;
@@ -216,6 +230,10 @@ namespace iffnsStuff.iffnsCastleBuilder
                 doorHeightWithFloor += LinkedFloor.BottomFloorHeight;
             }
 
+            //Aply parameters
+            CurrentRectangularBaseDoor.completeWidth = width;
+            CurrentRectangularBaseDoor.betweenDepth = depth;
+
             if (doorHeightWithFloor < currentHeight)
             {
                 CurrentRectangularBaseDoor.doorHeight = doorHeightWithFloor;
@@ -227,23 +245,19 @@ namespace iffnsStuff.iffnsCastleBuilder
                 CurrentRectangularBaseDoor.completeHeight = 0;
             }
 
-            triangleInfo = new List<TriangleMeshInfo>();
-
             CurrentRectangularBaseDoor.ApplyBuildParameters(LinkedFloor.LinkedBuildingController.transform);
 
-            if (gridSize.y == 0 || WallType == NodeGridRectangleOrganizer.OrientationTypes.NodeGrid)
+            if (gridSize.x == 0 || WallType == NodeGridRectangleOrganizer.OrientationTypes.NodeGrid)
             {
-                CurrentRectangularBaseDoor.betweenDepth = LinkedFloor.CurrentNodeWallSystem.WallThickness + MathHelper.SmallFloat;
-                CurrentRectangularBaseDoor.transform.localPosition = Vector3.back * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness;
+                CurrentRectangularBaseDoor.transform.localPosition = Vector3.left * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness;
 
                 foreach (TriangleMeshInfo info in triangleInfo)
                 {
-                    info.Move(Vector3.back * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness);
+                    info.Move(Vector3.left * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness);
                 }
             }
             else
             {
-                CurrentRectangularBaseDoor.betweenDepth = ModificationNodeOrganizer.ObjectOrientationSize.y;
                 CurrentRectangularBaseDoor.transform.localPosition = Vector3.zero;
             }
 
@@ -252,11 +266,9 @@ namespace iffnsStuff.iffnsCastleBuilder
                 StaticMeshManager.AddTriangleInfo(info);
             }
 
-            CurrentRectangularBaseDoor.FrameMaterail = FrameMaterialParam.Val.LinkedMaterial;
+            CurrentRectangularBaseDoor.FrameMaterial = FrameMaterialParam.Val.LinkedMaterial;
 
             BuildAllMeshes();
-
-
         }
 
         void SetupEditButtons()

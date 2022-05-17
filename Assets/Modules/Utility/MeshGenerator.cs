@@ -54,6 +54,22 @@ public static class MeshGenerator
 
             return returnValue;
         }
+
+        public static VerticesHolder ArcAroundX(float radius, float angleDeg, int numberOfEdges)
+        {
+            VerticesHolder returnValue = new VerticesHolder();
+
+            float angleIncrement = angleDeg / numberOfEdges * Mathf.Deg2Rad;
+
+            for (int edge = 0; edge < numberOfEdges + 1; edge++)
+            {
+                float currentAngle = edge * angleIncrement;
+
+                returnValue.Add(new Vector3(0, Mathf.Sin(currentAngle) * radius, Mathf.Cos(currentAngle) * radius));
+            }
+
+            return returnValue;
+        }
     }
 
     public static class FilledShapes

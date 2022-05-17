@@ -188,31 +188,45 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
+            failed = false;
+
             ModificationNodeOrganizer.OrientationType = WallType;
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
 
             Vector2Int gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
 
-            if (gridSize.x == 0)
-            {
-                return;
-            }
 
-            switch (WallType)
+            if (gridSize.y == 0)
             {
-                case NodeGridRectangleOrganizer.OrientationTypes.BlockGrid:
-                    CurrentRectangularBaseWindow.completeWidth = ModificationNodeOrganizer.ObjectOrientationSize.x;
-                    break;
-                case NodeGridRectangleOrganizer.OrientationTypes.NodeGrid:
-                    CurrentRectangularBaseWindow.completeWidth = ModificationNodeOrganizer.ParentOrientationSize.magnitude;
-                    break;
-                default:
-                    Debug.LogWarning("Error, enum case not defined");
-                    break;
+                failed = true;
+                return;
             }
 
             triangleInfo = new List<TriangleMeshInfo>();
 
+            //Size
+            Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
+
+            float width;
+            float depth;
+
+            if (gridSize.x == 0)
+            {
+                width = size.y;
+                depth = LinkedFloor.CurrentNodeWallSystem.WallThickness;
+            }
+            else if (WallType == NodeGridRectangleOrganizer.OrientationTypes.NodeGrid)
+            {
+                width = size.magnitude;
+                depth = LinkedFloor.CurrentNodeWallSystem.WallThickness;
+            }
+            else
+            {
+                width = size.y;
+                depth = size.x;
+            }
+
+            //Height
             float currentHeight = LinkedFloor.CompleteFloorHeight;
             float minWindowHeight = BottomHeight + WindowHeight;
 
@@ -230,27 +244,29 @@ namespace iffnsStuff.iffnsCastleBuilder
                 bottomHeightWithFloor += LinkedFloor.BottomFloorHeight;
             }
 
+            //Aply parameters
+            CurrentRectangularBaseWindow.completeWidth = width;
             CurrentRectangularBaseWindow.completeHeight = currentHeight;
             CurrentRectangularBaseWindow.bottomHeight = bottomHeightWithFloor;
             CurrentRectangularBaseWindow.windowHeight = WindowHeight;
+            CurrentRectangularBaseWindow.betweenDepth = depth;
 
             CurrentRectangularBaseWindow.ApplyBuildParameters(linkedWindow: this, originObject: LinkedFloor.LinkedBuildingController.transform);
 
-            if (gridSize.y == 0 || WallType == NodeGridRectangleOrganizer.OrientationTypes.NodeGrid)
+            if (gridSize.x == 0 || WallType == NodeGridRectangleOrganizer.OrientationTypes.NodeGrid)
             {
-                CurrentRectangularBaseWindow.betweenDepth = LinkedFloor.CurrentNodeWallSystem.WallThickness + MathHelper.SmallFloat;
-                CurrentRectangularBaseWindow.transform.localPosition = Vector3.back * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness;
+                CurrentRectangularBaseWindow.transform.localPosition = Vector3.left * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness;
 
                 foreach (TriangleMeshInfo info in triangleInfo)
                 {
-                    info.Move(Vector3.back * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness);
+                    info.Move(Vector3.left * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness);
                 }
             }
             else
             {
-                CurrentRectangularBaseWindow.betweenDepth = ModificationNodeOrganizer.ObjectOrientationSize.y;
                 CurrentRectangularBaseWindow.transform.localPosition = Vector3.zero;
             }
+
 
             foreach (TriangleMeshInfo info in triangleInfo)
             {

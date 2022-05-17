@@ -10,6 +10,25 @@ namespace iffnsStuff.iffnsCastleBuilder
         readonly NodeGridPositionModificationNode secondNode;
         readonly OnFloorObject linkedObject;
 
+        OrientationTypes orientationType;
+        public enum OrientationTypes
+        {
+            BlockGrid,
+            NodeGrid
+        }
+
+        public OrientationTypes OrientationType
+        {
+            get
+            {
+                return orientationType;
+            }
+            set
+            {
+                orientationType = value;
+            }
+        }
+
         float BlockSize
         {
             get
@@ -36,19 +55,19 @@ namespace iffnsStuff.iffnsCastleBuilder
                 {
                     return new GridOrientation(quarterOrientation: GridOrientation.GridQuarterOrientations.XPosZPos);
                 }
-                else if (parentOrientation.x > 0 && parentOrientation.y >= 0)
+                else if (parentOrientation.x >= 0 && parentOrientation.y > 0)
                 {
                     return new GridOrientation(quarterOrientation: GridOrientation.GridQuarterOrientations.XPosZPos);
                 }
-                else if (parentOrientation.x <= 0 && parentOrientation.y > 0)
+                else if (parentOrientation.x < 0 && parentOrientation.y >= 0)
                 {
                     return new GridOrientation(quarterOrientation: GridOrientation.GridQuarterOrientations.XNegZPos);
                 }
-                else if (parentOrientation.x >= 0 && parentOrientation.y < 0)
+                else if (parentOrientation.x > 0 && parentOrientation.y <= 0)
                 {
                     return new GridOrientation(quarterOrientation: GridOrientation.GridQuarterOrientations.XPosZNeg);
                 }
-                else //if (parentOrientation.x < 0 && parentOrientation.y < 0)
+                else //if (parentOrientation.x <= 0 && parentOrientation.y < 0)
                 {
                     return new GridOrientation(quarterOrientation: GridOrientation.GridQuarterOrientations.XNegZNeg);
                 }
@@ -77,7 +96,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        public Vector2 OpjectOrientationSize
+        public Vector2 ObjectOrientationSize
         {
             get
             {
@@ -87,7 +106,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         return new Vector2(ObjectOrientationGridSize.x, ObjectOrientationGridSize.y) * BlockSize;
                     //break;
                     case OrientationTypes.NodeGrid:
-                        return new Vector2(ParentOrientationSize.magnitude, 0);
+                        return new Vector2(0, ParentOrientationSize.magnitude);
                     //break;
                     default:
                         Debug.LogWarning("Error: Orientation type not defined");
@@ -96,6 +115,18 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
             }
         }
+
+        /*
+        public Vector2 ObjectOrientationSize
+        {
+            get
+            {
+                Vector2Int size = ObjectOrientationGridSize;
+
+                return new Vector2(size.x, size.y) * BlockSize;
+            }
+        }
+        */
 
         public Vector2Int ObjectOrientationGridSize
         {
@@ -123,15 +154,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        public Vector2 ObjectOrientationSize
-        {
-            get
-            {
-                Vector2Int size = ObjectOrientationGridSize;
-
-                return new Vector2(size.x, size.y) * BlockSize;
-            }
-        }
 
         public float BaseFloorHeightBasedOnFirstNode
         {
@@ -184,26 +206,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
 
                 return block;
-            }
-        }
-
-        public enum OrientationTypes
-        {
-            BlockGrid,
-            NodeGrid
-        }
-
-        OrientationTypes orientationType;
-
-        public OrientationTypes OrientationType
-        {
-            get
-            {
-                return OrientationType;
-            }
-            set
-            {
-                orientationType = value;
             }
         }
 
@@ -262,8 +264,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void SetLinkedObjectPositionAndOrientation(bool raiseToFloor)
         {
-
-
             //Position
             GridOrientation orientation = Orientation;
 
@@ -309,16 +309,13 @@ namespace iffnsStuff.iffnsCastleBuilder
                     }
                     break;
                 case OrientationTypes.NodeGrid:
-                    float angle = Mathf.Atan2(y: ParentOrientationSize.y, x: ParentOrientationSize.x) * Mathf.Rad2Deg;
-                    linkedObject.transform.localRotation = Quaternion.Euler(Vector3.up * -angle);
+                    float angle = Mathf.Atan2(y: ParentOrientationSize.x, x: ParentOrientationSize.y) * Mathf.Rad2Deg;
+                    linkedObject.transform.localRotation = Quaternion.Euler(angle * Vector3.up);
                     break;
                 default:
                     Debug.LogWarning("Error, enum case not defined");
                     break;
             }
-
-            //Rotation
-
         }
 
         public NodeGridRectangleOrganizer(OnFloorObject linkedObject, NodeGridPositionModificationNode firstNode, NodeGridPositionModificationNode secondNode)

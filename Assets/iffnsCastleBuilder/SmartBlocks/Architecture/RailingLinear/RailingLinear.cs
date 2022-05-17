@@ -143,21 +143,38 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
 
-            Vector2 gridSize = ModificationNodeOrganizer.OpjectOrientationSize;
+            Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
+            Vector2 gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
 
             if (failed) return;
 
-            if (MathHelper.FloatIsZero(gridSize.x))
+            if (gridSize.y == 0)
             {
                 failed = true;
                 return;
             }
 
-            TopBorder.transform.localScale = new Vector3(gridSize.x, topHeight, borderWidth);
-            TopBorder.transform.localPosition = new Vector3(gridSize.x * 0.5f, railingHeight - topHeight * 0.5f, 0);
+            TopBorder.transform.localScale = new Vector3(
+                borderWidth,
+                topHeight, 
+                size.y
+                );
+            TopBorder.transform.localPosition = new Vector3(
+                0,
+                railingHeight - topHeight * 0.5f, 
+                size.y * 0.5f
+                );
 
-            BottomBorder.transform.localScale = new Vector3(gridSize.x, bottomHeight, borderWidth);
-            BottomBorder.transform.localPosition = new Vector3(gridSize.x * 0.5f, bottomHeight * 0.5f, 0);
+            BottomBorder.transform.localScale = new Vector3(
+                borderWidth,
+                bottomHeight, 
+                size.y
+                );
+            BottomBorder.transform.localPosition = new Vector3(
+                0,
+                bottomHeight * 0.5f, 
+                size.y * 0.5f
+                );
 
             //Railing posts
             while (RailingPosts.Count > 0)
@@ -168,7 +185,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 Destroy(post);
             }
 
-            float baseDistance = gridSize.x;
+            float baseDistance = size.y;
             float floatingCount = baseDistance / TargetDistanceBetweenCylinders;
             int betweenCount = Mathf.RoundToInt(floatingCount);
             betweenCount = MathHelper.ClampIntMin(value: betweenCount, min: 1);
@@ -185,7 +202,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                 GameObject newPost = Instantiate(original: RailingPostTemplate);
 
                 newPost.transform.parent = transform;
-                newPost.transform.localPosition = new Vector3(betweenDistance * i, halfPostHeight, 0);
+                newPost.transform.localPosition = new Vector3(
+                    0,
+                    halfPostHeight, 
+                    betweenDistance * i
+                    );
                 newPost.transform.localScale = new Vector3(cylinderDiameter, postHeight, cylinderDiameter);
 
                 RailingPosts.Add(newPost);
@@ -196,6 +217,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 UnmanagedMeshes.Add(manager);
             }
 
+            //^1 = last index
             RailingPosts[0].transform.localScale = new Vector3(cylinderDiameter, railingHeight + MathHelper.SmallFloat, cylinderDiameter);
             RailingPosts[^1].transform.localScale = new Vector3(cylinderDiameter, railingHeight + MathHelper.SmallFloat, cylinderDiameter);
             RailingPosts[0].transform.localPosition += Vector3.up * (topHeight * 0.5f);

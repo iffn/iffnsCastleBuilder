@@ -140,11 +140,11 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             failed = false;
 
-            TriangleMeshInfo MainSide = new TriangleMeshInfo();
-            TriangleMeshInfo OtherSide = new TriangleMeshInfo();
-            TriangleMeshInfo WrapperStartSide = new TriangleMeshInfo();
-            TriangleMeshInfo WrapperOtherSide = new TriangleMeshInfo();
-            TriangleMeshInfo WrapperBottom = new TriangleMeshInfo();
+            TriangleMeshInfo MainSide;
+            TriangleMeshInfo OtherSide;
+            TriangleMeshInfo WrapperStartSide;
+            TriangleMeshInfo WrapperOtherSide;
+            TriangleMeshInfo WrapperBottom;
 
             void FinishMesh()
             {
@@ -167,15 +167,18 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
-            if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
+            float width = size.y;
+            float length = size.x;
+
+            if (ModificationNodeOrganizer.ObjectOrientationGridSize.y == 0)
             {
                 failed = true;
                 return;
             }
 
-            if (ModificationNodeOrganizer.ObjectOrientationGridSize.y == 0)
+            if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
             {
-                size.y = LinkedFloor.CurrentNodeWallSystem.WallThickness;
+                length = LinkedFloor.CurrentNodeWallSystem.WallThickness;
             }
 
             float centerPosition = 0.5f;
@@ -195,25 +198,25 @@ namespace iffnsStuff.iffnsCastleBuilder
             List<Vector3> trianglePoints = new List<Vector3>();
 
             trianglePoints.Add(Vector3.zero);
-            trianglePoints.Add(new Vector3(size.x * centerPosition, Height, 0));
-            trianglePoints.Add(new Vector3(size.x, 0, 0));
+            trianglePoints.Add(new Vector3(0, 0, width));
+            trianglePoints.Add(new Vector3(0, Height, width * centerPosition));
 
             MainSide = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: trianglePoints);
 
             OtherSide = MainSide.CloneFlipped;
-            OtherSide.Move(Vector3.forward * size.y);
+            OtherSide.Move(length * Vector3.right);
 
-            WrapperStartSide = MeshGenerator.FilledShapes.RectangleAtCorner(Vector3.forward * size.y, secondLine: trianglePoints[1], UVOffset: Vector2.zero);
+            WrapperStartSide = MeshGenerator.FilledShapes.RectangleAtCorner(length * Vector3.right, secondLine: trianglePoints[1], UVOffset: Vector2.zero);
             WrapperStartSide.FlipTriangles();
-            WrapperOtherSide = MeshGenerator.FilledShapes.RectangleAtCorner(Vector3.forward * size.y, secondLine: trianglePoints[1] - trianglePoints[2], UVOffset: Vector2.zero);
+            WrapperOtherSide = MeshGenerator.FilledShapes.RectangleAtCorner(length * Vector3.right, secondLine: trianglePoints[1] - trianglePoints[2], UVOffset: Vector2.zero);
             WrapperOtherSide.Move(trianglePoints[2]);
 
-            WrapperBottom = MeshGenerator.FilledShapes.RectangleAtCorner(Vector3.forward * size.y, secondLine: trianglePoints[2], UVOffset: Vector2.zero);
+            WrapperBottom = MeshGenerator.FilledShapes.RectangleAtCorner(length * Vector3.right, secondLine: trianglePoints[2], UVOffset: Vector2.zero);
             WrapperBottom.Move(Vector3.up * MathHelper.SmallFloat);
 
-            if (ModificationNodeOrganizer.ObjectOrientationGridSize.y == 0)
+            if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
             {
-                Vector3 offset = Vector3.back * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness;
+                Vector3 offset = LinkedFloor.CurrentNodeWallSystem.HalfWallThickness * Vector3.left;
 
                 MainSide.Move(offset);
                 OtherSide.Move(offset);

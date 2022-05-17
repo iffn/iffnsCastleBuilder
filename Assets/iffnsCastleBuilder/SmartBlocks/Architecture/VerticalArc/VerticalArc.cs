@@ -15,6 +15,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineRanged FreeHeightSide;
         MailboxLineRanged ArcHeight;
         MailboxLineMaterial MainMaterialParam;
+        MailboxLineMaterial OtherSideMaterialParam;
 
         NodeGridRectangleOrganizer ModificationNodeOrganizer;
 
@@ -26,7 +27,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        void LimitSizes()
+        void LimitHeights()
         {
             float remainingHeight = Height - FreeHeightSide.Val - ArcHeight.Val;
 
@@ -59,6 +60,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             FreeHeightSide = new MailboxLineRanged(name: "FreeHeihgtSide [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 5f, Min: 0f, DefaultValue: 1.8f);
             ArcHeight = new MailboxLineRanged(name: "Arc height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 2f, Min: 0.3f, DefaultValue: 0.5f);
             MainMaterialParam = new MailboxLineMaterial(name: "Main material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
+            OtherSideMaterialParam = new MailboxLineMaterial(name: "Other side material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
         }
 
         public override void Setup(IBaseObject linkedFloor)
@@ -91,12 +93,12 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             failed = false;
 
-            TriangleMeshInfo FrontWall;
-            TriangleMeshInfo BackWall;
-            TriangleMeshInfo RightWall;
-            TriangleMeshInfo LeftWall;
-            TriangleMeshInfo TopWall;
-            TriangleMeshInfo InnerArc;
+            TriangleMeshInfo FrontWall = new TriangleMeshInfo();
+            TriangleMeshInfo BackWall = new TriangleMeshInfo();
+            TriangleMeshInfo RightWall = new TriangleMeshInfo();
+            TriangleMeshInfo LeftWall = new TriangleMeshInfo();
+            TriangleMeshInfo TopWall = new TriangleMeshInfo();
+            TriangleMeshInfo InnerArc = new TriangleMeshInfo();
 
             void FinishMeshes()
             {
@@ -114,7 +116,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 StaticMeshManager.AddTriangleInfo(InnerArc);
 
                 FrontWall.MaterialReference = MainMaterialParam;
-                BackWall.MaterialReference = MainMaterialParam;
+                BackWall.MaterialReference = OtherSideMaterialParam;
                 RightWall.MaterialReference = MainMaterialParam;
                 LeftWall.MaterialReference = MainMaterialParam;
                 TopWall.MaterialReference = MainMaterialParam;
@@ -127,42 +129,49 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
-            if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
+            
+
+            if (ModificationNodeOrganizer.ObjectOrientationGridSize.y == 0)
             {
                 failed = true;
                 return;
             }
 
-            LimitSizes();
+            float length = size.y;
+            float width;
 
-            if (ModificationNodeOrganizer.ObjectOrientationGridSize.y == 0)
+            if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
             {
-                size.y = LinkedFloor.CurrentNodeWallSystem.WallThickness;
+                width = LinkedFloor.CurrentNodeWallSystem.WallThickness;
+            }
+            else
+            {
+                width = size.x;
             }
 
-            //Inner arc
-            VerticesHolder arcLine = MeshGenerator.Lines.ArcAroundZ(radius: size.x * 0.5f, angleDeg: 180, numberOfEdges: 24);
-            arcLine.Scale(new Vector3(1, ArcHeight.Val / (size.x * 0.5f), 1));
-            arcLine.Move(Vector3.up * FreeHeightSide.Val + Vector3.right * size.x * 0.5f);
+            LimitHeights();
 
-            InnerArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: arcLine, offset: Vector3.forward * size.y, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
-            InnerArc.FlipTriangles();
+            //Inner arc
+            VerticesHolder arcLine = MeshGenerator.Lines.ArcAroundX(radius: length * 0.5f, angleDeg: 180, numberOfEdges: 24);
+            arcLine.Scale(new Vector3(1, ArcHeight.Val / (length * 0.5f), 1));
+            arcLine.Move(Vector3.up * FreeHeightSide.Val + Vector3.forward * length * 0.5f);
+
+            InnerArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: arcLine, offset: Vector3.right * width, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
 
             //Front wall
-
-            VerticesHolder rightArc = MeshGenerator.Lines.ArcAroundZ(radius: size.x * 0.5f, angleDeg: 90, numberOfEdges: 12);
-            rightArc.Scale(new Vector3(1, ArcHeight.Val / (size.x * 0.5f), 1));
-            rightArc.Move(Vector3.up * FreeHeightSide.Val + Vector3.right * size.x * 0.5f);
-            Vector3 rightPoint = new Vector3(size.x, Height, 0);
+            VerticesHolder rightArc = MeshGenerator.Lines.ArcAroundX(radius: length * 0.5f, angleDeg: 90, numberOfEdges: 12);
+            rightArc.Scale(new Vector3(1, ArcHeight.Val / (length * 0.5f), 1));
+            rightArc.Move(Vector3.up * FreeHeightSide.Val + Vector3.forward * length * 0.5f);
+            Vector3 rightPoint = new Vector3(0, Height, length);
 
             FrontWall = MeshGenerator.MeshesFromLines.KnitLines(point: rightPoint, line: rightArc, isClosed: false);
 
             int currentIndex = FrontWall.VerticesHolder.Count - 1;
 
-            VerticesHolder leftArc = MeshGenerator.Lines.ArcAroundZ(radius: size.x * 0.5f, angleDeg: 90, numberOfEdges: 12);
-            leftArc.Rotate(Quaternion.Euler(0, 0, 90));
-            leftArc.Scale(new Vector3(1, ArcHeight.Val / (size.x * 0.5f), 1));
-            leftArc.Move(new Vector3(size.x * 0.5f, FreeHeightSide.Val, 0));
+            VerticesHolder leftArc = MeshGenerator.Lines.ArcAroundX(radius: length * 0.5f, angleDeg: 90, numberOfEdges: 12);
+            leftArc.Rotate(Quaternion.Euler(-90, 0, 0));
+            leftArc.Scale(new Vector3(1, ArcHeight.Val / (length * 0.5f), 1));
+            leftArc.Move(new Vector3(0, FreeHeightSide.Val, length * 0.5f));
             Vector3 leftPoint = new Vector3(0, Height, 0);
             leftArc.Vertices.RemoveAt(0);
 
@@ -171,34 +180,37 @@ namespace iffnsStuff.iffnsCastleBuilder
             FrontWall.Triangles.Add(new TriangleHolder(baseOffset: currentIndex, t1: 0, t2: 1, t3: 2));
             FrontWall.Triangles.Add(new TriangleHolder(0, currentIndex + 1, currentIndex));
 
-            FrontWall.FlipTriangles();
+            //FrontWall.FlipTriangles();
 
             //Back wall
             BackWall = FrontWall.Clone;
-            BackWall.Move(Vector3.forward * size.y);
+            BackWall.Move(Vector3.right * width);
             BackWall.FlipTriangles();
 
             //Top wall
-            TopWall = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: Vector3.forward * size.y, UVOffset: new Vector2(0, Height));
+            TopWall = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: Vector3.forward * length, UVOffset: new Vector2(0, Height));
             TopWall.Move(Vector3.up * Height);
 
             //Left wall
-            LeftWall = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.up * (Height - FreeHeightSide.Val), secondLine: Vector3.forward * size.y, UVOffset: Vector2.zero);
+            LeftWall = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.up * (Height - FreeHeightSide.Val), secondLine: Vector3.right * width, UVOffset: Vector2.zero);
+            LeftWall.FlipTriangles();
             LeftWall.Move(Vector3.up * FreeHeightSide.Val);
 
             //RightWall
             RightWall = LeftWall.Clone;
             RightWall.FlipTriangles();
-            RightWall.Move(Vector3.right * size.x);
+            RightWall.Move(Vector3.forward * length);
 
-            if (ModificationNodeOrganizer.ObjectOrientationGridSize.y == 0)
+            if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
             {
-                FrontWall.Move(Vector3.back * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness);
-                BackWall.Move(Vector3.back * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness);
-                RightWall.Move(Vector3.back * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness);
-                LeftWall.Move(Vector3.back * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness);
-                TopWall.Move(Vector3.back * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness);
-                InnerArc.Move(Vector3.back * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness);
+                FrontWall.Move(width * 0.5f * Vector3.left);
+                BackWall.Move(width * 0.5f * Vector3.left);
+                RightWall.Move(width * 0.5f * Vector3.left);
+                LeftWall.Move(width * 0.5f * Vector3.left);
+                TopWall.Move(width * 0.5f * Vector3.left);
+                InnerArc.Move(width * 0.5f * Vector3.left);
+
+                
             }
 
             FinishMeshes();

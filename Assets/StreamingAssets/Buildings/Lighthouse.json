@@ -11477,29 +11477,32 @@
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [19, 22],
-					"Top right position": [3, 21],
+					"Bottom left position": [19, 21],
+					"Top right position": [3, 22],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [19, 15],
-					"Top right position": [3, 14],
+					"Bottom left position": [19, 14],
+					"Top right position": [3, 15],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [3, 7],
-					"Top right position": [19, 8],
+					"Bottom left position": [3, 8],
+					"Top right position": [19, 7],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
@@ -11508,88 +11511,98 @@
 					"Top right position": [15, 12],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [7, 0],
-					"Top right position": [15, 1],
+					"Bottom left position": [7, 1],
+					"Top right position": [15, 0],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [3, 1],
-					"Top right position": [2, 7],
+					"Bottom left position": [2, 1],
+					"Top right position": [3, 7],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [3, 8],
-					"Top right position": [2, 14],
+					"Bottom left position": [2, 8],
+					"Top right position": [3, 14],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [3, 15],
-					"Top right position": [2, 21],
+					"Bottom left position": [2, 15],
+					"Top right position": [3, 21],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [3, 22],
-					"Top right position": [2, 28],
+					"Bottom left position": [2, 22],
+					"Top right position": [3, 28],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [19, 28],
-					"Top right position": [20, 22],
+					"Bottom left position": [20, 28],
+					"Top right position": [19, 22],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [19, 21],
-					"Top right position": [20, 15],
+					"Bottom left position": [20, 21],
+					"Top right position": [19, 15],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [19, 14],
-					"Top right position": [20, 8],
+					"Bottom left position": [20, 14],
+					"Top right position": [19, 8],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [19, 7],
-					"Top right position": [20, 1],
+					"Bottom left position": [20, 7],
+					"Top right position": [19, 1],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
@@ -11598,7 +11611,8 @@
 					"Top right position": [16, 0],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.6,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
@@ -11607,7 +11621,8 @@
 					"Top right position": [4, 7],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "CircularStair",
@@ -11629,8 +11644,8 @@
 				{
 					"Type": "Door",
 					"Name": "",
-					"Bottom Left Position": [15, 30],
-					"Top Right Position": [-4, -2],
+					"Bottom Left Position": [15, 28],
+					"Top Right Position": [-4, 2],
 					"Door height [m]": 2,
 					"Front wall material": "PolyHaven-sandstone_blocks_05",
 					"Back wall material": "PolyHaven-sandstone_blocks_05",
@@ -17840,8 +17855,8 @@
 				{
 					"Type": "Window",
 					"Name": "",
-					"Bottom Left Position": [2, 15],
-					"Top Right Position": [-1, 3],
+					"Bottom Left Position": [2, 18],
+					"Top Right Position": [-1, -3],
 					"Bottom height [m]": 0.75,
 					"Window height [m]": 1,
 					"Front wall material": "PolyHaven-beige_wall_001",
@@ -17906,8 +17921,8 @@
 				{
 					"Type": "Window",
 					"Name": "",
-					"Bottom Left Position": [2, 23],
-					"Top Right Position": [-1, 3],
+					"Bottom Left Position": [2, 26],
+					"Top Right Position": [-1, -3],
 					"Bottom height [m]": 0.75,
 					"Window height [m]": 1,
 					"Front wall material": "PolyHaven-beige_wall_001",
@@ -17919,8 +17934,8 @@
 				{
 					"Type": "Window",
 					"Name": "",
-					"Bottom Left Position": [2, 7],
-					"Top Right Position": [-1, 3],
+					"Bottom Left Position": [2, 10],
+					"Top Right Position": [-1, -3],
 					"Bottom height [m]": 0.75,
 					"Window height [m]": 1,
 					"Front wall material": "PolyHaven-beige_wall_001",
@@ -17932,8 +17947,8 @@
 				{
 					"Type": "Door",
 					"Name": "",
-					"Bottom Left Position": [12, 28],
-					"Top Right Position": [3, 2],
+					"Bottom Left Position": [12, 30],
+					"Top Right Position": [3, -2],
 					"Door height [m]": 2,
 					"Front wall material": "PolyHaven-sandstone_blocks_05",
 					"Back wall material": "PolyHaven-sandstone_blocks_05",
@@ -18079,7 +18094,8 @@
 					"Top right position": [1, 22],
 					"FreeHeihgtSide [m]": 1.75,
 					"Arc height [m]": 0.6,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
@@ -18088,7 +18104,8 @@
 					"Top right position": [1, 6],
 					"FreeHeihgtSide [m]": 1.75,
 					"Arc height [m]": 0.6,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
@@ -18097,7 +18114,8 @@
 					"Top right position": [1, 14],
 					"FreeHeihgtSide [m]": 1.75,
 					"Arc height [m]": 0.6,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
@@ -18106,7 +18124,8 @@
 					"Top right position": [16, 7],
 					"FreeHeihgtSide [m]": 1.65,
 					"Arc height [m]": 0.6,
-					"Main material": "PolyHaven-beige_wall_001"
+					"Main material": "PolyHaven-beige_wall_001",
+					"Other side material": "PolyHaven-beige_wall_001"
 				},
 				{
 					"Type": "HorizontalArc",
@@ -18264,7 +18283,7 @@
 						"Name": "",
 						"Start position": [1, 26],
 						"End position": [1, 29],
-						"Right material": "PolyHaven-sandstone_blocks_05",
+						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-sandstone_blocks_05"
 					}
 				]
@@ -24252,8 +24271,8 @@
 				{
 					"Type": "Door",
 					"Name": "",
-					"Bottom Left Position": [11, 28],
-					"Top Right Position": [4, 2],
+					"Bottom Left Position": [11, 30],
+					"Top Right Position": [4, -2],
 					"Door height [m]": 2,
 					"Front wall material": "PolyHaven-sandstone_blocks_05",
 					"Back wall material": "PolyHaven-sandstone_blocks_05",
@@ -24415,71 +24434,78 @@
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [19, 1],
-					"Top right position": [14, 0],
+					"Bottom left position": [19, 0],
+					"Top right position": [14, 1],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [13, 1],
-					"Top right position": [9, 0],
+					"Bottom left position": [13, 0],
+					"Top right position": [9, 1],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [8, 1],
-					"Top right position": [3, 0],
+					"Bottom left position": [8, 0],
+					"Top right position": [3, 1],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [2, 2],
-					"Top right position": [1, 7],
+					"Bottom left position": [1, 2],
+					"Top right position": [2, 7],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [2, 8],
-					"Top right position": [1, 14],
+					"Bottom left position": [1, 8],
+					"Top right position": [2, 14],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [2, 15],
-					"Top right position": [1, 21],
+					"Bottom left position": [1, 15],
+					"Top right position": [2, 21],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [2, 22],
-					"Top right position": [1, 27],
+					"Bottom left position": [1, 22],
+					"Top right position": [2, 27],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "Window",
 					"Name": "",
-					"Bottom Left Position": [18, 0],
-					"Top Right Position": [-3, 0],
+					"Bottom Left Position": [15, 0],
+					"Top Right Position": [3, 0],
 					"Bottom height [m]": 0.75,
 					"Window height [m]": 1,
 					"Front wall material": "PolyHaven-beige_wall_001",
@@ -24491,8 +24517,8 @@
 				{
 					"Type": "Window",
 					"Name": "",
-					"Bottom Left Position": [7, 0],
-					"Top Right Position": [-3, 0],
+					"Bottom Left Position": [4, 0],
+					"Top Right Position": [3, 0],
 					"Bottom height [m]": 0.75,
 					"Window height [m]": 1,
 					"Front wall material": "PolyHaven-beige_wall_001",
@@ -24504,33 +24530,7 @@
 				{
 					"Type": "Window",
 					"Name": "",
-					"Bottom Left Position": [1, 9],
-					"Top Right Position": [0, 4],
-					"Bottom height [m]": 0.75,
-					"Window height [m]": 1,
-					"Front wall material": "PolyHaven-beige_wall_001",
-					"Back wall material": "PolyHaven-sandstone_blocks_05",
-					"Frame material": "PolyHaven-plywood",
-					"Glass material": "DummyWindow",
-					"Wall type": "BlockGrid"
-				},
-				{
-					"Type": "Window",
-					"Name": "",
-					"Bottom Left Position": [1, 16],
-					"Top Right Position": [0, 4],
-					"Bottom height [m]": 0.75,
-					"Window height [m]": 1,
-					"Front wall material": "PolyHaven-beige_wall_001",
-					"Back wall material": "PolyHaven-sandstone_blocks_05",
-					"Frame material": "PolyHaven-plywood",
-					"Glass material": "DummyWindow",
-					"Wall type": "BlockGrid"
-				},
-				{
-					"Type": "Window",
-					"Name": "",
-					"Bottom Left Position": [21, 20],
+					"Bottom Left Position": [1, 13],
 					"Top Right Position": [0, -4],
 					"Bottom height [m]": 0.75,
 					"Window height [m]": 1,
@@ -24541,19 +24541,46 @@
 					"Wall type": "BlockGrid"
 				},
 				{
-					"Type": "VerticalArc",
+					"Type": "Window",
 					"Name": "",
-					"Bottom left position": [20, 21],
-					"Top right position": [21, 15],
-					"FreeHeihgtSide [m]": 1.8,
-					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Bottom Left Position": [1, 20],
+					"Top Right Position": [0, -4],
+					"Bottom height [m]": 0.75,
+					"Window height [m]": 1,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-sandstone_blocks_05",
+					"Frame material": "PolyHaven-plywood",
+					"Glass material": "DummyWindow",
+					"Wall type": "BlockGrid"
 				},
 				{
 					"Type": "Window",
 					"Name": "",
-					"Bottom Left Position": [21, 13],
-					"Top Right Position": [0, -4],
+					"Bottom Left Position": [21, 16],
+					"Top Right Position": [0, 4],
+					"Bottom height [m]": 0.75,
+					"Window height [m]": 1,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-sandstone_blocks_05",
+					"Frame material": "PolyHaven-plywood",
+					"Glass material": "DummyWindow",
+					"Wall type": "BlockGrid"
+				},
+				{
+					"Type": "VerticalArc",
+					"Name": "",
+					"Bottom left position": [21, 21],
+					"Top right position": [20, 15],
+					"FreeHeihgtSide [m]": 1.8,
+					"Arc height [m]": 0.5,
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
+				},
+				{
+					"Type": "Window",
+					"Name": "",
+					"Bottom Left Position": [21, 9],
+					"Top Right Position": [0, 4],
 					"Bottom height [m]": 0.75,
 					"Window height [m]": 1,
 					"Front wall material": "PolyHaven-beige_wall_001",
@@ -24576,29 +24603,32 @@
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [21, 22],
-					"Top right position": [20, 27],
+					"Bottom left position": [21, 27],
+					"Top right position": [20, 22],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [20, 14],
-					"Top right position": [21, 8],
+					"Bottom left position": [21, 14],
+					"Top right position": [20, 8],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [20, 7],
-					"Top right position": [21, 2],
+					"Bottom left position": [21, 7],
+					"Top right position": [20, 2],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-sandstone_blocks_05",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "HorizontalArc",
@@ -24620,8 +24650,8 @@
 				{
 					"Type": "Window",
 					"Name": "",
-					"Bottom Left Position": [1, 26],
-					"Top Right Position": [0, -3],
+					"Bottom Left Position": [1, 23],
+					"Top Right Position": [0, 3],
 					"Bottom height [m]": 1,
 					"Window height [m]": 0.75,
 					"Front wall material": "PolyHaven-sandstone_blocks_05",

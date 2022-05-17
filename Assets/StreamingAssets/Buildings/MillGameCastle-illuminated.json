@@ -53,7 +53,7 @@
 						"Name": "",
 						"Start position": [53, 43],
 						"End position": [52, 43],
-						"Right material": "PolyHaven-stone_brick_wall_001",
+						"Right material": "PolyHaven-stone_brick_wall_001-illuminated",
 						"Left material": "PolyHaven-stone_brick_wall_001-illuminated"
 					},
 					{
@@ -61,7 +61,7 @@
 						"Name": "",
 						"Start position": [47, 43],
 						"End position": [46, 43],
-						"Right material": "PolyHaven-stone_brick_wall_001",
+						"Right material": "PolyHaven-stone_brick_wall_001-illuminated",
 						"Left material": "PolyHaven-stone_brick_wall_001-illuminated"
 					},
 					{
@@ -117,7 +117,7 @@
 						"Name": "",
 						"Start position": [11, 43],
 						"End position": [10, 43],
-						"Right material": "PolyHaven-beige_wall_001",
+						"Right material": "PolyHaven-stone_brick_wall_001-illuminated",
 						"Left material": "PolyHaven-stone_brick_wall_001-illuminated"
 					},
 					{
@@ -125,7 +125,7 @@
 						"Name": "",
 						"Start position": [5, 43],
 						"End position": [4, 43],
-						"Right material": "PolyHaven-beige_wall_001",
+						"Right material": "PolyHaven-stone_brick_wall_001-illuminated",
 						"Left material": "PolyHaven-stone_brick_wall_001-illuminated"
 					},
 					{
@@ -10245,7 +10245,7 @@
 					"Top cap material": "PolyHaven-medieval_blocks_03-illuminated",
 					"Front wall material": "PolyHaven-medieval_blocks_03-illuminated",
 					"Back wall material": "PolyHaven-medieval_blocks_03",
-					"Right wall material": "PolyHaven-medieval_blocks_03"
+					"Right wall material": "PolyHaven-medieval_blocks_03-illuminated"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -10478,7 +10478,7 @@
 					"Top cap material": "PolyHaven-stone_brick_wall_001",
 					"Front wall material": "PolyHaven-stone_brick_wall_001",
 					"Back wall material": "PolyHaven-stone_brick_wall_001-illuminated",
-					"Right wall material": "PolyHaven-stone_brick_wall_001"
+					"Right wall material": "PolyHaven-stone_brick_wall_001-illuminated"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -10867,7 +10867,7 @@
 					"Name": "",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02-illuminated",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Top cap material": "PolyHaven-wood_planks_dirt-illuminated",
 					"Front wall material": "PolyHaven-plywood"
 				},
 				{
@@ -11257,7 +11257,7 @@
 					"Name": "",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02-illuminated",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Top cap material": "PolyHaven-wood_planks_dirt-illuminated",
 					"Front wall material": "PolyHaven-plywood"
 				},
 				{
@@ -11647,7 +11647,7 @@
 					"Name": "",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02-illuminated",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Top cap material": "PolyHaven-wood_planks_dirt-illuminated",
 					"Front wall material": "PolyHaven-plywood"
 				},
 				{
@@ -12037,7 +12037,7 @@
 					"Name": "",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02-illuminated",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Top cap material": "PolyHaven-wood_planks_dirt-illuminated",
 					"Front wall material": "PolyHaven-plywood"
 				},
 				{
@@ -12427,7 +12427,7 @@
 					"Name": "",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02-illuminated",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Top cap material": "PolyHaven-wood_planks_dirt-illuminated",
 					"Front wall material": "PolyHaven-plywood"
 				},
 				{
@@ -12596,10 +12596,10 @@
 					"Name": "",
 					"Block type": "Wall",
 					"Ceiling material": "PolyHaven-old_planks_02-illuminated",
-					"Top cap material": "PolyHaven-medieval_blocks_03",
+					"Top cap material": "PolyHaven-medieval_blocks_03-illuminated",
 					"Front wall material": "PolyHaven-medieval_blocks_03-illuminated",
 					"Back wall material": "PolyHaven-medieval_blocks_03",
-					"Left wall material": "PolyHaven-medieval_blocks_03"
+					"Left wall material": "PolyHaven-medieval_blocks_03-illuminated"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -12832,7 +12832,7 @@
 					"Top cap material": "PolyHaven-stone_brick_wall_001",
 					"Front wall material": "PolyHaven-stone_brick_wall_001",
 					"Back wall material": "PolyHaven-stone_brick_wall_001-illuminated",
-					"Left wall material": "PolyHaven-stone_brick_wall_001"
+					"Left wall material": "PolyHaven-stone_brick_wall_001-illuminated"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -12999,7 +12999,7 @@
 					"Name": "",
 					"Block type": "Wall",
 					"Ceiling material": "PolyHaven-old_planks_02-illuminated",
-					"Top cap material": "PolyHaven-medieval_blocks_03",
+					"Top cap material": "PolyHaven-medieval_blocks_03-illuminated",
 					"Front wall material": "PolyHaven-medieval_blocks_03-illuminated",
 					"Back wall material": "PolyHaven-medieval_blocks_03"
 				},
@@ -22813,137 +22813,152 @@
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [47, 43],
-					"Top right position": [52, 44],
+					"Bottom left position": [47, 44],
+					"Top right position": [52, 43],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001-illuminated"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [43, 52],
-					"Top right position": [44, 47],
+					"Bottom left position": [44, 52],
+					"Top right position": [43, 47],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001-illuminated"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [31, 46],
-					"Top right position": [26, 45],
+					"Bottom left position": [26, 46],
+					"Top right position": [31, 45],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [31, 36],
-					"Top right position": [26, 35],
+					"Bottom left position": [31, 35],
+					"Top right position": [26, 36],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-medieval_blocks_03-illuminated",
+					"Other side material": "PolyHaven-medieval_blocks_03"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [36, 26],
-					"Top right position": [35, 31],
+					"Bottom left position": [35, 26],
+					"Top right position": [36, 31],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-medieval_blocks_03-illuminated",
+					"Other side material": "PolyHaven-medieval_blocks_03"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [46, 26],
-					"Top right position": [45, 31],
+					"Bottom left position": [46, 31],
+					"Top right position": [45, 26],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [31, 22],
-					"Top right position": [26, 21],
+					"Bottom left position": [26, 22],
+					"Top right position": [31, 21],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-medieval_blocks_03-illuminated",
+					"Other side material": "PolyHaven-medieval_blocks_03"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [21, 31],
-					"Top right position": [22, 26],
+					"Bottom left position": [22, 31],
+					"Top right position": [21, 26],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-sandstone_blocks_05"
+					"Main material": "PolyHaven-medieval_blocks_03-illuminated",
+					"Other side material": "PolyHaven-medieval_blocks_03"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [31, 54],
-					"Top right position": [26, 53],
+					"Bottom left position": [31, 53],
+					"Top right position": [26, 54],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [52, 14],
-					"Top right position": [47, 13],
+					"Bottom left position": [52, 13],
+					"Top right position": [47, 14],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001-illuminated"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [44, 5],
-					"Top right position": [43, 10],
+					"Bottom left position": [43, 5],
+					"Top right position": [44, 10],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001-illuminated"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [14, 5],
-					"Top right position": [13, 10],
+					"Bottom left position": [13, 5],
+					"Top right position": [14, 10],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001-illuminated"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [10, 14],
-					"Top right position": [5, 13],
+					"Bottom left position": [10, 13],
+					"Top right position": [5, 14],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001-illuminated"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [10, 44],
-					"Top right position": [5, 43],
+					"Bottom left position": [10, 43],
+					"Top right position": [5, 44],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001-illuminated"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [14, 47],
-					"Top right position": [13, 52],
+					"Bottom left position": [14, 52],
+					"Top right position": [13, 47],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001-illuminated"
 				},
 				{
 					"Type": "TableGrid",
@@ -23175,20 +23190,22 @@
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [31, 12],
-					"Top right position": [26, 11],
+					"Bottom left position": [31, 11],
+					"Top right position": [26, 12],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [12, 26],
-					"Top right position": [11, 31],
+					"Bottom left position": [11, 26],
+					"Top right position": [12, 31],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "RectangularStairs",
@@ -23238,20 +23255,22 @@
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [43, 10],
-					"Top right position": [43, 5],
+					"Bottom left position": [43, 5],
+					"Top right position": [43, 10],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [47, 43],
-					"Top right position": [52, 43],
+					"Bottom left position": [52, 43],
+					"Top right position": [47, 43],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
@@ -23260,7 +23279,8 @@
 					"Top right position": [52, 14],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
@@ -23269,7 +23289,8 @@
 					"Top right position": [14, 5],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
@@ -23278,25 +23299,28 @@
 					"Top right position": [10, 14],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [5, 43],
-					"Top right position": [10, 43],
+					"Bottom left position": [10, 43],
+					"Top right position": [5, 43],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [14, 47],
-					"Top right position": [14, 52],
+					"Bottom left position": [14, 52],
+					"Top right position": [14, 47],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
@@ -23305,7 +23329,8 @@
 					"Top right position": [43, 52],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001-illuminated"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				}
 			]
 		},
@@ -41652,38 +41677,42 @@
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [37, 22],
-					"Top right position": [36, 35],
+					"Bottom left position": [37, 35],
+					"Top right position": [36, 22],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 1.5,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [35, 37],
-					"Top right position": [22, 36],
+					"Bottom left position": [22, 37],
+					"Top right position": [35, 36],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 1.5,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [20, 35],
-					"Top right position": [21, 22],
+					"Bottom left position": [20, 22],
+					"Top right position": [21, 35],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 1.5,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [22, 20],
-					"Top right position": [35, 21],
+					"Bottom left position": [35, 20],
+					"Top right position": [22, 21],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 1.5,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "RailingLinear",
@@ -62397,7 +62426,7 @@
 					"Top cap material": "PolyHaven-stone_brick_wall_001",
 					"Front wall material": "PolyHaven-stone_brick_wall_001-illuminated",
 					"Back wall material": "PolyHaven-stone_brick_wall_001",
-					"Left wall material": "PolyHaven-stone_brick_wall_001"
+					"Left wall material": "PolyHaven-stone_brick_wall_001-illuminated"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -77463,290 +77492,322 @@
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [48, 56],
-					"Top right position": [46, 55],
+					"Bottom left position": [48, 55],
+					"Top right position": [46, 56],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [44, 52],
-					"Top right position": [43, 54],
+					"Bottom left position": [44, 54],
+					"Top right position": [43, 52],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [54, 44],
-					"Top right position": [52, 43],
+					"Bottom left position": [52, 44],
+					"Top right position": [54, 43],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [49, 44],
-					"Top right position": [47, 43],
+					"Bottom left position": [47, 44],
+					"Top right position": [49, 43],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [44, 45],
-					"Top right position": [43, 47],
+					"Bottom left position": [44, 47],
+					"Top right position": [43, 45],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [53, 56],
-					"Top right position": [51, 55],
+					"Bottom left position": [53, 55],
+					"Top right position": [51, 56],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [56, 51],
-					"Top right position": [55, 53],
+					"Bottom left position": [55, 51],
+					"Top right position": [56, 53],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [56, 46],
-					"Top right position": [55, 48],
+					"Bottom left position": [55, 46],
+					"Top right position": [56, 48],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [44, 3],
-					"Top right position": [43, 5],
+					"Bottom left position": [44, 5],
+					"Top right position": [43, 3],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [44, 10],
-					"Top right position": [43, 12],
+					"Bottom left position": [44, 12],
+					"Top right position": [43, 10],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [47, 13],
-					"Top right position": [49, 14],
+					"Bottom left position": [49, 13],
+					"Top right position": [47, 14],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [52, 13],
-					"Top right position": [54, 14],
+					"Bottom left position": [54, 13],
+					"Top right position": [52, 14],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [56, 9],
-					"Top right position": [55, 11],
+					"Bottom left position": [55, 9],
+					"Top right position": [56, 11],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [56, 4],
-					"Top right position": [55, 6],
+					"Bottom left position": [55, 4],
+					"Top right position": [56, 6],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [51, 1],
-					"Top right position": [53, 2],
+					"Bottom left position": [51, 2],
+					"Top right position": [53, 1],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [46, 1],
-					"Top right position": [48, 2],
+					"Bottom left position": [46, 2],
+					"Top right position": [48, 1],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [4, 1],
-					"Top right position": [6, 2],
+					"Bottom left position": [4, 2],
+					"Top right position": [6, 1],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [9, 1],
-					"Top right position": [11, 2],
+					"Bottom left position": [9, 2],
+					"Top right position": [11, 1],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [14, 3],
-					"Top right position": [13, 5],
+					"Bottom left position": [13, 3],
+					"Top right position": [14, 5],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [14, 10],
-					"Top right position": [13, 12],
+					"Bottom left position": [13, 10],
+					"Top right position": [14, 12],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [2, 4],
-					"Top right position": [1, 6],
+					"Bottom left position": [2, 6],
+					"Top right position": [1, 4],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [2, 9],
-					"Top right position": [1, 11],
+					"Bottom left position": [2, 11],
+					"Top right position": [1, 9],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [3, 13],
-					"Top right position": [5, 14],
+					"Bottom left position": [5, 13],
+					"Top right position": [3, 14],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [8, 13],
-					"Top right position": [10, 14],
+					"Bottom left position": [10, 13],
+					"Top right position": [8, 14],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [2, 46],
-					"Top right position": [1, 48],
+					"Bottom left position": [2, 48],
+					"Top right position": [1, 46],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [2, 51],
-					"Top right position": [1, 53],
+					"Bottom left position": [2, 53],
+					"Top right position": [1, 51],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [4, 55],
-					"Top right position": [6, 56],
+					"Bottom left position": [6, 55],
+					"Top right position": [4, 56],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [9, 55],
-					"Top right position": [11, 56],
+					"Bottom left position": [11, 55],
+					"Top right position": [9, 56],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [3, 43],
-					"Top right position": [5, 44],
+					"Bottom left position": [3, 44],
+					"Top right position": [5, 43],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [8, 43],
-					"Top right position": [10, 44],
+					"Bottom left position": [8, 44],
+					"Top right position": [10, 43],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [14, 45],
-					"Top right position": [13, 47],
+					"Bottom left position": [13, 45],
+					"Top right position": [14, 47],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [14, 52],
-					"Top right position": [13, 54],
+					"Bottom left position": [13, 52],
+					"Top right position": [14, 54],
 					"FreeHeihgtSide [m]": 0.8,
 					"Arc height [m]": 0.3,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001-illuminated",
+					"Other side material": "PolyHaven-stone_brick_wall_001"
 				}
 			]
 		},

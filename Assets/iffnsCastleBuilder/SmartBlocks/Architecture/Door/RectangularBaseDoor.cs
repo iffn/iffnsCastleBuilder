@@ -28,7 +28,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         public MailboxLineMaterial FrontMaterial;
         public MailboxLineMaterial BackMaterial;
 
-        public Material FrameMaterail
+        public Material FrameMaterial
         {
             set
             {
@@ -94,14 +94,44 @@ namespace iffnsStuff.iffnsCastleBuilder
                 LinkedDoorController.AddStaticMesh(rightWraper);
             }
 
-            TopBorderBlock.transform.localScale = new Vector3(completeWidth, borderWidth, betweenDepth + borderDepth * 2);
-            TopBorderBlock.transform.localPosition = new Vector3(completeWidth / 2, doorHeight, betweenDepth / 2);
+            TopBorderBlock.transform.localScale = new Vector3(
+                betweenDepth + borderDepth * 2,
+                borderWidth, 
+                completeWidth
+                );
 
-            LeftBorderBlock.transform.localScale = new Vector3(borderWidth, doorHeight, betweenDepth + borderDepth * 2);
-            LeftBorderBlock.transform.localPosition = new Vector3(0, MathHelper.SmallFloat, betweenDepth / 2);
+            TopBorderBlock.transform.localPosition = new Vector3(
+                betweenDepth / 2,
+                doorHeight, 
+                completeWidth / 2
+                );
 
-            RightBorderBlock.transform.localScale = new Vector3(borderWidth, doorHeight, betweenDepth + borderDepth * 2);
-            RightBorderBlock.transform.localPosition = new Vector3(completeWidth, MathHelper.SmallFloat, betweenDepth / 2);
+
+            LeftBorderBlock.transform.localScale = new Vector3(
+                betweenDepth + borderDepth * 2,
+                doorHeight, 
+                borderWidth
+                );
+
+            LeftBorderBlock.transform.localPosition = new Vector3(
+                betweenDepth / 2,
+                MathHelper.SmallFloat, 
+                0
+                );
+
+
+            RightBorderBlock.transform.localScale = new Vector3(
+                betweenDepth + borderDepth * 2,
+                doorHeight, 
+                borderWidth
+                );
+
+            RightBorderBlock.transform.localPosition = new Vector3(
+                betweenDepth / 2,
+                MathHelper.SmallFloat, 
+                completeWidth
+                );
+
 
             if (completeHeight > doorHeight)
             {
@@ -109,24 +139,23 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 float topHeight = completeHeight - doorHeight - borderWidth;
 
-                FrontWall.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * completeWidth, secondLine: Vector3.up * topHeight, UVOffset: UVBaseObject.transform.InverseTransformDirection(transform.position)));
+                FrontWall.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * completeWidth, secondLine: Vector3.up * topHeight, UVOffset: UVBaseObject.transform.InverseTransformDirection(transform.position)));
                 FrontWall.Move(Vector3.up * (completeHeight - topHeight));
-
-                BackWall.Add(FrontWall.CloneFlipped);
+                FrontWall.FlipTriangles();
 
                 //Wrapper
-                topWrap = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * betweenDepth, secondLine: Vector3.right * completeWidth, UVOffset: Vector2.zero);
+                topWrap = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.forward * completeWidth, UVOffset: Vector2.zero);
                 topWrap.Move(Vector3.up * completeHeight);
-                topWrap.FlipTriangles();
 
-                leftWraper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * betweenDepth, secondLine: Vector3.down * topHeight, UVOffset: Vector2.zero);
+                leftWraper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.down * topHeight, UVOffset: Vector2.zero);
                 leftWraper.Move(Vector3.up * completeHeight);
+                leftWraper.FlipTriangles();
 
-                rightWraper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * betweenDepth, secondLine: Vector3.down * topHeight, UVOffset: Vector2.zero);
-                rightWraper.Move(Vector3.up * completeHeight + Vector3.right * completeWidth);
-                rightWraper.FlipTriangles();
+                rightWraper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.down * topHeight, UVOffset: Vector2.zero);
+                rightWraper.Move(Vector3.up * completeHeight + Vector3.forward * completeWidth);
 
-                BackWall.Move(Vector3.forward * betweenDepth);
+                BackWall.Add(FrontWall.CloneFlipped);
+                BackWall.Move(Vector3.right * betweenDepth);
 
                 FrontWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
                 BackWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
