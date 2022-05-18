@@ -213,6 +213,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             TriangleMeshInfo OuterRadiiSide = new TriangleMeshInfo();
             TriangleMeshInfo InnerRadiiSide = new TriangleMeshInfo();
             TriangleMeshInfo BackFace = new TriangleMeshInfo();
+            TriangleMeshInfo ColliderMesh = new TriangleMeshInfo();
 
             void FinishMeshes()
             {
@@ -222,6 +223,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 OuterRadiiSide.MaterialReference = SideMaterialParam;
                 InnerRadiiSide.MaterialReference = SideMaterialParam;
                 BackFace.MaterialReference = BackMaterialParam;
+                ColliderMesh.AlternativeMaterial = DefaultCastleMaterials.InvisibleMaterial.LinkedMaterial;
 
                 TopStepTop.FixUVCount();
                 StepTop.FixUVCount();
@@ -229,6 +231,10 @@ namespace iffnsStuff.iffnsCastleBuilder
                 OuterRadiiSide.FixUVCount();
                 InnerRadiiSide.FixUVCount();
                 BackFace.FixUVCount();
+                ColliderMesh.FixUVCount();
+
+                StepTop.ActiveCollider = false;
+                StepFront.ActiveCollider = false;
 
                 StaticMeshManager.AddTriangleInfo(TopStepTop);
                 StaticMeshManager.AddTriangleInfo(StepTop);
@@ -236,6 +242,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 StaticMeshManager.AddTriangleInfo(OuterRadiiSide);
                 StaticMeshManager.AddTriangleInfo(InnerRadiiSide);
                 StaticMeshManager.AddTriangleInfo(BackFace);
+                StaticMeshManager.AddTriangleInfo(ColliderMesh);
 
                 BuildAllMeshes();
             }
@@ -243,8 +250,10 @@ namespace iffnsStuff.iffnsCastleBuilder
             //transform.localPosition = LinkedFloor.NodePositionFromBlockIndex(PositiveCenterPosition);
 
             //Calculate basic parameters
-            int numberOfSteps = Mathf.RoundToInt(completeFloorHeight / StepHeightTarget);
-            float stepHeight = completeFloorHeight / numberOfSteps;
+            float height = completeFloorHeight;
+
+            int numberOfSteps = Mathf.RoundToInt(height / StepHeightTarget);
+            float stepHeight = height / numberOfSteps;
             float stepAngleRad = RevolutionAngleDeg / numberOfSteps * Mathf.Deg2Rad;
 
             for (int stepNumber = 0; stepNumber < numberOfSteps; stepNumber++)
@@ -265,7 +274,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 Vector2 firstOuterLocation = new Vector2(firstAngleCos, firstAngleSin) * OuterRadius;
                 Vector2 secondOuterLocation = new Vector2(secondAngleCos, secondAngleSin) * OuterRadius;
-
 
                 //Heights
                 float baseHeight = stepHeight * stepNumber;
@@ -362,18 +370,52 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 BackFace.VerticesHolder.Add(new Vector3(secondInnerLocation.x, backLowerHeight, secondInnerLocation.y));
                 BackFace.VerticesHolder.Add(new Vector3(secondOuterLocation.x, backLowerHeight, secondOuterLocation.y));
+
+                BackFace.UVs.Add(new Vector2(secondInnerLocation.x, secondInnerLocation.y));
+                BackFace.UVs.Add(new Vector2(secondOuterLocation.x, secondOuterLocation.y));
             }
+
+            ColliderMesh = BackFace.CloneFlipped;
+
+            float scaleFactor = height / ColliderMesh.AllVerticesDirectly[^1].y;
+
+            ColliderMesh.Scale(new Vector3(1, scaleFactor, 1));
+            ColliderMesh.Rotate(Quaternion.Euler(stepAngleRad * Mathf.Rad2Deg * Vector3.up));
+
+            ColliderMesh.RemoveVertexIncludingUV(0);
+            ColliderMesh.RemoveVertexIncludingUV(0);
+
+            /*
+            ColliderMesh.VerticesHolder.Add(TopStepTop.AllVerticesDirectly[^2]);
+            ColliderMesh.VerticesHolder.Add(TopStepTop.AllVerticesDirectly[^3]);
+            ColliderMesh.Triangles.Add(new TriangleHolder(baseOffset: BackFace.VerticesHolder.Count, t1: -1, t2: -2, t3: -4));
+            ColliderMesh.Triangles.Add(new TriangleHolder(baseOffset: BackFace.VerticesHolder.Count, t1: -2, t2: -3, t3: -4));
+            */
 
             //Debug.Log(BackFace.vertices.Count);
 
-            BackFace.VerticesHolder.Add(BackFace.AllVerticesDirectly[BackFace.VerticesHolder.Count - 2]);
-            BackFace.VerticesHolder.Add(BackFace.AllVerticesDirectly[BackFace.VerticesHolder.Count - 2]);
+            Vector3 vertex;
 
-            BackFace.VerticesHolder.Add(TopStepTop.AllVerticesDirectly[TopStepTop.VerticesHolder.Count - 2]);
-            BackFace.VerticesHolder.Add(TopStepTop.AllVerticesDirectly[TopStepTop.VerticesHolder.Count - 3]);
+            BackFace.VerticesHolder.Add(BackFace.AllVerticesDirectly[^2]);
+            vertex = BackFace.AllVerticesDirectly[^1];
+            BackFace.UVs.Add(new Vector2(new Vector2(vertex.x, vertex.z).magnitude, vertex.y));
+
+            BackFace.VerticesHolder.Add(BackFace.AllVerticesDirectly[^2]);
+            vertex = BackFace.AllVerticesDirectly[^1];
+            BackFace.UVs.Add(new Vector2(new Vector2(vertex.x, vertex.z).magnitude, vertex.y));
+
+            BackFace.VerticesHolder.Add(TopStepTop.AllVerticesDirectly[^2]);
+            vertex = BackFace.AllVerticesDirectly[^1];
+            BackFace.UVs.Add(new Vector2(new Vector2(vertex.x, vertex.z).magnitude, vertex.y));
+
+            BackFace.VerticesHolder.Add(TopStepTop.AllVerticesDirectly[^3]);
+            vertex = BackFace.AllVerticesDirectly[^1];
+            BackFace.UVs.Add(new Vector2(new Vector2(vertex.x, vertex.z).magnitude, vertex.y));
 
             BackFace.Triangles.Add(new TriangleHolder(baseOffset: BackFace.VerticesHolder.Count, t1: -2, t2: -1, t3: -4));
             BackFace.Triangles.Add(new TriangleHolder(baseOffset: BackFace.VerticesHolder.Count, t1: -3, t2: -2, t3: -4));
+
+            TopStepTop.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
 
             if (RevolutionAngleDeg < 0)
             {

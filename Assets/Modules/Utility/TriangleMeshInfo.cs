@@ -39,8 +39,6 @@ public class TriangleMeshInfo
         }
     }
 
-    
-
     public List<int> AllTrianglesDirectly
     {
         get
@@ -248,6 +246,23 @@ public class TriangleMeshInfo
             {
                 newInfo.UVs.RemoveAt(newInfo.UVs.Count - 1);
             }
+        }
+    }
+
+    public void RemoveVertexIncludingUV(int index)
+    {
+        VerticesHolder.Remove(index);
+
+        if(UVs.Count > index)
+        {
+            UVs.RemoveAt(index);
+        }
+
+        for(int i = 0; i< Triangles.Count; i++)
+        {
+            bool remove = Triangles[i].IsAffectedOtherwiseReduce(index);
+
+            if (remove) Triangles.RemoveAt(i);
         }
     }
 
@@ -628,6 +643,11 @@ public class VerticesHolder
         }
     }
 
+    public void Remove(int index)
+    {
+        vertices.RemoveAt(index);
+    }
+
     public void Move(Vector3 offset)
     {
         for (int i = 0; i < vertices.Count; i++)
@@ -703,6 +723,19 @@ public class TriangleHolder
     public int Index1 { private set; get; }
     public int Index2 { private set; get; }
     public int Index3 { private set; get; }
+
+    public bool IsAffectedOtherwiseReduce(int index)
+    {
+        if (Index1 == index) return true;
+        if (Index2 == index) return true;
+        if (Index3 == index) return true;
+
+        if (Index1 > index) Index1--;
+        if (Index2 > index) Index2--;
+        if (Index3 > index) Index3--;
+
+        return false;
+    }
 
     //Constructors
     public TriangleHolder(int triangle1, int triangle2, int triangle3)
