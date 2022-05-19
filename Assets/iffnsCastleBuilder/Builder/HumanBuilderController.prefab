@@ -12768,6 +12768,7 @@ MonoBehaviour:
   CurrentBuilderController: {fileID: 9043763559161280165}
   CurrentSaveAndLoadUI: {fileID: 9043763559170021080}
   ToolController: {fileID: 9043763560314339866}
+  DefaultBuildingFile: {fileID: 4900000, guid: ad87b2a1bc2b6d043a128576569d8be9, type: 3}
 --- !u!1 &9043763559461639958
 GameObject:
   m_ObjectHideFlags: 0

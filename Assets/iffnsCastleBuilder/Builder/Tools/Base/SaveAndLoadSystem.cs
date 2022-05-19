@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using System.Linq;
 using iffnsStuff.iffnsBaseSystemForUnity;
+using System.Text.RegularExpressions;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
@@ -16,6 +17,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] HumanBuilderController CurrentBuilderController;
         [SerializeField] SaveAndLoadUI CurrentSaveAndLoadUI;
         [SerializeField] BuildingToolController ToolController;
+
+        TextAsset DefaultBuildingFile;
 
         readonly string fileEnding = ".json";
 
@@ -37,11 +40,36 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public void SetupAndLoadDefaultBuilding(TextAsset DefaultBuildingFile)
+        {
+            this.DefaultBuildingFile = DefaultBuildingFile;
+
+            LoadDefaultBuilding();
+        }
+        
+        void LoadDefaultBuilding()
+        {
+            string text = DefaultBuildingFile.text;
+
+            List<string> RawJSONString = new List<string>(Regex.Split(text, System.Environment.NewLine));
+
+            //StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(completeFileLocation: completeFileLocation, baseObject: CurrentBuilding);
+            StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(RawJSONString: RawJSONString, baseObject: CurrentBuilding);
+
+            CurrentBuilding.ApplyBuildParameters();
+        }
+
         public void ClearBuilding()
         {
             //Load default building -> Merge with HumanBuildingTestWorldController
 
-            Debug.Log("Clear building to be added");
+            CurrentBuilding.CurrentFloorNumber = 0;
+
+            LoadDefaultBuilding();
+
+            ToolController.CurrentNavigationTools.UpdateUI();
+
+            CurrentSaveAndLoadUI.CurrentTitle = "";
         }
 
         public void LoadBuilding()

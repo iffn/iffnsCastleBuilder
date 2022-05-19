@@ -14129,11 +14129,12 @@
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [60, 12],
-					"Top right position": [56, 11],
+					"Bottom left position": [60, 11],
+					"Top right position": [56, 12],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
-					"Main material": "PolyHaven-stone_brick_wall_001"
+					"Main material": "PolyHaven-stone_brick_wall_001",
+					"Other side material": "PolyHaven-sandstone_blocks_05"
 				},
 				{
 					"Type": "RailingLinear",

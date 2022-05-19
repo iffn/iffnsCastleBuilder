@@ -11,7 +11,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] ModificationNodeLibraryIntegrator CurrentModificationNodeLibraryIntegrator = null; //ToDo: Move to Builder library
         [SerializeField] ResourceLibraryIntegrator CurrentResourceLibraryIntegrator = null; //ToDo: Rename to Human building Resource Library
         [SerializeField] MaterialLibraryIntegrator CurrentMaterialLibraryIntegrator = null;
-        
+        [SerializeField] TextAsset DefaultBuildingFile;
+
         MailboxLineSingleSubObject currentBuildingParam;
 
         //public List<HumanBuildingController> HumanBuildingControllers;
@@ -31,6 +32,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             CurrentResourceLibraryIntegrator.Setup();
             CurrentModificationNodeLibraryIntegrator.Setup();
             CurrentMaterialLibraryIntegrator.Setup();
+            
             SetupDefaultBuilding();
             currentBuildingParam = new MailboxLineSingleSubObject(valueName: "MainBuilding", subObject: CurrentBuilderController.CurrentBuilding, objectHolder: CurrentMailbox);
 
@@ -46,9 +48,15 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             CurrentBuilderController.CurrentBuilding = Instantiate(ResourceLibrary.TryGetTemplateFromStringIdentifier(nameof(HumanBuildingController)) as HumanBuildingController);
 
+            CurrentBuilderController.CurrentBuilding.Setup(superObject: this);
+
+            CurrentBuilderController.CurrentBuildingToolController.CurrentSaveAndLoadSystem.SetupAndLoadDefaultBuilding(DefaultBuildingFile: DefaultBuildingFile);
+
+            /*
             CurrentBuilderController.CurrentBuilding.CompleteSetUpWithBuildParameters(superObject: this, gridSize: BuildingGridSize, negativeFloors: 0, totalFloors: 1);
 
             CurrentBuilderController.CurrentBuilding.ApplyBuildParameters();
+            */
         }
 
         void LoadDefaultBuilding()
