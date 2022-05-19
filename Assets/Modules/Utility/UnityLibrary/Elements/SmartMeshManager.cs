@@ -60,7 +60,27 @@ public class SmartMeshManager : MeshManager
         currentMeshFilter.mesh.RecalculateBounds();
 
         //currentCollider.isTrigger = !newInfo.ActiveCollider;
-        currentCollider.enabled = newInfo.ActiveCollider;
+
+        if (newInfo.ActiveCollider)
+        {
+            currentCollider.isTrigger = false;
+            currentCollider.convex = false;
+        }
+        else
+        {
+            if(newInfo.Triangles.Count <= 255)
+            {
+                currentCollider.convex = true;
+                currentCollider.isTrigger = true;
+            }
+            else
+            {
+                Debug.LogWarning("Warning: Current trigger collider has more than 255 colliders");
+                currentCollider.isTrigger = false;
+                currentCollider.convex = false;
+            }
+        }
+
 
         if (CurrentMaterial != null)
         {
