@@ -10,6 +10,7 @@ namespace iffnsStuff.iffnsCastleBuilder
     {
         [SerializeField] Image PreivewImage;
         [SerializeField] GameObject MainHighlightObject;
+        [SerializeField] GameObject DarkHoverOverHighlightObject;
 
         public MaterialManager MaterialReference { get; private set; }
 
@@ -25,6 +26,16 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 MainHighlightObject.SetActive(value);
             }
+        }
+
+        public void EnterHoverOver()
+        {
+            DarkHoverOverHighlightObject.SetActive(true);
+        }
+
+        public void ExitHoverOver()
+        {
+            DarkHoverOverHighlightObject.SetActive(false);
         }
     }
 }

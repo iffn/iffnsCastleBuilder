@@ -1,17 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
     public class VectorButton : MonoBehaviour
     {
-        public GameObject DarkBackgroundObject;
-        public GameObject LightBackgroundObject;
-        public GameObject DarkHighlightObject;
-        public GameObject LightHighlightObject;
-        public GameObject DarkIconObject;
-        public GameObject LightIconObject;
+        [SerializeField] GameObject DarkBackgroundObject;
+        [SerializeField] GameObject LightBackgroundObject;
+        [SerializeField] GameObject DarkHighlightObject;
+        [SerializeField] GameObject DarkHoverOverHighlightObject;
+        [SerializeField] GameObject LightHighlightObject;
+        [SerializeField] GameObject DarkIconObject;
+        [SerializeField] GameObject LightIconObject;
+        [SerializeField] UnityEvent ActivationEvent;
+        [SerializeField] UnityEvent DeactivationEvent;
 
         UIBrightnessTypes uiBrightnessType = UIBrightnessTypes.Dark;
         public UIBrightnessTypes UiBrightnessType
@@ -76,12 +81,34 @@ namespace iffnsStuff.iffnsCastleBuilder
                         break;
                 }
             }
+            get
+            {
+                return highlight;
+            }
         }
 
         public void ToggleHighLight()
         {
             Highlight = !highlight;
+
+            if (Highlight)
+            {
+                if(ActivationEvent != null) ActivationEvent.Invoke();
+            }
+            else
+            {
+                if (DeactivationEvent != null) DeactivationEvent.Invoke();
+            }
         }
 
+        public void EnterHoverOver()
+        {
+            DarkHoverOverHighlightObject.SetActive(true);
+        }
+
+        public void ExitHoverOver()
+        {
+            DarkHoverOverHighlightObject.SetActive(false);
+        }
     }
 }
