@@ -14062,6 +14062,7 @@ MonoBehaviour:
   HumanPlayerController: {fileID: 215287214859323679}
   LinkedBuildingToolController: {fileID: 9043763560314339866}
   PlayerButton: {fileID: 4529008014669290174}
+  playerPositioningActive: 0
 --- !u!1 &9043763560457108699
 GameObject:
   m_ObjectHideFlags: 0

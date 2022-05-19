@@ -57,7 +57,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
     public static class DefaultCastleMaterials
     {
-        static DefaultCastleMaterialIntegrator libraryIntegrator;
+        static DefaultCastleMaterialIntegrator linkedLibraryIntegrator;
 
         static Dictionary<string, MaterialManager> MaterialManagerLibary;
         //public static List<MaterialManager> AllMaterialManagers { get; private set; }
@@ -73,6 +73,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public static void Setup(DefaultCastleMaterialIntegrator libraryIntegrator)
         {
+            linkedLibraryIntegrator = libraryIntegrator;
+
             MaterialManagerLibary = libraryIntegrator.MaterialManagerLibary;
 
             InvisibleMaterial = MaterialManagerLibary[libraryIntegrator.InvisibleMaterial.name];
@@ -87,7 +89,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public static MaterialManager GetMaterialFromIdentifier(string identifier)
         {
-            return libraryIntegrator.GetMaterialFromIdentifier(identifier);
+            return linkedLibraryIntegrator.GetMaterialFromIdentifier(identifier);
         }
     }
 }
