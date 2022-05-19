@@ -12768,7 +12768,6 @@ MonoBehaviour:
   CurrentBuilderController: {fileID: 9043763559161280165}
   CurrentSaveAndLoadUI: {fileID: 9043763559170021080}
   ToolController: {fileID: 9043763560314339866}
-  DefaultBuildingFile: {fileID: 4900000, guid: ad87b2a1bc2b6d043a128576569d8be9, type: 3}
 --- !u!1 &9043763559461639958
 GameObject:
   m_ObjectHideFlags: 0
@@ -14062,6 +14061,7 @@ MonoBehaviour:
   currentBlockLineType: 0
   HumanPlayerController: {fileID: 215287214859323679}
   LinkedBuildingToolController: {fileID: 9043763560314339866}
+  PlayerButton: {fileID: 4529008014669290174}
 --- !u!1 &9043763560457108699
 GameObject:
   m_ObjectHideFlags: 0
@@ -28012,6 +28012,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 68ef79fa4055ba0488d0e0a38530daff, type: 3}
+--- !u!114 &4529008014669290174 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4853653076402590121, guid: 68ef79fa4055ba0488d0e0a38530daff, type: 3}
+  m_PrefabInstance: {fileID: 9043763560944487191}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f40e6c90695744bafccba4a5289b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4529008014669290175 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4853653076402590120, guid: 68ef79fa4055ba0488d0e0a38530daff, type: 3}

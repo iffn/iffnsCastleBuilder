@@ -25,6 +25,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] BlockLineType currentBlockLineType = BlockLineType.Complete;
         [SerializeField] DummyHumanPlayerController HumanPlayerController;
         [SerializeField] BuildingToolController LinkedBuildingToolController;
+        [SerializeField] VectorButton PlayerButton;
 
         //Variables
         List<GameObject> blockLines = new List<GameObject>();
@@ -33,7 +34,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         bool showBlockLinesOnCurrentFloor = false;
         VirtualBlock previousBlockLineFocus;
         Vector3 previousCursorPosition = Vector3.zero;
-        bool playerPositioningActive = false;
+        public bool playerPositioningActive = false;
         int currentFloorNumber;
 
         public enum BlockLineType
@@ -478,6 +479,9 @@ namespace iffnsStuff.iffnsCastleBuilder
                         HumanPlayerController.transform.rotation = Quaternion.identity;
 
                         PlayerModeActive = true;
+
+                        playerPositioningActive = false;
+                        PlayerButton.Highlight = false;
                     }
                 }
             }
@@ -491,7 +495,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 HumanPlayerController.MouseUnlockAndVisibilityType = !value;
                 CurrentRTSCamera.gameObject.SetActive(!value);
                 LinkedBuildingToolController.ToolActivationState = !value;
-                playerPositioningActive = !value;
 
                 if (value)
                 {
