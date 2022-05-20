@@ -110,6 +110,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void RemoveCurrentFloor()
         {
+            EditTool.DeactivateEditOnMain();
+
             CurrentBuilding.RemoveCurrentFloor();
 
             UpdateFloorNumbers();
@@ -455,6 +457,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         public void TogglePlayerPositioning()
         {
             playerPositioningActive = !playerPositioningActive;
+
+            EditTool.DeactivateEditOnMain();
         }
 
         void PositionPlayer()

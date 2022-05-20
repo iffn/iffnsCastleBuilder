@@ -14,7 +14,6 @@ namespace iffnsStuff.iffnsCastleBuilder
         public PipetteTool CurrentPipetteTool;
         public SaveAndLoadSystem CurrentSaveAndLoadSystem;
 
-
         //bool NavigationToolActivationState;
         bool BlockWallBuilderToolActivationState;
         bool PainterToolActivationState;

@@ -63,6 +63,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             //Load default building -> Merge with HumanBuildingTestWorldController
 
+            EditTool.DeactivateEditOnMain();
+
             CurrentBuilding.CurrentFloorNumber = 0;
 
             LoadDefaultBuilding();
@@ -79,6 +81,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                 UpdateButtons(updateList: false);
                 return;
             }
+
+            EditTool.DeactivateEditOnMain();
 
             int storedFloorNumber = CurrentBuilding.CurrentFloorNumber;
             CurrentBuilding.CurrentFloorNumber = 0;

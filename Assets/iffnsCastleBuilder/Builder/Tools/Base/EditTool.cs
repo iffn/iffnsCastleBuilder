@@ -8,12 +8,16 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class EditTool : MonoBehaviour
     {
-        //Assignments
+        static EditTool MainEditTool;
+
+        //Unity assignments
         //[SerializeField] UIResources UIResourcesHolder = null;
         [SerializeField] RTSController currentRTSController = null;
         [SerializeField] BuildingToolController currentBuildingToolController = null;
         [SerializeField] HumanBuilderController currentBuilderController = null;
+        [SerializeField] ControlBox PropertyMenu;
 
+        //Runtime parameters
         IBaseObject activeObject;
         ModificationNode activeNode;
         NodeWallSystem currentNodeWallSystem;
@@ -34,24 +38,30 @@ namespace iffnsStuff.iffnsCastleBuilder
             if (SelectUpdate() == true) return;
         }
 
+        private void OnDisable()
+        {
+            if (gameObject.activeInHierarchy == false)
+            {
+                DeactivateEdit();
+            }
+        }
+
+        private void Start()
+        {
+            MainEditTool = this;
+        }
+
+        public static void DeactivateEditOnMain()
+        {
+            if (MainEditTool == null) return;
+
+            MainEditTool.DeactivateEdit();
+        }
+
         void DeactivateEdit()
         {
-            if (activeObject != null)
-            {
-                if (activeNode is GridScaleNode activeGridScaleNode)
-                {
-                    activeGridScaleNode.ApplyNewGridPosition();
-
-                    UpdatePropertyMenu();
-                    currentBuildingToolController.CurrentNavigationTools.UpdateBlockLines();
-                }
-
-                activeNode.ColliderActivationState = true;
-
-                if (activeNode.LinkedObject != null) activeNode.LinkedObject.ColliderActivationState = true;
-
-                activeNode = null;
-            }
+            PropertyMenu.Clear();
+            HideCurrentModificationActions();
         }
 
         void HideCurrentModificationActions()
@@ -83,8 +93,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (clickedOnObject == null)
                 {
-                    PropertyMenu.Clear();
-                    HideCurrentModificationActions();
+                    DeactivateEdit();
                     return false;
                 }
 
@@ -216,7 +225,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
                 else
                 {
-                    DeactivateEdit();
+                    DeactivateNodeDraging();
 
                     return true;
                 }
@@ -225,7 +234,31 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        public ControlBox PropertyMenu;
+        void DeactivateNodeDraging()
+        {
+            if (activeObject != null)
+            {
+                if (activeNode == null)
+                {
+                    activeObject = null;
+                    return;
+                }
+
+                if (activeNode is GridScaleNode activeGridScaleNode)
+                {
+                    activeGridScaleNode.ApplyNewGridPosition();
+
+                    UpdatePropertyMenu();
+                    currentBuildingToolController.CurrentNavigationTools.UpdateBlockLines();
+                }
+
+                activeNode.ColliderActivationState = true;
+
+                if (activeNode.LinkedObject != null) activeNode.LinkedObject.ColliderActivationState = true;
+
+                activeNode = null;
+            }
+        }
 
         void ShowPropertyMenu(IBaseObject currentObject)
         {

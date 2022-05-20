@@ -40229,6 +40229,7 @@ MonoBehaviour:
   CurrentModificationNodeLibraryIntegrator: {fileID: 1397969349139341087, guid: c48c9a0c1d1fc234c9427fd0ec3e27be, type: 3}
   CurrentResourceLibraryIntegrator: {fileID: 5140697780917173685, guid: 23c72d0600a89184b9c273d878c1ca3e, type: 3}
   CurrentMaterialLibraryIntegrator: {fileID: 1325046766489969367, guid: 54834faf2443bef42af9b7c8df9eff22, type: 3}
+  DefaultBuildingFile: {fileID: 4900000, guid: ad87b2a1bc2b6d043a128576569d8be9, type: 3}
   CurrentBuilderController: {fileID: 5}
 --- !u!4 &1196912510
 Transform:

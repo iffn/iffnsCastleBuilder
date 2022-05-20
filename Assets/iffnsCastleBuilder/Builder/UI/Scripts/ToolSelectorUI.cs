@@ -10,7 +10,6 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] List<GameObject> Menus;
         [SerializeField] List<GameObject> Tools;
 
-
         public void SetMenuType(VectorButton ClickedButton)
         {
             if (!setupCorrectlyInEditor)
