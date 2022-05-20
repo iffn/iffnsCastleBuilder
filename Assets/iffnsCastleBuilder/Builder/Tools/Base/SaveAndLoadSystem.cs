@@ -159,6 +159,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             List<string> tempFileList = StaticSaveAndLoadSystem.GetFileListFromLocation(Type: nameof(HumanBuildingController), completeFileLocation: buildingFileLication, fileEnding: fileEnding);
 
+            tempFileList.Reverse(); //Reverse list so the list is alphabetical when adding the buttons
+
             foreach (string file in tempFileList)
             {
                 currentFileListWithoutEnding.Add(file.Substring(0, file.Length - fileEnding.Length)); //remove file ending
