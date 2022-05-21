@@ -11,7 +11,6 @@ namespace iffnsStuff.iffnsCastleBuilder
         public PainterTool CurrentPainterTool;
         public SmartBlockBuilderTool CurrentSmartBlockBuilderTool;
         public CopyPasteTool CurrentCopyPasteTool;
-        public PipetteTool CurrentPipetteTool;
         public SaveAndLoadSystem CurrentSaveAndLoadSystem;
 
         //bool NavigationToolActivationState;
@@ -32,13 +31,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                     PainterToolActivationState = CurrentPainterTool.gameObject.activeSelf;
                     SmartBlockBuilderToolActivationState = CurrentSmartBlockBuilderTool.gameObject.activeSelf;
                     CopyPasteToolActivationState = CurrentCopyPasteTool.gameObject.activeSelf;
-                    PipetteToolActivationState = CurrentPipetteTool.gameObject.activeSelf;
 
                     CurrentWallBuilderTool.gameObject.SetActive(false);
                     CurrentPainterTool.gameObject.SetActive(false);
                     CurrentSmartBlockBuilderTool.gameObject.SetActive(false);
                     CurrentCopyPasteTool.gameObject.SetActive(false);
-                    CurrentPipetteTool.gameObject.SetActive(false);
                 }
                 else
                 {
@@ -46,7 +43,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                     CurrentPainterTool.gameObject.SetActive(PainterToolActivationState);
                     CurrentSmartBlockBuilderTool.gameObject.SetActive(SmartBlockBuilderToolActivationState);
                     CurrentCopyPasteTool.gameObject.SetActive(CopyPasteToolActivationState);
-                    CurrentPipetteTool.gameObject.SetActive(PipetteToolActivationState);
                 }
             }
         }

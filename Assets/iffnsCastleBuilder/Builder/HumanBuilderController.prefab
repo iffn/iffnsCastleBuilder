@@ -2729,7 +2729,6 @@ Transform:
   - {fileID: 7014146594855709905}
   - {fileID: 9043763560315661903}
   - {fileID: 9043763560630382909}
-  - {fileID: 9043763560154546945}
   m_Father: {fileID: 9043763560314339867}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13730,50 +13729,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &9043763560154546946
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9043763560154546945}
-  - component: {fileID: 9043763560154546944}
-  m_Layer: 0
-  m_Name: Pipette tool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &9043763560154546945
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9043763560154546946}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7327220391903294553}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9043763560154546944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9043763560154546946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46f43b97b42694e45ab15192171caad6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9043763560298956937
 GameObject:
   m_ObjectHideFlags: 0
@@ -13868,7 +13823,7 @@ MonoBehaviour:
   CurrentPainterTool: {fileID: 9043763560315661902}
   CurrentSmartBlockBuilderTool: {fileID: 9043763559823616090}
   CurrentCopyPasteTool: {fileID: 9043763560630382908}
-  CurrentPipetteTool: {fileID: 9043763560154546944}
+  CurrentPipetteTool: {fileID: 0}
   CurrentSaveAndLoadSystem: {fileID: 9043763559385821028}
 --- !u!1 &9043763560315661888
 GameObject:
