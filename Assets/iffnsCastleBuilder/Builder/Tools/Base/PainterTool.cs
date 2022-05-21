@@ -12,10 +12,39 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] TexturingUI LinkedTexturingUI;
 
         public MaterialManager currentMaterial;
-        public ToolType CurrentToolType = ToolType.Painter;
+
         [SerializeField] HumanBuilderController CurrentBuilderController;
         [SerializeField] RTSController currentRTSController;
         [SerializeField] BuildingToolController LinkedBuildingToolController;
+
+        VirtualBlock startBlock;
+        VirtualBlock endBlock;
+
+        bool found = false;
+
+        ToolType previousToolType = ToolType.Painter;
+
+        ToolType currentToolType = ToolType.Painter;
+        public ToolType CurrentToolType
+        {
+            get
+            {
+                return currentToolType;
+            }
+            set
+            {
+                if (value == ToolType.Pipette)
+                {
+                    previousToolType = currentToolType;
+                }
+                else
+                {
+                    previousToolType = value;
+                }
+
+                currentToolType = value;
+            }
+        }
 
         public enum ToolType
         {
@@ -38,7 +67,6 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             LinkedTexturingUI.Setup();
         }
-
 
         MeshManager GetMeshManagerFromClick()
         {
@@ -184,9 +212,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        VirtualBlock startBlock;
-        VirtualBlock endBlock;
-
         void PaintRectangleUpdate()
         {
             if (Input.GetMouseButtonDown(0))
@@ -309,6 +334,19 @@ namespace iffnsStuff.iffnsCastleBuilder
                 if (materialLine == null) return;
 
                 LinkedTexturingUI.SetMaterial(materialLine.Val);
+
+                found = true;
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (found)
+                {
+                    found = false;
+                    CurrentToolType = previousToolType;
+                    
+                    LinkedTexturingUI.SetToolType(previousToolType);
+                }
             }
         }
 

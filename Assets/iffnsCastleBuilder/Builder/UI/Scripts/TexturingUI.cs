@@ -12,7 +12,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] PainterTool linkedPainterTool;
         [SerializeField] MaterialLibraryUI MaterialLibraryUITemplate = null;
         [SerializeField] VectorButton PainterButton = null;
-        [SerializeField] VectorButton PaintSqureButton = null;
+        [SerializeField] VectorButton PaintRectangleButton = null;
         [SerializeField] VectorButton PipetteButton = null;
         [SerializeField] GameObject MaterialLibraryHolder = null;
 
@@ -27,7 +27,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         void UnhighlightAllBlockTypeButtons()
         {
             PainterButton.Highlight = false;
-            PaintSqureButton.Highlight = false;
+            PaintRectangleButton.Highlight = false;
             PipetteButton.Highlight = false;
         }
 
@@ -41,13 +41,33 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 linkedPainterTool.CurrentToolType = PainterTool.ToolType.Painter;
             }
-            else if (ClickedButton == PaintSqureButton)
+            else if (ClickedButton == PaintRectangleButton)
             {
                 linkedPainterTool.CurrentToolType = PainterTool.ToolType.PaintRectangle;
             }
             else if (ClickedButton == PipetteButton)
             {
                 linkedPainterTool.CurrentToolType = PainterTool.ToolType.Pipette;
+            }
+        }
+
+        public void SetToolType(PainterTool.ToolType tool)
+        {
+            UnhighlightAllBlockTypeButtons();
+
+            switch (tool)
+            {
+                case PainterTool.ToolType.Painter:
+                    PainterButton.Highlight = true;
+                    break;
+                case PainterTool.ToolType.PaintRectangle:
+                    PaintRectangleButton.Highlight = true;
+                    break;
+                case PainterTool.ToolType.Pipette:
+                    PipetteButton.Highlight = true;
+                    break;
+                default:
+                    break;
             }
         }
 

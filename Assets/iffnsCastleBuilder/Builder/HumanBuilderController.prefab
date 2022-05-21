@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 3569288861376164416}
   - component: {fileID: 7729748755489137250}
   m_Layer: 5
-  m_Name: Block types
+  m_Name: ToolTypes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9335,7 +9335,7 @@ MonoBehaviour:
   linkedPainterTool: {fileID: 9043763560315661902}
   MaterialLibraryUITemplate: {fileID: 7720376826157659875, guid: 1466583383cbabc428e4345503bf45c0, type: 3}
   PainterButton: {fileID: 2863447568913726898}
-  PaintSqureButton: {fileID: 3151462263384836405}
+  PaintRectangleButton: {fileID: 3151462263384836405}
   PipetteButton: {fileID: 4363549865123011267}
   MaterialLibraryHolder: {fileID: 209135273030690864}
 --- !u!1 &7077429176033692920
@@ -13915,7 +13915,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LinkedTexturingUI: {fileID: 9205987995710105163}
-  CurrentToolType: 0
   CurrentBuilderController: {fileID: 9043763559161280165}
   currentRTSController: {fileID: 9043763560529459108}
   LinkedBuildingToolController: {fileID: 9043763560314339866}
