@@ -169,6 +169,22 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public int FloorsBelow
+        {
+            get
+            {
+                return FloorNumber - LinkedBuildingController.NegativeFloors;
+            }
+        }
+
+        public bool IsBottomFloor
+        {
+            get
+            {
+                return FloorsBelow == 0;
+            }
+        }
+
         public FloorController FloorAbove
         {
             get

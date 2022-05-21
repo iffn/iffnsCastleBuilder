@@ -302,6 +302,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         void UpdatePropertyMenu()
         {
+            if (activeObject == null) return; //Only show is something is selected -> Not so when object removed after pressing a button
+
             ShowPropertyMenu(currentObject: activeObject);
         }
 

@@ -864,6 +864,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         //Edit buttons
         void SetupEditButtons()
         {
+            AddCopyButtons();
             AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Copy Flip Diagonally", delegate { CopyFlipDiagonally(); }));
             AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Copy Flip Vertical", delegate { CopyFlipY(); }));
             AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Copy Flip Horizontal", delegate { CopyFlipX(); }));

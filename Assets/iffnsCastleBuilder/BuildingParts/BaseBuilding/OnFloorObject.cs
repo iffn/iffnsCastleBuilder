@@ -95,9 +95,10 @@ namespace iffnsStuff.iffnsCastleBuilder
             LinkedFloor = superObject as FloorController;
             LinkedFloor.AddOnFloorObject(this);
 
-            DeleteButtonFunction = new SingleButtonBaseEditFunction(buttonName: "Delete Object", buttonFunction: delegate { DestroyObject(); });
-            AddEditButtonFunctionToBeginning(DeleteButtonFunction);
+            DeleteButtonFunction = new SingleButtonBaseEditFunction(buttonName: "Delete Object", buttonFunction: delegate { DestroyObject();});
 
+            AddEditButtonFunctionToBeginning(DeleteButtonFunction);
+            AddCopyButtons();
         }
 
         public SingleButtonBaseEditFunction DeleteButtonFunction { get; private set; }
@@ -131,6 +132,82 @@ namespace iffnsStuff.iffnsCastleBuilder
                     return LinkedFloor.GetBlockFromCoordinateAbsolute(FirstPositionNode.transform.position).BlockType;
                 }
             }
+        }
+
+        public bool CanCopyUp
+        {
+            get
+            {
+                return !LinkedFloor.IsTopFloor;
+            }
+        }
+
+        public bool CanCopyDown
+        {
+            get
+            {
+                return !LinkedFloor.IsBottomFloor;
+            }
+        }
+
+        protected void AddCopyButtons()
+        {
+            AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Move down", delegate { MoveDown(); }));
+            AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Move up", delegate { MoveUp(); }));
+            AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Copy down", delegate { CopyDown(); }));
+            AddEditButtonFunctionToBeginning(function: new SingleButtonBaseEditFunction(buttonName: "Copy up", delegate { CopyUp(); }));
+        }
+
+        public void CopyUp()
+        {
+            if (!CanCopyUp) return;
+
+            OnFloorObject newObject = Instantiate(ResourceLibrary.TryGetTemplateFromStringIdentifier(IdentifierString) as OnFloorObject);
+
+            FloorController targetFloor = LinkedFloor.LinkedBuildingController.Floor(LinkedFloor.FloorNumber + 1);
+
+            newObject.Setup(superObject: targetFloor);
+
+            newObject.JSONBuildParameters = JSONBuildParameters;
+
+            newObject.ApplyBuildParameters();
+        }
+
+        public void CopyDown()
+        {
+            if (!CanCopyDown) return;
+
+            OnFloorObject newObject = Instantiate(ResourceLibrary.TryGetTemplateFromStringIdentifier(IdentifierString) as OnFloorObject);
+
+            FloorController targetFloor = LinkedFloor.LinkedBuildingController.Floor(LinkedFloor.FloorNumber - 1);
+
+            newObject.Setup(superObject: targetFloor);
+
+            newObject.JSONBuildParameters = JSONBuildParameters;
+
+            newObject.ApplyBuildParameters();
+        }
+
+        public void MoveUp()
+        {
+            if (!CanCopyUp) return;
+
+            CopyUp();
+
+            DestroyObject();
+
+            EditTool.DeactivateEditOnMain();
+        }
+
+        public void MoveDown()
+        {
+            if (!CanCopyDown) return;
+
+            CopyDown();
+
+            DestroyObject();
+
+            EditTool.DeactivateEditOnMain();
         }
 
         /*
