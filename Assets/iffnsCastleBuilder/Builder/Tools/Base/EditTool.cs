@@ -317,16 +317,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             foreach (BaseEditButtonFunction buttonFunction in currentObject.EditButtons)
             {
-                //Add clear property menu to delete button
-                if (currentObject is OnFloorObject currentOnFloorObject)
-                {
-                    if (buttonFunction == currentOnFloorObject.DeleteButtonFunction)
-                    {
-                        PropertyMenu.AddButtonLine(text: buttonFunction.ButtonName, call: delegate { buttonFunction.Function(); ClearPropertyMenu(); activeObject = null; });
-                        continue;
-                    }
-                }
-
                 PropertyMenu.AddButtonLine(text: buttonFunction.ButtonName, call: delegate { buttonFunction.Function(); UpdatePropertyMenu(); });
             }
         }

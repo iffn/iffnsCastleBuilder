@@ -95,13 +95,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             LinkedFloor = superObject as FloorController;
             LinkedFloor.AddOnFloorObject(this);
 
-            DeleteButtonFunction = new SingleButtonBaseEditFunction(buttonName: "Delete Object", buttonFunction: delegate { DestroyObject();});
+            SingleButtonBaseEditFunction deleteButtonFunction = new SingleButtonBaseEditFunction(buttonName: "Delete Object", buttonFunction: delegate { DestroyObject(); EditTool.DeactivateEditOnMain(); });
 
-            AddEditButtonFunctionToBeginning(DeleteButtonFunction);
+            AddEditButtonFunctionToBeginning(deleteButtonFunction);
             AddCopyButtons();
         }
-
-        public SingleButtonBaseEditFunction DeleteButtonFunction { get; private set; }
 
         /*
         public abstract Vector2Int FirstBuildPosition { protected get; set; }
