@@ -880,6 +880,27 @@ public static class MeshGenerator
 
     public static class MeshesFromPoints
     {
+        public static TriangleMeshInfo MeshFrom3Points(Vector3 p0, Vector3 p1, Vector3 p2)
+        {
+            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+
+            returnValue.VerticesHolder.Add(p0);
+            returnValue.VerticesHolder.Add(p1);
+            returnValue.VerticesHolder.Add(p2);
+
+            returnValue.Triangles.Add(new TriangleHolder(0, 1, 2));
+
+            //UV guesstimation
+            Vector2 firstOffset = Vector2.right * (p1 - p0).magnitude;
+            Vector2 secondOffset = Vector2.up * (p2 - p0).magnitude;
+
+            returnValue.UVs.Add(Vector2.zero);
+            returnValue.UVs.Add(firstOffset);
+            returnValue.UVs.Add(secondOffset);
+
+            return returnValue;
+        }
+
         public static TriangleMeshInfo MeshFrom4Points(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
         {
             TriangleMeshInfo returnValue = new TriangleMeshInfo();

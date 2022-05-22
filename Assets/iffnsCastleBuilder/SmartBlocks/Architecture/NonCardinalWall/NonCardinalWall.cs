@@ -224,6 +224,12 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 SetXWall();
             }
+            else if(gridSize.x == 2 && gridSize.y == 2)
+            {
+                SetButterfly();
+                FinishMesh();
+                return;
+            }
             else
             {
                 SetDiagonalWall();
@@ -254,6 +260,23 @@ namespace iffnsStuff.iffnsCastleBuilder
                 clockwiseEdgePoints.Add(new Vector3(0, 0, size.y - BlockSize));
                 clockwiseEdgePoints.Add(new Vector3(BlockSize, 0, size.y - BlockSize));
                 clockwiseEdgePoints.Add(new Vector3(BlockSize, 0, BlockSize));
+            }
+
+            void SetButterfly()
+            {
+                SetDiagonalWall();
+                
+                Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePointsAsList(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: LinkedFloor.CompleteFloorHeight, closed: true, offset: transform.localPosition);
+
+                foreach (TriangleMeshInfo info in Walls)
+                {
+                    info.FlipTriangles();
+                }
+
+                TopCap.Add(MeshGenerator.MeshesFromPoints.MeshFrom3Points(clockwiseEdgePoints[0], clockwiseEdgePoints[1], clockwiseEdgePoints[2]));
+                TopCap.Add(MeshGenerator.MeshesFromPoints.MeshFrom3Points(clockwiseEdgePoints[0], clockwiseEdgePoints[4], clockwiseEdgePoints[5]));
+                BottomCap = TopCap.CloneFlipped;
+                TopCap.Move(LinkedFloor.CompleteFloorHeight * Vector3.up);
             }
 
             void SetDiagonalWall()
