@@ -15927,7 +15927,7 @@ MonoBehaviour:
   linkedPainterTool: {fileID: 0}
   MaterialLibraryUITemplate: {fileID: 0}
   PainterButton: {fileID: 2133168563}
-  PaintSqureButton: {fileID: 765204808}
+  PaintRectangleButton: {fileID: 0}
   PipetteButton: {fileID: 517200495}
   MaterialLibraryHolder: {fileID: 0}
 --- !u!114 &458039495

@@ -6,7 +6,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class NodeWallEditModNode : NodeWallModificationNode
     {
-        NodeWall linkedWall;
+        public NodeWall LinkedWall { get; private set; }
         Vector2Int thisCoordinate;
         Vector2Int otherCoordinate;
 
@@ -17,10 +17,56 @@ namespace iffnsStuff.iffnsCastleBuilder
             End
         }
 
+        public bool WouldBeSameAsOtherCoordinate(Vector2Int newCoordinate)
+        {
+            Vector2Int otherCoordinate = Vector2Int.zero;
+
+            switch (positionType)
+            {
+                case PositionTypes.Start:
+                    otherCoordinate = LinkedWall.EndPosition;
+                    break;
+                case PositionTypes.End:
+                    otherCoordinate = LinkedWall.StartPosition;
+                    break;
+                default:
+                    Debug.LogWarning("Error: State not defined");
+                    break;
+            }
+
+            return newCoordinate.x == otherCoordinate.x && newCoordinate.y == otherCoordinate.y;
+        }
+
+        public bool SamePositionAsOtherNode
+        {
+            get
+            {
+                Vector2Int thisCoordinate = Vector2Int.zero;
+                Vector2Int otherCoordinate = Vector2Int.zero;
+
+                switch (positionType)
+                {
+                    case PositionTypes.Start:
+                        thisCoordinate = LinkedWall.StartPosition;
+                        otherCoordinate = LinkedWall.EndPosition;
+                        break;
+                    case PositionTypes.End:
+                        thisCoordinate = LinkedWall.EndPosition;
+                        otherCoordinate = LinkedWall.StartPosition;
+                        break;
+                    default:
+                        Debug.LogWarning("Error: State not defined");
+                        break;
+                }
+
+                return (thisCoordinate.x == otherCoordinate.x && thisCoordinate.y == otherCoordinate.y);
+            }
+        }
+
         public void Setup(NodeWall linkedWall, PositionTypes positionType)
         {
             //base.setup(linkedObject: linkedWall.LinkedSystem.LinkedFloor);
-            this.linkedWall = linkedWall;
+            this.LinkedWall = linkedWall;
 
             this.positionType = positionType;
 
@@ -32,19 +78,19 @@ namespace iffnsStuff.iffnsCastleBuilder
             switch (positionType)
             {
                 case PositionTypes.Start:
-                    thisCoordinate = linkedWall.StartPosition;
-                    otherCoordinate = linkedWall.EndPosition;
+                    thisCoordinate = LinkedWall.StartPosition;
+                    otherCoordinate = LinkedWall.EndPosition;
                     break;
                 case PositionTypes.End:
-                    thisCoordinate = linkedWall.EndPosition;
-                    otherCoordinate = linkedWall.StartPosition;
+                    thisCoordinate = LinkedWall.EndPosition;
+                    otherCoordinate = LinkedWall.StartPosition;
                     break;
                 default:
                     break;
             }
 
-            Vector3 thisPosition = linkedWall.LinkedSystem.LinkedFloor.GetLocalNodePositionFromNodeIndex(thisCoordinate);
-            Vector3 otherPosition = linkedWall.LinkedSystem.LinkedFloor.GetLocalNodePositionFromNodeIndex(otherCoordinate);
+            Vector3 thisPosition = LinkedWall.LinkedSystem.LinkedFloor.GetLocalNodePositionFromNodeIndex(thisCoordinate);
+            Vector3 otherPosition = LinkedWall.LinkedSystem.LinkedFloor.GetLocalNodePositionFromNodeIndex(otherCoordinate);
 
             transform.localPosition = thisPosition;
             transform.localRotation = Quaternion.LookRotation(thisPosition - otherPosition, Vector3.up);
@@ -60,10 +106,10 @@ namespace iffnsStuff.iffnsCastleBuilder
                 switch (positionType)
                 {
                     case PositionTypes.Start:
-                        linkedWall.StartPosition = value;
+                        LinkedWall.StartPosition = value;
                         break;
                     case PositionTypes.End:
-                        linkedWall.EndPosition = value;
+                        LinkedWall.EndPosition = value;
                         break;
                     default:
                         break;

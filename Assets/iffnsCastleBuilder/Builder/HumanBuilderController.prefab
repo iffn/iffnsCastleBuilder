@@ -13823,7 +13823,6 @@ MonoBehaviour:
   CurrentPainterTool: {fileID: 9043763560315661902}
   CurrentSmartBlockBuilderTool: {fileID: 9043763559823616090}
   CurrentCopyPasteTool: {fileID: 9043763560630382908}
-  CurrentPipetteTool: {fileID: 0}
   CurrentSaveAndLoadSystem: {fileID: 9043763559385821028}
 --- !u!1 &9043763560315661888
 GameObject:

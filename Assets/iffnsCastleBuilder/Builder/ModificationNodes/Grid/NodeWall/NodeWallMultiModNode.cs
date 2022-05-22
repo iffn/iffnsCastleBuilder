@@ -6,9 +6,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class NodeWallMultiModNode : NodeWallModificationNode
     {
-        List<NodeWall> linkedStartWalls;
-        List<NodeWall> linkedEndWalls;
-
         Vector2Int corrdinate;
 
         NodeWallNode linkedNode;
@@ -18,6 +15,31 @@ namespace iffnsStuff.iffnsCastleBuilder
             this.linkedNode = linkedNode;
 
             linkedSystem = linkedNode.LinkedSystem;
+        }
+
+        public bool WouldBeSameAsOtherCoordinate(Vector2Int newCoordinate)
+        {
+            foreach (NodeWall wall in linkedNode.EndPoints)
+            {
+                Vector2Int otherCoordinate;
+
+                if (wall.StartPosition.x == linkedNode.Coordinate.x && wall.StartPosition.y == linkedNode.Coordinate.y)
+                {
+                    otherCoordinate = wall.EndPosition;
+                }
+                else if (wall.EndPosition.x == linkedNode.Coordinate.x && wall.EndPosition.y == linkedNode.Coordinate.y)
+                {
+                    otherCoordinate = wall.StartPosition;
+                }
+                else
+                {
+                    continue;
+                }
+
+                if (otherCoordinate.x == newCoordinate.x && otherCoordinate.y == newCoordinate.y) return true;
+            }
+
+            return false;
         }
 
         public override void UpdatePosition()

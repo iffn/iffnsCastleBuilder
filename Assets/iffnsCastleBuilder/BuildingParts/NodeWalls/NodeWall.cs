@@ -48,6 +48,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public bool SameStartAsEndPosition
+        {
+            get
+            {
+                return (StartPosition.x == EndPosition.x && StartPosition.y == EndPosition.y);
+            }
+        }
+
         public Vector2Int Offset
         {
             get

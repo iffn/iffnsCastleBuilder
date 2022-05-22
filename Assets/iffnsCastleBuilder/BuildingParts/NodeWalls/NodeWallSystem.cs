@@ -21,7 +21,6 @@ namespace iffnsStuff.iffnsCastleBuilder
         //Build parameters
         MailboxLineMultipleSubObject nodeWallsParam;
 
-
         public Vector2Int NodeGridSize
         {
             get
@@ -218,6 +217,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
+            DestroyInvalidNodeWalls();
+
             UpdateReferences();
 
             DestroyEndingCylinders();
@@ -242,11 +243,25 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        void DestroyInvalidNodeWalls()
+        {
+            for (int i = 0; i < nodeWallsParam.SubObjects.Count; i++)
+            {
+                NodeWall currentWall = nodeWallsParam.SubObjects[i] as NodeWall;
+
+                if (currentWall.SameStartAsEndPosition)
+                {
+                    currentWall.DestroyObject();
+
+                    Debug.Log("Removed node wall because start and end position were both the same");
+                }
+            }
+        }
+
         void BuildMeshes()
         {
             for (int i = 0; i < nodeWallsParam.SubObjects.Count; i++)
             {
-
                 NodeWall currentWall = nodeWallsParam.SubObjects[i] as NodeWall;
 
                 Vector2 direction = new Vector2(currentWall.EndPosition.x - currentWall.StartPosition.x, currentWall.EndPosition.y - currentWall.StartPosition.y).normalized;
@@ -262,11 +277,15 @@ namespace iffnsStuff.iffnsCastleBuilder
                 int startCorners = startCorner.EndPoints.Count;
                 int endCorners = endCorner.EndPoints.Count;
 
+                if(startCorners < 1)
+                {
+                    Debug.Log("Error: No corner at start corner. Assignment failed?");
+                }
                 if (startCorners == 1)
                 {
                     startOvershoot = -MathHelper.SmallFloat;
                 }
-                else if (startCorners > 1)
+                else if (startCorners == 2)
                 {
                     Vector2Int firstWall = startCorner.EndPoints[0].Offset;
                     Vector2Int secondWall = startCorner.EndPoints[1].Offset;
@@ -287,12 +306,20 @@ namespace iffnsStuff.iffnsCastleBuilder
                         }
                     }
                 }
+                else
+                {
+                    if (!CylinderNodes.Contains(startCorner)) CylinderNodes.Add(startCorner);
+                }
 
+                if (endCorners < 1)
+                {
+                    Debug.Log("Error: No corner at start corner. Assignment failed?");
+                }
                 if (endCorners == 1)
                 {
                     endOvershoot = -MathHelper.SmallFloat;
                 }
-                else if (endCorners > 1)
+                else if (endCorners == 2)
                 {
                     //Check angle
                     Vector2Int firstWall = endCorner.EndPoints[0].Offset;
@@ -318,18 +345,20 @@ namespace iffnsStuff.iffnsCastleBuilder
                         {
                             if (!CylinderNodes.Contains(endCorner)) CylinderNodes.Add(endCorner);
                         }
-
-
                     }
+                }
+                else
+                {
+                    if (!CylinderNodes.Contains(endCorner)) CylinderNodes.Add(endCorner);
                 }
 
                 List<Vector2> vertexPoints2D = new List<Vector2>()
-            {
-                NodeFromCoordinate(currentWall.StartPosition).LocalPosition2D - normalDirection * halfWallthickness - direction * startOvershoot,
-                NodeFromCoordinate(currentWall.StartPosition).LocalPosition2D + normalDirection * halfWallthickness - direction * startOvershoot,
-                NodeFromCoordinate(currentWall.EndPosition).LocalPosition2D + normalDirection * halfWallthickness + direction * endOvershoot,
-                NodeFromCoordinate(currentWall.EndPosition).LocalPosition2D - normalDirection * halfWallthickness + direction * endOvershoot
-            };
+                {
+                    NodeFromCoordinate(currentWall.StartPosition).LocalPosition2D - normalDirection * halfWallthickness - direction * startOvershoot,
+                    NodeFromCoordinate(currentWall.StartPosition).LocalPosition2D + normalDirection * halfWallthickness - direction * startOvershoot,
+                    NodeFromCoordinate(currentWall.EndPosition).LocalPosition2D + normalDirection * halfWallthickness + direction * endOvershoot,
+                    NodeFromCoordinate(currentWall.EndPosition).LocalPosition2D - normalDirection * halfWallthickness + direction * endOvershoot
+                };
 
                 List<Vector3> vertexPoints3D = new List<Vector3>();
 

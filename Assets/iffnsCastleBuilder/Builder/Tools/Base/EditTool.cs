@@ -216,11 +216,21 @@ namespace iffnsStuff.iffnsCastleBuilder
                     }
                     else if (activeNode is NodeWallEditModNode activeNodeWallEditModNode)
                     {
-                        activeNodeWallEditModNode.NodeCoordinate = SmartBlockBuilderTool.GetNodeCoordinateFromClick(currentBuilding: currentBuilding, currentRTSController: currentRTSController);
+                        Vector2Int newCoordinate = SmartBlockBuilderTool.GetNodeCoordinateFromClick(currentBuilding: currentBuilding, currentRTSController: currentRTSController);
+
+                        if (!activeNodeWallEditModNode.WouldBeSameAsOtherCoordinate(newCoordinate: newCoordinate))
+                        {
+                            activeNodeWallEditModNode.NodeCoordinate = newCoordinate;
+                        }
                     }
                     else if (activeNode is NodeWallMultiModNode activeNodeWallMultiModNode)
                     {
-                        activeNodeWallMultiModNode.NodeCoordinate = SmartBlockBuilderTool.GetNodeCoordinateFromClick(currentBuilding: currentBuilding, currentRTSController: currentRTSController);
+                        Vector2Int newCoordinate = SmartBlockBuilderTool.GetNodeCoordinateFromClick(currentBuilding: currentBuilding, currentRTSController: currentRTSController);
+
+                        if (!activeNodeWallMultiModNode.WouldBeSameAsOtherCoordinate(newCoordinate: newCoordinate))
+                        {
+                            activeNodeWallMultiModNode.NodeCoordinate = newCoordinate;
+                        }
                     }
                 }
                 else
