@@ -202,6 +202,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
+            if (failed) return;
 
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
             Vector2Int gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;

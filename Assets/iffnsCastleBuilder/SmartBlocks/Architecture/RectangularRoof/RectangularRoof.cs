@@ -220,7 +220,11 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
+            failed = false;
+
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
+            if (failed) return;
+
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
             switch (RoofType)

@@ -152,13 +152,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (!(firstOnGrid && secondOnGrid))
             {
-                Debug.Log("Destroying object since no longer on the grid");
-
-                Debug.Log("First node" + firstNode.AbsoluteCoordinate);
-                Debug.Log("Second node" + secondNode.AbsoluteCoordinate);
-                Debug.Log("GridSize" + linkedObject.LinkedFloor.LinkedBuildingController.GridSize);
-
-                linkedObject.DestroyObject();
+                linkedObject.failed = true;
                 return;
             }
 
