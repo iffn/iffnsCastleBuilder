@@ -307,30 +307,103 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             outerLine.Rotate(Quaternion.LookRotation(Vector3.up, Vector3.right));
             outerLine.Move(Vector3.down * HeightOvershoot);
+            
             VerticesHolder innerLine = outerLine.Clone;
 
             outerLine.Scale(new Vector3(OuterRadii.x, 1, OuterRadii.y));
             innerLine.Scale(new Vector3(InnerRadii.x, 1, InnerRadii.y));
 
-            RoofOutside = MeshGenerator.MeshesFromLines.KnitLines(point: Vector3.up * Height, line: outerLine, isClosed: isClosed);
-            RoofOutside.FlipTriangles();
+            VerticesHolder outerLineCone = outerLine.Clone;
 
-            /*
-            List<Vector3> points = new List<Vector3>();
-            points.Add(Vector3.up * Height);
-            points.AddRange(outerLine.Vertices);
-            points.Add(outerLine.Vertices[0]);
-            RoofOutside = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: points);
-            */
+            if (isClosed)
+            {
+                outerLineCone.Add(outerLine.Vertices[0]);
+            }
 
-            RoofInside = MeshGenerator.MeshesFromLines.KnitLines(point: Vector3.up * (Height - Thickness * ratio), line: innerLine, isClosed: isClosed);
+            //Outside with correct UV
+            float outerCircumence = 0;
 
-            BottomEdge = MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerLine, secondLine: innerLine, closingType: MeshGenerator.ShapeClosingType.closedWithSmoothEdge, smoothTransition: true);
+            List<float> uvXPoints = new List<float>();
+
+            uvXPoints.Add(0);
+
+            for(int i = 0; i< outerLineCone.Vertices.Count - 1; i++)
+            {
+                float offset = (outerLineCone.Vertices[i + 1] - outerLineCone.Vertices[i]).magnitude;
+                outerCircumence += offset;
+                uvXPoints.Add(outerCircumence);
+            }
+
+            float uvCircumfence = Mathf.Round(outerCircumence);
+
+            if (uvCircumfence < 1) uvCircumfence = 1;
+
+            float uvScaleFactor = uvCircumfence / outerCircumence;
+
+            for(int i = 0; i< uvXPoints.Count; i++)
+            {
+                uvXPoints[i] *= uvScaleFactor;
+            }
+
+            int verticalSteps = 5;
+
+            float heightRatio = 1f / verticalSteps;
+
+            List<VerticesHolder> Circles = new List<VerticesHolder>();
+
+            Circles.Add(outerLineCone);
+
+            float uvYOffset = (Mathf.Sqrt(Height * Height + OuterRadii.x * OuterRadii.x) + Mathf.Sqrt(Height * Height + OuterRadii.y * OuterRadii.y)) * 0.5f / 3;
+            List<Vector2> UVs = new();
+
+            foreach (float x in uvXPoints)
+            {
+                UVs.Add(new Vector2(-x, 0));
+            }
+
+            for (int i = 1; i< verticalSteps + 1; i++)
+            {
+                VerticesHolder nextLine = outerLineCone.Clone;
+                nextLine.Scale((1 - heightRatio * i + MathHelper.SmallFloat * 5) * Vector3.one);
+                nextLine.Move(heightRatio * i * Height * Vector3.up);
+                Circles.Add(nextLine);
+
+                float heigh = uvYOffset * (i);
+
+                foreach (float x in uvXPoints)
+                {
+                    UVs.Add(new Vector2(-x, heigh));
+                }
+            }
+
+            RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(sections: Circles, sectionsAreClosed: false, shapeIsClosed: false);
+
+            RoofOutside.UVs = UVs;
+
+            //Inside
+
+            Vector3 innderScaleFactor = new Vector3(
+                x: InnerRadii.x / OuterRadii.x,
+                y: (Height - Thickness * ratio) / Height,
+                z: InnerRadii.y / OuterRadii.y);
+
+            RoofInside = RoofOutside.CloneFlipped;
+            RoofInside.Scale(innderScaleFactor);
+
+            //Bottom edge
+
+            if (isClosed)
+            {
+                BottomEdge = MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerLine, secondLine: innerLine, closingType: MeshGenerator.ShapeClosingType.closedWithSmoothEdge, smoothTransition: true);
+            }
+            else
+            {
+                BottomEdge = MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerLine, secondLine: innerLine, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
+            }
+            
             BottomEdge.FlipTriangles();
 
             //Side edges
-
-
 
             if (Angle != Angles.Deg360)
             {
