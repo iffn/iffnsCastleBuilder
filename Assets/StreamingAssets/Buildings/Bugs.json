@@ -5705,7 +5705,7 @@
 					"Type": "CircularRoof",
 					"Name": "",
 					"Center position": [19, 12],
-					"Outer Radii": [3, -2],
+					"Outer Radii": [5, -1],
 					"Edges between": 8,
 					"Thickness": 0.1,
 					"Height [m]": 3,

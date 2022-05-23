@@ -6,17 +6,32 @@ namespace iffnsStuff.iffnsUnityResources
 {
     public class RTSController : MonoBehaviour
     {
+
+
+        //Assignments
+        [SerializeField] Camera mainCamera;
+        [SerializeField] GameObject CameraTilt;
+        [SerializeField] GameObject CameraMover;
+        //[SerializeField] GameObject clippingPlane;
+
+        //Public settings
+        public float movementSpeedWASD = 8f;
+        public float movementSpeedMouse = 0.7f;
+        public float rotationSpeedQE = 60f;
+        public float rotationSpeedMouse = 800f;
+        public float scrollSpeed = 8000f;
+
+        //Internal settings
+        float maxDeltaTime = 1f / 45;
+        float currentCameraOffset;
+        float isoCameraOffset = -100;
+
+        //Runtime variables
         Vector3 cameraHomePosition;
         Quaternion cameraHomeDirectionOrientation;
         Quaternion cameraHomeTiltAngle;
         float cameraHomeZoomPosition;
-        public Camera mainCamera;
-
-        [SerializeField] GameObject clippingPlane;
-
-        float maxDeltaTime = 1f / 45;
-        float currentCameraOffset;
-        float isoCameraOffset = -100;
+        float isoCameraSize;
 
         void SetHomePosition()
         {
@@ -24,6 +39,7 @@ namespace iffnsStuff.iffnsUnityResources
             cameraHomeDirectionOrientation = transform.rotation;
             cameraHomeTiltAngle = CameraTilt.transform.localRotation;
             cameraHomeZoomPosition = CameraMover.transform.localPosition.z;
+            isoCameraSize = mainCamera.orthographicSize;
         }
 
         //Also assigned with UI home button
@@ -32,7 +48,10 @@ namespace iffnsStuff.iffnsUnityResources
             transform.position = cameraHomePosition;
             transform.rotation = cameraHomeDirectionOrientation;
             CameraTilt.transform.localRotation = cameraHomeTiltAngle;
+
             CameraMover.transform.localPosition = Vector3.forward * cameraHomeZoomPosition;
+            currentCameraOffset = cameraHomeZoomPosition;
+            mainCamera.orthographicSize = isoCameraSize;
         }
 
         public void SetClippingHeightAbsolute(float clippingHeightAbsolute)
@@ -52,14 +71,6 @@ namespace iffnsStuff.iffnsUnityResources
             */
         }
 
-        public float movementSpeedWASD = 8f;
-        public float movementSpeedMouse = 0.7f;
-        public float rotationSpeedQE = 60f;
-        public float rotationSpeedMouse = 800f;
-        public float scrollSpeed = 8000f;
-
-        public GameObject CameraTilt;
-        public GameObject CameraMover;
 
         public float CameraTiltAngle
         {
@@ -235,17 +246,19 @@ namespace iffnsStuff.iffnsUnityResources
                     if (perspectiveScrollMultiplier > maxScrollMultiplier) perspectiveScrollMultiplier = maxScrollMultiplier;
                     else if (perspectiveScrollMultiplier < 1f / maxScrollMultiplier) perspectiveScrollMultiplier = 1f / maxScrollMultiplier;
 
-                    currentCameraOffset *= perspectiveScrollMultiplier;
+                    
 
                     switch (cameraPerspective)
                     {
                         case CameraPerspectiveType.perpesctive:
+                            currentCameraOffset *= perspectiveScrollMultiplier;
                             CameraMover.transform.localPosition = new Vector3(0, 0, currentCameraOffset);
                             break;
                         case CameraPerspectiveType.isometric:
                             CameraMover.transform.localPosition = new Vector3(0, 0, isoCameraOffset);
                             break;
                         case CameraPerspectiveType.flying:
+                            currentCameraOffset *= perspectiveScrollMultiplier;
                             CameraMover.transform.localPosition = new Vector3(0, 0, currentCameraOffset);
                             break;
                         default:
@@ -297,7 +310,5 @@ namespace iffnsStuff.iffnsUnityResources
                 RestoreHomePosition();
             }
         }
-
-
     }
 }
