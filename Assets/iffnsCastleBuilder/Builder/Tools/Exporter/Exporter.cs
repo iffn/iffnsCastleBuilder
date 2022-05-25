@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using iffnsStuff.iffnsBaseSystemForUnity;
+using iffnsStuff.iffnsBaseSystemForUnity.Tools;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
@@ -246,7 +247,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             foreach (ObjectGroup currentObject in currentObjectGroupOrganizer.ObjectGroups)
             {
-                fileLines.AddRange(currentObject.GetObjText(vertexOffset: currentOffset));
+                fileLines.AddRange(currentObject.GetObjText(triangleIndexOffset: currentOffset));
 
                 currentOffset += currentObject.vertexCount;
             }
@@ -266,7 +267,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 List<string> fileLines = new List<string>();
 
-                fileLines.AddRange(currentObject.GetObjText(vertexOffset: 0));
+                fileLines.AddRange(currentObject.GetObjText(triangleIndexOffset: 0));
 
                 string fileName = CurrentExportProperties.FileNameWithoutEnding + "-" + currentObject.IdentifierString + ".obj";
 
@@ -453,68 +454,14 @@ namespace iffnsStuff.iffnsCastleBuilder
                     return currentInfo.VerticesHolder.Count;
                 }
             }
-
-            public List<string> GetObjText(int vertexOffset)
+            
+            public List<string> GetObjText(int triangleIndexOffset)
             {
                 List<string> returnList = new List<string>();
 
                 if (currentInfo.VerticesHolder.Count == 0) return returnList;
 
-                //Title
-                returnList.Add("o " + IdentifierString);
-
-                //Verticies
-                switch (organizer.currentExportProperties.UpDirection)
-                {
-                    case ExportProperties.UpDirectionStates.Y:
-                        foreach (Vector3 vertex in currentInfo.VerticesHolder.Vertices)
-                        {
-                            returnList.Add("v " + -vertex.x + " " + vertex.y + " " + vertex.z);
-                        }
-                        break;
-                    case ExportProperties.UpDirectionStates.Z:
-                        foreach (Vector3 vertex in currentInfo.VerticesHolder.Vertices)
-                        {
-                            returnList.Add("v " + vertex.x + " " + vertex.z + " " + vertex.y);
-                        }
-                        break;
-                    default:
-                        break;
-                }
-
-                //UVs
-                foreach (Vector2 uv in currentInfo.UVs)
-                {
-                    returnList.Add("vt " + uv.x + " " + uv.y + " ");
-                }
-
-                //Faces
-                switch (organizer.currentExportProperties.UpDirection)
-                {
-                    case ExportProperties.UpDirectionStates.Y:
-                        foreach (TriangleHolder triangle in currentInfo.Triangles)
-                        {
-                            int t1 = triangle.Index1 + 1 + vertexOffset;
-                            int t2 = triangle.Index2 + 1 + vertexOffset;
-                            int t3 = triangle.Index3 + 1 + vertexOffset;
-
-                            returnList.Add("f " + t1 + "/" + t1 + " " + t3 + "/" + t3 + " " + t2 + "/" + t2);
-                            //returnList.Add("f " + t1 + "/" + t1 + " " + t2 + "/" + t2 + " " + t3 + "/" + t3);
-                        }
-                        break;
-                    case ExportProperties.UpDirectionStates.Z:
-                        foreach (TriangleHolder triangle in currentInfo.Triangles)
-                        {
-                            int t1 = triangle.Index1 + 1 + vertexOffset;
-                            int t2 = triangle.Index2 + 1 + vertexOffset;
-                            int t3 = triangle.Index3 + 1 + vertexOffset;
-
-                            returnList.Add("f " + t1 + "/" + t1 + " " + t3 + "/" + t3 + " " + t2 + "/" + t2);
-                        }
-                        break;
-                    default:
-                        break;
-                }
+                returnList = ObjExporter.GetObjLines(meshName: IdentifierString, vertices: currentInfo.VerticesHolder.Vertices, uvs: currentInfo.UVs, triangles: currentInfo.AllTrianglesDirectly, triangleIndexOffset: triangleIndexOffset, upDirection: ObjExporter.UpDirection.Y);
 
                 return returnList;
             }

@@ -14447,8 +14447,8 @@
 				{
 					"Type": "RoofWall",
 					"Name": "",
-					"First coordinaten": [91, 14],
-					"Second coordinate": [6, 1],
+					"First coordinaten": [91, 15],
+					"Second coordinate": [6, -1],
 					"Height [m]": 1.8,
 					"Main side material": "PolyHaven-beige_wall_001",
 					"Other side material": "PolyHaven-beige_wall_001",
@@ -14467,8 +14467,8 @@
 				{
 					"Type": "RoofWall",
 					"Name": "",
-					"First coordinaten": [101, 14],
-					"Second coordinate": [5, 1],
+					"First coordinaten": [101, 15],
+					"Second coordinate": [5, -1],
 					"Height [m]": 1.8,
 					"Main side material": "PolyHaven-beige_wall_001",
 					"Other side material": "PolyHaven-beige_wall_001",
