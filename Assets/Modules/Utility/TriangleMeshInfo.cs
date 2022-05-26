@@ -310,6 +310,11 @@ public class TriangleMeshInfo
         VerticesHolder.Scale(scale);
     }
 
+    public void Transorm(Transform origin, Transform target)
+    {
+        VerticesHolder.Transorm(origin: origin, target: target);
+    }
+
     public void FlipTriangles()
     {
         if (Triangles.Count == 0) return;
@@ -695,6 +700,14 @@ public class VerticesHolder
         Vector3 offset = CenterOfMass;
 
         ScaleAroundPoint(point: offset, scaleFactor: scaleFactor);
+    }
+
+    public void Transorm(Transform origin, Transform target)
+    {
+        for (int i = 0; i < vertices.Count; i++)
+        {
+            vertices[i] = target.InverseTransformPoint(origin.TransformPoint(vertices[i]));
+        }
     }
 
     public Vector3 CenterOfMass

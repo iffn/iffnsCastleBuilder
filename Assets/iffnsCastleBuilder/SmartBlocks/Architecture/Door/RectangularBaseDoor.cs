@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class RectangularBaseDoor : MonoBehaviour
+    public class RectangularBaseDoor : AssistObjectManager
     {
         public float borderWidth;
         public float completeWidth;
@@ -14,44 +14,17 @@ namespace iffnsStuff.iffnsCastleBuilder
         public float borderDepth;
         public float betweenDepth;
 
-        [SerializeField] GameObject TopBorderBlock;
-        [SerializeField] GameObject LeftBorderBlock;
-        [SerializeField] GameObject RightBorderBlock;
-
-        [SerializeField] List<UnityMeshManager> BorderMeshes;
-
-
         [SerializeField] GameObject Door;
 
-        public Door LinkedDoorController;
+        [HideInInspector] public Door LinkedDoorController;
 
         public MailboxLineMaterial FrontMaterial;
         public MailboxLineMaterial BackMaterial;
+        public MailboxLineMaterial FrameMaterial;
 
-        public Material FrameMaterial
+        public void Setup(Door linkedDoor)
         {
-            set
-            {
-                TopBorderBlock.transform.GetChild(0).GetComponent<MeshRenderer>().material = value;
-                LeftBorderBlock.transform.GetChild(0).GetComponent<MeshRenderer>().material = value;
-                RightBorderBlock.transform.GetChild(0).GetComponent<MeshRenderer>().material = value;
-            }
-        }
-
-        public List<UnityMeshManager> UnmanagedStaticMeshes
-        {
-            get
-            {
-                return new List<UnityMeshManager>(BorderMeshes);
-            }
-        }
-
-        public void Setup(BaseGameObject mainObject, MailboxLineMaterial frameMaterial)
-        {
-            foreach (UnityMeshManager border in BorderMeshes)
-            {
-                border.Setup(mainObject: mainObject, currentMaterialReference: frameMaterial);
-            }
+            this.LinkedDoorController = linkedDoor;
         }
 
         public void SetBuildParameters(Door linkedDoor, float borderWidth, float completeWidth, float doorHeight, float completeHeight, float borderDepth, float betweenDepth, Transform UVBaseObject, MailboxLineMaterial frontMaterial, MailboxLineMaterial backMaterial)
@@ -71,13 +44,18 @@ namespace iffnsStuff.iffnsCastleBuilder
             ApplyBuildParameters(UVBaseObject: UVBaseObject);
         }
 
-        public void ApplyBuildParameters(Transform UVBaseObject)
+        public override ValueContainer ApplyBuildParameters(Transform UVBaseObject)
         {
+            ValueContainer returnValue = new ValueContainer(originTransform: transform, targetTransform: LinkedDoorController.transform);
+
             TriangleMeshInfo FrontWall = new TriangleMeshInfo();
             TriangleMeshInfo BackWall = new TriangleMeshInfo();
             TriangleMeshInfo topWrap = new TriangleMeshInfo();
             TriangleMeshInfo leftWraper = new TriangleMeshInfo();
             TriangleMeshInfo rightWraper = new TriangleMeshInfo();
+            TriangleMeshInfo FrameFront = new TriangleMeshInfo();
+            TriangleMeshInfo FrameBack = new TriangleMeshInfo();
+            TriangleMeshInfo FrameBorder = new TriangleMeshInfo();
 
             void FinishMesh()
             {
@@ -86,53 +64,54 @@ namespace iffnsStuff.iffnsCastleBuilder
                 leftWraper.MaterialReference = FrontMaterial;
                 rightWraper.MaterialReference = FrontMaterial;
                 BackWall.MaterialReference = BackMaterial;
+                FrameFront.MaterialReference = FrameMaterial;
+                FrameBack.MaterialReference = FrameMaterial;
+                FrameBorder.MaterialReference = FrameMaterial;
 
-                LinkedDoorController.AddStaticMesh(FrontWall);
-                LinkedDoorController.AddStaticMesh(BackWall);
-                LinkedDoorController.AddStaticMesh(topWrap);
-                LinkedDoorController.AddStaticMesh(leftWraper);
-                LinkedDoorController.AddStaticMesh(rightWraper);
+                FrameFront.GenerateUVMeshBasedOnCardinalDirections(meshObject: LinkedDoorController.transform, originObjectForUV: UVBaseObject);
+                FrameBack.GenerateUVMeshBasedOnCardinalDirections(meshObject: LinkedDoorController.transform, originObjectForUV: UVBaseObject);
+
+                returnValue.AddStaticMeshAndConvertToTarget(FrontWall);
+                returnValue.AddStaticMeshAndConvertToTarget(BackWall);
+                returnValue.AddStaticMeshAndConvertToTarget(topWrap);
+                returnValue.AddStaticMeshAndConvertToTarget(leftWraper);
+                returnValue.AddStaticMeshAndConvertToTarget(rightWraper);
+                returnValue.AddStaticMeshAndConvertToTarget(FrameFront);
+                returnValue.AddStaticMeshAndConvertToTarget(FrameBack);
+                returnValue.AddStaticMeshAndConvertToTarget(FrameBorder);
             }
 
-            TopBorderBlock.transform.localScale = new Vector3(
-                betweenDepth + borderDepth * 2,
-                borderWidth, 
-                completeWidth
-                );
+            //Frame
+            float completeDepth = betweenDepth + borderDepth * 2;
 
-            TopBorderBlock.transform.localPosition = new Vector3(
-                betweenDepth / 2,
-                doorHeight, 
-                completeWidth / 2
-                );
+            VerticesHolder outerFrameBorder = new VerticesHolder();
+            outerFrameBorder.Add(new Vector3(0, 0, -0.5f));
+            outerFrameBorder.Add(new Vector3(0, 1, -0.5f));
+            outerFrameBorder.Add(new Vector3(0, 1, 0.5f));
+            outerFrameBorder.Add(new Vector3(0, 0, 0.5f));
 
+            outerFrameBorder.Move((completeDepth - borderDepth) * Vector3.right);
 
-            LeftBorderBlock.transform.localScale = new Vector3(
-                betweenDepth + borderDepth * 2,
-                doorHeight, 
-                borderWidth
-                );
+            VerticesHolder innerFrameBorder = outerFrameBorder.Clone;
 
-            LeftBorderBlock.transform.localPosition = new Vector3(
-                betweenDepth / 2,
-                MathHelper.SmallFloat, 
-                0
-                );
+            outerFrameBorder.Scale(new Vector3(1, doorHeight + borderWidth, completeWidth));
+            innerFrameBorder.Scale(new Vector3(1, doorHeight, completeWidth - borderWidth * 2));
 
+            
+            outerFrameBorder.Move(completeWidth * 0.5f * Vector3.forward);
+            innerFrameBorder.Move(completeWidth * 0.5f * Vector3.forward);
+            
 
-            RightBorderBlock.transform.localScale = new Vector3(
-                betweenDepth + borderDepth * 2,
-                doorHeight, 
-                borderWidth
-                );
+            VerticesHolder combinedFrameBoder = outerFrameBorder.CloneReversed;
+            combinedFrameBoder.Add(innerFrameBorder);
 
-            RightBorderBlock.transform.localPosition = new Vector3(
-                betweenDepth / 2,
-                MathHelper.SmallFloat, 
-                completeWidth
-                );
+            FrameFront = MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerFrameBorder, secondLine: innerFrameBorder, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: false);
+            FrameBack = FrameFront.CloneFlipped;
+            FrameBack.Move(completeDepth * Vector3.left);
 
+            FrameBorder = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: combinedFrameBoder, offset: (betweenDepth + borderDepth * 2) * Vector3.left, closeType: MeshGenerator.ShapeClosingType.closedWithSharpEdge, smoothTransition: false);
 
+            //Wall
             if (completeHeight > doorHeight)
             {
                 //FrontWall.transform.localPosition = Vector3.back * betweenDepth / 2;
@@ -163,19 +142,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                 topWrap.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
                 leftWraper.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
                 rightWraper.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
-
-                FinishMesh();
             }
 
-            foreach (UnityMeshManager border in BorderMeshes)
-            {
-                border.UpdateMaterial();
-            }
-        }
+            FinishMesh();
 
-        private void Update()
-        {
-            //ApplyBuildParameters();
+            return returnValue;
         }
     }
 }

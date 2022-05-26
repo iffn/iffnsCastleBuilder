@@ -66,8 +66,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-
-
         void SetupWallTypeParam()
         {
             List<string> enumString = new List<string>();
@@ -129,13 +127,11 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             SetupEditButtons();
 
-            UnmanagedMeshes.Clear();
-            UnmanagedMeshes.AddRange(CurrentRectangularBaseDoor.UnmanagedStaticMeshes);
-
             CurrentRectangularBaseDoor.FrontMaterial = FrontWallMaterialParm;
             CurrentRectangularBaseDoor.BackMaterial = BackWallMaterialParm;
+            CurrentRectangularBaseDoor.FrameMaterial = FrameMaterialParam;
 
-            CurrentRectangularBaseDoor.Setup(mainObject: this, frameMaterial: FrameMaterialParam);
+            CurrentRectangularBaseDoor.Setup(linkedDoor: this);
         }
 
         public void CompleteSetupWithBuildParameters(FloorController linkedFloor, Vector2Int bottomLeftPosition, Vector2Int topRightPosition)
@@ -163,15 +159,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             NonOrderedPlaytimeUpdate();
         }
 
-        List<TriangleMeshInfo> triangleInfo;
-
-        public void AddStaticMesh(TriangleMeshInfo staticMesh)
-        {
-            triangleInfo.Add(staticMesh);
-        }
-
-
-
         public override void ApplyBuildParameters()
         {
             failed = false;
@@ -188,14 +175,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return;
             }
 
-            triangleInfo = new List<TriangleMeshInfo>();
-
             //Size
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
             float width;
             float depth;
-
 
             if (gridSize.x == 0)
             {
@@ -230,7 +214,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 doorHeightWithFloor += LinkedFloor.BottomFloorHeight;
             }
 
-            //Aply parameters
+            //Apply parameters
             CurrentRectangularBaseDoor.completeWidth = width;
             CurrentRectangularBaseDoor.betweenDepth = depth;
 
@@ -245,28 +229,23 @@ namespace iffnsStuff.iffnsCastleBuilder
                 CurrentRectangularBaseDoor.completeHeight = 0;
             }
 
-            CurrentRectangularBaseDoor.ApplyBuildParameters(LinkedFloor.LinkedBuildingController.transform);
-
             if (gridSize.x == 0 || WallType == NodeGridRectangleOrganizer.OrientationTypes.NodeGrid)
             {
                 CurrentRectangularBaseDoor.transform.localPosition = Vector3.left * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness;
-
-                foreach (TriangleMeshInfo info in triangleInfo)
-                {
-                    info.Move(Vector3.left * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness);
-                }
             }
             else
             {
                 CurrentRectangularBaseDoor.transform.localPosition = Vector3.zero;
             }
 
-            foreach (TriangleMeshInfo info in triangleInfo)
+            AssistObjectManager.ValueContainer BaseDoorInfo = CurrentRectangularBaseDoor.ApplyBuildParameters(LinkedFloor.LinkedBuildingController.transform);
+
+            List<TriangleMeshInfo> DoorInfo = BaseDoorInfo.ConvertedStaticMeshes;
+
+            foreach (TriangleMeshInfo info in DoorInfo)
             {
                 StaticMeshManager.AddTriangleInfo(info);
             }
-
-            CurrentRectangularBaseDoor.FrameMaterial = FrameMaterialParam.Val.LinkedMaterial;
 
             BuildAllMeshes();
         }
