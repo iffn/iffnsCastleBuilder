@@ -9,7 +9,7 @@ public static class MeshGenerator
     {
         public static VerticesHolder FullCircle(float radius, int numberOfEdges)
         {
-            VerticesHolder returnValue = new VerticesHolder();
+            VerticesHolder returnValue = new();
 
             float angleIncrement = 360 / numberOfEdges * Mathf.Deg2Rad;
 
@@ -25,7 +25,7 @@ public static class MeshGenerator
 
         public static VerticesHolder ArcAroundZ(float radius, float angleDeg, int numberOfEdges)
         {
-            VerticesHolder returnValue = new VerticesHolder();
+            VerticesHolder returnValue = new();
 
             float angleIncrement = angleDeg / numberOfEdges * Mathf.Deg2Rad;
 
@@ -41,7 +41,7 @@ public static class MeshGenerator
 
         public static VerticesHolder ArcAroundY(float radius, float angleDeg, int numberOfEdges)
         {
-            VerticesHolder returnValue = new VerticesHolder();
+            VerticesHolder returnValue = new();
 
             float angleIncrement = angleDeg / numberOfEdges * Mathf.Deg2Rad;
 
@@ -57,7 +57,7 @@ public static class MeshGenerator
 
         public static VerticesHolder ArcAroundX(float radius, float angleDeg, int numberOfEdges)
         {
-            VerticesHolder returnValue = new VerticesHolder();
+            VerticesHolder returnValue = new();
 
             float angleIncrement = angleDeg / numberOfEdges * Mathf.Deg2Rad;
 
@@ -76,7 +76,7 @@ public static class MeshGenerator
     {
         public static TriangleMeshInfo RectangleAroundCenter(Vector3 baseLine, Vector3 secondLine)
         {
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new();
 
             returnValue.VerticesHolder.Add(0.5f * (baseLine + secondLine));
             returnValue.VerticesHolder.Add(0.5f * (baseLine - secondLine));
@@ -96,7 +96,7 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo RectangleAtCorner(Vector3 baseLine, Vector3 secondLine, Vector2 UVOffset)
         {
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new();
 
             returnValue.VerticesHolder.Add(Vector3.zero);
             returnValue.VerticesHolder.Add(secondLine);
@@ -116,7 +116,7 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo BoxAroundCenter(Vector3 size)
         {
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new();
 
             //up down
             TriangleMeshInfo face1 = RectangleAroundCenter(baseLine: Vector3.right * size.x, Vector3.forward * size.z);
@@ -166,7 +166,7 @@ public static class MeshGenerator
         {
             VerticesHolder circleLine = Lines.FullCircle(radius: radius, numberOfEdges: numberOfEdges);
 
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new();
 
             TriangleMeshInfo circle = MeshesFromLines.KnitLines(point: Vector3.zero, line: circleLine, isClosed: true);
 
@@ -187,7 +187,7 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo PointsClockwiseAroundStartPoint(Vector3 startPoint, List<Vector3> points)
         {
-            List<Vector3> usedPoints = new List<Vector3>(points);
+            List<Vector3> usedPoints = new(points);
             usedPoints.Insert(0, startPoint);
 
             return PointsClockwiseAroundFirstPoint(usedPoints);
@@ -195,7 +195,7 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo PointsClockwiseAroundFirstPoint(List<Vector3> points)
         {
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new();
 
             if (points == null) return returnValue;
             if (points.Count < 3) return returnValue;
@@ -245,7 +245,7 @@ public static class MeshGenerator
             // IsSealed = Smooth transition between first first and last point
             // SmoothTransition = 
 
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new();
 
             if (firstLine == null || secondLine == null)
             {
@@ -351,7 +351,7 @@ public static class MeshGenerator
 
                 if (closingType != ShapeClosingType.open)
                 {
-                    TriangleMeshInfo addition = MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[secondLine.Count - 1], line: new List<Vector3>() { secondLine.Vertices[0], firstLine.Vertices[0], firstLine.Vertices[^1] }, isClosed: false);
+                    TriangleMeshInfo addition = MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[^1], line: new List<Vector3>() { secondLine.Vertices[0], firstLine.Vertices[0], firstLine.Vertices[^1] }, isClosed: false);
 
                     addition.GenerateUVMeshBasedOnCardinalDirectionsWithoutReference();
 
@@ -364,7 +364,7 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo KnitLines(Vector3 point, VerticesHolder line, bool isClosed)
         {
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new();
 
             if (line == null || line.Count < 2)
             {
@@ -397,7 +397,7 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo KnitLines(Vector3 point, List<Vector3> line, bool isClosed)
         {
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new();
 
             if (line == null || line.Count < 2)
             {
@@ -435,7 +435,7 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo KnitLinesWithProximityPreference(List<VerticesHolder> sections, bool sectionsAreClosed, bool shapeIsClosed) //ToDo: Improve, since at the moment, the proximity preference is ignored at the ends
         {
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new();
 
             if (sections == null || sections.Count < 2)
             {
@@ -531,7 +531,7 @@ public static class MeshGenerator
 
             if (shapeIsClosed)
             {
-                int offset1 = returnValue.VerticesHolder.Count - sections[sections.Count - 1].Count;
+                int offset1 = returnValue.VerticesHolder.Count - sections[^1].Count;
                 int offset2 = 0;
 
                 int max1 = returnValue.VerticesHolder.Count - 1;
@@ -618,7 +618,7 @@ public static class MeshGenerator
         {
             //ToDo: UVs
 
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new();
 
             if (firstLine == null || secondLine == null)
             {
@@ -718,7 +718,7 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo ExtrudeLinear(VerticesHolder firstLine, Vector3 offset, ShapeClosingType closeType, bool smoothTransition)
         {
-            VerticesHolder secondLine = new VerticesHolder(firstLine);
+            VerticesHolder secondLine = new(firstLine);
 
             secondLine.Move(offset);
 
@@ -729,7 +729,7 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo ExtrudeAlong(VerticesHolder sectionLine, VerticesHolder guideLine, bool sectionIsClosed, bool guideIsClosed, bool sharpGuideEdges)
         {
-            List<VerticesHolder> sections = new List<VerticesHolder>();
+            List<VerticesHolder> sections = new();
 
             sections.Add(new VerticesHolder(sectionLine));
 
@@ -737,14 +737,14 @@ public static class MeshGenerator
 
             if (lookDirection.magnitude != 0)
             {
-                sections[sections.Count - 1].Rotate(Quaternion.LookRotation(lookDirection, Vector3.up)); //ToDo: Improve if closed
+                sections[^1].Rotate(Quaternion.LookRotation(lookDirection, Vector3.up)); //ToDo: Improve if closed
             }
             else
             {
                 Debug.LogWarning("Error: Distance between points is 0");
             }
                 
-            sections[sections.Count - 1].Move(guideLine.Vertices[0]);
+            sections[^1].Move(guideLine.Vertices[0]);
 
             for (int i = 1; i < guideLine.Count - 1; i++)
             {
@@ -754,29 +754,29 @@ public static class MeshGenerator
                 Vector3 vecBehind = guideLine.Vertices[i] - guideLine.Vertices[i - 1];
 
                 Vector3 tanDirection = (vecBehind).normalized + (vecAhead).normalized;
-                Vector3 normDirection = -tanDirection / 2 + vecBehind;
+                //Vector3 normDirection = -tanDirection / 2 + vecBehind;
 
                 if(tanDirection.magnitude != 0)
                 {
-                    sections[sections.Count - 1].Rotate(Quaternion.LookRotation(forward: tanDirection));
+                    sections[^1].Rotate(Quaternion.LookRotation(forward: tanDirection));
                 }
                 else
                 {
                     Debug.LogWarning("Error: Distance between points is 0");
                 }
 
-                sections[sections.Count - 1].Move(guideLine.Vertices[i]);
+                sections[^1].Move(guideLine.Vertices[i]);
             }
 
             sections.Add(new VerticesHolder(sectionLine));
-            sections[sections.Count - 1].Rotate(Quaternion.LookRotation(guideLine.Vertices[guideLine.Vertices.Count - 1] - guideLine.Vertices[guideLine.Vertices.Count - 2])); //ToDo: Improve if closed
-            sections[sections.Count - 1].Move(guideLine.Vertices[guideLine.Vertices.Count - 1]);
+            sections[^1].Rotate(Quaternion.LookRotation(guideLine.Vertices[^1] - guideLine.Vertices[^2])); //ToDo: Improve if closed
+            sections[^1].Move(guideLine.Vertices[^1]);
 
             TriangleMeshInfo returnValue;
 
             if (sharpGuideEdges)
             {
-                List<VerticesHolder> guideElements = new List<VerticesHolder>();
+                List<VerticesHolder> guideElements = new();
 
                 for(int i = 0; i < sectionLine.Count; i++)
                 {
@@ -810,7 +810,7 @@ public static class MeshGenerator
 
                 if (sectionIsClosed)
                 {
-                    returnValue.Add(KnitLines(firstLine: guideElements[guideElements.Count - 1], secondLine: guideElements[0], closingType: closingType, smoothTransition: true));
+                    returnValue.Add(KnitLines(firstLine: guideElements[^1], secondLine: guideElements[0], closingType: closingType, smoothTransition: true));
                 }
 
             }
@@ -850,7 +850,7 @@ public static class MeshGenerator
         }
         public static TriangleMeshInfo AddVerticalWallsBetweenMultiplePoints(List<Vector3> floorPointsInClockwiseOrder, float height, bool closed, Vector3 offset)
         {
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new();
 
             for (int i = 0; i < floorPointsInClockwiseOrder.Count - 1; i++)
             {
@@ -859,7 +859,7 @@ public static class MeshGenerator
 
             if (closed)
             {
-                returnValue.Add(AddWallBetween2Points(floorPointsInClockwiseOrder[floorPointsInClockwiseOrder.Count - 1], floorPointsInClockwiseOrder[0], height, offset));
+                returnValue.Add(AddWallBetween2Points(floorPointsInClockwiseOrder[^1], floorPointsInClockwiseOrder[0], height, offset));
             }
 
             return returnValue;
@@ -867,7 +867,7 @@ public static class MeshGenerator
 
         public static List<TriangleMeshInfo> AddVerticalWallsBetweenMultiplePointsAsList(List<Vector3> floorPointsInClockwiseOrder, float height, bool closed, Vector3 offset)
         {
-            List<TriangleMeshInfo> returnList = new List<TriangleMeshInfo>();
+            List<TriangleMeshInfo> returnList = new();
 
             for (int i = 0; i < floorPointsInClockwiseOrder.Count - 1; i++)
             {
@@ -876,7 +876,7 @@ public static class MeshGenerator
 
             if (closed)
             {
-                returnList.Add(AddWallBetween2Points(floorPointsInClockwiseOrder[floorPointsInClockwiseOrder.Count - 1], floorPointsInClockwiseOrder[0], height, offset));
+                returnList.Add(AddWallBetween2Points(floorPointsInClockwiseOrder[^1], floorPointsInClockwiseOrder[0], height, offset));
             }
 
             return returnList;
@@ -887,7 +887,7 @@ public static class MeshGenerator
     {
         public static TriangleMeshInfo MeshFrom3Points(Vector3 p0, Vector3 p1, Vector3 p2)
         {
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new();
 
             returnValue.VerticesHolder.Add(p0);
             returnValue.VerticesHolder.Add(p1);
@@ -908,7 +908,7 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo MeshFrom4Points(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
         {
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new();
 
             returnValue.VerticesHolder.Add(p0);
             returnValue.VerticesHolder.Add(p1);
