@@ -19,6 +19,18 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public abstract ModificationNodeType Type { get; }
 
+        public OnFloorObject LinkedOnFloorObject
+        {
+            get
+            {
+                OnFloorObject returnValue = LinkedObject as OnFloorObject;
+
+                if (returnValue == null) Debug.LogWarning("Error: Linked object of Grid Modification Node is not a OnFloorObject");
+
+                return LinkedObject as OnFloorObject;
+            }
+        }
+
         protected override void setup(BaseGameObject linkedObject)
         {
             base.setup(linkedObject: linkedObject);

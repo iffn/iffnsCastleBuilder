@@ -14,10 +14,14 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] RTSController currentRTSController = null;
         //[SerializeField] BuildingToolController currentBuildingToolController = null;
 
-        //VirtualBlock startBlock;
+        //Runtime parameters
         Vector3 startPosition;
         OnFloorObject CurrentOnFloorObject;
         OnFloorObject currentTemplate;
+
+        bool workedPreviously;
+        Vector3 previousEndPosition;
+
 
         HumanBuildingController currentBuilding
         {
@@ -68,7 +72,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         void GeneralEditUpdate()
         {
-            if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0) && CurrentOnFloorObject == null)
+            if (Input.GetMouseButtonDown(0))
             {
                 if (EventSystem.current.IsPointerOverGameObject()) //If over UI
                 {
@@ -92,6 +96,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                     CurrentOnFloorObject = Instantiate(original: currentTemplate);
                     CurrentOnFloorObject.Setup(superObject: currentBuilding.CurrentFloorObject);
                     CurrentOnFloorObject.ColliderActivationState = false;
+
+                    workedPreviously = false;
 
                     if (CurrentOnFloorObject.Organizer != null)
                     {
@@ -133,85 +139,52 @@ namespace iffnsStuff.iffnsCastleBuilder
                     }
 
                     CurrentOnFloorObject.FirstPositionNode.Show(activateCollider: false);
+                    if(CurrentOnFloorObject.SecondPositionNode != null) CurrentOnFloorObject.SecondPositionNode.Show(activateCollider: false);
                     //CurrentOnFloorObject.SecondPositionNode.Position = new Vector2Int(startBlock.Position.x + 1, startBlock.Position.y + 1);
 
+                    SetSecondPosition(startPosition);
+
                     CurrentOnFloorObject.ApplyBuildParameters();
+
+                    if (!workedPreviously) workedPreviously = !CurrentOnFloorObject.failed;
                 }
             }
             else if (Input.GetMouseButton(0))
             {
-                Vector3 endPosition = GetImpactPointFromClick();
+                if (CurrentOnFloorObject == null) return;
 
-                if (CurrentOnFloorObject.Organizer != null)
+                Vector3 newEndPosition = GetImpactPointFromClick();
+
+                SetSecondPosition(newEndPosition);
+
+                //Revert if it worked previously and failed
+                if (workedPreviously)
                 {
-                    CurrentOnFloorObject.Organizer.SecondBuildPositionAbsolute = endPosition;
+                    if (CurrentOnFloorObject.failed)
+                    {
+                        SetSecondPosition(previousEndPosition);
+                    }
+                    else
+                    {
+                        previousEndPosition = newEndPosition;
+                    }
                 }
                 else
                 {
-                    //ToDo: Remove once all implemented
-
-                    if (CurrentOnFloorObject.SecondPositionNode == null)
+                    if (!CurrentOnFloorObject.failed)
                     {
-                        //Cannot set second position since it's not defined
-                        return;
-                    }
-
-                    if (CurrentOnFloorObject.SecondPositionNode is GridModificationNode secondGridNode)
-                    {
-                        //VirtualBlock endBlock = GetBlockFromClick(OnlyCheckCurrentFloor: true);
-
-
-                        //if (endBlock != null)
-                        if (endPosition != null)
-                        {
-                            //Debug.Log(endBlock.XPosition + "," + endBlock.ZPosition);
-
-                            Vector2Int coordinate;
-
-                            switch (secondGridNode.Type)
-                            {
-                                case GridModificationNode.ModificationNodeType.Block:
-                                    coordinate = currentBuilding.CurrentFloorObject.GetBlockCoordinateFromCoordinateAbsolute(endPosition);
-                                    if (currentBuilding.BlockCoordinateIsOnGrid(coordinate))
-                                    {
-                                        secondGridNode.AbsoluteCoordinate = coordinate;
-                                    }
-                                    break;
-                                case GridModificationNode.ModificationNodeType.Node:
-                                    coordinate = currentBuilding.CurrentFloorObject.GetNodeCoordinateFromPositionAbsolute(endPosition);
-                                    if (currentBuilding.NodeCoordinateIsOnGrid(coordinate))
-                                    {
-                                        if (secondGridNode == null || secondGridNode.AbsoluteCoordinate == null || coordinate == null)
-                                        {
-                                            Debug.Log("hi");
-                                        }
-
-                                        secondGridNode.AbsoluteCoordinate = coordinate;
-                                    }
-                                    break;
-                                default:
-                                    Debug.LogWarning("Error: Node type not defined");
-                                    break;
-                            }
-
-                            //secondNode.AbsoluteCoordinate = endBlock.Position;
-
-                            //CurrentOnFloorObject.FirstPositionNode.AbsolutePosition = startBlock.Position;
-                            CurrentOnFloorObject.SecondPositionNode.Show(activateCollider: false);
-                        }
-                    }
-                    else if (CurrentOnFloorObject.SecondPositionNode is FloatingModificationNode secondFloatNode)
-                    {
-                        secondFloatNode.AbsolutePosition = GetPositionFromClick(currentRTSController: currentRTSController);
+                        workedPreviously = true;
+                        previousEndPosition = newEndPosition;
                     }
                 }
 
+                //Cancel
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     CurrentOnFloorObject.DestroyObject();
                 }
             }
-            else
+            else //Mouse up
             {
                 if (CurrentOnFloorObject != null)
                 {
@@ -225,6 +198,73 @@ namespace iffnsStuff.iffnsCastleBuilder
                     {
                         CurrentOnFloorObject.DestroyObject();
                     }
+                }
+            }
+        }
+
+        void SetSecondPosition(Vector3 newEndPosition)
+        {
+            if (CurrentOnFloorObject.Organizer != null)
+            {
+                CurrentOnFloorObject.Organizer.SecondBuildPositionAbsolute = newEndPosition;
+            }
+            else
+            {
+                //ToDo: Remove once all implemented
+
+                if (CurrentOnFloorObject.SecondPositionNode == null)
+                {
+                    //Cannot set second position since it's not defined
+                    return;
+                }
+
+                if (CurrentOnFloorObject.SecondPositionNode is GridModificationNode secondGridNode)
+                {
+                    //VirtualBlock endBlock = GetBlockFromClick(OnlyCheckCurrentFloor: true);
+
+
+                    //if (endBlock != null)
+                    if (newEndPosition != null)
+                    {
+                        //Debug.Log(endBlock.XPosition + "," + endBlock.ZPosition);
+
+                        Vector2Int coordinate;
+
+                        switch (secondGridNode.Type)
+                        {
+                            case GridModificationNode.ModificationNodeType.Block:
+                                coordinate = currentBuilding.CurrentFloorObject.GetBlockCoordinateFromCoordinateAbsolute(newEndPosition);
+                                if (currentBuilding.BlockCoordinateIsOnGrid(coordinate))
+                                {
+                                    secondGridNode.AbsoluteCoordinate = coordinate;
+                                }
+                                break;
+                            case GridModificationNode.ModificationNodeType.Node:
+                                coordinate = currentBuilding.CurrentFloorObject.GetNodeCoordinateFromPositionAbsolute(newEndPosition);
+                                if (currentBuilding.NodeCoordinateIsOnGrid(coordinate))
+                                {
+                                    if (secondGridNode == null || secondGridNode.AbsoluteCoordinate == null || coordinate == null)
+                                    {
+                                        Debug.Log("hi");
+                                    }
+
+                                    secondGridNode.AbsoluteCoordinate = coordinate;
+                                }
+                                break;
+                            default:
+                                Debug.LogWarning("Error: Node type not defined");
+                                break;
+                        }
+
+                        //secondNode.AbsoluteCoordinate = endBlock.Position;
+
+                        //CurrentOnFloorObject.FirstPositionNode.AbsolutePosition = startBlock.Position;
+                        CurrentOnFloorObject.SecondPositionNode.Show(activateCollider: false);
+                    }
+                }
+                else if (CurrentOnFloorObject.SecondPositionNode is FloatingModificationNode secondFloatNode)
+                {
+                    secondFloatNode.AbsolutePosition = GetPositionFromClick(currentRTSController: currentRTSController);
                 }
             }
         }

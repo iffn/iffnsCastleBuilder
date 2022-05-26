@@ -12,6 +12,14 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineVector2Int valueHolder;
         MailboxLineVector2Int relativeReferenceHolder;
 
+        public bool RelativeNode
+        {
+            get
+            {
+                return relativeReferenceHolder != null;
+            }
+        }
+
         public override ModificationNodeType Type
         {
             get
@@ -36,13 +44,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
             set
             {
-                if (relativeReferenceHolder == null)
+                if (RelativeNode)
                 {
-                    valueHolder.Val = new Vector2Int(value.x, value.y);
+                    valueHolder.Val = new Vector2Int(value.x - relativeReferenceHolder.Val.x, value.y - relativeReferenceHolder.Val.y);
                 }
                 else
                 {
-                    valueHolder.Val = new Vector2Int(value.x - relativeReferenceHolder.Val.x, value.y - relativeReferenceHolder.Val.y);
+                    valueHolder.Val = new Vector2Int(value.x, value.y);
                 }
 
                 parent.ApplyBuildParameters();

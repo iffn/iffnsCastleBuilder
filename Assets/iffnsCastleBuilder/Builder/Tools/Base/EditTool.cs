@@ -40,6 +40,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         private void OnDisable()
         {
+            //ToDo: Check OnDisable errors when exiting play mode
+
             if (gameObject.activeInHierarchy == false)
             {
                 DeactivateEdit();
@@ -184,23 +186,36 @@ namespace iffnsStuff.iffnsCastleBuilder
                 {
                     if (activeNode is GridModificationNode activeGridNode)
                     {
+                        Vector2Int newCoordinate;
+
                         switch (activeGridNode.Type)
                         {
                             case GridModificationNode.ModificationNodeType.Block:
                                 VirtualBlock currentBlock = SmartBlockBuilderTool.GetBlockFromClick(OnlyCheckCurrentFloor: true, currentBuilding: currentBuilding, currentRTSCamera: currentRTSController);
                                 if (currentBlock == null) return true;
-                                activeGridNode.AbsoluteCoordinate = currentBlock.Coordinate;
+                                newCoordinate = currentBlock.Coordinate;
                                 break;
                             case GridModificationNode.ModificationNodeType.Node:
-                                Vector2Int currentNodePosition = SmartBlockBuilderTool.GetNodeCoordinateFromClick(currentBuilding: currentBuilding, currentRTSController: currentRTSController);
-                                if (currentNodePosition == null) return true;
-                                activeGridNode.AbsoluteCoordinate = currentNodePosition;
+                                newCoordinate = SmartBlockBuilderTool.GetNodeCoordinateFromClick(currentBuilding: currentBuilding, currentRTSController: currentRTSController);
                                 break;
                             default:
-                                break;
+                                Debug.LogWarning("Error: Enum case not defined");
+                                return true;
                         }
 
-                        UpdatePropertyMenu();
+                        if (newCoordinate == null) return true;
+
+                        Vector2Int previousCoordinate = activeGridNode.AbsoluteCoordinate;
+                        activeGridNode.AbsoluteCoordinate = newCoordinate;
+
+                        if (activeGridNode.LinkedOnFloorObject.failed)
+                        {
+                            activeGridNode.AbsoluteCoordinate = previousCoordinate;
+                        }
+                        else
+                        {
+                            UpdatePropertyMenu();
+                        }
 
                         return true;
                     }
@@ -233,7 +248,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         }
                     }
                 }
-                else
+                else //Mouse up
                 {
                     DeactivateNodeDraging();
 

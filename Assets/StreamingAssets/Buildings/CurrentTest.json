@@ -16,14 +16,6 @@
 				"Name": "",
 				"Node walls":
 				[
-					{
-						"Type": "NodeWall",
-						"Name": "",
-						"Start position": [5, 10],
-						"End position": [9, 7],
-						"Right material": "PolyHaven-beige_wall_001",
-						"Left material": "PolyHaven-beige_wall_001"
-					}
 				]
 			},
 			"Floor matrix":

@@ -57,6 +57,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                     radiusValue.Val = offset.y;
                     DirectionPreference = new Vector2Int(0, offset.y);
                 }
+
+                parent.ApplyBuildParameters();
             }
         }
 
