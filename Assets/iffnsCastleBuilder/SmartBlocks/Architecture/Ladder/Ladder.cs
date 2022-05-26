@@ -7,8 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class Ladder : OnFloorObject
     {
-        //[SerializeField] BaseLadder LinkedBaseLadder;
-
         //BuildParameters
         MailboxLineVector2Int BottomLeftPositionParam;
         MailboxLineVector2Int TopRightPositionParam;
