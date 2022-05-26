@@ -74,22 +74,22 @@ public static class MeshGenerator
 
     public static class FilledShapes
     {
-        public static TriangleMeshInfo RectangleAroundCenter(Vector3 baseLine, Vector3 secondLine)
+        public static TriangleMeshInfo RectangleAroundCenter(Vector3 baseLineFull, Vector3 secondLineFull)
         {
             TriangleMeshInfo returnValue = new();
 
-            returnValue.VerticesHolder.Add(0.5f * (baseLine + secondLine));
-            returnValue.VerticesHolder.Add(0.5f * (baseLine - secondLine));
-            returnValue.VerticesHolder.Add(0.5f * (-baseLine - secondLine));
-            returnValue.VerticesHolder.Add(0.5f * (-baseLine + secondLine));
+            returnValue.VerticesHolder.Add(0.5f * (baseLineFull + secondLineFull));
+            returnValue.VerticesHolder.Add(0.5f * (baseLineFull - secondLineFull));
+            returnValue.VerticesHolder.Add(0.5f * (-baseLineFull - secondLineFull));
+            returnValue.VerticesHolder.Add(0.5f * (-baseLineFull + secondLineFull));
 
             returnValue.Triangles.Add(new TriangleHolder(0, 1, 2));
             returnValue.Triangles.Add(new TriangleHolder(0, 2, 3));
 
-            returnValue.UVs.Add(new Vector2(baseLine.magnitude, secondLine.magnitude) * 0.5f);
-            returnValue.UVs.Add(new Vector2(baseLine.magnitude, -secondLine.magnitude) * 0.5f);
-            returnValue.UVs.Add(new Vector2(-baseLine.magnitude, -secondLine.magnitude) * 0.5f);
-            returnValue.UVs.Add(new Vector2(-baseLine.magnitude, secondLine.magnitude) * 0.5f);
+            returnValue.UVs.Add(new Vector2(baseLineFull.magnitude, secondLineFull.magnitude) * 0.5f);
+            returnValue.UVs.Add(new Vector2(baseLineFull.magnitude, -secondLineFull.magnitude) * 0.5f);
+            returnValue.UVs.Add(new Vector2(-baseLineFull.magnitude, -secondLineFull.magnitude) * 0.5f);
+            returnValue.UVs.Add(new Vector2(-baseLineFull.magnitude, secondLineFull.magnitude) * 0.5f);
 
             return returnValue;
         }
@@ -119,24 +119,24 @@ public static class MeshGenerator
             TriangleMeshInfo returnValue = new();
 
             //up down
-            TriangleMeshInfo face1 = RectangleAroundCenter(baseLine: Vector3.right * size.x, Vector3.forward * size.z);
+            TriangleMeshInfo face1 = RectangleAroundCenter(baseLineFull: Vector3.right * size.x, Vector3.forward * size.z);
             face1.Move(offset: 0.5f * size.y * Vector3.up);
 
-            TriangleMeshInfo face2 = RectangleAroundCenter(baseLine: Vector3.forward * size.z, Vector3.right * size.x);
+            TriangleMeshInfo face2 = RectangleAroundCenter(baseLineFull: Vector3.forward * size.z, Vector3.right * size.x);
             face2.Move(offset: 0.5f * size.y * Vector3.down);
 
             //left right
-            TriangleMeshInfo face3 = RectangleAroundCenter(baseLine: Vector3.forward * size.z, Vector3.up * size.y);
+            TriangleMeshInfo face3 = RectangleAroundCenter(baseLineFull: Vector3.forward * size.z, Vector3.up * size.y);
             face3.Move(offset: 0.5f * size.x * Vector3.right);
 
-            TriangleMeshInfo face4 = RectangleAroundCenter(baseLine: Vector3.up * size.y, Vector3.forward * size.z);
+            TriangleMeshInfo face4 = RectangleAroundCenter(baseLineFull: Vector3.up * size.y, Vector3.forward * size.z);
             face4.Move(offset: 0.5f * size.x * Vector3.left);
 
             //forward back
-            TriangleMeshInfo face5 = RectangleAroundCenter(baseLine: Vector3.up * size.y, Vector3.right * size.x);
+            TriangleMeshInfo face5 = RectangleAroundCenter(baseLineFull: Vector3.up * size.y, Vector3.right * size.x);
             face5.Move(offset: 0.5f * size.z * Vector3.forward);
 
-            TriangleMeshInfo face6 = RectangleAroundCenter(baseLine: Vector3.right * size.x, Vector3.up * size.y);
+            TriangleMeshInfo face6 = RectangleAroundCenter(baseLineFull: Vector3.right * size.x, Vector3.up * size.y);
             face6.Move(offset: 0.5f * size.z * Vector3.back);
 
             returnValue.Add(face1);

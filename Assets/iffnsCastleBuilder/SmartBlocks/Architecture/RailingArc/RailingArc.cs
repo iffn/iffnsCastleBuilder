@@ -174,11 +174,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             arc.Scale(new Vector3(size.x, 1, size.y));
 
             //Railing rectangle
-            TriangleMeshInfo rectangle = MeshGenerator.FilledShapes.RectangleAroundCenter(baseLine: Vector3.right * width, secondLine: Vector3.up * topHeight);
+            TriangleMeshInfo rectangle = MeshGenerator.FilledShapes.RectangleAroundCenter(baseLineFull: Vector3.right * width, secondLineFull: Vector3.up * topHeight);
             arcMantleTop = MeshGenerator.MeshesFromLines.ExtrudeAlong(sectionLine: rectangle.VerticesHolder, guideLine: arc, sectionIsClosed: true, guideIsClosed: false, sharpGuideEdges: true);
             arcMantleTop.Move((railingHeight - baseHeight * 0.5f) * Vector3.up);
 
-            rectangle = MeshGenerator.FilledShapes.RectangleAroundCenter(baseLine: Vector3.right * width, secondLine: Vector3.up * baseHeight);
+            rectangle = MeshGenerator.FilledShapes.RectangleAroundCenter(baseLineFull: Vector3.right * width, secondLineFull: Vector3.up * baseHeight);
             arcMantleBottom = MeshGenerator.MeshesFromLines.ExtrudeAlong(sectionLine: rectangle.VerticesHolder, guideLine: arc, sectionIsClosed: true, guideIsClosed: false, sharpGuideEdges: true);
             arcMantleBottom.Move((topHeight * 0.5f) * Vector3.up);
 

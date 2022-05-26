@@ -214,7 +214,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 doorHeightWithFloor += LinkedFloor.BottomFloorHeight;
             }
 
-            //Apply parameters
             CurrentRectangularBaseDoor.completeWidth = width;
             CurrentRectangularBaseDoor.betweenDepth = depth;
 
@@ -238,6 +237,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 CurrentRectangularBaseDoor.transform.localPosition = Vector3.zero;
             }
 
+            //Apply parameters
             AssistObjectManager.ValueContainer BaseDoorInfo = CurrentRectangularBaseDoor.ApplyBuildParameters(LinkedFloor.LinkedBuildingController.transform);
 
             List<TriangleMeshInfo> DoorInfo = BaseDoorInfo.ConvertedStaticMeshes;

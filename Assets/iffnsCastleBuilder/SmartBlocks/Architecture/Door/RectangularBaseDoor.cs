@@ -27,7 +27,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             this.LinkedDoorController = linkedDoor;
         }
 
-        public void SetBuildParameters(Door linkedDoor, float borderWidth, float completeWidth, float doorHeight, float completeHeight, float borderDepth, float betweenDepth, Transform UVBaseObject, MailboxLineMaterial frontMaterial, MailboxLineMaterial backMaterial)
+        public ValueContainer SetBuildParameters(Door linkedDoor, float borderWidth, float completeWidth, float doorHeight, float completeHeight, float borderDepth, float betweenDepth, Transform UVBaseObject, MailboxLineMaterial frontMaterial, MailboxLineMaterial backMaterial)
         {
             this.borderWidth = borderWidth;
             this.completeWidth = completeWidth;
@@ -41,7 +41,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             LinkedDoorController = linkedDoor;
 
-            ApplyBuildParameters(UVBaseObject: UVBaseObject);
+            return ApplyBuildParameters(UVBaseObject: UVBaseObject);
         }
 
         public override ValueContainer ApplyBuildParameters(Transform UVBaseObject)

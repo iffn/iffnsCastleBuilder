@@ -145,12 +145,11 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             SetupEditButtons();
 
-            CurrentRectangularBaseWindow.Setup(mainObject: this, frameMaterial: FrameMaterialParam, glassMaterial: GlassMaterialParam);
+            CurrentRectangularBaseWindow.Setup(linkedWindow: this);
             CurrentRectangularBaseWindow.FrontMaterial = FrontWallMaterialParm;
             CurrentRectangularBaseWindow.BackMaterial = BackWallMaterialParm;
-
-            UnmanagedMeshes.Clear();
-            UnmanagedMeshes.AddRange(CurrentRectangularBaseWindow.UnmanagedStaticMeshes);
+            CurrentRectangularBaseWindow.FrameMaterial = FrameMaterialParam;
+            CurrentRectangularBaseWindow.GlassMaterial = GlassMaterialParam;
         }
 
 
@@ -244,31 +243,27 @@ namespace iffnsStuff.iffnsCastleBuilder
                 bottomHeightWithFloor += LinkedFloor.BottomFloorHeight;
             }
 
-            //Aply parameters
             CurrentRectangularBaseWindow.completeWidth = width;
             CurrentRectangularBaseWindow.completeHeight = currentHeight;
             CurrentRectangularBaseWindow.bottomHeight = bottomHeightWithFloor;
             CurrentRectangularBaseWindow.windowHeight = WindowHeight;
             CurrentRectangularBaseWindow.betweenDepth = depth;
 
-            CurrentRectangularBaseWindow.ApplyBuildParameters(linkedWindow: this, originObject: LinkedFloor.LinkedBuildingController.transform);
-
             if (gridSize.x == 0 || WallType == NodeGridRectangleOrganizer.OrientationTypes.NodeGrid)
             {
                 CurrentRectangularBaseWindow.transform.localPosition = Vector3.left * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness;
-
-                foreach (TriangleMeshInfo info in triangleInfo)
-                {
-                    info.Move(Vector3.left * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness);
-                }
             }
             else
             {
                 CurrentRectangularBaseWindow.transform.localPosition = Vector3.zero;
             }
 
+            //Aply parameters
+            AssistObjectManager.ValueContainer BaseWindowInfo = CurrentRectangularBaseWindow.ApplyBuildParameters(LinkedFloor.LinkedBuildingController.transform);
 
-            foreach (TriangleMeshInfo info in triangleInfo)
+            List<TriangleMeshInfo> WindowInfo = BaseWindowInfo.ConvertedStaticMeshes;
+
+            foreach (TriangleMeshInfo info in WindowInfo)
             {
                 StaticMeshManager.AddTriangleInfo(info);
             }
