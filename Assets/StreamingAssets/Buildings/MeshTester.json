@@ -135,6 +135,22 @@
 						"End position": [83, 19],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Name": "",
+						"Start position": [14, 18],
+						"End position": [11, 19],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Name": "",
+						"Start position": [20, 18],
+						"End position": [17, 19],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
 					}
 				]
 			},

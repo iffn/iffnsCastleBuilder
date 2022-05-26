@@ -28,7 +28,7 @@ public abstract class AssistObjectManager : MonoBehaviour
 
             additionValue.Transorm(origin: originTransform, target: targetTransform);
 
-            staticMeshes.Add(info);
+            staticMeshes.Add(additionValue);
         }
 
         List<TriangleMeshInfo> staticMeshes;

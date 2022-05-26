@@ -1658,6 +1658,19 @@
 			],
 			"On floor objects":
 			[
+				{
+					"Type": "Window",
+					"Name": "",
+					"Bottom Left Position": [5, 9],
+					"Top Right Position": [3, 0],
+					"Bottom height [m]": 0.75,
+					"Window height [m]": 1.25,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-beige_wall_001",
+					"Frame material": "PolyHaven-plywood",
+					"Glass material": "DummyWindow",
+					"Wall type": "BlockGrid"
+				}
 			]
 		}
 	]
