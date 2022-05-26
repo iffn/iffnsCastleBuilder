@@ -92,7 +92,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             NodeGridPositionModificationNode secondNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
             secondNode.Setup(linkedObject: this, value: EndCoordinateParam, relativeReferenceHolder: null);
-            FirstPositionNode = secondNode;
+            SecondPositionNode = secondNode;
 
             ModificationNodeOrganizer = new NodeGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
             ModificationNodeOrganizer.OrientationType = NodeGridRectangleOrganizer.OrientationTypes.NodeGrid;
