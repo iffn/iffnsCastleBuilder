@@ -342,15 +342,20 @@ public static class MeshGenerator
                 for (int i = 0; i < firstLine.Count - 1; i++)
                 {
                     //returnValue.Add(MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[i], line: new List<Vector3>() {secondLine.Vertices[i + 1], firstLine.Vertices[i + 1], firstLine.Vertices[i] }, isClosed: false));
-                    returnValue.Add(MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[i], line: new List<Vector3>() {secondLine.Vertices[i + 1], firstLine.Vertices[i + 1]}, isClosed: false));
-                    returnValue.Add(MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[i], line: new List<Vector3>() {firstLine.Vertices[i + 1], firstLine.Vertices[i]}, isClosed: false));
+                    TriangleMeshInfo addition = MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[i], line: new List<Vector3>() { secondLine.Vertices[i + 1], firstLine.Vertices[i + 1], firstLine.Vertices[i] }, isClosed: false);
+
+                    addition.GenerateUVMeshBasedOnCardinalDirectionsWithoutReference();
+
+                    returnValue.Add(addition);
                 }
 
                 if (closingType != ShapeClosingType.open)
                 {
-                    //returnValue.Add(MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[secondLine.Count - 1], line: new List<Vector3>() { secondLine.Vertices[0], firstLine.Vertices[0], firstLine.Vertices[firstLine.Count - 1]}, isClosed: false));
-                    returnValue.Add(MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[secondLine.Count - 1], line: new List<Vector3>() { secondLine.Vertices[0], firstLine.Vertices[0]}, isClosed: false));
-                    returnValue.Add(MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[secondLine.Count - 1], line: new List<Vector3>() { firstLine.Vertices[0], firstLine.Vertices[firstLine.Count - 1]}, isClosed: false));
+                    TriangleMeshInfo addition = MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[secondLine.Count - 1], line: new List<Vector3>() { secondLine.Vertices[0], firstLine.Vertices[0], firstLine.Vertices[^1] }, isClosed: false);
+
+                    addition.GenerateUVMeshBasedOnCardinalDirectionsWithoutReference();
+
+                    returnValue.Add(addition);
                 }
             }
 

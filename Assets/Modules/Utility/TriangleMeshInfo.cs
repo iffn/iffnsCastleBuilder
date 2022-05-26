@@ -423,6 +423,73 @@ public class TriangleMeshInfo
         }
     }
 
+    public void GenerateUVMeshBasedOnCardinalDirectionsWithoutReference()
+    {
+        if (AllVerticesDirectly.Count < 3) return;
+
+        UpdateLinkedInfo();
+
+        TriangleHolder currentTriangle = Triangles[0];
+
+        Vector3 normal = currentTriangle.NormalVector;
+
+        Direction direction;
+
+        if (MathHelper.FloatIsZero(normal.y) && MathHelper.FloatIsZero(normal.z))
+        {
+            direction = Direction.yz0;
+        }
+        else if (MathHelper.FloatIsZero(normal.x) && MathHelper.FloatIsZero(normal.z))
+        {
+            direction = Direction.xz0;
+        }
+        else if (MathHelper.FloatIsZero(normal.x) && MathHelper.FloatIsZero(normal.y))
+        {
+            direction = Direction.xy0;
+        }
+        else
+        {
+            direction = Direction.Tilted;
+        }
+
+        switch (direction)
+        {
+            case Direction.yz0:
+                UVs.Clear();
+                //meshObject.transform.name += " x0";
+                foreach (Vector3 baseVector in AllVerticesDirectly)
+                {
+                    //UVs.Add(new Vector2(originVector.z + localOffset.z, originVector.y + localOffset.y));
+                    UVs.Add(new Vector2(baseVector.z, baseVector.y));
+                }
+                break;
+            case Direction.xz0:
+                UVs.Clear();
+                //meshObject.transform.name += " y0";
+                foreach (Vector3 baseVector in AllVerticesDirectly)
+                {
+                    //UVs.Add(new Vector2(originVector.x + localOffset.x, originVector.z + localOffset.z));
+                    UVs.Add(new Vector2(baseVector.x, baseVector.z));
+                }
+                break;
+            case Direction.xy0:
+                UVs.Clear();
+                //meshObject.transform.name += " z0";
+                foreach (Vector3 baseVector in AllVerticesDirectly)
+                {
+                    //UVs.Add(new Vector2(originVector.x + localOffset.x, originVector.y + localOffset.y));
+                    UVs.Add(new Vector2(baseVector.x, baseVector.y));
+                }
+                break;
+            case Direction.Tilted:
+                //ToDo: Not normal, ignore
+                break;
+            default:
+                Debug.LogWarning("Error: UV direction not defined");
+                break;
+        }
+    }
+
     public void GenerateUVMeshBasedOnCardinalDirections(Transform meshObject, Transform originObjectForUV)
     {
         //Vector3 localOffset= originObject.InverseTransformPoint(meshObject.position);
@@ -453,8 +520,6 @@ public class TriangleMeshInfo
         {
             direction = Direction.Tilted;
         }
-
-        List<Vector3> vertices = currentTriangle.Vertices;
 
         switch (direction)
         {
