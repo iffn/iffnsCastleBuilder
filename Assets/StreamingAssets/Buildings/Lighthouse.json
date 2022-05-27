@@ -18160,6 +18160,14 @@
 					"Floor material": "PolyHaven-sandstone_blocks_05",
 					"Block type": "Wall",
 					"Edge type": "Ring"
+				},
+				{
+					"Type": "Counter",
+					"Name": "",
+					"Bottom Left Position": [1, 27],
+					"Top Right Position": [8, -1],
+					"Top material": "PolyHaven-plywood",
+					"Base material": "PolyHaven-beige_wall_001"
 				}
 			]
 		},
@@ -19009,7 +19017,7 @@
 					"Name": "",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Top cap material": "PolyHaven-marble_01"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -19280,7 +19288,7 @@
 					"Name": "",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Top cap material": "PolyHaven-marble_01"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -19551,7 +19559,7 @@
 					"Name": "",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Top cap material": "PolyHaven-marble_01"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -19822,7 +19830,7 @@
 					"Name": "",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Top cap material": "PolyHaven-marble_01"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -20093,7 +20101,7 @@
 					"Name": "",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Top cap material": "PolyHaven-marble_01"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -20364,7 +20372,7 @@
 					"Name": "",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Top cap material": "PolyHaven-marble_01"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -20638,7 +20646,7 @@
 					"Name": "",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Top cap material": "PolyHaven-marble_01"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -24416,22 +24424,6 @@
 					"Raise to floor": true
 				},
 				{
-					"Type": "Counter",
-					"Name": "",
-					"Bottom Left Position": [1, 27],
-					"Top Right Position": [8, -1],
-					"Top material": "PolyHaven-plywood",
-					"Base material": "PolyHaven-beige_wall_001"
-				},
-				{
-					"Type": "Counter",
-					"Name": "",
-					"Bottom Left Position": [1, 22],
-					"Top Right Position": [8, -1],
-					"Top material": "PolyHaven-plywood",
-					"Base material": "PolyHaven-beige_wall_001"
-				},
-				{
 					"Type": "VerticalArc",
 					"Name": "",
 					"Bottom left position": [19, 0],
@@ -24747,6 +24739,22 @@
 					"Top material": "PolyHaven-plywood",
 					"Bottom material": "PolyHaven-plywood",
 					"Post material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "Counter",
+					"Name": "",
+					"Bottom Left Position": [1, 27],
+					"Top Right Position": [8, -1],
+					"Top material": "PolyHaven-beige_wall_001",
+					"Base material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "Counter",
+					"Name": "",
+					"Bottom Left Position": [1, 22],
+					"Top Right Position": [8, -1],
+					"Top material": "PolyHaven-beige_wall_001",
+					"Base material": "PolyHaven-plywood"
 				}
 			]
 		},

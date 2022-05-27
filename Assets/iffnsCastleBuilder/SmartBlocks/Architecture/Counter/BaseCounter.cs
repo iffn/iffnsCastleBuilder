@@ -5,13 +5,8 @@ using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class BaseCounter : MonoBehaviour
+    public class BaseCounter : AssistObjectManager
     {
-        [SerializeField] GameObject Top;
-        [SerializeField] GameObject Base;
-        [SerializeField] UnityMeshManager TopMesh;
-        [SerializeField] UnityMeshManager BaseMesh;
-
         BaseGameObject mainObject;
 
         public float Width = 2f / 3f;
@@ -20,50 +15,47 @@ namespace iffnsStuff.iffnsCastleBuilder
         public float topHeight = 0.1f;
         public float totalHeight = 0.8f;
 
-        public List<UnityMeshManager> UnmanagedStaticMeshes
-        {
-            get
-            {
-                List<UnityMeshManager> returnList = new List<UnityMeshManager>()
-            {
-                TopMesh,
-                BaseMesh
-            };
+        public MailboxLineMaterial baseMaterial;
+        public MailboxLineMaterial topMaterial;
 
-                return returnList;
-            }
-        }
-
-        public void Setup(BaseGameObject mainObject, MailboxLineMaterial baseMaterial, MailboxLineMaterial topMaterial)
+        public void Setup(BaseGameObject mainObject)
         {
             this.mainObject = mainObject;
-            TopMesh.Setup(mainObject: mainObject, currentMaterialReference: topMaterial);
-            BaseMesh.Setup(mainObject: mainObject, currentMaterialReference: baseMaterial);
         }
 
-        public void SetMainParameters(float width, float length)
+        public ValueContainer SetBuildParameters(BaseGameObject mainObject, Transform UVBaseObject, float width, float length)
         {
             Width = width;
             Length = length;
 
-            ApplyBuildParameters();
+            return ApplyBuildParameters(UVBaseObject: UVBaseObject);
         }
 
-        public void ApplyBuildParameters()
+        public override ValueContainer ApplyBuildParameters(Transform UVBaseObject)
         {
-            Base.transform.localPosition = new Vector3(Length / 2, (totalHeight - topHeight) / 2, Width / 2);
-            Base.transform.localScale = new Vector3(Length - Indent * 2, totalHeight - topHeight, Width - Indent * 2);
+            ValueContainer returnValue = new ValueContainer(originTransform: transform, targetTransform: mainObject.transform);
 
-            Top.transform.localPosition = new Vector3(Length / 2, totalHeight - topHeight / 2, Width / 2);
-            Top.transform.localScale = new Vector3(Length, topHeight, Width);
+            TriangleMeshInfo baseMesh;
+            TriangleMeshInfo topMesh;
 
-            TopMesh.UpdateMaterial();
-            BaseMesh.UpdateMaterial();
-        }
+            void FinishMesh()
+            {
+                baseMesh.MaterialReference = baseMaterial;
+                topMesh.MaterialReference = topMaterial;
 
-        private void Update()
-        {
-            ApplyBuildParameters();
+                returnValue.AddStaticMeshAndConvertToTarget(baseMesh);
+                returnValue.AddStaticMeshAndConvertToTarget(topMesh);
+            }
+
+            baseMesh = MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(Length - Indent * 2, totalHeight - topHeight, Width - Indent * 2));
+            baseMesh.Move(offset: new Vector3(Length / 2, (totalHeight - topHeight) / 2, Width / 2));
+
+            topMesh = MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(Length - MathHelper.SmallFloat, topHeight, Width - MathHelper.SmallFloat));
+            topMesh.Move(offset: new Vector3(Length / 2, totalHeight - topHeight / 2, Width / 2));
+
+            FinishMesh();
+
+            return returnValue;
         }
     }
 }

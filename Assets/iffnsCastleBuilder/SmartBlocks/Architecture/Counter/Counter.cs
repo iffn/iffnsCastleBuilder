@@ -59,7 +59,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             BottomLeftPositionParam = new MailboxLineVector2Int(name: "Bottom Left Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             TopRightPositionParam = new MailboxLineVector2Int(name: "Top Right Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
-            TopMaterialParam = new MailboxLineMaterial(name: "Top material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodSolid);
+            TopMaterialParam = new MailboxLineMaterial(name: "Top material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
             BaseMaterialParam = new MailboxLineMaterial(name: "Base material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodSolid);
 
             BlockGridPositionModificationNode firstNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
@@ -74,10 +74,10 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             SetupEditButtons();
 
-            LinkedBaseCounter.Setup(mainObject: this, baseMaterial: BaseMaterialParam, topMaterial: TopMaterialParam);
+            LinkedBaseCounter.Setup(mainObject: this);
 
-            UnmanagedMeshes.Clear();
-            UnmanagedMeshes.AddRange(LinkedBaseCounter.UnmanagedStaticMeshes);
+            LinkedBaseCounter.baseMaterial = BaseMaterialParam;
+            LinkedBaseCounter.topMaterial = TopMaterialParam;
         }
 
         public void CompleteSetupWithBuildParameters(FloorController linkedFloor, Vector2Int bottomLeftPosition, Vector2Int topRightPosition)
@@ -122,9 +122,16 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
-            LinkedBaseCounter.SetMainParameters(width: size.y, length: size.x);
+            AssistObjectManager.ValueContainer baseCounterInfo = LinkedBaseCounter.SetBuildParameters(mainObject: this, UVBaseObject: LinkedFloor.LinkedBuildingController.transform, width: size.y, length: size.x);
 
+            List<TriangleMeshInfo> counterInfo = baseCounterInfo.ConvertedStaticMeshes;
 
+            foreach (TriangleMeshInfo info in counterInfo)
+            {
+                StaticMeshManager.AddTriangleInfo(info);
+            }
+
+            BuildAllMeshes();
         }
 
         void SetupEditButtons()

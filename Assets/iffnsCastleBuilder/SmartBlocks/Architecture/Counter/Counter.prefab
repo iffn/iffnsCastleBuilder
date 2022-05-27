@@ -47,9 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DynamicMeshManagers: []
   UnmanagedMeshes: []
-  UsuallyActiveColliders:
-  - {fileID: 4631494183879245743}
-  - {fileID: 4631494182144113730}
+  UsuallyActiveColliders: []
   failed: 0
   LinkedBaseCounter: {fileID: 4631494182712498516}
 --- !u!1001 &1293174607239419153
@@ -57,6 +55,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4631494183383967154}
     m_Modifications:
     - target: {fileID: 5887357136632171588, guid: bc4c6394a2ff0264f92983c7438f7ab6, type: 3}
@@ -108,12 +107,8 @@ PrefabInstance:
       value: BaseCounter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: bc4c6394a2ff0264f92983c7438f7ab6, type: 3}
---- !u!65 &4631494182144113730 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 5887357137137658195, guid: bc4c6394a2ff0264f92983c7438f7ab6, type: 3}
-  m_PrefabInstance: {fileID: 1293174607239419153}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4631494182144113733 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5887357137137658196, guid: bc4c6394a2ff0264f92983c7438f7ab6, type: 3}
@@ -166,8 +161,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainObject: {fileID: 4631494183383967157}
---- !u!65 &4631494183879245743 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 5887357137531136702, guid: bc4c6394a2ff0264f92983c7438f7ab6, type: 3}
-  m_PrefabInstance: {fileID: 1293174607239419153}
-  m_PrefabAsset: {fileID: 0}
