@@ -163,7 +163,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             linkedObject.transform.localPosition = (linkedObject.LinkedFloor.NodePositionFromBlockIndex(blockIndex: firstNode.AbsoluteCoordinate) + linkedObject.LinkedFloor.NodePositionFromBlockIndex(blockIndex: secondNode.AbsoluteCoordinate)) * 0.5f;
-            if (raiseToFloor) linkedObject.transform.localPosition += Vector3.up * BaseFloorHeightBasedOnFirstNode;
+            if (raiseToFloor) linkedObject.transform.localPosition += Vector3.up * linkedObject.LinkedFloor.BottomFloorHeight;
 
             //Rotation
             float angle = Mathf.Atan2(ParentOrientationSize.x, ParentOrientationSize.y) * Mathf.Rad2Deg + 90;

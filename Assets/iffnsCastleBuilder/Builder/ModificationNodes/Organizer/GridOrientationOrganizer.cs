@@ -21,7 +21,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         public override void SetLinkedObjectPositionAndOrientation(bool raiseToFloor)
         {
             linkedObject.transform.localPosition = linkedObject.LinkedFloor.NodePositionFromBlockIndex(blockIndex: positionNode.AbsoluteCoordinate, orientation: orientationNode.CurrentOrientation);
-            if (raiseToFloor) linkedObject.transform.localPosition += Vector3.up * linkedObject.LinkedFloor.BaseHeightOfBlock(positionNode.AbsoluteCoordinate);
+            if (raiseToFloor) linkedObject.transform.localPosition += Vector3.up * linkedObject.LinkedFloor.BottomFloorHeight;
 
             switch (orientationNode.CurrentOrientation.ForwardOrientation)
             {

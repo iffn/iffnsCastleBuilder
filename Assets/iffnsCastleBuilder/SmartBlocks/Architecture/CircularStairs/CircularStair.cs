@@ -19,7 +19,6 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineMaterial SetpsFrontMaterialParam;
         MailboxLineMaterial SideMaterialParam;
         MailboxLineMaterial BackMaterialParam;
-        MailboxLineBool RaiseToFloorParam;
 
         BlockGridRadiusOrganizer ModificationNodeOrganizer;
 
@@ -130,18 +129,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return LinkedFloor.CompleteFloorHeight;
             }
         }
-        public bool RaiseToFloor
-        {
-            get
-            {
-                return RaiseToFloorParam.Val;
-            }
-            set
-            {
-                RaiseToFloorParam.Val = value;
-                ApplyBuildParameters();
-            }
-        }
 
         void initializeBuildParameterLines()
         {
@@ -158,7 +145,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             SetpsFrontMaterialParam = new MailboxLineMaterial(name: "Steps front material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
             SideMaterialParam = new MailboxLineMaterial(name: "Side material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
             BackMaterialParam = new MailboxLineMaterial(name: "Back material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
-            RaiseToFloorParam = new MailboxLineBool(name: "Raise to floor", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: true);
         }
 
         public override void Setup(IBaseObject linkedFloor)
@@ -205,7 +191,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             failed = false;
 
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: RaiseToFloor);
+            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
 
             TriangleMeshInfo TopStepTop = new TriangleMeshInfo();
             TriangleMeshInfo StepTop = new TriangleMeshInfo();
@@ -213,7 +199,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             TriangleMeshInfo OuterRadiiSide = new TriangleMeshInfo();
             TriangleMeshInfo InnerRadiiSide = new TriangleMeshInfo();
             TriangleMeshInfo BackFace = new TriangleMeshInfo();
-            TriangleMeshInfo ColliderMesh = new TriangleMeshInfo();
+            TriangleMeshInfo ColliderMesh;
 
             void FinishMeshes()
             {

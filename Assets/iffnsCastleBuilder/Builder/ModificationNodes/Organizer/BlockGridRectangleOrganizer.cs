@@ -157,7 +157,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             linkedObject.transform.localPosition = linkedObject.LinkedFloor.NodePositionFromBlockIndex(blockIndex: firstNode.AbsoluteCoordinate, orientation: orientation);
-            if (raiseToFloor) linkedObject.transform.localPosition += Vector3.up * linkedObject.LinkedFloor.BaseHeightOfBlock(firstNode.AbsoluteCoordinate);
+            if (raiseToFloor) linkedObject.transform.localPosition += Vector3.up * linkedObject.LinkedFloor.BottomFloorHeight;
 
             //Rotation
             switch (orientation.ForwardOrientation)

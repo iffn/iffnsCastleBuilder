@@ -165,7 +165,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             CurrentRectangularBaseDoor.LinkedDoorController = this;
 
             ModificationNodeOrganizer.OrientationType = WallType;
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
+            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
 
             Vector2Int gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
 
@@ -198,7 +198,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             //Height
-            float currentHeight = LinkedFloor.CompleteFloorHeight;
+            float currentHeight = LinkedFloor.WallBetweenHeight;
 
             int currentFloorNumber = LinkedFloor.FloorNumber;
 
@@ -209,10 +209,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             float doorHeightWithFloor = DoorHeight;
-            if (ModificationNodeOrganizer.RaiseDueToFloor)
-            {
-                doorHeightWithFloor += LinkedFloor.BottomFloorHeight;
-            }
 
             CurrentRectangularBaseDoor.completeWidth = width;
             CurrentRectangularBaseDoor.betweenDepth = depth;
