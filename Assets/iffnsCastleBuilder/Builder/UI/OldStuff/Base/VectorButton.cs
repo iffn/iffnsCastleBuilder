@@ -11,12 +11,11 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] GameObject DarkBackgroundObject;
         [SerializeField] GameObject LightBackgroundObject;
         [SerializeField] GameObject DarkHighlightObject;
-        [SerializeField] GameObject DarkHoverOverHighlightObject;
         [SerializeField] GameObject LightHighlightObject;
         [SerializeField] GameObject DarkIconObject;
         [SerializeField] GameObject LightIconObject;
-        [SerializeField] UnityEvent ActivationEvent;
-        [SerializeField] UnityEvent DeactivationEvent;
+        [SerializeField] Button LinkedButton;
+        [SerializeField] UnityEvent ClickEvent;
 
         UIBrightnessTypes uiBrightnessType = UIBrightnessTypes.Dark;
         public UIBrightnessTypes UiBrightnessType
@@ -87,33 +86,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        private void Start()
+        {
+            LinkedButton.onClick.AddListener(new UnityAction(delegate { ClickEvent.Invoke(); }));
+        }
+
         public void AddDeletate(UnityAction newCall)
         {
-            transform.GetComponent<Button>().onClick.AddListener(newCall);
-        }
-
-        public void ToggleHighLight()
-        {
-            Highlight = !highlight;
-
-            if (Highlight)
-            {
-                if(ActivationEvent != null) ActivationEvent.Invoke();
-            }
-            else
-            {
-                if (DeactivationEvent != null) DeactivationEvent.Invoke();
-            }
-        }
-
-        public void EnterHoverOver()
-        {
-            DarkHoverOverHighlightObject.SetActive(true);
-        }
-
-        public void ExitHoverOver()
-        {
-            DarkHoverOverHighlightObject.SetActive(false);
+            LinkedButton.onClick.AddListener(newCall);
         }
     }
 }
