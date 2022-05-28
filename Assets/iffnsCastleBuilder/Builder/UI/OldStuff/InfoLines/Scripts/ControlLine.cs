@@ -23,6 +23,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public float Height
+        {
+            get
+            {
+                return transform.GetComponent<RectTransform>().sizeDelta.y;
+            }
+        }
+
         // Use this for initialization
         virtual protected void Start()
         {

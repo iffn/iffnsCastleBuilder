@@ -10,6 +10,28 @@ namespace iffnsStuff.iffnsCastleBuilder
     {
         public UIResources uiResources;
 
+        List<ControlLine> lines = new List<ControlLine>();
+
+        float currentHeight = 0;
+        void AddNewHeight(float heightAddition)
+        {
+            currentHeight += heightAddition;
+            SetHeight();
+        }
+
+        void ClearHeight()
+        {
+            currentHeight = 0;
+            SetHeight();
+        }
+
+        void SetHeight()
+        {
+
+            RectTransform rect = transform.GetComponent<RectTransform>();
+            rect.sizeDelta = new Vector2(rect.sizeDelta.x, currentHeight);
+        }
+
         Transform SpawnLine(GameObject template)
         {
             Transform newObject = Instantiate(template).transform;
@@ -20,14 +42,19 @@ namespace iffnsStuff.iffnsCastleBuilder
             rectTransform.localPosition = Vector3.zero;
             rectTransform.localScale = Vector3.one;
 
+            AddNewHeight(rectTransform.sizeDelta.y);
+
             return newObject;
+            //return newObject.transform.GetComponent<ControlLine>();
         }
 
         public void AddTextLine(string text, bool bold)
         {
             Transform newObject = SpawnLine(uiResources.TextLineTemplate.gameObject);
 
-            newObject.GetComponent<TextLine>().SetUp(text, bold);
+            TextLine line = newObject.GetComponent<TextLine>();
+
+            line.SetUp(text, bold);
         }
 
         public void AddButtonLine(string text, UnityEngine.Events.UnityAction call)
@@ -171,6 +198,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void Clear()
         {
+            ClearHeight();
+
             foreach (Transform child in transform)
             {
                 Destroy(child.gameObject);
