@@ -88,7 +88,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         private void Start()
         {
-            LinkedButton.onClick.AddListener(new UnityAction(delegate { ClickEvent.Invoke(); }));
+            if(LinkedButton != null) LinkedButton.onClick.AddListener(new UnityAction(delegate { ClickEvent.Invoke(); }));
         }
 
         public void AddDeletate(UnityAction newCall)
