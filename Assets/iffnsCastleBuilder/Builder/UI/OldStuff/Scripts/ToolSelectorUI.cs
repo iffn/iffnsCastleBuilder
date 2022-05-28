@@ -78,7 +78,10 @@ namespace iffnsStuff.iffnsCastleBuilder
                 SetMenuType(Buttons[0]);
             }
 
-
+            foreach(VectorButton button in Buttons)
+            {
+                button.AddDeletate(new UnityEngine.Events.UnityAction(delegate { SetMenuType(ClickedButton: button); }));
+            }
         }
 
         public void Setup()

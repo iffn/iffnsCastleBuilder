@@ -87,6 +87,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public void AddDeletate(UnityAction newCall)
+        {
+            transform.GetComponent<Button>().onClick.AddListener(newCall);
+        }
+
         public void ToggleHighLight()
         {
             Highlight = !highlight;
