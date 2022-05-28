@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2211170465556054702}
   - component: {fileID: 9197313410951042789}
-  - component: {fileID: 8704249575473706671}
+  - component: {fileID: 8499023967751183869}
   m_Layer: 5
   m_Name: GridLayoutOrganizer
   m_TagString: Untagged
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 3
---- !u!114 &8704249575473706671
+--- !u!114 &8499023967751183869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,7 +71,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1051562255796865182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 632dbf4acd1a64e4f84967f3f9e884c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 18f36430871b7fe48bc2c4b2af39b986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChildLayoutOrganizers: []
