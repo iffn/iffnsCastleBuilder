@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class LayoutOrganizer : MonoBehaviour
 {
-    [SerializeField] Transform Title; //Can be null
     [SerializeField] List<LayoutOrganizer> ChildLayoutOrganizers;
 
     RectTransform rectTransform;
