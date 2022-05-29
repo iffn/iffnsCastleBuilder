@@ -95,7 +95,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 newButton.SetMaterialReference(previewMaterial: uiMaterial, materialReference: manager);
 
-                newButton.transform.GetComponent<Button>().onClick.AddListener(delegate { SetMaterial(newButton); });
+                newButton.AddButtonFunction(delegate { SetMaterial(newButton); });
             }
 
             Expand = false;
