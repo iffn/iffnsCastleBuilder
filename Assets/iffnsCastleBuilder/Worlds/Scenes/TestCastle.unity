@@ -11404,6 +11404,7 @@ MonoBehaviour:
   PreivewImage: {fileID: 1665721271}
   MainHighlightObject: {fileID: 902654018}
   DarkHoverOverHighlightObject: {fileID: 0}
+  LinkedButton: {fileID: 0}
 --- !u!1 &350499974
 GameObject:
   m_ObjectHideFlags: 0
@@ -12705,6 +12706,7 @@ MonoBehaviour:
   PreivewImage: {fileID: 1191429379}
   MainHighlightObject: {fileID: 1858091791}
   DarkHoverOverHighlightObject: {fileID: 0}
+  LinkedButton: {fileID: 0}
 --- !u!1 &374463567
 GameObject:
   m_ObjectHideFlags: 0
@@ -13861,6 +13863,7 @@ MonoBehaviour:
   PreivewImage: {fileID: 972253834}
   MainHighlightObject: {fileID: 584178556}
   DarkHoverOverHighlightObject: {fileID: 0}
+  LinkedButton: {fileID: 0}
 --- !u!1 &418543960
 GameObject:
   m_ObjectHideFlags: 0
@@ -16702,6 +16705,7 @@ MonoBehaviour:
   PreivewImage: {fileID: 1252657130}
   MainHighlightObject: {fileID: 1143925926}
   DarkHoverOverHighlightObject: {fileID: 0}
+  LinkedButton: {fileID: 0}
 --- !u!1 &490446439
 GameObject:
   m_ObjectHideFlags: 0
@@ -22066,6 +22070,7 @@ MonoBehaviour:
   PreivewImage: {fileID: 1361178990}
   MainHighlightObject: {fileID: 158505513}
   DarkHoverOverHighlightObject: {fileID: 0}
+  LinkedButton: {fileID: 0}
 --- !u!1 &652310750
 GameObject:
   m_ObjectHideFlags: 0
@@ -32787,6 +32792,7 @@ MonoBehaviour:
   PreivewImage: {fileID: 432174964}
   MainHighlightObject: {fileID: 125744863}
   DarkHoverOverHighlightObject: {fileID: 0}
+  LinkedButton: {fileID: 0}
 --- !u!1 &987548697
 GameObject:
   m_ObjectHideFlags: 0
@@ -40460,6 +40466,7 @@ MonoBehaviour:
   PreivewImage: {fileID: 1642602005}
   MainHighlightObject: {fileID: 1116960074}
   DarkHoverOverHighlightObject: {fileID: 0}
+  LinkedButton: {fileID: 0}
 --- !u!1 &1210428334
 GameObject:
   m_ObjectHideFlags: 0
@@ -58339,6 +58346,7 @@ MonoBehaviour:
   PreivewImage: {fileID: 112910776}
   MainHighlightObject: {fileID: 1415320388}
   DarkHoverOverHighlightObject: {fileID: 0}
+  LinkedButton: {fileID: 0}
 --- !u!1 &1660750594
 GameObject:
   m_ObjectHideFlags: 0
@@ -64112,6 +64120,7 @@ MonoBehaviour:
   PreivewImage: {fileID: 951020117}
   MainHighlightObject: {fileID: 548097611}
   DarkHoverOverHighlightObject: {fileID: 0}
+  LinkedButton: {fileID: 0}
 --- !u!1 &1844580679
 GameObject:
   m_ObjectHideFlags: 0
@@ -66482,6 +66491,7 @@ MonoBehaviour:
   PreivewImage: {fileID: 673971210}
   MainHighlightObject: {fileID: 1059290987}
   DarkHoverOverHighlightObject: {fileID: 0}
+  LinkedButton: {fileID: 0}
 --- !u!1 &1900099299
 GameObject:
   m_ObjectHideFlags: 0
@@ -67682,6 +67692,7 @@ MonoBehaviour:
   PreivewImage: {fileID: 1854999071}
   MainHighlightObject: {fileID: 381769227}
   DarkHoverOverHighlightObject: {fileID: 0}
+  LinkedButton: {fileID: 0}
 --- !u!1 &1940102418
 GameObject:
   m_ObjectHideFlags: 0
@@ -73011,6 +73022,7 @@ MonoBehaviour:
   PreivewImage: {fileID: 1063144394}
   MainHighlightObject: {fileID: 586560096}
   DarkHoverOverHighlightObject: {fileID: 0}
+  LinkedButton: {fileID: 0}
 --- !u!1 &2097020353
 GameObject:
   m_ObjectHideFlags: 0
