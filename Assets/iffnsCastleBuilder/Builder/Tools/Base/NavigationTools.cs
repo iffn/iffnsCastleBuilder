@@ -19,9 +19,9 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] LineRenderer BlockLineTemplate;
         [SerializeField] GameObject FloorNumberTemplate;
         [SerializeField] Slider WallHeightScaler;
-        [SerializeField] GameObject CameraWalkingIcon;
-        [SerializeField] GameObject CameraIsometricIcon;
-        [SerializeField] GameObject CameraFlyingIcon;
+        [SerializeField] VectorButton CameraWalkingIcon;
+        [SerializeField] VectorButton CameraIsometricIcon;
+        [SerializeField] VectorButton CameraFlyingIcon;
         [SerializeField] BlockLineType currentBlockLineType = BlockLineType.Complete;
         [SerializeField] DummyHumanPlayerController HumanPlayerController;
         [SerializeField] BuildingToolController LinkedBuildingToolController;
@@ -399,23 +399,23 @@ namespace iffnsStuff.iffnsCastleBuilder
         }
 
 
-        public void SwitchCameraType(GameObject clickedCameraIcon)
+        public void SwitchCameraType(VectorButton clickedCameraIcon)
         {
-            clickedCameraIcon.SetActive(false);
+            clickedCameraIcon.gameObject.SetActive(false);
 
             if (clickedCameraIcon == CameraWalkingIcon)
             {
-                CameraIsometricIcon.SetActive(true);
+                CameraIsometricIcon.gameObject.SetActive(true);
                 CurrentRTSCamera.CameraPerspective = RTSController.CameraPerspectiveType.isometric;
             }
             else if (clickedCameraIcon == CameraIsometricIcon)
             {
-                CameraFlyingIcon.SetActive(true);
+                CameraFlyingIcon.gameObject.SetActive(true);
                 CurrentRTSCamera.CameraPerspective = RTSController.CameraPerspectiveType.flying;
             }
             else if (clickedCameraIcon == CameraFlyingIcon)
             {
-                CameraWalkingIcon.SetActive(true);
+                CameraWalkingIcon.gameObject.SetActive(true);
                 CurrentRTSCamera.CameraPerspective = RTSController.CameraPerspectiveType.perpesctive;
             }
         }
