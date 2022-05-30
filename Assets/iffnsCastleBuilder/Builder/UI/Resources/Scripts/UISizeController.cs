@@ -11,6 +11,9 @@ public class UISizeController : MonoBehaviour
     [SerializeField] RectTransform MenuLeft;
     [SerializeField] RectTransform BackgroundLeft;
     [SerializeField] RectTransform LeftEdgeButtons;
+    [SerializeField] RectTransform MenuRightTop;
+    [SerializeField] RectTransform MenuRightBottom;
+    [SerializeField] RectTransform FileSelector;
 
     //Runtime parameters
     float buttonSize = 100;
@@ -44,6 +47,7 @@ public class UISizeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Calculate size
         buttonSize = defaultButtonSize * testSlider.value;
 
         buttonSize = Mathf.Clamp(value: buttonSize, min: 1, max: MinButtonSize);
@@ -53,6 +57,7 @@ public class UISizeController : MonoBehaviour
 
         Vector3 scaleVector = scaleFactor * Vector3.one;
 
+        //Left menu
         MenuLeft.localScale = scaleVector;
         BackgroundLeft.localScale = scaleVector;
         BackgroundLeft.sizeDelta = new Vector2(BackgroundLeft.sizeDelta.x, Screen.height * invertedScaleFactor);
@@ -60,5 +65,11 @@ public class UISizeController : MonoBehaviour
         LeftEdgeButtons.anchoredPosition = 3 * defaultButtonSize * scaleFactor * Vector3.right;
         LeftEdgeButtons.localScale = scaleVector;
 
+        //Right menu
+        MenuRightTop.localScale = scaleVector;
+        MenuRightBottom.localScale = scaleVector;
+
+        float fileNameWidth = Screen.width - (buttonCount.x + 0.78f) * buttonSize;
+        FileSelector.sizeDelta = new Vector2(fileNameWidth * invertedScaleFactor, FileSelector.sizeDelta.y);
     }
 }
