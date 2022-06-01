@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
@@ -9,7 +10,7 @@ namespace iffnsStuff.iffnsCastleBuilder
     {
         public Button selectButton;
 
-        public Text titleText;
+        public TMP_Text titleText;
 
         string fileName;
         public string FileName
@@ -42,6 +43,12 @@ namespace iffnsStuff.iffnsCastleBuilder
             selectButton.onClick.AddListener(delegate { buttonFunction(fileName); });
         }
 
-
+        public float Height
+        {
+            get
+            {
+                return transform.GetComponent<RectTransform>().sizeDelta.y;
+            }
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] VectorButton NewButton = null;
         [SerializeField] InputField CastleTitle = null;
 
-        [SerializeField] GameObject ExpandArea = null;
+        [SerializeField] RectTransform ExpandArea = null;
         VectorButton activeSaveButton;
 
         public enum SaveButtonStates
@@ -164,6 +164,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 AddFileLine(fileName: fileName, title: fileName);
             }
+
+            ExpandArea.sizeDelta = new Vector2(ExpandArea.sizeDelta.x, fileList.Count * FileSelectionLineTemplate.Height);
         }
 
         public void HideFileList()
