@@ -10449,7 +10449,7 @@ MonoBehaviour:
   HumanPlayerController: {fileID: 215287214859323679}
   LinkedBuildingToolController: {fileID: 9043763560314339866}
   PlayerButton: {fileID: 4529008014669290174}
-  playerPositioningActive: 0
+  BlockLineButton: {fileID: 5444430847136251546}
 --- !u!1 &9043763560457108699
 GameObject:
   m_ObjectHideFlags: 0
@@ -12356,7 +12356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4853653076402590121, guid: 68ef79fa4055ba0488d0e0a38530daff, type: 3}
       propertyPath: ClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToogleBlockLines
+      value: ToggleBlockLines
       objectReference: {fileID: 0}
     - target: {fileID: 4853653076402590121, guid: 68ef79fa4055ba0488d0e0a38530daff, type: 3}
       propertyPath: ActivationEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -12421,6 +12421,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 68ef79fa4055ba0488d0e0a38530daff, type: 3}
+--- !u!114 &5444430847136251546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4853653076402590121, guid: 68ef79fa4055ba0488d0e0a38530daff, type: 3}
+  m_PrefabInstance: {fileID: 636453146180808499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f40e6c90695744bafccba4a5289b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5444430847136251547 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4853653076402590120, guid: 68ef79fa4055ba0488d0e0a38530daff, type: 3}

@@ -26,6 +26,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] DummyHumanPlayerController HumanPlayerController;
         [SerializeField] BuildingToolController LinkedBuildingToolController;
         [SerializeField] VectorButton PlayerButton;
+        [SerializeField] VectorButton BlockLineButton;
 
         //Variables
         List<GameObject> blockLines = new List<GameObject>();
@@ -34,7 +35,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         bool showBlockLinesOnCurrentFloor = false;
         VirtualBlock previousBlockLineFocus;
         Vector3 previousCursorPosition = Vector3.zero;
-        public bool playerPositioningActive = false;
+        bool playerPositioningActive = false;
         int currentFloorNumber;
 
         public enum BlockLineType
@@ -172,21 +173,25 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        public void SetBlockLineVisibility(bool newState)
+        //Block lines
+        public bool ShowBlockLinesOnCurrentFloor
         {
-            showBlockLinesOnCurrentFloor = newState;
-
-            BlockLineHolder.SetActive(showBlockLinesOnCurrentFloor);
-
-            UpdateBlockLines();
-            //CurrentBuilding.EveryBlockLineVisibility = showBlockLinesOnCurrentFloor;
+            get
+            {
+                return showBlockLinesOnCurrentFloor;
+            }
+            set 
+            {
+                showBlockLinesOnCurrentFloor = value;
+                BlockLineHolder.SetActive(value);
+                BlockLineButton.Highlight = value;
+                UpdateBlockLines();
+            }
         }
 
-        public void ToogleBlockLines()
+        public void ToggleBlockLines()
         {
-            showBlockLinesOnCurrentFloor = !showBlockLinesOnCurrentFloor;
-
-            //CurrentBuilding.EveryBlockLineVisibility = showBlockLinesOnCurrentFloor;
+            ShowBlockLinesOnCurrentFloor = !ShowBlockLinesOnCurrentFloor;
         }
 
         public void UpdateBlockLines()
@@ -427,7 +432,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Run twice for setting booleand to default setting
             if (createWallLines) CreateBaseGridForEachFloor();
 
-            SetBlockLineVisibility(false);
+            ShowBlockLinesOnCurrentFloor = true;
 
             /*
             ToogleBlockLines();
@@ -451,12 +456,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             set
             {
                 playerPositioningActive = value;
+                PlayerButton.Highlight = value;
             }
         }
 
         public void TogglePlayerPositioning()
         {
-            playerPositioningActive = !playerPositioningActive;
+            PlayerPositioningActive = !PlayerPositioningActive;
 
             EditTool.DeactivateEditOnMain();
         }
