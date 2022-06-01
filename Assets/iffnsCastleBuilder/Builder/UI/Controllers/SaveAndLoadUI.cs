@@ -22,6 +22,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] InputField CastleTitle = null;
 
         [SerializeField] RectTransform ExpandArea = null;
+        [SerializeField] RectTransform ExpandIcon;
         VectorButton activeSaveButton;
 
         public enum SaveButtonStates
@@ -166,6 +167,10 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             ExpandArea.sizeDelta = new Vector2(ExpandArea.sizeDelta.x, fileList.Count * FileSelectionLineTemplate.Height);
+
+            ExpandIcon.localRotation = Quaternion.Euler(180 * Vector3.forward);
+
+
         }
 
         public void HideFileList()
@@ -173,6 +178,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             FileListShown = false;
 
             ClearFileList();
+
+            ExpandIcon.localRotation = Quaternion.identity;
         }
 
         //File selection stuff
