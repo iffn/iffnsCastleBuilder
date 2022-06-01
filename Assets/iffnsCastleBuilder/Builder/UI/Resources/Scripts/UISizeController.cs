@@ -80,6 +80,6 @@ public class UISizeController : MonoBehaviour
 
         BackgroundRight.localScale = new Vector3(scaleFactor, BackgroundRight.localScale.y, BackgroundRight.localScale.z);
 
-        FileListArea.sizeDelta = new Vector2(fileNameWidth + buttonSize * 0.5f, (Screen.height - buttonSize * 0.5f) * invertedScaleFactor);
+        FileListArea.sizeDelta = new Vector2((fileNameWidth + buttonSize * 0.5f) * invertedScaleFactor, (Screen.height - buttonSize * 0.5f) * invertedScaleFactor);
     }
 }
