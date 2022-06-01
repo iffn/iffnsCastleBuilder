@@ -17,6 +17,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] HumanBuilderController CurrentBuilderController;
         [SerializeField] SaveAndLoadUI CurrentSaveAndLoadUI;
         [SerializeField] BuildingToolController ToolController;
+        [SerializeField] RectTransform ExpandIcon;
 
         TextAsset DefaultBuildingFile;
 
@@ -173,6 +174,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 //Hide file list
                 CurrentSaveAndLoadUI.HideFileList();
+                ExpandIcon.localRotation = Quaternion.identity;
             }
             else
             {
@@ -180,6 +182,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 UpdateFileList();
 
                 CurrentSaveAndLoadUI.ShowFileList(currentFileListWithoutEnding);
+                ExpandIcon.localRotation = Quaternion.Euler(180 * Vector3.forward);
             }
         }
 
