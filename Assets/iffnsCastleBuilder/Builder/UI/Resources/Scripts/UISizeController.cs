@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UISizeController : MonoBehaviour
 {
     //Unity assignments
-    [SerializeField] Slider testSlider;
+    [SerializeField] Slider UIScaler;
 
     [SerializeField] RectTransform MenuLeft;
     [SerializeField] RectTransform BackgroundLeft;
@@ -21,6 +21,7 @@ public class UISizeController : MonoBehaviour
     float buttonSize = 100;
 
     //Fixed parameters
+    float minButtonSize = 20;
     float defaultButtonSize = 100;
     Vector2Int buttonCount = new Vector2Int(12, 6);
     Vector2Int minAddition = new Vector2Int(4, 4);
@@ -50,9 +51,11 @@ public class UISizeController : MonoBehaviour
     void Update()
     {
         //Calculate size
-        buttonSize = defaultButtonSize * testSlider.value;
+        buttonSize = defaultButtonSize * UIScaler.value;
 
-        buttonSize = Mathf.Clamp(value: buttonSize, min: 1, max: MinButtonSize);
+        buttonSize = Mathf.Clamp(value: buttonSize, min: minButtonSize, max: MinButtonSize);
+
+        UIScaler.value = buttonSize / defaultButtonSize;
 
         float scaleFactor = buttonSize / defaultButtonSize;
         float invertedScaleFactor = 1 / scaleFactor;
@@ -71,7 +74,7 @@ public class UISizeController : MonoBehaviour
         MenuRightTop.localScale = scaleVector;
         MenuRightBottom.localScale = scaleVector;
 
-        float fileNameWidth = Screen.width - (buttonCount.x + 0.78f) * buttonSize;
+        float fileNameWidth = Screen.width - (buttonCount.x + 0.5f) * buttonSize;
         FileSelector.sizeDelta = new Vector2(fileNameWidth * invertedScaleFactor, FileSelector.sizeDelta.y);
 
         BackgroundRight.localScale = new Vector3(scaleFactor, BackgroundRight.localScale.y, BackgroundRight.localScale.z);

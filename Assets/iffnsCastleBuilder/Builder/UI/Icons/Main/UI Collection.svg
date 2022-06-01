@@ -18,6 +18,14 @@
   <defs
      id="defs2">
     <linearGradient
+       id="linearGradient2607"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop2605" />
+    </linearGradient>
+    <linearGradient
        inkscape:collect="always"
        id="linearGradient9986">
       <stop
@@ -1218,6 +1226,16 @@
        x2="-64.953941"
        y2="-203.96571"
        gradientTransform="translate(32.784361,15.143666)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3996"
+       id="linearGradient2609"
+       x1="833.1106"
+       y1="311.90723"
+       x2="869.9046"
+       y2="311.90723"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.6118264,0,0,2.5465026,-1400.0607,-496.18534)" />
   </defs>
   <sodipodi:namedview
      inkscape:window-maximized="1"
@@ -1231,9 +1249,9 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="1167.9687"
-     inkscape:cx="2239.8437"
-     inkscape:zoom="0.64"
+     inkscape:cy="1540.167"
+     inkscape:cx="2680.3766"
+     inkscape:zoom="0.22627417"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -8578,7 +8596,7 @@
        height="93.600304"
        width="93.486885"
        id="rect27-7-7-3-4-4-9-5"
-       style="display:inline;mix-blend-mode:normal;fill:url(#linearGradient2283);fill-opacity:1;fill-rule:nonzero;stroke:#000500;stroke-width:6.20815;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       style="display:inline;mix-blend-mode:normal;fill:url(#linearGradient2283);fill-opacity:1;fill-rule:nonzero;stroke:#000500;stroke-width:6.208;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
        transform="scale(1,-1)" />
     <g
        style="display:inline;fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:0.368494;stroke-opacity:1"
@@ -8717,6 +8735,38 @@
          height="4.4135766"
          x="200.19427"
          y="-76.241478" />
+    </g>
+    <g
+       id="g3598"
+       transform="translate(-22.437869,-8.650371)">
+      <path
+         id="path2393"
+         style="fill:url(#linearGradient2609);fill-opacity:1;stroke:#000500;stroke-width:6;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         d="m 777.18554,251.2695 v 93.60031 a 96.098545,93.695046 0 0 0 93.48688,-93.60031 z" />
+      <rect
+         style="fill:#000000;stroke:#000500;stroke-width:6.00001;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         id="rect2845"
+         width="40.927731"
+         height="1.2402343"
+         x="354.59039"
+         y="798.8916"
+         transform="rotate(-45)" />
+      <rect
+         style="display:inline;fill:#000000;stroke:#000500;stroke-width:6.00001;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         id="rect2845-8"
+         width="40.927731"
+         height="1.2402343"
+         x="352.90952"
+         y="781.71741"
+         transform="rotate(-45)" />
+      <rect
+         style="display:inline;fill:#000000;stroke:#000500;stroke-width:6.00001;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         id="rect2845-0"
+         width="40.927731"
+         height="1.2402343"
+         x="351.22864"
+         y="764.54327"
+         transform="rotate(-45)" />
     </g>
   </g>
   <script
