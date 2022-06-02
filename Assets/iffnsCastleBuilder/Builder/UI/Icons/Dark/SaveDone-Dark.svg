@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    inkscape:export-ydpi="96"
    inkscape:export-xdpi="96"
-   inkscape:export-filename="C:\Users\iffn1\Documents\UnityProjects\CastleBuilder2\Assets\iffns RPG\Elements\Buildings\HumanBuildings\UI\Icons\Dark\SaveDone-Dark.png"
+   inkscape:export-filename="C:\Users\iffn1\Documents\UnityProjects\iffnsCastleBuilder\Assets\iffnsCastleBuilder\Builder\UI\Icons\Dark\SaveDone-Dark.png"
    sodipodi:docname="SaveDone-Dark.svg"
-   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
    id="svg1397"
    version="1.1"
    viewBox="0 0 100 100"
    height="100mm"
-   width="100mm">
+   width="100mm"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs1391">
     <marker
@@ -36,7 +35,7 @@
     </marker>
     <linearGradient
        id="linearGradient3996"
-       osb:paint="solid">
+       inkscape:swatch="solid">
       <stop
          style="stop-color:#333333;stop-opacity:1;"
          offset="0"
@@ -53,15 +52,16 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="243.79576"
-     inkscape:cx="184.8112"
+     inkscape:cy="168.21429"
+     inkscape:cx="141.07143"
      inkscape:zoom="1.4"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
      bordercolor="#666666"
      pagecolor="#ffffff"
-     id="base" />
+     id="base"
+     inkscape:pagecheckerboard="0" />
   <metadata
      id="metadata1394">
     <rdf:RDF>
@@ -80,7 +80,7 @@
      inkscape:label="Layer 1">
     <g
        id="g1723"
-       transform="matrix(0.57763267,0,0,0.575911,-84.490012,-582.13356)"
+       transform="matrix(0.57763267,0,0,0.575911,-43.668584,-531.48475)"
        style="stroke-width:1.73378">
       <path
          id="rect1405"
@@ -128,16 +128,9 @@
        style="display:inline;fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:1.99999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        d="m 52.736386,18.150227 v 9.164299 c 7.152837,0 12.963088,5.759053 13.005053,12.890443 h -5.555977 l 9.885721,11.944452 9.885721,-11.944452 H 74.933441 C 74.891331,28.012185 64.965719,18.15017 52.736386,18.150227 Z"
        sodipodi:nodetypes="cccccccc" />
-    <rect
-       style="fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:1.99999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       id="rect1643"
-       width="39.299644"
-       height="3.938983"
-       x="50.190742"
-       y="83.942169" />
     <g
        id="g871"
-       transform="translate(-434.67625,-951.37129)"
+       transform="translate(-468.82022,-942.78922)"
        style="display:inline">
       <rect
          style="display:inline;fill:#00ad00;fill-opacity:1;stroke:none;stroke-width:1.119;stroke-miterlimit:4;stroke-dasharray:3.357, 3.357;stroke-dashoffset:0;paint-order:fill markers stroke"
@@ -156,5 +149,17 @@
          y="371.71826"
          transform="rotate(45)" />
     </g>
+    <path
+       id="rect1643-5"
+       style="display:inline;fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       d="m 17.879141,22.985694 11.70696,-10.6763 11.70695,10.6763 v 14.27627 h -23.41391 z"
+       sodipodi:nodetypes="cccccc" />
+    <rect
+       style="fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:1.99999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       id="rect1643"
+       width="39.299644"
+       height="3.938983"
+       x="9.9362783"
+       y="37.262108" />
   </g>
 </svg>
