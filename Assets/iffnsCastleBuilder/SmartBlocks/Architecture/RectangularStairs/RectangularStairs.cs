@@ -20,7 +20,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineMaterial SideMaterialParam;
         MailboxLineMaterial BackMaterialParam;
 
-        BlockGridRectangleOrganizer ModificationNodeOrganizer;
+        NodeGridRectangleOrganizer ModificationNodeOrganizer;
 
         public override ModificationOrganizer Organizer
         {
@@ -173,15 +173,15 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             InitializeBuildParameterLines();
 
-            BlockGridPositionModificationNode firstNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
+            NodeGridPositionModificationNode firstNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
             firstNode.Setup(linkedObject: this, value: BottomLeftPositionParam);
             FirstPositionNode = firstNode;
 
-            BlockGridPositionModificationNode secondNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
+            NodeGridPositionModificationNode secondNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
             secondNode.Setup(linkedObject: this, value: TopRightPositionParam);
             SecondPositionNode = secondNode;
 
-            ModificationNodeOrganizer = new BlockGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
+            ModificationNodeOrganizer = new NodeGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
 
             SetupEditButtons();
         }
@@ -246,6 +246,12 @@ namespace iffnsStuff.iffnsCastleBuilder
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
             if (failed) return;
 
+            if(ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
+            {
+                failed = true;
+                return;
+            }
+
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
             //Setup containers
@@ -253,7 +259,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Calculate basic parameters
             float stairHeight = LinkedFloor.WallBetweenHeight;
 
-            float topFloorHeight = 0;
+            float topFloorHeight;
 
             if (LinkedFloor.FloorsAbove <= 0) topFloorHeight = LinkedFloor.BottomFloorHeight;
             else

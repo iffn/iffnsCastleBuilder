@@ -17805,7 +17805,7 @@
 					"Type": "RectangularStairs",
 					"Name": "",
 					"Bottom left position": [16, 13],
-					"Top right position": [19, 20],
+					"Top right position": [20, 21],
 					"Step height [m]": 0.25,
 					"Back thickness [m]": 0.25,
 					"Number of floors": 1,

@@ -20161,7 +20161,7 @@
 					"Type": "RectangularStairs",
 					"Name": "",
 					"Bottom left position": [72, 22],
-					"Top right position": [77, 20],
+					"Top right position": [77, 19],
 					"Step height [m]": 0.25,
 					"Back thickness [m]": 0.25,
 					"Number of floors": 1,
@@ -20186,8 +20186,7 @@
 					"Other steps top material": "PolyHaven-plywood",
 					"Steps front material": "PolyHaven-beige_wall_001",
 					"Side material": "PolyHaven-beige_wall_001",
-					"Back material": "PolyHaven-beige_wall_001",
-					"Raise to floor": true
+					"Back material": "PolyHaven-beige_wall_001"
 				},
 				{
 					"Type": "Ladder",
