@@ -17,6 +17,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         MaterialLibraryExtenderTemplate MaterialLibrary;
         TexturingUI LinkedTexturingUI = null;
         List<MaterialButton> MaterialButtons = new List<MaterialButton>();
+        MaterialButton previousButton = null;
 
         public void ToggleExpand()
         {
@@ -47,17 +48,24 @@ namespace iffnsStuff.iffnsCastleBuilder
         public void ExpandAndActivateFirstMaterial()
         {
             Expand = true;
+            previousButton = MaterialButtons[0];
             SetMaterial(MaterialButtons[0]);
+        }
+
+        public void UnhighlightPrevious()
+        {
+            if (previousButton != null) previousButton.Highlight = false;
         }
 
         public void SetMaterial(MaterialButton clickedButton)
         {
             LinkedTexturingUI.LinkedPainterTool.currentMaterial = clickedButton.MaterialReference;
 
-            foreach (MaterialButton button in MaterialButtons)
-            {
-                button.Highlight = false;
-            }
+            LinkedTexturingUI.UnhighlightPrevious(newLibrary: this);
+
+            if (previousButton != null) previousButton.Highlight = false;
+
+            previousButton = clickedButton;
 
             clickedButton.Highlight = true;
         }

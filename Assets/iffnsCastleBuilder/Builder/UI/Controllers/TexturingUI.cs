@@ -17,7 +17,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] GameObject MaterialLibraryHolder = null;
 
         List<MaterialLibraryUI> libraryUIs = new List<MaterialLibraryUI>();
-
+        MaterialLibraryUI previousLibrary;
         public PainterTool LinkedPainterTool
         {
             get { return linkedPainterTool; }
@@ -71,16 +71,25 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public void UnhighlightPrevious(MaterialLibraryUI newLibrary)
+        {
+            if (previousLibrary != null) previousLibrary.UnhighlightPrevious();
+            previousLibrary = newLibrary;
+        }
 
         public void SetMaterial(MaterialManager manager)
         {
             bool found = false;
+
+            if (previousLibrary != null) previousLibrary.UnhighlightPrevious();
 
             foreach (MaterialLibraryUI library in libraryUIs)
             {
                 if (library.SetMaterialAndExpansion(manager))
                 {
                     found = true;
+                    previousLibrary = library;
+                    break;
                 }
             }
 
