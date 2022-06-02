@@ -11638,8 +11638,7 @@
 					"Other steps top material": "PolyHaven-plywood",
 					"Steps front material": "PolyHaven-beige_wall_001",
 					"Side material": "PolyHaven-beige_wall_001",
-					"Back material": "PolyHaven-beige_wall_001",
-					"Raise to floor": true
+					"Back material": "PolyHaven-beige_wall_001"
 				},
 				{
 					"Type": "Door",
@@ -18084,8 +18083,7 @@
 					"Other steps top material": "PolyHaven-plywood",
 					"Steps front material": "PolyHaven-beige_wall_001",
 					"Side material": "PolyHaven-beige_wall_001",
-					"Back material": "PolyHaven-beige_wall_001",
-					"Raise to floor": true
+					"Back material": "PolyHaven-beige_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
@@ -24420,8 +24418,7 @@
 					"Other steps top material": "PolyHaven-plywood",
 					"Steps front material": "PolyHaven-beige_wall_001",
 					"Side material": "PolyHaven-beige_wall_001",
-					"Back material": "PolyHaven-beige_wall_001",
-					"Raise to floor": true
+					"Back material": "PolyHaven-beige_wall_001"
 				},
 				{
 					"Type": "VerticalArc",
@@ -39095,7 +39092,7 @@
 					"Outer Radii": [-5, -5],
 					"Cutoff range": [0, 0],
 					"Wall thickness": 1,
-					"Upper indent": [-1, -1],
+					"Upper indent": [-2, -2],
 					"Outside material": "PolyHaven-sandstone_blocks_05",
 					"Inside material": "PolyHaven-sandstone_blocks_05",
 					"First wall material": "PolyHaven-sandstone_blocks_05",
@@ -39112,7 +39109,7 @@
 					"Outer Radii": [5, -5],
 					"Cutoff range": [0, 0],
 					"Wall thickness": 1,
-					"Upper indent": [-1, -1],
+					"Upper indent": [-2, -2],
 					"Outside material": "PolyHaven-sandstone_blocks_05",
 					"Inside material": "PolyHaven-sandstone_blocks_05",
 					"First wall material": "PolyHaven-sandstone_blocks_05",
@@ -39129,7 +39126,7 @@
 					"Outer Radii": [-5, 5],
 					"Cutoff range": [0, 0],
 					"Wall thickness": 1,
-					"Upper indent": [-1, -1],
+					"Upper indent": [-2, -2],
 					"Outside material": "PolyHaven-sandstone_blocks_05",
 					"Inside material": "PolyHaven-sandstone_blocks_05",
 					"First wall material": "PolyHaven-sandstone_blocks_05",
@@ -39146,7 +39143,7 @@
 					"Outer Radii": [5, 5],
 					"Cutoff range": [0, 0],
 					"Wall thickness": 1,
-					"Upper indent": [-1, -1],
+					"Upper indent": [-2, -2],
 					"Outside material": "PolyHaven-sandstone_blocks_05",
 					"Inside material": "PolyHaven-sandstone_blocks_05",
 					"First wall material": "PolyHaven-sandstone_blocks_05",
@@ -39162,7 +39159,5013 @@
 			"Type": "FloorController",
 			"Name": "",
 			"Bottom floor height": 0.3,
-			"Wall height": 1.8,
+			"Wall height": 2.2,
+			"Node wall system":
+			{
+				"Type": "NodeWallSystem",
+				"Name": "",
+				"Node walls":
+				[
+				]
+			},
+			"Floor matrix":
+			[
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-plywood",
+					"Left wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Left wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-plywood",
+					"Left wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-plywood",
+					"Left wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-plywood",
+					"Left wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-plywood",
+					"Left wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-sandstone_blocks_05"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Right wall material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Right wall material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-sandstone_blocks_05"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-sandstone_blocks_05"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-sandstone_blocks_05"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Left wall material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Left wall material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-plywood",
+					"Right wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-plywood",
+					"Right wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-plywood",
+					"Right wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Back wall material": "PolyHaven-plywood",
+					"Right wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Right wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-plywood",
+					"Right wall material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				},
+				{
+					"Type": "VirtualBlock",
+					"Name": "",
+					"Block type": "Empty"
+				}
+			],
+			"On floor objects":
+			[
+				{
+					"Type": "HorizontalArc",
+					"Name": "",
+					"Center position": [13, 35],
+					"Outer Radii": [7, -7],
+					"Cutoff range": [0, 0],
+					"Wall thickness": 7,
+					"Upper indent": [0, 0],
+					"Outside material": "PolyHaven-sandstone_blocks_05",
+					"Inside material": "PolyHaven-sandstone_blocks_05",
+					"First wall material": "PolyHaven-sandstone_blocks_05",
+					"Second wall material": "PolyHaven-sandstone_blocks_05",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Floor material": "PolyHaven-wood_planks_dirt",
+					"Block type": "Floor",
+					"Edge type": "Ring"
+				},
+				{
+					"Type": "HorizontalArc",
+					"Name": "",
+					"Center position": [13, 35],
+					"Outer Radii": [-7, -7],
+					"Cutoff range": [0, 0],
+					"Wall thickness": 7,
+					"Upper indent": [0, 0],
+					"Outside material": "PolyHaven-sandstone_blocks_05",
+					"Inside material": "PolyHaven-sandstone_blocks_05",
+					"First wall material": "PolyHaven-sandstone_blocks_05",
+					"Second wall material": "PolyHaven-sandstone_blocks_05",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Floor material": "PolyHaven-wood_planks_dirt",
+					"Block type": "Floor",
+					"Edge type": "Ring"
+				},
+				{
+					"Type": "HorizontalArc",
+					"Name": "",
+					"Center position": [13, 35],
+					"Outer Radii": [7, 7],
+					"Cutoff range": [0, 0],
+					"Wall thickness": 4,
+					"Upper indent": [0, 0],
+					"Outside material": "PolyHaven-sandstone_blocks_05",
+					"Inside material": "PolyHaven-sandstone_blocks_05",
+					"First wall material": "PolyHaven-sandstone_blocks_05",
+					"Second wall material": "PolyHaven-sandstone_blocks_05",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Floor material": "PolyHaven-wood_planks_dirt",
+					"Block type": "Floor",
+					"Edge type": "InnerGrid"
+				},
+				{
+					"Type": "HorizontalArc",
+					"Name": "",
+					"Center position": [13, 35],
+					"Outer Radii": [-7, 7],
+					"Cutoff range": [0, 0],
+					"Wall thickness": 4,
+					"Upper indent": [0, 0],
+					"Outside material": "PolyHaven-sandstone_blocks_05",
+					"Inside material": "PolyHaven-sandstone_blocks_05",
+					"First wall material": "PolyHaven-sandstone_blocks_05",
+					"Second wall material": "PolyHaven-sandstone_blocks_05",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Floor material": "PolyHaven-wood_planks_dirt",
+					"Block type": "Floor",
+					"Edge type": "InnerGrid"
+				},
+				{
+					"Type": "RailingArc",
+					"Name": "",
+					"Center coordinate": [13, 35],
+					"Radii coordinate": [6, 42],
+					"Cylinder distance target [m]": 2,
+					"Top material": "PolyHaven-plywood",
+					"Bottom material": "PolyHaven-plywood",
+					"Post material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "RailingArc",
+					"Name": "",
+					"Center coordinate": [13, 35],
+					"Radii coordinate": [20, 42],
+					"Cylinder distance target [m]": 2,
+					"Top material": "PolyHaven-plywood",
+					"Bottom material": "PolyHaven-plywood",
+					"Post material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "RailingArc",
+					"Name": "",
+					"Center coordinate": [13, 35],
+					"Radii coordinate": [20, 28],
+					"Cylinder distance target [m]": 2,
+					"Top material": "PolyHaven-plywood",
+					"Bottom material": "PolyHaven-plywood",
+					"Post material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "RailingArc",
+					"Name": "",
+					"Center coordinate": [13, 35],
+					"Radii coordinate": [6, 28],
+					"Cylinder distance target [m]": 2,
+					"Top material": "PolyHaven-plywood",
+					"Bottom material": "PolyHaven-plywood",
+					"Post material": "PolyHaven-plywood"
+				},
+				{
+					"Type": "Window",
+					"Name": "",
+					"Bottom Left Position": [11, 39],
+					"Top Right Position": [-2, -2],
+					"Bottom height [m]": 0.75,
+					"Window height [m]": 1.25,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-beige_wall_001",
+					"Frame material": "PolyHaven-plywood",
+					"Glass material": "DummyWindow",
+					"Wall type": "NodeGrid"
+				},
+				{
+					"Type": "Window",
+					"Name": "",
+					"Bottom Left Position": [15, 39],
+					"Top Right Position": [2, -2],
+					"Bottom height [m]": 0.75,
+					"Window height [m]": 1.25,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-beige_wall_001",
+					"Frame material": "PolyHaven-plywood",
+					"Glass material": "DummyWindow",
+					"Wall type": "NodeGrid"
+				},
+				{
+					"Type": "Window",
+					"Name": "",
+					"Bottom Left Position": [17, 33],
+					"Top Right Position": [-2, -2],
+					"Bottom height [m]": 0.75,
+					"Window height [m]": 1.25,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-beige_wall_001",
+					"Frame material": "PolyHaven-plywood",
+					"Glass material": "DummyWindow",
+					"Wall type": "NodeGrid"
+				},
+				{
+					"Type": "Window",
+					"Name": "",
+					"Bottom Left Position": [9, 33],
+					"Top Right Position": [2, -2],
+					"Bottom height [m]": 0.75,
+					"Window height [m]": 1.25,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-beige_wall_001",
+					"Frame material": "PolyHaven-plywood",
+					"Glass material": "DummyWindow",
+					"Wall type": "NodeGrid"
+				},
+				{
+					"Type": "Window",
+					"Name": "",
+					"Bottom Left Position": [9, 37],
+					"Top Right Position": [0, -4],
+					"Bottom height [m]": 0.75,
+					"Window height [m]": 1.25,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-beige_wall_001",
+					"Frame material": "PolyHaven-plywood",
+					"Glass material": "DummyWindow",
+					"Wall type": "BlockGrid"
+				},
+				{
+					"Type": "Window",
+					"Name": "",
+					"Bottom Left Position": [11, 39],
+					"Top Right Position": [4, 0],
+					"Bottom height [m]": 0.75,
+					"Window height [m]": 1.25,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-beige_wall_001",
+					"Frame material": "PolyHaven-plywood",
+					"Glass material": "DummyWindow",
+					"Wall type": "BlockGrid"
+				},
+				{
+					"Type": "Window",
+					"Name": "",
+					"Bottom Left Position": [17, 37],
+					"Top Right Position": [0, -4],
+					"Bottom height [m]": 0.75,
+					"Window height [m]": 1.25,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-beige_wall_001",
+					"Frame material": "PolyHaven-plywood",
+					"Glass material": "DummyWindow",
+					"Wall type": "BlockGrid"
+				},
+				{
+					"Type": "Door",
+					"Name": "",
+					"Bottom Left Position": [11, 31],
+					"Top Right Position": [4, 0],
+					"Door height [m]": 2,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-beige_wall_001",
+					"Frame material": "PolyHaven-plywood",
+					"Wall type": "BlockGrid"
+				}
+			]
+		},
+		{
+			"Type": "FloorController",
+			"Name": "",
+			"Bottom floor height": 0.2,
+			"Wall height": 2.2,
 			"Node wall system":
 			{
 				"Type": "NodeWallSystem",
@@ -41031,28 +46034,17 @@
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Back wall material": "PolyHaven-plywood",
-					"Left wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Left wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Front wall material": "PolyHaven-plywood",
-					"Left wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -41252,33 +46244,22 @@
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Back wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Front wall material": "PolyHaven-plywood",
-					"Left wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -41473,40 +46454,27 @@
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Back wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Front wall material": "PolyHaven-plywood",
-					"Left wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -41696,41 +46664,27 @@
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Back wall material": "PolyHaven-sandstone_blocks_05"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Right wall material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Right wall material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Front wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -41920,18 +46874,12 @@
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Back wall material": "PolyHaven-sandstone_blocks_05"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Front wall material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -41946,11 +46894,7 @@
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Front wall material": "PolyHaven-plywood",
-					"Back wall material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -42140,18 +47084,12 @@
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Back wall material": "PolyHaven-sandstone_blocks_05"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Front wall material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -42166,11 +47104,7 @@
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Front wall material": "PolyHaven-plywood",
-					"Back wall material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -42360,41 +47294,27 @@
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Back wall material": "PolyHaven-sandstone_blocks_05"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Left wall material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Left wall material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Front wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -42584,40 +47504,27 @@
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Back wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Front wall material": "PolyHaven-plywood",
-					"Right wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -42807,33 +47714,22 @@
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Back wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Front wall material": "PolyHaven-plywood",
-					"Right wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -43028,28 +47924,17 @@
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Back wall material": "PolyHaven-plywood",
-					"Right wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Right wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
 					"Name": "",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Front wall material": "PolyHaven-plywood",
-					"Right wall material": "PolyHaven-plywood"
+					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -43915,112 +48800,116 @@
 			"On floor objects":
 			[
 				{
-					"Type": "HorizontalArc",
+					"Type": "TriangularRoof",
 					"Name": "",
-					"Center position": [13, 35],
-					"Outer Radii": [6, -6],
-					"Cutoff range": [0, 0],
-					"Wall thickness": 6,
-					"Upper indent": [0, 0],
-					"Outside material": "PolyHaven-sandstone_blocks_05",
-					"Inside material": "PolyHaven-sandstone_blocks_05",
-					"First wall material": "PolyHaven-sandstone_blocks_05",
-					"Second wall material": "PolyHaven-sandstone_blocks_05",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Floor material": "PolyHaven-wood_planks_dirt",
-					"Block type": "Floor",
-					"Edge type": "Ring"
+					"First position": [13, 35],
+					"Second position": [9, 37],
+					"Third position": [11, 39],
+					"Height [m]": 2,
+					"Height thickness": 0.1,
+					"Raise to floor": false,
+					"Outside material": "PolyHaven-roof_09",
+					"Inside material": "PolyHaven-old_planks_02",
+					"Wrapper material": "PolyHaven-beige_wall_001",
+					"Block type": "Two are low"
 				},
 				{
-					"Type": "HorizontalArc",
+					"Type": "TriangularRoof",
 					"Name": "",
-					"Center position": [13, 35],
-					"Outer Radii": [-6, -6],
-					"Cutoff range": [0, 0],
-					"Wall thickness": 6,
-					"Upper indent": [0, 0],
-					"Outside material": "PolyHaven-sandstone_blocks_05",
-					"Inside material": "PolyHaven-sandstone_blocks_05",
-					"First wall material": "PolyHaven-sandstone_blocks_05",
-					"Second wall material": "PolyHaven-sandstone_blocks_05",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Floor material": "PolyHaven-wood_planks_dirt",
-					"Block type": "Floor",
-					"Edge type": "Ring"
+					"First position": [13, 35],
+					"Second position": [17, 37],
+					"Third position": [15, 39],
+					"Height [m]": 2,
+					"Height thickness": 0.1,
+					"Raise to floor": false,
+					"Outside material": "PolyHaven-roof_09",
+					"Inside material": "PolyHaven-old_planks_02",
+					"Wrapper material": "PolyHaven-beige_wall_001",
+					"Block type": "Two are low"
 				},
 				{
-					"Type": "HorizontalArc",
+					"Type": "TriangularRoof",
 					"Name": "",
-					"Center position": [13, 35],
-					"Outer Radii": [6, 6],
-					"Cutoff range": [0, 0],
-					"Wall thickness": 4,
-					"Upper indent": [0, 0],
-					"Outside material": "PolyHaven-sandstone_blocks_05",
-					"Inside material": "PolyHaven-sandstone_blocks_05",
-					"First wall material": "PolyHaven-sandstone_blocks_05",
-					"Second wall material": "PolyHaven-sandstone_blocks_05",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Floor material": "PolyHaven-wood_planks_dirt",
-					"Block type": "Floor",
-					"Edge type": "InnerGrid"
+					"First position": [13, 35],
+					"Second position": [17, 33],
+					"Third position": [15, 31],
+					"Height [m]": 2,
+					"Height thickness": 0.1,
+					"Raise to floor": false,
+					"Outside material": "PolyHaven-roof_09",
+					"Inside material": "PolyHaven-old_planks_02",
+					"Wrapper material": "PolyHaven-beige_wall_001",
+					"Block type": "Two are low"
 				},
 				{
-					"Type": "HorizontalArc",
+					"Type": "TriangularRoof",
 					"Name": "",
-					"Center position": [13, 35],
-					"Outer Radii": [-6, 6],
-					"Cutoff range": [0, 0],
-					"Wall thickness": 4,
-					"Upper indent": [0, 0],
-					"Outside material": "PolyHaven-sandstone_blocks_05",
-					"Inside material": "PolyHaven-sandstone_blocks_05",
-					"First wall material": "PolyHaven-sandstone_blocks_05",
-					"Second wall material": "PolyHaven-sandstone_blocks_05",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Floor material": "PolyHaven-wood_planks_dirt",
-					"Block type": "Floor",
-					"Edge type": "InnerGrid"
+					"First position": [13, 35],
+					"Second position": [9, 33],
+					"Third position": [11, 31],
+					"Height [m]": 2,
+					"Height thickness": 0.1,
+					"Raise to floor": false,
+					"Outside material": "PolyHaven-roof_09",
+					"Inside material": "PolyHaven-old_planks_02",
+					"Wrapper material": "PolyHaven-beige_wall_001",
+					"Block type": "Two are low"
 				},
 				{
-					"Type": "RailingArc",
+					"Type": "TriangularRoof",
 					"Name": "",
-					"Center coordinate": [13, 35],
-					"Radii coordinate": [7, 41],
-					"Cylinder distance target [m]": 2,
-					"Top material": "PolyHaven-plywood",
-					"Bottom material": "PolyHaven-plywood",
-					"Post material": "PolyHaven-plywood"
+					"First position": [13, 35],
+					"Second position": [9, 33],
+					"Third position": [9, 37],
+					"Height [m]": 2,
+					"Height thickness": 0.1,
+					"Raise to floor": false,
+					"Outside material": "PolyHaven-roof_09",
+					"Inside material": "PolyHaven-old_planks_02",
+					"Wrapper material": "PolyHaven-beige_wall_001",
+					"Block type": "Two are low"
 				},
 				{
-					"Type": "RailingArc",
+					"Type": "TriangularRoof",
 					"Name": "",
-					"Center coordinate": [13, 35],
-					"Radii coordinate": [19, 41],
-					"Cylinder distance target [m]": 2,
-					"Top material": "PolyHaven-plywood",
-					"Bottom material": "PolyHaven-plywood",
-					"Post material": "PolyHaven-plywood"
+					"First position": [13, 35],
+					"Second position": [15, 39],
+					"Third position": [11, 39],
+					"Height [m]": 2,
+					"Height thickness": 0.1,
+					"Raise to floor": false,
+					"Outside material": "PolyHaven-roof_09",
+					"Inside material": "PolyHaven-old_planks_02",
+					"Wrapper material": "PolyHaven-beige_wall_001",
+					"Block type": "Two are low"
 				},
 				{
-					"Type": "RailingArc",
+					"Type": "TriangularRoof",
 					"Name": "",
-					"Center coordinate": [13, 35],
-					"Radii coordinate": [19, 29],
-					"Cylinder distance target [m]": 2,
-					"Top material": "PolyHaven-plywood",
-					"Bottom material": "PolyHaven-plywood",
-					"Post material": "PolyHaven-plywood"
+					"First position": [13, 35],
+					"Second position": [17, 33],
+					"Third position": [17, 37],
+					"Height [m]": 2,
+					"Height thickness": 0.1,
+					"Raise to floor": false,
+					"Outside material": "PolyHaven-roof_09",
+					"Inside material": "PolyHaven-old_planks_02",
+					"Wrapper material": "PolyHaven-beige_wall_001",
+					"Block type": "Two are low"
 				},
 				{
-					"Type": "RailingArc",
+					"Type": "TriangularRoof",
 					"Name": "",
-					"Center coordinate": [13, 35],
-					"Radii coordinate": [7, 29],
-					"Cylinder distance target [m]": 2,
-					"Top material": "PolyHaven-plywood",
-					"Bottom material": "PolyHaven-plywood",
-					"Post material": "PolyHaven-plywood"
+					"First position": [13, 35],
+					"Second position": [11, 31],
+					"Third position": [15, 31],
+					"Height [m]": 2,
+					"Height thickness": 0.1,
+					"Raise to floor": false,
+					"Outside material": "PolyHaven-roof_09",
+					"Inside material": "PolyHaven-old_planks_02",
+					"Wrapper material": "PolyHaven-beige_wall_001",
+					"Block type": "Two are low"
 				}
 			]
 		}

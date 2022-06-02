@@ -14,9 +14,10 @@ public class UISizeController : MonoBehaviour
 
     [SerializeField] RectTransform MenuRightTop;
     [SerializeField] RectTransform MenuRightBottom;
-    [SerializeField] RectTransform FileSelector;
     [SerializeField] RectTransform BackgroundRight;
+    [SerializeField] RectTransform FileSelector;
     [SerializeField] RectTransform FileListArea;
+    [SerializeField] RectTransform UIScaleButton;
 
     //Runtime parameters
     float buttonSize = 100;
@@ -81,5 +82,7 @@ public class UISizeController : MonoBehaviour
         BackgroundRight.localScale = new Vector3(scaleFactor, BackgroundRight.localScale.y, BackgroundRight.localScale.z);
 
         FileListArea.sizeDelta = new Vector2((fileNameWidth + buttonSize * 0.5f) * invertedScaleFactor, (Screen.height - buttonSize * 0.5f) * invertedScaleFactor);
+
+        UIScaleButton.localScale = scaleFactor * Vector3.one;
     }
 }
