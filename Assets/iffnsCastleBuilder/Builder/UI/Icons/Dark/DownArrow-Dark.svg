@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    inkscape:export-ydpi="96"
    inkscape:export-xdpi="96"
-   inkscape:export-filename="C:\Users\iffn1\Documents\UnityProjects\CastleBuilder2\Assets\iffns RPG\Elements\Buildings\HumanBuildings\UI\Icons\Dark\DownArrow-Dark.png"
+   inkscape:export-filename="C:\Users\iffn1\Documents\UnityProjects\iffnsCastleBuilder\Assets\iffnsCastleBuilder\Builder\UI\Icons\Dark\DownArrow-Dark.png"
    sodipodi:docname="DownArrow-Dark.svg"
-   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
    id="svg1397"
    version="1.1"
    viewBox="0 0 100 100"
    height="100mm"
-   width="100mm">
+   width="100mm"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs1391">
     <marker
@@ -36,7 +35,7 @@
     </marker>
     <linearGradient
        id="linearGradient3996"
-       osb:paint="solid">
+       inkscape:swatch="solid">
       <stop
          style="stop-color:#333333;stop-opacity:1;"
          offset="0"
@@ -53,15 +52,16 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="201.62689"
-     inkscape:cx="194.02439"
-     inkscape:zoom="2.0920947"
+     inkscape:cy="154.39072"
+     inkscape:cx="312.60535"
+     inkscape:zoom="1.0460474"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
      bordercolor="#666666"
      pagecolor="#ffffff"
-     id="base" />
+     id="base"
+     inkscape:pagecheckerboard="0" />
   <metadata
      id="metadata1394">
     <rdf:RDF>
@@ -70,7 +70,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -81,7 +80,7 @@
     <path
        id="rect845"
        style="fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-       d="M 24.604724,40.693646 52.978035,69.099528 81.351881,40.693646 Z"
+       d="M 21.626399,35.485795 49.99971,63.891677 78.373553,35.485795 Z"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
   </g>
