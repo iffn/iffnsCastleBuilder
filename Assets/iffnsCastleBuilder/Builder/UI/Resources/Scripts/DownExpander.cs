@@ -19,6 +19,13 @@ public class DownExpander : UIHelper
         rectTransform = transform.GetComponent<RectTransform>();
     }
 
+    private void Update()
+    {
+        if (rectTransform == null) return;
+
+        UpdateSize();
+    }
+
     // Update is called once per frame
     public override void UpdateSize()
     {
