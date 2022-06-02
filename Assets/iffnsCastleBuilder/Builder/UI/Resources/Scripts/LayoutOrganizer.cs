@@ -31,7 +31,6 @@ public class LayoutOrganizer : MonoBehaviour
         return shouldBeHeight;
     }
 
-    // Start is called before the first frame update
     public void UpdateLayout()
     {
 

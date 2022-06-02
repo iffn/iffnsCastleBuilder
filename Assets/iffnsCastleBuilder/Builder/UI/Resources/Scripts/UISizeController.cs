@@ -19,6 +19,8 @@ public class UISizeController : MonoBehaviour
     [SerializeField] RectTransform FileListArea;
     [SerializeField] RectTransform UIScaleButton;
 
+    [SerializeField] List<UIHelper> UIHelpers;
+
     //Runtime parameters
     float buttonSize = 100;
 
@@ -28,6 +30,8 @@ public class UISizeController : MonoBehaviour
     Vector2Int buttonCount = new Vector2Int(12, 6);
     Vector2Int minAddition = new Vector2Int(4, 4);
 
+    int prevWidth = 0;
+    int prevHeight = 0;
 
     float MinButtonSize
     {
@@ -46,11 +50,13 @@ public class UISizeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach(UIHelper helper in UIHelpers)
+        {
+            helper.Setup(linkedSizeController: this);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateSize()
     {
         //Calculate size
         buttonSize = defaultButtonSize * UIScaler.value;
@@ -64,6 +70,9 @@ public class UISizeController : MonoBehaviour
 
         Vector3 scaleVector = scaleFactor * Vector3.one;
 
+        //General
+        UIScaleButton.localScale = scaleFactor * Vector3.one;
+
         //Left menu
         MenuLeft.localScale = scaleVector;
         BackgroundLeft.localScale = scaleVector;
@@ -76,6 +85,7 @@ public class UISizeController : MonoBehaviour
         MenuRightTop.localScale = scaleVector;
         MenuRightBottom.localScale = scaleVector;
 
+        //Top
         float fileNameWidth = Screen.width - (buttonCount.x + 0.5f) * buttonSize;
         FileSelector.sizeDelta = new Vector2(fileNameWidth * invertedScaleFactor, FileSelector.sizeDelta.y);
 
@@ -83,6 +93,22 @@ public class UISizeController : MonoBehaviour
 
         FileListArea.sizeDelta = new Vector2((fileNameWidth + buttonSize * 0.5f) * invertedScaleFactor, (Screen.height - buttonSize * 0.5f) * invertedScaleFactor);
 
-        UIScaleButton.localScale = scaleFactor * Vector3.one;
+        //Rest
+        foreach (UIHelper helper in UIHelpers)
+        {
+            helper.UpdateSize();
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (prevWidth != Screen.width || prevHeight != Screen.height)
+        {
+            prevHeight = Screen.height;
+            prevWidth = Screen.width;
+
+            UpdateSize();
+        }
     }
 }

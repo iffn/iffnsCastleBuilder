@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DownExpander : MonoBehaviour
+public class DownExpander : UIHelper
 {
     //Unity assignments
     [SerializeField] float bottomHeight = 3;
@@ -12,13 +12,15 @@ public class DownExpander : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    public override void Setup(UISizeController linkedSizeController)
     {
+        base.Setup(linkedSizeController);
+
         rectTransform = transform.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
-    void Update()
+    public override void UpdateSize()
     {
         float newHeight = (transform.position.y - bottomHeight) / transform.lossyScale.y;
         
