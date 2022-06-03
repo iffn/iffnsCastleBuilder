@@ -29532,8 +29532,8 @@
 				{
 					"Type": "RectangularRoof",
 					"Name": "",
-					"First Block Position": [20, 28],
-					"Second Block Position": [1, 0],
+					"First position": [21, 29],
+					"Second position": [1, 0],
 					"Roof height [m]": 2,
 					"Height thickness": 0.1,
 					"Roof overshoot [m]": 0,

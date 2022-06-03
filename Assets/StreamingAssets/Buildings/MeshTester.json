@@ -20028,8 +20028,8 @@
 				{
 					"Type": "RectangularRoof",
 					"Name": "",
-					"First Block Position": [26, 24],
-					"Second Block Position": [31, 22],
+					"First position": [26, 25],
+					"Second position": [31, 22],
 					"Roof height [m]": 2,
 					"Height thickness": 0.1,
 					"Roof overshoot [m]": 0,
@@ -20037,13 +20037,13 @@
 					"Outside material": "PolyHaven-roof_09",
 					"Inside material": "PolyHaven-old_planks_02",
 					"Wrapper material": "PolyHaven-beige_wall_001",
-					"Roof type": "HalfAngledSquareRoof"
+					"Roof type": "FullAngledSquareRoof"
 				},
 				{
 					"Type": "RectangularRoof",
 					"Name": "",
-					"First Block Position": [26, 20],
-					"Second Block Position": [31, 18],
+					"First position": [26, 20],
+					"Second position": [31, 17],
 					"Roof height [m]": 2,
 					"Height thickness": 0.1,
 					"Roof overshoot [m]": 0,
@@ -20285,8 +20285,8 @@
 				{
 					"Type": "RectangularRoof",
 					"Name": "",
-					"First Block Position": [34, 28],
-					"Second Block Position": [35, 29],
+					"First position": [34, 28],
+					"Second position": [35, 29],
 					"Roof height [m]": 2,
 					"Height thickness": 0.1,
 					"Roof overshoot [m]": 0,

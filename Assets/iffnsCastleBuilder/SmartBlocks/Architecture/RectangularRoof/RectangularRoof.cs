@@ -8,8 +8,8 @@ namespace iffnsStuff.iffnsCastleBuilder
     public class RectangularRoof : OnFloorObject
     {
         //Mailbox lines
-        MailboxLineVector2Int FirstBlockPositionParam;
-        MailboxLineVector2Int SecondBlockPositionParam;
+        MailboxLineVector2Int FirstPositionParam;
+        MailboxLineVector2Int SecondPositionParam;
         MailboxLineRanged HeightParam;
         MailboxLineRanged HeightThicknessParam;
         MailboxLineRanged RoofOvershootParam;
@@ -20,7 +20,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineMaterial InsideMaterialParam;
         MailboxLineMaterial WrapperMaterialParam;
 
-        BlockGridRectangleOrganizer ModificationNodeOrganizer;
+        NodeGridRectangleOrganizer ModificationNodeOrganizer;
 
         //WallTypes wallType = WallTypes.NodeWall;
 
@@ -36,7 +36,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             set
             {
-                FirstBlockPositionParam.Val = value;
+                FirstPositionParam.Val = value;
                 ApplyBuildParameters();
             }
         }
@@ -45,7 +45,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             set
             {
-                SecondBlockPositionParam.Val = value;
+                SecondPositionParam.Val = value;
                 ApplyBuildParameters();
             }
         }
@@ -152,8 +152,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             LinkedFloor = linkedFloor as FloorController;
             if (linkedFloor == null) Debug.LogWarning("Error, linked floor is not a floor. Super object is instead = " + linkedFloor.IdentifierString);
 
-            FirstBlockPositionParam = new MailboxLineVector2Int(name: "First Block Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
-            SecondBlockPositionParam = new MailboxLineVector2Int(name: "Second Block Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
+            FirstPositionParam = new MailboxLineVector2Int(name: "First position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
+            SecondPositionParam = new MailboxLineVector2Int(name: "Second position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             HeightParam = new MailboxLineRanged(name: "Roof height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 10, Min: 0.5f, DefaultValue: 2);
             HeightThicknessParam = new MailboxLineRanged(name: "Height thickness", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1f, Min: 0.001f, DefaultValue: 0.1f);
             RoofOvershootParam = new MailboxLineRanged(name: "Roof overshoot [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 10, Min: 0f, DefaultValue: 0);
@@ -164,15 +164,15 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             SetupRoofTypeParam();
 
-            BlockGridPositionModificationNode firstNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
-            firstNode.Setup(linkedObject: this, value: FirstBlockPositionParam);
+            NodeGridPositionModificationNode firstNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
+            firstNode.Setup(linkedObject: this, value: FirstPositionParam);
             FirstPositionNode = firstNode;
 
-            BlockGridPositionModificationNode secondNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
-            secondNode.Setup(linkedObject: this, value: SecondBlockPositionParam);
+            NodeGridPositionModificationNode secondNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
+            secondNode.Setup(linkedObject: this, value: SecondPositionParam);
             SecondPositionNode = secondNode;
 
-            ModificationNodeOrganizer = new BlockGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
+            ModificationNodeOrganizer = new NodeGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
 
             SetupEditButtons();
         }
@@ -182,8 +182,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             Setup(linkedFloor);
 
             //Using the accesors would apply build parameters
-            FirstBlockPositionParam.Val = firstPosition;
-            SecondBlockPositionParam.Val = secondPosition;
+            FirstPositionParam.Val = firstPosition;
+            SecondPositionParam.Val = secondPosition;
             HeightParam.Val = roofHeight;
             RoofTypeParam.Val = (int)roofType;
             RoofOvershoot = roofOvershoot;
@@ -224,6 +224,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
             if (failed) return;
+
+            if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
+            {
+                failed = true;
+                return;
+            }
 
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
