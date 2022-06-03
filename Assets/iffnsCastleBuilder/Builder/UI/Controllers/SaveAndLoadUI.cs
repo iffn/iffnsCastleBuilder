@@ -14,6 +14,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] VectorButton SaveNewButton = null;
         [SerializeField] VectorButton SaveDoneButton = null;
         [SerializeField] VectorButton SaveOverrideButton = null;
+        [SerializeField] VectorButton SaveUnknownButton = null;
         [SerializeField] VectorButton LoadNewButton = null;
         [SerializeField] VectorButton LoadDoneButton = null;
         [SerializeField] VectorButton LoadOverrideButton = null;
@@ -23,27 +24,62 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         [SerializeField] RectTransform ExpandArea = null;
         [SerializeField] RectTransform ExpandIcon;
-        VectorButton activeSaveButton;
 
         public enum SaveButtonStates
         {
             New,
             Done,
-            Override
+            Override,
+            Unknown
         }
 
+        SaveButtonStates saveButtonState = SaveButtonStates.Unknown;
+        public SaveButtonStates SaveButtonState
+        {
+            get
+            {
+                return saveButtonState;
+            }
+            set
+            {
+                saveButtonState = value;
 
+                switch (value)
+                {
+                    case SaveButtonStates.New:
+                        ActiveSaveButton = SaveNewButton;
+                        break;
+                    case SaveButtonStates.Done:
+                        ActiveSaveButton = SaveDoneButton;
+                        StartCoroutine(RestoreSaveButton(3));
+                        break;
+                    case SaveButtonStates.Override:
+                        ActiveSaveButton = SaveOverrideButton;
+                        break;
+                    case SaveButtonStates.Unknown:
+                        ActiveSaveButton = SaveUnknownButton;
+                        break;
+                    default:
+                        Debug.LogWarning("Error: Save button not defined");
+                        break;
+                }
+            }
+        }
+
+        VectorButton activeSaveButton;
         VectorButton ActiveSaveButton
         {
+            /*
             get
             {
                 if (activeSaveButton == null) activeSaveButton = SaveNewButton;
 
                 return activeSaveButton;
             }
+            */
             set
             {
-                if (activeSaveButton == null) activeSaveButton = SaveNewButton;
+                if (activeSaveButton == null) activeSaveButton = SaveUnknownButton;
 
                 activeSaveButton.gameObject.SetActive(false);
 
@@ -53,31 +89,17 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        SaveButtonStates saveButtonState = SaveButtonStates.Done;
-
-        public SaveButtonStates SaveButtonState
+        IEnumerator RestoreSaveButton(float seconds)
         {
-            get
+            yield return new WaitForSeconds(seconds);
+
+            if(CurrentSaveAndLoadSystem.SelectedFileExists(updateList: true))
             {
-                return saveButtonState;
+                SaveButtonState = SaveButtonStates.Override;
             }
-            set
+            else
             {
-                switch (value)
-                {
-                    case SaveButtonStates.New:
-                        ActiveSaveButton = SaveNewButton;
-                        break;
-                    case SaveButtonStates.Done:
-                        ActiveSaveButton = SaveDoneButton;
-                        break;
-                    case SaveButtonStates.Override:
-                        ActiveSaveButton = SaveOverrideButton;
-                        break;
-                    default:
-                        Debug.LogWarning("Error: Save button not defined");
-                        break;
-                }
+                SaveButtonState = SaveButtonStates.New;
             }
         }
 
@@ -90,17 +112,49 @@ namespace iffnsStuff.iffnsCastleBuilder
         }
 
         LoadButtonStates loadButtonState = LoadButtonStates.Unknown;
+        public LoadButtonStates LoadButtonState
+        {
+            get
+            {
+                return loadButtonState;
+            }
+            set
+            {
+                loadButtonState = value;
+
+                switch (value)
+                {
+                    case LoadButtonStates.New:
+                        ActiveLoadButton = LoadNewButton;
+                        break;
+                    case LoadButtonStates.Done:
+                        ActiveLoadButton = LoadDoneButton;
+                        StartCoroutine(RestoreLoadButton(3));
+                        break;
+                    case LoadButtonStates.Override:
+                        ActiveLoadButton = LoadOverrideButton;
+                        break;
+                    case LoadButtonStates.Unknown:
+                        ActiveLoadButton = LoadUnknownButton;
+                        break;
+                    default:
+                        Debug.LogWarning("Error: Load button not defined");
+                        break;
+                }
+            }
+        }
 
         VectorButton activeLoadButton;
-
         VectorButton ActiveLoadButton
         {
+            /*
             get
             {
                 if (activeLoadButton == null) activeLoadButton = LoadUnknownButton;
 
                 return activeLoadButton;
             }
+            */
             set
             {
                 if (activeLoadButton == null) activeLoadButton = LoadUnknownButton;
@@ -113,33 +167,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        public LoadButtonStates LoadButtonState
+        IEnumerator RestoreLoadButton(float seconds)
         {
-            get
-            {
-                return loadButtonState;
-            }
-            set
-            {
-                switch (value)
-                {
-                    case LoadButtonStates.New:
-                        activeLoadButton = LoadNewButton;
-                        break;
-                    case LoadButtonStates.Done:
-                        activeLoadButton = LoadDoneButton;
-                        break;
-                    case LoadButtonStates.Override:
-                        activeLoadButton = LoadOverrideButton;
-                        break;
-                    case LoadButtonStates.Unknown:
-                        activeLoadButton = LoadUnknownButton;
-                        break;
-                    default:
-                        Debug.LogWarning("Error: Load button not defined");
-                        break;
-                }
-            }
+            yield return new WaitForSeconds(seconds);
+
+            LoadButtonState = LoadButtonStates.Override;
         }
 
         public string CurrentTitle
@@ -183,7 +215,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         }
 
         //File selection stuff
-        List<FileSelectionLine> fileLines = new List<FileSelectionLine>();
+        readonly List<FileSelectionLine> fileLines = new();
 
         void AddFileLine(string fileName, string title)
         {
@@ -215,109 +247,5 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             NewButton.gameObject.SetActive(true);
         }
-        /*
-        public void SaveCastle()
-        {
-            //Activate correct buttons
-            SaveNewButton.gameObject.SetActive(false);
-            SaveDoneButton.gameObject.SetActive(true);
-            SaveOverrideButton.gameObject.SetActive(false);
-
-            LoadNewButton.gameObject.SetActive(false);
-            LoadDoneButton.gameObject.SetActive(true);
-            LoadOverrideButton.gameObject.SetActive(false);
-        }
-
-        public void LoadCastle()
-        {
-            //Activate correct buttons
-            SaveNewButton.gameObject.SetActive(false);
-            SaveDoneButton.gameObject.SetActive(true);
-            SaveOverrideButton.gameObject.SetActive(false);
-
-            LoadNewButton.gameObject.SetActive(false);
-            LoadDoneButton.gameObject.SetActive(true);
-            LoadOverrideButton.gameObject.SetActive(false);
-
-            //Load castle from file with CurrentSaveAndLoadSystem
-        }
-
-        public void NewCastle()
-        {
-            //Activate correct buttons
-            SaveNewButton.gameObject.SetActive(false);
-            SaveDoneButton.gameObject.SetActive(true);
-            SaveOverrideButton.gameObject.SetActive(false);
-
-            LoadNewButton.gameObject.SetActive(false);
-            LoadDoneButton.gameObject.SetActive(true);
-            LoadOverrideButton.gameObject.SetActive(false);
-
-            CastleTitle.SetTextWithoutNotify("");
-
-            //CastleTitle.SetAllDirty();
-        }
-
-        public void SomethingHasBeenChanged()
-        {
-
-        }
-
-        public void ToggleWorldSelector()
-        {
-
-        }
-
-        public void UpdatedTitle()
-        {
-            //Check with CurrentSaveAndLoadSystem if file already exists
-
-            //Update button types
-        }
-
-        bool filesAreExpanded = false;
-        public GameObject ExpandFilesIcon;
-
-        public void ToggleExpandFiles()
-        {
-            //Flip button
-            ExpandFilesIcon.transform.localScale = new Vector3(ExpandFilesIcon.transform.localScale.x, -ExpandFilesIcon.transform.localScale.y, ExpandFilesIcon.transform.localScale.z);
-
-            //Flip boolean
-            filesAreExpanded = !filesAreExpanded;
-
-            //Set based on new state
-            if (filesAreExpanded)
-            {
-                //Get file list
-
-                //Update file list
-
-                //Show file list
-
-            }
-            else
-            {
-                //Hide file list
-            }
-        }
-
-        public void SetTitle(Text SelectedText)
-        {
-            CastleTitle.SetTextWithoutNotify(SelectedText.text);
-        }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-        */
     }
 }

@@ -101,7 +101,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             ToolController.CurrentNavigationTools.UpdateUI();
         }
 
-        bool SelectedFileExists(bool updateList)
+        public bool SelectedFileExists(bool updateList)
         {
             if (currentFileListWithoutEnding.Contains(CurrentSaveAndLoadUI.CurrentTitle) == false)
             {
@@ -136,9 +136,14 @@ namespace iffnsStuff.iffnsCastleBuilder
         }
 
         //Update buttons
-        void UpdateButtons(bool updateList)
+        public void UpdateButtons(bool updateList)
         {
-            if (SelectedFileExists(updateList: updateList))
+            if (CurrentSaveAndLoadUI.CurrentTitle.Length == 0)
+            {
+                CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.Unknown;
+                CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Unknown;
+            }
+            else if (SelectedFileExists(updateList: updateList))
             {
                 CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.Override;
                 CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Override;
@@ -152,6 +157,16 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         //File list
         List<string> currentFileListWithoutEnding = new List<string>();
+
+        public List<string> CurrentFileListWithoutEnding
+        {
+            get
+            {
+                UpdateFileList();
+
+                return currentFileListWithoutEnding;
+            }
+        }
 
         void UpdateFileList()
         {
