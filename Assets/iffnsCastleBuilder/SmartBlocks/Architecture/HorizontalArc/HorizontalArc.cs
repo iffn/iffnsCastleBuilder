@@ -237,7 +237,22 @@ namespace iffnsStuff.iffnsCastleBuilder
             SetupEditButtons();
         }
 
-        public void CompleteSetupWithBuildParameters(FloorController linkedFloor, Vector2Int centerPosition, Vector2Int outerRadii, Vector2Int cutoffRange, int wallThickness, Vector2Int upperIndent, BlockTypes blockType)
+        public void CompleteSetupWithBuildParameters(
+            FloorController linkedFloor,
+            Vector2Int centerPosition,
+            Vector2Int outerRadii,
+            Vector2Int cutoffRange,
+            int wallThickness,
+            Vector2Int upperIndent,
+            BlockTypes blockType,
+            EdgeTypes edgeType,
+            MaterialManager outsideMaterial,
+            MaterialManager insideMaterial,
+            MaterialManager firstWallMaterialParam,
+            MaterialManager secondWallMaterialParam,
+            MaterialManager ceilingMaterialParam,
+            MaterialManager floorMaterialParam
+            )
         {
             Setup(linkedFloor);
 
@@ -247,6 +262,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             WallThicknessParam.Val = wallThickness;
             UpperIndentParam.Val = upperIndent;
             BlockTypeParam.Val = (int)blockType;
+            EdgeTypeParam.Val = (int)edgeType;
+            OutsideMaterialParam.Val = outsideMaterial;
+            InsideMaterialParam.Val = insideMaterial;
+            FirstWallMaterialParam.Val = firstWallMaterialParam;
+            SecondWallMaterialParam.Val = secondWallMaterialParam;
+            CeilingMaterialParam.Val = ceilingMaterialParam;
+            FloorMaterialParam.Val = floorMaterialParam;
         }
 
         public override void ResetObject()
@@ -876,63 +898,28 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         void CopyFlipX()
         {
-            HorizontalArc newArc = CreateNewHorizontalArc();
+            HorizontalArc newArc = Clone as HorizontalArc;
 
-            newArc.CompleteSetupWithBuildParameters(
-                linkedFloor: LinkedFloor,
-                centerPosition: new Vector2Int(CenterPosition.x, CenterPosition.y),
-                outerRadii: new Vector2Int(-OuterRadii.x, OuterRadii.y),
-                cutoffRange: CutoffRange,
-                wallThickness: WallThickness,
-                upperIndent: UpperIndent,
-                blockType: BlockType);
-
-            newArc.ApplyBuildParameters();
+            newArc.OuterRadii = new Vector2Int(-OuterRadii.x, OuterRadii.y);
         }
 
         void CopyFlipY()
         {
-            HorizontalArc newArc = CreateNewHorizontalArc();
+            HorizontalArc newArc = Clone as HorizontalArc;
 
-            newArc.CompleteSetupWithBuildParameters(
-                linkedFloor: LinkedFloor,
-                centerPosition: new Vector2Int(CenterPosition.x, CenterPosition.y),
-                outerRadii: new Vector2Int(OuterRadii.x, -OuterRadii.y),
-                cutoffRange: CutoffRange,
-                wallThickness: WallThickness,
-                upperIndent: UpperIndent,
-                blockType: BlockType);
-
-            newArc.ApplyBuildParameters();
+            newArc.OuterRadii = new Vector2Int(OuterRadii.x, -OuterRadii.y);
         }
 
         void CopyFlipDiagonally()
         {
-            HorizontalArc newArc = CreateNewHorizontalArc();
+            HorizontalArc newArc = Clone as HorizontalArc;
 
-            newArc.CompleteSetupWithBuildParameters(
-                linkedFloor: LinkedFloor,
-                centerPosition: new Vector2Int(CenterPosition.x, CenterPosition.y),
-                outerRadii: new Vector2Int(-OuterRadii.x, -OuterRadii.y),
-                cutoffRange: CutoffRange,
-                wallThickness: WallThickness,
-                upperIndent: UpperIndent,
-                blockType: BlockType);
-
-            newArc.ApplyBuildParameters();
+            newArc.OuterRadii = new Vector2Int(-OuterRadii.x, -OuterRadii.y);
         }
 
         public override void MoveOnGrid(Vector2Int offset)
         {
             ModificationNodeOrganizer.MoveOnGrid(offset: offset);
-        }
-
-        //Helper function
-        HorizontalArc CreateNewHorizontalArc()
-        {
-            HorizontalArc returnValue = Instantiate(ResourceLibrary.TryGetTemplateFromStringIdentifier(IdentifierString) as HorizontalArc);
-
-            return returnValue;
         }
     }
 }
