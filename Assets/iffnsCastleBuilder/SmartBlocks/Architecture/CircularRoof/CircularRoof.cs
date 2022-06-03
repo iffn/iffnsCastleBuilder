@@ -17,12 +17,13 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineRanged ThicknessParam;
         MailboxLineRanged HeightParam;
         MailboxLineRanged HeightOvershootParam;
+        MailboxLineBool RaiseToFloorParam;
 
         MailboxLineMaterial OutsideMaterial;
         MailboxLineMaterial InsideMaterial;
         MailboxLineMaterial WrapperMaterial;
 
-        BlockGridRectangleOrganizer ModificationNodeOrganizer;
+        NodeGridRectangleOrganizer ModificationNodeOrganizer;
 
         public override ModificationOrganizer Organizer
         {
@@ -128,7 +129,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         void SetupAngleTypeParam()
         {
-            List<string> enumString = new List<string>();
+            List<string> enumString = new();
 
             int enumValues = System.Enum.GetValues(typeof(Angles)).Length;
 
@@ -162,6 +163,19 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public bool RaiseToFloor
+        {
+            get
+            {
+                return RaiseToFloorParam.Val;
+            }
+            set
+            {
+                RaiseToFloorParam.Val = value;
+                ApplyBuildParameters();
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);
@@ -172,6 +186,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             ThicknessParam = new MailboxLineRanged(name: "Thickness", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1f / 3, Min: 0.001f, DefaultValue: 0.1f);
             HeightParam = new MailboxLineRanged(name: "Height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 10f, Min: 1f, DefaultValue: 3f);
             HeightOvershootParam = new MailboxLineRanged(name: "Height overshoot [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1, Min: 0, DefaultValue: 0.1f);
+            RaiseToFloorParam = new MailboxLineBool(name: "Raise to floor", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: true);
 
             OutsideMaterial = new MailboxLineMaterial(name: "Outside material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultRoof);
             InsideMaterial = new MailboxLineMaterial(name: "Inside material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultCeiling);
@@ -179,15 +194,15 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             SetupAngleTypeParam();
 
-            BlockGridPositionModificationNode firstNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
+            NodeGridPositionModificationNode firstNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
             firstNode.Setup(linkedObject: this, value: CenterPositionParam);
             FirstPositionNode = firstNode;
 
-            BlockGridPositionModificationNode secondNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
+            NodeGridPositionModificationNode secondNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
             secondNode.Setup(linkedObject: this, value: OuterRadiiParam, relativeReferenceHolder: CenterPositionParam);
             SecondPositionNode = secondNode;
 
-            ModificationNodeOrganizer = new BlockGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
+            ModificationNodeOrganizer = new NodeGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
 
             SetupEditButtons();
         }
@@ -203,8 +218,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             HeightParam.Val = height;
             HeightOvershootParam.Val = heightOvershoot;
         }
-
-
 
         public override void ResetObject()
         {
@@ -230,8 +243,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             TriangleMeshInfo RoofOutside;
             TriangleMeshInfo RoofInside;
             TriangleMeshInfo BottomEdge;
-            TriangleMeshInfo RightEdge = new TriangleMeshInfo();
-            TriangleMeshInfo LeftEdge = new TriangleMeshInfo();
+            TriangleMeshInfo RightEdge = new();
+            TriangleMeshInfo LeftEdge = new();
 
             void FinishMeshes()
             {
@@ -262,23 +275,27 @@ namespace iffnsStuff.iffnsCastleBuilder
                     StaticMeshManager.AddTriangleInfo(LeftEdge);
                 }
 
-
                 BuildAllMeshes();
             }
 
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
+            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: RaiseToFloor);
             if (failed) return;
 
+            if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
+            {
+                failed = true;
+                return;
+            }
+
             Vector2 outerSize = ModificationNodeOrganizer.ObjectOrientationSize;
-            Vector2 innerSize = outerSize - Vector2.one * Thickness;
 
             float ratio = Height / (outerSize.x + outerSize.y) / 2;
 
-            Vector2 OuterRadii = new Vector2(outerSize.x + HeightOvershoot / ratio, outerSize.y + HeightOvershoot / ratio);
+            Vector2 OuterRadii = new(outerSize.x + HeightOvershoot / ratio, outerSize.y + HeightOvershoot / ratio);
 
-            Vector2 InnerRadii = new Vector2(outerSize.x + HeightOvershoot / ratio - Thickness, outerSize.y + HeightOvershoot / ratio - Thickness);
+            Vector2 InnerRadii = new(outerSize.x + HeightOvershoot / ratio - Thickness, outerSize.y + HeightOvershoot / ratio - Thickness);
 
-            VerticesHolder outerLine = new VerticesHolder();
+            VerticesHolder outerLine = new();
 
             bool isClosed = true;
 
@@ -323,7 +340,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Outside with correct UV
             float outerCircumence = 0;
 
-            List<float> uvXPoints = new List<float>();
+            List<float> uvXPoints = new();
 
             uvXPoints.Add(0);
 
@@ -349,7 +366,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             float heightRatio = 1f / verticalSteps;
 
-            List<VerticesHolder> Circles = new List<VerticesHolder>();
+            List<VerticesHolder> Circles = new();
 
             Circles.Add(outerLineCone);
 
@@ -381,8 +398,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             RoofOutside.UVs = UVs;
 
             //Inside
-
-            Vector3 innderScaleFactor = new Vector3(
+            Vector3 innderScaleFactor = new(
                 x: InnerRadii.x / OuterRadii.x,
                 y: (Height - Thickness * ratio) / Height,
                 z: InnerRadii.y / OuterRadii.y);

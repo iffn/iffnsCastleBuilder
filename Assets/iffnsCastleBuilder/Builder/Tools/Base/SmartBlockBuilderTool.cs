@@ -129,8 +129,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                                     Debug.LogWarning("Error: Node type not defined");
                                     break;
                             }
-
-
                         }
                         else if (CurrentOnFloorObject.FirstPositionNode is FloatingModificationNode firstFloatNode)
                         {
