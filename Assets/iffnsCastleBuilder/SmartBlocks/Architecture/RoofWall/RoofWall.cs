@@ -13,6 +13,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineMaterial MainSideMaterialParam;
         MailboxLineMaterial OtherSideMaterialParam;
         MailboxLineDistinctNamed RoofTypeParamParam;
+        MailboxLineBool RaiseToFloorParam;
 
         NodeGridRectangleOrganizer ModificationNodeOrganizer;
 
@@ -98,9 +99,24 @@ namespace iffnsStuff.iffnsCastleBuilder
             FirstCoordinatenParam = new MailboxLineVector2Int(name: "First coordinaten", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             SecondCoordinateParam = new MailboxLineVector2Int(name: "Second coordinate", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             HeightParam = new MailboxLineRanged(name: "Height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 5f, Min: 0.3f, DefaultValue: 1.8f);
+            RaiseToFloorParam = new MailboxLineBool(name: "Raise to floor", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: true);
             MainSideMaterialParam = new MailboxLineMaterial(name: "Main side material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
             OtherSideMaterialParam = new MailboxLineMaterial(name: "Other side material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
         }
+
+        public bool RaiseToFloor
+        {
+            get
+            {
+                return RaiseToFloorParam.Val;
+            }
+            set
+            {
+                RaiseToFloorParam.Val = value;
+                ApplyBuildParameters();
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);
@@ -163,7 +179,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BuildAllMeshes();
             }
 
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
+            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: RaiseToFloor);
 
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 

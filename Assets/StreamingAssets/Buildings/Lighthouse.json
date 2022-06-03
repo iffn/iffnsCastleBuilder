@@ -29549,6 +29549,7 @@
 					"First coordinaten": [1, 0],
 					"Second coordinate": [20, 0],
 					"Height [m]": 2.05,
+					"Raise to floor": false,
 					"Main side material": "PolyHaven-sandstone_blocks_05",
 					"Other side material": "PolyHaven-sandstone_blocks_05",
 					"Roof type": "FullAngledSquareRoof"
@@ -29559,6 +29560,7 @@
 					"First coordinaten": [21, 29],
 					"Second coordinate": [-20, 0],
 					"Height [m]": 2.05,
+					"Raise to floor": false,
 					"Main side material": "PolyHaven-sandstone_blocks_05",
 					"Other side material": "PolyHaven-sandstone_blocks_05",
 					"Roof type": "FullAngledSquareRoof"

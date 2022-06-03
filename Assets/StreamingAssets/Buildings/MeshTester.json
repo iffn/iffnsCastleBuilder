@@ -20090,6 +20090,7 @@
 					"Thickness": 0.1,
 					"Height [m]": 3,
 					"Height overshoot [m]": 0.1,
+					"Raise to floor": true,
 					"Outside material": "PolyHaven-roof_09",
 					"Inside material": "PolyHaven-old_planks_02",
 					"Wrapper material": "PolyHaven-beige_wall_001",
@@ -20104,6 +20105,7 @@
 					"Thickness": 0.1,
 					"Height [m]": 3,
 					"Height overshoot [m]": 0.1,
+					"Raise to floor": true,
 					"Outside material": "PolyHaven-roof_09",
 					"Inside material": "PolyHaven-old_planks_02",
 					"Wrapper material": "PolyHaven-beige_wall_001",
@@ -20118,6 +20120,7 @@
 					"Thickness": 0.1,
 					"Height [m]": 3,
 					"Height overshoot [m]": 0.1,
+					"Raise to floor": true,
 					"Outside material": "PolyHaven-roof_09",
 					"Inside material": "PolyHaven-old_planks_02",
 					"Wrapper material": "PolyHaven-beige_wall_001",
@@ -20132,6 +20135,7 @@
 					"Thickness": 0.1,
 					"Height [m]": 3,
 					"Height overshoot [m]": 0.1,
+					"Raise to floor": true,
 					"Outside material": "PolyHaven-roof_09",
 					"Inside material": "PolyHaven-old_planks_02",
 					"Wrapper material": "PolyHaven-beige_wall_001",
@@ -20450,6 +20454,7 @@
 					"First coordinaten": [91, 29],
 					"Second coordinate": [6, 0],
 					"Height [m]": 1.8,
+					"Raise to floor": true,
 					"Main side material": "PolyHaven-beige_wall_001",
 					"Other side material": "PolyHaven-beige_wall_001",
 					"Roof type": "FullAngledSquareRoof"
@@ -20460,6 +20465,7 @@
 					"First coordinaten": [91, 26],
 					"Second coordinate": [6, -1],
 					"Height [m]": 1.8,
+					"Raise to floor": true,
 					"Main side material": "PolyHaven-beige_wall_001",
 					"Other side material": "PolyHaven-beige_wall_001",
 					"Roof type": "FullAngledSquareRoof"
@@ -20470,6 +20476,7 @@
 					"First coordinaten": [101, 29],
 					"Second coordinate": [5, 0],
 					"Height [m]": 1.8,
+					"Raise to floor": true,
 					"Main side material": "PolyHaven-beige_wall_001",
 					"Other side material": "PolyHaven-beige_wall_001",
 					"Roof type": "HalfAngledSquareRoof"
@@ -20480,6 +20487,7 @@
 					"First coordinaten": [101, 26],
 					"Second coordinate": [5, -1],
 					"Height [m]": 1.8,
+					"Raise to floor": true,
 					"Main side material": "PolyHaven-beige_wall_001",
 					"Other side material": "PolyHaven-beige_wall_001",
 					"Roof type": "HalfAngledSquareRoof"
