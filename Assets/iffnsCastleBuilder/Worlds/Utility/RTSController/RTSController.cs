@@ -83,7 +83,7 @@ namespace iffnsStuff.iffnsUnityResources
         //Camera perspective
         public enum CameraPerspectiveType
         {
-            perpesctive,
+            walking,
             isometric,
             flying
         }
@@ -98,7 +98,7 @@ namespace iffnsStuff.iffnsUnityResources
 
                 switch (cameraPerspective)
                 {
-                    case CameraPerspectiveType.perpesctive:
+                    case CameraPerspectiveType.walking:
                         mainCamera.orthographic = false;
                         CameraMover.transform.localPosition = new Vector3(0, 0, currentCameraOffset);
                         break;
@@ -123,7 +123,7 @@ namespace iffnsStuff.iffnsUnityResources
 
             switch (cameraPerspective)
             {
-                case CameraPerspectiveType.perpesctive:
+                case CameraPerspectiveType.walking:
                     returnRay = mainCamera.ScreenPointToRay(Input.mousePosition);
                     break;
 
@@ -250,7 +250,7 @@ namespace iffnsStuff.iffnsUnityResources
 
                     switch (cameraPerspective)
                     {
-                        case CameraPerspectiveType.perpesctive:
+                        case CameraPerspectiveType.walking:
                             currentCameraOffset *= perspectiveScrollMultiplier;
                             CameraMover.transform.localPosition = new Vector3(0, 0, currentCameraOffset);
                             break;

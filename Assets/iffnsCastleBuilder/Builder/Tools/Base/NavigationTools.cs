@@ -20,6 +20,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] GameObject FloorNumberTemplate;
         [SerializeField] Slider WallHeightScaler;
         [SerializeField] VectorButton CameraWalkingIcon;
+        [SerializeField] VectorButton CameraPerspectiveIcon;
         [SerializeField] VectorButton CameraIsometricIcon;
         [SerializeField] VectorButton CameraFlyingIcon;
         [SerializeField] BlockLineType currentBlockLineType = BlockLineType.Complete;
@@ -408,6 +409,19 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             clickedCameraIcon.gameObject.SetActive(false);
 
+            if (clickedCameraIcon == CameraPerspectiveIcon)
+            {
+                CameraIsometricIcon.gameObject.SetActive(true);
+                CurrentRTSCamera.CameraPerspective = RTSController.CameraPerspectiveType.isometric;
+            }
+            else if (clickedCameraIcon == CameraIsometricIcon)
+            {
+                CameraPerspectiveIcon.gameObject.SetActive(true);
+                CurrentRTSCamera.CameraPerspective = RTSController.CameraPerspectiveType.walking;
+            }
+
+            //ToDo: Add flying camera
+            /*
             if (clickedCameraIcon == CameraWalkingIcon)
             {
                 CameraIsometricIcon.gameObject.SetActive(true);
@@ -423,6 +437,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 CameraWalkingIcon.gameObject.SetActive(true);
                 CurrentRTSCamera.CameraPerspective = RTSController.CameraPerspectiveType.perpesctive;
             }
+            */
         }
 
         //Setup
