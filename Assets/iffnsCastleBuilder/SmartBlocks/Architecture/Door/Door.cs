@@ -240,7 +240,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             foreach (TriangleMeshInfo info in DoorInfo)
             {
-                StaticMeshManager.AddTriangleInfo(info);
+                StaticMeshManager.AddTriangleInfoIfValid(info);
             }
 
             BuildAllMeshes();

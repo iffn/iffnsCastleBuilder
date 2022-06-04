@@ -265,7 +265,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             foreach (TriangleMeshInfo info in WindowInfo)
             {
-                StaticMeshManager.AddTriangleInfo(info);
+                StaticMeshManager.AddTriangleInfoIfValid(info);
             }
 
             BuildAllMeshes();

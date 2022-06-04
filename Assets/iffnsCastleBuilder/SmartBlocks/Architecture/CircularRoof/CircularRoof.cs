@@ -261,9 +261,9 @@ namespace iffnsStuff.iffnsCastleBuilder
                 RoofInside.MaterialReference = InsideMaterial;
                 BottomEdge.MaterialReference = WrapperMaterial;
 
-                StaticMeshManager.AddTriangleInfo(RoofOutside);
-                StaticMeshManager.AddTriangleInfo(RoofInside);
-                StaticMeshManager.AddTriangleInfo(BottomEdge);
+                StaticMeshManager.AddTriangleInfoIfValid(RoofOutside);
+                StaticMeshManager.AddTriangleInfoIfValid(RoofInside);
+                StaticMeshManager.AddTriangleInfoIfValid(BottomEdge);
 
 
                 if (Angle != Angles.Deg360)
@@ -271,8 +271,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                     RightEdge.MaterialReference = WrapperMaterial;
                     LeftEdge.MaterialReference = WrapperMaterial;
 
-                    StaticMeshManager.AddTriangleInfo(RightEdge);
-                    StaticMeshManager.AddTriangleInfo(LeftEdge);
+                    StaticMeshManager.AddTriangleInfoIfValid(RightEdge);
+                    StaticMeshManager.AddTriangleInfoIfValid(LeftEdge);
                 }
 
                 BuildAllMeshes();

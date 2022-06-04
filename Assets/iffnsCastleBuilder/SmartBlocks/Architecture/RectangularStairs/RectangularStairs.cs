@@ -230,15 +230,15 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BackFaceVertical.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
                 BottomFrontFace.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
 
-                StaticMeshManager.AddTriangleInfo(StepFront);
-                StaticMeshManager.AddTriangleInfo(TopStepTop);
-                StaticMeshManager.AddTriangleInfo(StepTop);
-                StaticMeshManager.AddTriangleInfo(LeftSide);
-                StaticMeshManager.AddTriangleInfo(RightSide);
-                StaticMeshManager.AddTriangleInfo(BackFaceAngle);
-                StaticMeshManager.AddTriangleInfo(BackFaceVertical);
-                StaticMeshManager.AddTriangleInfo(BottomFrontFace);
-                StaticMeshManager.AddTriangleInfo(TopCollider);
+                StaticMeshManager.AddTriangleInfoIfValid(StepFront);
+                StaticMeshManager.AddTriangleInfoIfValid(TopStepTop);
+                StaticMeshManager.AddTriangleInfoIfValid(StepTop);
+                StaticMeshManager.AddTriangleInfoIfValid(LeftSide);
+                StaticMeshManager.AddTriangleInfoIfValid(RightSide);
+                StaticMeshManager.AddTriangleInfoIfValid(BackFaceAngle);
+                StaticMeshManager.AddTriangleInfoIfValid(BackFaceVertical);
+                StaticMeshManager.AddTriangleInfoIfValid(BottomFrontFace);
+                StaticMeshManager.AddTriangleInfoIfValid(TopCollider);
 
                 BuildAllMeshes();
             }

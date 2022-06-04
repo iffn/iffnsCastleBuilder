@@ -15,7 +15,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             if (staticMesh.AllVerticesDirectly.Count == 0) return;
 
-            StaticMeshManager.AddTriangleInfo(staticMesh);
+            StaticMeshManager.AddTriangleInfoIfValid(staticMesh);
         }
 
         public void UpdateAllCradinalUVs()

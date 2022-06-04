@@ -254,9 +254,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             void FinishMeshes()
             {
-                StaticMeshManager.AddTriangleInfo(TopEndingMesh);
-                StaticMeshManager.AddTriangleInfo(ColumnMesh);
-                StaticMeshManager.AddTriangleInfo(BottomEndingMesh);
+                StaticMeshManager.AddTriangleInfoIfValid(TopEndingMesh);
+                StaticMeshManager.AddTriangleInfoIfValid(ColumnMesh);
+                StaticMeshManager.AddTriangleInfoIfValid(BottomEndingMesh);
 
                 BuildAllMeshes();
             }

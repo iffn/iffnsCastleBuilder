@@ -11434,23 +11434,6 @@
 					"Wall type": "BlockGrid"
 				},
 				{
-					"Type": "HorizontalArc",
-					"Name": "",
-					"Center position": [13, 11],
-					"Outer Radii": [-4, 4],
-					"Cutoff range": [0, 0],
-					"Wall thickness": 1,
-					"Upper indent": [0, 0],
-					"Outside material": "PolyHaven-sandstone_blocks_05",
-					"Inside material": "PolyHaven-sandstone_blocks_05",
-					"First wall material": "PolyHaven-sandstone_blocks_05",
-					"Second wall material": "PolyHaven-sandstone_blocks_05",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Floor material": "PolyHaven-wood_planks_dirt",
-					"Block type": "Wall",
-					"Edge type": "OuterGrid"
-				},
-				{
 					"Type": "CircularStair",
 					"Name": "",
 					"Positive center position": [13, 30],

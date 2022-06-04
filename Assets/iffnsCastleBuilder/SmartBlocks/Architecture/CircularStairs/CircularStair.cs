@@ -222,13 +222,13 @@ namespace iffnsStuff.iffnsCastleBuilder
                 StepTop.ActiveCollider = false;
                 StepFront.ActiveCollider = false;
 
-                StaticMeshManager.AddTriangleInfo(TopStepTop);
-                StaticMeshManager.AddTriangleInfo(StepTop);
-                StaticMeshManager.AddTriangleInfo(StepFront);
-                StaticMeshManager.AddTriangleInfo(OuterRadiiSide);
-                StaticMeshManager.AddTriangleInfo(InnerRadiiSide);
-                StaticMeshManager.AddTriangleInfo(BackFace);
-                StaticMeshManager.AddTriangleInfo(ColliderMesh);
+                StaticMeshManager.AddTriangleInfoIfValid(TopStepTop);
+                StaticMeshManager.AddTriangleInfoIfValid(StepTop);
+                StaticMeshManager.AddTriangleInfoIfValid(StepFront);
+                StaticMeshManager.AddTriangleInfoIfValid(OuterRadiiSide);
+                StaticMeshManager.AddTriangleInfoIfValid(InnerRadiiSide);
+                StaticMeshManager.AddTriangleInfoIfValid(BackFace);
+                StaticMeshManager.AddTriangleInfoIfValid(ColliderMesh);
 
                 BuildAllMeshes();
             }

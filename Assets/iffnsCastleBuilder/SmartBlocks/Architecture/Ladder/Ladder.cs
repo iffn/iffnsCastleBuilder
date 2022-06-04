@@ -159,7 +159,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             if (staticMesh == null) return;
 
-            StaticMeshManager.AddTriangleInfo(staticMesh);
+            StaticMeshManager.AddTriangleInfoIfValid(staticMesh);
         }
 
         public override void ApplyBuildParameters()

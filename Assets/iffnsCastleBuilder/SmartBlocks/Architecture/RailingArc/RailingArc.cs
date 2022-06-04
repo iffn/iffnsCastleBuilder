@@ -158,9 +158,9 @@ namespace iffnsStuff.iffnsCastleBuilder
                 arcMantleBottom.MaterialReference = BottomMaterialParam;
                 posts.MaterialReference = PostMaterialParam;
 
-                StaticMeshManager.AddTriangleInfo(arcMantleTop);
-                StaticMeshManager.AddTriangleInfo(arcMantleBottom);
-                StaticMeshManager.AddTriangleInfo(posts);
+                StaticMeshManager.AddTriangleInfoIfValid(arcMantleTop);
+                StaticMeshManager.AddTriangleInfoIfValid(arcMantleBottom);
+                StaticMeshManager.AddTriangleInfoIfValid(posts);
 
                 BuildAllMeshes();
             }

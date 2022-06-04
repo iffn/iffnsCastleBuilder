@@ -143,11 +143,11 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             void FinishMeshes()
             {
-                StaticMeshManager.AddTriangleInfo(Top);
-                StaticMeshManager.AddTriangleInfo(Wall12);
-                StaticMeshManager.AddTriangleInfo(Wall23);
-                StaticMeshManager.AddTriangleInfo(Wall31);
-                StaticMeshManager.AddTriangleInfo(Bottom);
+                StaticMeshManager.AddTriangleInfoIfValid(Top);
+                StaticMeshManager.AddTriangleInfoIfValid(Wall12);
+                StaticMeshManager.AddTriangleInfoIfValid(Wall23);
+                StaticMeshManager.AddTriangleInfoIfValid(Wall31);
+                StaticMeshManager.AddTriangleInfoIfValid(Bottom);
 
                 BuildAllMeshes();
             }

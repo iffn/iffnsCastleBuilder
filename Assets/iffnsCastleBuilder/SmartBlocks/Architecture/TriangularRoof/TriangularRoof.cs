@@ -181,9 +181,9 @@ namespace iffnsStuff.iffnsCastleBuilder
                 RoofInside.MaterialReference = InsideMaterial;
                 RoofWrapper.MaterialReference = WrapperMaterial;
 
-                StaticMeshManager.AddTriangleInfo(RoofOutside);
-                StaticMeshManager.AddTriangleInfo(RoofInside);
-                StaticMeshManager.AddTriangleInfo(RoofWrapper);
+                StaticMeshManager.AddTriangleInfoIfValid(RoofOutside);
+                StaticMeshManager.AddTriangleInfoIfValid(RoofInside);
+                StaticMeshManager.AddTriangleInfoIfValid(RoofWrapper);
 
                 BuildAllMeshes();
             }

@@ -75,7 +75,7 @@ public class TriangleMeshInfo
         {
             if (Triangles.Count == 0 || VerticesHolder.Count == 0)
             {
-                Debug.LogWarning("Error: Mesh is empty");
+                //Debug.LogWarning("Error: Mesh is empty");
                 return false; //Warning: Returning true causes nasty crash with empty meshes in MultyMeshManager which hard crashes visual studio when trying to catch in debugger while exporting
             }
 

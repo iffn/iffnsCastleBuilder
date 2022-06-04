@@ -42,9 +42,9 @@ public class MultiMeshManager : MonoBehaviour
         }   
     }
 
-    public void AddTriangleInfo(TriangleMeshInfo newInfo)
+    public void AddTriangleInfoIfValid(TriangleMeshInfo newInfo)
     {
-        if (newInfo.VerticesHolder.Count == 0) return;
+        if (!newInfo.IsValid) return;
 
         UnusedTriangleInfos.Add(newInfo);
     }

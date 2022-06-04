@@ -108,12 +108,12 @@ namespace iffnsStuff.iffnsCastleBuilder
                 LeftWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
                 TopWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
 
-                StaticMeshManager.AddTriangleInfo(FrontWall);
-                StaticMeshManager.AddTriangleInfo(BackWall);
-                StaticMeshManager.AddTriangleInfo(RightWall);
-                StaticMeshManager.AddTriangleInfo(LeftWall);
-                StaticMeshManager.AddTriangleInfo(TopWall);
-                StaticMeshManager.AddTriangleInfo(InnerArc);
+                StaticMeshManager.AddTriangleInfoIfValid(FrontWall);
+                StaticMeshManager.AddTriangleInfoIfValid(BackWall);
+                StaticMeshManager.AddTriangleInfoIfValid(RightWall);
+                StaticMeshManager.AddTriangleInfoIfValid(LeftWall);
+                StaticMeshManager.AddTriangleInfoIfValid(TopWall);
+                StaticMeshManager.AddTriangleInfoIfValid(InnerArc);
 
                 FrontWall.MaterialReference = MainMaterialParam;
                 BackWall.MaterialReference = OtherSideMaterialParam;

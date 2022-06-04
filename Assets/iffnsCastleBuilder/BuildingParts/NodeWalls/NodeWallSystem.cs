@@ -409,14 +409,14 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 capTop.Move(Vector3.up * wallHeight);
 
-                StaticMeshManager.AddTriangleInfo(firstWallInfo);
-                StaticMeshManager.AddTriangleInfo(secondWallInfo);
+                StaticMeshManager.AddTriangleInfoIfValid(firstWallInfo);
+                StaticMeshManager.AddTriangleInfoIfValid(secondWallInfo);
 
-                StaticMeshManager.AddTriangleInfo(startCap);
-                StaticMeshManager.AddTriangleInfo(endCap);
+                StaticMeshManager.AddTriangleInfoIfValid(startCap);
+                StaticMeshManager.AddTriangleInfoIfValid(endCap);
 
-                StaticMeshManager.AddTriangleInfo(capTop);
-                StaticMeshManager.AddTriangleInfo(capBottom);
+                StaticMeshManager.AddTriangleInfoIfValid(capTop);
+                StaticMeshManager.AddTriangleInfoIfValid(capBottom);
             }
 
             BuildAllMeshes();

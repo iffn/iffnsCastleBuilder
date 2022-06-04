@@ -634,8 +634,24 @@ public static class MeshGenerator
                 return new TriangleMeshInfo();
             }
 
-            int offset1 = returnValue.VerticesHolder.Count;
-            int offset2 = firstLine.Count + returnValue.VerticesHolder.Count;
+            if(firstLine.Count == 1)
+            {
+                if (secondLine.Count == 1)
+                {
+                    Debug.LogWarning("Error with MeshGenerator: Both lines have a length of 1");
+
+                    return new TriangleMeshInfo();
+                }
+
+                return KnitLines(point: firstLine.Vertices[0], line: secondLine, isClosed: isClosed);
+            }
+            else if(secondLine.Count == 1)
+            {
+                return KnitLines(point: secondLine.Vertices[0], line: firstLine, isClosed: isClosed);
+            }
+
+            int offset1 = 0;
+            int offset2 = firstLine.Count;
 
             returnValue.VerticesHolder.Add(firstLine);
             returnValue.VerticesHolder.Add(secondLine);

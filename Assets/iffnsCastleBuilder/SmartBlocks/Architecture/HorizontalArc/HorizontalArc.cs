@@ -320,12 +320,12 @@ namespace iffnsStuff.iffnsCastleBuilder
                 XWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.transform);
                 ZWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.transform);
 
-                StaticMeshManager.AddTriangleInfo(OuterArc);
-                StaticMeshManager.AddTriangleInfo(InnerArc);
-                StaticMeshManager.AddTriangleInfo(Floor);
-                StaticMeshManager.AddTriangleInfo(Ceiling);
-                StaticMeshManager.AddTriangleInfo(XWall);
-                StaticMeshManager.AddTriangleInfo(ZWall);
+                StaticMeshManager.AddTriangleInfoIfValid(OuterArc);
+                StaticMeshManager.AddTriangleInfoIfValid(InnerArc);
+                StaticMeshManager.AddTriangleInfoIfValid(Floor);
+                StaticMeshManager.AddTriangleInfoIfValid(Ceiling);
+                StaticMeshManager.AddTriangleInfoIfValid(XWall);
+                StaticMeshManager.AddTriangleInfoIfValid(ZWall);
 
                 BuildAllMeshes();
             }
@@ -362,7 +362,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             Vector2 CutoffRangeRotated;
             Vector2 IndentRotated;
-
 
             if (ModificationNodeOrganizer.Orientation.QuarterOrientation == GridOrientation.GridQuarterOrientations.XPosZPos || ModificationNodeOrganizer.Orientation.QuarterOrientation == GridOrientation.GridQuarterOrientations.XNegZNeg)
             {
@@ -612,16 +611,22 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             void CreateOuterGrid()
             {
+                //Inner arc
                 VerticesHolder innerArc = CreateCutoffArc(radii: size, cutoffRange: CutoffRangeRotated);
-                OuterArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: innerArc, offset: Vector3.up * wallHeight, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
+                InnerArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: innerArc, offset: Vector3.up * wallHeight, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
 
+                //Start and end point
                 Vector3 currentStartPoint = innerArc.Vertices[^1];
                 Vector3 currentEndPoint = currentStartPoint;
+                Vector3 endPoint = innerArc.Vertices[0];
 
                 float offset = currentStartPoint.z % BlockSize;
 
                 VerticesHolder ladderPoints = new();
-                if (!MathHelper.FloatIsZero(offset))
+
+                bool hasStartCapWall = !(MathHelper.FloatIsZero(offset) || MathHelper.FloatIsZero(offset - BlockSize));
+
+                if (hasStartCapWall)
                 {
                     currentEndPoint = currentStartPoint + Vector3.forward * (BlockSize - offset);
                     ZWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentEndPoint, secondClockwiseFloorPoint: currentStartPoint, wallHeight: wallHeight, offset: Vector3.zero));
@@ -630,11 +635,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
 
                 int downSteps = Mathf.RoundToInt((currentStartPoint.z - CutoffRangeRotated.y) / BlockSize);
-
+                int rightSteps = Mathf.RoundToInt((endPoint.x - CutoffRangeRotated.x) / BlockSize);
 
                 int maxLoops = 1000;
 
-                while (downSteps > 0)
+                while (downSteps > 0 /*&& rightSteps> 0*/)
                 {
                     if (maxLoops-- == 0)
                     {
@@ -643,34 +648,34 @@ namespace iffnsStuff.iffnsCastleBuilder
                     }
 
                     //Step right until down is inside
-                    while (true)
+                    while (/*rightSteps > 0*/ true)
                     {
                         Vector3 downPoint = currentStartPoint + Vector3.back * BlockSize;
 
-                        if (scaledRadius(point: downPoint, size: size) > 1)
-                        {
-                            break;
-                        }
-                        else
+                        float currentScaledRadius = scaledRadius(point: downPoint, size: size);
+
+                        if (currentScaledRadius < 1 && !MathHelper.FloatIsZero(currentScaledRadius - 1))
                         {
                             currentEndPoint = currentStartPoint + Vector3.right * BlockSize;
+                            rightSteps--;
                             XWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentEndPoint, secondClockwiseFloorPoint: currentStartPoint, wallHeight: wallHeight, offset: Vector3.zero));
                             ladderPoints.Add(currentEndPoint);
                             currentStartPoint = currentEndPoint;
                         }
+                        else
+                        {
+                            break;
+                        }
                     }
-
 
                     //Step down until right is inside
                     while (downSteps > 0)
                     {
                         Vector3 backPoint = currentStartPoint + Vector3.back * BlockSize;
 
-                        if (scaledRadius(point: backPoint, size: size) < 1)
-                        {
-                            break;
-                        }
-                        else
+                        float currentScaledRadius = scaledRadius(point: backPoint, size: size);
+
+                        if (currentScaledRadius > 1 || MathHelper.FloatIsZero(currentScaledRadius - 1))
                         {
                             currentEndPoint = backPoint;
                             downSteps--;
@@ -678,15 +683,27 @@ namespace iffnsStuff.iffnsCastleBuilder
                             ladderPoints.Add(currentEndPoint);
                             currentStartPoint = currentEndPoint;
                         }
+                        else
+                        {
+                            break;
+                        }
                     }
                 }
 
-                if (!MathHelper.FloatIsZero((currentEndPoint - innerArc.Vertices[0]).magnitude))
+                bool hasEndCapWall = !MathHelper.FloatIsZero((currentEndPoint - innerArc.Vertices[0]).magnitude);
+
+                if (hasEndCapWall)
                 {
                     XWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: innerArc.Vertices[0], secondClockwiseFloorPoint: currentEndPoint, wallHeight: wallHeight, offset: Vector3.zero));
                 }
 
                 ladderPoints.Reverse();
+
+                if (MathHelper.FloatIsZero((ladderPoints.Vertices[0] - innerArc.Vertices[0]).magnitude))
+                    ladderPoints.Remove(0);
+                if(MathHelper.FloatIsZero((ladderPoints.Vertices[^1] - innerArc.Vertices[^1]).magnitude))
+                    ladderPoints.Remove(ladderPoints.Count - 1);
+
                 Floor = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(firstLine: innerArc, secondLine: ladderPoints, isClosed: false);
                 Ceiling = Floor.CloneFlipped;
                 Floor.Move(Vector3.up * wallHeight);
@@ -722,163 +739,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return returnValue;
             }
 
-            /*
-            VerticesHolder CreateArc(Vector2 radii, float startingAngleDeg, float endingAngleDeg)
-            {
-                VerticesHolder returnValue;
-
-                float betweenAngle = endingAngleDeg - startingAngleDeg;
-                returnValue = MeshGenerator.Lines.ArcAroundY(radius: 1, angleDeg: betweenAngle, numberOfEdges: QuarterArcVertecies);
-                returnValue.Rotate(Quaternion.Euler(Vector3.up * (-90 + endingAngleDeg)));
-                returnValue.Scale(new Vector3(radii.x, 0, radii.y));
-
-                return returnValue;
-            }
-            */
-
-            /*
-            VerticesHolder outerLowerArc = null;
-            VerticesHolder outerUpperArc = null;
-            VerticesHolder innerLowerArc = null;
-            VerticesHolder innerUpperArc = null;
-
-            TriangleMeshInfo CreateArc(bool outerFace, Vector2 radii, float startingAngle, float endingAngle, ref VerticesHolder lowerArc, ref VerticesHolder upperArc)
-            {
-                float betweenAngle = endingAngle - startingAngle;
-                //int numberOfEdges = Mathf.RoundToInt(90f / betweenAngle * QuarterArcVertecies);
-                int numberOfEdges = QuarterArcVertecies;
-
-                lowerArc = MeshGenerator.Lines.Arc(radius: 1, angleDeg: betweenAngle, numberOfEdges: numberOfEdges);
-
-                lowerArc.Rotate(Quaternion.Euler(90, 0, 0));
-                lowerArc.Rotate(Quaternion.Euler(0, -startingAngle, 0));
-
-                upperArc = lowerArc.Clone;
-
-                lowerArc.Scale(new Vector3(radii.x, 0, radii.y));
-                upperArc.Scale(new Vector3(radii.x - UpperIndent.x * LinkedFloor.BlockSize, 0, radii.y - UpperIndent.y * LinkedFloor.BlockSize));
-                upperArc.Move(Vector3.up * wallHeight);
-
-                if (outerFace)
-                {
-                    return MeshGenerator.MeshesFromLines.KnitLines(firstLine: upperArc, secondLine: lowerArc, isClosed: false, isSealed: false, smoothTransition: true);
-                }
-                else
-                {
-                    return MeshGenerator.MeshesFromLines.KnitLines(firstLine: lowerArc, secondLine: upperArc, isClosed: false, isSealed: false, smoothTransition: true);
-                }
-
-            }
-
-            //failed = true;
-
-            Vector2 radii;
-            Vector2 relativeCutoffRange;
-            float startingAngle;
-            float endingAngle;
-            bool noInnerRadius;
-
-            //Outer arc
-
-            if(WallThickness == 0)
-            {
-                radii = size + Vector2.one * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness;
-            }
-            else
-            {
-                radii = size;
-            }
-
-
-            if(MathHelper.FloatIsZero(radii.x) || MathHelper.FloatIsZero(radii.y))
-            {
-                failed = true;
-                return;
-            }
-
-            relativeCutoffRange = new Vector2(
-                CutoffRangeRelative.x * LinkedFloor.BlockSize / radii.x,
-                CutoffRangeRelative.y * LinkedFloor.BlockSize / radii.y
-                );
-
-            startingAngle = Mathf.Asin(relativeCutoffRange.y) * Mathf.Rad2Deg;
-            endingAngle = 90f - Mathf.Asin(relativeCutoffRange.x) * Mathf.Rad2Deg;
-            noInnerRadius = startingAngle > endingAngle;
-
-            if (float.IsNaN(startingAngle))
-            {
-                failed = true;
-                return;
-            }
-
-            if (noInnerRadius)
-            {
-                failed = true;
-                return;
-            }
-
-            OuterRadius.Add(CreateArc(outerFace: true, radii: radii, startingAngle: startingAngle, endingAngle: endingAngle, lowerArc: ref outerLowerArc, upperArc: ref outerUpperArc));
-            OuterRadius.MoveAllUVs(Vector2.up * LinkedFloor.LinkedBuildingController.transform.InverseTransformDirection(transform.position).y);
-
-            noInnerRadius = gridSize.x <= WallThickness || gridSize.y <= WallThickness;
-
-            if(!noInnerRadius)
-            {
-                //Inner arc
-                if (WallThickness == 0)
-                {
-                    radii = size - Vector2.one * LinkedFloor.CurrentNodeWallSystem.HalfWallThickness;
-                }
-                else
-                {
-                    radii = size - Vector2.one * BlockSize * WallThickness;
-                }
-
-                relativeCutoffRange = new Vector2(
-                    CutoffRangeRelative.x * LinkedFloor.BlockSize / radii.x,
-                    CutoffRangeRelative.y * LinkedFloor.BlockSize / radii.y
-                    );
-                startingAngle = Mathf.Asin(relativeCutoffRange.y) * Mathf.Rad2Deg;
-                endingAngle = Mathf.Acos(relativeCutoffRange.x) * Mathf.Rad2Deg;
-
-                if (float.IsNaN(startingAngle))
-                {
-                    failed = true;
-                    return;
-                }
-
-                InnerRadius.Add(CreateArc(outerFace: false, radii: radii, startingAngle: startingAngle, endingAngle: endingAngle, lowerArc: ref innerLowerArc, upperArc: ref innerUpperArc));
-                InnerRadius.MoveAllUVs(Vector2.up * LinkedFloor.LinkedBuildingController.transform.InverseTransformDirection(transform.position).y);
-
-
-
-                ZWall.Add(MeshGenerator.MeshesFromPoints.MeshFrom4Points(p0: innerLowerArc.Vertices[0], p1: innerUpperArc.Vertices[0], p2: outerUpperArc.Vertices[0], p3: outerLowerArc.Vertices[0]));
-                XWall.Add(MeshGenerator.MeshesFromPoints.MeshFrom4Points(p0: innerLowerArc.Vertices[innerLowerArc.Vertices.Count - 1], p1: outerLowerArc.Vertices[outerLowerArc.Vertices.Count - 1], p2: outerUpperArc.Vertices[outerUpperArc.Vertices.Count - 1], p3: innerUpperArc.Vertices[innerUpperArc.Vertices.Count - 1]));
-
-
-
-                Floor.Add(MeshGenerator.MeshesFromLines.KnitLines(firstLine: innerUpperArc, secondLine: outerUpperArc, isClosed: false, isSealed: false, smoothTransition: true));
-                Ceiling.Add(MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerLowerArc, secondLine: innerLowerArc, isClosed: false, isSealed: false, smoothTransition: true));
-            }
-            else
-            {
-                ZWall.Add(MeshGenerator.MeshesFromPoints.MeshFrom4Points(p0: Vector3.zero, p1: Vector3.up * wallHeight, p2: outerUpperArc.Vertices[0], p3: outerLowerArc.Vertices[0]));
-                XWall.Add(MeshGenerator.MeshesFromPoints.MeshFrom4Points(p0: Vector3.zero, p1: outerLowerArc.Vertices[outerLowerArc.Vertices.Count - 1], p2: outerUpperArc.Vertices[outerUpperArc.Vertices.Count - 1], p3: Vector3.up * wallHeight));
-
-                TriangleMeshInfo topFace = MeshGenerator.MeshesFromLines.KnitLines(point: new Vector3(CutoffRange.x * BlockSize, wallHeight, CutoffRange.y * BlockSize), line: outerUpperArc, isClosed: false);
-                TriangleMeshInfo bottomFace = MeshGenerator.MeshesFromLines.KnitLines(point: new Vector3(CutoffRange.x, 0, CutoffRange.y) * BlockSize, line: outerLowerArc, isClosed: false);
-                bottomFace.FlipTriangles();
-
-                Floor = topFace;
-                Ceiling = bottomFace;
-            }
-
-            ZWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-            XWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-            Floor.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-            Ceiling.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-
-            */
             FinishMesh();
         }
 
