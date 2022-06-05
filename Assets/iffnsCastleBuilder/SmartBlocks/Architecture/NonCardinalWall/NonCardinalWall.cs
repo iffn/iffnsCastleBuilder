@@ -172,7 +172,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         //Generate wall frorm parameters
         public override void ApplyBuildParameters()
         {
-            failed = false;
+            Failed = false;
 
             TriangleMeshInfo TopCap = new TriangleMeshInfo();
             List<TriangleMeshInfo> Walls = new List<TriangleMeshInfo>();
@@ -202,7 +202,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
-            if (failed) return;
+            if (Failed) return;
 
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
             Vector2Int gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
@@ -211,7 +211,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 || gridSize.x == 1 && gridSize.y == 2
                 || gridSize.x == 2 && gridSize.y == 1)
             {
-                failed = true;
+                Failed = true;
                 return;
             }
 

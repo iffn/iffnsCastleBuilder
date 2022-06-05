@@ -208,7 +208,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         Vector2Int previousCoordinate = activeGridNode.AbsoluteCoordinate;
                         activeGridNode.AbsoluteCoordinate = newCoordinate;
 
-                        if (activeGridNode.LinkedOnFloorObject.failed)
+                        if (activeGridNode.LinkedOnFloorObject.Failed)
                         {
                             activeGridNode.AbsoluteCoordinate = previousCoordinate;
                         }

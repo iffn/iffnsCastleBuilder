@@ -238,7 +238,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            failed = false;
+            Failed = false;
 
             TriangleMeshInfo RoofOutside;
             TriangleMeshInfo RoofInside;
@@ -279,11 +279,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: RaiseToFloor);
-            if (failed) return;
+            if (Failed) return;
 
             if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
             {
-                failed = true;
+                Failed = true;
                 return;
             }
 

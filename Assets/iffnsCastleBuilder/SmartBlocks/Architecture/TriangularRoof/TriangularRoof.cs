@@ -169,7 +169,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            failed = false;
+            Failed = false;
 
             TriangleMeshInfo RoofOutside;
             TriangleMeshInfo RoofInside;
@@ -190,7 +190,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
 
-            if (failed) return;
+            if (Failed) return;
 
             //Outer roof without height
             List<Vector3> outerPoints = new List<Vector3>()

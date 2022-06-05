@@ -297,7 +297,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            failed = false;
+            Failed = false;
 
             TriangleMeshInfo OuterArc = new TriangleMeshInfo();
             TriangleMeshInfo InnerArc = new TriangleMeshInfo();
@@ -332,7 +332,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
 
-            if (failed) return;
+            if (Failed) return;
 
             //Get basic sizes
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
@@ -356,7 +356,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Check validity
             if (size.x == 0 || size.y == 0 || CutoffRange.x >= OuterRadiiAbsolute.x || CutoffRange.y >= OuterRadiiAbsolute.y)
             {
-                failed = true;
+                Failed = true;
                 return;
             }
 
@@ -405,7 +405,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     break;
             }
 
-            if (failed)
+            if (Failed)
             {
                 return;
             }
@@ -423,7 +423,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (lowerArc == null || upperArc == null)
                 {
-                    failed = true;
+                    Failed = true;
                     Debug.Log("Horizontal arc failed since Cutoff range is too large");
                     return;
                 }
@@ -491,7 +491,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (lowerOuterArc == null || upperOuterArc == null)
                 {
-                    failed = true;
+                    Failed = true;
                     return;
                 }
 

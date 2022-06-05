@@ -84,4 +84,61 @@ public static class MathHelper
     {
         return new Vector3(vec1.x * vec2.x, vec1.y * vec2.y, vec1.z * vec2.z);
     }
+
+    public enum Vector2Axis
+    {
+        x,
+        y
+    }
+
+    public enum Vector3Axis
+    {
+        x,
+        y,
+        z
+    }
+
+    public static Vector2 ChangeVectorValue(Vector2 vector, Vector2Axis axis, float newValue)
+    {
+        switch (axis)
+        {
+            case Vector2Axis.x:
+                return new Vector2(newValue, vector.y);
+            case Vector2Axis.y:
+                return new Vector2(vector.x, newValue);
+            default:
+                Debug.Log("Error, axis type unknown");
+                return vector;
+        }
+    }
+
+    public static Vector2Int ChangeVectorValue(Vector2Int vector, Vector2Axis axis, int newValue)
+    {
+        switch (axis)
+        {
+            case Vector2Axis.x:
+                return new Vector2Int(newValue, vector.y);
+            case Vector2Axis.y:
+                return new Vector2Int(vector.x, newValue);
+            default:
+                Debug.Log("Error, axis type unknown");
+                return vector;
+        }
+    }
+
+    public static Vector3 ChangeVectorValue(Vector3 vector, Vector3Axis axis, float newValue)
+    {
+        switch (axis)
+        {
+            case Vector3Axis.x:
+                return new Vector3(newValue, vector.y, vector.z);
+            case Vector3Axis.y:
+                return new Vector3(vector.x, newValue, vector.z);
+            case Vector3Axis.z:
+                return new Vector3(vector.x, vector.y, newValue);
+            default:
+                Debug.Log("Error, axis type unknown");
+                return vector;
+        }
+    }
 }

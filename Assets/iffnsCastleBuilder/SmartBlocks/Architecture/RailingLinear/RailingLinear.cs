@@ -139,18 +139,18 @@ namespace iffnsStuff.iffnsCastleBuilder
             UnmanagedMeshes.Add(TopBorder);
             UnmanagedMeshes.Add(BottomBorder);
 
-            failed = false;
+            Failed = false;
 
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
 
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
             Vector2 gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
 
-            if (failed) return;
+            if (Failed) return;
 
             if (gridSize.y == 0)
             {
-                failed = true;
+                Failed = true;
                 return;
             }
 

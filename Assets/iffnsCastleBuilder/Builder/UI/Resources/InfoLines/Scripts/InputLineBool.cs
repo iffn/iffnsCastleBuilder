@@ -42,9 +42,24 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void ChangeBoolLineValue(bool newValue)
         {
+            bool previousValue = boolLine.Val;
+
             boolLine.Val = newValue;
 
-            if (lineOwner != null) lineOwner.ApplyBuildParameters();
+            if (lineOwner != null)
+            {
+                bool previouslyFalied = lineOwner.Failed;
+
+                lineOwner.ApplyBuildParameters();
+
+                if (!previouslyFalied && lineOwner.Failed)
+                {
+                    InputToggle.isOn = previousValue;
+                    
+                    boolLine.Val = previousValue;
+                    lineOwner.ApplyBuildParameters();
+                }
+            }
 
             RunAllAdditionalCalls();
         }

@@ -71,7 +71,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (MathHelper.FloatIsZero(area))
             {
-                linkedObject.failed = true;
+                linkedObject.Failed = true;
                 return;
             }
 
@@ -81,7 +81,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (!(firstOnGrid && secondOnGrid && thirdNode && thirdOnGrid))
             {
-                linkedObject.failed = true;
+                linkedObject.Failed = true;
                 return;
             }
 
@@ -94,7 +94,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (MathHelper.FloatIsZero(secondAngle - thirdAngle))
             {
-                linkedObject.failed = true;
+                linkedObject.Failed = true;
                 return;
             }
 

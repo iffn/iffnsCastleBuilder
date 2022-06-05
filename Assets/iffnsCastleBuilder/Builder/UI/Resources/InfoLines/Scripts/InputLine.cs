@@ -96,9 +96,23 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void ChangeRangedLineValue(string newString)
         {
+            float previousValue = rangedLine.Val;
+
             rangedLine.Val = float.Parse(newString);
 
-            if (lineOwner != null) lineOwner.ApplyBuildParameters();
+            if(lineOwner != null)
+            {
+                bool previouslyFalied = lineOwner.Failed;
+
+                lineOwner.ApplyBuildParameters();
+
+                if (!previouslyFalied && lineOwner.Failed)
+                {
+                    InputField.text = previousValue.ToString();
+                    rangedLine.Val = previousValue;
+                    lineOwner.ApplyBuildParameters();
+                }
+            }
 
             RunAllAdditionalCalls();
         }

@@ -99,10 +99,10 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            failed = false;
+            Failed = false;
 
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
-            if (failed) return;
+            if (Failed) return;
 
             CurrentTableBase.ApplyBuildParameters(ModificationNodeOrganizer.ObjectOrientationSize);
         }

@@ -37,18 +37,45 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void ChangeXValue(string value)
         {
-            currentVector2IntLine.Val = new Vector2Int(int.Parse(value), currentVector2IntLine.Val.y);
-
-            if (lineOwner != null) lineOwner.ApplyBuildParameters();
-
-            RunAllAdditionalCalls();
+            ChangeValueIfItWorks(axis: MathHelper.Vector2Axis.x, newValue: int.Parse(value));
         }
 
         public void ChangeYValue(string value)
         {
-            currentVector2IntLine.Val = new Vector2Int(currentVector2IntLine.Val.x, int.Parse(value));
+            ChangeValueIfItWorks(axis: MathHelper.Vector2Axis.y, newValue: int.Parse(value));
+        }
 
-            if (lineOwner != null) lineOwner.ApplyBuildParameters();
+        void ChangeValueIfItWorks(MathHelper.Vector2Axis axis, int newValue)
+        {
+            Vector2Int previousValue = currentVector2IntLine.Val;
+
+            currentVector2IntLine.Val = MathHelper.ChangeVectorValue(vector: currentVector2IntLine.Val, axis: axis, newValue: newValue);
+
+            if (lineOwner != null)
+            {
+                bool previouslyFalied = lineOwner.Failed;
+
+                lineOwner.ApplyBuildParameters();
+
+                if (!previouslyFalied && lineOwner.Failed)
+                {
+                    switch (axis)
+                    {
+                        case MathHelper.Vector2Axis.x:
+                            InputFieldX.text = previousValue.x.ToString();
+                            break;
+                        case MathHelper.Vector2Axis.y:
+                            InputFieldY.text = previousValue.y.ToString();
+                            break;
+                        default:
+                            Debug.LogWarning("Error: Unknown axis type");
+                            break;
+                    }
+
+                    currentVector2IntLine.Val = previousValue;
+                    lineOwner.ApplyBuildParameters();
+                }
+            }
 
             RunAllAdditionalCalls();
         }

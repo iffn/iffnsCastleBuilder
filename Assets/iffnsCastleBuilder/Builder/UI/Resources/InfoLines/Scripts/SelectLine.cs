@@ -11,7 +11,7 @@ namespace iffnsStuff.iffnsCastleBuilder
     {
         public Dropdown DropdownMenu;
 
-        MailboxLineDistinctNamed stringLine;
+        MailboxLineDistinctNamed distinctLine;
         IBaseObject lineOwner;
 
         // Use this for initialization
@@ -39,7 +39,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void SetUp(MailboxLineDistinctNamed stringLine, IBaseObject lineOwner, List<DelegateLibrary.VoidFunction> additionalCalls = null)
         {
-            this.stringLine = stringLine;
+            this.distinctLine = stringLine;
             this.lineOwner = lineOwner;
             //this.controller = controller;
 
@@ -57,9 +57,24 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void ChangeDistinctNamedLineValue(int newValue)
         {
-            stringLine.Val = newValue;
+            int previousValue = distinctLine.Val;
 
-            if (lineOwner != null) lineOwner.ApplyBuildParameters();
+            distinctLine.Val = newValue;
+
+            if (lineOwner != null)
+            {
+                bool previouslyFalied = lineOwner.Failed;
+
+                lineOwner.ApplyBuildParameters();
+
+                if (!previouslyFalied && lineOwner.Failed)
+                {
+                    DropdownMenu.value = previousValue;
+
+                    distinctLine.Val = previousValue;
+                    lineOwner.ApplyBuildParameters();
+                }
+            }
 
             RunAllAdditionalCalls();
         }

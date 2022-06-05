@@ -187,7 +187,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            failed = false;
+            Failed = false;
 
             ModificationNodeOrganizer.OrientationType = WallType;
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
@@ -197,7 +197,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (gridSize.y == 0)
             {
-                failed = true;
+                Failed = true;
                 return;
             }
 

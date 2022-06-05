@@ -152,7 +152,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (!(firstOnGrid && secondOnGrid))
             {
-                linkedObject.failed = true;
+                linkedObject.Failed = true;
                 return;
             }
 

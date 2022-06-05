@@ -144,7 +144,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                     CurrentOnFloorObject.ApplyBuildParameters();
 
-                    if (!workedPreviously) workedPreviously = !CurrentOnFloorObject.failed;
+                    if (!workedPreviously) workedPreviously = !CurrentOnFloorObject.Failed;
                 }
             }
             else if (Input.GetMouseButton(0))
@@ -158,7 +158,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 //Revert if it worked previously and failed
                 if (workedPreviously)
                 {
-                    if (CurrentOnFloorObject.failed)
+                    if (CurrentOnFloorObject.Failed)
                     {
                         SetSecondPosition(previousEndPosition);
                     }
@@ -169,7 +169,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
                 else
                 {
-                    if (!CurrentOnFloorObject.failed)
+                    if (!CurrentOnFloorObject.Failed)
                     {
                         workedPreviously = true;
                         previousEndPosition = newEndPosition;
@@ -186,7 +186,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 if (CurrentOnFloorObject != null)
                 {
-                    if (!CurrentOnFloorObject.failed)
+                    if (!CurrentOnFloorObject.Failed)
                     {
                         CurrentOnFloorObject.HideModificationNodes();
                         CurrentOnFloorObject.ColliderActivationState = true;

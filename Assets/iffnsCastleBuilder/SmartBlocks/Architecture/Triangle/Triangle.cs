@@ -133,7 +133,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            failed = false;
+            Failed = false;
 
             TriangleMeshInfo Top = new TriangleMeshInfo();
             TriangleMeshInfo Wall12 = new TriangleMeshInfo();
@@ -154,7 +154,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
 
-            if (failed) return;
+            if (Failed) return;
 
             float height;
 

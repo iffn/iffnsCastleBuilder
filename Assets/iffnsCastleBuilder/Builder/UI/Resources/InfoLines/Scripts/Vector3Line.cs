@@ -44,27 +44,53 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void ChangeXValue(string value)
         {
-            currentVector3Line.Val = new Vector3(float.Parse(value), currentVector3Line.Val.y, currentVector3Line.Val.z);
-
-            if (lineOwner != null) lineOwner.ApplyBuildParameters();
-
-            RunAllAdditionalCalls();
+            ChangeValueIfItWorks(axis: MathHelper.Vector3Axis.x, newValue: float.Parse(value));
         }
 
         public void ChangeYValue(string value)
         {
-            currentVector3Line.Val = new Vector3(currentVector3Line.Val.x, float.Parse(value), currentVector3Line.Val.z); ;
-
-            if (lineOwner != null) lineOwner.ApplyBuildParameters();
-
-            RunAllAdditionalCalls();
+            ChangeValueIfItWorks(axis: MathHelper.Vector3Axis.y, newValue: float.Parse(value));
         }
 
         public void ChangeZValue(string value)
         {
-            currentVector3Line.Val = new Vector3(currentVector3Line.Val.x, currentVector3Line.Val.y, float.Parse(value));
+            ChangeValueIfItWorks(axis: MathHelper.Vector3Axis.z, newValue: float.Parse(value));
+        }
 
-            if (lineOwner != null) lineOwner.ApplyBuildParameters();
+        void ChangeValueIfItWorks(MathHelper.Vector3Axis axis, float newValue)
+        {
+            Vector3 previousValue = currentVector3Line.Val;
+
+            currentVector3Line.Val = MathHelper.ChangeVectorValue(vector: currentVector3Line.Val, axis: axis, newValue: newValue);
+
+            if (lineOwner != null)
+            {
+                bool previouslyFalied = lineOwner.Failed;
+
+                lineOwner.ApplyBuildParameters();
+
+                if (!previouslyFalied && lineOwner.Failed)
+                {
+                    switch (axis)
+                    {
+                        case MathHelper.Vector3Axis.x:
+                            InputFieldX.text = previousValue.x.ToString();
+                            break;
+                        case MathHelper.Vector3Axis.y:
+                            InputFieldY.text = previousValue.y.ToString();
+                            break;
+                        case MathHelper.Vector3Axis.z:
+                            InputFieldZ.text = previousValue.z.ToString();
+                            break;
+                        default:
+                            Debug.LogWarning("Error: Unknown axis type");
+                            break;
+                    }
+
+                    currentVector3Line.Val = previousValue;
+                    lineOwner.ApplyBuildParameters();
+                }
+            }
 
             RunAllAdditionalCalls();
         }

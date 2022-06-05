@@ -107,16 +107,16 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            failed = false;
+            Failed = false;
 
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
-            if (failed) return;
+            if (Failed) return;
 
             Vector2Int gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
 
             if (gridSize.x == 0)
             {
-                failed = true;
+                Failed = true;
                 return;
             }
 

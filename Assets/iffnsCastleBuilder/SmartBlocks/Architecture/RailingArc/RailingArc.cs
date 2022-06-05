@@ -129,11 +129,11 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            failed = false;
+            Failed = false;
 
             ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
 
-            if (failed) return;
+            if (Failed) return;
 
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
             Vector2 gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
@@ -142,7 +142,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 BuildAllMeshes();
 
-                failed = true;
+                Failed = true;
                 return;
             }
 
