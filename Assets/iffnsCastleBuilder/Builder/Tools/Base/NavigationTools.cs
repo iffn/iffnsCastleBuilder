@@ -16,6 +16,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] GameObject FloorNumberHolder;
         [SerializeField] int BlockLineRadius = 3;
         [SerializeField] GameObject BlockLineHolder;
+        [SerializeField] GameObject DimensionInfo;
         [SerializeField] LineRenderer BlockLineTemplate;
         [SerializeField] GameObject FloorNumberTemplate;
         [SerializeField] Slider WallHeightScaler;
@@ -185,6 +186,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 showBlockLinesOnCurrentFloor = value;
                 BlockLineHolder.SetActive(value);
+                DimensionInfo.SetActive(value);
                 BlockLineButton.Highlight = value;
                 UpdateBlockLines();
             }
@@ -257,6 +259,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             BlockLineHolder.transform.position = CurrentBuilding.CurrentFloorObject.transform.position;
             BlockLineHolder.transform.rotation = CurrentBuilding.CurrentFloorObject.transform.rotation;
             BlockLineHolder.transform.position += Vector3.up * (CurrentBuilding.CurrentFloorObject.BottomFloorHeight + 0.01f);
+            DimensionInfo.transform.position = BlockLineHolder.transform.position;
         }
 
         void ShowBlockLinesAroundFocus(VirtualBlock focusBlock)
@@ -560,6 +563,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             if (playerPositioningActive)
             {
                 PositionPlayer();
+            }
+
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                DimensionInfo.SetActive(!DimensionInfo.activeSelf);
             }
         }
 
