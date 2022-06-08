@@ -222,12 +222,19 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             base.ApplyBuildParameters();
 
+            //Check validity
+            if (Failed)
+            {
+                return;
+            }
+
             if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
             {
                 Failed = true;
                 return;
             }
 
+            //Define mesh
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
             switch (RoofType)

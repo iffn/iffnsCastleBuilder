@@ -179,7 +179,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             OuterRadiiParam = new MailboxLineVector2Int(name: "Outer Radii", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             EdgesBetweenParam = new MailboxLineDistinctUnnamed(name: "Edges between", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 16, Min: 0, DefaultValue: 8);
             ThicknessParam = new MailboxLineRanged(name: "Thickness", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1f / 3, Min: 0.001f, DefaultValue: 0.1f);
-            HeightParam = new MailboxLineRanged(name: "Height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 10f, Min: 1f, DefaultValue: 3f);
+            HeightParam = new MailboxLineRanged(name: "Height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 10f, Min: 1f, DefaultValue: 2f);
             HeightOvershootParam = new MailboxLineRanged(name: "Height overshoot [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1, Min: 0, DefaultValue: 0.1f);
             RaiseToFloorParam = new MailboxLineBool(name: "Raise to floor", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: true);
 
@@ -233,8 +233,21 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            Failed = false;
+            base.ApplyBuildParameters();
 
+            //Check validity
+            if (Failed)
+            {
+                return;
+            }
+
+            if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
+            {
+                Failed = true;
+                return;
+            }
+
+            //Define mesh
             TriangleMeshInfo RoofOutside;
             TriangleMeshInfo RoofInside;
             TriangleMeshInfo BottomEdge;
@@ -273,8 +286,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BuildAllMeshes();
             }
 
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: RaiseToFloor);
-            if (Failed) return;
 
             if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
             {
@@ -346,7 +357,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                 uvXPoints.Add(outerCircumence);
             }
 
-            float uvCircumfence = Mathf.Round(outerCircumence);
+            //float uvCircumfence = Mathf.Round(outerCircumence);
+            float uvCircumfence = outerCircumence * 0.75f; //Slight multiplication to reduce distortion
 
             if (uvCircumfence < 1) uvCircumfence = 1;
 
@@ -365,7 +377,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             Circles.Add(outerLineCone);
 
-            float uvYOffset = (Mathf.Sqrt(Height * Height + OuterRadii.x * OuterRadii.x) + Mathf.Sqrt(Height * Height + OuterRadii.y * OuterRadii.y)) * 0.5f / 3;
+            float uvYOffset = (Mathf.Sqrt(Height * Height + OuterRadii.x * OuterRadii.x) + Mathf.Sqrt(Height * Height + OuterRadii.y * OuterRadii.y)) * 0.5f / verticalSteps;
             List<Vector2> UVs = new();
 
             foreach (float x in uvXPoints)
@@ -380,7 +392,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 nextLine.Move(heightRatio * i * Height * Vector3.up);
                 Circles.Add(nextLine);
 
-                float heigh = uvYOffset * (i);
+                float heigh = uvYOffset * i;
 
                 foreach (float x in uvXPoints)
                 {
