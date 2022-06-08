@@ -398,7 +398,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             Vector3 direction = ray.direction;
             Vector3 originAbsolute = ray.origin;
 
-            float goalHeight = currentBuilding.CurrentFloorObject.transform.position.y;
+            float goalHeight = currentBuilding.CurrentFloorObject.transform.position.y + currentBuilding.CurrentFloorObject.BottomFloorHeight;
 
             float heightDifference = -originAbsolute.y + goalHeight;
             float scaler = heightDifference / direction.y;
