@@ -62,7 +62,19 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        public Vector2Int GridSize
+        public Vector2Int NodeGridSize
+        {
+            get
+            {
+                return BlockGridSize + Vector2Int.one;
+            }
+            set
+            {
+                BlockGridSize = value - Vector2Int.one;
+            }
+        }
+
+        public Vector2Int BlockGridSize
         {
             get
             {
@@ -84,21 +96,23 @@ namespace iffnsStuff.iffnsCastleBuilder
                     //previousGridSize.y = value.y;
                     ChangeGridZPos(offset: value.y - gridSizeParam.Val.y);
                 }
+
+                DestroyFailedSubObjects();
             }
         }
 
         public bool BlockCoordinateIsOnGrid(Vector2Int coordinate)
         {
-            bool x = coordinate.x >= 0 && coordinate.x < GridSize.x;
-            bool y = coordinate.y >= 0 && coordinate.y < GridSize.y;
+            bool x = coordinate.x >= 0 && coordinate.x < BlockGridSize.x;
+            bool y = coordinate.y >= 0 && coordinate.y < BlockGridSize.y;
 
             return x && y;
         }
 
         public bool NodeCoordinateIsOnGrid(Vector2Int coordinate)
         {
-            bool x = coordinate.x >= 0 && coordinate.x <= GridSize.x;
-            bool y = coordinate.y >= 0 && coordinate.y <= GridSize.y;
+            bool x = coordinate.x >= 0 && coordinate.x < NodeGridSize.x;
+            bool y = coordinate.y >= 0 && coordinate.y < NodeGridSize.y;
 
             return x && y;
         }
@@ -160,7 +174,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 //Retract right
                 int fixedOffset = offset;
-                if (GridSize.x + offset < 1) fixedOffset = -GridSize.x + 1; //Set minimum grid size to 1
+                if (BlockGridSize.x + offset < 1) fixedOffset = -BlockGridSize.x + 1; //Set minimum grid size to 1
                 ChangeBlockGridOnly(new Vector2Int(fixedOffset, 0));
             }
 
@@ -180,7 +194,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             else if (offset < 0)
             {
                 //Retract left
-                if (GridSize.x + offset < 1) offset = -GridSize.x + 1; //Set minimum grid size to 1
+                if (BlockGridSize.x + offset < 1) offset = -BlockGridSize.x + 1; //Set minimum grid size to 1
 
                 MoveStuffOnGrid(new Vector2Int(offset, 0));
 
@@ -202,7 +216,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             else if (offset < 0)
             {
                 //Retract up
-                if (GridSize.y + offset < 1) offset = -GridSize.y + 1; //Set minimum grid size to 1
+                if (BlockGridSize.y + offset < 1) offset = -BlockGridSize.y + 1; //Set minimum grid size to 1
 
                 ChangeBlockGridOnly(new Vector2Int(0, offset));
             }
@@ -223,7 +237,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             else if (offset < 0)
             {
                 //Retract down
-                if (GridSize.y + offset < 1) offset = -GridSize.y + 1; //Set minimum grid size to 1
+                if (BlockGridSize.y + offset < 1) offset = -BlockGridSize.y + 1; //Set minimum grid size to 1
 
                 MoveStuffOnGrid(new Vector2Int(0, offset));
 
@@ -336,12 +350,12 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 if (gridSizeParam.Val.x != previousGridSize.x || gridSizeParam.Val.y != previousGridSize.y)
                 {
-                    GridSize = gridSizeParam.Val;
+                    BlockGridSize = gridSizeParam.Val;
                 }
             }
             else
             {
-                previousGridSize = GridSize;
+                previousGridSize = BlockGridSize;
             }
 
 

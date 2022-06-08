@@ -26,9 +26,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void SetBlockInfo()
         {
-            for (int xPos = 0; xPos < LinkedFloor.LinkedBuildingController.GridSize.x; xPos++)
+            for (int xPos = 0; xPos < LinkedFloor.LinkedBuildingController.BlockGridSize.x; xPos++)
             {
-                for (int zPos = 0; zPos < LinkedFloor.LinkedBuildingController.GridSize.y; zPos++)
+                for (int zPos = 0; zPos < LinkedFloor.LinkedBuildingController.BlockGridSize.y; zPos++)
                 {
                     VirtualBlock currentBlock = LinkedFloor.BlockAtPosition(xPos: xPos, zPos: zPos);
 
@@ -63,7 +63,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     }
 
                     //Right wall
-                    if (xPos == LinkedFloor.LinkedBuildingController.GridSize.x - 1)
+                    if (xPos == LinkedFloor.LinkedBuildingController.BlockGridSize.x - 1)
                     {
                         switch (currentBlock.BlockType)
                         {
@@ -107,7 +107,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     }
 
                     //Front wall
-                    if (zPos == LinkedFloor.LinkedBuildingController.GridSize.y - 1)
+                    if (zPos == LinkedFloor.LinkedBuildingController.BlockGridSize.y - 1)
                     {
                         switch (currentBlock.BlockType)
                         {
@@ -205,9 +205,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         void GenerateCapBasedOnInfo()
         {
-            for (int xPos = 0; xPos < LinkedFloor.LinkedBuildingController.GridSize.x; xPos++)
+            for (int xPos = 0; xPos < LinkedFloor.LinkedBuildingController.BlockGridSize.x; xPos++)
             {
-                for (int zPos = 0; zPos < LinkedFloor.LinkedBuildingController.GridSize.y; zPos++)
+                for (int zPos = 0; zPos < LinkedFloor.LinkedBuildingController.BlockGridSize.y; zPos++)
                 {
                     VirtualBlock currentBlock = LinkedFloor.BlockAtPosition(xPos: xPos, zPos: zPos);
 
@@ -240,9 +240,9 @@ namespace iffnsStuff.iffnsCastleBuilder
         void GenerateWallsBasedOnInfo()
         {
             //left right walls
-            for (int xPos = 0; xPos < LinkedFloor.LinkedBuildingController.GridSize.x; xPos++)
+            for (int xPos = 0; xPos < LinkedFloor.LinkedBuildingController.BlockGridSize.x; xPos++)
             {
-                for (int zPos = 0; zPos < LinkedFloor.LinkedBuildingController.GridSize.y; zPos++)
+                for (int zPos = 0; zPos < LinkedFloor.LinkedBuildingController.BlockGridSize.y; zPos++)
                 {
                     VirtualBlock currentBlock = LinkedFloor.BlockAtPosition(xPos: xPos, zPos: zPos);
 
@@ -283,9 +283,9 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             //front back walls
-            for (int zPos = 0; zPos < LinkedFloor.LinkedBuildingController.GridSize.y; zPos++)
+            for (int zPos = 0; zPos < LinkedFloor.LinkedBuildingController.BlockGridSize.y; zPos++)
             {
-                for (int xPos = 0; xPos < LinkedFloor.LinkedBuildingController.GridSize.x; xPos++)
+                for (int xPos = 0; xPos < LinkedFloor.LinkedBuildingController.BlockGridSize.x; xPos++)
                 {
                     VirtualBlock currentBlock = LinkedFloor.BlockAtPosition(xPos: xPos, zPos: zPos);
 

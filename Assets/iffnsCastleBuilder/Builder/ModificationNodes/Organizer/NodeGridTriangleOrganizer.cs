@@ -65,7 +65,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             Vector2Int secondCoordinate = secondNode.AbsoluteCoordinate;
             Vector2Int thirdCoordinate = thirdNode.AbsoluteCoordinate;
 
-
             //Check for errors
             float area = MathHelper.AreaOf2DTriangle(firstCoordinate, secondCoordinate, thirdCoordinate);
 

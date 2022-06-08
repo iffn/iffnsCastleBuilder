@@ -91,6 +91,9 @@ namespace iffnsStuff.iffnsCastleBuilder
             StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(completeFileLocation: completeFileLocation, baseObject: CurrentBuilding);
 
             CurrentBuilding.ApplyBuildParameters();
+
+            CurrentBuilding.DestroyFailedSubObjects();
+
             //Debug.Log("Time taken = " + watch.ElapsedMilliseconds + "ms");
 
             CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.Done;

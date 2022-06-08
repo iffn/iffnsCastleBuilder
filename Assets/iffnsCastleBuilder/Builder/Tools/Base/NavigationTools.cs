@@ -295,8 +295,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (startingPosition.x < 0) startingPosition.x = 0;
             if (startingPosition.y < 0) startingPosition.y = 0;
-            if (endPosition.x > CurrentBuilding.GridSize.x - 1) endPosition.x = CurrentBuilding.GridSize.x - 1;
-            if (endPosition.y > CurrentBuilding.GridSize.y - 1) endPosition.y = CurrentBuilding.GridSize.y - 1;
+            if (endPosition.x > CurrentBuilding.BlockGridSize.x - 1) endPosition.x = CurrentBuilding.BlockGridSize.x - 1;
+            if (endPosition.y > CurrentBuilding.BlockGridSize.y - 1) endPosition.y = CurrentBuilding.BlockGridSize.y - 1;
 
             //Create lines
             for (int xPos = startingPosition.x; xPos <= endPosition.x + 1; xPos++)
@@ -335,7 +335,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             //Add new lines
-            for (int xPos = 0; xPos <= CurrentBuilding.GridSize.x; xPos++)
+            for (int xPos = 0; xPos <= CurrentBuilding.BlockGridSize.x; xPos++)
             {
                 LineRenderer currentLine = Instantiate(BlockLineTemplate).transform.GetComponent<LineRenderer>();
 
@@ -343,12 +343,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 currentLine.transform.localPosition = Vector3.right * CurrentBuilding.BlockSize * xPos;
 
-                currentLine.SetPosition(1, Vector3.right * CurrentBuilding.BlockSize * CurrentBuilding.GridSize.y);
+                currentLine.SetPosition(1, Vector3.right * CurrentBuilding.BlockSize * CurrentBuilding.BlockGridSize.y);
 
                 currentLine.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 90));
             }
 
-            for (int zPos = 0; zPos <= CurrentBuilding.GridSize.y; zPos++)
+            for (int zPos = 0; zPos <= CurrentBuilding.BlockGridSize.y; zPos++)
             {
                 LineRenderer currentLine = Instantiate(BlockLineTemplate).transform.GetComponent<LineRenderer>();
 
@@ -356,7 +356,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 currentLine.transform.localPosition = Vector3.forward * CurrentBuilding.BlockSize * zPos;
 
-                currentLine.SetPosition(1, Vector3.right * CurrentBuilding.BlockSize * CurrentBuilding.GridSize.x);
+                currentLine.SetPosition(1, Vector3.right * CurrentBuilding.BlockSize * CurrentBuilding.BlockGridSize.x);
             }
         }
 
@@ -379,7 +379,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 blockLines.Add(currentLineHolder);
 
-                for (int xPos = 0; xPos <= CurrentBuilding.GridSize.x; xPos++)
+                for (int xPos = 0; xPos <= CurrentBuilding.BlockGridSize.x; xPos++)
                 {
                     LineRenderer currentLine = Instantiate(BlockLineTemplate).transform.GetComponent<LineRenderer>();
 
@@ -387,12 +387,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                     currentLine.transform.localPosition = Vector3.right * CurrentBuilding.BlockSize * (xPos - 0.5f) - Vector3.forward * CurrentBuilding.BlockSize * 0.5f;
 
-                    currentLine.SetPosition(1, Vector3.right * CurrentBuilding.BlockSize * CurrentBuilding.GridSize.y);
+                    currentLine.SetPosition(1, Vector3.right * CurrentBuilding.BlockSize * CurrentBuilding.BlockGridSize.y);
 
                     currentLine.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 90));
                 }
 
-                for (int zPos = 0; zPos <= CurrentBuilding.GridSize.y; zPos++)
+                for (int zPos = 0; zPos <= CurrentBuilding.BlockGridSize.y; zPos++)
                 {
                     LineRenderer currentLine = Instantiate(BlockLineTemplate).transform.GetComponent<LineRenderer>();
 
@@ -400,7 +400,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                     currentLine.transform.localPosition = Vector3.forward * CurrentBuilding.BlockSize * (zPos - 0.5f) - Vector3.right * CurrentBuilding.BlockSize * 0.5f;
 
-                    currentLine.SetPosition(1, Vector3.right * CurrentBuilding.BlockSize * CurrentBuilding.GridSize.x);
+                    currentLine.SetPosition(1, Vector3.right * CurrentBuilding.BlockSize * CurrentBuilding.BlockGridSize.x);
                 }
             }
 

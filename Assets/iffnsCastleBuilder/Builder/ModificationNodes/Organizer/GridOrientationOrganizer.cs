@@ -20,6 +20,14 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void SetLinkedObjectPositionAndOrientation(bool raiseToFloor)
         {
+            bool firstOnGrid = linkedObject.LinkedFloor.LinkedBuildingController.BlockCoordinateIsOnGrid(positionNode.AbsoluteCoordinate);
+
+            if (!(firstOnGrid))
+            {
+                linkedObject.Failed = true;
+                return;
+            }
+
             linkedObject.transform.localPosition = linkedObject.LinkedFloor.NodePositionFromBlockIndex(blockIndex: positionNode.AbsoluteCoordinate, orientation: orientationNode.CurrentOrientation);
             if (raiseToFloor) linkedObject.transform.localPosition += Vector3.up * linkedObject.LinkedFloor.BottomFloorHeight;
 
@@ -47,14 +55,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             Vector2Int tempNodePosition = positionNode.AbsoluteCoordinate + offset;
 
-            Vector2Int gridSize = linkedObject.LinkedFloor.LinkedBuildingController.GridSize;
-
-            if (tempNodePosition.x < 0 || tempNodePosition.y < 0
-                || tempNodePosition.x >= gridSize.x || tempNodePosition.y >= gridSize.y)
-            {
-                linkedObject.DestroyObject();
-                return;
-            }
+            //Note: On grid error check is part of apply build parameters
 
             positionNode.AbsoluteCoordinate = tempNodePosition;
         }

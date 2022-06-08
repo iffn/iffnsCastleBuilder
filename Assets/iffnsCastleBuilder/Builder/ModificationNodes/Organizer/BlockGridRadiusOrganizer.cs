@@ -43,12 +43,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (!(firstOnGrid))
             {
-                Debug.Log("Destroying object since no longer on the grid");
-
-                Debug.Log("First node" + positionNode.AbsoluteCoordinate);
-                Debug.Log("GridSize" + linkedObject.LinkedFloor.LinkedBuildingController.GridSize);
-
-                linkedObject.DestroyObject();
+                linkedObject.Failed = true;
                 return;
             }
 
@@ -71,14 +66,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             Vector2Int firstNodePosition = positionNode.AbsoluteCoordinate + offset;
 
-            Vector2Int gridSize = linkedObject.LinkedFloor.LinkedBuildingController.GridSize;
-
-            if (firstNodePosition.x < 0 || firstNodePosition.y < 0
-                || firstNodePosition.x >= gridSize.x || firstNodePosition.y >= gridSize.y)
-            {
-                linkedObject.DestroyObject();
-                return;
-            }
+            //Note: On grid error check is part of apply build parameters
 
             positionNode.AbsoluteCoordinate = firstNodePosition;
         }

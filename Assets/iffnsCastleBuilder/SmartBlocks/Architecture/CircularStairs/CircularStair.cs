@@ -427,18 +427,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void MoveOnGrid(Vector2Int offset)
         {
-            Vector2Int firstNodePosition = PositiveCenterPositionParam.Val + offset;
-
-            Vector2Int gridSize = LinkedFloor.LinkedBuildingController.GridSize;
-
-            if (firstNodePosition.x < 0 || firstNodePosition.y < 0
-                || firstNodePosition.x >= gridSize.x || firstNodePosition.y >= gridSize.y)
-            {
-                DestroyObject();
-                return;
-            }
-
-            PositiveCenterPositionParam.Val = firstNodePosition;
+            ModificationNodeOrganizer.MoveOnGrid(offset);
         }
 
         public override void InternalUpdate()

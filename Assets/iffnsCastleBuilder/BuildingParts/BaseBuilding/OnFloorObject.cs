@@ -133,7 +133,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (FirstPositionNode is GridModificationNode node)
                 {
-                    Vector2Int checkLocation = MathHelper.ClampVector2Int(value: node.AbsoluteCoordinate, max: LinkedFloor.LinkedBuildingController.GridSize - Vector2Int.one, min: Vector2Int.zero); //Reduces position of Node location
+                    Vector2Int checkLocation = MathHelper.ClampVector2Int(value: node.AbsoluteCoordinate, max: LinkedFloor.LinkedBuildingController.BlockGridSize - Vector2Int.one, min: Vector2Int.zero); //Reduces position of Node location
 
                     return LinkedFloor.BlockAtPosition(checkLocation).BlockType;
                 }

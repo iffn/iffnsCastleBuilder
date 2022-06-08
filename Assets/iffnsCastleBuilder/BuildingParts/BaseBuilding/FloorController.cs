@@ -55,7 +55,6 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineMultipleSubObject onFloorObjectsParam;
         MailboxLineSingleSubObject nodeWallSystemParam;
 
-
         HumanBuildingController buildingController;
 
         public enum BlockDirections
@@ -257,8 +256,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public VirtualBlock BlockAtPosition(int xPos, int zPos)
         {
-            if (xPos < 0 || xPos > buildingController.GridSize.x - 1
-                || zPos < 0 || zPos > buildingController.GridSize.y - 1)
+            if (xPos < 0 || xPos > buildingController.BlockGridSize.x - 1
+                || zPos < 0 || zPos > buildingController.BlockGridSize.y - 1)
             {
                 return null;
             }
@@ -270,8 +269,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public VirtualBlock BlockAtPosition(Vector2Int position)
         {
-            int x = MathHelper.ClampInt(position.x, buildingController.GridSize.x - 1, 0);
-            int y = MathHelper.ClampInt(position.y, buildingController.GridSize.y - 1, 0);
+            int x = MathHelper.ClampInt(position.x, buildingController.BlockGridSize.x - 1, 0);
+            int y = MathHelper.ClampInt(position.y, buildingController.BlockGridSize.y - 1, 0);
 
             return FloorMatrix[x][y];
         }
@@ -308,16 +307,16 @@ namespace iffnsStuff.iffnsCastleBuilder
                 for (int i = 0; i < virtualBlocksParam.NumberOfObjects; i++)
                 {
                     int a = i;
-                    int b = LinkedBuildingController.GridSize.y;
+                    int b = LinkedBuildingController.BlockGridSize.y;
                     int x = a / b;
 
-                    int z = i % LinkedBuildingController.GridSize.y;
+                    int z = i % LinkedBuildingController.BlockGridSize.y;
 
                     if (x < offset.x)
                     {
                         virtualBlocksParam.SubObjects.Insert(0, new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
                     }
-                    else if (x < LinkedBuildingController.GridSize.x)
+                    else if (x < LinkedBuildingController.BlockGridSize.x)
                     {
                         VirtualBlock block = virtualBlocksParam.SubObjects[i] as VirtualBlock;
                         block.DefinePositionValue(new Vector2Int(x, z));
@@ -338,7 +337,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 int initialNumberOfObjects = virtualBlocksParam.NumberOfObjects;
 
-                int objectsToRemove = LinkedBuildingController.GridSize.y * absOffsetX;
+                int objectsToRemove = LinkedBuildingController.BlockGridSize.y * absOffsetX;
                 virtualBlocksParam.SubObjects.RemoveRange(0, objectsToRemove);
 
                 int numberOfObjectsToChange = initialNumberOfObjects - objectsToRemove;
@@ -346,8 +345,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                 for (int i = 0; i < initialNumberOfObjects; i++)
                 {
 
-                    int x = i / LinkedBuildingController.GridSize.x;
-                    int z = i % LinkedBuildingController.GridSize.y;
+                    int x = i / LinkedBuildingController.BlockGridSize.x;
+                    int z = i % LinkedBuildingController.BlockGridSize.y;
 
                     if (i < numberOfObjectsToChange)
                     {
@@ -366,14 +365,14 @@ namespace iffnsStuff.iffnsCastleBuilder
                 //Move up
                 int index = 0;
 
-                for (int x = 0; x < LinkedBuildingController.GridSize.x; x++)
+                for (int x = 0; x < LinkedBuildingController.BlockGridSize.x; x++)
                 {
-                    for (int z = 0; z < LinkedBuildingController.GridSize.y; z++)
+                    for (int z = 0; z < LinkedBuildingController.BlockGridSize.y; z++)
                     {
                         if (z < offset.y)
                         {
                             //Add blocks
-                            virtualBlocksParam.SubObjects.Insert(x * LinkedBuildingController.GridSize.y, new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
+                            virtualBlocksParam.SubObjects.Insert(x * LinkedBuildingController.BlockGridSize.y, new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
                         }
                         else
                         {
@@ -395,11 +394,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                 int offsetYAbs = -offset.y;
                 int index = 0;
 
-                for (int x = 0; x < LinkedBuildingController.GridSize.x; x++)
+                for (int x = 0; x < LinkedBuildingController.BlockGridSize.x; x++)
                 {
-                    for (int z = 0; z < LinkedBuildingController.GridSize.y; z++)
+                    for (int z = 0; z < LinkedBuildingController.BlockGridSize.y; z++)
                     {
-                        if (z < LinkedBuildingController.GridSize.y - offsetYAbs)
+                        if (z < LinkedBuildingController.BlockGridSize.y - offsetYAbs)
                         {
                             //Modifiy position
                             /*
@@ -414,14 +413,14 @@ namespace iffnsStuff.iffnsCastleBuilder
                             //int index = x * LinkedBuildingController.GridSize.y + z + offsetYAbs;
                             //Debug.Log("Inserting block " + x + ", " + z + " at index " + index);
 
-                            virtualBlocksParam.SubObjects.Insert(x * LinkedBuildingController.GridSize.y + z + offsetYAbs, new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty)); //X and Z positions not correct, reassigning below
+                            virtualBlocksParam.SubObjects.Insert(x * LinkedBuildingController.BlockGridSize.y + z + offsetYAbs, new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty)); //X and Z positions not correct, reassigning below
                         }
 
                         index++;
                     }
 
                     //Remove blocks
-                    virtualBlocksParam.SubObjects.RemoveRange(x * LinkedBuildingController.GridSize.y, offsetYAbs);
+                    virtualBlocksParam.SubObjects.RemoveRange(x * LinkedBuildingController.BlockGridSize.y, offsetYAbs);
                 }
 
                 UpdateMatrix(); //Resetting X Z references
@@ -438,6 +437,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                 if (currentOnFloorObject == null) continue;
 
                 currentOnFloorObject.MoveOnGrid(offset: offset);
+
+                if (currentOnFloorObject.Failed)
+                {
+                    currentOnFloorObject.DestroyObject();
+                }
             }
         }
 
@@ -463,9 +467,9 @@ namespace iffnsStuff.iffnsCastleBuilder
                 //Add blocks up
                 for (int x = 0; x < oldGridSize.x; x++)
                 {
-                    for (int y = oldGridSize.y; y < LinkedBuildingController.GridSize.y; y++)
+                    for (int y = oldGridSize.y; y < LinkedBuildingController.BlockGridSize.y; y++)
                     {
-                        int insertPosition = x * LinkedBuildingController.GridSize.y + y;
+                        int insertPosition = x * LinkedBuildingController.BlockGridSize.y + y;
 
                         if (x != oldGridSize.x - 1)
                         {
@@ -490,7 +494,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                     VirtualBlock currentBlock = virtualBlocksParam.SubObjects[i] as VirtualBlock;
 
-                    if (currentBlock.ZCoordinate >= LinkedBuildingController.GridSize.y)
+                    if (currentBlock.ZCoordinate >= LinkedBuildingController.BlockGridSize.y)
                     {
                         virtualBlocksParam.SubObjects.RemoveAt(i);
                         i--; //Check the same index again
@@ -502,9 +506,9 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Add blocks right
             if (offset.x > 0)
             {
-                for (int x = oldGridSize.x; x < LinkedBuildingController.GridSize.x; x++)
+                for (int x = oldGridSize.x; x < LinkedBuildingController.BlockGridSize.x; x++)
                 {
-                    for (int z = 0; z < LinkedBuildingController.GridSize.y; z++)
+                    for (int z = 0; z < LinkedBuildingController.BlockGridSize.y; z++)
                     {
                         virtualBlocksParam.SubObjects.Add(new VirtualBlock(xPosition: x, zPosition: z, linkedFloorController: this, blockType: VirtualBlock.BlockTypes.Empty));
                     }
@@ -564,9 +568,9 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             Setup(buildingControler);
 
-            for (int xPos = 0; xPos < LinkedBuildingController.GridSize.x; xPos++)
+            for (int xPos = 0; xPos < LinkedBuildingController.BlockGridSize.x; xPos++)
             {
-                for (int zPos = 0; zPos < LinkedBuildingController.GridSize.y; zPos++)
+                for (int zPos = 0; zPos < LinkedBuildingController.BlockGridSize.y; zPos++)
                 {
                     VirtualBlock block = new VirtualBlock(xPosition: xPos, zPosition: zPos, linkedFloorController: this, blockType: blockType);
                     virtualBlocksParam.AddObject(block);
@@ -591,10 +595,10 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             FloorMatrix.Clear();
 
-            for (int x = 0; x < buildingController.GridSize.x; x++)
+            for (int x = 0; x < buildingController.BlockGridSize.x; x++)
             {
                 FloorMatrix.Add(new List<VirtualBlock>());
-                for (int z = 0; z < buildingController.GridSize.y; z++)
+                for (int z = 0; z < buildingController.BlockGridSize.y; z++)
                 {
                     VirtualBlock currentBlock = blocks[currentBlockIndex] as VirtualBlock;
 
@@ -673,7 +677,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 onFloorObjectsParam.SubObjects[i].ApplyBuildParameters();
             }
-
         }
 
         public override void InternalUpdate()

@@ -31,6 +31,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             set
             {
                 startPositionParam.Val = value;
+                EvaluateFailureState();
                 linkedSystem.ApplyBuildParameters();
             }
         }
@@ -44,15 +45,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             set
             {
                 endPositionParam.Val = value;
+                EvaluateFailureState();
                 linkedSystem.ApplyBuildParameters();
-            }
-        }
-
-        public bool SameStartAsEndPosition
-        {
-            get
-            {
-                return (StartPosition.x == EndPosition.x && StartPosition.y == EndPosition.y);
             }
         }
 
@@ -64,34 +58,36 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        bool FailureState
+        {
+            get
+            {
+                if (!linkedSystem.LinkedFloor.LinkedBuildingController.NodeCoordinateIsOnGrid(StartPosition)) 
+                    return true;
+                if (!linkedSystem.LinkedFloor.LinkedBuildingController.NodeCoordinateIsOnGrid(EndPosition)) 
+                    return true;
+
+                if(StartPosition.x == EndPosition.x && StartPosition.y == EndPosition.y) 
+                    return true;
+
+                return false;
+            }
+        }
+        
+        public void EvaluateFailureState()
+        {
+            Failed = FailureState;
+        }
+
         public void Move(Vector2Int offset)
         {
-            Vector2Int newStartPosition = StartPosition + offset;
-            Vector2Int newEndPosition = EndPosition + offset;
+            startPositionParam.Val += offset;
+            endPositionParam.Val += offset;
+            
+            EvaluateFailureState();
+            if (Failed) return;
 
-            if (newStartPosition.x > linkedSystem.NodeGridSize.x || newStartPosition.y > linkedSystem.NodeGridSize.y)
-            {
-                DestroyObject();
-                return;
-            }
-            if (newStartPosition.x < 0 || newStartPosition.y < 0)
-            {
-                DestroyObject();
-                return;
-            }
-            if (newEndPosition.x > linkedSystem.NodeGridSize.x || newEndPosition.y > linkedSystem.NodeGridSize.y)
-            {
-                DestroyObject();
-                return;
-            }
-            if (newEndPosition.x < 0 || newEndPosition.y < 0)
-            {
-                DestroyObject();
-                return;
-            }
-
-            StartPosition = newStartPosition;
-            EndPosition = newEndPosition;
+            linkedSystem.ApplyBuildParameters();
 
             //Reduce if nodes in between
             /*
@@ -114,8 +110,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 //if (newEndPosition.x > linkedSystem.NodeGridSize.x || newEndPosition.y > linkedSystem.NodeGridSize.y)
             }
             */
-
-
         }
 
         void SetMaterialLines()

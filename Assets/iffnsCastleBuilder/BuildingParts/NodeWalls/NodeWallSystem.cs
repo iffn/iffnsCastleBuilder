@@ -25,7 +25,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             get
             {
-                return linkedFloor.LinkedBuildingController.GridSize + Vector2Int.one;
+                return linkedFloor.LinkedBuildingController.NodeGridSize;
             }
         }
 
@@ -87,13 +87,13 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             NodeMatrix.Clear();
 
-            for (int xPos = 0; xPos < linkedFloor.LinkedBuildingController.GridSize.x + 1; xPos++)
+            for (int xPos = 0; xPos < linkedFloor.LinkedBuildingController.NodeGridSize.x; xPos++)
             {
                 List<NodeWallNode> xLine = new List<NodeWallNode>();
 
                 NodeMatrix.Add(xLine);
 
-                for (int zPos = 0; zPos < linkedFloor.LinkedBuildingController.GridSize.y + 1; zPos++)
+                for (int zPos = 0; zPos < linkedFloor.LinkedBuildingController.NodeGridSize.y; zPos++)
                 {
                     NodeWallNode currentNode = new NodeWallNode(indexPosition: new Vector2Int(xPos, zPos), linkedNodeWallSystem: this);
 
@@ -125,8 +125,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             Vector2Int position = new Vector2Int();
 
-            position.x = MathHelper.ClampInt(value: indexPosition.x, max: linkedFloor.LinkedBuildingController.GridSize.x, min: 0);
-            position.y = MathHelper.ClampInt(value: indexPosition.y, max: linkedFloor.LinkedBuildingController.GridSize.y, min: 0);
+            position.x = MathHelper.ClampInt(value: indexPosition.x, max: linkedFloor.LinkedBuildingController.NodeGridSize.x, min: 0);
+            position.y = MathHelper.ClampInt(value: indexPosition.y, max: linkedFloor.LinkedBuildingController.NodeGridSize.y, min: 0);
 
             return NodeMatrix[position.x][position.y];
         }
@@ -158,8 +158,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 wall.Move(offset);
 
-                if (wall == null)
+                if (wall.Failed)
                 {
+                    wall.DestroyObject();
                     i--;
                 }
             }
@@ -249,11 +250,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 NodeWall currentWall = nodeWallsParam.SubObjects[i] as NodeWall;
 
-                if (currentWall.SameStartAsEndPosition)
+                currentWall.EvaluateFailureState();
+
+                if (currentWall.Failed)
                 {
                     currentWall.DestroyObject();
 
-                    Debug.Log("Removed node wall because start and end position were both the same");
+                    Debug.Log("Removed failed node wall");
                 }
             }
         }

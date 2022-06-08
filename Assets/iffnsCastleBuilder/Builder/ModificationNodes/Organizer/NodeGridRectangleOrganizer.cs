@@ -326,14 +326,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             Vector2Int firstNodePosition = firstNode.AbsoluteCoordinate + offset;
             Vector2Int secondNodePosition = secondNode.AbsoluteCoordinate + offset;
 
-            Vector2Int gridSize = linkedObject.LinkedFloor.LinkedBuildingController.GridSize;
-
-            if (firstNodePosition.x < 0 || firstNodePosition.y < 0 || secondNodePosition.x < 0 || secondNodePosition.y < 0
-                || firstNodePosition.x >= gridSize.x || firstNodePosition.y >= gridSize.y || secondNodePosition.x >= gridSize.x || secondNodePosition.y >= gridSize.y)
-            {
-                linkedObject.DestroyObject();
-                return;
-            }
+            //Note: On grid error check is part of apply build parameters
 
             firstNode.AbsoluteCoordinate = firstNodePosition;
             secondNode.AbsoluteCoordinate = secondNodePosition;
