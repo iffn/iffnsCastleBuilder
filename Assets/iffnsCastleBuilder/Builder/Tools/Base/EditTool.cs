@@ -40,11 +40,19 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         private void OnDisable()
         {
-            //ToDo: Check OnDisable errors when exiting play mode
+            //ToDo: Find better way to catch unload when exiting play mode for example
 
-            if (gameObject.activeInHierarchy == false)
+            //When exiting play mode: ModificationNode.Hide() causes error during gameObject.SetActive(false)
+            try
             {
-                DeactivateEdit();
+                if (gameObject.activeInHierarchy == false)
+                {
+                    DeactivateEdit();
+                }
+            }
+            catch
+            {
+                Debug.Log("Prevented unload error");
             }
         }
 
