@@ -7,14 +7,14 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class GridScaleNode : ModificationNode
     {
-        HumanBuildingController linkedController;
+        //HumanBuildingController linkedController;
         DirectionTypes directionType;
-        GridScalerOrganizer organizer;
+        GridScalerOrganizer linkedOrganizer;
 
         public bool modificationInProgress = false;
         int newTempGridPosition;
 
-        public int tempGridPosition
+        public int TempGridPosition
         {
             get
             {
@@ -30,52 +30,55 @@ namespace iffnsStuff.iffnsCastleBuilder
             zNeg
         }
 
-        public void Setup(HumanBuildingController linkedController, GridScalerOrganizer organizer, DirectionTypes directionType)
-        {
-            base.setup(linkedObject: linkedController);
+        HumanBuildingController linkedBuilding;
 
-            this.linkedController = linkedController;
+        public void Setup(HumanBuildingController linkedBuilding, GridScalerOrganizer organizer, DirectionTypes directionType)
+        {
+            base.setup(linkedOrganizer: organizer);
+
+            this.linkedBuilding = linkedBuilding;
+
             this.directionType = directionType;
-            this.organizer = organizer;
+            this.linkedOrganizer = organizer;
         }
 
         public override void UpdatePosition()
         {
             float length;
-            float width = linkedController.BlockSize / 3;
+            float width = linkedBuilding.BlockSize / 3;
             float height;
 
             if (modificationInProgress)
             {
-                height = linkedController.CurrentFloorObject.CompleteFloorHeight + heightOvershoot;
+                height = linkedBuilding.CurrentFloorObject.CompleteFloorHeight + heightOvershoot;
             }
             else
             {
-                height = linkedController.CurrentFloorObject.BottomFloorHeight + heightOvershoot;
+                height = linkedBuilding.CurrentFloorObject.BottomFloorHeight + heightOvershoot;
             }
 
 
 
             if (directionType == DirectionTypes.xPos || directionType == DirectionTypes.xNeg)
             {
-                if (organizer.zPosNode.tempGridPosition != 0)
+                if (linkedOrganizer.zPosNode.TempGridPosition != 0)
                 {
-                    length = linkedController.BlockSize * (linkedController.GridSize.y + organizer.zPosNode.tempGridPosition);
+                    length = linkedBuilding.BlockSize * (linkedBuilding.GridSize.y + linkedOrganizer.zPosNode.TempGridPosition);
                 }
                 else
                 {
-                    length = linkedController.BlockSize * (linkedController.GridSize.y + organizer.zNegNode.tempGridPosition);
+                    length = linkedBuilding.BlockSize * (linkedBuilding.GridSize.y + linkedOrganizer.zNegNode.TempGridPosition);
                 }
             }
             else
             {
-                if (organizer.xPosNode.tempGridPosition != 0)
+                if (linkedOrganizer.xPosNode.TempGridPosition != 0)
                 {
-                    length = linkedController.BlockSize * (linkedController.GridSize.x + organizer.xPosNode.tempGridPosition);
+                    length = linkedBuilding.BlockSize * (linkedBuilding.GridSize.x + linkedOrganizer.xPosNode.TempGridPosition);
                 }
                 else
                 {
-                    length = linkedController.BlockSize * (linkedController.GridSize.x + organizer.xNegNode.tempGridPosition);
+                    length = linkedBuilding.BlockSize * (linkedBuilding.GridSize.x + linkedOrganizer.xNegNode.TempGridPosition);
                 }
             }
 
@@ -85,19 +88,19 @@ namespace iffnsStuff.iffnsCastleBuilder
             switch (directionType)
             {
                 case DirectionTypes.xPos:
-                    transform.localPosition = new Vector3((linkedController.GridSize.x + newTempGridPosition) * linkedController.BlockSize, height / 2, length / 2 - organizer.zNegNode.tempGridPosition * linkedController.BlockSize);
+                    transform.localPosition = new Vector3((linkedBuilding.GridSize.x + newTempGridPosition) * linkedBuilding.BlockSize, height / 2, length / 2 - linkedOrganizer.zNegNode.TempGridPosition * linkedBuilding.BlockSize);
                     transform.localRotation = Quaternion.Euler(Vector3.up * 90);
                     break;
                 case DirectionTypes.xNeg:
-                    transform.localPosition = new Vector3(-newTempGridPosition * linkedController.BlockSize, height / 2, length / 2 - organizer.zNegNode.tempGridPosition * linkedController.BlockSize);
+                    transform.localPosition = new Vector3(-newTempGridPosition * linkedBuilding.BlockSize, height / 2, length / 2 - linkedOrganizer.zNegNode.TempGridPosition * linkedBuilding.BlockSize);
                     transform.localRotation = Quaternion.Euler(Vector3.up * 270);
                     break;
                 case DirectionTypes.zPos:
-                    transform.localPosition = new Vector3(length / 2 - organizer.xNegNode.tempGridPosition * linkedController.BlockSize, height / 2, (linkedController.GridSize.y + newTempGridPosition) * linkedController.BlockSize);
+                    transform.localPosition = new Vector3(length / 2 - linkedOrganizer.xNegNode.TempGridPosition * linkedBuilding.BlockSize, height / 2, (linkedBuilding.GridSize.y + newTempGridPosition) * linkedBuilding.BlockSize);
                     transform.localRotation = Quaternion.Euler(Vector3.up * 0);
                     break;
                 case DirectionTypes.zNeg:
-                    transform.localPosition = new Vector3(length / 2 - organizer.xNegNode.tempGridPosition * linkedController.BlockSize, height / 2, -newTempGridPosition * linkedController.BlockSize);
+                    transform.localPosition = new Vector3(length / 2 - linkedOrganizer.xNegNode.TempGridPosition * linkedBuilding.BlockSize, height / 2, -newTempGridPosition * linkedBuilding.BlockSize);
                     transform.localRotation = Quaternion.Euler(Vector3.up * 180);
                     break;
                 default:
@@ -122,13 +125,13 @@ namespace iffnsStuff.iffnsCastleBuilder
                 switch (directionType)
                 {
                     case DirectionTypes.xPos:
-                        newTempGridPosition = gridPosition.x - linkedController.GridSize.x;
+                        newTempGridPosition = gridPosition.x - linkedBuilding.GridSize.x;
                         break;
                     case DirectionTypes.xNeg:
                         newTempGridPosition = -gridPosition.x;
                         break;
                     case DirectionTypes.zPos:
-                        newTempGridPosition = gridPosition.y - linkedController.GridSize.y;
+                        newTempGridPosition = gridPosition.y - linkedBuilding.GridSize.y;
                         break;
                     case DirectionTypes.zNeg:
                         newTempGridPosition = -gridPosition.y;
@@ -142,7 +145,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 //Debug.Log(directionType.ToString() + "->" + newTempGridPosition);
 
-                organizer.UpdatePosition();
+                //linkedOrganizer.UpdatePosition();
             }
         }
 
@@ -153,16 +156,16 @@ namespace iffnsStuff.iffnsCastleBuilder
             switch (directionType)
             {
                 case DirectionTypes.xPos:
-                    linkedController.ChangeGridXPos(newTempGridPosition);
+                    linkedBuilding.ChangeGridXPos(newTempGridPosition);
                     break;
                 case DirectionTypes.xNeg:
-                    linkedController.ChangeGridXNeg(newTempGridPosition);
+                    linkedBuilding.ChangeGridXNeg(newTempGridPosition);
                     break;
                 case DirectionTypes.zPos:
-                    linkedController.ChangeGridZPos(newTempGridPosition);
+                    linkedBuilding.ChangeGridZPos(newTempGridPosition);
                     break;
                 case DirectionTypes.zNeg:
-                    linkedController.ChangeGridZNeg(newTempGridPosition);
+                    linkedBuilding.ChangeGridZNeg(newTempGridPosition);
                     break;
                 default:
                     break;
@@ -170,7 +173,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             newTempGridPosition = 0;
 
-            organizer.UpdatePosition();
+            //linkedOrganizer.UpdatePosition();
 
         }
 

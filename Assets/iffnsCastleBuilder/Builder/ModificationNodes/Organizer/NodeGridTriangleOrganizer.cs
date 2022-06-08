@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class NodeGridTriangleOrganizer : ModificationOrganizer
+    public class NodeGridTriangleOrganizer : GridModificationOrganizer
     {
         readonly NodeGridPositionModificationNode firstNode;
         readonly NodeGridPositionModificationNode secondNode;
@@ -29,7 +29,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             this.secondNode = secondNode;
             this.thirdNode = thirdNode;
 
-            linkedObject.HideModificationNodes();
+            //linkedObject.HideModificationNodes();
         }
 
         public override void MoveOnGrid(Vector2Int offset)

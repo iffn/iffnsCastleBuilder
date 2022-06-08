@@ -68,7 +68,9 @@ namespace iffnsStuff.iffnsCastleBuilder
                 - Remove button
         */
 
-        public abstract ModificationOrganizer Organizer { get; }
+        public abstract GridModificationOrganizer Organizer { get; }
+
+        public GridModificationOrganizer LinkedOrganizer { get; protected set; }
 
         public bool IsStructural { get; protected set; } = true;
 

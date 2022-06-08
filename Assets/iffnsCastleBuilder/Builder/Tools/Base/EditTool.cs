@@ -170,7 +170,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     }
 
                     activeNode.ColliderActivationState = false;
-                    if (activeNode.LinkedObject != null) activeNode.LinkedObject.ColliderActivationState = false;
+                    if (activeNode.LinkedOrganizer != null) activeNode.LinkedOrganizer.ColliderActivationState = false;
 
 
                     return true;
@@ -279,7 +279,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 activeNode.ColliderActivationState = true;
 
-                if (activeNode.LinkedObject != null) activeNode.LinkedObject.ColliderActivationState = true;
+                if (activeNode.LinkedOrganizer != null) activeNode.LinkedOrganizer.ColliderActivationState = true;
 
                 activeNode = null;
             }

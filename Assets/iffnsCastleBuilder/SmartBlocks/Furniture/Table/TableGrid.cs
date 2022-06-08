@@ -16,7 +16,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         BlockGridRectangleOrganizer ModificationNodeOrganizer;
 
-        public override ModificationOrganizer Organizer
+        public override GridModificationOrganizer Organizer
         {
             get
             {
@@ -60,11 +60,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             TopRightPositionParam = new MailboxLineVector2Int(name: "Top Right Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
 
             BlockGridPositionModificationNode firstNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
-            firstNode.Setup(linkedObject: this, value: BottomLeftPositionParam);
+            firstNode.Setup(linkedOrganizer: ModificationNodeOrganizer, value: BottomLeftPositionParam);
             FirstPositionNode = firstNode;
 
             BlockGridPositionModificationNode secondNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
-            secondNode.Setup(linkedObject: this, value: TopRightPositionParam, relativeReferenceHolder: BottomLeftPositionParam);
+            secondNode.Setup(linkedOrganizer: ModificationNodeOrganizer, value: TopRightPositionParam, relativeReferenceHolder: BottomLeftPositionParam);
             SecondPositionNode = secondNode;
 
             ModificationNodeOrganizer = new BlockGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);

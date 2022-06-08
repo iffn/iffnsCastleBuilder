@@ -22,7 +22,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         BlockGridRadiusOrganizer ModificationNodeOrganizer;
 
-        public override ModificationOrganizer Organizer
+        public override GridModificationOrganizer Organizer
         {
             get
             {

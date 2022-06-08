@@ -14,7 +14,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineVector2 RelativeSizeParam;
         MailboxLineRanged RotationParam;
 
-        public override ModificationOrganizer Organizer
+        public override GridModificationOrganizer Organizer
         {
             get
             {

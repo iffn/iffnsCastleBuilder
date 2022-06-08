@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class GridScalerOrganizer : ModificationNode
+    public class GridScalerOrganizer : ModificationOrganizer
     {
-        HumanBuildingController linkedController;
+        //HumanBuildingController linkedController;
 
         //Public since used as assignment and script reference
         public GridScaleNode xPosNode;
@@ -25,33 +25,12 @@ namespace iffnsStuff.iffnsCastleBuilder
         }
         */
 
-        public void Setup(HumanBuildingController linkedController)
+        public GridScalerOrganizer(HumanBuildingController linkedBuilding) : base(linkedBuilding)
         {
-            this.linkedController = linkedController;
-
-            xPosNode.Setup(linkedController: linkedController, organizer: this, directionType: GridScaleNode.DirectionTypes.xPos);
-            xNegNode.Setup(linkedController: linkedController, organizer: this, directionType: GridScaleNode.DirectionTypes.xNeg);
-            zPosNode.Setup(linkedController: linkedController, organizer: this, directionType: GridScaleNode.DirectionTypes.zPos);
-            zNegNode.Setup(linkedController: linkedController, organizer: this, directionType: GridScaleNode.DirectionTypes.zNeg);
-        }
-
-        public override void UpdatePosition()
-        {
-            xPosNode.UpdatePosition();
-            xNegNode.UpdatePosition();
-            zPosNode.UpdatePosition();
-            zNegNode.UpdatePosition();
-        }
-
-        public override bool ColliderActivationState
-        {
-            set
-            {
-                xPosNode.ColliderActivationState = value;
-                xNegNode.ColliderActivationState = value;
-                zPosNode.ColliderActivationState = value;
-                zNegNode.ColliderActivationState = value;
-            }
+            xPosNode.Setup(linkedBuilding: linkedBuilding, organizer: this, directionType: GridScaleNode.DirectionTypes.xPos);
+            xNegNode.Setup(linkedBuilding: linkedBuilding, organizer: this, directionType: GridScaleNode.DirectionTypes.xNeg);
+            zPosNode.Setup(linkedBuilding: linkedBuilding, organizer: this, directionType: GridScaleNode.DirectionTypes.zPos);
+            zNegNode.Setup(linkedBuilding: linkedBuilding, organizer: this, directionType: GridScaleNode.DirectionTypes.zNeg);
         }
     }
 }

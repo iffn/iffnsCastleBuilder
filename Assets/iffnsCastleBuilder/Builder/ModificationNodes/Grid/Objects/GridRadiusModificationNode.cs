@@ -62,9 +62,9 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        public void Setup(BaseGameObject linkedObject, MailboxLineDistinctUnnamed radiusValue, MailboxLineVector2Int centerPosition)
+        public void Setup(ModificationOrganizer linkedOrganizer, MailboxLineDistinctUnnamed radiusValue, MailboxLineVector2Int centerPosition)
         {
-            base.setup(linkedObject: linkedObject);
+            base.setup(linkedOrganizer: linkedOrganizer);
 
             this.radiusValue = radiusValue;
             this.centerPosition = centerPosition;

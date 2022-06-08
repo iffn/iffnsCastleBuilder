@@ -426,6 +426,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         }
 
+        /*
         public override void ShowModificationNodes(bool activateCollider)
         {
             showModificationNodes = true;
@@ -437,6 +438,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             showModificationNodes = false;
             ResetModifactionNodePositions();
         }
+        */
 
         public void UpdateModNodePositions()
         {

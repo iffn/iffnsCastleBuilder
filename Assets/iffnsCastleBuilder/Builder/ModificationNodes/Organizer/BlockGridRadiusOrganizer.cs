@@ -5,7 +5,7 @@ using iffnsStuff.iffnsBaseSystemForUnity;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class BlockGridRadiusOrganizer : ModificationOrganizer
+    public class BlockGridRadiusOrganizer : GridModificationOrganizer
     {
         readonly BlockGridPositionModificationNode positionNode;
         readonly RadiusModificationNode radiusNode;
@@ -34,7 +34,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             this.positionNode = positionNode;
             this.radiusNode = radiusNode;
 
-            linkedObject.HideModificationNodes();
+            //linkedObject.HideModificationNodes();
         }
 
         public override void SetLinkedObjectPositionAndOrientation(bool raiseToFloor)

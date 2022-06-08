@@ -54,8 +54,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
 
                 parent.ApplyBuildParameters();
-
-                parent.UpdateModificationNodePositions();
             }
         }
 
@@ -67,13 +65,14 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         ModificationType modType;
 
-        public void Setup(BaseGameObject linkedObject, MailboxLineVector2Int value, MailboxLineVector2Int relativeReferenceHolder = null)
+        public void Setup(ModificationOrganizer linkedOrganizer, MailboxLineVector2Int value, MailboxLineVector2Int relativeReferenceHolder = null)
         {
-            base.setup(linkedObject: linkedObject);
+            base.setup(linkedOrganizer: linkedOrganizer);
 
             valueHolder = value;
             this.relativeReferenceHolder = relativeReferenceHolder;
-            transform.parent = parent.transform;
+            //transform.parent = parent.transform;
+            transform.parent = linkedOrganizer.LinkedObject.transform;
 
             if (relativeReferenceHolder == null)
             {

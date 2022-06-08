@@ -17,7 +17,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         BlockGridRectangleOrganizer ModificationNodeOrganizer;
 
-        public override ModificationOrganizer Organizer
+        public override GridModificationOrganizer Organizer
         {
             get
             {

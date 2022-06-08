@@ -7,21 +7,20 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class HumanBuildingController : BaseGameObject
     {
-        bool allowGridScaleModification = true;
-        public bool AllowGridScaleModification
-        {
-            get
-            {
-                return allowGridScaleModification;
-            }
-        }
+
+        //Fixed parameters
+        GridScalerOrganizer gridOrganizer;
+
+        //Runtime parameters
+        Vector2Int previousGridSize;
 
         //Build parameters
         MailboxLineDistinctUnnamed negativeFloorParam;
         MailboxLineVector2Int gridSizeParam;
-        Vector2Int previousGridSize;
         MailboxLineMultipleSubObject floorsParam;
         readonly List<FloorController> Floors = new List<FloorController>();
+
+        public bool AllowGridScaleModification { get; private set; }
 
         public List<FloorController> CurrentListOfFloors
         {
@@ -101,51 +100,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             bool y = coordinate.y >= 0 && coordinate.y <= GridSize.y;
 
             return x && y;
-        }
-
-        private void Update()
-        {
-            /*
-            int offset = 2;
-            if (Input.GetKey(KeyCode.LeftControl))
-            {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    ChangeGridZNeg(-offset);
-                }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    ChangeGridXNeg(-offset);
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    ChangeGridZNeg(offset);
-                }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    ChangeGridXNeg(offset);
-                }
-            }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    ChangeGridZPos(offset);
-                }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    ChangeGridXPos(offset);
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    ChangeGridZPos(-offset);
-                }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    ChangeGridXPos(-offset);
-                }
-            }
-            */
         }
 
         //Grid size editing
@@ -279,6 +233,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         public override void Setup(IBaseObject superObject)
         {
             base.Setup(superObject);
+
+            gridOrganizer = new GridScalerOrganizer(linkedBuilding: this); ;
 
             negativeFloorParam = new MailboxLineDistinctUnnamed("Negative floors", CurrentMailbox, Mailbox.ValueType.buildParameter, 10, 0, 0);
             gridSizeParam = new MailboxLineVector2Int(name: "Grid size", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);

@@ -19,30 +19,34 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public abstract ModificationNodeType Type { get; }
 
+        /*
         public OnFloorObject LinkedOnFloorObject
         {
             get
             {
-                OnFloorObject returnValue = LinkedObject as OnFloorObject;
+                OnFloorObject returnValue = LinkedOrganizer as OnFloorObject;
 
                 if (returnValue == null) Debug.LogWarning("Error: Linked object of Grid Modification Node is not a OnFloorObject");
 
-                return LinkedObject as OnFloorObject;
+                return LinkedOrganizer as OnFloorObject;
             }
         }
+        */
 
-        protected override void setup(BaseGameObject linkedObject)
+        protected override void setup(ModificationOrganizer linkedOrganizer)
         {
-            base.setup(linkedObject: linkedObject);
+            base.setup(linkedOrganizer: linkedOrganizer);
 
-            if (linkedObject is OnFloorObject)
+            /*
+            if (linkedORganizer is OnFloorObject)
             {
-                parent = linkedObject as OnFloorObject;
+                parent = linkedORganizer as OnFloorObject;
             }
             else
             {
                 Debug.LogWarning("Error: Linked object of Grid Modification Node is not a OnFloorObject");
             }
+            */
         }
 
         public abstract Vector2Int AbsoluteCoordinate { get; set; }

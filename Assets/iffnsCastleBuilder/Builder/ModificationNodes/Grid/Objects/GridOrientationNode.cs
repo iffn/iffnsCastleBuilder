@@ -64,7 +64,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             set
             {
                 OrientationValue.Val = (int)value.ForwardOrientation;
-                LinkedObject.ApplyBuildParameters();
+                //LinkedOrganizer.ApplyBuildParameters();
             }
         }
 
@@ -75,11 +75,13 @@ namespace iffnsStuff.iffnsCastleBuilder
 
 
         //public void Setup(BaseGameObject linkedObject, MailboxLineDistinctNamed orientation, Vector3 localPosition, float arrowOffset)
-        public void Setup(BaseGameObject linkedObject, MailboxLineDistinctNamed orientation, GameObject positionReference, Vector3 localPositionOffset, float arrowOffset)
+        public void Setup(ModificationOrganizer linkedOrganizer, MailboxLineDistinctNamed orientation, GameObject positionReference, Vector3 localPositionOffset, float arrowOffset)
         {
-            base.setup(linkedObject: linkedObject);
+            base.setup(linkedOrganizer: linkedOrganizer);
 
             OrientationValue = orientation;
+
+            transform.parent = linkedOrganizer.LinkedObject.transform;
 
             this.positionReference = positionReference;
 
@@ -91,12 +93,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void UpdatePosition()
         {
-            transform.parent = LinkedObject.transform.parent; //Set parent for positioning
+            //transform.parent = LinkedOrganizer.transform.parent; //Set parent for positioning
             transform.position = positionReference.transform.position;
             transform.localPosition += localPositionOffset;
             transform.localRotation = Quaternion.identity;
 
-            transform.parent = LinkedObject.transform; //Set correct parent
+            //transform.parent = LinkedOrganizer.transform; //Set correct parent
 
             ZPositiveArrow.transform.localPosition = Vector3.forward * arrowOffset;
             ZNegativArrow.transform.localPosition = Vector3.back * arrowOffset;

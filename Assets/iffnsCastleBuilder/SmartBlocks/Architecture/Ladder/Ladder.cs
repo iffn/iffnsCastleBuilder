@@ -24,7 +24,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] float StepThickness = 0.05f;
 
 
-        public override ModificationOrganizer Organizer
+        public override GridModificationOrganizer Organizer
         {
             get
             {

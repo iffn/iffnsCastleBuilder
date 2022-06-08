@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class NodeGridRectangleOrganizer : ModificationOrganizer
+    public class NodeGridRectangleOrganizer : GridModificationOrganizer
     {
         readonly NodeGridPositionModificationNode firstNode;
         readonly NodeGridPositionModificationNode secondNode;

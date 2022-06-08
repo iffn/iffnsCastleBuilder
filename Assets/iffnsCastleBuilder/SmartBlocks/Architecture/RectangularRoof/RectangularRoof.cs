@@ -24,7 +24,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         //WallTypes wallType = WallTypes.NodeWall;
 
-        public override ModificationOrganizer Organizer
+        public override GridModificationOrganizer Organizer
         {
             get
             {

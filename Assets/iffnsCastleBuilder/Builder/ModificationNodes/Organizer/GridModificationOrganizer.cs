@@ -1,10 +1,11 @@
+using iffnsStuff.iffnsBaseSystemForUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public abstract class ModificationOrganizer
+    public abstract class GridModificationOrganizer : ModificationOrganizer
     {
         public abstract void SetLinkedObjectPositionAndOrientation(bool RaiseToFloor);
 
@@ -12,5 +13,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public abstract Vector3 FirstBuildPositionAbsolute { set; }
         public abstract Vector3 SecondBuildPositionAbsolute { set; }
+
+
     }
 }
