@@ -81,6 +81,13 @@ namespace iffnsStuff.iffnsCastleBuilder
                 ApplyBuildParameters();
             }
         }
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return false;
+            }
+        }
 
         void SetupWallTypeParam()
         {
@@ -187,13 +194,14 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            Failed = false;
-
             ModificationNodeOrganizer.OrientationType = WallType;
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
+
+            base.ApplyBuildParameters();
+            
+            //Check validity
+            if (Failed) return;
 
             Vector2Int gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
-
 
             if (gridSize.y == 0)
             {
@@ -201,6 +209,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return;
             }
 
+            //Get mesh
             triangleInfo = new List<TriangleMeshInfo>();
 
             //Size

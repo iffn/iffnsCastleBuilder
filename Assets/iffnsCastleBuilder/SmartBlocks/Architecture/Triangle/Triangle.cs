@@ -70,6 +70,15 @@ namespace iffnsStuff.iffnsCastleBuilder
                 (int)blockType);
         }
 
+
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);
@@ -133,13 +142,17 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            Failed = false;
+            base.ApplyBuildParameters();
+            
+            //Check validity
+            if (Failed) return;
 
-            TriangleMeshInfo Top = new TriangleMeshInfo();
-            TriangleMeshInfo Wall12 = new TriangleMeshInfo();
-            TriangleMeshInfo Wall23 = new TriangleMeshInfo();
-            TriangleMeshInfo Wall31 = new TriangleMeshInfo();
-            TriangleMeshInfo Bottom = new TriangleMeshInfo();
+            //Define mesh
+            TriangleMeshInfo Top = new();
+            TriangleMeshInfo Wall12 = new();
+            TriangleMeshInfo Wall23 = new();
+            TriangleMeshInfo Wall31 = new();
+            TriangleMeshInfo Bottom = new();
 
             void FinishMeshes()
             {
@@ -151,10 +164,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 BuildAllMeshes();
             }
-
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
-
-            if (Failed) return;
 
             float height;
 

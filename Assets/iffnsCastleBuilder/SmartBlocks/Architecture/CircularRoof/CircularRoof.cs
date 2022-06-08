@@ -163,16 +163,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        public bool RaiseToFloor
+        public override bool RaiseToFloor
         {
             get
             {
                 return RaiseToFloorParam.Val;
-            }
-            set
-            {
-                RaiseToFloorParam.Val = value;
-                ApplyBuildParameters();
             }
         }
 

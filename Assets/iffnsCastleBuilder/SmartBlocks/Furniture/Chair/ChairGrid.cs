@@ -38,6 +38,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public enum GridSizes
         {
             Size3x3,
@@ -147,10 +155,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
+            base.ApplyBuildParameters();
 
-            //transform.localPosition = new Vector3((BottomLeftPosition.x - 0.5f) * blockSize, LinkedFloor.BottomFloorHeight, (BottomLeftPosition.y - 0.5f) * blockSize);
+            //Check validity
+            if (Failed) return;
 
+            //Set parameters
             switch (GridSize)
             {
                 case GridSizes.Size3x3:
@@ -163,28 +173,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                     Debug.LogWarning("Error, Undefined Grid size enum: " + GridSize.ToString());
                     break;
             }
-            /*
-            switch (Orientation)
-            {
-                case GridOrientation.GridForwardOrientations.ZPositive:
-                    transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
-                    break;
-                case GridOrientation.GridForwardOrientations.XPositive:
-                    transform.localRotation = Quaternion.Euler(new Vector3(0, 90, 0));
-                    break;
-                case GridOrientation.GridForwardOrientations.ZNegative:
-                    transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
-                    break;
-                case GridOrientation.GridForwardOrientations.XNegative:
-                    transform.localRotation = Quaternion.Euler(new Vector3(0, 270, 0));
-                    break;
-                default:
-                    Debug.LogWarning("Error with Switch: Undefined orientation " + Orientation.ToString());
-                    break;
-            }
-            */
-
-            //UpdateModificationNodePositions();
         }
 
         void SetupEditButtons()

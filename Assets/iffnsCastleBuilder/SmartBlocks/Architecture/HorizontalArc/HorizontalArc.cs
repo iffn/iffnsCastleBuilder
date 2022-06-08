@@ -60,6 +60,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return false;
+            }
+        }
 
         void SetupBlockTypeParam(BlockTypes blockType = BlockTypes.Wall)
         {
@@ -297,9 +304,24 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            Failed = false;
+            base.ApplyBuildParameters();
+
+            //Check validity
+            if (Failed) return;
+            
+            Vector2Int gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
+
+            if (gridSize.x == 0 || gridSize.y == 0 || CutoffRange.x >= OuterRadiiAbsolute.x || CutoffRange.y >= OuterRadiiAbsolute.y)
+            {
+                Failed = true;
+                return;
+            }
+
+            //Define mesh
+            Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
             TriangleMeshInfo OuterArc = new TriangleMeshInfo();
+
             TriangleMeshInfo InnerArc = new TriangleMeshInfo();
             TriangleMeshInfo Floor = new TriangleMeshInfo();
             TriangleMeshInfo Ceiling = new TriangleMeshInfo();
@@ -330,14 +352,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BuildAllMeshes();
             }
 
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
-
-            if (Failed) return;
-
             //Get basic sizes
-            Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
-            Vector2Int gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
-
             float wallHeight = LinkedFloor.BottomFloorHeight;
             switch (BlockType)
             {
@@ -352,13 +367,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                     break;
             }
 
-
-            //Check validity
-            if (size.x == 0 || size.y == 0 || CutoffRange.x >= OuterRadiiAbsolute.x || CutoffRange.y >= OuterRadiiAbsolute.y)
-            {
-                Failed = true;
-                return;
-            }
 
             Vector2 CutoffRangeRotated;
             Vector2 IndentRotated;

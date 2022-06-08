@@ -104,16 +104,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             OtherSideMaterialParam = new MailboxLineMaterial(name: "Other side material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
         }
 
-        public bool RaiseToFloor
+        public override bool RaiseToFloor
         {
             get
             {
                 return RaiseToFloorParam.Val;
-            }
-            set
-            {
-                RaiseToFloorParam.Val = value;
-                ApplyBuildParameters();
             }
         }
 
@@ -154,8 +149,18 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            Failed = false;
+            base.ApplyBuildParameters();
 
+            //Check validity
+            if (Failed) return;
+
+            if (ModificationNodeOrganizer.ObjectOrientationGridSize.y == 0)
+            {
+                Failed = true;
+                return;
+            }
+
+            //Define mesh
             TriangleMeshInfo MainSide;
             TriangleMeshInfo OtherSide;
             TriangleMeshInfo WrapperStartSide;
@@ -179,18 +184,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BuildAllMeshes();
             }
 
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: RaiseToFloor);
-
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
             float width = size.y;
             float length = size.x;
 
-            if (ModificationNodeOrganizer.ObjectOrientationGridSize.y == 0)
-            {
-                Failed = true;
-                return;
-            }
 
             if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
             {

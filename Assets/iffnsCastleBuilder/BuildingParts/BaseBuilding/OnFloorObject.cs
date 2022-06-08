@@ -68,6 +68,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                 - Remove button
         */
 
+        public abstract bool RaiseToFloor { get; }
+
         public abstract ModificationOrganizer Organizer { get; }
 
         public bool IsStructural { get; protected set; } = true;
@@ -97,6 +99,16 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             AddEditButtonFunctionToBeginning(deleteButtonFunction);
             AddCopyButtons();
+        }
+
+        public override void ApplyBuildParameters()
+        {
+            Failed = false;
+
+            Organizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: RaiseToFloor);
+            if (Failed) return;
+
+            UpdateModificationNodePositions();
         }
 
         /*

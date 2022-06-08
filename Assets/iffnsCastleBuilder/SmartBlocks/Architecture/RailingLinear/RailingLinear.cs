@@ -74,6 +74,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);
@@ -139,11 +147,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             UnmanagedMeshes.Add(TopBorder);
             UnmanagedMeshes.Add(BottomBorder);
 
-            Failed = false;
+            base.ApplyBuildParameters();
 
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
+            //Check validity
+            if (Failed) return;
 
-            Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
             Vector2 gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
 
             if (Failed) return;
@@ -153,6 +161,9 @@ namespace iffnsStuff.iffnsCastleBuilder
                 Failed = true;
                 return;
             }
+
+            //Define mesh
+            Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
             TopBorder.transform.localScale = new Vector3(
                 borderWidth,

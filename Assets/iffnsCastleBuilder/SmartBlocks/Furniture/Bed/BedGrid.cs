@@ -70,6 +70,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);
@@ -120,12 +128,13 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
+            base.ApplyBuildParameters();
 
+            //Check validity
+            if (Failed) return;
+
+            //Set parameters
             currentBaseBed.SetBuildParameters(mattressSize: CurrentMattressSize);
-
-            UpdateModificationNodePositions();
-
         }
 
         void SetupEditButtons()

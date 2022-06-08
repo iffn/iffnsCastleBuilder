@@ -92,16 +92,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        public bool RaiseToFloor
+        public override bool RaiseToFloor
         {
             get
             {
                 return RaiseToFloorParam.Val;
-            }
-            set
-            {
-                RaiseToFloorParam.Val = value;
-                ApplyBuildParameters();
             }
         }
 
@@ -169,11 +164,15 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            Failed = false;
+            base.ApplyBuildParameters();
 
+            //Check validity
+            if (Failed) return;
+            
+            //Define mesh
             TriangleMeshInfo RoofOutside;
             TriangleMeshInfo RoofInside;
-            TriangleMeshInfo RoofWrapper = new TriangleMeshInfo();
+            TriangleMeshInfo RoofWrapper = new();
 
             void FinishMeshes()
             {
@@ -187,10 +186,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 BuildAllMeshes();
             }
-
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
-
-            if (Failed) return;
 
             //Outer roof without height
             List<Vector3> outerPoints = new List<Vector3>()

@@ -31,6 +31,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public enum QuarterAngleTypes
         {
             Deg90,
@@ -246,11 +254,15 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            Failed = false;
+            base.ApplyBuildParameters();
 
-            TriangleMeshInfo TopEndingMesh = new TriangleMeshInfo();
-            TriangleMeshInfo ColumnMesh = new TriangleMeshInfo();
-            TriangleMeshInfo BottomEndingMesh = new TriangleMeshInfo();
+            //Check validity
+            if (Failed) return;
+
+            //Define mesh
+            TriangleMeshInfo TopEndingMesh = new();
+            TriangleMeshInfo ColumnMesh = new();
+            TriangleMeshInfo BottomEndingMesh = new();
 
             void FinishMeshes()
             {
@@ -260,9 +272,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 BuildAllMeshes();
             }
-
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
-            if (Failed) return;
 
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
             Vector2Int gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;

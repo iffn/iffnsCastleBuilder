@@ -61,6 +61,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);
@@ -114,6 +122,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
+            base.ApplyBuildParameters();
+
+            //Check validity
+            if (Failed) return;
+
+            //Set parameters
             transform.localPosition = BottomLeftPosition;
             transform.localRotation = Quaternion.Euler(Vector3.up * Rotation);
             transform.localScale = new Vector3(RelativeSize.x, transform.localScale.y, RelativeSize.y);

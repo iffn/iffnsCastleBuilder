@@ -22,6 +22,14 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         NodeGridRectangleOrganizer ModificationNodeOrganizer;
 
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public override ModificationOrganizer Organizer
         {
             get
@@ -193,17 +201,27 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            Failed = false;
+            base.ApplyBuildParameters();
 
-            TriangleMeshInfo StepFront = new TriangleMeshInfo();
-            TriangleMeshInfo TopStepTop = new TriangleMeshInfo();
-            TriangleMeshInfo StepTop = new TriangleMeshInfo();
-            TriangleMeshInfo LeftSide = new TriangleMeshInfo();
-            TriangleMeshInfo RightSide = new TriangleMeshInfo();
-            TriangleMeshInfo BackFaceAngle = new TriangleMeshInfo();
-            TriangleMeshInfo BackFaceVertical = new TriangleMeshInfo();
-            TriangleMeshInfo BottomFrontFace = new TriangleMeshInfo();
-            TriangleMeshInfo TopCollider = new TriangleMeshInfo();
+            //Check validity
+            if (Failed) return;
+
+            if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
+            {
+                Failed = true;
+                return;
+            }
+
+            //Define mesh
+            TriangleMeshInfo StepFront = new();
+            TriangleMeshInfo TopStepTop = new();
+            TriangleMeshInfo StepTop = new();
+            TriangleMeshInfo LeftSide = new();
+            TriangleMeshInfo RightSide = new();
+            TriangleMeshInfo BackFaceAngle = new();
+            TriangleMeshInfo BackFaceVertical = new();
+            TriangleMeshInfo BottomFrontFace = new();
+            TriangleMeshInfo TopCollider = new();
 
             void FinishMesh()
             {
@@ -241,15 +259,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 StaticMeshManager.AddTriangleInfoIfValid(TopCollider);
 
                 BuildAllMeshes();
-            }
-
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
-            if (Failed) return;
-
-            if(ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
-            {
-                Failed = true;
-                return;
             }
 
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;

@@ -54,8 +54,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
 
                 parent.ApplyBuildParameters();
-
-                parent.UpdateModificationNodePositions();
             }
         }
 

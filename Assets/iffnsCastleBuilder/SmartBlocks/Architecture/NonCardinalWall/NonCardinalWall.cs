@@ -69,8 +69,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             AttemptZWall
         }
 
-        //Inherited parameters
-
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return false;
+            }
+        }
 
         float wallHeight
         {
@@ -172,11 +177,27 @@ namespace iffnsStuff.iffnsCastleBuilder
         //Generate wall frorm parameters
         public override void ApplyBuildParameters()
         {
-            Failed = false;
+            base.ApplyBuildParameters();
 
-            TriangleMeshInfo TopCap = new TriangleMeshInfo();
-            List<TriangleMeshInfo> Walls = new List<TriangleMeshInfo>();
-            TriangleMeshInfo BottomCap = new TriangleMeshInfo();
+            //Check validity
+            if (Failed) return;
+
+            Vector2Int gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
+
+            if (gridSize.x <= 1 && gridSize.y <= 1
+                || gridSize.x == 1 && gridSize.y == 2
+                || gridSize.x == 2 && gridSize.y == 1)
+            {
+                Failed = true;
+                return;
+            }
+
+            //Define mesh
+            Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
+
+            TriangleMeshInfo TopCap = new();
+            List<TriangleMeshInfo> Walls = new();
+            TriangleMeshInfo BottomCap = new();
 
             void FinishMesh()
             {
@@ -201,19 +222,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BuildAllMeshes();
             }
 
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
-            if (Failed) return;
-
-            Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
-            Vector2Int gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
-
-            if (gridSize.x <= 1 && gridSize.y <= 1
-                || gridSize.x == 1 && gridSize.y == 2
-                || gridSize.x == 2 && gridSize.y == 1)
-            {
-                Failed = true;
-                return;
-            }
 
             List<Vector3> clockwiseEdgePoints = new List<Vector3>();
 

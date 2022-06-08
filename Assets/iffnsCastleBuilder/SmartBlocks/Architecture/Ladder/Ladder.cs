@@ -19,10 +19,16 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         NodeGridWallOrganizer ModificationNodeOrganizer;
 
-
         [SerializeField] float SideThickness = 0.05f;
         [SerializeField] float StepThickness = 0.05f;
 
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return true;
+            }
+        }
 
         public override ModificationOrganizer Organizer
         {
@@ -164,9 +170,10 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            Failed = false;
+            base.ApplyBuildParameters();
 
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
+            //Check validity
+            if (Failed) return;
 
             Vector2Int gridSize = ModificationNodeOrganizer.ParentOrientationGridSize;
 
@@ -176,6 +183,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return;
             }
 
+            //Define mesh
             float width = ModificationNodeOrganizer.ObjectOrientationSize;
 
             float height = LinkedFloor.CompleteFloorHeight; //ToDo: Multi floor ladder
@@ -199,9 +207,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             float sideHeight = height + HeightOvershoot;
 
-            TriangleMeshInfo OriginSide = new TriangleMeshInfo();
-            TriangleMeshInfo OtherSide = new TriangleMeshInfo();
-            TriangleMeshInfo Steps = new TriangleMeshInfo();
+            TriangleMeshInfo OriginSide = new();
+            TriangleMeshInfo OtherSide = new();
+            TriangleMeshInfo Steps = new();
 
             void FinishMesh()
             {

@@ -53,6 +53,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         void InitializeBuildParameterLines()
         {
             BottomLeftPositionParam = new MailboxLineVector2Int(name: "Bottom left position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
@@ -91,14 +99,24 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            Failed = false;
+            base.ApplyBuildParameters();
 
-            TriangleMeshInfo FrontWall = new TriangleMeshInfo();
-            TriangleMeshInfo BackWall = new TriangleMeshInfo();
-            TriangleMeshInfo RightWall = new TriangleMeshInfo();
-            TriangleMeshInfo LeftWall = new TriangleMeshInfo();
-            TriangleMeshInfo TopWall = new TriangleMeshInfo();
-            TriangleMeshInfo InnerArc = new TriangleMeshInfo();
+            //Check validity
+            if (Failed) return;
+
+            if (ModificationNodeOrganizer.ObjectOrientationGridSize.y == 0)
+            {
+                Failed = true;
+                return;
+            }
+
+            //Define mesh
+            TriangleMeshInfo FrontWall = new();
+            TriangleMeshInfo BackWall = new();
+            TriangleMeshInfo RightWall = new();
+            TriangleMeshInfo LeftWall = new();
+            TriangleMeshInfo TopWall = new();
+            TriangleMeshInfo InnerArc = new();
 
             void FinishMeshes()
             {
@@ -125,17 +143,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BuildAllMeshes();
             }
 
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
-
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
-
-            
-
-            if (ModificationNodeOrganizer.ObjectOrientationGridSize.y == 0)
-            {
-                Failed = true;
-                return;
-            }
 
             float length = size.y;
             float width;

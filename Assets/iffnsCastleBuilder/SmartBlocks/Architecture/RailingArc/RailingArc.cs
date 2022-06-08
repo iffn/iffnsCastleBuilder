@@ -74,6 +74,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);
@@ -129,13 +137,11 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            Failed = false;
+            base.ApplyBuildParameters();
 
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
-
+            //Check validity
             if (Failed) return;
 
-            Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
             Vector2 gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
 
             if(gridSize.x == 0 || gridSize.y == 0)
@@ -146,9 +152,12 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return;
             }
 
+            //Define mesh
+            Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
+
             TriangleMeshInfo arcMantleTop;
             TriangleMeshInfo arcMantleBottom;
-            TriangleMeshInfo posts = new TriangleMeshInfo();
+            TriangleMeshInfo posts = new();
 
             //ToDo: Improve UV mesh
 

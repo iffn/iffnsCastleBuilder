@@ -132,17 +132,19 @@ namespace iffnsStuff.iffnsCastleBuilder
             HalfAngledSquareRoof,
         }
 
-        public bool RaiseToFloor
+        public override bool RaiseToFloor
         {
             get
             {
                 return RaiseToFloorParam.Val;
             }
+            /*
             set
             {
                 RaiseToFloorParam.Val = value;
                 ApplyBuildParameters();
             }
+            */
         }
 
         public override void Setup(IBaseObject linkedFloor)
@@ -216,14 +218,9 @@ namespace iffnsStuff.iffnsCastleBuilder
             StaticMeshManager.AddTriangleInfoIfValid(staticMesh);
         }
 
-
-
         public override void ApplyBuildParameters()
         {
-            Failed = false;
-
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: false);
-            if (Failed) return;
+            base.ApplyBuildParameters();
 
             if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
             {

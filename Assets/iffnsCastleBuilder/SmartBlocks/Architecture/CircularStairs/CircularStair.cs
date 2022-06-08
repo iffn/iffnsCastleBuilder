@@ -22,6 +22,14 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         BlockGridRadiusOrganizer ModificationNodeOrganizer;
 
+        public override bool RaiseToFloor
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public override ModificationOrganizer Organizer
         {
             get
@@ -189,16 +197,18 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
-            Failed = false;
+            base.ApplyBuildParameters();
 
-            ModificationNodeOrganizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: true);
+            //Check validity
+            if (Failed) return;
 
-            TriangleMeshInfo TopStepTop = new TriangleMeshInfo();
-            TriangleMeshInfo StepTop = new TriangleMeshInfo();
-            TriangleMeshInfo StepFront = new TriangleMeshInfo();
-            TriangleMeshInfo OuterRadiiSide = new TriangleMeshInfo();
-            TriangleMeshInfo InnerRadiiSide = new TriangleMeshInfo();
-            TriangleMeshInfo BackFace = new TriangleMeshInfo();
+            //Define mesh
+            TriangleMeshInfo TopStepTop = new();
+            TriangleMeshInfo StepTop = new();
+            TriangleMeshInfo StepFront = new();
+            TriangleMeshInfo OuterRadiiSide = new();
+            TriangleMeshInfo InnerRadiiSide = new();
+            TriangleMeshInfo BackFace = new();
             TriangleMeshInfo ColliderMesh;
 
             void FinishMeshes()
