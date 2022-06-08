@@ -285,12 +285,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             //Side wrapper 1
             tempWrapper = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>()
-        {
-            new Vector3(0, Height - HeightThickness, 0),
-            new Vector3(0, Height, 0),
-            new Vector3(size.x, 0, 0),
-            new Vector3(size.x - xOffset, 0, 0),
-        }
+            {
+                new Vector3(0, Height - HeightThickness, 0),
+                new Vector3(0, Height, 0),
+                new Vector3(size.x, 0, 0),
+                new Vector3(size.x - xOffset, 0, 0),
+            }
             );
             RoofWrapper.Add(tempWrapper);
 
@@ -298,13 +298,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             tempWrapper = tempWrapper.CloneFlipped;
             tempWrapper.Move(Vector3.forward * size.y);
             RoofWrapper.Add(tempWrapper);
-
-            if (RaiseToFloor)
-            {
-                RoofOutside.Move(Vector3.up * LinkedFloor.BottomFloorHeight);
-                RoofInside.Move(Vector3.up * LinkedFloor.BottomFloorHeight);
-                RoofWrapper.Move(Vector3.up * LinkedFloor.BottomFloorHeight);
-            }
 
             FinishMesh();
         }
@@ -366,13 +359,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             tempShape = tempShape.CloneFlipped;
             tempShape.Move(Vector3.forward * size.y);
             RoofWrapper.Add(tempShape);
-
-            if (RaiseToFloor)
-            {
-                RoofOutside.Move(Vector3.up * LinkedFloor.BottomFloorHeight);
-                RoofInside.Move(Vector3.up * LinkedFloor.BottomFloorHeight);
-                RoofWrapper.Move(Vector3.up * LinkedFloor.BottomFloorHeight);
-            }
 
             FinishMesh();
         }

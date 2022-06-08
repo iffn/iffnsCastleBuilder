@@ -267,13 +267,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                     break;
             }
 
-            if (RaiseToFloor)
-            {
-                RoofOutside.Move(Vector3.up * LinkedFloor.BottomFloorHeight);
-                RoofInside.Move(Vector3.up * LinkedFloor.BottomFloorHeight);
-                RoofWrapper.Move(Vector3.up * LinkedFloor.BottomFloorHeight);
-            }
-
             FinishMeshes();
 
             void RotateUVs(TriangleMeshInfo info)
