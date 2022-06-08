@@ -98,7 +98,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             FirstCoordinatenParam = new MailboxLineVector2Int(name: "First coordinaten", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             SecondCoordinateParam = new MailboxLineVector2Int(name: "Second coordinate", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
-            HeightParam = new MailboxLineRanged(name: "Height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 5f, Min: 0.3f, DefaultValue: 1.8f);
+            HeightParam = new MailboxLineRanged(name: "Height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 5f, Min: 0.3f, DefaultValue: 2f);
             RaiseToFloorParam = new MailboxLineBool(name: "Raise to floor", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: true);
             MainSideMaterialParam = new MailboxLineMaterial(name: "Main side material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
             OtherSideMaterialParam = new MailboxLineMaterial(name: "Other side material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
@@ -213,7 +213,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             trianglePoints.Add(Vector3.zero);
             trianglePoints.Add(new Vector3(0, 0, width));
-            trianglePoints.Add(new Vector3(0, Height, width * centerPosition));
+            trianglePoints.Add(new Vector3(0, Height - MathHelper.SmallFloat, width * centerPosition));
 
             MainSide = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: trianglePoints);
 
