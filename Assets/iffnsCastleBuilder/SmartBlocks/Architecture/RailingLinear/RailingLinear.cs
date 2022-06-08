@@ -7,10 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class RailingLinear : OnFloorObject
     {
-        [SerializeField] UnityMeshManager TopBorder;
-        [SerializeField] UnityMeshManager BottomBorder;
-        [SerializeField] GameObject RailingPostTemplate;
-
         //Build parameters
         MailboxLineVector2Int StartCoordinateParam;
         MailboxLineVector2Int EndCoordinateParam;
@@ -106,11 +102,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             ModificationNodeOrganizer.OrientationType = NodeGridRectangleOrganizer.OrientationTypes.NodeGrid;
 
             SetupEditButtons();
-
-            //AllStaticMeshes.managedMeshes.AddRange();
-
-            TopBorder.Setup(mainObject: this, currentMaterialReference: TopMaterialParam);
-            BottomBorder.Setup(mainObject: this, currentMaterialReference: BottomMaterialParam);
         }
 
         public void CompleteSetupWithBuildParameters(FloorController linkedFloor, Vector2Int startCoordinate, Vector2Int endCoordinate, float targetCylinderDistance)
@@ -141,12 +132,15 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         List<GameObject> RailingPosts = new List<GameObject>();
 
+        public void AddStaticMesh(TriangleMeshInfo staticMesh)
+        {
+            if (staticMesh == null) return;
+
+            StaticMeshManager.AddTriangleInfoIfValid(staticMesh);
+        }
+
         public override void ApplyBuildParameters()
         {
-            UnmanagedMeshes.Clear();
-            UnmanagedMeshes.Add(TopBorder);
-            UnmanagedMeshes.Add(BottomBorder);
-
             base.ApplyBuildParameters();
 
             //Check validity
@@ -162,40 +156,47 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return;
             }
 
+            TriangleMeshInfo TopBorder;
+            TriangleMeshInfo BottomBorder;
+            TriangleMeshInfo Posts = new();
+
+            void FinishMesh()
+            {
+                TopBorder.MaterialReference = TopMaterialParam;
+                BottomBorder.MaterialReference = BottomMaterialParam;
+                Posts.MaterialReference = PostMaterialParam;
+
+                AddStaticMesh(TopBorder);
+                AddStaticMesh(BottomBorder);
+                AddStaticMesh(Posts);
+
+                BuildAllMeshes();
+            }
+
             //Define mesh
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
-            TopBorder.transform.localScale = new Vector3(
+            TopBorder = MeshGenerator.FilledShapes.BoxAroundCenter(new Vector3(
                 borderWidth,
-                topHeight, 
+                topHeight,
                 size.y
-                );
-            TopBorder.transform.localPosition = new Vector3(
-                0,
-                railingHeight - topHeight * 0.5f, 
-                size.y * 0.5f
-                );
+                ));
 
-            BottomBorder.transform.localScale = new Vector3(
-                borderWidth,
-                bottomHeight, 
-                size.y
-                );
-            BottomBorder.transform.localPosition = new Vector3(
+            BottomBorder = TopBorder.Clone;
+
+            TopBorder.Move(new Vector3(
                 0,
-                bottomHeight * 0.5f, 
+                railingHeight - topHeight * 0.5f,
                 size.y * 0.5f
-                );
+                ));
+
+            BottomBorder.Move(new Vector3(
+                0,
+                bottomHeight * 0.5f,
+                size.y * 0.5f
+                ));
 
             //Railing posts
-            while (RailingPosts.Count > 0)
-            {
-                GameObject post = RailingPosts[0];
-                UsuallyActiveColliders.Remove(post.transform.GetChild(0).GetComponent<CapsuleCollider>());
-                RailingPosts.Remove(post);
-                Destroy(post);
-            }
-
             float baseDistance = size.y;
             float floatingCount = baseDistance / TargetDistanceBetweenCylinders;
             int betweenCount = Mathf.RoundToInt(floatingCount);
@@ -203,41 +204,67 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             float betweenDistance = baseDistance / betweenCount;
 
-            List<MeshFilter> allMeshFilters = new List<MeshFilter>();
-
             float postHeight = railingHeight - topHeight;
             float halfPostHeight = postHeight * 0.5f;
+            float halfRailingHeight = railingHeight * 0.5f;
 
-            for (int i = 0; i <= betweenCount; i++)
+            TriangleMeshInfo currentPost;
+            TriangleMeshInfo currentCap;
+
+            for (int i = 1; i < betweenCount; i++)
             {
-                GameObject newPost = Instantiate(original: RailingPostTemplate);
+                currentPost = MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: cylinderDiameter * 0.5f, length: postHeight, direction: Vector3.up, numberOfEdges: 24);
 
-                newPost.transform.parent = transform;
-                newPost.transform.localPosition = new Vector3(
+                currentPost.Move(new Vector3(
                     0,
-                    halfPostHeight, 
+                    halfPostHeight,
                     betweenDistance * i
-                    );
-                newPost.transform.localScale = new Vector3(cylinderDiameter, postHeight, cylinderDiameter);
+                    ));
 
-                RailingPosts.Add(newPost);
-                UsuallyActiveColliders.Add(newPost.transform.GetChild(0).GetComponent<CapsuleCollider>());
-
-                UnityMeshManager manager = newPost.transform.GetChild(0).GetComponent<UnityMeshManager>();
-                manager.Setup(mainObject: this, currentMaterialReference: PostMaterialParam);
-                UnmanagedMeshes.Add(manager);
+                Posts.Add(currentPost);
             }
 
-            //^1 = last index
-            RailingPosts[0].transform.localScale = new Vector3(cylinderDiameter, railingHeight + MathHelper.SmallFloat, cylinderDiameter);
-            RailingPosts[^1].transform.localScale = new Vector3(cylinderDiameter, railingHeight + MathHelper.SmallFloat, cylinderDiameter);
-            RailingPosts[0].transform.localPosition += Vector3.up * (topHeight * 0.5f);
-            RailingPosts[^1].transform.localPosition += Vector3.up * (topHeight * 0.5f);
+            //Start post
+            currentPost = MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: cylinderDiameter * 0.5f, length: railingHeight, direction: Vector3.up, numberOfEdges: 24);
+            currentCap = MeshGenerator.FilledShapes.CylinderCaps(radius: cylinderDiameter * 0.5f, length: railingHeight + MathHelper.SmallFloat, direction: Vector3.up, numberOfEdges: 24);
+            currentCap.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
 
-            foreach (UnityMeshManager manager in UnmanagedMeshes)
-            {
-                manager.UpdateMaterial();
-            }
+            currentPost.Move(new Vector3(
+                    0,
+                    halfRailingHeight,
+                    0
+                    ));
+
+            currentCap.Move(new Vector3(
+                    0,
+                    halfRailingHeight,
+                    0
+                    ));
+
+            Posts.Add(currentCap);
+            Posts.Add(currentPost);
+
+            //End post
+            currentPost = MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: cylinderDiameter * 0.5f, length: railingHeight, direction: Vector3.up, numberOfEdges: 24);
+            currentCap = MeshGenerator.FilledShapes.CylinderCaps(radius: cylinderDiameter * 0.5f, length: railingHeight + MathHelper.SmallFloat, direction: Vector3.up, numberOfEdges: 24);
+            currentCap.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
+
+            currentPost.Move(new Vector3(
+                    0,
+                    halfRailingHeight,
+                    baseDistance
+                    ));
+
+            currentCap.Move(new Vector3(
+                    0,
+                    halfRailingHeight,
+                    baseDistance
+                    ));
+
+            Posts.Add(currentCap);
+            Posts.Add(currentPost);
+
+            FinishMesh();
         }
 
         void SetupEditButtons()
