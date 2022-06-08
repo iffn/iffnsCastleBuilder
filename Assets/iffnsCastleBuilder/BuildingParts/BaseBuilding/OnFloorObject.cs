@@ -103,6 +103,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
+            ResetAllMeshes();
+
             Failed = false;
 
             Organizer.SetLinkedObjectPositionAndOrientation(raiseToFloor: RaiseToFloor);
