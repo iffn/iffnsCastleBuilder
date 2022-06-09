@@ -739,6 +739,9 @@ namespace iffnsStuff.iffnsCastleBuilder
             int xPos = Mathf.RoundToInt(CoordinateRelative.x / buildingController.BlockSize);
             int zPos = Mathf.RoundToInt(CoordinateRelative.z / buildingController.BlockSize);
 
+            if(xPos > LinkedBuildingController.NodeGridSize.x - 1) xPos = LinkedBuildingController.NodeGridSize.x - 1;
+            if(zPos > LinkedBuildingController.NodeGridSize.x - 1) zPos = LinkedBuildingController.NodeGridSize.x - 1;
+
             /*
             if (xPos > buildingController.GridSize.x || xPos < 0) return null;
             if (zPos > buildingController.GridSize.y || zPos < 0) return null;
