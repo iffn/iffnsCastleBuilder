@@ -121,7 +121,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (raiseToFloor)
             {
-
+                /*
                 Vector2Int offset;
 
                 if (secondAngle < 90)
@@ -140,8 +140,9 @@ namespace iffnsStuff.iffnsCastleBuilder
                 {
                     offset = new Vector2Int(0, -1);
                 }
-
                 float floorOffset = linkedObject.LinkedFloor.BaseHeightOfBlock(firstNode.AbsoluteCoordinate + offset);
+                */
+                float floorOffset = linkedObject.LinkedFloor.BottomFloorHeight;
 
                 linkedObject.transform.localPosition += Vector3.up * floorOffset;
             }
