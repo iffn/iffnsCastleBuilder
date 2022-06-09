@@ -270,11 +270,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             float topFloorHeight;
 
-            if (LinkedFloor.FloorsAbove <= 0) topFloorHeight = LinkedFloor.BottomFloorHeight;
+            if (LinkedFloor.FloorsAbove <= 0)
+            {
+                topFloorHeight = LinkedFloor.BottomFloorHeight;
+            }
             else
             {
-
-
                 if (NumberOfFloors == 1)
                 {
                     topFloorHeight = LinkedFloor.LinkedBuildingController.Floor(LinkedFloor.FloorNumber + 1).BottomFloorHeight;

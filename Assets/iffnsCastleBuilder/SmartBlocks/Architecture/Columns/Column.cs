@@ -9,6 +9,7 @@ namespace iffnsStuff.iffnsCastleBuilder
     {
         //Settings:
         int fullCircleVertices = 32;
+        float baseHeight = 0.2f;
 
         //Unity assignments
         //[SerializeField] GameObject MeshMover;
@@ -16,12 +17,15 @@ namespace iffnsStuff.iffnsCastleBuilder
         //Build parameters
         MailboxLineVector2Int BottomLeftPositionParam;
         MailboxLineVector2Int TopRightPositionParam;
-        MailboxLineDistinctNamed AnglePreferenceParam;
+        MailboxLineDistinctUnnamed NumberOfFloorsParam;
+        //MailboxLineDistinctNamed AnglePreferenceParam;
         MailboxLineDistinctNamed BottomEndingTypeParam;
         MailboxLineDistinctNamed TopEndingTypeParam;
         MailboxLineDistinctNamed ColumnTypeParam;
+        //MailboxLineDistinctNamed SizeTypeParam;
+        MailboxLineMaterial ColumnMaterialParam;
 
-        BlockGridRectangleOrganizer ModificationNodeOrganizer;
+        NodeGridRectangleOrganizer ModificationNodeOrganizer;
 
         public override ModificationOrganizer Organizer
         {
@@ -39,6 +43,20 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public int NumberOfFloors
+        {
+            get
+            {
+                return NumberOfFloorsParam.Val;
+            }
+            set
+            {
+                NumberOfFloorsParam.Val = value;
+                ApplyBuildParameters();
+            }
+        }
+
+        /*
         public enum QuarterAngleTypes
         {
             Deg90,
@@ -82,40 +100,59 @@ namespace iffnsStuff.iffnsCastleBuilder
                 ApplyBuildParameters();
             }
         }
+        */
 
         public enum EndingTypes
         {
             None,
-            Disk,
+            Cylinder,
             Box
         }
 
-        void SetupEndingParams()
+        void SetupColumnAndEndingParams()
         {
-            List<string> enumString = new List<string>();
+            List<string> endingEnumString = new List<string>();
 
-            int enumValues = System.Enum.GetValues(typeof(EndingTypes)).Length;
+            int endingEnumValues = System.Enum.GetValues(typeof(EndingTypes)).Length;
 
-            for (int i = 0; i < enumValues; i++)
+            for (int i = 0; i < endingEnumValues; i++)
             {
                 EndingTypes type = (EndingTypes)i;
 
-                enumString.Add(type.ToString());
+                endingEnumString.Add(type.ToString());
+            }
+
+            List<string> columnEnumString = new List<string>();
+
+            int columnEnumValues = System.Enum.GetValues(typeof(ColumnTypes)).Length;
+
+            for (int i = 0; i < columnEnumValues; i++)
+            {
+                ColumnTypes type = (ColumnTypes)i;
+
+                columnEnumString.Add(type.ToString());
             }
 
             TopEndingTypeParam = new MailboxLineDistinctNamed(
                 "Top ending type",
                 CurrentMailbox,
                 Mailbox.ValueType.buildParameter,
-                enumString,
-                0);
+                endingEnumString,
+                (int)EndingTypes.Box);
+
+            ColumnTypeParam = new MailboxLineDistinctNamed(
+                "Column type",
+                CurrentMailbox,
+                Mailbox.ValueType.buildParameter,
+                columnEnumString,
+                (int)ColumnTypes.Cylinder);
 
             BottomEndingTypeParam = new MailboxLineDistinctNamed(
                 "Bottom ending type",
                 CurrentMailbox,
                 Mailbox.ValueType.buildParameter,
-                enumString,
-                0);
+                endingEnumString,
+                (int)EndingTypes.Box);
         }
 
         public EndingTypes TopEndingType
@@ -133,31 +170,25 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public EndingTypes BottomEndingType
+        {
+            get
+            {
+                EndingTypes returnValue = (EndingTypes)BottomEndingTypeParam.Val;
+
+                return returnValue;
+            }
+            set
+            {
+                BottomEndingTypeParam.Val = (int)value;
+                ApplyBuildParameters();
+            }
+        }
+
         public enum ColumnTypes
         {
             Cylinder,
             Box
-        }
-
-        void SetupColumnTypeParam()
-        {
-            List<string> enumString = new List<string>();
-
-            int enumValues = System.Enum.GetValues(typeof(ColumnTypes)).Length;
-
-            for (int i = 0; i < enumValues; i++)
-            {
-                ColumnTypes type = (ColumnTypes)i;
-
-                enumString.Add(type.ToString());
-            }
-
-            ColumnTypeParam = new MailboxLineDistinctNamed(
-                "Column type",
-                CurrentMailbox,
-                Mailbox.ValueType.buildParameter,
-                enumString,
-                0);
         }
 
         public ColumnTypes ColumnType
@@ -175,7 +206,49 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        /*
+        public enum SizeTypes
+        {
+            Diameter,
+            Radius
+        }
 
+        void SetupSizeTypeParam()
+        {
+            List<string> enumString = new List<string>();
+
+            int enumValues = System.Enum.GetValues(typeof(SizeTypes)).Length;
+
+            for (int i = 0; i < enumValues; i++)
+            {
+                SizeTypes type = (SizeTypes)i;
+
+                enumString.Add(type.ToString());
+            }
+
+            SizeTypeParam = new MailboxLineDistinctNamed(
+                "Size type",
+                CurrentMailbox,
+                Mailbox.ValueType.buildParameter,
+                enumString,
+                0);
+        }
+
+        public SizeTypes SizeType
+        {
+            get
+            {
+                SizeTypes returnValue = (SizeTypes)SizeTypeParam.Val;
+
+                return returnValue;
+            }
+            set
+            {
+                SizeTypeParam.Val = (int)value;
+                ApplyBuildParameters();
+            }
+        }
+        */
 
         public Vector2Int BottomLeftPosition
         {
@@ -209,20 +282,22 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             BottomLeftPositionParam = new MailboxLineVector2Int(name: "Bottom Left Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             TopRightPositionParam = new MailboxLineVector2Int(name: "Top Right Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
+            NumberOfFloorsParam = new MailboxLineDistinctUnnamed(name: "Number of floors", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 100, Min: 1, DefaultValue: 1);
+            ColumnMaterialParam = new MailboxLineMaterial(name: "Column material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
 
-            BlockGridPositionModificationNode firstNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
+            //SetupAnglePreferenceTypeParam();
+            SetupColumnAndEndingParams();
+            //SetupSizeTypeParam();
+
+            NodeGridPositionModificationNode firstNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
             firstNode.Setup(linkedObject: this, value: BottomLeftPositionParam);
             FirstPositionNode = firstNode;
 
-            BlockGridPositionModificationNode secondNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
+            NodeGridPositionModificationNode secondNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
             secondNode.Setup(linkedObject: this, value: TopRightPositionParam, relativeReferenceHolder: BottomLeftPositionParam);
             SecondPositionNode = secondNode;
 
-            SetupAnglePreferenceTypeParam();
-            SetupEndingParams();
-            SetupColumnTypeParam();
-
-            ModificationNodeOrganizer = new BlockGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
+            ModificationNodeOrganizer = new NodeGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
 
             SetupEditButtons();
         }
@@ -259,6 +334,63 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Check validity
             if (Failed) return;
 
+            if(ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
+            {
+                Failed = true;
+                return;
+            }
+
+            //Sizes
+            Vector2 radii = 0.5f * ModificationNodeOrganizer.ObjectOrientationSize;
+            Vector3 offset = new Vector3(radii.x, 0, radii.y);
+
+            float totalHeight = LinkedFloor.WallBetweenHeight;
+
+            if (LinkedFloor.FloorsAbove > 0 && NumberOfFloors > 1)
+            {
+                int usedNumberOfFloors = NumberOfFloors;
+
+                usedNumberOfFloors = Mathf.Clamp(value: usedNumberOfFloors, min: 1, max: LinkedFloor.FloorsAbove + 1);
+
+                for (int i = LinkedFloor.FloorNumber + 1; i < LinkedFloor.FloorNumber + usedNumberOfFloors; i++)
+                {
+                    FloorController floor = LinkedFloor.LinkedBuildingController.Floor(i);
+
+                    totalHeight += floor.CompleteFloorHeight;
+                }
+            }
+
+            float bottomHeight = 0;
+            float topHeight = 0;
+
+            if (TopEndingType != EndingTypes.None) bottomHeight = baseHeight;
+            if (TopEndingType != EndingTypes.None) topHeight = baseHeight;
+
+            float middleHeight = totalHeight - bottomHeight - topHeight;
+
+            if(middleHeight < 0.1f)
+            {
+                topHeight = totalHeight / 3;
+                middleHeight = totalHeight / 3;
+                bottomHeight = totalHeight / 3;
+            }
+
+            float columnRadiusFactor = 0.9f;
+
+            if (TopEndingType == EndingTypes.None && BottomEndingType == EndingTypes.None) columnRadiusFactor = 1;
+            if (TopEndingType == EndingTypes.Cylinder || BottomEndingType == EndingTypes.Cylinder)
+            {
+                if(ColumnType == ColumnTypes.Box)
+                {
+                    columnRadiusFactor = 0.707f;
+                }
+                else
+                {
+                    columnRadiusFactor = 0.8f;
+                }
+            }
+
+
             //Define mesh
             TriangleMeshInfo TopEndingMesh = new();
             TriangleMeshInfo ColumnMesh = new();
@@ -266,6 +398,10 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             void FinishMeshes()
             {
+                TopEndingMesh.MaterialReference = ColumnMaterialParam;
+                ColumnMesh.MaterialReference = ColumnMaterialParam;
+                BottomEndingMesh.MaterialReference = ColumnMaterialParam;
+
                 StaticMeshManager.AddTriangleInfoIfValid(TopEndingMesh);
                 StaticMeshManager.AddTriangleInfoIfValid(ColumnMesh);
                 StaticMeshManager.AddTriangleInfoIfValid(BottomEndingMesh);
@@ -273,88 +409,66 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BuildAllMeshes();
             }
 
-            Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
-            Vector2Int gridSize = ModificationNodeOrganizer.ObjectOrientationGridSize;
-
-            float columnHeight = LinkedFloor.CompleteFloorHeight - 0.01f;
-
-            VerticesHolder circularColumnLine;
-
-            float blockIndent = BlockSize * 0.2f;
-
-            if (gridSize.x == 0 || gridSize.y == 0)
+            switch (TopEndingType)
             {
-                //Always 360
-                switch (ColumnType)
-                {
-                    case ColumnTypes.Cylinder:
-                        circularColumnLine = MeshGenerator.Lines.FullCircle(radius: BlockSize / 2, numberOfEdges: fullCircleVertices);
-                        circularColumnLine.Rotate(Quaternion.LookRotation(Vector3.up, Vector3.right));
-                        circularColumnLine.Scale(new Vector3(size.x + 1, 0, size.y + 1));
-                        ColumnMesh.Add(MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: circularColumnLine, offset: Vector3.up * columnHeight, closeType: MeshGenerator.ShapeClosingType.closedWithSmoothEdge, smoothTransition: true));
-                        break;
-
-                    case ColumnTypes.Box:
-                        ColumnMesh.Add(MeshGenerator.FilledShapes.BoxAroundCenter(new Vector3((gridSize.x + 1) * BlockSize - blockIndent, columnHeight, (gridSize.y + 1) * BlockSize - blockIndent)));
-                        ColumnMesh.Move(Vector3.up * columnHeight * 0.5f);
-                        break;
-
-                    default:
-                        Debug.LogWarning("Error: Column type not defined");
-                        break;
-                }
-
-                //MeshMover.transform.localPosition = new Vector3(gridSize.x + 1, 0, gridSize.y + 1) * (BlockSize * 0.5f);
+                case EndingTypes.None:
+                    break;
+                case EndingTypes.Cylinder:
+                    TopEndingMesh.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: 1, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
+                    TopEndingMesh.Add(MeshGenerator.FilledShapes.CylinderCaps(radius: 1, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
+                    break;
+                case EndingTypes.Box:
+                    TopEndingMesh.Add(MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(2, 1, 2)));
+                    break;
+                default:
+                    break;
             }
-            else
+
+            switch (ColumnType)
             {
-                switch (ColumnType)
-                {
-                    case ColumnTypes.Cylinder:
-                        //Angle preference arc
-                        switch (AnglePreference)
-                        {
-                            case QuarterAngleTypes.Deg90:
-                                circularColumnLine = MeshGenerator.Lines.ArcAroundZ(radius: BlockSize * 0.5f, angleDeg: 90, numberOfEdges: fullCircleVertices);
-                                break;
-                            case QuarterAngleTypes.Deg180:
-                                circularColumnLine = MeshGenerator.Lines.ArcAroundZ(radius: BlockSize * 0.5f, angleDeg: 180, numberOfEdges: fullCircleVertices);
-                                break;
-                            case QuarterAngleTypes.Deg270:
-                                circularColumnLine = MeshGenerator.Lines.ArcAroundZ(radius: BlockSize * 0.5f, angleDeg: 270, numberOfEdges: fullCircleVertices);
-                                break;
-                            case QuarterAngleTypes.Deg360:
-                                circularColumnLine = MeshGenerator.Lines.FullCircle(radius: BlockSize * 0.5f, numberOfEdges: fullCircleVertices);
-                                break;
-                            default:
-                                circularColumnLine = MeshGenerator.Lines.FullCircle(radius: BlockSize * 0.5f, numberOfEdges: fullCircleVertices);
-                                Debug.LogWarning("Error: Column type not defined");
-                                break;
-                        }
+                case ColumnTypes.Cylinder:
+                    ColumnMesh.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: columnRadiusFactor, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
 
-                        circularColumnLine.Rotate(Quaternion.LookRotation(Vector3.up, Vector3.right));
+                    if (TopEndingType != EndingTypes.None || BottomEndingType != EndingTypes.None)
+                    {
+                        ColumnMesh.Add(MeshGenerator.FilledShapes.CylinderCaps(radius: columnRadiusFactor, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
+                    }
 
-                        circularColumnLine.Scale(new Vector3(gridSize.x, 0, gridSize.y));
-
-                        MeshGenerator.ShapeClosingType closeType;
-                        if (AnglePreference == QuarterAngleTypes.Deg360) closeType = MeshGenerator.ShapeClosingType.closedWithSmoothEdge;
-                        else closeType = MeshGenerator.ShapeClosingType.open;
-
-                        ColumnMesh.Add(MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: circularColumnLine, offset: Vector3.up * columnHeight, closeType: closeType, smoothTransition: true));
-                        break;
-
-                    case ColumnTypes.Box:
-                        ColumnMesh.Add(MeshGenerator.FilledShapes.BoxAroundCenter(new Vector3(gridSize.x * BlockSize - blockIndent, columnHeight, gridSize.y * BlockSize - blockIndent)));
-                        ColumnMesh.Move(Vector3.up * columnHeight * 0.5f);
-                        break;
-
-                    default:
-                        break;
-                }
-
-
-                //MeshMover.transform.localPosition = new Vector3(size.x, 0, size.y) * 0.5f;
+                    break;
+                case ColumnTypes.Box:
+                    ColumnMesh.Add(MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(2 * columnRadiusFactor, 1, 2 * columnRadiusFactor)));
+                    break;
+                default:
+                    break;
             }
+
+            switch (BottomEndingType)
+            {
+                case EndingTypes.None:
+                    break;
+                case EndingTypes.Cylinder:
+                    BottomEndingMesh.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: 1, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
+                    BottomEndingMesh.Add(MeshGenerator.FilledShapes.CylinderCaps(radius: 1, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
+                    break;
+                case EndingTypes.Box:
+                    BottomEndingMesh.Add(MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(2, 1, 2)));
+                    break;
+                default:
+                    break;
+            }
+
+            TopEndingMesh.Scale(new Vector3(radii.x, topHeight, radii.y));
+            TopEndingMesh.Move((bottomHeight + middleHeight + topHeight * 0.5f) * Vector3.up);
+
+            ColumnMesh.Scale(new Vector3(radii.x, middleHeight, radii.y));
+            ColumnMesh.Move((bottomHeight + middleHeight * 0.5f) * Vector3.up);
+
+            BottomEndingMesh.Scale(new Vector3(radii.x, bottomHeight, radii.y));
+            BottomEndingMesh.Move((bottomHeight * 0.5f) * Vector3.up);
+
+            TopEndingMesh.Move(offset);
+            ColumnMesh.Move(offset);
+            BottomEndingMesh.Move(offset);
 
             FinishMeshes();
         }
