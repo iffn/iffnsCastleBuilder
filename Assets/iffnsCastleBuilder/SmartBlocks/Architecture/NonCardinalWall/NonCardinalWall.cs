@@ -194,6 +194,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             //Define mesh
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
+            float height = LinkedFloor.WallHeightWithScaler;
 
             TriangleMeshInfo TopCap = new();
             List<TriangleMeshInfo> Walls = new();
@@ -246,9 +247,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             TopCap = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(clockwiseEdgePoints);
             BottomCap = TopCap.CloneFlipped;
-            TopCap.Move(Vector3.up * LinkedFloor.CompleteFloorHeight);
+            TopCap.Move(Vector3.up * height);
 
-            Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePointsAsList(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: LinkedFloor.CompleteFloorHeight, closed: true, offset: transform.localPosition);
+            Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePointsAsList(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: height, closed: true, offset: transform.localPosition);
 
             foreach (TriangleMeshInfo info in Walls)
             {
@@ -275,7 +276,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 SetDiagonalWall();
                 
-                Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePointsAsList(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: LinkedFloor.CompleteFloorHeight, closed: true, offset: transform.localPosition);
+                Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePointsAsList(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: height, closed: true, offset: transform.localPosition);
 
                 foreach (TriangleMeshInfo info in Walls)
                 {
@@ -285,7 +286,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 TopCap.Add(MeshGenerator.MeshesFromPoints.MeshFrom3Points(clockwiseEdgePoints[0], clockwiseEdgePoints[1], clockwiseEdgePoints[2]));
                 TopCap.Add(MeshGenerator.MeshesFromPoints.MeshFrom3Points(clockwiseEdgePoints[0], clockwiseEdgePoints[4], clockwiseEdgePoints[5]));
                 BottomCap = TopCap.CloneFlipped;
-                TopCap.Move(LinkedFloor.CompleteFloorHeight * Vector3.up);
+                TopCap.Move(height * Vector3.up);
             }
 
             void SetDiagonalWall()
