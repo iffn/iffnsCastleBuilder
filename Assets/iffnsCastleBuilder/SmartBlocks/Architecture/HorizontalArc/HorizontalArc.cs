@@ -360,7 +360,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     wallHeight = LinkedFloor.WallHeightWithScaler;
                     break;
                 case BlockTypes.Floor:
-                    wallHeight = LinkedFloor.BottomFloorHeight;
+                    wallHeight = LinkedFloor.BottomFloorHeight - MathHelper.SmallFloat;
                     break;
                 default:
                     Debug.LogWarning("Error when trying to build horizontal Arc: Block type not defined");
@@ -388,9 +388,11 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             //Calculate scaled values where the sides of the arc are 1
 
+            Vector2 radiusClippingReduction = Vector2.zero;
+            if (BlockType == BlockTypes.Floor) radiusClippingReduction = Vector2.one * MathHelper.SmallFloat;
 
-            Vector2 lowerMainRadii = size;
-            Vector2 upperMainRadii = size - IndentRotated * (wallHeight / LinkedFloor.CompleteFloorHeight);
+            Vector2 lowerMainRadii = size - radiusClippingReduction;
+            Vector2 upperMainRadii = size - IndentRotated * (wallHeight / LinkedFloor.CompleteFloorHeight) - radiusClippingReduction;
 
 
             switch (EdgeType)
