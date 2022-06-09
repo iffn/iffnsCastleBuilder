@@ -539,6 +539,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             set
             {
                 //ToDo
+                if (value == floorVisibilityType) return;
+
                 floorVisibilityType = value;
                 ApplyBuildParameters();
             }

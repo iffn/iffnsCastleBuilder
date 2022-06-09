@@ -547,22 +547,16 @@ namespace iffnsStuff.iffnsCastleBuilder
 
 
         //Update floor visibility
-        void UpdateFloorDisplay()
+        void UpdateFloorVisibility()
         {
             switch (floorVisibilityType)
             {
                 case FloorViewDirectionType.topDown:
                     for (int floor = -NegativeFloors; floor <= PositiveFloors; floor++)
                     {
-                        if (floor < CurrentFloorNumber)
+                        if (floor <= CurrentFloorNumber)
                         {
                             Floor(floor).gameObject.SetActive(true);
-                            Floor(floor).FloorVisibilityType = FloorController.FloorVisibilityTypes.topDown;
-                        }
-                        else if (floor == CurrentFloorNumber)
-                        {
-                            Floor(floor).gameObject.SetActive(true);
-                            Floor(floor).FloorVisibilityType = FloorController.FloorVisibilityTypes.topDown;
                         }
                         else
                         {
@@ -574,19 +568,47 @@ namespace iffnsStuff.iffnsCastleBuilder
                 case FloorViewDirectionType.bottomUp:
                     for (int floor = -NegativeFloors; floor <= PositiveFloors; floor++)
                     {
-                        if (floor < CurrentFloorNumber)
+                        if (floor > CurrentFloorNumber)
                         {
                             Floor(floor).gameObject.SetActive(false);
                         }
-                        else if (floor == CurrentFloorNumber)
-                        {
-                            Floor(floor).gameObject.SetActive(true);
-                            Floor(floor).FloorVisibilityType = FloorController.FloorVisibilityTypes.bottomUp;
-                        }
                         else
                         {
-                            Floor(floor).FloorVisibilityType = FloorController.FloorVisibilityTypes.topDown;
                             Floor(floor).gameObject.SetActive(true);
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        void UpdateFloorDisplay()
+        {
+            UpdateFloorVisibility();
+
+            switch (floorVisibilityType)
+            {
+                case FloorViewDirectionType.topDown:
+                    for (int floor = -NegativeFloors; floor <= PositiveFloors; floor++)
+                    {
+                        if (floor <= CurrentFloorNumber)
+                        {
+                            Floor(floor).FloorVisibilityType = FloorController.FloorVisibilityTypes.topDown;
+                        }
+                    }
+
+                    break;
+                case FloorViewDirectionType.bottomUp:
+                    for (int floor = -NegativeFloors; floor <= PositiveFloors; floor++)
+                    {
+                        if (floor == CurrentFloorNumber)
+                        {
+                            Floor(floor).FloorVisibilityType = FloorController.FloorVisibilityTypes.bottomUp;
+                        }
+                        else if (floor > CurrentFloorNumber)
+                        {
+                            Floor(floor).FloorVisibilityType = FloorController.FloorVisibilityTypes.topDown;
                         }
                     }
 
@@ -657,7 +679,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     currentFloorNumber = value;
                 }
 
-                UpdateFloorDisplay();
+                UpdateFloorVisibility();
             }
 
             get
@@ -665,6 +687,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return currentFloorNumber;
             }
         }
+
+        
 
         public int CurrentFloorIndex
         {
