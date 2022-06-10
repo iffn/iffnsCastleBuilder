@@ -76,6 +76,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void LoadBuilding()
         {
+            /*
+            System.Diagnostics.Stopwatch stopwatch = new();
+            stopwatch.Start();
+            System.Diagnostics.Stopwatch stepwatch = new();
+            */
+
             if (!SelectedFileExists(updateList: true))
             {
                 UpdateButtons(updateList: false);
@@ -84,24 +90,42 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             EditTool.DeactivateEditOnMain();
 
+            //Save floor number:
             int storedFloorNumber = CurrentBuilding.CurrentFloorNumber;
             CurrentBuilding.CurrentFloorNumber = 0;
+            // -> Chateau time: 9.1E-06 s
 
-            //System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
+            //Load parameters from file:
+            //stepwatch.Restart();
             StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(completeFileLocation: completeFileLocation, baseObject: CurrentBuilding);
+            //stepwatch.Stop();
+            //Debug.Log("File load time = " + stepwatch.Elapsed.TotalSeconds);
+            // -> Chateau time: 3.3s
 
+            //Apply parameters:
+            //stepwatch.Restart();
             CurrentBuilding.ApplyBuildParameters();
+            //stepwatch.Stop();
+            //Debug.Log("Apply build parameter time = " + stepwatch.Elapsed.TotalSeconds);
+            // -> Chateau time: 1.7s
 
+            //Destroy failed objects:
             CurrentBuilding.DestroyFailedSubObjects();
+            // -> Chateau time: 0.025s
 
-            //Debug.Log("Time taken = " + watch.ElapsedMilliseconds + "ms");
+            //Restore floor number:
+            CurrentBuilding.CurrentFloorNumber = storedFloorNumber;
+            // -> Chateau time: 8.9E-06 s
 
+            //Update UI:
             CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.Done;
             CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Done;
-
-            CurrentBuilding.CurrentFloorNumber = storedFloorNumber;
-
             ToolController.CurrentNavigationTools.UpdateUI();
+            // -> Chateau time: 0.005 s
+
+            //stopwatch.Stop();
+            //Debug.Log("Total load time = " + stopwatch.Elapsed.TotalSeconds);
+            // -> Chateau time: 5.037s
         }
 
         public bool SelectedFileExists(bool updateList)
