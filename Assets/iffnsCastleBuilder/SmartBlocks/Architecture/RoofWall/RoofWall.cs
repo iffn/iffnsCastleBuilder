@@ -187,12 +187,12 @@ namespace iffnsStuff.iffnsCastleBuilder
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
             float width = size.y;
-            float length = size.x;
+            float thickness = size.x;
 
 
             if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
             {
-                length = LinkedFloor.CurrentNodeWallSystem.WallThickness;
+                thickness = LinkedFloor.CurrentNodeWallSystem.WallThickness;
             }
 
             float centerPosition = 0.5f;
@@ -212,21 +212,26 @@ namespace iffnsStuff.iffnsCastleBuilder
             List<Vector3> trianglePoints = new List<Vector3>();
 
             trianglePoints.Add(Vector3.zero);
-            trianglePoints.Add(new Vector3(0, 0, width));
-            trianglePoints.Add(new Vector3(0, Height - MathHelper.SmallFloat, width * centerPosition));
+            trianglePoints.Add(width * Vector3.forward);
+            trianglePoints.Add(new Vector3(0, Height, width * centerPosition));
+
+            //trianglePoints[2] += new Vector3(MathHelper.SmallFloat, -MathHelper.SmallFloat, -MathHelper.SmallFloat);
 
             MainSide = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: trianglePoints);
-
             OtherSide = MainSide.CloneFlipped;
-            OtherSide.Move(length * Vector3.right);
 
-            WrapperStartSide = MeshGenerator.FilledShapes.RectangleAtCorner(length * Vector3.right, secondLine: trianglePoints[1], UVOffset: Vector2.zero);
-            WrapperStartSide.FlipTriangles();
-            WrapperOtherSide = MeshGenerator.FilledShapes.RectangleAtCorner(length * Vector3.right, secondLine: trianglePoints[1] - trianglePoints[2], UVOffset: Vector2.zero);
-            WrapperOtherSide.Move(trianglePoints[2]);
+            MainSide.Move(MathHelper.SmallFloat * Vector3.left);
+            OtherSide.Move((thickness + MathHelper.SmallFloat) * Vector3.right);
 
-            WrapperBottom = MeshGenerator.FilledShapes.RectangleAtCorner(length * Vector3.right, secondLine: trianglePoints[2], UVOffset: Vector2.zero);
+            WrapperStartSide = MeshGenerator.FilledShapes.RectangleAtCorner(thickness * Vector3.right, secondLine: trianglePoints[2], UVOffset: Vector2.zero);
+            WrapperStartSide.Move(MathHelper.SmallFloat * Vector3.forward);
+
+            WrapperOtherSide = MeshGenerator.FilledShapes.RectangleAtCorner(thickness * Vector3.right, secondLine: trianglePoints[1] - trianglePoints[2], UVOffset: Vector2.zero);
+            WrapperOtherSide.Move(trianglePoints[2] + MathHelper.SmallFloat * Vector3.back);
+
+            WrapperBottom = MeshGenerator.FilledShapes.RectangleAtCorner(thickness * Vector3.right, secondLine: trianglePoints[1], UVOffset: Vector2.zero);
             WrapperBottom.Move(Vector3.up * MathHelper.SmallFloat);
+            WrapperBottom.FlipTriangles();
 
             if (ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
             {

@@ -40,6 +40,11 @@ public static class MathHelper
         return Mathf.Abs(value) < Mathf.Abs(FloatThreshold);
     }
 
+    public static bool FloatIsZero(float value, float tolerance)
+    {
+        return Mathf.Abs(value) < Mathf.Abs(tolerance);
+    }
+
     public static Vector3 ConvertPointIntoOriginTransform(Transform baseObject, Transform originObject, Vector3 vector)
     {
         return (originObject.InverseTransformPoint(baseObject.TransformPoint(vector)));

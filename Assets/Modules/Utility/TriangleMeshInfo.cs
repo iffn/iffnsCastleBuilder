@@ -504,15 +504,17 @@ public class TriangleMeshInfo
 
         Direction direction;
 
-        if (MathHelper.FloatIsZero(normal.y) && MathHelper.FloatIsZero(normal.z))
+        float tolerance = 0.01f;
+
+        if (MathHelper.FloatIsZero(value: normal.y, tolerance: tolerance) && MathHelper.FloatIsZero(value: normal.z, tolerance: tolerance))
         {
             direction = Direction.yz0;
         }
-        else if (MathHelper.FloatIsZero(normal.x) && MathHelper.FloatIsZero(normal.z))
+        else if (MathHelper.FloatIsZero(value: normal.x, tolerance: tolerance) && MathHelper.FloatIsZero(value: normal.z, tolerance: tolerance))
         {
             direction = Direction.xz0;
         }
-        else if (MathHelper.FloatIsZero(normal.x) && MathHelper.FloatIsZero(normal.y))
+        else if (MathHelper.FloatIsZero(value: normal.x, tolerance: tolerance) && MathHelper.FloatIsZero(value: normal.y, tolerance: tolerance))
         {
             direction = Direction.xy0;
         }
