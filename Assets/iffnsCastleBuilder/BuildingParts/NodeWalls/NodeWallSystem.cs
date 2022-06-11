@@ -120,8 +120,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             Vector2Int position = new Vector2Int();
 
-            position.x = MathHelper.ClampInt(value: indexPosition.x, max: linkedFloor.LinkedBuildingController.NodeGridSize.x, min: 0);
-            position.y = MathHelper.ClampInt(value: indexPosition.y, max: linkedFloor.LinkedBuildingController.NodeGridSize.y, min: 0);
+            position.x = MathHelper.ClampInt(value: indexPosition.x, max: linkedFloor.LinkedBuildingController.NodeGridSize.x - 1, min: 0);
+            position.y = MathHelper.ClampInt(value: indexPosition.y, max: linkedFloor.LinkedBuildingController.NodeGridSize.y - 1, min: 0);
 
             return NodeMatrix[position.x][position.y];
         }
