@@ -2,7 +2,7 @@
 	"Type": "HumanBuildingController",
 	"Name": "",
 	"Negative floors": 0,
-	"Grid size": [109, 36],
+	"Grid size": [109, 34],
 	"Floors":
 	[
 		{
@@ -18,120 +18,190 @@
 				[
 					{
 						"Type": "NodeWall",
-						"Start position": [58, 31],
-						"End position": [61, 31],
+						"Start position": [58, 20],
+						"End position": [61, 20],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					},
 					{
 						"Type": "NodeWall",
-						"Start position": [58, 30],
+						"Start position": [58, 19],
+						"End position": [61, 17],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [65, 20],
+						"End position": [65, 17],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [65, 20],
+						"End position": [68, 20],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [68, 20],
+						"End position": [66, 22],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [65, 17],
+						"End position": [67, 15],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [72, 21],
+						"End position": [70, 19],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [70, 19],
+						"End position": [72, 17],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [74, 22],
+						"End position": [73, 19],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [73, 19],
+						"End position": [76, 18],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [77, 22],
+						"End position": [76, 19],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [76, 19],
+						"End position": [79, 18],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [76, 19],
+						"End position": [79, 19],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [81, 22],
+						"End position": [80, 19],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [80, 19],
+						"End position": [83, 19],
+						"Right material": "PolyHaven-beige_wall_001",
+						"Left material": "PolyHaven-beige_wall_001"
+					},
+					{
+						"Type": "NodeWall",
+						"Start position": [58, 29],
 						"End position": [61, 28],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					},
 					{
 						"Type": "NodeWall",
-						"Start position": [65, 31],
-						"End position": [65, 28],
-						"Right material": "PolyHaven-beige_wall_001",
-						"Left material": "PolyHaven-beige_wall_001"
-					},
-					{
-						"Type": "NodeWall",
-						"Start position": [65, 31],
-						"End position": [68, 31],
-						"Right material": "PolyHaven-beige_wall_001",
-						"Left material": "PolyHaven-beige_wall_001"
-					},
-					{
-						"Type": "NodeWall",
-						"Start position": [68, 31],
-						"End position": [66, 33],
-						"Right material": "PolyHaven-beige_wall_001",
-						"Left material": "PolyHaven-beige_wall_001"
-					},
-					{
-						"Type": "NodeWall",
-						"Start position": [65, 28],
+						"Start position": [64, 27],
 						"End position": [67, 26],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					},
 					{
 						"Type": "NodeWall",
-						"Start position": [72, 32],
-						"End position": [70, 30],
+						"Start position": [57, 27],
+						"End position": [60, 26],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					},
 					{
 						"Type": "NodeWall",
-						"Start position": [70, 30],
-						"End position": [72, 28],
+						"Start position": [63, 25],
+						"End position": [66, 24],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					},
 					{
 						"Type": "NodeWall",
-						"Start position": [74, 33],
-						"End position": [73, 30],
+						"Start position": [71, 28],
+						"End position": [72, 31],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					},
 					{
 						"Type": "NodeWall",
-						"Start position": [73, 30],
-						"End position": [76, 29],
+						"Start position": [74, 27],
+						"End position": [75, 30],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					},
 					{
 						"Type": "NodeWall",
-						"Start position": [77, 33],
-						"End position": [76, 30],
+						"Start position": [71, 26],
+						"End position": [70, 23],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					},
 					{
 						"Type": "NodeWall",
-						"Start position": [76, 30],
-						"End position": [79, 29],
+						"Start position": [74, 25],
+						"End position": [73, 22],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					},
 					{
 						"Type": "NodeWall",
-						"Start position": [76, 30],
-						"End position": [79, 30],
+						"Start position": [78, 28],
+						"End position": [77, 31],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					},
 					{
 						"Type": "NodeWall",
-						"Start position": [81, 33],
-						"End position": [80, 30],
+						"Start position": [81, 27],
+						"End position": [84, 29],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					},
 					{
 						"Type": "NodeWall",
-						"Start position": [80, 30],
-						"End position": [83, 30],
+						"Start position": [78, 25],
+						"End position": [77, 28],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					},
 					{
 						"Type": "NodeWall",
-						"Start position": [14, 29],
-						"End position": [11, 30],
-						"Right material": "PolyHaven-beige_wall_001",
-						"Left material": "PolyHaven-beige_wall_001"
-					},
-					{
-						"Type": "NodeWall",
-						"Start position": [20, 29],
-						"End position": [17, 30],
+						"Start position": [81, 24],
+						"End position": [84, 26],
 						"Right material": "PolyHaven-beige_wall_001",
 						"Left material": "PolyHaven-beige_wall_001"
 					}
@@ -421,66 +491,6 @@
 				},
 				{
 					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
 					"Top cap material": "PolyHaven-wood_planks_dirt",
@@ -488,30 +498,6 @@
 					"Back wall material": "PolyHaven-plywood",
 					"Left wall material": "PolyHaven-plywood",
 					"Right wall material": "PolyHaven-plywood"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -934,30 +920,6 @@
 					"Front wall material": "PolyHaven-plywood",
 					"Left wall material": "PolyHaven-plywood",
 					"Right wall material": "PolyHaven-plywood"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -1502,44 +1464,12 @@
 				},
 				{
 					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
 					"Top cap material": "PolyHaven-wood_planks_dirt",
 					"Front wall material": "PolyHaven-plywood",
 					"Back wall material": "PolyHaven-plywood",
 					"Right wall material": "PolyHaven-plywood"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -2092,44 +2022,12 @@
 				},
 				{
 					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
 					"Top cap material": "PolyHaven-wood_planks_dirt",
 					"Front wall material": "PolyHaven-plywood",
 					"Back wall material": "PolyHaven-plywood",
 					"Right wall material": "PolyHaven-plywood"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -2678,14 +2576,6 @@
 				},
 				{
 					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
 					"Top cap material": "PolyHaven-wood_planks_dirt",
@@ -2700,30 +2590,6 @@
 					"Front wall material": "PolyHaven-plywood",
 					"Left wall material": "PolyHaven-plywood",
 					"Right wall material": "PolyHaven-plywood"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -3268,14 +3134,6 @@
 				},
 				{
 					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
 					"Top cap material": "PolyHaven-wood_planks_dirt",
@@ -3290,30 +3148,6 @@
 					"Top cap material": "PolyHaven-wood_planks_dirt",
 					"Front wall material": "PolyHaven-plywood",
 					"Right wall material": "PolyHaven-plywood"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -3858,14 +3692,6 @@
 				},
 				{
 					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
 					"Top cap material": "PolyHaven-wood_planks_dirt",
@@ -3880,30 +3706,6 @@
 					"Front wall material": "PolyHaven-plywood",
 					"Left wall material": "PolyHaven-plywood",
 					"Right wall material": "PolyHaven-plywood"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -4451,14 +4253,6 @@
 				},
 				{
 					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
 					"Top cap material": "PolyHaven-wood_planks_dirt",
@@ -4472,30 +4266,6 @@
 					"Top cap material": "PolyHaven-wood_planks_dirt",
 					"Front wall material": "PolyHaven-plywood",
 					"Right wall material": "PolyHaven-plywood"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -5041,14 +4811,6 @@
 				},
 				{
 					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
 					"Block type": "Floor",
 					"Ceiling material": "PolyHaven-old_planks_02",
 					"Top cap material": "PolyHaven-wood_planks_dirt",
@@ -5180,176 +4942,6 @@
 				{
 					"Type": "VirtualBlock",
 					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Floor",
-					"Ceiling material": "PolyHaven-old_planks_02",
-					"Top cap material": "PolyHaven-wood_planks_dirt",
-					"Front wall material": "PolyHaven-plywood",
-					"Back wall material": "PolyHaven-plywood",
-					"Left wall material": "PolyHaven-plywood",
-					"Right wall material": "PolyHaven-plywood"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -5643,407 +5235,13 @@
 				},
 				{
 					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
-				},
-				{
-					"Type": "VirtualBlock",
-					"Block type": "Empty"
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Front wall material": "PolyHaven-plywood",
+					"Back wall material": "PolyHaven-plywood",
+					"Left wall material": "PolyHaven-plywood",
+					"Right wall material": "PolyHaven-plywood"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -15963,8 +15161,8 @@
 				{
 					"Type": "NonCardinalWall",
 					"Name": "",
-					"First Block Position": [1, 24],
-					"Second Block Position": [5, 24],
+					"First Block Position": [1, 13],
+					"Second Block Position": [5, 13],
 					"Main material": "PolyHaven-stone_brick_wall_001",
 					"Second material": "PolyHaven-stone_brick_wall_001",
 					"Ceiling material": "PolyHaven-old_planks_02",
@@ -15973,8 +15171,8 @@
 				{
 					"Type": "NonCardinalWall",
 					"Name": "",
-					"First Block Position": [3, 22],
-					"Second Block Position": [3, 19],
+					"First Block Position": [3, 11],
+					"Second Block Position": [3, 8],
 					"Main material": "PolyHaven-stone_brick_wall_001",
 					"Second material": "PolyHaven-stone_brick_wall_001",
 					"Ceiling material": "PolyHaven-old_planks_02",
@@ -15983,8 +15181,8 @@
 				{
 					"Type": "NonCardinalWall",
 					"Name": "",
-					"First Block Position": [1, 18],
-					"Second Block Position": [4, 16],
+					"First Block Position": [1, 7],
+					"Second Block Position": [4, 5],
 					"Main material": "PolyHaven-stone_brick_wall_001",
 					"Second material": "PolyHaven-stone_brick_wall_001",
 					"Ceiling material": "PolyHaven-old_planks_02",
@@ -15993,9 +15191,9 @@
 				{
 					"Type": "Triangle",
 					"Name": "",
-					"First position": [9, 23],
-					"Second position": [11, 23],
-					"Third position": [9, 25],
+					"First position": [9, 12],
+					"Second position": [11, 12],
+					"Third position": [9, 14],
 					"Block type": "Wall",
 					"Top material": "PolyHaven-wood_planks_dirt",
 					"Bottom material": "PolyHaven-old_planks_02",
@@ -16006,9 +15204,9 @@
 				{
 					"Type": "Triangle",
 					"Name": "",
-					"First position": [9, 18],
-					"Second position": [11, 18],
-					"Third position": [9, 21],
+					"First position": [9, 7],
+					"Second position": [11, 7],
+					"Third position": [9, 10],
 					"Block type": "Floor",
 					"Top material": "PolyHaven-wood_planks_dirt",
 					"Bottom material": "PolyHaven-old_planks_02",
@@ -16019,7 +15217,7 @@
 				{
 					"Type": "HorizontalArc",
 					"Name": "",
-					"Center position": [17, 22],
+					"Center position": [17, 11],
 					"Outer Radii": [-3, 3],
 					"Cutoff range": [0, 0],
 					"Wall thickness": 3,
@@ -16036,7 +15234,7 @@
 				{
 					"Type": "HorizontalArc",
 					"Name": "",
-					"Center position": [17, 18],
+					"Center position": [17, 7],
 					"Outer Radii": [-3, 3],
 					"Cutoff range": [0, 0],
 					"Wall thickness": 1,
@@ -16053,7 +15251,7 @@
 				{
 					"Type": "HorizontalArc",
 					"Name": "",
-					"Center position": [23, 22],
+					"Center position": [23, 11],
 					"Outer Radii": [-4, 3],
 					"Cutoff range": [0, 1],
 					"Wall thickness": 3,
@@ -16070,7 +15268,7 @@
 				{
 					"Type": "HorizontalArc",
 					"Name": "",
-					"Center position": [23, 18],
+					"Center position": [23, 7],
 					"Outer Radii": [-3, 3],
 					"Cutoff range": [0, 1],
 					"Wall thickness": 1,
@@ -16087,8 +15285,8 @@
 				{
 					"Type": "RectangularRoof",
 					"Name": "",
-					"First position": [26, 25],
-					"Second position": [31, 22],
+					"First position": [26, 14],
+					"Second position": [31, 11],
 					"Roof height [m]": 2,
 					"Height thickness": 0.1,
 					"Roof overshoot [m]": 0,
@@ -16101,8 +15299,8 @@
 				{
 					"Type": "RectangularRoof",
 					"Name": "",
-					"First position": [26, 20],
-					"Second position": [31, 17],
+					"First position": [26, 9],
+					"Second position": [31, 6],
 					"Roof height [m]": 2,
 					"Height thickness": 0.1,
 					"Roof overshoot [m]": 0,
@@ -16115,9 +15313,9 @@
 				{
 					"Type": "TriangularRoof",
 					"Name": "",
-					"First position": [38, 20],
-					"Second position": [34, 20],
-					"Third position": [38, 23],
+					"First position": [38, 9],
+					"Second position": [34, 9],
+					"Third position": [38, 12],
 					"Height [m]": 2,
 					"Height thickness": 0.1,
 					"Raise to floor": true,
@@ -16129,9 +15327,9 @@
 				{
 					"Type": "TriangularRoof",
 					"Name": "",
-					"First position": [34, 24],
-					"Second position": [37, 24],
-					"Third position": [34, 21],
+					"First position": [34, 13],
+					"Second position": [37, 13],
+					"Third position": [34, 10],
 					"Height [m]": 2,
 					"Height thickness": 0.1,
 					"Raise to floor": true,
@@ -16143,8 +15341,8 @@
 				{
 					"Type": "CircularRoof",
 					"Name": "",
-					"Center position": [43, 23],
-					"Outer Radii": [2, 1],
+					"Center position": [43, 12],
+					"Outer Radii": [3, 2],
 					"Edges between": 8,
 					"Thickness": 0.1,
 					"Height [m]": 3,
@@ -16158,8 +15356,8 @@
 				{
 					"Type": "CircularRoof",
 					"Name": "",
-					"Center position": [43, 18],
-					"Outer Radii": [1, 1],
+					"Center position": [43, 7],
+					"Outer Radii": [2, 2],
 					"Edges between": 8,
 					"Thickness": 0.1,
 					"Height [m]": 3,
@@ -16173,8 +15371,8 @@
 				{
 					"Type": "CircularRoof",
 					"Name": "",
-					"Center position": [50, 23],
-					"Outer Radii": [1, 1],
+					"Center position": [50, 12],
+					"Outer Radii": [-2, 2],
 					"Edges between": 8,
 					"Thickness": 0.1,
 					"Height [m]": 3,
@@ -16188,8 +15386,8 @@
 				{
 					"Type": "CircularRoof",
 					"Name": "",
-					"Center position": [49, 18],
-					"Outer Radii": [1, 1],
+					"Center position": [49, 7],
+					"Outer Radii": [2, 2],
 					"Edges between": 8,
 					"Thickness": 0.1,
 					"Height [m]": 3,
@@ -16203,8 +15401,8 @@
 				{
 					"Type": "VerticalArc",
 					"Name": "",
-					"Bottom left position": [60, 22],
-					"Top right position": [56, 23],
+					"Bottom left position": [60, 11],
+					"Top right position": [56, 12],
 					"FreeHeihgtSide [m]": 1.8,
 					"Arc height [m]": 0.5,
 					"Main material": "PolyHaven-stone_brick_wall_001",
@@ -16213,8 +15411,8 @@
 				{
 					"Type": "RailingLinear",
 					"Name": "",
-					"Start coordinate": [64, 23],
-					"End coordinate": [68, 23],
+					"Start coordinate": [64, 12],
+					"End coordinate": [68, 12],
 					"Cylinder distance target [m]": 0.3333333,
 					"Top material": "PolyHaven-plywood",
 					"Bottom material": "PolyHaven-plywood",
@@ -16223,8 +15421,8 @@
 				{
 					"Type": "RectangularStairs",
 					"Name": "",
-					"Bottom left position": [72, 22],
-					"Top right position": [77, 19],
+					"Bottom left position": [72, 11],
+					"Top right position": [77, 8],
 					"Step height [m]": 0.25,
 					"Back thickness [m]": 0.25,
 					"Number of floors": 1,
@@ -16238,7 +15436,7 @@
 				{
 					"Type": "CircularStair",
 					"Name": "",
-					"Positive center position": [84, 21],
+					"Positive center position": [84, 10],
 					"Outer radius [m]": 1,
 					"Inner radius [m]": 0.25,
 					"Starting angle [°]": 0,
@@ -16254,7 +15452,7 @@
 				{
 					"Type": "Ladder",
 					"Name": "",
-					"Bottom Left Position": [2, 32],
+					"Bottom Left Position": [2, 21],
 					"Top Right Position": [3, -1],
 					"Number of floors": 1,
 					"Height overshoot [m]": 0,
@@ -16265,7 +15463,7 @@
 				{
 					"Type": "Window",
 					"Name": "",
-					"Bottom Left Position": [20, 32],
+					"Bottom Left Position": [20, 21],
 					"Top Right Position": [3, -1],
 					"Bottom height [m]": 0.75,
 					"Window height [m]": 1.25,
@@ -16278,7 +15476,7 @@
 				{
 					"Type": "Door",
 					"Name": "",
-					"Bottom Left Position": [14, 29],
+					"Bottom Left Position": [60, 26],
 					"Top Right Position": [3, -1],
 					"Door height [m]": 2,
 					"Front wall material": "PolyHaven-beige_wall_001",
@@ -16289,7 +15487,7 @@
 				{
 					"Type": "Window",
 					"Name": "",
-					"Bottom Left Position": [20, 29],
+					"Bottom Left Position": [61, 28],
 					"Top Right Position": [3, -1],
 					"Bottom height [m]": 0.75,
 					"Window height [m]": 1.25,
@@ -16302,20 +15500,20 @@
 				{
 					"Type": "TableGrid",
 					"Name": "",
-					"Bottom Left Position": [27, 31],
+					"Bottom Left Position": [27, 20],
 					"Top Right Position": [4, -1]
 				},
 				{
 					"Type": "BedGrid",
 					"Name": "",
-					"Bottom Left Position": [44, 28],
+					"Bottom Left Position": [44, 17],
 					"Mattress size": "Single",
 					"Orientation": "ZPositive"
 				},
 				{
 					"Type": "Counter",
 					"Name": "",
-					"Bottom Left Position": [50, 31],
+					"Bottom Left Position": [50, 20],
 					"Top Right Position": [1, -2],
 					"Top material": "PolyHaven-plywood",
 					"Base material": "PolyHaven-plywood"
@@ -16323,7 +15521,7 @@
 				{
 					"Type": "Door",
 					"Name": "",
-					"Bottom Left Position": [14, 32],
+					"Bottom Left Position": [14, 21],
 					"Top Right Position": [3, -1],
 					"Door height [m]": 2,
 					"Front wall material": "PolyHaven-beige_wall_001",
@@ -16334,9 +15532,9 @@
 				{
 					"Type": "TriangularRoof",
 					"Name": "",
-					"First position": [34, 28],
-					"Second position": [36, 28],
-					"Third position": [34, 26],
+					"First position": [34, 17],
+					"Second position": [36, 17],
+					"Third position": [34, 15],
 					"Height [m]": 2,
 					"Height thickness": 0.1,
 					"Raise to floor": true,
@@ -16348,8 +15546,8 @@
 				{
 					"Type": "RectangularRoof",
 					"Name": "",
-					"First position": [34, 28],
-					"Second position": [35, 29],
+					"First position": [34, 17],
+					"Second position": [35, 18],
 					"Roof height [m]": 2,
 					"Height thickness": 0.1,
 					"Roof overshoot [m]": 0,
@@ -16362,7 +15560,7 @@
 				{
 					"Type": "Ladder",
 					"Name": "",
-					"Bottom Left Position": [2, 34],
+					"Bottom Left Position": [2, 23],
 					"Top Right Position": [3, 0],
 					"Number of floors": 1,
 					"Height overshoot [m]": 0,
@@ -16373,8 +15571,8 @@
 				{
 					"Type": "RailingLinear",
 					"Name": "",
-					"Start coordinate": [64, 20],
-					"End coordinate": [68, 18],
+					"Start coordinate": [64, 9],
+					"End coordinate": [68, 7],
 					"Cylinder distance target [m]": 0.3333333,
 					"Top material": "PolyHaven-plywood",
 					"Bottom material": "PolyHaven-plywood",
@@ -16383,8 +15581,8 @@
 				{
 					"Type": "RailingLinear",
 					"Name": "",
-					"Start coordinate": [64, 17],
-					"End coordinate": [67, 15],
+					"Start coordinate": [64, 6],
+					"End coordinate": [67, 4],
 					"Cylinder distance target [m]": 0.3333333,
 					"Top material": "PolyHaven-plywood",
 					"Bottom material": "PolyHaven-plywood",
@@ -16393,8 +15591,8 @@
 				{
 					"Type": "RailingLinear",
 					"Name": "",
-					"Start coordinate": [64, 17],
-					"End coordinate": [62, 16],
+					"Start coordinate": [64, 6],
+					"End coordinate": [62, 5],
 					"Cylinder distance target [m]": 0.3333333,
 					"Top material": "PolyHaven-plywood",
 					"Bottom material": "PolyHaven-plywood",
@@ -16403,8 +15601,8 @@
 				{
 					"Type": "RailingLinear",
 					"Name": "",
-					"Start coordinate": [62, 16],
-					"End coordinate": [62, 19],
+					"Start coordinate": [62, 5],
+					"End coordinate": [62, 8],
 					"Cylinder distance target [m]": 0.3333333,
 					"Top material": "PolyHaven-plywood",
 					"Bottom material": "PolyHaven-plywood",
@@ -16413,8 +15611,8 @@
 				{
 					"Type": "RailingLinear",
 					"Name": "",
-					"Start coordinate": [62, 19],
-					"End coordinate": [60, 19],
+					"Start coordinate": [62, 8],
+					"End coordinate": [60, 8],
 					"Cylinder distance target [m]": 0.3333333,
 					"Top material": "PolyHaven-plywood",
 					"Bottom material": "PolyHaven-plywood",
@@ -16423,94 +15621,47 @@
 				{
 					"Type": "Column",
 					"Name": "",
-					"Bottom Left Position": [55, 17],
+					"Bottom Left Position": [55, 6],
 					"Top Right Position": [1, -1],
-					"Angle preference": "360°",
+					"Number of floors": 1,
+					"Column material": "PolyHaven-beige_wall_001",
 					"Top ending type": "None",
-					"Bottom ending type": "None",
-					"Column type": "Cylinder"
+					"Column type": "Cylinder",
+					"Bottom ending type": "None"
 				},
 				{
 					"Type": "Column",
 					"Name": "",
-					"Bottom Left Position": [56, 17],
-					"Top Right Position": [0, 0],
-					"Angle preference": "360°",
-					"Top ending type": "None",
-					"Bottom ending type": "None",
-					"Column type": "Cylinder"
-				},
-				{
-					"Type": "Column",
-					"Name": "",
-					"Bottom Left Position": [58, 12],
-					"Top Right Position": [0, 0],
-					"Angle preference": "360°",
-					"Top ending type": "None",
-					"Bottom ending type": "None",
-					"Column type": "Cylinder"
-				},
-				{
-					"Type": "Column",
-					"Name": "",
-					"Bottom Left Position": [56, 15],
-					"Top Right Position": [1, 0],
-					"Angle preference": "360°",
-					"Top ending type": "None",
-					"Bottom ending type": "None",
-					"Column type": "Cylinder"
-				},
-				{
-					"Type": "Column",
-					"Name": "",
-					"Bottom Left Position": [57, 17],
-					"Top Right Position": [0, 0],
-					"Angle preference": "360°",
-					"Top ending type": "None",
-					"Bottom ending type": "None",
-					"Column type": "Cylinder"
-				},
-				{
-					"Type": "Column",
-					"Name": "",
-					"Bottom Left Position": [57, 16],
+					"Bottom Left Position": [57, 5],
 					"Top Right Position": [1, -1],
-					"Angle preference": "360°",
+					"Number of floors": 1,
+					"Column material": "PolyHaven-beige_wall_001",
 					"Top ending type": "None",
-					"Bottom ending type": "None",
-					"Column type": "Cylinder"
+					"Column type": "Cylinder",
+					"Bottom ending type": "None"
 				},
 				{
 					"Type": "Column",
 					"Name": "",
-					"Bottom Left Position": [58, 15],
-					"Top Right Position": [0, 0],
-					"Angle preference": "360°",
-					"Top ending type": "None",
-					"Bottom ending type": "None",
-					"Column type": "Cylinder"
-				},
-				{
-					"Type": "Column",
-					"Name": "",
-					"Bottom Left Position": [52, 16],
+					"Bottom Left Position": [52, 5],
 					"Top Right Position": [2, -2],
-					"Angle preference": "360°",
+					"Number of floors": 1,
+					"Column material": "PolyHaven-beige_wall_001",
 					"Top ending type": "None",
-					"Bottom ending type": "None",
-					"Column type": "Cylinder"
+					"Column type": "Cylinder",
+					"Bottom ending type": "None"
 				},
 				{
 					"Type": "ChairGrid",
 					"Name": "",
-					"Bottom Left Position": [40, 29],
+					"Bottom Left Position": [40, 18],
 					"Orientation": "ZPositive",
 					"Preference type": "3x3"
 				},
 				{
 					"Type": "RoofWall",
 					"Name": "",
-					"First coordinaten": [91, 29],
+					"First coordinaten": [91, 18],
 					"Second coordinate": [6, 0],
 					"Height [m]": 1.8,
 					"Raise to floor": true,
@@ -16521,7 +15672,7 @@
 				{
 					"Type": "RoofWall",
 					"Name": "",
-					"First coordinaten": [91, 26],
+					"First coordinaten": [91, 15],
 					"Second coordinate": [6, -1],
 					"Height [m]": 1.8,
 					"Raise to floor": true,
@@ -16532,7 +15683,7 @@
 				{
 					"Type": "RoofWall",
 					"Name": "",
-					"First coordinaten": [101, 29],
+					"First coordinaten": [101, 18],
 					"Second coordinate": [5, 0],
 					"Height [m]": 1.8,
 					"Raise to floor": true,
@@ -16543,7 +15694,7 @@
 				{
 					"Type": "RoofWall",
 					"Name": "",
-					"First coordinaten": [101, 26],
+					"First coordinaten": [101, 15],
 					"Second coordinate": [5, -1],
 					"Height [m]": 1.8,
 					"Raise to floor": true,
@@ -16554,8 +15705,8 @@
 				{
 					"Type": "RailingArc",
 					"Name": "",
-					"Center coordinate": [67, 18],
-					"Radii coordinate": [70, 15],
+					"Center coordinate": [67, 7],
+					"Radii coordinate": [70, 4],
 					"Cylinder distance target [m]": 2,
 					"Top material": "PolyHaven-plywood",
 					"Bottom material": "PolyHaven-plywood",
@@ -16564,7 +15715,7 @@
 				{
 					"Type": "HorizontalArc",
 					"Name": "",
-					"Center position": [16, 6],
+					"Center position": [15, 28],
 					"Outer Radii": [-4, 4],
 					"Cutoff range": [0, 0],
 					"Wall thickness": 1,
@@ -16581,7 +15732,7 @@
 				{
 					"Type": "HorizontalArc",
 					"Name": "",
-					"Center position": [16, 6],
+					"Center position": [15, 28],
 					"Outer Radii": [4, 4],
 					"Cutoff range": [0, 0],
 					"Wall thickness": 1,
@@ -16598,8 +15749,8 @@
 				{
 					"Type": "HorizontalArc",
 					"Name": "",
-					"Center position": [16, 6],
-					"Outer Radii": [-4, -4],
+					"Center position": [15, 28],
+					"Outer Radii": [-5, -5],
 					"Cutoff range": [0, 0],
 					"Wall thickness": 1,
 					"Upper indent": [1, 1],
@@ -16615,8 +15766,8 @@
 				{
 					"Type": "HorizontalArc",
 					"Name": "",
-					"Center position": [16, 6],
-					"Outer Radii": [4, -4],
+					"Center position": [15, 28],
+					"Outer Radii": [5, -5],
 					"Cutoff range": [0, 0],
 					"Wall thickness": 1,
 					"Upper indent": [1, 1],
@@ -16628,6 +15779,54 @@
 					"Floor material": "PolyHaven-wood_planks_dirt",
 					"Block type": "Wall",
 					"Edge type": "Full"
+				},
+				{
+					"Type": "Door",
+					"Name": "",
+					"Bottom Left Position": [71, 26],
+					"Top Right Position": [3, -1],
+					"Door height [m]": 2,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-beige_wall_001",
+					"Frame material": "PolyHaven-plywood",
+					"Wall type": "NodeGrid"
+				},
+				{
+					"Type": "Window",
+					"Name": "",
+					"Bottom Left Position": [71, 28],
+					"Top Right Position": [3, -1],
+					"Bottom height [m]": 0.75,
+					"Window height [m]": 1.25,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-beige_wall_001",
+					"Frame material": "PolyHaven-plywood",
+					"Glass material": "DummyWindow",
+					"Wall type": "NodeGrid"
+				},
+				{
+					"Type": "Window",
+					"Name": "",
+					"Bottom Left Position": [78, 28],
+					"Top Right Position": [3, -1],
+					"Bottom height [m]": 0.75,
+					"Window height [m]": 1.25,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-beige_wall_001",
+					"Frame material": "PolyHaven-plywood",
+					"Glass material": "DummyWindow",
+					"Wall type": "NodeGrid"
+				},
+				{
+					"Type": "Door",
+					"Name": "",
+					"Bottom Left Position": [78, 25],
+					"Top Right Position": [3, -1],
+					"Door height [m]": 2,
+					"Front wall material": "PolyHaven-beige_wall_001",
+					"Back wall material": "PolyHaven-beige_wall_001",
+					"Frame material": "PolyHaven-plywood",
+					"Wall type": "NodeGrid"
 				}
 			]
 		}
