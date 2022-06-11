@@ -334,11 +334,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                         float alignmentMagnitude = 1;
                         if (firstWall.x != 0 && secondWall.x != 0)
                         {
-                            alignmentMagnitude = firstWall.y / firstWall.x - secondWall.y / secondWall.x;
+                            alignmentMagnitude = (float)firstWall.y / firstWall.x - (float)secondWall.y / secondWall.x;
                         }
                         else if (firstWall.y != 0 && secondWall.y != 0)
                         {
-                            alignmentMagnitude = firstWall.x / firstWall.y - secondWall.x / secondWall.y;
+                            alignmentMagnitude = (float)firstWall.x / firstWall.y - (float)secondWall.x / secondWall.y;
                         }
 
                         if (!MathHelper.FloatIsZero(alignmentMagnitude))
