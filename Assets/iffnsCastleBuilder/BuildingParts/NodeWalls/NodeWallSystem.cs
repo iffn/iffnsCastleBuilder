@@ -7,8 +7,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class NodeWallSystem : BaseGameObject
     {
-        [SerializeField] UnityMeshManager NodeWallEndingCylinderTemplate;
-        List<UnityMeshManager> NodeWallEndingCylinders = new List<UnityMeshManager>();
         List<NodeWallNode> CylinderNodes = new List<NodeWallNode>();
 
         FloorController linkedFloor;
@@ -66,21 +64,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             NodeMatrix.Clear();
             nodeWallsParam.ClearAndDestroySubObjects();
             //NodeWalls.Clear();
-
-            DestroyEndingCylinders();
-        }
-
-        void DestroyEndingCylinders()
-        {
-            foreach (UnityMeshManager manager in NodeWallEndingCylinders)
-            {
-                UnmanagedMeshes.Remove(manager);
-                Destroy(manager.gameObject);
-            }
-
-            //UnmanagedMeshes.Clear();
-
-            NodeWallEndingCylinders.Clear();
         }
 
         void SetupNodeMatrix()
@@ -222,26 +205,13 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             UpdateReferences();
 
-            DestroyEndingCylinders();
             CylinderNodes.Clear();
 
-            BuildMeshes();
+            BuildWalls();
 
-            foreach (NodeWallNode node in CylinderNodes)
-            {
-                UnityMeshManager currentCylinder = Instantiate(NodeWallEndingCylinderTemplate.gameObject).GetComponent<UnityMeshManager>();
-                NodeWallEndingCylinders.Add(currentCylinder);
-                currentCylinder.Setup(mainObject: this, currentMaterialReference: node.EndPoints[0].LeftMaterialParam);
+            BuildCorners();
 
-                UnmanagedMeshes.Add(currentCylinder);
-
-                currentCylinder.transform.parent = transform;
-
-                currentCylinder.transform.localPosition = node.LocalPosition3D + 0.5f * wallHeight * Vector3.up;
-                currentCylinder.transform.localScale = new Vector3(WallThickness, wallHeight * 0.5f, WallThickness);
-                currentCylinder.transform.localRotation = Quaternion.identity;
-                //currentCylinder.transform.GetComponent<MeshRenderer>().material = node.EndPoints[0].LeftMaterialParam.Val.LinkedMaterial;
-            }
+            BuildAllMeshes();
         }
 
         void DestroyInvalidNodeWalls()
@@ -261,7 +231,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        void BuildMeshes()
+        void BuildWalls()
         {
             for (int i = 0; i < nodeWallsParam.SubObjects.Count; i++)
             {
@@ -422,11 +392,24 @@ namespace iffnsStuff.iffnsCastleBuilder
                 StaticMeshManager.AddTriangleInfoIfValid(capBottom);
             }
 
-            BuildAllMeshes();
-
             //Walls.MoveAllUVs(offset: Vector2.up * linkedFloor.transform.localPosition.y);
+        }
 
+        void BuildCorners()
+        {
+            foreach (NodeWallNode node in CylinderNodes)
+            {
 
+                TriangleMeshInfo cornerInfo = new TriangleMeshInfo();
+                cornerInfo.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: halfWallthickness, length: wallHeight, direction: Vector3.up, numberOfEdges: 24));
+                cornerInfo.Add(MeshGenerator.FilledShapes.CylinderCaps(radius: halfWallthickness, length: wallHeight, direction: Vector3.up, numberOfEdges: 24));
+
+                cornerInfo.Move(node.LocalPosition3D + 0.5f * wallHeight * Vector3.up);
+
+                cornerInfo.MaterialReference = node.EndPoints[0].LeftMaterialParam;
+
+                StaticMeshManager.AddTriangleInfoIfValid(cornerInfo);
+            }
         }
 
         public override void ShowModificationNodes(bool activateCollider)
