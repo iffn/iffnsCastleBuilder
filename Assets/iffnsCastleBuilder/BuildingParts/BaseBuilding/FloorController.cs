@@ -172,7 +172,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             get
             {
-                return FloorNumber - LinkedBuildingController.NegativeFloors;
+                return FloorNumber + LinkedBuildingController.NegativeFloors;
             }
         }
 

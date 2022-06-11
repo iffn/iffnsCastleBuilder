@@ -517,30 +517,41 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void RemoveCurrentFloor()
         {
-            if (currentFloorNumber == 0)
-            {
-                if (PositiveFloors == 0)
-                {
-                    //Always keep a floor 0
-                    if (NegativeFloors == 0)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        CurrentFloorObject.DestroyObject();
-                        negativeFloorParam.Val = negativeFloorParam.Val - 1; //Push negative floors up
-                        ApplyBuildParameters();
-                        return;
-                    }
-                }
-            }
-
             if (NumberOfFloors <= 1) return; //Keep at least 1 floor
 
-            CurrentFloorObject.DestroyObject();
+            FloorController FloorToBeDestroyed = CurrentFloorObject;
 
-            if (currentFloorNumber < 0) negativeFloorParam.Val = negativeFloorParam.Val - 1; //Push negative floors up
+            /*
+            Logic:
+            if(floor >= 0) floor above falls down except you're on the top floor
+            if(floor <  0) floor below moves up
+            */
+
+            if(currentFloorNumber > 0)
+            {
+                if(FloorToBeDestroyed.IsTopFloor)
+                {
+                    CurrentFloorNumber--;
+                }
+            }
+            else if(currentFloorNumber == 0)
+            {
+                if (FloorToBeDestroyed.IsTopFloor)
+                {
+                    negativeFloorParam.Val--;
+                }
+            }
+            else
+            {
+                if (FloorToBeDestroyed.IsBottomFloor)
+                {
+                    CurrentFloorNumber++;
+                }
+
+                negativeFloorParam.Val--;
+            }
+
+            FloorToBeDestroyed.DestroyObject();
 
             ApplyBuildParameters();
         }
@@ -687,8 +698,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return currentFloorNumber;
             }
         }
-
-        
 
         public int CurrentFloorIndex
         {
