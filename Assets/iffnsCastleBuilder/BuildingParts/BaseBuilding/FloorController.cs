@@ -672,13 +672,18 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Generate floor mesh
             GenerateFloorMesh();
 
-            CurrentNodeWallSystem.ApplyBuildParameters();
+            //Ignore ApplyBuildParameters on NodeWallSystem since some SmartBlocks try to apply the build parameters to the NodeWallSystem
+            CurrentNodeWallSystem.IgnoreApplyBuildParameters = true;
 
             //Update all smart blocks
             for (int i = 0; i < onFloorObjectsParam.SubObjects.Count; i++)
             {
                 onFloorObjectsParam.SubObjects[i].ApplyBuildParameters();
             }
+
+            CurrentNodeWallSystem.IgnoreApplyBuildParameters = false;
+
+            CurrentNodeWallSystem.ApplyBuildParameters();
         }
 
         public override void InternalUpdate()

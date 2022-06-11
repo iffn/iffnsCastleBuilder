@@ -5,7 +5,16 @@ using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class NodeWall : BaseVirtualObject
+    
+    public interface NodeWallReference
+    {
+        public Vector2Int StartPosition { get; set; }
+        public Vector2Int EndPosition { get; set; }
+        public Vector2Int Offset { get;}
+        public MailboxLineMaterial CornerMaterial { get;}
+    }
+
+    public class NodeWall : BaseVirtualObject, NodeWallReference
     {
         MailboxLineVector2Int startPositionParam;
         MailboxLineVector2Int endPositionParam;
@@ -118,6 +127,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             LeftMaterialParam = new MailboxLineMaterial(name: "Left material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
         }
 
+        public MailboxLineMaterial CornerMaterial
+        {
+            get
+            {
+                return RightMaterialParam;
+            }
+        }
+
         public NodeWall(IBaseObject superObject) : base(superObject: superObject)
         {
             startPositionParam = new MailboxLineVector2Int(name: "Start position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
@@ -180,6 +197,30 @@ namespace iffnsStuff.iffnsCastleBuilder
         public override void PlaytimeUpdate()
         {
             NonOrderedPlaytimeUpdate();
+        }
+    }
+
+    public class DummyNodeWall : NodeWallReference
+    {
+        public OnFloorObject LinkedObject { get; set; }
+        public Vector2Int StartPosition { get; set; }
+        public Vector2Int EndPosition { get; set; }
+        public MailboxLineMaterial CornerMaterial { get; set; }
+
+        public Vector2Int Offset
+        {
+            get
+            {
+                return EndPosition - StartPosition;
+            }
+        }
+
+        public DummyNodeWall(Vector2Int startPosition, Vector2Int endPosition, MailboxLineMaterial cornerMaterial, OnFloorObject linkedObject)
+        {
+            this.StartPosition = startPosition;
+            this.EndPosition = endPosition;
+            this.CornerMaterial = cornerMaterial;
+            this.LinkedObject = linkedObject;
         }
     }
 }

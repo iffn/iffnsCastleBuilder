@@ -22,6 +22,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         NodeGridRectangleOrganizer ModificationNodeOrganizer;
 
+        NodeWallSystem LinkedNodeWallSystem;
+        DummyNodeWall NodeWallRegister;
+
         public override ModificationOrganizer Organizer
         {
             get
@@ -157,6 +160,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             CurrentRectangularBaseWindow.BackMaterial = BackWallMaterialParm;
             CurrentRectangularBaseWindow.FrameMaterial = FrameMaterialParam;
             CurrentRectangularBaseWindow.GlassMaterial = GlassMaterialParam;
+
+            LinkedNodeWallSystem = LinkedFloor.CurrentNodeWallSystem;
         }
 
 
@@ -278,6 +283,47 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             BuildAllMeshes();
+
+            UpdateNodeWallRegister();
+        }
+
+        void UpdateNodeWallRegister()
+        {
+            if(WallType == NodeGridRectangleOrganizer.OrientationTypes.NodeGrid || ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
+            {
+                if (NodeWallRegister == null)
+                {
+                    NodeWallRegister = new DummyNodeWall(startPosition: ModificationNodeOrganizer.FirstCoordinate, endPosition: ModificationNodeOrganizer.SecondCoordinate, cornerMaterial: FrontWallMaterialParm, linkedObject: this);
+                    LinkedNodeWallSystem.DummyNodeWalls.Add(NodeWallRegister);
+                }
+                else
+                {
+                    NodeWallRegister.StartPosition = ModificationNodeOrganizer.FirstCoordinate;
+                    NodeWallRegister.EndPosition = ModificationNodeOrganizer.SecondCoordinate;
+                }
+
+                LinkedNodeWallSystem.ApplyBuildParameters(); //ApplyBuildParameters on NodeWallSystem is ignored when updating the entire floor
+            }
+            else
+            {
+                RemoveNodeWallRegister();
+            }
+        }
+
+        public override void DestroyObject()
+        {
+            if(LinkedNodeWallSystem != null) RemoveNodeWallRegister();
+
+            base.DestroyObject();
+        }
+
+        void RemoveNodeWallRegister()
+        {
+            if (NodeWallRegister != null)
+            {
+                LinkedNodeWallSystem.DummyNodeWalls.Remove(NodeWallRegister);
+                NodeWallRegister = null;
+            }
         }
 
         void SetupEditButtons()

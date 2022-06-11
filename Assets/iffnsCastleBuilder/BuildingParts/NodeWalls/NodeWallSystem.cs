@@ -14,10 +14,22 @@ namespace iffnsStuff.iffnsCastleBuilder
         float halfWallthickness = 0.05f;
         List<NodeWallModificationNode> modificationNodes = new List<NodeWallModificationNode>();
         List<List<NodeWallNode>> NodeMatrix;
+
+        public bool IgnoreApplyBuildParameters = false;
+
         //List<NodeWall> NodeWalls;
 
         //Build parameters
         MailboxLineMultipleSubObject nodeWallsParam;
+
+        List<DummyNodeWall> dummyNodeWalls = new();
+        public List<DummyNodeWall> DummyNodeWalls
+        {
+            get
+            {
+                return dummyNodeWalls;
+            }
+        }
 
         public Vector2Int NodeGridSize
         {
@@ -157,7 +169,11 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             foreach (IBaseObject wallObject in nodeWallsParam.SubObjects)
             {
-                NodeWall wall = wallObject as NodeWall;
+                if (wallObject is not NodeWall wall)
+                {
+                    Debug.LogWarning("Error. Object of type " + wallObject.IdentifierString + " is not a NodeWall");
+                    continue;
+                }
 
                 Vector2Int startPosition = wall.StartPosition;
                 Vector2Int endPosition = wall.EndPosition;
@@ -188,6 +204,15 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 wall.NodesFromStartToEnd.Add(NodeFromCoordinate(endPosition));
             }
+
+            foreach(DummyNodeWall wall in DummyNodeWalls)
+            {
+                NodeWallNode startNode = NodeFromCoordinate(wall.StartPosition);
+                NodeWallNode endNode = NodeFromCoordinate(wall.EndPosition);
+
+                startNode.EndPoints.Add(wall);
+                endNode.EndPoints.Add(wall);
+            }
         }
 
         public void CreateNodeWall(Vector2Int startPosition, Vector2Int endPosition)
@@ -201,13 +226,15 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void ApplyBuildParameters()
         {
+            if (IgnoreApplyBuildParameters) return;
+
             DestroyInvalidNodeWalls();
 
             UpdateReferences();
 
             CylinderNodes.Clear();
 
-            BuildWalls();
+            BuildWallsAndDefineCorners();
 
             BuildCorners();
 
@@ -231,7 +258,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        void BuildWalls()
+        void BuildWallsAndDefineCorners()
         {
             for (int i = 0; i < nodeWallsParam.SubObjects.Count; i++)
             {
@@ -392,7 +419,56 @@ namespace iffnsStuff.iffnsCastleBuilder
                 StaticMeshManager.AddTriangleInfoIfValid(capBottom);
             }
 
-            //Walls.MoveAllUVs(offset: Vector2.up * linkedFloor.transform.localPosition.y);
+            //Add Define dummy only corners
+            foreach (DummyNodeWall wall in DummyNodeWalls)
+            {
+                NodeWallNode startCorner = NodeFromCoordinate(wall.StartPosition);
+                NodeWallNode endCorner = NodeFromCoordinate(wall.EndPosition);
+
+                if (startCorner.EndPoints.Count > 1 && startCorner.AllWallsAreDummy)
+                {
+                    if(startCorner.EndPoints.Count == 2)
+                    {
+                        //Checking if walls are alligned
+                        Vector2Int firstWall = startCorner.EndPoints[0].Offset;
+                        Vector2Int secondWall = startCorner.EndPoints[1].Offset;
+
+                        float firstWallAngle = Mathf.Atan2(firstWall.y, firstWall.x);
+                        float secondWallAngle = Mathf.Atan2(secondWall.y, secondWall.x);
+
+                        if (!MathHelper.FloatIsZero(firstWallAngle - secondWallAngle) && !MathHelper.FloatIsZero(firstWallAngle - secondWallAngle + Mathf.PI) && !MathHelper.FloatIsZero(firstWallAngle - secondWallAngle - Mathf.PI))
+                        {
+                            if (!CylinderNodes.Contains(startCorner)) CylinderNodes.Add(startCorner);
+                        }
+                    }
+                    else
+                    {
+                        if (!CylinderNodes.Contains(endCorner)) CylinderNodes.Add(endCorner);
+                    }
+                }
+
+                if (endCorner.EndPoints.Count > 1 && endCorner.AllWallsAreDummy)
+                {
+                    if (endCorner.EndPoints.Count == 2)
+                    {
+                        //Checking if walls are alligned
+                        Vector2Int firstWall = endCorner.EndPoints[0].Offset;
+                        Vector2Int secondWall = endCorner.EndPoints[1].Offset;
+
+                        float firstWallAngle = Mathf.Atan2(firstWall.y, firstWall.x);
+                        float secondWallAngle = Mathf.Atan2(secondWall.y, secondWall.x);
+
+                        if (!MathHelper.FloatIsZero(firstWallAngle - secondWallAngle) && !MathHelper.FloatIsZero(firstWallAngle - secondWallAngle + Mathf.PI) && !MathHelper.FloatIsZero(firstWallAngle - secondWallAngle - Mathf.PI))
+                        {
+                            if (!CylinderNodes.Contains(endCorner)) CylinderNodes.Add(endCorner);
+                        }
+                    }
+                    else
+                    {
+                        if (!CylinderNodes.Contains(endCorner)) CylinderNodes.Add(endCorner);
+                    }
+                }
+            }
         }
 
         void BuildCorners()
@@ -406,7 +482,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 cornerInfo.Move(node.LocalPosition3D + 0.5f * wallHeight * Vector3.up);
 
-                cornerInfo.MaterialReference = node.EndPoints[0].LeftMaterialParam;
+                cornerInfo.MaterialReference = node.EndPoints[0].CornerMaterial;
 
                 StaticMeshManager.AddTriangleInfoIfValid(cornerInfo);
             }
@@ -488,8 +564,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 node.UpdatePosition();
             }
         }
-
-
 
         public override void InternalUpdate()
         {

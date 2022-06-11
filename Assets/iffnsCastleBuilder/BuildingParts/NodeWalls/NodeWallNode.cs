@@ -48,8 +48,24 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        public List<NodeWall> EndPoints;
-        public List<NodeWall> IntermediatePoints;
+        public List<NodeWallReference> EndPoints;
+        public List<NodeWallReference> IntermediatePoints;
+        
+        public bool AllWallsAreDummy
+        {
+            get
+            {
+                foreach (NodeWallReference wall in EndPoints)
+                {
+                    if(wall is NodeWall)
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+        }
 
         public NodeWallNode(Vector2Int indexPosition, NodeWallSystem linkedNodeWallSystem)
         {
@@ -59,8 +75,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             localPosition3D = linkedNodeWallSystem.LinkedFloor.GetLocalNodePositionFromNodeIndex(indexPosition);
             localPosition2D = new Vector2(localPosition3D.x, localPosition3D.z);
 
-            EndPoints = new List<NodeWall>();
-            IntermediatePoints = new List<NodeWall>();
+            EndPoints = new List<NodeWallReference>();
+            IntermediatePoints = new List<NodeWallReference>();
         }
     }
 }

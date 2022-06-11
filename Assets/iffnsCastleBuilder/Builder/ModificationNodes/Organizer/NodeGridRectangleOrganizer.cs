@@ -10,6 +10,22 @@ namespace iffnsStuff.iffnsCastleBuilder
         readonly NodeGridPositionModificationNode secondNode;
         readonly OnFloorObject linkedObject;
 
+        public Vector2Int FirstCoordinate
+        {
+            get
+            {
+                return firstNode.AbsoluteCoordinate;
+            }
+        }
+
+        public Vector2Int SecondCoordinate
+        {
+            get
+            {
+                return secondNode.AbsoluteCoordinate;
+            }
+        }
+
         OrientationTypes orientationType;
         public enum OrientationTypes
         {
