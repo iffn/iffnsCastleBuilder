@@ -1903,8 +1903,8 @@
 				{
 					"Type": "RectangularRoof",
 					"Name": "",
-					"First position": [15, 27],
-					"Second position": [0, 12],
+					"First position": [15, 12],
+					"Second position": [0, 27],
 					"Roof height [m]": 2,
 					"Height thickness": 0.1,
 					"Roof overshoot [m]": 0,
@@ -1939,8 +1939,8 @@
 				{
 					"Type": "RectangularRoof",
 					"Name": "",
-					"First position": [4, 2],
-					"Second position": [10, 5],
+					"First position": [4, 5],
+					"Second position": [10, 2],
 					"Roof height [m]": 2,
 					"Height thickness": 0.1,
 					"Roof overshoot [m]": 0,
@@ -1953,8 +1953,8 @@
 				{
 					"Type": "RectangularRoof",
 					"Name": "",
-					"First position": [7, 8],
-					"Second position": [4, 5],
+					"First position": [7, 5],
+					"Second position": [4, 8],
 					"Roof height [m]": 2,
 					"Height thickness": 0.1,
 					"Roof overshoot [m]": 0,

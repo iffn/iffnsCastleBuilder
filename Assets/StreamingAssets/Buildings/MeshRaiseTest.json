@@ -1850,7 +1850,7 @@
 				{
 					"Type": "RectangularStairs",
 					"Name": "",
-					"Bottom left position": [66, 0],
+					"Bottom left position": [65, 0],
 					"Top right position": [61, 1],
 					"Step height [m]": 0.25,
 					"Back thickness [m]": 0.25,
@@ -4465,20 +4465,22 @@
 					"Name": "",
 					"Bottom Left Position": [31, 4],
 					"Top Right Position": [-1, -1],
-					"Angle preference": "360°",
+					"Number of floors": 1,
+					"Column material": "PolyHaven-beige_wall_001",
 					"Top ending type": "None",
-					"Bottom ending type": "None",
-					"Column type": "Cylinder"
+					"Column type": "Cylinder",
+					"Bottom ending type": "None"
 				},
 				{
 					"Type": "Column",
 					"Name": "",
 					"Bottom Left Position": [31, 0],
 					"Top Right Position": [1, 1],
-					"Angle preference": "360°",
+					"Number of floors": 1,
+					"Column material": "PolyHaven-beige_wall_001",
 					"Top ending type": "None",
-					"Bottom ending type": "None",
-					"Column type": "Cylinder"
+					"Column type": "Cylinder",
+					"Bottom ending type": "None"
 				},
 				{
 					"Type": "Door",
