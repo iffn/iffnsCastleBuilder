@@ -58,7 +58,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     DirectionPreference = new Vector2Int(0, offset.y);
                 }
 
-                parent.ApplyBuildParameters();
+                linkedObject.ApplyBuildParameters();
             }
         }
 
@@ -68,7 +68,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             this.radiusValue = radiusValue;
             this.centerPosition = centerPosition;
-            transform.parent = parent.transform;
+            transform.parent = base.linkedObject.transform;
         }
 
         public override bool ColliderActivationState
@@ -81,19 +81,18 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void UpdatePosition()
         {
-            transform.parent = parent.LinkedFloor.transform;
+            transform.parent = linkedObject.LinkedFloor.transform;
 
-            transform.localPosition = parent.LinkedFloor.CenterPositionFromBlockIndex(AbsoluteCoordinate);
+            transform.localPosition = linkedObject.LinkedFloor.CenterPositionFromBlockIndex(AbsoluteCoordinate);
 
-            transform.Translate(Vector3.up * parent.LinkedFloor.CompleteFloorHeight / 2);
+            transform.Translate(Vector3.up * linkedObject.LinkedFloor.CompleteFloorHeight / 2);
 
             transform.localRotation = Quaternion.identity;
 
-            transform.parent = parent.transform;
+            transform.parent = linkedObject.transform;
 
-            float height = parent.LinkedFloor.CompleteFloorHeight + heightOvershoot;
-            float width = parent.LinkedFloor.BlockSize + widthOvershoot;
-            transform.localScale = new Vector3(width, height, width);
+            float width = linkedObject.LinkedFloor.BlockSize + widthOvershoot;
+            transform.localScale = new Vector3(width, Height, width);
         }
     }
 }

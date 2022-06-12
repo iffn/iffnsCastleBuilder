@@ -53,7 +53,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     valueHolder.Val = new Vector2Int(value.x, value.y);
                 }
 
-                parent.ApplyBuildParameters();
+                linkedObject.ApplyBuildParameters();
             }
         }
 
@@ -71,7 +71,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             valueHolder = value;
             this.relativeReferenceHolder = relativeReferenceHolder;
-            transform.parent = parent.transform;
+            transform.parent = base.linkedObject.transform;
 
             if (relativeReferenceHolder == null)
             {
@@ -81,8 +81,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 modType = ModificationType.SizeAdjuster;
             }
-
-            UpdatePosition();
 
             UpdateColors();
         }
@@ -98,17 +96,16 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public override void UpdatePosition()
         {
-            transform.parent = parent.LinkedFloor.transform;
+            transform.parent = linkedObject.LinkedFloor.transform;
 
-            transform.localPosition = parent.LinkedFloor.NodePositionFromBlockIndex(blockIndex: AbsoluteCoordinate);
+            transform.localPosition = linkedObject.LinkedFloor.NodePositionFromBlockIndex(blockIndex: AbsoluteCoordinate);
 
             transform.localRotation = Quaternion.identity;
 
-            transform.parent = parent.transform;
+            transform.parent = linkedObject.transform;
 
-            float height = parent.LinkedFloor.CompleteFloorHeight + heightOvershoot;
-            float width = parent.LinkedFloor.CurrentNodeWallSystem.WallThickness + widthOvershoot;
-            transform.localScale = new Vector3(width, height, width);
+            float width = linkedObject.LinkedFloor.CurrentNodeWallSystem.WallThickness + widthOvershoot;
+            transform.localScale = new Vector3(width, Height, width);
         }
 
         void UpdateColors()

@@ -276,6 +276,38 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public float CompleteHeight
+        {
+            get
+            {
+                float completeHeight = LinkedFloor.WallBetweenHeight;
+
+                if (LinkedFloor.FloorsAbove > 0 && NumberOfFloors > 1)
+                {
+                    int usedNumberOfFloors = NumberOfFloors;
+
+                    usedNumberOfFloors = Mathf.Clamp(value: usedNumberOfFloors, min: 1, max: LinkedFloor.FloorsAbove + 1);
+
+                    for (int i = LinkedFloor.FloorNumber + 1; i < LinkedFloor.FloorNumber + usedNumberOfFloors; i++)
+                    {
+                        FloorController floor = LinkedFloor.LinkedBuildingController.Floor(i);
+
+                        completeHeight += floor.CompleteFloorHeight;
+                    }
+                }
+
+                return completeHeight;
+            }
+        }
+
+        public override float ModificationNodeHeight
+        {
+            get
+            {
+                return CompleteHeight;
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);
@@ -344,21 +376,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             Vector2 radii = 0.5f * ModificationNodeOrganizer.ObjectOrientationSize;
             Vector3 offset = new Vector3(radii.x, 0, radii.y);
 
-            float totalHeight = LinkedFloor.WallBetweenHeight;
-
-            if (LinkedFloor.FloorsAbove > 0 && NumberOfFloors > 1)
-            {
-                int usedNumberOfFloors = NumberOfFloors;
-
-                usedNumberOfFloors = Mathf.Clamp(value: usedNumberOfFloors, min: 1, max: LinkedFloor.FloorsAbove + 1);
-
-                for (int i = LinkedFloor.FloorNumber + 1; i < LinkedFloor.FloorNumber + usedNumberOfFloors; i++)
-                {
-                    FloorController floor = LinkedFloor.LinkedBuildingController.Floor(i);
-
-                    totalHeight += floor.CompleteFloorHeight;
-                }
-            }
+            float completeHeight = CompleteHeight;
 
             float bottomHeight = 0;
             float topHeight = 0;
@@ -366,13 +384,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             if (TopEndingType != EndingTypes.None) bottomHeight = baseHeight;
             if (TopEndingType != EndingTypes.None) topHeight = baseHeight;
 
-            float middleHeight = totalHeight - bottomHeight - topHeight;
+            float middleHeight = completeHeight - bottomHeight - topHeight;
 
             if(middleHeight < 0.1f)
             {
-                topHeight = totalHeight / 3;
-                middleHeight = totalHeight / 3;
-                bottomHeight = totalHeight / 3;
+                topHeight = completeHeight / 3;
+                middleHeight = completeHeight / 3;
+                bottomHeight = completeHeight / 3;
             }
 
             float columnRadiusFactor = 0.9f;

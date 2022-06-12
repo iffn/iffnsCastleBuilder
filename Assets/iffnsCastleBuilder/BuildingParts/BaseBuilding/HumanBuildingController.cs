@@ -431,6 +431,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             if (floorIndex > Floors.Count - 1)
             {
                 Debug.LogWarning("Error when selecting floor " + floorNumber + ". Trying to select index " + floorIndex + " but there are only " + Floors.Count + " Floors");
+                return Floors[^1];
             }
 
             return Floors[floorIndex];

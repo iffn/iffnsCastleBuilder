@@ -197,6 +197,33 @@ namespace iffnsStuff.iffnsCastleBuilder
             triangleInfo.Add(staticMesh);
         }
 
+        float CompleteHeight
+        {
+            get
+            {
+                float returnValue = LinkedFloor.CompleteFloorHeight;
+                float minWindowHeight = BottomHeight + WindowHeight;
+
+                int currentFloorNumber = LinkedFloor.FloorNumber;
+
+                while (currentFloorNumber + 1 <= LinkedFloor.LinkedBuildingController.PositiveFloors && returnValue < minWindowHeight)
+                {
+                    currentFloorNumber += 1;
+                    returnValue += LinkedFloor.LinkedBuildingController.Floor(floorNumber: currentFloorNumber).CompleteFloorHeight;
+                }
+
+                return returnValue;
+            }
+        }
+
+        public override float ModificationNodeHeight
+        {
+            get
+            {
+                return CompleteHeight;
+            }
+        }
+
         public override void ApplyBuildParameters()
         {
             ModificationNodeOrganizer.OrientationType = WallType;
@@ -240,25 +267,10 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             //Height
-            float currentHeight = LinkedFloor.CompleteFloorHeight;
-            float minWindowHeight = BottomHeight + WindowHeight;
-
-            int currentFloorNumber = LinkedFloor.FloorNumber;
-
-            while (currentFloorNumber + 1 <= LinkedFloor.LinkedBuildingController.PositiveFloors && currentHeight < minWindowHeight)
-            {
-                currentFloorNumber += 1;
-                currentHeight += LinkedFloor.LinkedBuildingController.Floor(floorNumber: currentFloorNumber).CompleteFloorHeight;
-            }
-
-            float bottomHeightWithFloor = BottomHeight;
-            if (ModificationNodeOrganizer.RaiseDueToFloor)
-            {
-                bottomHeightWithFloor += LinkedFloor.BottomFloorHeight;
-            }
+            float bottomHeightWithFloor = BottomHeight + LinkedFloor.BottomFloorHeight;
 
             CurrentRectangularBaseWindow.completeWidth = width;
-            CurrentRectangularBaseWindow.completeHeight = currentHeight;
+            CurrentRectangularBaseWindow.completeHeight = CompleteHeight;
             CurrentRectangularBaseWindow.bottomHeight = bottomHeightWithFloor;
             CurrentRectangularBaseWindow.windowHeight = WindowHeight;
             CurrentRectangularBaseWindow.betweenDepth = depth;

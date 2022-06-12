@@ -100,6 +100,21 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override float ModificationNodeHeight
+        {
+            get
+            {
+                if (RaiseToFloor)
+                {
+                    return Height + LinkedFloor.BottomFloorHeight;
+                }
+                else
+                {
+                    return Height;
+                }
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);

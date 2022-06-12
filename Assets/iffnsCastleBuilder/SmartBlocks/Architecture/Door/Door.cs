@@ -113,6 +113,32 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public float CompleteHeight
+        {
+            get
+            {
+                float currentHeight = LinkedFloor.WallBetweenHeight;
+
+                int currentFloorNumber = LinkedFloor.FloorNumber;
+
+                while (currentFloorNumber + 1 <= LinkedFloor.LinkedBuildingController.PositiveFloors && currentHeight < DoorHeight)
+                {
+                    currentFloorNumber += 1;
+                    currentHeight += LinkedFloor.LinkedBuildingController.Floor(floorNumber: currentFloorNumber).CompleteFloorHeight;
+                }
+
+                return currentHeight;
+            }
+        }
+
+        public override float ModificationNodeHeight
+        {
+            get
+            {
+                return CompleteHeight;
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);
@@ -216,29 +242,21 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             //Height
-            float currentHeight = LinkedFloor.WallBetweenHeight;
-
-            int currentFloorNumber = LinkedFloor.FloorNumber;
-
-            while (currentFloorNumber + 1 <= LinkedFloor.LinkedBuildingController.PositiveFloors && currentHeight < DoorHeight)
-            {
-                currentFloorNumber += 1;
-                currentHeight += LinkedFloor.LinkedBuildingController.Floor(floorNumber: currentFloorNumber).CompleteFloorHeight;
-            }
+            float completeHeight = CompleteHeight;
 
             float doorHeightWithFloor = DoorHeight;
 
             CurrentRectangularBaseDoor.completeWidth = width;
             CurrentRectangularBaseDoor.betweenDepth = depth;
 
-            if (doorHeightWithFloor < currentHeight)
+            if (doorHeightWithFloor < completeHeight)
             {
                 CurrentRectangularBaseDoor.doorHeight = doorHeightWithFloor;
-                CurrentRectangularBaseDoor.completeHeight = currentHeight;
+                CurrentRectangularBaseDoor.completeHeight = completeHeight;
             }
             else
             {
-                CurrentRectangularBaseDoor.doorHeight = currentHeight;
+                CurrentRectangularBaseDoor.doorHeight = completeHeight;
                 CurrentRectangularBaseDoor.completeHeight = 0;
             }
 

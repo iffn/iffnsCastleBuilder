@@ -138,13 +138,21 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 return RaiseToFloorParam.Val;
             }
-            /*
-            set
+        }
+
+        public override float ModificationNodeHeight
+        {
+            get
             {
-                RaiseToFloorParam.Val = value;
-                ApplyBuildParameters();
+                if (RaiseToFloor)
+                {
+                    return Height + LinkedFloor.BottomFloorHeight;
+                }
+                else
+                {
+                    return Height;
+                }
             }
-            */
         }
 
         public override void Setup(IBaseObject linkedFloor)

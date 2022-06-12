@@ -146,15 +146,54 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        //Derived parameters
-        float completeFloorHeight
+        public float StairHeight
         {
             get
             {
-                return LinkedFloor.CompleteFloorHeight;
+                float returnValue = LinkedFloor.WallBetweenHeight;
+
+                float topFloorHeight;
+
+                if (LinkedFloor.FloorsAbove <= 0)
+                {
+                    topFloorHeight = LinkedFloor.BottomFloorHeight;
+                }
+                else
+                {
+                    if (NumberOfFloors == 1)
+                    {
+                        topFloorHeight = LinkedFloor.LinkedBuildingController.Floor(LinkedFloor.FloorNumber + 1).BottomFloorHeight;
+                    }
+                    else
+                    {
+                        int usedNumberOfFloors = NumberOfFloors;
+
+                        usedNumberOfFloors = Mathf.Clamp(value: usedNumberOfFloors, min: 1, max: LinkedFloor.FloorsAbove + 1);
+
+                        topFloorHeight = LinkedFloor.LinkedBuildingController.Floor(LinkedFloor.FloorNumber + usedNumberOfFloors - 1).BottomFloorHeight;
+
+                        for (int i = LinkedFloor.FloorNumber + 1; i < LinkedFloor.FloorNumber + usedNumberOfFloors; i++)
+                        {
+                            FloorController floor = LinkedFloor.LinkedBuildingController.Floor(i);
+
+                            returnValue += floor.CompleteFloorHeight;
+                        }
+                    }
+                }
+
+                returnValue += topFloorHeight;
+
+                return returnValue;
             }
         }
 
+        public override float ModificationNodeHeight
+        {
+            get
+            {
+                return StairHeight;
+            }
+        }
 
         void InitializeBuildParameterLines()
         {
@@ -266,7 +305,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Setup containers
 
             //Calculate basic parameters
-            float stairHeight = LinkedFloor.WallBetweenHeight;
+            float stairHeight = StairHeight;
 
             float topFloorHeight;
 
@@ -287,17 +326,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                     usedNumberOfFloors = Mathf.Clamp(value: usedNumberOfFloors, min: 1, max: LinkedFloor.FloorsAbove + 1);
 
                     topFloorHeight = LinkedFloor.LinkedBuildingController.Floor(LinkedFloor.FloorNumber + usedNumberOfFloors - 1).BottomFloorHeight;
-
-                    for (int i = LinkedFloor.FloorNumber + 1; i < LinkedFloor.FloorNumber + usedNumberOfFloors; i++)
-                    {
-                        FloorController floor = LinkedFloor.LinkedBuildingController.Floor(i);
-
-                        stairHeight += floor.CompleteFloorHeight;
-                    }
                 }
             }
-
-            stairHeight += topFloorHeight;
 
             //Build mesh
             float length = size.y;

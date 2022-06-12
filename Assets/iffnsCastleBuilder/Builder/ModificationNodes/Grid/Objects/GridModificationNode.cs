@@ -7,7 +7,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public abstract class GridModificationNode : ModificationNode
     {
-        protected OnFloorObject parent;
+        protected OnFloorObject linkedObject;
 
         public enum ModificationNodeType
         {
@@ -18,6 +18,14 @@ namespace iffnsStuff.iffnsCastleBuilder
         ModificationNodeType type;
 
         public abstract ModificationNodeType Type { get; }
+
+        public float Height
+        {
+            get
+            {
+                return linkedObject.ModificationNodeHeight + heightOvershoot;
+            }
+        }
 
         public OnFloorObject LinkedOnFloorObject
         {
@@ -37,7 +45,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (linkedObject is OnFloorObject)
             {
-                parent = linkedObject as OnFloorObject;
+                this.linkedObject = linkedObject as OnFloorObject;
             }
             else
             {

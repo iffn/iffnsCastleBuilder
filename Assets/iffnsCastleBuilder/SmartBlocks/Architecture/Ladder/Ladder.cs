@@ -103,6 +103,41 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        float CompleteHeight
+        {
+            get
+            {
+                float height = LinkedFloor.CompleteFloorHeight; //ToDo: Multi floor ladder
+
+                if (LinkedFloor.FloorsAbove >= 0)
+                {
+                    if (NumberOfFloors > 1)
+                    {
+                        int usedNumberOfFloors = NumberOfFloors;
+
+                        if (usedNumberOfFloors > LinkedFloor.FloorsAbove + 1) usedNumberOfFloors = LinkedFloor.FloorsAbove + 1;
+
+                        for (int i = LinkedFloor.FloorNumber + 1; i < LinkedFloor.FloorNumber + usedNumberOfFloors; i++)
+                        {
+                            FloorController floor = LinkedFloor.LinkedBuildingController.Floor(i);
+
+                            height += floor.CompleteFloorHeight;
+                        }
+                    }
+                }
+
+                return height + HeightOvershoot;
+            }
+        }
+
+        public override float ModificationNodeHeight
+        {
+            get
+            {
+                return CompleteHeight + LinkedFloor.BottomFloorHeight;
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);
@@ -186,26 +221,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Define mesh
             float width = ModificationNodeOrganizer.ObjectOrientationSize;
 
-            float height = LinkedFloor.CompleteFloorHeight; //ToDo: Multi floor ladder
-
-            if (LinkedFloor.FloorsAbove >= 0)
-            {
-                if (NumberOfFloors > 1)
-                {
-                    int usedNumberOfFloors = NumberOfFloors;
-
-                    if (usedNumberOfFloors > LinkedFloor.FloorsAbove + 1) usedNumberOfFloors = LinkedFloor.FloorsAbove + 1;
-
-                    for (int i = LinkedFloor.FloorNumber + 1; i < LinkedFloor.FloorNumber + usedNumberOfFloors; i++)
-                    {
-                        FloorController floor = LinkedFloor.LinkedBuildingController.Floor(i);
-
-                        height += floor.CompleteFloorHeight;
-                    }
-                }
-            }
-
-            float sideHeight = height + HeightOvershoot;
+            float completeHeight = CompleteHeight;
+            float height = completeHeight - HeightOvershoot;
 
             TriangleMeshInfo OriginSide = new();
             TriangleMeshInfo OtherSide = new();
@@ -224,11 +241,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BuildAllMeshes();
             }
 
-            OriginSide = MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(SideThickness, sideHeight, SideThickness));
+            OriginSide = MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(SideThickness, completeHeight, SideThickness));
             OtherSide = OriginSide.Clone;
 
-            OriginSide.Move(new Vector3((-width + SideThickness) * 0.5f, sideHeight * 0.5f, 0));
-            OtherSide.Move(new Vector3((width - SideThickness) * 0.5f, sideHeight * 0.5f, 0));
+            OriginSide.Move(new Vector3((-width + SideThickness) * 0.5f, completeHeight * 0.5f, 0));
+            OtherSide.Move(new Vector3((width - SideThickness) * 0.5f, completeHeight * 0.5f, 0));
 
             int numberOfSteps = (int)(height / DistanceBetweenSteps);
 

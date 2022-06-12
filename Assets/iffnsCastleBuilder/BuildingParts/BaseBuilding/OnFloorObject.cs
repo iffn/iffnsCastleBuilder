@@ -82,6 +82,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public virtual float ModificationNodeHeight
+        {
+            get
+            {
+                return LinkedFloor.CompleteFloorHeight;
+            }
+        }
+
         public override void Setup(IBaseObject superObject)
         {
             base.Setup(superObject);
