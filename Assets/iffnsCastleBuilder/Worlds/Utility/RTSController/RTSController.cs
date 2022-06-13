@@ -6,9 +6,7 @@ namespace iffnsStuff.iffnsUnityResources
 {
     public class RTSController : MonoBehaviour
     {
-
-
-        //Assignments
+        //Unity assignments
         [SerializeField] Camera mainCamera;
         [SerializeField] GameObject CameraTilt;
         [SerializeField] GameObject CameraMover;
@@ -22,11 +20,15 @@ namespace iffnsStuff.iffnsUnityResources
         public float scrollSpeed = 8000f;
 
         //Internal settings
-        float maxDeltaTime = 1f / 45;
-        float currentCameraOffset;
-        float isoCameraOffset = -100;
+        readonly float maxDeltaTime = 1f / 45;
+        readonly float isoCameraOffset = -100;
+        readonly float maxZoomIn = -0.011f;
+        readonly float maxZoomOut = -2000;
+        readonly float minOrthographicSize = 0.001f;
+        readonly float maxOrthographicSize = 2000f;
 
         //Runtime variables
+        float currentCameraOffset;
         Vector3 cameraHomePosition;
         Quaternion cameraHomeDirectionOrientation;
         Quaternion cameraHomeTiltAngle;
@@ -54,9 +56,9 @@ namespace iffnsStuff.iffnsUnityResources
             mainCamera.orthographicSize = isoCameraSize;
         }
 
+        /*
         public void SetClippingHeightAbsolute(float clippingHeightAbsolute)
         {
-            /*
             float nearClipOffset = 0.05f;
 
             GameObject something = null;
@@ -68,9 +70,8 @@ namespace iffnsStuff.iffnsUnityResources
             float camSpaceDst = -Vector3.Dot(camSpacePos, camSpaceNormal) + nearClipOffset;
 
             mainCamera.projectionMatrix = playerCam.CalculateObliqueMatrix(clipPlaneCameraSpace);
-            */
         }
-
+        */
 
         public float CameraTiltAngle
         {
@@ -116,10 +117,9 @@ namespace iffnsStuff.iffnsUnityResources
             }
         }
 
-
         public Ray GetRayFromCameraMouseLocation()
         {
-            Ray returnRay = new Ray();
+            Ray returnRay = new();
 
             switch (cameraPerspective)
             {
@@ -135,7 +135,7 @@ namespace iffnsStuff.iffnsUnityResources
                     float horizontalScale = (Input.mousePosition.x / Screen.width - 0.5f) * 2;
 
 
-                    Vector3 relativeCameraOffset = new Vector3(
+                    Vector3 relativeCameraOffset = new(
                         x: horizontalOffset * horizontalScale,
                         y: verticalOffset * verticalScale,
                         z: 0);
@@ -161,9 +161,7 @@ namespace iffnsStuff.iffnsUnityResources
             Ray ray = GetRayFromCameraMouseLocation();
             //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            RaycastHit hit;
-
-            Physics.Raycast(ray, out hit, Mathf.Infinity);
+            Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity);
 
             return hit.point;
         }
@@ -184,32 +182,32 @@ namespace iffnsStuff.iffnsUnityResources
 
             if (Input.GetKey(KeyCode.W))
             {
-                gameObject.transform.Translate(Vector3.forward * movementSpeedWASD * deltaTime);
+                gameObject.transform.Translate(deltaTime * movementSpeedWASD * Vector3.forward);
             }
 
             if (Input.GetKey(KeyCode.S))
             {
-                gameObject.transform.Translate(Vector3.back * movementSpeedWASD * deltaTime);
+                gameObject.transform.Translate(deltaTime * movementSpeedWASD * Vector3.back);
             }
 
             if (Input.GetKey(KeyCode.A))
             {
-                gameObject.transform.Translate(Vector3.left * movementSpeedWASD * deltaTime);
+                gameObject.transform.Translate(deltaTime * movementSpeedWASD * Vector3.left);
             }
 
             if (Input.GetKey(KeyCode.D))
             {
-                gameObject.transform.Translate(Vector3.right * movementSpeedWASD * deltaTime);
+                gameObject.transform.Translate(deltaTime * movementSpeedWASD * Vector3.right);
             }
 
             if (Input.GetKey(KeyCode.Q))
             {
-                gameObject.transform.Rotate(Vector3.up * rotationSpeedQE * deltaTime);
+                gameObject.transform.Rotate(deltaTime * rotationSpeedQE * Vector3.up);
             }
 
             if (Input.GetKey(KeyCode.E))
             {
-                gameObject.transform.Rotate(Vector3.down * rotationSpeedQE * deltaTime);
+                gameObject.transform.Rotate(deltaTime * rotationSpeedQE * Vector3.down);
             }
 
             if (Input.GetMouseButton(2)) //Middle Mouse Button
@@ -219,12 +217,12 @@ namespace iffnsStuff.iffnsUnityResources
 
             if (Input.GetMouseButton(1)) //Right Mouse Button
             {
-                gameObject.transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * rotationSpeedMouse * deltaTime); // left / right rotation
+                gameObject.transform.Rotate(Input.GetAxis("Mouse X") * rotationSpeedMouse * deltaTime * Vector3.up); // left / right rotation
             }
 
             if (Input.GetMouseButton(1)) //Right Mouse Button
             {
-                CameraTilt.transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * rotationSpeedMouse * deltaTime); //up / down rotation
+                CameraTilt.transform.Rotate(Input.GetAxis("Mouse Y") * rotationSpeedMouse * deltaTime * Vector3.right); //up / down rotation
 
                 if (CameraTilt.transform.localRotation.eulerAngles.y > 90)
                 {
@@ -242,23 +240,24 @@ namespace iffnsStuff.iffnsUnityResources
                     float ScrollInput = Input.GetAxis("Mouse ScrollWheel");
 
                     float maxScrollMultiplier = 1.15f;
-                    float perspectiveScrollMultiplier = 1f - Input.GetAxis("Mouse ScrollWheel") * scrollSpeed * deltaTime;
+                    float perspectiveScrollMultiplier = 1f - ScrollInput * scrollSpeed * deltaTime;
                     if (perspectiveScrollMultiplier > maxScrollMultiplier) perspectiveScrollMultiplier = maxScrollMultiplier;
                     else if (perspectiveScrollMultiplier < 1f / maxScrollMultiplier) perspectiveScrollMultiplier = 1f / maxScrollMultiplier;
-
-                    
 
                     switch (cameraPerspective)
                     {
                         case CameraPerspectiveType.walking:
                             currentCameraOffset *= perspectiveScrollMultiplier;
+                            currentCameraOffset = Mathf.Clamp(value: currentCameraOffset, min: maxZoomOut, max: maxZoomIn); //All values are negative
                             CameraMover.transform.localPosition = new Vector3(0, 0, currentCameraOffset);
                             break;
                         case CameraPerspectiveType.isometric:
                             CameraMover.transform.localPosition = new Vector3(0, 0, isoCameraOffset);
+                            mainCamera.orthographicSize = Mathf.Clamp(value: mainCamera.orthographicSize * perspectiveScrollMultiplier, min: minOrthographicSize, max: maxOrthographicSize);
                             break;
                         case CameraPerspectiveType.flying:
                             currentCameraOffset *= perspectiveScrollMultiplier;
+                            currentCameraOffset = Mathf.Clamp(value: currentCameraOffset, min: maxZoomOut, max: maxZoomIn); //All values are negative
                             CameraMover.transform.localPosition = new Vector3(0, 0, currentCameraOffset);
                             break;
                         default:
@@ -270,7 +269,7 @@ namespace iffnsStuff.iffnsUnityResources
 
                     if (cameraPerspective == CameraPerspectiveType.isometric)
                     {
-                        mainCamera.orthographicSize = mainCamera.orthographicSize * perspectiveScrollMultiplier;
+                        
                     }
 
                     /*

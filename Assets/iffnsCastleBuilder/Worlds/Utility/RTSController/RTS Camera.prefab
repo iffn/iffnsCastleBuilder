@@ -56,8 +56,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.01
+  far clip plane: 2000
   field of view: 30
   orthographic: 0
   orthographic size: 5
@@ -162,14 +162,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 7330258177226901890}
-  clippingPlane: {fileID: 0}
+  CameraTilt: {fileID: 7330258177245678218}
+  CameraMover: {fileID: 7330258177754878652}
   movementSpeedWASD: 8
   movementSpeedMouse: 0.6
   rotationSpeedQE: 60
   rotationSpeedMouse: 1800
   scrollSpeed: 300
-  CameraTilt: {fileID: 7330258177245678218}
-  CameraMover: {fileID: 7330258177754878652}
 --- !u!1 &7330258177754878652
 GameObject:
   m_ObjectHideFlags: 0
