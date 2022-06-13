@@ -192,7 +192,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
         
-        void initializeBuildParameterLines()
+        void InitializeBuildParameterLines()
         {
             PositiveCenterPositionParam = new MailboxLineVector2Int(name: "Positive center position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             OuterRadiusParam = new MailboxLineRanged(name: "Outer radius [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 80, Min: 0.1f, DefaultValue: 1);
@@ -216,7 +216,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             LinkedFloor = linkedFloor as FloorController;
 
-            initializeBuildParameterLines();
+            InitializeBuildParameterLines();
 
             BlockGridPositionModificationNode positionNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
             positionNode.Setup(linkedObject: this, value: PositiveCenterPositionParam);
