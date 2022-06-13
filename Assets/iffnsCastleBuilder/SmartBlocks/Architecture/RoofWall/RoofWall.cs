@@ -295,13 +295,27 @@ namespace iffnsStuff.iffnsCastleBuilder
             if (LinkedFloor.IsTopFloor) nextFloorHeight = LinkedFloor.BottomFloorHeight;
             else nextFloorHeight = LinkedFloor.FloorAbove.BottomFloorHeight;
 
-            Height = LinkedFloor.CompleteFloorHeight + nextFloorHeight;
+            if (RaiseToFloor)
+            {
+                Height = LinkedFloor.WallBetweenHeight + nextFloorHeight;
+            }
+            else
+            {
+                Height = LinkedFloor.CompleteFloorHeight + nextFloorHeight;
+            }
 
         }
 
         void SetHeightToNextBottomFloor()
         {
-            Height = LinkedFloor.CompleteFloorHeight;
+            if (RaiseToFloor)
+            {
+                Height = LinkedFloor.WallBetweenHeight;
+            }
+            else
+            {
+                Height = LinkedFloor.CompleteFloorHeight;
+            }
         }
 
         public override void MoveOnGrid(Vector2Int offset)
