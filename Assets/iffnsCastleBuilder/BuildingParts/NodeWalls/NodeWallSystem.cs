@@ -542,6 +542,12 @@ namespace iffnsStuff.iffnsCastleBuilder
                 modificationNodes.Add(startNode);
                 modificationNodes.Add(endNode);
 
+                //Flip
+                NodeWallFlipNode flipNode = ModificationNodeLibrary.NewNodeWallFlipNode;
+                flipNode.transform.parent = transform;
+                flipNode.Setup(linkedWall: wall);
+                modificationNodes.Add(flipNode);
+
                 //Remove
                 NodeWallRemoveNode remNode = ModificationNodeLibrary.NewNodeWallRemoveNode;
                 remNode.transform.parent = transform;

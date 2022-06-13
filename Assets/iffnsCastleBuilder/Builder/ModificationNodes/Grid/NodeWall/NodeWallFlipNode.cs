@@ -4,11 +4,9 @@ using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class NodeWallRemoveNode : NodeWallModificationNode
+    public class NodeWallFlipNode : NodeWallModificationNode
     {
         NodeWall linkedWall;
-        Vector2Int thisCoordinate;
-        Vector2Int otherCoordinate;
 
         public void Setup(NodeWall linkedWall)
         {
@@ -24,7 +22,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             Vector3 thisPosition = linkedFloor.GetLocalNodePositionFromNodeIndex(linkedWall.StartPosition);
             Vector3 otherPosition = linkedFloor.GetLocalNodePositionFromNodeIndex(linkedWall.EndPosition);
 
-            transform.localPosition = (thisPosition + otherPosition) * 0.5f + (linkedFloor.WallBetweenHeight * 0.3333333f + linkedFloor.BottomFloorHeight) * Vector3.up;
+            transform.localPosition = (thisPosition + otherPosition) * 0.5f + (linkedFloor.WallHeightWithScaler * 0.6666667f + linkedFloor.BottomFloorHeight) * Vector3.up;
             transform.localRotation = Quaternion.LookRotation(thisPosition - otherPosition, Vector3.up);
 
             float width = linkedSystem.WallThickness + widthOvershoot * 2;
@@ -32,18 +30,9 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Warning: UpdteNodeSize calls UpdatePosition() -> Do not add here
         }
 
-        /*
-        public override void UpdateNodeSize()
+        public void FlipNodeWall()
         {
-            UpdatePosition();
-        }
-        */
-
-        public void RemoveNodeWall()
-        {
-            linkedWall.DestroyObject();
-            linkedWall.LinkedSystem.HideModificationNodes();
-            linkedWall.LinkedSystem.ShowModificationNodes(activateCollider: true);
+            linkedWall.FlipPositions();
         }
     }
 }

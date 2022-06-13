@@ -170,6 +170,13 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                     if (activeNode == null) return false;
 
+                    if (activeNode is NodeWallFlipNode activeNodeWallFlipNode)
+                    {
+                        activeNodeWallFlipNode.FlipNodeWall();
+                        activeNode = null;
+                        return true;
+                    }
+
                     if (activeNode is NodeWallRemoveNode activeNodeWallRemoveNode)
                     {
                         activeNodeWallRemoveNode.RemoveNodeWall();

@@ -374,7 +374,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             BackFaceAngle.FlipTriangles();
 
             //Side faces
-            List<Vector3> SidePoints = new List<Vector3>();
+            List<Vector3> SidePoints = new();
 
             SidePoints.Add(Vector3.zero);
 

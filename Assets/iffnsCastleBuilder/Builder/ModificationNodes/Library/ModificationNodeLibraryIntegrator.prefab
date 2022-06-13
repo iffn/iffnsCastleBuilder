@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.9361329, y: 1.9388726, z: -6.732706}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -49,5 +50,6 @@ MonoBehaviour:
   gridRadiusModificationNodeTemplate: {fileID: 8323154788981138058, guid: 8deaccad28588e748a9c5f2d44bc908d, type: 3}
   gridOrientationNodeTemplate: {fileID: 369082997871840530, guid: b915b657cbe12764fbfbb9215f97fc60, type: 3}
   nodeWallEditMododeTemplate: {fileID: 4394707402526015413, guid: 769904ef34d90c34b97b78532085c5fa, type: 3}
+  nodeWallFlipNodeTemplate: {fileID: 3758012931154308252, guid: 5d9e7c2974dc1f547b44c558fc4e6ef7, type: 3}
   nodeWallRemoveNodeTemplate: {fileID: 243080830127066121, guid: 73551e003d5924c4a9a380e0f8287773, type: 3}
   nodeWallMultiModNodeTemplate: {fileID: 4973648639987961721, guid: 870fe9fc6339e1a46b791f9389bc614a, type: 3}

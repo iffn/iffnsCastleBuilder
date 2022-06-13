@@ -59,6 +59,16 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public void FlipPositions()
+        {
+            Vector2Int startPosition = startPositionParam.Val;
+            startPositionParam.Val = endPositionParam.Val;
+            endPositionParam.Val = startPosition;
+
+            EvaluateFailureState();
+            linkedSystem.ApplyBuildParameters();
+        }
+
         public Vector2Int Offset
         {
             get

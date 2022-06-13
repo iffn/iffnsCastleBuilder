@@ -13,6 +13,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] GridRadiusModificationNode gridRadiusModificationNodeTemplate = null;
         [SerializeField] GridOrientationNode gridOrientationNodeTemplate = null;
         [SerializeField] NodeWallEditModNode nodeWallEditMododeTemplate = null;
+        [SerializeField] NodeWallFlipNode nodeWallFlipNodeTemplate = null;
         [SerializeField] NodeWallRemoveNode nodeWallRemoveNodeTemplate = null;
         [SerializeField] NodeWallMultiModNode nodeWallMultiModNodeTemplate = null;
 
@@ -60,6 +61,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             get
             {
                 return nodeWallEditMododeTemplate;
+            }
+        }
+
+        public NodeWallFlipNode NodeWallFlipNodeTemplate
+        {
+            get
+            {
+                return nodeWallFlipNodeTemplate;
             }
         }
 
@@ -198,12 +207,28 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        //NodeWallEditModNode
         public static NodeWallRemoveNode NodeWallRemoveNodeTemplate
         {
             get
             {
                 return integrator.NodeWallRemoveNodeTemplate;
+            }
+        }
+
+        //NodeWallEditModNode
+        public static NodeWallFlipNode NodeWallFlipNodeTemplate
+        {
+            get
+            {
+                return integrator.NodeWallFlipNodeTemplate;
+            }
+        }
+
+        public static NodeWallFlipNode NewNodeWallFlipNode
+        {
+            get
+            {
+                return GameObject.Instantiate(NodeWallFlipNodeTemplate).transform.GetComponent<NodeWallFlipNode>();
             }
         }
 
