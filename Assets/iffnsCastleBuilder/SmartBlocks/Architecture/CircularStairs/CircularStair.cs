@@ -14,6 +14,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineRanged RevolutionAngleDegParam;
         MailboxLineRanged StepHeightTargetParam;
         MailboxLineRanged BackThicknessParam;
+        MailboxLineDistinctUnnamed NumberOfFloorsParam;
         MailboxLineMaterial TopSetpTopMaterialParam;
         MailboxLineMaterial OtherSetpsTopMaterialParam;
         MailboxLineMaterial SetpsFrontMaterialParam;
@@ -129,15 +130,68 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        //Derived parameters
-        float completeFloorHeight
+        public int NumberOfFloors
         {
             get
             {
-                return LinkedFloor.CompleteFloorHeight;
+                return NumberOfFloorsParam.Val;
+            }
+            set
+            {
+                NumberOfFloorsParam.Val = value;
+                ApplyBuildParameters();
             }
         }
 
+        public float StairHeight
+        {
+            get
+            {
+                float returnValue = LinkedFloor.WallBetweenHeight;
+
+                float topFloorHeight;
+
+                if (LinkedFloor.FloorsAbove <= 0)
+                {
+                    topFloorHeight = LinkedFloor.BottomFloorHeight;
+                }
+                else
+                {
+                    if (NumberOfFloors == 1)
+                    {
+                        topFloorHeight = LinkedFloor.LinkedBuildingController.Floor(LinkedFloor.FloorNumber + 1).BottomFloorHeight;
+                    }
+                    else
+                    {
+                        int usedNumberOfFloors = NumberOfFloors;
+
+                        usedNumberOfFloors = Mathf.Clamp(value: usedNumberOfFloors, min: 1, max: LinkedFloor.FloorsAbove + 1);
+
+                        topFloorHeight = LinkedFloor.LinkedBuildingController.Floor(LinkedFloor.FloorNumber + usedNumberOfFloors - 1).BottomFloorHeight;
+
+                        for (int i = LinkedFloor.FloorNumber + 1; i < LinkedFloor.FloorNumber + usedNumberOfFloors; i++)
+                        {
+                            FloorController floor = LinkedFloor.LinkedBuildingController.Floor(i);
+
+                            returnValue += floor.CompleteFloorHeight;
+                        }
+                    }
+                }
+
+                returnValue += topFloorHeight;
+
+                return returnValue;
+            }
+        }
+
+        public override float ModificationNodeHeight
+        {
+            get
+            {
+                return StairHeight;
+            }
+        }
+        
         void initializeBuildParameterLines()
         {
             PositiveCenterPositionParam = new MailboxLineVector2Int(name: "Positive center position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
@@ -147,6 +201,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             RevolutionAngleDegParam = new MailboxLineRanged(name: "Revolution angle [°]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 3600, Min: -3600, DefaultValue: 360);
             StepHeightTargetParam = new MailboxLineRanged(name: "Step height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 2f, Min: 0.1f, DefaultValue: 0.25f);
             BackThicknessParam = new MailboxLineRanged(name: "Back thickness [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 2f, Min: 0.1f, DefaultValue: 0.25f);
+            NumberOfFloorsParam = new MailboxLineDistinctUnnamed(name: "Number of floors", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 100, Min: 1, DefaultValue: 1);
 
             TopSetpTopMaterialParam = new MailboxLineMaterial(name: "Top step top material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodPlanks);
             OtherSetpsTopMaterialParam = new MailboxLineMaterial(name: "Other steps top material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodSolid);
@@ -246,7 +301,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             //transform.localPosition = LinkedFloor.NodePositionFromBlockIndex(PositiveCenterPosition);
 
             //Calculate basic parameters
-            float height = completeFloorHeight;
+            float height = StairHeight;
 
             int numberOfSteps = Mathf.RoundToInt(height / StepHeightTarget);
             float stepHeight = height / numberOfSteps;

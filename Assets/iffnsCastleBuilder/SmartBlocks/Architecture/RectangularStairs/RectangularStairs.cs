@@ -65,7 +65,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-
         void SetupCuttofTypeParam()
         {
             List<string> enumString = new List<string>();
