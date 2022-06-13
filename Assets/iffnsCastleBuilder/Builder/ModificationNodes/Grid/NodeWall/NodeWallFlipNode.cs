@@ -22,7 +22,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             Vector3 thisPosition = linkedFloor.GetLocalNodePositionFromNodeIndex(linkedWall.StartPosition);
             Vector3 otherPosition = linkedFloor.GetLocalNodePositionFromNodeIndex(linkedWall.EndPosition);
 
-            transform.localPosition = (thisPosition + otherPosition) * 0.5f + (linkedFloor.WallHeightWithScaler * 0.6666667f + linkedFloor.BottomFloorHeight) * Vector3.up;
+            transform.localPosition = (thisPosition + otherPosition) * 0.5f + (linkedFloor.WallBetweenHeight * 0.6666667f + linkedFloor.BottomFloorHeight) * Vector3.up;
             transform.localRotation = Quaternion.LookRotation(thisPosition - otherPosition, Vector3.up);
 
             float width = linkedSystem.WallThickness + widthOvershoot * 2;
