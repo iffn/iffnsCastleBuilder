@@ -259,7 +259,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             TriangleMeshInfo BackFaceAngle = new();
             TriangleMeshInfo BackFaceVertical = new();
             TriangleMeshInfo BottomFrontFace = new();
-            TriangleMeshInfo TopCollider = new();
+            TriangleMeshInfo ColliderMesh = new();
 
             void FinishMesh()
             {
@@ -271,11 +271,12 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BackFaceAngle.MaterialReference = BackMaterialParam;
                 BackFaceVertical.MaterialReference = BackMaterialParam;
                 BottomFrontFace.MaterialReference = SetpsFrontMaterialParam;
-                TopCollider.AlternativeMaterial = DefaultCastleMaterials.InvisibleMaterial.LinkedMaterial;
+                ColliderMesh.AlternativeMaterial = DefaultCastleMaterials.InvisibleMaterial.LinkedMaterial;
                 //TopCollider.AlternativeMaterial = DefaultCastleMaterials.InvisibleMaterial.LinkedMaterial;
 
-                StepFront.ActiveCollider = false;
-                StepTop.ActiveCollider = false;
+                StepTop.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
+                StepFront.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
+                ColliderMesh.ActiveCollider = TriangleMeshInfo.ColliderStates.InvisibleCollider;
 
                 StepFront.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
                 TopStepTop.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
@@ -294,7 +295,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 StaticMeshManager.AddTriangleInfoIfValid(BackFaceAngle);
                 StaticMeshManager.AddTriangleInfoIfValid(BackFaceVertical);
                 StaticMeshManager.AddTriangleInfoIfValid(BottomFrontFace);
-                StaticMeshManager.AddTriangleInfoIfValid(TopCollider);
+                StaticMeshManager.AddTriangleInfoIfValid(ColliderMesh);
 
                 BuildAllMeshes();
             }
@@ -386,8 +387,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             RightSide.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundStartPoint(startPoint: TopBackEnd, points: SidePoints));
 
             //Invisible collider
-            TopCollider.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: new Vector3(0, stepHeight * numberOfSteps, length - stepLength), UVOffset: Vector3.zero));
-            TopCollider.Move(Vector3.up * LinkedFloor.BottomFloorHeight);
+            ColliderMesh.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: new Vector3(0, stepHeight * numberOfSteps, length - stepLength), UVOffset: Vector3.zero));
+            ColliderMesh.Move(Vector3.up * LinkedFloor.BottomFloorHeight);
 
             //Add step triangles
             for (int i = 0; i < SidePoints.Count; i++)

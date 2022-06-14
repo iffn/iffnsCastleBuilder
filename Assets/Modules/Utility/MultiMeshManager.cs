@@ -177,7 +177,7 @@ public class MultiMeshManager : MonoBehaviour
         List<UnmanagedMaterialHelper> unmanagedHelpers = new List<UnmanagedMaterialHelper>();
         List<TriangleMeshInfo> otherMeshes = new List<TriangleMeshInfo>();
 
-        foreach (TriangleMeshInfo info in UnusedTriangleInfos)
+        foreach(TriangleMeshInfo info in UnusedTriangleInfos)
         {
             if (!info.IsValid)
             {
@@ -241,9 +241,13 @@ public class MultiMeshManager : MonoBehaviour
             UnityHelper.ResetLocalTransform(newManager.transform);
 
             newManager.SetTriangleInfo(helper.info);
+
+            /*
+            newManager.transform.name = helper.material.Name;
+            */
         }
 
-        foreach (UnmanagedMaterialHelper helper in unmanagedHelpers)
+        foreach(UnmanagedMaterialHelper helper in unmanagedHelpers)
         {
             SmartMeshManager newManager = UnityPrefabLibrary.NewMeshManager;
 
@@ -255,6 +259,10 @@ public class MultiMeshManager : MonoBehaviour
             UnityHelper.ResetLocalTransform(newManager.transform);
 
             newManager.SetTriangleInfo(helper.info);
+
+            /*
+            newManager.transform.name = helper.material.name;
+            */
         }
 
         foreach(TriangleMeshInfo info in otherMeshes)
@@ -269,6 +277,10 @@ public class MultiMeshManager : MonoBehaviour
             UnityHelper.ResetLocalTransform(newManager.transform);
 
             newManager.SetTriangleInfo(info);
+
+            /*
+            newManager.transform.name = info.MaterialReference.Name;
+            */
         }
 
         UnusedTriangleInfos.Clear();

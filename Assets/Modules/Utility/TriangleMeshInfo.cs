@@ -25,7 +25,15 @@ public class TriangleMeshInfo
         }
     }
 
-    public bool ActiveCollider = true;
+    public enum ColliderStates
+    {
+        VisibleCollider,
+        InvisibleCollider,
+        VisbleWithoutCollider
+    }
+
+    public ColliderStates ActiveCollider = ColliderStates.VisibleCollider;
+    //public bool ActiveCollider = true;
 
     public List<Vector3> AllVerticesDirectly
     {

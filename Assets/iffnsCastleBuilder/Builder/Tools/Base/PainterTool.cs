@@ -100,12 +100,12 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             Ray ray = currentRTSController.GetRayFromCameraMouseLocation();
 
-            RaycastHit hit;
-
+            /*
             Vector3 direction = ray.direction;
             Vector3 originAbsolute = ray.origin;
+            */
 
-            Physics.Raycast(ray, out hit, Mathf.Infinity);
+            Physics.Raycast(ray: ray, hitInfo: out RaycastHit hit, maxDistance: Mathf.Infinity, layerMask: WorldController.LayerManager.SelectionLayerMask);
 
             return hit;
         }

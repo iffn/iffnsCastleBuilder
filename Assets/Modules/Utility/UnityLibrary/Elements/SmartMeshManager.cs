@@ -12,7 +12,6 @@ public class SmartMeshManager : MeshManager
     ClickForwarder currentClickForwarder;
     public TriangleMeshInfo LinkedTriangleInfo { get; private set; }
 
-
     public override Material CurrentMaterial
     {
         get
@@ -61,6 +60,38 @@ public class SmartMeshManager : MeshManager
 
         //currentCollider.isTrigger = !newInfo.ActiveCollider;
 
+        switch (newInfo.ActiveCollider)
+        {
+            case TriangleMeshInfo.ColliderStates.VisibleCollider:
+                currentCollider.enabled = true;
+                gameObject.layer = WorldController.LayerManager.GetLayerNumber(WorldController.LayerManager.Layers.Default);
+                break;
+            case TriangleMeshInfo.ColliderStates.InvisibleCollider:
+                currentCollider.enabled = true;
+                gameObject.layer = WorldController.LayerManager.GetLayerNumber(WorldController.LayerManager.Layers.NoSelection);
+                break;
+            case TriangleMeshInfo.ColliderStates.VisbleWithoutCollider:
+                currentCollider.enabled = true;
+                gameObject.layer = WorldController.LayerManager.GetLayerNumber(WorldController.LayerManager.Layers.SelectOnly);
+                /*
+                if (newInfo.Triangles.Count <= 255)
+                {
+                    currentCollider.convex = true;
+                    currentCollider.isTrigger = true;
+                }
+                else
+                {
+                    Debug.LogWarning("Warning: Current trigger collider has more than 255 colliders");
+                    currentCollider.isTrigger = false;
+                    currentCollider.convex = false;
+                }
+                */
+                break;
+            default:
+                break;
+        }
+
+        /*
         if (newInfo.ActiveCollider)
         {
             currentCollider.isTrigger = false;
@@ -80,7 +111,7 @@ public class SmartMeshManager : MeshManager
                 currentCollider.convex = false;
             }
         }
-
+        */
 
         if (CurrentMaterial != null)
         {

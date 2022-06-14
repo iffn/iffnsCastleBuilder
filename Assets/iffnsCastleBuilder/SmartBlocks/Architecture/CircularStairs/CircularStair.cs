@@ -284,8 +284,9 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BackFace.FixUVCount();
                 ColliderMesh.FixUVCount();
 
-                StepTop.ActiveCollider = false;
-                StepFront.ActiveCollider = false;
+                StepTop.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
+                StepFront.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
+                ColliderMesh.ActiveCollider = TriangleMeshInfo.ColliderStates.InvisibleCollider;
 
                 StaticMeshManager.AddTriangleInfoIfValid(TopStepTop);
                 StaticMeshManager.AddTriangleInfoIfValid(StepTop);

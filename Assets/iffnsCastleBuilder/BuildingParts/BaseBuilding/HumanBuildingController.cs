@@ -117,51 +117,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             return x && y;
         }
 
-        private void Update()
-        {
-            /*
-            int offset = 2;
-            if (Input.GetKey(KeyCode.LeftControl))
-            {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    ChangeGridZNeg(-offset);
-                }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    ChangeGridXNeg(-offset);
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    ChangeGridZNeg(offset);
-                }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    ChangeGridXNeg(offset);
-                }
-            }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    ChangeGridZPos(offset);
-                }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    ChangeGridXPos(offset);
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    ChangeGridZPos(-offset);
-                }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    ChangeGridXPos(-offset);
-                }
-            }
-            */
-        }
-
         //Grid size editing
         public void ChangeGridXPos(int offset)
         {

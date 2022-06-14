@@ -172,7 +172,26 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                     //MeshRenderer currentRenderer = currentMesh.transform.GetComponent<MeshRenderer>();
 
-                    bool hasCollider = currentInfo.ActiveCollider;
+                    bool hasCollider;
+
+                    switch (currentInfo.ActiveCollider)
+                    {
+                        case TriangleMeshInfo.ColliderStates.VisibleCollider:
+                            hasCollider = true;
+                            break;
+                        case TriangleMeshInfo.ColliderStates.InvisibleCollider:
+                            hasCollider = true;
+                            break;
+                        case TriangleMeshInfo.ColliderStates.VisbleWithoutCollider:
+                            hasCollider = false;
+                            break;
+                        default:
+                            Debug.LogError("Error: Enum state not defined");
+                            hasCollider = true;
+                            break;
+                    }
+
+                    //bool hasCollider = currentInfo.ActiveCollider;
 
                     Material currentMaterial = currentInfo.MaterialToBeUsed;
 
