@@ -4569,6 +4569,7 @@
 					"Revolution angle [°]": 360,
 					"Step height [m]": 0.25,
 					"Back thickness [m]": 0.25,
+					"Number of floors": 1,
 					"Top step top material": "PolyHaven-wood_planks_dirt",
 					"Other steps top material": "PolyHaven-plywood",
 					"Steps front material": "PolyHaven-beige_wall_001",
@@ -4588,13 +4589,6 @@
 				"Name": "",
 				"Node walls":
 				[
-					{
-						"Type": "NodeWall",
-						"Start position": [23, 5],
-						"End position": [20, 5],
-						"Right material": "PolyHaven-beige_wall_001",
-						"Left material": "PolyHaven-beige_wall_001"
-					}
 				]
 			},
 			"Floor matrix":
@@ -9139,32 +9133,6 @@
 			"On floor objects":
 			[
 				{
-					"Type": "Window",
-					"Name": "",
-					"Bottom Left Position": [20, 5],
-					"Top Right Position": [-3, 0],
-					"Bottom height [m]": 0.75,
-					"Window height [m]": 1.25,
-					"Front wall material": "PolyHaven-beige_wall_001",
-					"Back wall material": "PolyHaven-beige_wall_001",
-					"Frame material": "PolyHaven-plywood",
-					"Glass material": "DummyWindow",
-					"Wall type": "BlockGrid"
-				},
-				{
-					"Type": "Window",
-					"Name": "",
-					"Bottom Left Position": [15, 11],
-					"Top Right Position": [0, 0],
-					"Bottom height [m]": 0.75,
-					"Window height [m]": 1.25,
-					"Front wall material": "PolyHaven-beige_wall_001",
-					"Back wall material": "PolyHaven-beige_wall_001",
-					"Frame material": "PolyHaven-plywood",
-					"Glass material": "DummyWindow",
-					"Wall type": "BlockGrid"
-				},
-				{
 					"Type": "CircularStair",
 					"Name": "",
 					"Positive center position": [13, 30],
@@ -9174,21 +9142,12 @@
 					"Revolution angle [°]": 360,
 					"Step height [m]": 0.25,
 					"Back thickness [m]": 0.25,
+					"Number of floors": 1,
 					"Top step top material": "PolyHaven-wood_planks_dirt",
 					"Other steps top material": "PolyHaven-plywood",
 					"Steps front material": "PolyHaven-beige_wall_001",
 					"Side material": "PolyHaven-beige_wall_001",
 					"Back material": "PolyHaven-beige_wall_001"
-				},
-				{
-					"Type": "Column",
-					"Name": "",
-					"Bottom Left Position": [17, 13],
-					"Top Right Position": [-1, 1],
-					"Angle preference": "360°",
-					"Top ending type": "None",
-					"Bottom ending type": "None",
-					"Column type": "Cylinder"
 				}
 			]
 		}

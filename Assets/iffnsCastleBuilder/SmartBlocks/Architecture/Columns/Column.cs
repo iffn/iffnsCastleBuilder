@@ -381,8 +381,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             float bottomHeight = 0;
             float topHeight = 0;
 
-            if (TopEndingType != EndingTypes.None) bottomHeight = baseHeight;
             if (TopEndingType != EndingTypes.None) topHeight = baseHeight;
+            if (BottomEndingType != EndingTypes.None) bottomHeight = baseHeight;
 
             float middleHeight = completeHeight - bottomHeight - topHeight;
 
@@ -447,7 +447,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 case ColumnTypes.Cylinder:
                     ColumnMesh.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: columnRadiusFactor, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
 
-                    if (TopEndingType != EndingTypes.None || BottomEndingType != EndingTypes.None)
+                    if (TopEndingType == EndingTypes.None || BottomEndingType == EndingTypes.None)
                     {
                         ColumnMesh.Add(MeshGenerator.FilledShapes.CylinderCaps(radius: columnRadiusFactor, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
                     }
