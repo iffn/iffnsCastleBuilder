@@ -6,7 +6,7 @@ using UnityEngine;
 namespace iffnsStuff.iffnsCastleBuilder
 {
     
-    public interface NodeWallReference
+    public interface INodeWallReference
     {
         public Vector2Int StartPosition { get; set; }
         public Vector2Int EndPosition { get; set; }
@@ -14,7 +14,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         public MailboxLineMaterial CornerMaterial { get;}
     }
 
-    public class NodeWall : BaseVirtualObject, NodeWallReference
+    public class NodeWall : BaseVirtualObject, INodeWallReference
     {
         MailboxLineVector2Int startPositionParam;
         MailboxLineVector2Int endPositionParam;
@@ -210,7 +210,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         }
     }
 
-    public class DummyNodeWall : NodeWallReference
+    public class DummyNodeWall : INodeWallReference
     {
         public OnFloorObject LinkedObject { get; set; }
         public Vector2Int StartPosition { get; set; }

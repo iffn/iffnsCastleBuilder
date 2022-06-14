@@ -560,7 +560,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 foreach (NodeWallNode node in nodeLine)
                 {
-                    if (node.EndPoints.Count > 1)
+                    if (node.NonDummyEndPoints.Count > 1)
                     {
                         NodeWallMultiModNode multiNode = ModificationNodeLibrary.NewNodeWallMultiModNode;
                         multiNode.transform.parent = transform;

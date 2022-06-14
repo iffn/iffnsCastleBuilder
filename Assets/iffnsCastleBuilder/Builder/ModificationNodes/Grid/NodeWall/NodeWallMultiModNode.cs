@@ -10,16 +10,20 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         NodeWallNode linkedNode;
 
+        List<NodeWall> walls;
+
         public void Setup(NodeWallNode linkedNode)
         {
             this.linkedNode = linkedNode;
 
             linkedSystem = linkedNode.LinkedSystem;
+
+            walls = linkedNode.NonDummyEndPoints;
         }
 
         public bool WouldBeSameAsOtherCoordinate(Vector2Int newCoordinate)
         {
-            foreach (NodeWall wall in linkedNode.EndPoints)
+            foreach (NodeWall wall in walls)
             {
                 Vector2Int otherCoordinate;
 
@@ -63,7 +67,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             set
             {
-                foreach (NodeWall wall in linkedNode.EndPoints)
+                foreach (NodeWall wall in walls)
                 {
                     if (wall.StartPosition.x == linkedNode.Coordinate.x && wall.StartPosition.y == linkedNode.Coordinate.y)
                     {
