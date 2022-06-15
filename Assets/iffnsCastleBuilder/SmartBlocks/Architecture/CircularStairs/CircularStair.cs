@@ -264,7 +264,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             TriangleMeshInfo OuterRadiiSide = new();
             TriangleMeshInfo InnerRadiiSide = new();
             TriangleMeshInfo BackFace = new();
-            TriangleMeshInfo BackFaceTop = new();
+            TriangleMeshInfo BackFaceTop;
             TriangleMeshInfo ColliderMesh;
 
             void FinishMeshes()
