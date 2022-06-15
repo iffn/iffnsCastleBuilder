@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b940f4dc95a49e468f481b503b42abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LibraryInfoText: The textures from Textures.com cannot be redistributed but can
+    be downloaded from their website.
   Materials:
   - {fileID: 2100000, guid: 6cafc34a846a54543961d9fcf17cc2ae, type: 2}
   - {fileID: 2100000, guid: c130350d4987e494e8f46e1c73ee7b5e, type: 2}

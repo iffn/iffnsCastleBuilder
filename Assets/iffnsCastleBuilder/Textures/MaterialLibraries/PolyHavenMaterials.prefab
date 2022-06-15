@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b940f4dc95a49e468f481b503b42abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LibraryInfoText: The textures can be redistributed and are available in the importer.
   Materials:
   - {fileID: 2100000, guid: 75524f22b6358f549ae4f84a325a8de9, type: 2}
   - {fileID: 2100000, guid: 54266f802fc2e994f8a4d7f1d8060afb, type: 2}

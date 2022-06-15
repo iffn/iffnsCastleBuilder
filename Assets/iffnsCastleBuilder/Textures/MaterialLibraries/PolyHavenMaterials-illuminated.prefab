@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b940f4dc95a49e468f481b503b42abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LibraryInfoText: he textures can be redistributed and are available in the importer.
+    The illuminated textures have an emitter on them which makes them glow in the
+    dark.
   Materials:
   - {fileID: 2100000, guid: 23587ecc5f970834eb65d86e14dae574, type: 2}
   - {fileID: 2100000, guid: e273a7152b5a9284c861bd8bc7ba0c6b, type: 2}
