@@ -25,6 +25,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] RectTransform ExpandArea = null;
         [SerializeField] RectTransform ExpandIcon;
 
+        readonly float saveMarkTimeSeconds = 1.5f;
+
         public enum SaveButtonStates
         {
             New,
@@ -51,7 +53,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         break;
                     case SaveButtonStates.Done:
                         ActiveSaveButton = SaveDoneButton;
-                        StartCoroutine(RestoreSaveButton(3));
+                        StartCoroutine(RestoreSaveButton(saveMarkTimeSeconds));
                         break;
                     case SaveButtonStates.Override:
                         ActiveSaveButton = SaveOverrideButton;
@@ -129,7 +131,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         break;
                     case LoadButtonStates.Done:
                         ActiveLoadButton = LoadDoneButton;
-                        StartCoroutine(RestoreLoadButton(3));
+                        StartCoroutine(RestoreLoadButton(saveMarkTimeSeconds));
                         break;
                     case LoadButtonStates.Override:
                         ActiveLoadButton = LoadOverrideButton;
