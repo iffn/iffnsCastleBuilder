@@ -9,7 +9,7 @@
 			"Type": "FloorController",
 			"Name": "",
 			"Bottom floor height": 0.2,
-			"Wall height": 2.2,
+			"Wall height": 1.5,
 			"Node wall system":
 			{
 				"Type": "NodeWallSystem",
@@ -1390,7 +1390,13 @@
 				},
 				{
 					"Type": "VirtualBlock",
-					"Block type": "Empty"
+					"Block type": "Floor",
+					"Ceiling material": "PolyHaven-old_planks_02",
+					"Top cap material": "PolyHaven-wood_planks_dirt",
+					"Left wall material": "PolyHaven-plywood",
+					"Right wall material": "PolyHaven-plywood",
+					"Front wall material": "PolyHaven-plywood",
+					"Back wall material": "PolyHaven-plywood"
 				},
 				{
 					"Type": "VirtualBlock",
@@ -1850,7 +1856,7 @@
 				{
 					"Type": "RectangularStairs",
 					"Name": "",
-					"Bottom left position": [65, 0],
+					"Bottom left position": [68, 0],
 					"Top right position": [61, 1],
 					"Step height [m]": 0.25,
 					"Back thickness [m]": 0.25,
@@ -1872,6 +1878,7 @@
 					"Revolution angle [°]": 360,
 					"Step height [m]": 0.25,
 					"Back thickness [m]": 0.25,
+					"Number of floors": 1,
 					"Top step top material": "PolyHaven-wood_planks_dirt",
 					"Other steps top material": "PolyHaven-plywood",
 					"Steps front material": "PolyHaven-beige_wall_001",
@@ -4416,6 +4423,7 @@
 					"Revolution angle [°]": 360,
 					"Step height [m]": 0.25,
 					"Back thickness [m]": 0.25,
+					"Number of floors": 1,
 					"Top step top material": "PolyHaven-wood_planks_dirt",
 					"Other steps top material": "PolyHaven-plywood",
 					"Steps front material": "PolyHaven-beige_wall_001",
@@ -4432,6 +4440,7 @@
 					"Revolution angle [°]": 360,
 					"Step height [m]": 0.25,
 					"Back thickness [m]": 0.25,
+					"Number of floors": 1,
 					"Top step top material": "PolyHaven-wood_planks_dirt",
 					"Other steps top material": "PolyHaven-plywood",
 					"Steps front material": "PolyHaven-beige_wall_001",

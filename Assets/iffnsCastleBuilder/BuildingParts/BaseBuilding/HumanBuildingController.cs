@@ -375,19 +375,17 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public FloorController Floor(int floorNumber)
         {
-            if (floorNumber < -NegativeFloors || floorNumber > PositiveFloors)
+            if(floorNumber < -NegativeFloors)
             {
-                Debug.LogWarning("Error when selecting floor " + floorNumber + ", floors only go betwen -" + NegativeFloors + " and +" + PositiveFloors + ". returned null");
-                return null;
+                return Floors[0];
+            }
+
+            if(floorNumber > PositiveFloors)
+            {
+                return Floors[^1];
             }
 
             int floorIndex = NegativeFloors + floorNumber;
-
-            if (floorIndex > Floors.Count - 1)
-            {
-                Debug.LogWarning("Error when selecting floor " + floorNumber + ". Trying to select index " + floorIndex + " but there are only " + Floors.Count + " Floors");
-                return Floors[^1];
-            }
 
             return Floors[floorIndex];
         }

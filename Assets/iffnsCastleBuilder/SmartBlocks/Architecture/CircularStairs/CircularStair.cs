@@ -264,6 +264,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             TriangleMeshInfo OuterRadiiSide = new();
             TriangleMeshInfo InnerRadiiSide = new();
             TriangleMeshInfo BackFace = new();
+            TriangleMeshInfo BackFaceTop = new();
             TriangleMeshInfo ColliderMesh;
 
             void FinishMeshes()
@@ -274,6 +275,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 OuterRadiiSide.MaterialReference = SideMaterialParam;
                 InnerRadiiSide.MaterialReference = SideMaterialParam;
                 BackFace.MaterialReference = BackMaterialParam;
+                BackFaceTop.MaterialReference = BackMaterialParam;
                 ColliderMesh.AlternativeMaterial = DefaultCastleMaterials.InvisibleMaterial.LinkedMaterial;
 
                 TopStepTop.FixUVCount();
@@ -282,6 +284,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 OuterRadiiSide.FixUVCount();
                 InnerRadiiSide.FixUVCount();
                 BackFace.FixUVCount();
+                BackFaceTop.FixUVCount();
                 ColliderMesh.FixUVCount();
 
                 StepTop.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
@@ -294,6 +297,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 StaticMeshManager.AddTriangleInfoIfValid(OuterRadiiSide);
                 StaticMeshManager.AddTriangleInfoIfValid(InnerRadiiSide);
                 StaticMeshManager.AddTriangleInfoIfValid(BackFace);
+                StaticMeshManager.AddTriangleInfoIfValid(BackFaceTop);
                 StaticMeshManager.AddTriangleInfoIfValid(ColliderMesh);
 
                 BuildAllMeshes();
@@ -307,6 +311,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             int numberOfSteps = Mathf.RoundToInt(height / StepHeightTarget);
             float stepHeight = height / numberOfSteps;
             float stepAngleRad = RevolutionAngleDeg / numberOfSteps * Mathf.Deg2Rad;
+
+            FloorController endFloor = LinkedFloor.LinkedBuildingController.Floor(floorNumber: LinkedFloor.FloorNumber + NumberOfFloors);
 
             for (int stepNumber = 0; stepNumber < numberOfSteps; stepNumber++)
             {
@@ -330,18 +336,50 @@ namespace iffnsStuff.iffnsCastleBuilder
                 //Heights
                 float baseHeight = stepHeight * stepNumber;
                 float upperHeight = baseHeight + stepHeight;
-                float backLowerHeight = upperHeight - BackThicknessHeight;
-                float frontLowerHeight = baseHeight - BackThicknessHeight;
+                
+                
+                float backLowerHeight;
+                float frontLowerHeight;
 
-                if (backLowerHeight < 0) backLowerHeight = 0;
-                if (frontLowerHeight < 0) frontLowerHeight = 0;
+                if (stepNumber == 0)
+                {
+                    frontLowerHeight = - LinkedFloor.BottomFloorHeight;
+                }
+                else
+                {
+                    frontLowerHeight = baseHeight - BackThicknessHeight;
+                }
 
-                StepFront.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>(){
-                    new Vector3(firstInnerLocation.x, baseHeight, firstInnerLocation.y),
-                    new Vector3(firstInnerLocation.x, upperHeight, firstInnerLocation.y),
-                    new Vector3(firstOuterLocation.x, upperHeight, firstOuterLocation.y),
-                    new Vector3(firstOuterLocation.x, baseHeight, firstOuterLocation.y)
+                if (stepNumber == numberOfSteps - 1)
+                {
+                    backLowerHeight = upperHeight - endFloor.BottomFloorHeight;
+                }
+                else
+                {
+                    backLowerHeight = upperHeight - BackThicknessHeight;
+                }
+
+                //if (backLowerHeight < 0) backLowerHeight = 0;
+                //if (frontLowerHeight < 0) frontLowerHeight = 0;
+
+                if (stepNumber == 0)
+                {
+                    StepFront.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>(){
+                        new Vector3(firstInnerLocation.x, -LinkedFloor.BottomFloorHeight, firstInnerLocation.y),
+                        new Vector3(firstInnerLocation.x, upperHeight, firstInnerLocation.y),
+                        new Vector3(firstOuterLocation.x, upperHeight, firstOuterLocation.y),
+                        new Vector3(firstOuterLocation.x, -LinkedFloor.BottomFloorHeight, firstOuterLocation.y)
                     }));
+                }
+                else
+                {
+                    StepFront.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>(){
+                        new Vector3(firstInnerLocation.x, baseHeight, firstInnerLocation.y),
+                        new Vector3(firstInnerLocation.x, upperHeight, firstInnerLocation.y),
+                        new Vector3(firstOuterLocation.x, upperHeight, firstOuterLocation.y),
+                        new Vector3(firstOuterLocation.x, baseHeight, firstOuterLocation.y)
+                    }));
+                }
 
                 if (stepNumber == numberOfSteps - 1)
                 {
@@ -362,61 +400,27 @@ namespace iffnsStuff.iffnsCastleBuilder
                         }));
                 }
 
+                OuterRadiiSide.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>(){
+                        new Vector3(firstOuterLocation.x, upperHeight, firstOuterLocation.y),
+                        new Vector3(secondOuterLocation.x, upperHeight, secondOuterLocation.y),
+                        new Vector3(secondOuterLocation.x, backLowerHeight, secondOuterLocation.y),
+                        new Vector3(firstOuterLocation.x, frontLowerHeight, firstOuterLocation.y),
+                        }));
+
+                InnerRadiiSide.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>(){
+                        new Vector3(secondInnerLocation.x, backLowerHeight, secondInnerLocation.y),
+                        new Vector3(secondInnerLocation.x, upperHeight, secondInnerLocation.y),
+                        new Vector3(firstInnerLocation.x, upperHeight, firstInnerLocation.y),
+                        new Vector3(firstInnerLocation.x, frontLowerHeight, firstInnerLocation.y),
+                        }));
+
                 if (stepNumber == 0)
                 {
-
-                    OuterRadiiSide.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>(){
-                        new Vector3(firstOuterLocation.x, upperHeight, firstOuterLocation.y),
-                        new Vector3(secondOuterLocation.x, upperHeight, secondOuterLocation.y),
-                        new Vector3(secondOuterLocation.x, baseHeight, secondOuterLocation.y),
-                        new Vector3(firstOuterLocation.x, baseHeight, firstOuterLocation.y),
-                        }));
-
-                    InnerRadiiSide.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>(){
-                        new Vector3(secondInnerLocation.x, baseHeight, secondInnerLocation.y),
-                        new Vector3(secondInnerLocation.x, upperHeight, secondInnerLocation.y),
-                        new Vector3(firstInnerLocation.x, upperHeight, firstInnerLocation.y),
-                        new Vector3(firstInnerLocation.x, baseHeight, firstInnerLocation.y),
-                        }));
-
-                    BackFace.VerticesHolder.Add(new Vector3(firstInnerLocation.x, 0, firstInnerLocation.y));
-                    BackFace.VerticesHolder.Add(new Vector3(firstOuterLocation.x, 0, firstOuterLocation.y));
-
-                    /*
-                    BackFace.AddPointsClockwiseAroundFirstPoint(new List<Vector3>(){
-                        new Vector3(secondOuterLocation.x, baseHeight, secondOuterLocation.y),
-                        new Vector3(secondInnerLocation.x, baseHeight, secondInnerLocation.y),
-                        new Vector3(firstInnerLocation.x, baseHeight, firstInnerLocation.y),
-                        new Vector3(firstOuterLocation.x, baseHeight, firstOuterLocation.y),
-                    });
-                    */
-                }
-                else
-                {
-                    OuterRadiiSide.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>(){
-                        new Vector3(firstOuterLocation.x, upperHeight, firstOuterLocation.y),
-                        new Vector3(secondOuterLocation.x, upperHeight, secondOuterLocation.y),
-                        new Vector3(secondOuterLocation.x, backLowerHeight, secondOuterLocation.y),
-                        new Vector3(firstOuterLocation.x, frontLowerHeight, firstOuterLocation.y),
-                        }));
-
-                    InnerRadiiSide.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>(){
-                        new Vector3(secondInnerLocation.x, backLowerHeight, secondInnerLocation.y),
-                        new Vector3(secondInnerLocation.x, upperHeight, secondInnerLocation.y),
-                        new Vector3(firstInnerLocation.x, upperHeight, firstInnerLocation.y),
-                        new Vector3(firstInnerLocation.x, frontLowerHeight, firstInnerLocation.y),
-                        }));
-
-                    /*
-                    BackFace.AddPointsClockwiseAroundFirstPoint(new List<Vector3>(){
-                        new Vector3(secondOuterLocation.x, backLowerHeight, secondOuterLocation.y),
-                        new Vector3(secondInnerLocation.x, backLowerHeight, secondInnerLocation.y),
-                        new Vector3(firstInnerLocation.x, frontLowerHeight, firstInnerLocation.y),
-                        new Vector3(firstOuterLocation.x, frontLowerHeight, firstOuterLocation.y),
-                    });
-                    */
+                    BackFace.VerticesHolder.Add(new Vector3(firstInnerLocation.x, frontLowerHeight, firstInnerLocation.y));
+                    BackFace.VerticesHolder.Add(new Vector3(firstOuterLocation.x, frontLowerHeight, firstOuterLocation.y));
                 }
 
+                
                 BackFace.Triangles.Add(new TriangleHolder(baseOffset: stepNumber * 2, t1: 0, t2: 1, t3: 3));
                 BackFace.Triangles.Add(new TriangleHolder(baseOffset: stepNumber * 2, t1: 0, t2: 3, t3: 2));
 
@@ -446,26 +450,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             //Debug.Log(BackFace.vertices.Count);
 
-            Vector3 vertex;
+            BackFaceTop = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: (OuterRadius - InnerRadius) * Vector3.right, secondLine: endFloor.BottomFloorHeight * Vector3.down, UVOffset: Vector2.zero);
 
-            BackFace.VerticesHolder.Add(BackFace.AllVerticesDirectly[^2]);
-            vertex = BackFace.AllVerticesDirectly[^1];
-            BackFace.UVs.Add(new Vector2(new Vector2(vertex.x, vertex.z).magnitude, vertex.y));
+            BackFaceTop.Move(new Vector3(InnerRadius, height, 0));
 
-            BackFace.VerticesHolder.Add(BackFace.AllVerticesDirectly[^2]);
-            vertex = BackFace.AllVerticesDirectly[^1];
-            BackFace.UVs.Add(new Vector2(new Vector2(vertex.x, vertex.z).magnitude, vertex.y));
+            BackFaceTop.Rotate(Quaternion.Euler((StartingAngleDeg + RevolutionAngleDeg) * Vector3.down));
 
-            BackFace.VerticesHolder.Add(TopStepTop.AllVerticesDirectly[^2]);
-            vertex = BackFace.AllVerticesDirectly[^1];
-            BackFace.UVs.Add(new Vector2(new Vector2(vertex.x, vertex.z).magnitude, vertex.y));
-
-            BackFace.VerticesHolder.Add(TopStepTop.AllVerticesDirectly[^3]);
-            vertex = BackFace.AllVerticesDirectly[^1];
-            BackFace.UVs.Add(new Vector2(new Vector2(vertex.x, vertex.z).magnitude, vertex.y));
-
-            BackFace.Triangles.Add(new TriangleHolder(baseOffset: BackFace.VerticesHolder.Count, t1: -2, t2: -1, t3: -4));
-            BackFace.Triangles.Add(new TriangleHolder(baseOffset: BackFace.VerticesHolder.Count, t1: -3, t2: -2, t3: -4));
 
             TopStepTop.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
 
