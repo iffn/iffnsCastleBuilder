@@ -9,7 +9,7 @@ namespace iffnsStuff.iffnsCastleBuilder
     public class MaterialLibraryUI : MonoBehaviour
     {
         [SerializeField] Text Title = null;
-        [SerializeField] GameObject ContentHolder = null;
+        [SerializeField] RectTransform ContentHolder = null;
         [SerializeField] GameObject ExpandIcon = null;
         [SerializeField] MaterialButton MaterialButtonTemplate = null;
         [SerializeField] Shader UIShader = null;
@@ -28,7 +28,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             set
             {
-                ContentHolder.SetActive(value);
+                ContentHolder.gameObject.SetActive(value);
 
                 if (value)
                 {
@@ -41,7 +41,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
             get
             {
-                return ContentHolder.activeSelf;
+                return ContentHolder.gameObject.activeSelf;
             }
         }
 
@@ -91,8 +91,10 @@ namespace iffnsStuff.iffnsCastleBuilder
             LinkedTexturingUI = linkedTexturingUI;
 
             Title.text = MaterialLibrary.name;
-            
-            foreach (MaterialManager manager in MaterialLibrary.AllMaterialManagers)
+
+            List<MaterialManager> managers = MaterialLibrary.AllMaterialManagers;
+
+            foreach (MaterialManager manager in managers)
             {
                 MaterialButton newButton = Instantiate(original: MaterialButtonTemplate.gameObject, parent: ContentHolder.transform).GetComponent<MaterialButton>();
 
@@ -105,6 +107,13 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 newButton.AddButtonFunction(delegate { SetMaterial(newButton); });
             }
+
+            float GridSize = 100;
+
+            int rowNumber = managers.Count / 3;
+            if (managers.Count % 3 > 0) rowNumber++;
+
+            ContentHolder.sizeDelta = new Vector2(3 * GridSize, rowNumber * GridSize);
 
             Expand = false;
         }
