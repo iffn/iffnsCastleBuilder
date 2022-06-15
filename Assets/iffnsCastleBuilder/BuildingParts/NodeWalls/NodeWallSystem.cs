@@ -479,7 +479,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                 TriangleMeshInfo cornerInfo = new TriangleMeshInfo();
                 cornerInfo.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: halfWallthickness, length: wallHeight, direction: Vector3.up, numberOfEdges: 24));
 
-                TriangleMeshInfo capInfo = MeshGenerator.FilledShapes.CylinderCaps(radius: halfWallthickness, length: wallHeight, direction: Vector3.up, numberOfEdges: 24);
+                TriangleMeshInfo capInfo = MeshGenerator.FilledShapes.CylinderCaps(radius: halfWallthickness, length: wallHeight - 2 * MathHelper.SmallFloat, direction: Vector3.up, numberOfEdges: 24);
+                capInfo.Move(MathHelper.SmallFloat * Vector3.up);
 
                 capInfo.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: linkedFloor.LinkedBuildingController.transform);
 
