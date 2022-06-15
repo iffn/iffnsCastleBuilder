@@ -46,7 +46,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             AroundFocus
         }
 
-        HumanBuildingController CurrentBuilding
+        public HumanBuildingController CurrentBuilding
         {
             get
             {
@@ -143,6 +143,20 @@ namespace iffnsStuff.iffnsCastleBuilder
             //CurrentBuilderController.CurrentBuilding.CurrentFloorObject.UpdateFloorDisplayComplete();
         }
 
+        public HumanBuildingController.FloorViewDirectionType ViewDirection
+        {
+            get
+            {
+                return CurrentBuilding.FloorViewDirection;
+            }
+            set
+            {
+                CurrentBuilding.FloorViewDirection = value;
+
+                SetBaseBlockLinePosition(viewDirection: value);
+            }
+        }
+
         void UpdateFloorNumbers()
         {
 
@@ -209,7 +223,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 case BlockLineType.Complete:
                     SetBaseBlockLines();
-                    SetBaseBlockLinePosition();
+                    SetBaseBlockLinePosition(viewDirection: ViewDirection);
                     break;
                 case BlockLineType.AroundFocus:
                     VirtualBlock newFocusBlock = getNewFocusBlock();
@@ -254,12 +268,32 @@ namespace iffnsStuff.iffnsCastleBuilder
             return newFocusBlock;
         }
 
-        void SetBaseBlockLinePosition()
+        void SetBaseBlockLinePosition(HumanBuildingController.FloorViewDirectionType viewDirection)
         {
             BlockLineHolder.transform.position = CurrentBuilding.CurrentFloorObject.transform.position;
             BlockLineHolder.transform.rotation = CurrentBuilding.CurrentFloorObject.transform.rotation;
-            BlockLineHolder.transform.position += Vector3.up * (CurrentBuilding.CurrentFloorObject.BottomFloorHeight + 0.01f);
-            DimensionInfo.transform.position = BlockLineHolder.transform.position;
+
+            DimensionInfo.transform.position = CurrentBuilding.CurrentFloorObject.transform.position;
+
+            switch (viewDirection)
+            {
+                case HumanBuildingController.FloorViewDirectionType.topDown:
+                    BlockLineHolder.transform.position += Vector3.up * (CurrentBuilding.CurrentFloorObject.BottomFloorHeight + MathHelper.SmallFloat);
+                    BlockLineHolder.transform.localScale = Vector3.one;
+                    DimensionInfo.transform.rotation = Quaternion.Euler(Vector3.right * 90);
+                    DimensionInfo.transform.position += Vector3.up * CurrentBuilding.CurrentFloorObject.BottomFloorHeight;
+                    break;
+                case HumanBuildingController.FloorViewDirectionType.bottomUp:
+                    BlockLineHolder.transform.position += new Vector3(CurrentBuilding.BlockGridSize.x * CurrentBuilding.BlockSize, -MathHelper.SmallFloat, 0);
+                    BlockLineHolder.transform.localScale = new Vector3(1, -1, 1);
+                    BlockLineHolder.transform.Rotate(Vector3.forward * 180);
+                    DimensionInfo.transform.rotation = Quaternion.Euler(new Vector3(-90, -90, 0));
+                    break;
+                default:
+                    break;
+            }
+
+            
         }
 
         void ShowBlockLinesAroundFocus(VirtualBlock focusBlock)

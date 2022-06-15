@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace iffnsStuff.iffnsUnityResources
+namespace iffnsStuff.iffnsCastleBuilder
 {
     public class RTSController : MonoBehaviour
     {
@@ -10,6 +10,7 @@ namespace iffnsStuff.iffnsUnityResources
         [SerializeField] Camera mainCamera;
         [SerializeField] GameObject CameraTilt;
         [SerializeField] GameObject CameraMover;
+        [SerializeField] NavigationTools LinkedNavigationTools;
         //[SerializeField] GameObject clippingPlane;
 
         //Public settings
@@ -228,6 +229,15 @@ namespace iffnsStuff.iffnsUnityResources
                 {
                     if (CameraTilt.transform.localRotation.eulerAngles.x < 90) CameraTilt.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
                     else CameraTilt.transform.localRotation = Quaternion.Euler(new Vector3(270, 0, 0));
+                }
+
+                if (CameraTilt.transform.eulerAngles.x < 90)
+                {
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.topDown;
+                }
+                else if (CameraTilt.transform.eulerAngles.x > 270)
+                {
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.bottomUp;
                 }
             }
 

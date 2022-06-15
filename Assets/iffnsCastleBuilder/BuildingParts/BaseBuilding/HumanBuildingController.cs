@@ -516,9 +516,22 @@ namespace iffnsStuff.iffnsCastleBuilder
         //Update floor visibility
         void UpdateFloorVisibility()
         {
-            switch (floorVisibilityType)
+            switch (floorViewDirection)
             {
                 case FloorViewDirectionType.topDown:
+                    foreach(FloorController floor in Floors)
+                    {
+                        if (floor.FloorNumber <= CurrentFloorNumber)
+                        {
+                            floor.gameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            floor.gameObject.SetActive(false);
+                        }
+                    }
+                    
+                    /*
                     for (int floor = -NegativeFloors; floor <= PositiveFloors; floor++)
                     {
                         if (floor <= CurrentFloorNumber)
@@ -530,9 +543,22 @@ namespace iffnsStuff.iffnsCastleBuilder
                             Floor(floor).gameObject.SetActive(false);
                         }
                     }
+                    */
 
                     break;
                 case FloorViewDirectionType.bottomUp:
+                    foreach (FloorController floor in Floors)
+                    {
+                        if (floor.FloorNumber >= CurrentFloorNumber)
+                        {
+                            floor.gameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            floor.gameObject.SetActive(false);
+                        }
+                    }
+                    /*
                     for (int floor = -NegativeFloors; floor <= PositiveFloors; floor++)
                     {
                         if (floor > CurrentFloorNumber)
@@ -544,6 +570,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                             Floor(floor).gameObject.SetActive(true);
                         }
                     }
+                    */
                     break;
                 default:
                     break;
@@ -554,7 +581,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             UpdateFloorVisibility();
 
-            switch (floorVisibilityType)
+            switch (floorViewDirection)
             {
                 case FloorViewDirectionType.topDown:
                     for (int floor = -NegativeFloors; floor <= PositiveFloors; floor++)
@@ -610,21 +637,21 @@ namespace iffnsStuff.iffnsCastleBuilder
             bottomUp
         }
 
-        FloorViewDirectionType floorVisibilityType = FloorViewDirectionType.topDown;
-        public FloorViewDirectionType FloorVisibilityType
+        FloorViewDirectionType floorViewDirection = FloorViewDirectionType.topDown;
+        public FloorViewDirectionType FloorViewDirection
         {
             set
             {
-                if (FloorVisibilityType != value)
+                if (FloorViewDirection != value)
                 {
-                    floorVisibilityType = value;
+                    floorViewDirection = value;
                     UpdateFloorDisplay();
                 }
 
             }
             get
             {
-                return floorVisibilityType;
+                return floorViewDirection;
             }
         }
 

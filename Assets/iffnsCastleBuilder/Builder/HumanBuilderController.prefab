@@ -15270,6 +15270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RTS Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 7330258177620315483, guid: 83c07b3ea07036245a6a24a69346bd6b, type: 3}
+      propertyPath: LinkedNavigationTools
+      value: 
+      objectReference: {fileID: 9043763560344494090}
     - target: {fileID: 7330258177620315484, guid: 83c07b3ea07036245a6a24a69346bd6b, type: 3}
       propertyPath: m_RootOrder
       value: 0
