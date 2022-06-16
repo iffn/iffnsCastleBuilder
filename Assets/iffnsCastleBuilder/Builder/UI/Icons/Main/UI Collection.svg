@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    sodipodi:docname="UI Collection.svg"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    id="svg8"
    version="1.1"
    viewBox="0 0 2000 3000"
@@ -1236,6 +1236,26 @@
        y2="311.90723"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(2.6118264,0,0,2.5465026,-1400.0607,-496.18534)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3996"
+       id="linearGradient2802"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.4920855,0,0,3.8674935,527.26249,977.84995)"
+       x1="26.497766"
+       y1="63.358257"
+       x2="63.838531"
+       y2="63.358257" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3996"
+       id="linearGradient7538"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.75208899,0,0,0.74985096,-197.7487,746.42459)"
+       x1="1072.7987"
+       y1="637.04169"
+       x2="1161.9563"
+       y2="637.04169" />
   </defs>
   <sodipodi:namedview
      inkscape:window-maximized="1"
@@ -1247,11 +1267,11 @@
      inkscape:snap-bbox="false"
      showgrid="false"
      inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g14342-5"
      inkscape:document-units="mm"
-     inkscape:cy="1540.167"
-     inkscape:cx="2680.3766"
-     inkscape:zoom="0.22627417"
+     inkscape:cy="3475"
+     inkscape:cx="2465.625"
+     inkscape:zoom="0.64"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -1265,7 +1285,9 @@
      inkscape:snap-text-baseline="false"
      inkscape:snap-global="true"
      inkscape:pagecheckerboard="0"
-     width="842mm" />
+     width="842mm"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -8768,6 +8790,36 @@
          y="764.54327"
          transform="rotate(-45)" />
     </g>
+    <ellipse
+       style="fill:#ffbf00;stroke:#000500;stroke-width:0.3;paint-order:fill markers stroke"
+       id="path2059"
+       cx="644.74219"
+       cy="1131.4141"
+       rx="28.646397"
+       ry="28.641104" />
+    <ellipse
+       style="display:inline;fill:#ffbf00;stroke:#000500;stroke-width:0.3;paint-order:fill markers stroke"
+       id="path2059-8"
+       cx="644.74219"
+       cy="1131.4141"
+       rx="13.238107"
+       ry="13.235661" />
+    <path
+       id="rect2002"
+       style="fill:#ffbf00;stroke:#000500;stroke-width:0.3;paint-order:fill markers stroke"
+       d="m 608.82662,1131.4106 15.6567,22.3566 15.6567,-22.3565 z" />
+    <rect
+       y="1176.292"
+       x="595.78912"
+       height="93.600304"
+       width="93.486885"
+       id="rect27-2-2-6-7"
+       style="display:inline;mix-blend-mode:normal;fill:url(#linearGradient2802);fill-opacity:1;fill-rule:nonzero;stroke:#000500;stroke-width:6.20815;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+    <path
+       id="rect2002-2-4"
+       style="display:inline;fill:url(#linearGradient7538);fill-opacity:1;stroke:#dddddd;stroke-width:1.42499;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       d="m 647.01206,1200.393 c -14.4102,0 -26.6351,10.549 -28.7109,24.7664 h -8.99314 l 15.86134,22.5857 18.3417,-22.5857 h -9.2297 c 1.8054,-5.4866 6.9395,-9.1979 12.7311,-9.203 7.4067,2e-4 13.4108,5.9867 13.4108,13.3713 -0.01,0.1451 -0.014,0.29 -0.025,0.4348 h 15.6181 c 0.01,-0.1449 0.012,-0.2898 0.017,-0.4348 10e-5,-15.98 -12.9927,-28.9344 -29.0204,-28.9347 z"
+       sodipodi:nodetypes="sccccccccccss" />
   </g>
   <script
      type="text/javascript"

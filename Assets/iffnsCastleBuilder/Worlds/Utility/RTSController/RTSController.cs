@@ -31,16 +31,113 @@ namespace iffnsStuff.iffnsCastleBuilder
         //Runtime variables
         float currentCameraOffset;
         Vector3 cameraHomePosition;
-        Quaternion cameraHomeDirectionOrientation;
-        Quaternion cameraHomeTiltAngle;
+        float cameraHomeHeading;
+        float cameraHomeTiltAngle;
         float cameraHomeZoomPosition;
         float isoCameraSize;
+
+        float CameraTiltAngleDeg
+        {
+            get
+            {
+                return CameraTilt.transform.localEulerAngles.x;
+            }
+            set
+            {
+                CameraTilt.transform.localEulerAngles = value * Vector3.right;
+            }
+        }
+
+        float CameraHeadingAngleDeg
+        {
+            get
+            {
+                return transform.eulerAngles.y;
+            }
+            set
+            {
+                transform.eulerAngles = value * Vector3.up;
+            }
+        }
+
+        public enum StandardViews
+        {
+            XPos,
+            ZPos,
+            XNeg,
+            ZNeg,
+            TopXPos,
+            TopZPos,
+            TopXNeg,
+            TopZNeg,
+            BottomXPos,
+            BottomZPos,
+            BottomXNeg,
+            BottomZNeg
+        }
+
+        public void SetStandardView(StandardViews direction)
+        {
+            switch (direction)
+            {
+                case StandardViews.XPos:
+                    CameraTiltAngleDeg = 0;
+                    CameraHeadingAngleDeg = 270;
+                    break;
+                case StandardViews.ZPos:
+                    CameraTiltAngleDeg = 0;
+                    CameraHeadingAngleDeg = 0;
+                    break;
+                case StandardViews.XNeg:
+                    CameraTiltAngleDeg = 0;
+                    CameraHeadingAngleDeg = 90;
+                    break;
+                case StandardViews.ZNeg:
+                    CameraTiltAngleDeg = 0;
+                    CameraHeadingAngleDeg = 180;
+                    break;
+                case StandardViews.TopXPos:
+                    CameraTiltAngleDeg = 90;
+                    CameraHeadingAngleDeg = 270;
+                    break;
+                case StandardViews.TopZPos:
+                    CameraTiltAngleDeg = 90;
+                    CameraHeadingAngleDeg = 0;
+                    break;
+                case StandardViews.TopXNeg:
+                    CameraTiltAngleDeg = 90;
+                    CameraHeadingAngleDeg = 90;
+                    break;
+                case StandardViews.TopZNeg:
+                    CameraTiltAngleDeg = 90;
+                    CameraHeadingAngleDeg = 180;
+                    break;
+                case StandardViews.BottomXPos:
+                    CameraTiltAngleDeg = -90;
+                    CameraHeadingAngleDeg = 270;
+                    break;
+                case StandardViews.BottomZPos:
+                    CameraTiltAngleDeg = -90;
+                    CameraHeadingAngleDeg = 0;
+                    break;
+                case StandardViews.BottomXNeg:
+                    CameraTiltAngleDeg = -90;
+                    CameraHeadingAngleDeg = 90;
+                    break;
+                case StandardViews.BottomZNeg:
+                    CameraTiltAngleDeg = -90;
+                    CameraHeadingAngleDeg = 180;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         void SetHomePosition()
         {
             cameraHomePosition = transform.position;
-            cameraHomeDirectionOrientation = transform.rotation;
-            cameraHomeTiltAngle = CameraTilt.transform.localRotation;
+            cameraHomeHeading = CameraHeadingAngleDeg;
+            cameraHomeTiltAngle = CameraTiltAngleDeg;
             cameraHomeZoomPosition = CameraMover.transform.localPosition.z;
             isoCameraSize = mainCamera.orthographicSize;
         }
@@ -49,8 +146,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         public void RestoreHomePosition()
         {
             transform.position = cameraHomePosition;
-            transform.rotation = cameraHomeDirectionOrientation;
-            CameraTilt.transform.localRotation = cameraHomeTiltAngle;
+            CameraHeadingAngleDeg = cameraHomeHeading;
+            CameraTiltAngleDeg = cameraHomeTiltAngle;
 
             CameraMover.transform.localPosition = Vector3.forward * cameraHomeZoomPosition;
             currentCameraOffset = cameraHomeZoomPosition;
@@ -74,13 +171,6 @@ namespace iffnsStuff.iffnsCastleBuilder
         }
         */
 
-        public float CameraTiltAngle
-        {
-            get
-            {
-                return CameraTilt.transform.localRotation.eulerAngles.x;
-            }
-        }
 
         //Camera perspective
         public enum CameraPerspectiveType
@@ -203,12 +293,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (Input.GetKey(KeyCode.Q))
             {
-                gameObject.transform.Rotate(deltaTime * rotationSpeedQE * Vector3.up);
+                CameraHeadingAngleDeg += deltaTime * rotationSpeedQE;
             }
 
             if (Input.GetKey(KeyCode.E))
             {
-                gameObject.transform.Rotate(deltaTime * rotationSpeedQE * Vector3.down);
+                CameraHeadingAngleDeg -= deltaTime * rotationSpeedQE;
             }
 
             if (Input.GetMouseButton(2)) //Middle Mouse Button
@@ -218,24 +308,20 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (Input.GetMouseButton(1)) //Right Mouse Button
             {
-                gameObject.transform.Rotate(Input.GetAxis("Mouse X") * rotationSpeedMouse * deltaTime * Vector3.up); // left / right rotation
+                //gameObject.transform.Rotate(Input.GetAxis("Mouse X") * rotationSpeedMouse * deltaTime * Vector3.up); // left / right rotation
+                CameraHeadingAngleDeg += Input.GetAxis("Mouse X") * rotationSpeedMouse * deltaTime;
             }
 
             if (Input.GetMouseButton(1)) //Right Mouse Button
             {
-                CameraTilt.transform.Rotate(Input.GetAxis("Mouse Y") * rotationSpeedMouse * deltaTime * Vector3.right); //up / down rotation
+                //CameraTilt.transform.Rotate(Input.GetAxis("Mouse Y") * rotationSpeedMouse * deltaTime * Vector3.right); //up / down rotation
+                CameraTiltAngleDeg += Input.GetAxis("Mouse Y") * rotationSpeedMouse * deltaTime;
 
-                if (CameraTilt.transform.localRotation.eulerAngles.y > 90)
-                {
-                    if (CameraTilt.transform.localRotation.eulerAngles.x < 90) CameraTilt.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
-                    else CameraTilt.transform.localRotation = Quaternion.Euler(new Vector3(270, 0, 0));
-                }
-
-                if (CameraTilt.transform.eulerAngles.x < 90)
+                if (CameraTiltAngleDeg > 0)
                 {
                     LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.topDown;
                 }
-                else if (CameraTilt.transform.eulerAngles.x > 270)
+                else if (CameraTiltAngleDeg < 0)
                 {
                     LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.bottomUp;
                 }

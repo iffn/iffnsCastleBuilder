@@ -2,14 +2,14 @@
 <svg
    inkscape:export-ydpi="96"
    inkscape:export-xdpi="96"
-   inkscape:export-filename="C:\Users\iffn1\Documents\UnityProjects\CastleBuilder2\Assets\iffns RPG\Elements\Buildings\HumanBuildings\UI\Buttons\Background-Dark.png"
+   inkscape:export-filename="Triangle-Dark.png"
    width="100mm"
    height="100mm"
    viewBox="0 0 100 100"
    version="1.1"
    id="svg1397"
    inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
-   sodipodi:docname="Background-Dark.svg"
+   sodipodi:docname="TriangleHightlight-Dark.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -36,22 +36,34 @@
          transform="scale(0.8) translate(12.5,0)" />
     </marker>
     <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3996"
-       id="linearGradient3998-7"
-       x1="26.497766"
-       y1="63.358257"
-       x2="63.838531"
-       y2="63.358257"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(2.5324206,0,0,3.9253279,-67.103426,-198.87722)" />
-    <linearGradient
        id="linearGradient3996"
        osb:paint="solid">
       <stop
          id="stop3994"
          offset="0"
          style="stop-color:#333333;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3055"
+       id="linearGradient3057"
+       x1="-95"
+       y1="50"
+       x2="-5"
+       y2="50"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,-0.4511584,0.91888008,0,3.9685796,50.540293)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3055">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3051" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop3053" />
     </linearGradient>
   </defs>
   <sodipodi:namedview
@@ -61,9 +73,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="203.04066"
-     inkscape:cy="240.41631"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="226.98128"
+     inkscape:cy="315.01607"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -84,7 +96,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -92,12 +103,10 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <rect
-       style="mix-blend-mode:normal;fill:url(#linearGradient3998-7);fill-opacity:1;fill-rule:nonzero;stroke:#000500;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-       id="rect27-7"
-       width="95"
-       height="95"
-       x="2.5325139"
-       y="2.5325139" />
+    <path
+       id="path859"
+       style="fill:url(#linearGradient3057);stroke-width:5.21557;stroke-linejoin:round;paint-order:fill markers stroke"
+       d="M 8.5812211,93.071752 50.000204,51.73084 91.363941,93.088456 Z"
+       sodipodi:nodetypes="cccc" />
   </g>
 </svg>

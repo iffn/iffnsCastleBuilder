@@ -52,8 +52,8 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="g1255"
      inkscape:document-units="mm"
-     inkscape:cy="125"
-     inkscape:cx="143.57143"
+     inkscape:cy="245"
+     inkscape:cx="15.714286"
      inkscape:zoom="1.4"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -106,19 +106,52 @@
       <path
          id="rect229-0"
          style="fill:#ffbf00;fill-opacity:1;stroke:#000500;stroke-width:0.106186;stroke-dasharray:none;paint-order:fill markers stroke"
-         d="m 0.50174803,6.492733 a 3.6340294,3.6515708 0 0 0 -3.63418393,3.651725 3.6340294,3.6515708 0 0 0 3.63418393,3.650971 H 22.306099 a 3.6340294,3.6515708 0 0 0 3.634185,-3.650971 3.6340294,3.6515708 0 0 0 -3.634185,-3.651725 z" />
+         d="m -54.785538,14.012433 c -2.007139,-8.5e-5 -3.634269,1.634898 -3.634184,3.651725 3.3e-4,2.016533 1.627338,3.651057 3.634184,3.650971 h 14.817124 c 2.006847,8.6e-5 3.633855,-1.634437 3.634185,-3.650971 8.5e-5,-2.016828 -1.627045,-3.651811 -3.634185,-3.651725 z"
+         sodipodi:nodetypes="ccccccc" />
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:3.87403px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.0936499"
-         x="-0.46037719"
-         y="11.466728"
+         x="-54.18092"
+         y="18.968346"
          id="text1200"
          transform="scale(0.9975952,1.0024106)"><tspan
            sodipodi:role="line"
            id="tspan1198"
            style="stroke-width:0.0936499"
-           x="-0.46037719"
-           y="11.466728">Out of order</tspan></text>
+           x="-54.18092"
+           y="18.968346">T. B. A</tspan></text>
+      <path
+         id="rect229-0-6"
+         style="fill:#ffbf00;fill-opacity:1;stroke:#000500;stroke-width:0.106186;stroke-dasharray:none;paint-order:fill markers stroke"
+         d="m -47.483754,-3.9452069 a 3.6340294,3.6515708 0 0 0 -3.634184,3.65172502 3.6340294,3.6515708 0 0 0 3.634184,3.65097148 h 21.804351 a 3.6340294,3.6515708 0 0 0 3.634185,-3.65097148 3.6340294,3.6515708 0 0 0 -3.634185,-3.65172502 z" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:3.87403px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.0936499"
+         x="-48.561554"
+         y="1.0538893"
+         id="text1200-8"
+         transform="scale(0.9975952,1.0024106)"><tspan
+           sodipodi:role="line"
+           id="tspan1198-6"
+           style="stroke-width:0.0936499"
+           x="-48.561554"
+           y="1.0538893">Out of order</tspan></text>
+      <path
+         id="rect229-0-6-0"
+         style="fill:#ffbf00;fill-opacity:1;stroke:#000500;stroke-width:0.106186;stroke-dasharray:none;paint-order:fill markers stroke"
+         d="m 0.61279302,7.202419 a 3.6340294,3.6515708 0 0 0 -3.63418392,3.651725 3.6340294,3.6515708 0 0 0 3.63418392,3.650972 H 22.417144 a 3.6340294,3.6515708 0 0 0 3.634185,-3.650972 3.6340294,3.6515708 0 0 0 -3.634185,-3.651725 z" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:3.87403px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.0936499"
+         x="-0.21306382"
+         y="12.108903"
+         id="text1200-8-4"
+         transform="scale(0.9975952,1.0024106)"><tspan
+           sodipodi:role="line"
+           id="tspan1198-6-0"
+           style="stroke-width:0.0936499"
+           x="-0.21306382"
+           y="12.108903">To be added</tspan></text>
     </g>
   </g>
 </svg>

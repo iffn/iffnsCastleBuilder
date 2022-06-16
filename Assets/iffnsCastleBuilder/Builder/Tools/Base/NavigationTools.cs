@@ -40,6 +40,11 @@ namespace iffnsStuff.iffnsCastleBuilder
         bool playerPositioningActive = false;
         int currentFloorNumber;
 
+        public void SetStandardView(ViewDirectionPasser directionPasser)
+        {
+            CurrentRTSCamera.SetStandardView(directionPasser.ViewDirection);
+        }
+
         public enum BlockLineType
         {
             Complete,
