@@ -529,7 +529,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         public enum FloorVisibilityTypes
         {
             topDown,
-            bottomUp
+            bottomUp,
         }
 
         FloorVisibilityTypes floorVisibilityType;

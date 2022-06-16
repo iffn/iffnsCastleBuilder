@@ -29,6 +29,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] BuildingToolController LinkedBuildingToolController;
         [SerializeField] VectorButton PlayerButton;
         [SerializeField] VectorButton BlockLineButton;
+        [SerializeField] OrientationCubeController linkedOrientationCubeController;
 
         //Variables
         List<GameObject> blockLines = new List<GameObject>();
@@ -39,6 +40,11 @@ namespace iffnsStuff.iffnsCastleBuilder
         Vector3 previousCursorPosition = Vector3.zero;
         bool playerPositioningActive = false;
         int currentFloorNumber;
+
+        public void UpdateViewIdentifier(float headingAngleDeg, float tiltAngleDeg)
+        {
+            linkedOrientationCubeController.SetViewAngles(headingAngleDeg: headingAngleDeg, tiltAngleDeg: tiltAngleDeg);
+        }
 
         public void SetStandardView(ViewDirectionPasser directionPasser)
         {

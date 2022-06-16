@@ -45,6 +45,13 @@ public static class MathHelper
         return Mathf.Abs(value) < Mathf.Abs(tolerance);
     }
 
+    public static float Remap(float iMin, float iMax, float oMin, float oMax, float iValue)
+    {
+        float t = Mathf.InverseLerp(a: iMin, b: iMax, value: iValue);
+
+        return Mathf.LerpUnclamped(a: oMin, b: oMax, t: t);
+    }
+
     public static Vector3 ConvertPointIntoOriginTransform(Transform baseObject, Transform originObject, Vector3 vector)
     {
         return (originObject.InverseTransformPoint(baseObject.TransformPoint(vector)));

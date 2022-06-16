@@ -570,6 +570,12 @@ namespace iffnsStuff.iffnsCastleBuilder
                     }
                     */
                     break;
+                case FloorViewDirectionType.complete:
+                    foreach (FloorController floor in Floors)
+                    {
+                        floor.gameObject.SetActive(true);
+                    }
+                    break;
                 default:
                     break;
             }
@@ -632,7 +638,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         public enum FloorViewDirectionType
         {
             topDown,
-            bottomUp
+            bottomUp,
+            complete
         }
 
         FloorViewDirectionType floorViewDirection = FloorViewDirectionType.topDown;
@@ -643,7 +650,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 if (FloorViewDirection != value)
                 {
                     floorViewDirection = value;
-                    UpdateFloorDisplay();
+                    UpdateFloorVisibility();
                 }
 
             }

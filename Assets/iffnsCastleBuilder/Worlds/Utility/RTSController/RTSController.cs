@@ -83,54 +83,68 @@ namespace iffnsStuff.iffnsCastleBuilder
                 case StandardViews.XPos:
                     CameraTiltAngleDeg = 0;
                     CameraHeadingAngleDeg = 270;
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.complete;
                     break;
                 case StandardViews.ZPos:
                     CameraTiltAngleDeg = 0;
                     CameraHeadingAngleDeg = 0;
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.complete;
                     break;
                 case StandardViews.XNeg:
                     CameraTiltAngleDeg = 0;
                     CameraHeadingAngleDeg = 90;
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.complete;
                     break;
                 case StandardViews.ZNeg:
                     CameraTiltAngleDeg = 0;
                     CameraHeadingAngleDeg = 180;
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.complete;
                     break;
                 case StandardViews.TopXPos:
                     CameraTiltAngleDeg = 90;
                     CameraHeadingAngleDeg = 270;
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.topDown;
                     break;
                 case StandardViews.TopZPos:
                     CameraTiltAngleDeg = 90;
                     CameraHeadingAngleDeg = 0;
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.topDown;
                     break;
                 case StandardViews.TopXNeg:
                     CameraTiltAngleDeg = 90;
                     CameraHeadingAngleDeg = 90;
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.topDown;
                     break;
                 case StandardViews.TopZNeg:
                     CameraTiltAngleDeg = 90;
                     CameraHeadingAngleDeg = 180;
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.topDown;
                     break;
                 case StandardViews.BottomXPos:
                     CameraTiltAngleDeg = -90;
                     CameraHeadingAngleDeg = 270;
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.bottomUp;
                     break;
                 case StandardViews.BottomZPos:
                     CameraTiltAngleDeg = -90;
                     CameraHeadingAngleDeg = 0;
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.bottomUp;
                     break;
                 case StandardViews.BottomXNeg:
                     CameraTiltAngleDeg = -90;
                     CameraHeadingAngleDeg = 90;
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.bottomUp;
                     break;
                 case StandardViews.BottomZNeg:
                     CameraTiltAngleDeg = -90;
                     CameraHeadingAngleDeg = 180;
+                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.bottomUp;
                     break;
                 default:
                     break;
             }
+
+            UpdateViewIdentifier();
         }
 
         void SetHomePosition()
@@ -152,6 +166,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             CameraMover.transform.localPosition = Vector3.forward * cameraHomeZoomPosition;
             currentCameraOffset = cameraHomeZoomPosition;
             mainCamera.orthographicSize = isoCameraSize;
+
+            UpdateViewIdentifier();
+        }
+
+        void UpdateViewIdentifier()
+        {
+            LinkedNavigationTools.UpdateViewIdentifier(headingAngleDeg: CameraHeadingAngleDeg, tiltAngleDeg: CameraTiltAngleDeg);
         }
 
         /*
@@ -262,6 +283,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             SetHomePosition();
             currentCameraOffset = CameraMover.transform.localPosition.z;
+            UpdateViewIdentifier();
         }
 
         // Update is called once per frame
@@ -270,6 +292,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             float deltaTime = Time.deltaTime;
             if (deltaTime > maxDeltaTime) deltaTime = maxDeltaTime;
 
+            bool updateViewIdentifier = false;
 
             if (Input.GetKey(KeyCode.W))
             {
@@ -294,11 +317,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             if (Input.GetKey(KeyCode.Q))
             {
                 CameraHeadingAngleDeg += deltaTime * rotationSpeedQE;
+                updateViewIdentifier = true;
             }
 
             if (Input.GetKey(KeyCode.E))
             {
                 CameraHeadingAngleDeg -= deltaTime * rotationSpeedQE;
+                updateViewIdentifier = true;
             }
 
             if (Input.GetMouseButton(2)) //Middle Mouse Button
@@ -308,23 +333,22 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (Input.GetMouseButton(1)) //Right Mouse Button
             {
-                //gameObject.transform.Rotate(Input.GetAxis("Mouse X") * rotationSpeedMouse * deltaTime * Vector3.up); // left / right rotation
+                //Heading
                 CameraHeadingAngleDeg += Input.GetAxis("Mouse X") * rotationSpeedMouse * deltaTime;
-            }
 
-            if (Input.GetMouseButton(1)) //Right Mouse Button
-            {
-                //CameraTilt.transform.Rotate(Input.GetAxis("Mouse Y") * rotationSpeedMouse * deltaTime * Vector3.right); //up / down rotation
+                //Pitch
                 CameraTiltAngleDeg += Input.GetAxis("Mouse Y") * rotationSpeedMouse * deltaTime;
 
-                if (CameraTiltAngleDeg > 0)
+                if (CameraTiltAngleDeg < 180)
                 {
                     LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.topDown;
                 }
-                else if (CameraTiltAngleDeg < 0)
+                else
                 {
                     LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.bottomUp;
                 }
+
+                updateViewIdentifier = true;
             }
 
             if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) //Only scroll zoom if not over UI
@@ -359,9 +383,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                         default:
                             break;
                     }
-
-
-                    //CameraMover.transform.Translate(Vector3.forward * Input.GetAxis("Mouse ScrollWheel") * scrollIncrement * deltaTimer);
 
                     if (cameraPerspective == CameraPerspectiveType.isometric)
                     {
@@ -399,11 +420,13 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
             }
             
+            if (updateViewIdentifier) UpdateViewIdentifier();
 
             if (Input.GetKeyDown(KeyCode.Home))
             {
                 RestoreHomePosition();
             }
+
         }
     }
 }
