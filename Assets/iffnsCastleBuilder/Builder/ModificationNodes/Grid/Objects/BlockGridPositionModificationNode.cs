@@ -86,7 +86,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         }
 
 
-        public override bool ColliderActivationState
+        protected override bool NodeColliderState
         {
             set
             {

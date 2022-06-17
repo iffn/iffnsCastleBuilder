@@ -1131,6 +1131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HumanBuilderController
       objectReference: {fileID: 0}
+    - target: {fileID: 9043763559161280166, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9043763560920348869, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

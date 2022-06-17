@@ -71,7 +71,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             transform.parent = base.linkedObject.transform;
         }
 
-        public override bool ColliderActivationState
+        protected override bool NodeColliderState
         {
             set
             {

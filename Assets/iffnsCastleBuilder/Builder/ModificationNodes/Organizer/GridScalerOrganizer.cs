@@ -43,7 +43,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             zNegNode.UpdatePosition();
         }
 
-        public override bool ColliderActivationState
+        protected override bool NodeColliderState
         {
             set
             {

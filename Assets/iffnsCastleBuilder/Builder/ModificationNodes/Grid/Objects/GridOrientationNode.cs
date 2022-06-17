@@ -104,7 +104,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             XNegativeArrow.transform.localPosition = Vector3.left * arrowOffset;
         }
 
-        public override bool ColliderActivationState
+        protected override bool NodeColliderState
         {
             set
             {

@@ -175,7 +175,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             organizer.UpdatePosition();
         }
 
-        public override bool ColliderActivationState
+        protected override bool NodeColliderState
         {
             set
             {

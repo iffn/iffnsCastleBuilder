@@ -11,7 +11,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         protected NodeWallSystem linkedSystem;
 
-        public override bool ColliderActivationState
+        protected override bool NodeColliderState
         {
             set
             {
