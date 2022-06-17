@@ -21,7 +21,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineMaterial SideMaterialParam;
         MailboxLineMaterial BackMaterialParam;
 
-        BlockGridRadiusOrganizer ModificationNodeOrganizer;
+        NodeGridRadiusOrganizer ModificationNodeOrganizer;
 
         public override bool RaiseToFloor
         {
@@ -218,7 +218,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             InitializeBuildParameterLines();
 
-            BlockGridPositionModificationNode positionNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
+            NodeGridPositionModificationNode positionNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
             positionNode.Setup(linkedObject: this, value: PositiveCenterPositionParam);
             FirstPositionNode = positionNode;
 
@@ -227,7 +227,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             radiusNode.Setup(linkedObject: this, radiusValue: OuterRadiusParam, localCenter: Vector3.zero, axis: Vector3.up);
             SecondPositionNode = radiusNode;
 
-            ModificationNodeOrganizer = new BlockGridRadiusOrganizer(linkedObject: this, positionNode: positionNode, radiusNode: radiusNode);
+            ModificationNodeOrganizer = new NodeGridRadiusOrganizer(linkedObject: this, positionNode: positionNode, radiusNode: radiusNode);
 
             HideModificationNodes();
         }
