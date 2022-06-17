@@ -236,7 +236,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     }
                     else if (activeNode is FloatingModificationNode activeMovingNode)
                     {
-                        activeMovingNode.AbsolutePosition = SmartBlockBuilderTool.GetPositionFromClick(currentRTSController: currentRTSController);
+                        activeMovingNode.AbsolutePosition = SmartBlockBuilderTool.GetPositionFromClick(currentRTSController: currentRTSController, currentBuilding: currentBuilding, cutoffAtFloor: false);
                     }
                     else if (activeNode is GridScaleNode activeScaleNode)
                     {

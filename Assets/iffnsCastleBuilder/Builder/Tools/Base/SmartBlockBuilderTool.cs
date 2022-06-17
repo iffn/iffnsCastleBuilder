@@ -132,7 +132,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         }
                         else if (CurrentOnFloorObject.FirstPositionNode is FloatingModificationNode firstFloatNode)
                         {
-                            firstFloatNode.AbsolutePosition = GetPositionFromClick(currentRTSController: currentRTSController);
+                            firstFloatNode.AbsolutePosition = GetPositionFromClick(currentRTSController: currentRTSController, currentBuilding: currentBuilding, cutoffAtFloor: false);
                         }
                     }
 
@@ -262,7 +262,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
                 else if (CurrentOnFloorObject.SecondPositionNode is FloatingModificationNode secondFloatNode)
                 {
-                    secondFloatNode.AbsolutePosition = GetPositionFromClick(currentRTSController: currentRTSController);
+                    secondFloatNode.AbsolutePosition = GetPositionFromClick(currentRTSController: currentRTSController, currentBuilding: currentBuilding, cutoffAtFloor: false);
                 }
             }
         }
@@ -362,9 +362,37 @@ namespace iffnsStuff.iffnsCastleBuilder
             return GetBlockFromClick(OnlyCheckCurrentFloor: OnlyCheckCurrentFloor, currentBuilding: currentBuilding, currentRTSCamera: currentRTSController);
         }
 
-        public static Vector3 GetPositionFromClick(RTSController currentRTSController)
+
+
+        public static Vector3 GetPositionFromClick(RTSController currentRTSController, HumanBuildingController currentBuilding, bool cutoffAtFloor)
         {
-            return currentRTSController.GetImpactPositionFromMouseLocation();
+            Ray ray = currentRTSController.GetRayFromCameraMouseLocation();
+            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+
+            Physics.Raycast(ray, out hit, Mathf.Infinity);
+
+            if (!cutoffAtFloor && hit.collider != null)
+            {
+                return hit.point;
+            }
+
+            Vector3 direction = ray.direction;
+            Vector3 originAbsolute = ray.origin;
+
+            float goalHeight = currentBuilding.CurrentFloorObject.transform.position.y + currentBuilding.CurrentFloorObject.BottomFloorHeight;
+
+            Vector3 impactPoint = GetSurfaceImpactPoint(originAbsolute: originAbsolute, direction: direction, goalHeight: goalHeight);
+
+            if (!cutoffAtFloor) return impactPoint;
+
+            if((impactPoint - originAbsolute).magnitude > hit.distance)
+            {
+                return hit.point;
+            }
+
+            return impactPoint;
         }
 
         //public static Vector2Int GetNodeCoordinateFromClick(bool OnlyCheckCurrentFloor, HumanBuildingController currentBuilding, RTSController currentRTSController)
@@ -409,6 +437,17 @@ namespace iffnsStuff.iffnsCastleBuilder
             return impactPoint;
         }
 
+        static Vector3 GetSurfaceImpactPoint(Vector3 originAbsolute, Vector3 direction, float goalHeight)
+        {
+            float heightDifference = -originAbsolute.y + goalHeight;
+            float scaler = heightDifference / direction.y;
+
+            Vector3 offset = direction * scaler;
+            Vector3 impactPoint = originAbsolute + offset;
+
+            return impactPoint;
+        }
+
         public static Vector2Int GetBlockCoordinateFromClick(bool OnlyCheckCurrentFloor, HumanBuildingController currentBuilding, RTSController currentRTSController)
         {
             Ray ray = currentRTSController.GetRayFromCameraMouseLocation();
@@ -423,11 +462,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 float goalHeight = currentBuilding.CurrentFloorObject.transform.position.y + currentBuilding.CurrentFloorObject.BottomFloorHeight;
 
-                float heightDifference = -originAbsolute.y + goalHeight;
-                float scaler = heightDifference / direction.y;
-
-                Vector3 offset = direction * scaler;
-                Vector3 impactPoint = originAbsolute + offset;
+                Vector3 impactPoint = GetSurfaceImpactPoint(originAbsolute: originAbsolute, direction: direction, goalHeight: goalHeight);
 
                 return currentBuilding.CurrentFloorObject.GetBlockCoordinateFromCoordinateAbsolute(impactPoint);
             }
