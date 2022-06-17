@@ -179,7 +179,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         case TriangleMeshInfo.ColliderStates.VisibleCollider:
                             hasCollider = true;
                             break;
-                        case TriangleMeshInfo.ColliderStates.InvisibleCollider:
+                        case TriangleMeshInfo.ColliderStates.SeeThroughCollider:
                             hasCollider = true;
                             break;
                         case TriangleMeshInfo.ColliderStates.VisbleWithoutCollider:

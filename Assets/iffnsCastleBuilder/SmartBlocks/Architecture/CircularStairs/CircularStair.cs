@@ -289,7 +289,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 StepTop.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
                 StepFront.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
-                ColliderMesh.ActiveCollider = TriangleMeshInfo.ColliderStates.InvisibleCollider;
+                ColliderMesh.ActiveCollider = TriangleMeshInfo.ColliderStates.SeeThroughCollider;
 
                 StaticMeshManager.AddTriangleInfoIfValid(TopStepTop);
                 StaticMeshManager.AddTriangleInfoIfValid(StepTop);

@@ -28,7 +28,7 @@ public class TriangleMeshInfo
     public enum ColliderStates
     {
         VisibleCollider,
-        InvisibleCollider,
+        SeeThroughCollider,
         VisbleWithoutCollider
     }
 

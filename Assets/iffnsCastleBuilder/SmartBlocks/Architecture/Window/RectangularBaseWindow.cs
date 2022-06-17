@@ -76,6 +76,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                 FrameBorder.MaterialReference = FrameMaterial;
                 Glass.MaterialReference = GlassMaterial;
 
+                Glass.ActiveCollider = TriangleMeshInfo.ColliderStates.SeeThroughCollider;
+
                 returnValue.AddStaticMeshAndConvertToTarget(FrontTopWall);
                 returnValue.AddStaticMeshAndConvertToTarget(FrontBottomWall);
                 returnValue.AddStaticMeshAndConvertToTarget(BackTopWall);

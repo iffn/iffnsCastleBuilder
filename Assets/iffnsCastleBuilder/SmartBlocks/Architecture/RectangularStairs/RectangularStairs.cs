@@ -276,7 +276,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 StepTop.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
                 StepFront.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
-                ColliderMesh.ActiveCollider = TriangleMeshInfo.ColliderStates.InvisibleCollider;
+                ColliderMesh.ActiveCollider = TriangleMeshInfo.ColliderStates.SeeThroughCollider;
 
                 StepFront.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
                 TopStepTop.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);

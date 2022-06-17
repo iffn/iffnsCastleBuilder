@@ -66,7 +66,7 @@ public class SmartMeshManager : MeshManager
                 currentCollider.enabled = true;
                 gameObject.layer = WorldController.LayerManager.GetLayerNumber(WorldController.LayerManager.Layers.Default);
                 break;
-            case TriangleMeshInfo.ColliderStates.InvisibleCollider:
+            case TriangleMeshInfo.ColliderStates.SeeThroughCollider:
                 currentCollider.enabled = true;
                 gameObject.layer = WorldController.LayerManager.GetLayerNumber(WorldController.LayerManager.Layers.NoSelection);
                 break;
