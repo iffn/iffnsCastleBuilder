@@ -414,7 +414,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             LeftSide = RightSide.CloneFlipped;
-            RightSide.Move(Vector3.right * width);
+            LeftSide.Move(MathHelper.SmallFloat * Vector3.right);
+            RightSide.Move((width - MathHelper.SmallFloat) * Vector3.right);
 
             //Finish mesh
             FinishMesh();
