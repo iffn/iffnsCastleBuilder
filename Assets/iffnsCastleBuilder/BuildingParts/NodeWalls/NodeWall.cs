@@ -212,6 +212,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
     public class DummyNodeWall : INodeWallReference
     {
+        public NodeWallSystem LinkedNodeWallSystem { get; set; }
         public OnFloorObject LinkedObject { get; set; }
         public Vector2Int StartPosition { get; set; }
         public Vector2Int EndPosition { get; set; }
@@ -225,12 +226,19 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        public DummyNodeWall(Vector2Int startPosition, Vector2Int endPosition, MailboxLineMaterial cornerMaterial, OnFloorObject linkedObject)
+        public DummyNodeWall(Vector2Int startPosition, Vector2Int endPosition, MailboxLineMaterial cornerMaterial, OnFloorObject linkedObject, NodeWallSystem linkedNodeWallSystem)
         {
             this.StartPosition = startPosition;
             this.EndPosition = endPosition;
             this.CornerMaterial = cornerMaterial;
             this.LinkedObject = linkedObject;
+            this.LinkedNodeWallSystem = linkedNodeWallSystem;
+            linkedNodeWallSystem.DummyNodeWalls.Add(this);
+        }
+
+        public void RemoveFromNodeWallSystem()
+        {
+            LinkedNodeWallSystem.DummyNodeWalls.Remove(this);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         NodeGridRectangleOrganizer ModificationNodeOrganizer;
 
         NodeWallSystem LinkedNodeWallSystem;
-        DummyNodeWall NodeWallRegister;
+        List<DummyNodeWall> NodeWallRegister = new List<DummyNodeWall>();
 
         public override ModificationOrganizer Organizer
         {
@@ -110,6 +110,27 @@ namespace iffnsStuff.iffnsCastleBuilder
             get
             {
                 return true;
+            }
+        }
+
+        public int NumberOfFloors
+        {
+            get
+            {
+                float currentHeight = LinkedFloor.WallBetweenHeight;
+
+                int currentFloorNumber = LinkedFloor.FloorNumber;
+
+                int returnValue = 1;
+
+                while (currentFloorNumber + 1 <= LinkedFloor.LinkedBuildingController.PositiveFloors && currentHeight < DoorHeight)
+                {
+                    returnValue++;
+                    currentFloorNumber += 1;
+                    currentHeight += LinkedFloor.LinkedBuildingController.Floor(floorNumber: currentFloorNumber).CompleteFloorHeight;
+                }
+
+                return returnValue;
             }
         }
 
@@ -281,46 +302,60 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             BuildAllMeshes();
 
-            UpdateNodeWallRegister();
+            UpdateNodeWallRegister(numberOfFloors: NumberOfFloors);
         }
 
-        void UpdateNodeWallRegister()
-        {
-            if (WallType == NodeGridRectangleOrganizer.OrientationTypes.NodeGrid || ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0)
-            {
-                if (NodeWallRegister == null)
-                {
-                    NodeWallRegister = new DummyNodeWall(startPosition: ModificationNodeOrganizer.FirstCoordinate, endPosition: ModificationNodeOrganizer.SecondCoordinate, cornerMaterial: FrontWallMaterialParm, linkedObject: this);
-                    LinkedNodeWallSystem.DummyNodeWalls.Add(NodeWallRegister);
-                }
-                else
-                {
-                    NodeWallRegister.StartPosition = ModificationNodeOrganizer.FirstCoordinate;
-                    NodeWallRegister.EndPosition = ModificationNodeOrganizer.SecondCoordinate;
-                }
+        
 
-                LinkedNodeWallSystem.ApplyBuildParameters(); //ApplyBuildParameters on NodeWallSystem is ignored when updating the entire floor
-            }
-            else
+        void UpdateNodeWallRegister(int numberOfFloors)
+        {
+            List<NodeWallSystem> updateSystems = new List<NodeWallSystem>();
+
+            foreach (DummyNodeWall wall in NodeWallRegister)
             {
-                RemoveNodeWallRegister();
+                updateSystems.Add(wall.LinkedNodeWallSystem);
+
+                wall.RemoveFromNodeWallSystem();
+            }
+
+            NodeWallRegister.Clear();
+
+            if (WallType == NodeGridRectangleOrganizer.OrientationTypes.NodeGrid || ModificationNodeOrganizer.ObjectOrientationGridSize.x == 0) //Not like node wall
+            {
+                for (int floor = LinkedFloor.FloorNumber; floor< LinkedFloor.FloorNumber + numberOfFloors; floor++)
+                {
+                    NodeWallSystem currentSystem = LinkedFloor.LinkedBuildingController.Floor(floor).CurrentNodeWallSystem;
+
+                    NodeWallRegister.Add(new DummyNodeWall(
+                        startPosition: ModificationNodeOrganizer.FirstCoordinate,
+                        endPosition: ModificationNodeOrganizer.SecondCoordinate,
+                        cornerMaterial: FrontWallMaterialParm,
+                        linkedObject: this,
+                        linkedNodeWallSystem: currentSystem
+                        )); ;
+
+                    if(!updateSystems.Contains(currentSystem)) updateSystems.Add(currentSystem);
+                }
+            }
+
+            foreach(NodeWallSystem system in updateSystems)
+            {
+                system.ApplyBuildParameters(); //ApplyBuildParameters on NodeWallSystem is ignored when updating the entire floor
             }
         }
 
         public override void DestroyObject()
         {
-            if (LinkedNodeWallSystem != null) RemoveNodeWallRegister();
+            foreach (DummyNodeWall wall in NodeWallRegister)
+            {
+                NodeWallSystem system = wall.LinkedNodeWallSystem;
+
+                wall.RemoveFromNodeWallSystem();
+
+                system.ApplyBuildParameters();
+            }
 
             base.DestroyObject();
-        }
-
-        void RemoveNodeWallRegister()
-        {
-            if (NodeWallRegister != null)
-            {
-                LinkedNodeWallSystem.DummyNodeWalls.Remove(NodeWallRegister);
-                NodeWallRegister = null;
-            }
         }
 
         void SetupEditButtons()
