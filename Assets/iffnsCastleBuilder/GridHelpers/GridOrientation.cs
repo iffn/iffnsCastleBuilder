@@ -15,6 +15,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             ZNegative,
             XNegative
         }
+
         public enum GridQuarterOrientations
         {
             XPosZPos,
@@ -25,7 +26,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public GridOrientation(GridForwardOrientations forwardOrientation)
         {
-            ForwardOrientation = forwardOrientation;
+            currentForwardOrientation = forwardOrientation;
         }
 
         public GridOrientation(GridQuarterOrientations quarterOrientation)
@@ -38,10 +39,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             get
             {
                 return currentForwardOrientation;
-            }
-            set
-            {
-                currentForwardOrientation = value;
             }
         }
 
@@ -68,7 +65,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         return GridQuarterOrientations.XPosZPos;
                 }
             }
-            set
+            private set
             {
                 switch (value)
                 {

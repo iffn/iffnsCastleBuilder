@@ -89,22 +89,22 @@ namespace iffnsStuff.iffnsCastleBuilder
                 {
                     if (offset.x >= 0)
                     {
-                        orientationNode.CurrentOrientation.ForwardOrientation = GridOrientation.GridForwardOrientations.XPositive;
+                        orientationNode.CurrentOrientation = new GridOrientation(forwardOrientation: GridOrientation.GridForwardOrientations.XPositive);
                     }
                     else
                     {
-                        orientationNode.CurrentOrientation.ForwardOrientation = GridOrientation.GridForwardOrientations.XNegative;
+                        orientationNode.CurrentOrientation = new GridOrientation(forwardOrientation: GridOrientation.GridForwardOrientations.XNegative);
                     }
                 }
                 else
                 {
                     if (offset.y >= 0)
                     {
-                        orientationNode.CurrentOrientation.ForwardOrientation = GridOrientation.GridForwardOrientations.ZPositive;
+                        orientationNode.CurrentOrientation = new GridOrientation(forwardOrientation: GridOrientation.GridForwardOrientations.ZPositive);
                     }
                     else
                     {
-                        orientationNode.CurrentOrientation.ForwardOrientation = GridOrientation.GridForwardOrientations.ZNegative;
+                        orientationNode.CurrentOrientation = new GridOrientation(forwardOrientation: GridOrientation.GridForwardOrientations.ZNegative);
                     }
                 }
             }
