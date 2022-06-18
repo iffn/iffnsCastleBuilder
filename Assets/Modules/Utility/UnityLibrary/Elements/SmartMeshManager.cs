@@ -50,7 +50,16 @@ public class SmartMeshManager : MeshManager
     {
         LinkedTriangleInfo = newInfo;
 
-        currentMeshFilter.mesh.vertices = newInfo.AllVerticesDirectly.ToArray();
+        List<Vector3> vertices = newInfo.AllVerticesDirectly;
+
+        if (vertices.Count > 65535)
+        {
+            //Avoid vertex limit
+            //https://answers.unity.com/questions/471639/mesh-with-more-than-65000-vertices.html
+            currentMeshFilter.mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
+        }
+
+        currentMeshFilter.mesh.vertices = vertices.ToArray();
         currentMeshFilter.mesh.triangles = newInfo.AllTrianglesDirectly.ToArray();
         currentMeshFilter.mesh.uv = newInfo.UVs.ToArray();
 
