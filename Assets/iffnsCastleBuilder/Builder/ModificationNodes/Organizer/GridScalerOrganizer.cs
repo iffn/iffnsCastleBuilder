@@ -27,6 +27,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void Setup(HumanBuildingController linkedController)
         {
+            base.setup(linkedController);
+
             this.linkedController = linkedController;
 
             xPosNode.Setup(linkedController: linkedController, organizer: this, directionType: GridScaleNode.DirectionTypes.xPos);

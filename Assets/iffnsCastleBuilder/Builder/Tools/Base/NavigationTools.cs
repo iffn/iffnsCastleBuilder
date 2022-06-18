@@ -14,30 +14,24 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] RTSController CurrentRTSCamera;
         [SerializeField] Slider FloorSelector;
         [SerializeField] GameObject FloorNumberHolder;
-        [SerializeField] int BlockLineRadius = 3;
-        [SerializeField] GameObject BlockLineHolder;
-        [SerializeField] GameObject DimensionInfo;
-        [SerializeField] LineRenderer BlockLineTemplate;
         [SerializeField] GameObject FloorNumberTemplate;
         [SerializeField] Slider WallHeightScaler;
         [SerializeField] VectorButton CameraWalkingIcon;
         [SerializeField] VectorButton CameraPerspectiveIcon;
         [SerializeField] VectorButton CameraIsometricIcon;
         [SerializeField] VectorButton CameraFlyingIcon;
-        [SerializeField] BlockLineType currentBlockLineType = BlockLineType.Complete;
         [SerializeField] DummyHumanPlayerController HumanPlayerController;
         [SerializeField] BuildingToolController LinkedBuildingToolController;
         [SerializeField] VectorButton PlayerButton;
         [SerializeField] VectorButton BlockLineButton;
         [SerializeField] OrientationCubeController linkedOrientationCubeController;
+        public BlockLineController LinkedBlockLineController;
 
         //Variables
-        List<GameObject> blockLines = new List<GameObject>();
-        GameObject currentLineHolder;
-        static bool createWallLines = false;
         bool showBlockLinesOnCurrentFloor = false;
         VirtualBlock previousBlockLineFocus;
         Vector3 previousCursorPosition = Vector3.zero;
+
         bool playerPositioningActive = false;
         int currentFloorNumber;
 
@@ -51,11 +45,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             CurrentRTSCamera.SetStandardView(directionPasser.ViewDirection);
         }
 
-        public enum BlockLineType
-        {
-            Complete,
-            AroundFocus
-        }
 
         public HumanBuildingController CurrentBuilding
         {
@@ -72,25 +61,12 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return;
             }
 
-            //Deactivate old floor line object
-            //blockLines[CurrentBuilding.CurrentFloorIndex].SetActive(false);
-
             //Set new floor number
             CurrentBuilding.CurrentFloorNumber = Mathf.RoundToInt(floor);
 
-            //Activate new floor line object
-            //if (createWallLines) blockLines[CurrentBuilding.CurrentFloorIndex].SetActive(true);
-
-
-            //CurrentBuilding.CurrentFloorObject.FoorHeihgtScaler = wallHeightScale;
-            //Debug.Log("" + MainBuilding.CurrentFloorObject.transform.position.y);
-
-
-            //Update camera
-
             UpdateCameraPositionRelativeToCurrentFloor();
 
-            UpdateBlockLines();
+            LinkedBlockLineController.UpdatePositionAndRotation();
         }
 
 
@@ -162,9 +138,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
             set
             {
+                if (CurrentBuilding.FloorViewDirection == value) return;
+
                 CurrentBuilding.FloorViewDirection = value;
 
-                SetBaseBlockLinePosition(viewDirection: value);
+                LinkedBlockLineController.ViewDirection = value;
             }
         }
 
@@ -209,49 +187,30 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
             set 
             {
-                showBlockLinesOnCurrentFloor = value;
-                BlockLineHolder.SetActive(value);
-                DimensionInfo.SetActive(value);
-                BlockLineButton.Highlight = value;
-                UpdateBlockLines();
+                if (showBlockLinesOnCurrentFloor == value) return;
+                
+                ToggleBlockLines();
             }
         }
 
         public void ToggleBlockLines()
         {
-            ShowBlockLinesOnCurrentFloor = !ShowBlockLinesOnCurrentFloor;
+            showBlockLinesOnCurrentFloor = !showBlockLinesOnCurrentFloor;
+
+            LinkedBlockLineController.gameObject.SetActive(showBlockLinesOnCurrentFloor);
+            BlockLineButton.Highlight = showBlockLinesOnCurrentFloor;
+            if (showBlockLinesOnCurrentFloor) LinkedBlockLineController.SetCompleteGrid();
         }
 
-        public void UpdateBlockLines()
-        {
-            //Check if floor lines activated
-            if (!showBlockLinesOnCurrentFloor)
-            {
-                return;
-            }
-
-            switch (currentBlockLineType)
-            {
-                case BlockLineType.Complete:
-                    SetBaseBlockLines();
-                    SetBaseBlockLinePosition(viewDirection: ViewDirection);
-                    break;
-                case BlockLineType.AroundFocus:
-                    VirtualBlock newFocusBlock = getNewFocusBlock();
-                    if (newFocusBlock != null) ShowBlockLinesAroundFocus(focusBlock: newFocusBlock);
-                    break;
-                default:
-                    break;
-            }
-        }
 
         public void UpdateUI()
         {
             UpdateFloorNumbers();
 
-            UpdateBlockLines();
+            LinkedBlockLineController.UpdateAll();
         }
 
+        /*
         VirtualBlock getNewFocusBlock()
         {
             //Check if cursor moved
@@ -278,180 +237,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             return newFocusBlock;
         }
-
-        void SetBaseBlockLinePosition(HumanBuildingController.FloorViewDirectionType viewDirection)
-        {
-            BlockLineHolder.transform.position = CurrentBuilding.CurrentFloorObject.transform.position;
-            BlockLineHolder.transform.rotation = CurrentBuilding.CurrentFloorObject.transform.rotation;
-
-            DimensionInfo.transform.position = CurrentBuilding.CurrentFloorObject.transform.position;
-
-            switch (viewDirection)
-            {
-                case HumanBuildingController.FloorViewDirectionType.topDown:
-                    BlockLineHolder.transform.position += Vector3.up * (CurrentBuilding.CurrentFloorObject.BottomFloorHeight + MathHelper.SmallFloat);
-                    BlockLineHolder.transform.localScale = Vector3.one;
-                    DimensionInfo.transform.rotation = Quaternion.Euler(Vector3.right * 90);
-                    DimensionInfo.transform.position += Vector3.up * CurrentBuilding.CurrentFloorObject.BottomFloorHeight;
-                    break;
-                case HumanBuildingController.FloorViewDirectionType.bottomUp:
-                    BlockLineHolder.transform.position += new Vector3(CurrentBuilding.BlockGridSize.x * CurrentBuilding.BlockSize, -MathHelper.SmallFloat, 0);
-                    BlockLineHolder.transform.localScale = new Vector3(1, -1, 1);
-                    BlockLineHolder.transform.Rotate(Vector3.forward * 180);
-                    DimensionInfo.transform.rotation = Quaternion.Euler(new Vector3(-90, -90, 0));
-                    break;
-                default:
-                    break;
-            }
-
-            
-        }
-
-        void ShowBlockLinesAroundFocus(VirtualBlock focusBlock)
-        {
-            //Cleanup
-            if (currentLineHolder != null)
-            {
-                Destroy(currentLineHolder);
-            }
-
-            /*
-            foreach (GameObject line in blockLines)
-            {
-                GameObject.Destroy(line);
-            }
-            */
-
-            blockLines.Clear();
-
-            //Setup new line holder
-            currentLineHolder = new GameObject();
-            currentLineHolder.transform.position = CurrentBuilding.CurrentFloorObject.transform.position + Vector3.up * (CurrentBuilding.CurrentFloorObject.BottomFloorHeight + 0.01f);
-            currentLineHolder.transform.rotation = CurrentBuilding.CurrentFloorObject.transform.rotation;
-
-            //Check min and max values
-            Vector2Int startingPosition = Vector2Int.zero;
-            Vector2Int endPosition = Vector2Int.zero;
-
-            startingPosition.x = focusBlock.XCoordinate - BlockLineRadius;
-            endPosition.x = focusBlock.XCoordinate + BlockLineRadius;
-            startingPosition.y = focusBlock.ZCoordinate - BlockLineRadius;
-            endPosition.y = focusBlock.ZCoordinate + BlockLineRadius;
-
-            if (startingPosition.x < 0) startingPosition.x = 0;
-            if (startingPosition.y < 0) startingPosition.y = 0;
-            if (endPosition.x > CurrentBuilding.BlockGridSize.x - 1) endPosition.x = CurrentBuilding.BlockGridSize.x - 1;
-            if (endPosition.y > CurrentBuilding.BlockGridSize.y - 1) endPosition.y = CurrentBuilding.BlockGridSize.y - 1;
-
-            //Create lines
-            for (int xPos = startingPosition.x; xPos <= endPosition.x + 1; xPos++)
-            {
-                LineRenderer currentLine = Instantiate(BlockLineTemplate).transform.GetComponent<LineRenderer>();
-                currentLine.transform.parent = currentLineHolder.transform;
-
-                currentLine.transform.localPosition = CurrentBuilding.CurrentFloorObject.GetLocalNodePositionFromNodeIndex(new Vector2Int(xPos, startingPosition.y));
-                currentLine.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 90));
-
-                float lineLength = (endPosition.y - startingPosition.y + 1) * CurrentBuilding.BlockSize;
-
-                currentLine.SetPosition(1, Vector3.right * lineLength);
-            }
-
-            for (int zPos = startingPosition.y; zPos <= endPosition.y + 1; zPos++)
-            {
-                LineRenderer currentLine = Instantiate(BlockLineTemplate).transform.GetComponent<LineRenderer>();
-                currentLine.transform.parent = currentLineHolder.transform;
-
-                currentLine.transform.localPosition = CurrentBuilding.CurrentFloorObject.GetLocalNodePositionFromNodeIndex(new Vector2Int(startingPosition.x, zPos));
-                currentLine.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 90));
-
-                float lineLength = (endPosition.x - startingPosition.x + 1) * CurrentBuilding.BlockSize;
-
-                currentLine.SetPosition(1, Vector3.down * lineLength);
-            }
-        }
-
-        void SetBaseBlockLines()
-        {
-            //Remove old block lines
-            foreach (Transform child in BlockLineHolder.transform)
-            {
-                Destroy(child.gameObject);
-            }
-
-            //Add new lines
-            for (int xPos = 0; xPos <= CurrentBuilding.BlockGridSize.x; xPos++)
-            {
-                LineRenderer currentLine = Instantiate(BlockLineTemplate).transform.GetComponent<LineRenderer>();
-
-                currentLine.transform.parent = BlockLineHolder.transform;
-
-                currentLine.transform.localPosition = Vector3.right * CurrentBuilding.BlockSize * xPos;
-
-                currentLine.SetPosition(1, Vector3.right * CurrentBuilding.BlockSize * CurrentBuilding.BlockGridSize.y);
-
-                currentLine.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 90));
-            }
-
-            for (int zPos = 0; zPos <= CurrentBuilding.BlockGridSize.y; zPos++)
-            {
-                LineRenderer currentLine = Instantiate(BlockLineTemplate).transform.GetComponent<LineRenderer>();
-
-                currentLine.transform.parent = BlockLineHolder.transform;
-
-                currentLine.transform.localPosition = Vector3.forward * CurrentBuilding.BlockSize * zPos;
-
-                currentLine.SetPosition(1, Vector3.right * CurrentBuilding.BlockSize * CurrentBuilding.BlockGridSize.x);
-            }
-        }
-
-        public void CreateBaseGridForEachFloor()
-        {
-
-            for (int floorNumber = -CurrentBuilding.NegativeFloors; floorNumber <= CurrentBuilding.PositiveFloors; floorNumber++)
-            {
-                FloorController currentFloor = CurrentBuilding.Floor(floorNumber: floorNumber);
-
-                GameObject currentLineHolder = new GameObject();
-
-                currentLineHolder.SetActive(false);
-
-                currentLineHolder.transform.parent = BlockLineHolder.transform;
-
-                currentLineHolder.transform.position = currentFloor.transform.position + Vector3.up * (currentFloor.BottomFloorHeight + 0.01f);
-
-                currentLineHolder.transform.rotation = currentFloor.transform.rotation;
-
-                blockLines.Add(currentLineHolder);
-
-                for (int xPos = 0; xPos <= CurrentBuilding.BlockGridSize.x; xPos++)
-                {
-                    LineRenderer currentLine = Instantiate(BlockLineTemplate).transform.GetComponent<LineRenderer>();
-
-                    currentLine.transform.parent = currentLineHolder.transform;
-
-                    currentLine.transform.localPosition = Vector3.right * CurrentBuilding.BlockSize * (xPos - 0.5f) - Vector3.forward * CurrentBuilding.BlockSize * 0.5f;
-
-                    currentLine.SetPosition(1, Vector3.right * CurrentBuilding.BlockSize * CurrentBuilding.BlockGridSize.y);
-
-                    currentLine.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 90));
-                }
-
-                for (int zPos = 0; zPos <= CurrentBuilding.BlockGridSize.y; zPos++)
-                {
-                    LineRenderer currentLine = Instantiate(BlockLineTemplate).transform.GetComponent<LineRenderer>();
-
-                    currentLine.transform.parent = currentLineHolder.transform;
-
-                    currentLine.transform.localPosition = Vector3.forward * CurrentBuilding.BlockSize * (zPos - 0.5f) - Vector3.right * CurrentBuilding.BlockSize * 0.5f;
-
-                    currentLine.SetPosition(1, Vector3.right * CurrentBuilding.BlockSize * CurrentBuilding.BlockGridSize.x);
-                }
-            }
-
-            blockLines[CurrentBuilding.CurrentFloorIndex].SetActive(true);
-        }
-
+        */
 
         public void SwitchCameraType(VectorButton clickedCameraIcon)
         {
@@ -493,9 +279,11 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             //Block line visibility
             //Run twice for setting booleand to default setting
-            if (createWallLines) CreateBaseGridForEachFloor();
+            //if (createWallLines) CreateBaseGridForEachFloor();
 
             ShowBlockLinesOnCurrentFloor = true;
+
+            LinkedBlockLineController.UpdateAll();
 
             /*
             ToogleBlockLines();
@@ -588,6 +376,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void Setup()
         {
+            LinkedBlockLineController.Setup(linkedBuilding: CurrentBuilding);
+
             SetDefaultVisuals();
         }
 
@@ -600,11 +390,6 @@ namespace iffnsStuff.iffnsCastleBuilder
         // Update is called once per frame
         void Update()
         {
-            if (currentBlockLineType == BlockLineType.AroundFocus)
-            {
-                UpdateBlockLines();
-            }
-
             if (playerPositioningActive)
             {
                 PositionPlayer();
@@ -612,10 +397,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (Input.GetKeyDown(KeyCode.F1))
             {
-                DimensionInfo.SetActive(!DimensionInfo.activeSelf);
+                LinkedBlockLineController.SizeInfoActivation = !LinkedBlockLineController.SizeInfoActivation;
             }
         }
-
-
     }
 }

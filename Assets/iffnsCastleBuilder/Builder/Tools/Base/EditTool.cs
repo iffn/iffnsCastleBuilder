@@ -289,7 +289,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     activeGridScaleNode.ApplyNewGridPosition();
 
                     UpdatePropertyMenu();
-                    currentBuildingToolController.CurrentNavigationTools.UpdateBlockLines();
+                    currentBuildingToolController.CurrentNavigationTools.LinkedBlockLineController.UpdateAll();
                 }
 
                 activeNode.ColliderActivationState = true;
@@ -327,11 +327,11 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (hierarchyObject is HumanBuildingController tempBuilding)
                 {
-                    additionalCalls.Add(delegate { currentBuildingToolController.CurrentNavigationTools.UpdateBlockLines(); });
+                    additionalCalls.Add(delegate { currentBuildingToolController.CurrentNavigationTools.LinkedBlockLineController.UpdateAll(); });
                 }
                 else if (hierarchyObject is FloorController tempFloor)
                 {
-                    additionalCalls.Add(delegate { currentBuildingToolController.CurrentNavigationTools.UpdateBlockLines(); });
+                    additionalCalls.Add(delegate { currentBuildingToolController.CurrentNavigationTools.LinkedBlockLineController.UpdateAll(); });
                 }
 
                 PropertyMenu.AddMailboxLines(lines: hierarchyObject.SingleMailboxLines, lineOwner: hierarchyObject, additionalCalls: additionalCalls);
