@@ -18,6 +18,10 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] SaveAndLoadUI CurrentSaveAndLoadUI;
         [SerializeField] BuildingToolController ToolController;
 
+        readonly static string fileIdentifier = "CastleBuilder by iffn";
+        readonly static string currentVersion = "1.0.0";
+        readonly static string mainBuildingIdentifier = "MainBuilding";
+
         TextAsset DefaultBuildingFile;
 
         readonly string fileEnding = ".json";
@@ -53,8 +57,10 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             List<string> RawJSONString = new List<string>(Regex.Split(text, System.Environment.NewLine));
 
+            StaticSaveAndLoadSystem.FullLoadFileInfo fileInfo = StaticSaveAndLoadSystem.GetFileInfoFromJson(fileNameWithoutEnding: DefaultBuildingFile.name, jsonString: RawJSONString);
+
             //StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(completeFileLocation: completeFileLocation, baseObject: CurrentBuilding);
-            StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(RawJSONString: RawJSONString, baseObject: CurrentBuilding);
+            StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(RawJSONString: fileInfo.LoadObjectString, baseObject: CurrentBuilding);
 
             CurrentBuilding.ApplyBuildParameters();
         }
@@ -97,7 +103,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             //Load parameters from file:
             //stepwatch.Restart();
-            StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(completeFileLocation: completeFileLocation, baseObject: CurrentBuilding);
+
+            StaticSaveAndLoadSystem.FullLoadFileInfo fileInfo = StaticSaveAndLoadSystem.GetFileInfoFromFileLocation(completeFileLocation: completeFileLocation, fileEnding: fileEnding);
+
+            if (!LoadInfoIsValid(fileInfo)) return;
+
+            StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(RawJSONString: fileInfo.LoadObjectString, baseObject: CurrentBuilding);
             //stepwatch.Stop();
             //Debug.Log("File load time = " + stepwatch.Elapsed.TotalSeconds);
             // -> Chateau time: 3.3s
@@ -128,6 +139,19 @@ namespace iffnsStuff.iffnsCastleBuilder
             // -> Chateau time: 5.037s
         }
 
+        bool LoadInfoIsValid(StaticSaveAndLoadSystem.LoadFileInfo loadInfo)
+        {
+            if (!loadInfo.IsValid) return false;
+            if (loadInfo.identifier != fileIdentifier) return false;
+
+            if (loadInfo.version != currentVersion)
+            {
+                Debug.Log(loadInfo.FileNameWithoutEnding + " needs an upgrade");
+            }
+
+            return true;
+        }
+
         public bool SelectedFileExists(bool updateList)
         {
             if (currentFileListWithoutEnding.Contains(CurrentSaveAndLoadUI.CurrentTitle) == false)
@@ -152,11 +176,16 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+
         public void SaveBuilding()
         {
             if (string.IsNullOrWhiteSpace(CurrentFileNameWithoutEnding)) return; //Don't save empty file, IsNullOrWhiteSpace also includes empty: https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace
 
-            StaticSaveAndLoadSystem.SaveObjectToFileLocation(saveObject: CurrentBuilding, completeFileLocation: completeFileLocation);
+            StaticSaveAndLoadSystem.SaveFileInfo.SaveObjectInfo saveObject = new(name: mainBuildingIdentifier, saveObject: CurrentBuilding);
+
+            StaticSaveAndLoadSystem.SaveFileInfo fileInfo = new(type: fileIdentifier, version: currentVersion, saveObject: saveObject);
+
+            StaticSaveAndLoadSystem.SaveFileToFileLocation(fileInfo: fileInfo, completeFileLocation: completeFileLocation);
 
             CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.Done;
             CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Done;
@@ -199,11 +228,13 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             currentFileListWithoutEnding.Clear();
 
-            List<string> tempFileList = StaticSaveAndLoadSystem.GetFileListFromLocation(Type: nameof(HumanBuildingController), completeFileLocation: buildingFileLication, fileEnding: fileEnding);
+            List<StaticSaveAndLoadSystem.BaseLoadFileInfo> loadInfos = StaticSaveAndLoadSystem.GetBaseFileInfosFromFolderLocation(completeFolderLocation: buildingFileLication, fileEnding: fileEnding);
 
-            foreach (string file in tempFileList)
+            foreach (StaticSaveAndLoadSystem.BaseLoadFileInfo loadInfo in loadInfos)
             {
-                currentFileListWithoutEnding.Add(file.Substring(0, file.Length - fileEnding.Length)); //remove file ending
+                if (!LoadInfoIsValid(loadInfo)) continue;
+
+                currentFileListWithoutEnding.Add(loadInfo.FileNameWithoutEnding);
             }
         }
 
