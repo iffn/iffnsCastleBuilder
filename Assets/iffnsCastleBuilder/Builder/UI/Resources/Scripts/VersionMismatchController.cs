@@ -28,32 +28,32 @@ namespace iffnsStuff.iffnsCastleBuilder
                 case SaveAndLoadSystem.UpgradeType.someElementsNotSupported:
                     gameObject.SetActive(true);
                     NoUpgradeSymbol.SetActive(false);
-                    VersionIndicatorTransform.localEulerAngles = Vector3.zero;
+                    VersionIndicatorTransform.localEulerAngles = 180 * Vector3.forward;
                     VersionIndicatorImage.color = Color.yellow;
-                    UpgradeInfo.text = "File created in a newer version. Some elements may not be supported";
+                    UpgradeInfo.text = "This file was created in a newer version. Some elements may not be supported.";
                     break;
 
                 case SaveAndLoadSystem.UpgradeType.someNotSupportedAndWrongPosition:
                     gameObject.SetActive(true);
                     NoUpgradeSymbol.SetActive(false);
-                    VersionIndicatorTransform.localEulerAngles = Vector3.zero;
+                    VersionIndicatorTransform.localEulerAngles = 180 * Vector3.forward;
                     VersionIndicatorImage.color = Color.red;
-                    UpgradeInfo.text = "File created in a newer version. Some elements may not be supported while others may have wrong parameters";
+                    UpgradeInfo.text = "This file was created in a newer version. Some elements may not be supported while others may have wrong parameters when loading.";
                     break;
 
                 case SaveAndLoadSystem.UpgradeType.upgrade:
-                    VersionIndicatorTransform.localEulerAngles = 180 * Vector3.forward;
+                    VersionIndicatorTransform.localEulerAngles = Vector3.zero;
                     gameObject.SetActive(true);
                     NoUpgradeSymbol.SetActive(false);
                     VersionIndicatorImage.color = Color.blue;
-                    UpgradeInfo.text = "File created in an older version and will be upgraded when loading";
+                    UpgradeInfo.text = "This file was created in an older version and will be upgraded when loading.";
                     break;
 
                 case SaveAndLoadSystem.UpgradeType.notSupported:
                     gameObject.SetActive(true);
                     VersionIndicatorTransform.gameObject.SetActive(false);
                     NoUpgradeSymbol.SetActive(true);
-                    UpgradeInfo.text = "File created in a newer version and cannot be read";
+                    UpgradeInfo.text = "This file was created in a newer version and cannot be read.";
                     break;
 
                 default:

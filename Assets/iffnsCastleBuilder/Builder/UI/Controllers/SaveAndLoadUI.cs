@@ -219,7 +219,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             foreach(FileLineInfo info in fileInfos)
             {
-                AddFileLine(fileName: info.fileNameWithoutEnding, title: info.fileNameWithoutEnding, upgradeType: info.upgradeType);
+                AddFileLine(info: info);
             }
 
             ExpandArea.sizeDelta = new Vector2(ExpandArea.sizeDelta.x, fileInfos.Count * FileSelectionLineTemplate.Height);
@@ -239,7 +239,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         //File selection stuff
         readonly List<FileSelectionLine> fileLines = new();
 
-        void AddFileLine(string fileName, string title, SaveAndLoadSystem.UpgradeType upgradeType)
+        void AddFileLine(FileLineInfo info)
         {
             FileSelectionLine fileLine = Instantiate(FileSelectionLineTemplate).transform.GetComponent<FileSelectionLine>();
 
@@ -249,7 +249,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             fileLine.transform.localScale = Vector3.one;
 
-            fileLine.Setup(fileName: fileName, title: title, buttonFunction: delegate { CurrentSaveAndLoadSystem.SelectFileFromList(title); }, upgradeType: upgradeType);
+            fileLine.Setup(info: info, buttonFunction: delegate { CurrentSaveAndLoadSystem.SelectFileFromList(info); });
         }
 
         void ClearFileList()

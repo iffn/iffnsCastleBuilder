@@ -167,6 +167,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             
             StaticSaveAndLoadSystem.FullLoadFileInfo fileInfo = StaticSaveAndLoadSystem.GetFileInfoFromFileLocation(completeFileLocation: completeFileLocation, fileEnding: fileEnding);
             if (!LoadInfoIsValid(fileInfo)) return;
+            if (VersionType(GetVersionVector(fileInfo.version)) == UpgradeType.notSupported) return;
 
             if (GetSelectedFile(updateList: true) == null)
             {
@@ -228,8 +229,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             Vector3Int version = GetVersionVector(version: loadInfo.version);
 
             if (version.x == 0 && version.y == 0 && version.z == 0) return false;
-
-            if (VersionType(version) == UpgradeType.notSupported) return false;
 
             return true;
         }
@@ -341,9 +340,9 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        public void SelectFileFromList(string fileName)
+        public void SelectFileFromList(SaveAndLoadUI.FileLineInfo info)
         {
-            CurrentSaveAndLoadUI.CurrentTitle = fileName;
+            CurrentSaveAndLoadUI.CurrentTitle = info.fileNameWithoutEnding;
 
             CurrentSaveAndLoadUI.HideFileList();
 

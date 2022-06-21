@@ -13,14 +13,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         [SerializeField] VersionMismatchController mismatchIdentifier;
 
-        string fileName;
-        public string FileName
-        {
-            get
-            {
-                return fileName;
-            }
-        }
+        SaveAndLoadUI.FileLineInfo info;
 
         public string Title
         {
@@ -34,18 +27,18 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        public delegate void ButtonFunction(string fileName);
+        public delegate void ButtonFunction(SaveAndLoadUI.FileLineInfo info);
 
-        public void Setup(string fileName, string title, ButtonFunction buttonFunction, SaveAndLoadSystem.UpgradeType upgradeType)
+        public void Setup(SaveAndLoadUI.FileLineInfo info, ButtonFunction buttonFunction)
         {
-            this.fileName = fileName;
-            Title = title;
+            this.info = info;
+            Title = info.fileNameWithoutEnding;
 
-            selectButton.onClick.AddListener(delegate { buttonFunction(fileName); });
+            selectButton.onClick.AddListener(delegate { buttonFunction(info); });
 
-            mismatchIdentifier.Setup(upgradeType: upgradeType);
+            mismatchIdentifier.Setup(upgradeType: info.upgradeType);
 
-            if(upgradeType == SaveAndLoadSystem.UpgradeType.notSupported)
+            if(info.upgradeType == SaveAndLoadSystem.UpgradeType.notSupported)
             {
                 selectButton.gameObject.SetActive(false);
             }
