@@ -11,11 +11,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] Button selectButton;
         [SerializeField] TMP_Text titleText;
 
-        [SerializeField] GameObject VersionIndicatorHolder;
-        [SerializeField] GameObject NoUpgradeSymbol;
-        [SerializeField] RectTransform VersionIndicatorTransform;
-        [SerializeField] Image VersionIndicatorImage;
-        [SerializeField] TMP_Text UpgradeInfo;
+        [SerializeField] VersionMismatchController mismatchIdentifier;
 
         string fileName;
         public string FileName
@@ -47,50 +43,11 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             selectButton.onClick.AddListener(delegate { buttonFunction(fileName); });
 
-            switch (upgradeType)
+            mismatchIdentifier.Setup(upgradeType: upgradeType);
+
+            if(upgradeType == SaveAndLoadSystem.UpgradeType.notSupported)
             {
-                case SaveAndLoadSystem.UpgradeType.sameVersion:
-                    VersionIndicatorHolder.SetActive(false);
-                    break;
-
-                case SaveAndLoadSystem.UpgradeType.noIssueNewVersion:
-                    VersionIndicatorHolder.SetActive(false);
-                    break;
-
-                case SaveAndLoadSystem.UpgradeType.someElementsNotSupported:
-                    VersionIndicatorHolder.SetActive(true);
-                    NoUpgradeSymbol.SetActive(false);
-                    VersionIndicatorTransform.localEulerAngles = Vector3.zero;
-                    VersionIndicatorImage.color = Color.yellow;
-                    UpgradeInfo.text = "File created in a newer version. Some elements may not be supported";
-                    break;
-
-                case SaveAndLoadSystem.UpgradeType.someNotSupportedAndWrongPosition:
-                    VersionIndicatorHolder.SetActive(true);
-                    NoUpgradeSymbol.SetActive(false);
-                    VersionIndicatorTransform.localEulerAngles = Vector3.zero;
-                    VersionIndicatorImage.color = Color.red;
-                    UpgradeInfo.text = "File created in a newer version. Some elements may not be supported while others may have wrong parameters";
-                    break;
-
-                case SaveAndLoadSystem.UpgradeType.upgrade:
-                    VersionIndicatorTransform.localEulerAngles = 180 * Vector3.forward;
-                    VersionIndicatorHolder.SetActive(true);
-                    NoUpgradeSymbol.SetActive(false);
-                    VersionIndicatorImage.color = Color.blue;
-                    UpgradeInfo.text = "File created in an older version and will be upgraded when loading";
-                    break;
-
-                case SaveAndLoadSystem.UpgradeType.notSupported:
-                    VersionIndicatorHolder.SetActive(true);
-                    VersionIndicatorTransform.gameObject.SetActive(false);
-                    NoUpgradeSymbol.SetActive(true);
-                    UpgradeInfo.text = "File created in a newer version and cannot be read";
-                    selectButton.gameObject.SetActive(false);
-                    break;
-
-                default:
-                    break;
+                selectButton.gameObject.SetActive(false);
             }
         }
 

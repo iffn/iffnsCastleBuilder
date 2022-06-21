@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
@@ -20,7 +21,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] VectorButton LoadOverrideButton = null;
         [SerializeField] VectorButton LoadUnknownButton = null;
         [SerializeField] VectorButton NewButton = null;
-        [SerializeField] InputField CastleTitle = null;
+        [SerializeField] TMP_InputField CastleTitle = null;
+        [SerializeField] VersionMismatchController fileNameMismatch = null;
 
         [SerializeField] RectTransform ExpandArea = null;
         [SerializeField] RectTransform ExpandIcon;
@@ -91,17 +93,25 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public SaveAndLoadSystem.UpgradeType TitleMismatch
+        {
+            set
+            {
+                fileNameMismatch.UpdateData(upgradeType: value);
+            }
+        }
+
         IEnumerator RestoreSaveButton(float seconds)
         {
             yield return new WaitForSeconds(seconds);
 
-            if(CurrentSaveAndLoadSystem.SelectedFileExists(updateList: true))
+            if(CurrentSaveAndLoadSystem.GetSelectedFile(updateList: true) == null)
             {
-                SaveButtonState = SaveButtonStates.Override;
+                SaveButtonState = SaveButtonStates.New;
             }
             else
             {
-                SaveButtonState = SaveButtonStates.New;
+                SaveButtonState = SaveButtonStates.Override;
             }
         }
 

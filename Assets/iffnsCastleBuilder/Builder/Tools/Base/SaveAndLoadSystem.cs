@@ -21,7 +21,10 @@ namespace iffnsStuff.iffnsCastleBuilder
         readonly static string fileIdentifier = "CastleBuilder by iffn";
         //readonly static string currentVersion = "1.0.0";
         readonly static string mainBuildingIdentifier = "MainBuilding";
-        
+
+        List<StaticSaveAndLoadSystem.BaseLoadFileInfo> loadInfos;
+        List<SaveAndLoadUI.FileLineInfo> fileInfos = new();
+
         readonly static Vector3Int currentVersion = new Vector3Int(2, 1, 1);
         /*
             Version types:
@@ -52,6 +55,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             if (parts.Length != 3)
             {
                 Debug.Log("Error");
+                return Vector3Int.zero;
             }
 
             int x = int.Parse(parts[0]);
@@ -159,11 +163,17 @@ namespace iffnsStuff.iffnsCastleBuilder
             System.Diagnostics.Stopwatch stepwatch = new();
             */
 
-            if (!SelectedFileExists(updateList: true))
+
+            
+            StaticSaveAndLoadSystem.FullLoadFileInfo fileInfo = StaticSaveAndLoadSystem.GetFileInfoFromFileLocation(completeFileLocation: completeFileLocation, fileEnding: fileEnding);
+            if (!LoadInfoIsValid(fileInfo)) return;
+
+            if (GetSelectedFile(updateList: true) == null)
             {
                 UpdateButtons(updateList: false);
                 return;
             }
+
 
             EditTool.DeactivateEditOnMain();
 
@@ -175,9 +185,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Load parameters from file:
             //stepwatch.Restart();
 
-            StaticSaveAndLoadSystem.FullLoadFileInfo fileInfo = StaticSaveAndLoadSystem.GetFileInfoFromFileLocation(completeFileLocation: completeFileLocation, fileEnding: fileEnding);
 
-            if (!LoadInfoIsValid(fileInfo)) return;
 
             StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(RawJSONString: fileInfo.LoadObjectString, baseObject: CurrentBuilding);
             //stepwatch.Stop();
@@ -212,38 +220,30 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         bool LoadInfoIsValid(StaticSaveAndLoadSystem.LoadFileInfo loadInfo)
         {
+            if (loadInfo == null) return false;
+
             if (!loadInfo.IsValid) return false;
             if (loadInfo.identifier != fileIdentifier) return false;
 
-            if (loadInfo.version != GetVersionString(currentVersion))
-            {
-                Debug.Log(loadInfo.FileNameWithoutEnding + " needs an upgrade");
-            }
+            Vector3Int version = GetVersionVector(version: loadInfo.version);
+
+            if (version.x == 0 && version.y == 0 && version.z == 0) return false;
+
+            if (VersionType(version) == UpgradeType.notSupported) return false;
 
             return true;
         }
 
-        public bool SelectedFileExists(bool updateList)
+        public StaticSaveAndLoadSystem.BaseLoadFileInfo GetSelectedFile(bool updateList)
         {
-            if (updateList)
-            {
-                List<StaticSaveAndLoadSystem.BaseLoadFileInfo> loadInfos = StaticSaveAndLoadSystem.GetBaseFileInfosFromFolderLocation(completeFolderLocation: buildingFileLocation, fileEnding: fileEnding);
+            if (updateList) UpdateFileList();
 
-                foreach (StaticSaveAndLoadSystem.BaseLoadFileInfo info in loadInfos)
-                {
-                    if (info.FileNameWithoutEnding == CurrentSaveAndLoadUI.CurrentTitle) return true;
-                }
-                
-                return false;
-            }
-            else
+            foreach (StaticSaveAndLoadSystem.BaseLoadFileInfo info in loadInfos)
             {
-                foreach(SaveAndLoadUI.FileLineInfo info in fileInfos)
-                {
-                    if(info.fileNameWithoutEnding == CurrentSaveAndLoadUI.CurrentTitle) return true;
-                }
-                return false;
+                if (info.FileNameWithoutEnding == CurrentSaveAndLoadUI.CurrentTitle) return info;
             }
+
+            return null;
         }
 
         public string CurrentFileNameWithoutEnding
@@ -276,21 +276,30 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.Unknown;
                 CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Unknown;
-            }
-            else if (SelectedFileExists(updateList: updateList))
-            {
-                CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.Override;
-                CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Override;
+                CurrentSaveAndLoadUI.TitleMismatch = UpgradeType.sameVersion;
             }
             else
             {
-                CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.New;
-                CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Unknown;
+                StaticSaveAndLoadSystem.BaseLoadFileInfo file = GetSelectedFile(updateList: updateList);
+
+                if(file == null)
+                {
+                    CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.New;
+                    CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Unknown;
+                    CurrentSaveAndLoadUI.TitleMismatch = UpgradeType.sameVersion;
+                }
+                else
+                {
+                    CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.Override;
+                    CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Override;
+                    CurrentSaveAndLoadUI.TitleMismatch = VersionType(GetVersionVector(version: file.version));
+                }
+
             }
         }
 
         //File list
-        List<SaveAndLoadUI.FileLineInfo> fileInfos = new();
+        
 
         public List<SaveAndLoadUI.FileLineInfo> CurrentFileInfos
         {
@@ -306,7 +315,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             fileInfos.Clear();
 
-            List<StaticSaveAndLoadSystem.BaseLoadFileInfo> loadInfos = StaticSaveAndLoadSystem.GetBaseFileInfosFromFolderLocation(completeFolderLocation: buildingFileLocation, fileEnding: fileEnding);
+            loadInfos = StaticSaveAndLoadSystem.GetBaseFileInfosFromFolderLocation(completeFolderLocation: buildingFileLocation, fileEnding: fileEnding);
 
             foreach (StaticSaveAndLoadSystem.BaseLoadFileInfo loadInfo in loadInfos)
             {
