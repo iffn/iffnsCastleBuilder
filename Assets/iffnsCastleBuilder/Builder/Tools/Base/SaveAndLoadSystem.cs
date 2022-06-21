@@ -19,20 +19,91 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] BuildingToolController ToolController;
 
         readonly static string fileIdentifier = "CastleBuilder by iffn";
-        readonly static string currentVersion = "1.0.0";
+        //readonly static string currentVersion = "1.0.0";
         readonly static string mainBuildingIdentifier = "MainBuilding";
+        
+        readonly static Vector3Int currentVersion = new Vector3Int(2, 1, 1);
+        /*
+            Version types:
+            x = Main version: File cannot be read when opening with an older version
+            y = Secondary version: Existing parts may change when opening with an older version
+            z = Minor version: Some new parts not supported when opening with an older version
+        */
+
+        public enum UpgradeType
+        {
+            sameVersion,
+            noIssueNewVersion,
+            someElementsNotSupported,
+            someNotSupportedAndWrongPosition,
+            upgrade,
+            notSupported
+        }
+
+        public string GetVersionString(Vector3Int version)
+        {
+            return version.x + "." + version.y + "." + version.z;
+        }
+
+        public Vector3Int GetVersionVector(string version)
+        {
+            string[] parts = version.Split('.');
+
+            if (parts.Length != 3)
+            {
+                Debug.Log("Error");
+            }
+
+            int x = int.Parse(parts[0]);
+            int y = int.Parse(parts[1]);
+            int z = int.Parse(parts[2]);
+
+            return new Vector3Int(x, y, z);
+        }
+
+        UpgradeType VersionType(Vector3Int fileVersion)
+        {
+            if(fileVersion.x > currentVersion.x)
+            {
+                return UpgradeType.notSupported;
+            }
+            if(fileVersion.x < currentVersion.x)
+            {
+                return UpgradeType.upgrade;
+            }
+
+            if (fileVersion.y > currentVersion.y)
+            {
+                return UpgradeType.someNotSupportedAndWrongPosition;
+            }
+            if (fileVersion.y < currentVersion.y)
+            {
+                return UpgradeType.upgrade;
+            }
+
+            if (fileVersion.z > currentVersion.z)
+            {
+                return UpgradeType.someElementsNotSupported;
+            }
+            if (fileVersion.z < currentVersion.z)
+            {
+                return UpgradeType.noIssueNewVersion;
+            }
+
+            return UpgradeType.sameVersion;
+        }
 
         TextAsset DefaultBuildingFile;
 
         readonly string fileEnding = ".json";
 
-        static readonly string buildingFileLication = StaticSaveAndLoadSystem.UserFileLocation + MyStringComponents.slash + "Buildings";
+        static readonly string buildingFileLocation = StaticSaveAndLoadSystem.UserFileLocation + MyStringComponents.slash + "Buildings";
 
         string completeFileLocation
         {
             get
             {
-                return buildingFileLication + MyStringComponents.slash + CurrentFileNameWithoutEnding + fileEnding;
+                return buildingFileLocation + MyStringComponents.slash + CurrentFileNameWithoutEnding + fileEnding;
             }
         }
 
@@ -144,7 +215,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             if (!loadInfo.IsValid) return false;
             if (loadInfo.identifier != fileIdentifier) return false;
 
-            if (loadInfo.version != currentVersion)
+            if (loadInfo.version != GetVersionString(currentVersion))
             {
                 Debug.Log(loadInfo.FileNameWithoutEnding + " needs an upgrade");
             }
@@ -154,18 +225,25 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public bool SelectedFileExists(bool updateList)
         {
-            if (currentFileListWithoutEnding.Contains(CurrentSaveAndLoadUI.CurrentTitle) == false)
+            if (updateList)
             {
-                if (updateList) UpdateFileList();
-                else return false;
+                List<StaticSaveAndLoadSystem.BaseLoadFileInfo> loadInfos = StaticSaveAndLoadSystem.GetBaseFileInfosFromFolderLocation(completeFolderLocation: buildingFileLocation, fileEnding: fileEnding);
 
-                if (currentFileListWithoutEnding.Contains(CurrentSaveAndLoadUI.CurrentTitle) == false)
+                foreach (StaticSaveAndLoadSystem.BaseLoadFileInfo info in loadInfos)
                 {
-                    return false;
+                    if (info.FileNameWithoutEnding == CurrentSaveAndLoadUI.CurrentTitle) return true;
                 }
+                
+                return false;
             }
-
-            return true;
+            else
+            {
+                foreach(SaveAndLoadUI.FileLineInfo info in fileInfos)
+                {
+                    if(info.fileNameWithoutEnding == CurrentSaveAndLoadUI.CurrentTitle) return true;
+                }
+                return false;
+            }
         }
 
         public string CurrentFileNameWithoutEnding
@@ -183,7 +261,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             StaticSaveAndLoadSystem.SaveFileInfo.SaveObjectInfo saveObject = new(name: mainBuildingIdentifier, saveObject: CurrentBuilding);
 
-            StaticSaveAndLoadSystem.SaveFileInfo fileInfo = new(type: fileIdentifier, version: currentVersion, saveObject: saveObject);
+            StaticSaveAndLoadSystem.SaveFileInfo fileInfo = new(type: fileIdentifier, version: GetVersionString(currentVersion), saveObject: saveObject);
 
             StaticSaveAndLoadSystem.SaveFileToFileLocation(fileInfo: fileInfo, completeFileLocation: completeFileLocation);
 
@@ -212,29 +290,29 @@ namespace iffnsStuff.iffnsCastleBuilder
         }
 
         //File list
-        List<string> currentFileListWithoutEnding = new List<string>();
+        List<SaveAndLoadUI.FileLineInfo> fileInfos = new();
 
-        public List<string> CurrentFileListWithoutEnding
+        public List<SaveAndLoadUI.FileLineInfo> CurrentFileInfos
         {
             get
             {
                 UpdateFileList();
 
-                return currentFileListWithoutEnding;
+                return fileInfos;
             }
         }
 
         void UpdateFileList()
         {
-            currentFileListWithoutEnding.Clear();
+            fileInfos.Clear();
 
-            List<StaticSaveAndLoadSystem.BaseLoadFileInfo> loadInfos = StaticSaveAndLoadSystem.GetBaseFileInfosFromFolderLocation(completeFolderLocation: buildingFileLication, fileEnding: fileEnding);
+            List<StaticSaveAndLoadSystem.BaseLoadFileInfo> loadInfos = StaticSaveAndLoadSystem.GetBaseFileInfosFromFolderLocation(completeFolderLocation: buildingFileLocation, fileEnding: fileEnding);
 
             foreach (StaticSaveAndLoadSystem.BaseLoadFileInfo loadInfo in loadInfos)
             {
                 if (!LoadInfoIsValid(loadInfo)) continue;
 
-                currentFileListWithoutEnding.Add(loadInfo.FileNameWithoutEnding);
+                fileInfos.Add(new SaveAndLoadUI.FileLineInfo(fileNameWithoutEnding: loadInfo.FileNameWithoutEnding, upgradeType: VersionType(GetVersionVector(loadInfo.version))));
             }
         }
 
@@ -250,7 +328,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 //Show file list
                 UpdateFileList();
 
-                CurrentSaveAndLoadUI.ShowFileList(currentFileListWithoutEnding);
+                CurrentSaveAndLoadUI.ShowFileList(fileInfos);
             }
         }
 

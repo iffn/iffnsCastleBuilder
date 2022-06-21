@@ -191,20 +191,30 @@ namespace iffnsStuff.iffnsCastleBuilder
         //File list
         public bool FileListShown { get; private set; } = false;
 
-        public void ShowFileList(List<string> fileList)
+        public class FileLineInfo
+        {
+            public string fileNameWithoutEnding;
+            public SaveAndLoadSystem.UpgradeType upgradeType;
+
+            public FileLineInfo(string fileNameWithoutEnding, SaveAndLoadSystem.UpgradeType upgradeType)
+            {
+                this.fileNameWithoutEnding = fileNameWithoutEnding;
+                this.upgradeType = upgradeType;
+            }
+        }
+
+        public void ShowFileList(List<FileLineInfo> fileInfos)
         {
             FileListShown = true;
 
-            foreach (string fileName in fileList)
+            foreach(FileLineInfo info in fileInfos)
             {
-                AddFileLine(fileName: fileName, title: fileName);
+                AddFileLine(fileName: info.fileNameWithoutEnding, title: info.fileNameWithoutEnding, upgradeType: info.upgradeType);
             }
 
-            ExpandArea.sizeDelta = new Vector2(ExpandArea.sizeDelta.x, fileList.Count * FileSelectionLineTemplate.Height);
+            ExpandArea.sizeDelta = new Vector2(ExpandArea.sizeDelta.x, fileInfos.Count * FileSelectionLineTemplate.Height);
 
             ExpandIcon.localRotation = Quaternion.Euler(180 * Vector3.forward);
-
-
         }
 
         public void HideFileList()
@@ -219,7 +229,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         //File selection stuff
         readonly List<FileSelectionLine> fileLines = new();
 
-        void AddFileLine(string fileName, string title)
+        void AddFileLine(string fileName, string title, SaveAndLoadSystem.UpgradeType upgradeType)
         {
             FileSelectionLine fileLine = Instantiate(FileSelectionLineTemplate).transform.GetComponent<FileSelectionLine>();
 
@@ -229,7 +239,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             fileLine.transform.localScale = Vector3.one;
 
-            fileLine.Setup(fileName: fileName, title: title, buttonFunction: delegate { CurrentSaveAndLoadSystem.SelectFileFromList(title); });
+            fileLine.Setup(fileName: fileName, title: title, buttonFunction: delegate { CurrentSaveAndLoadSystem.SelectFileFromList(title); }, upgradeType: upgradeType);
         }
 
         void ClearFileList()

@@ -1,7 +1,7 @@
 {
-	"Type": "CastleBuilder by iffn",
-	"Version": "1.0.0",
-	"MainBuilding":
+"Type": "CastleBuilder by iffn",
+"Version": "1.0.0",
+	MainBuilding:
 	{
 		"Type": "HumanBuildingController",
 		"Name": "",
@@ -1772,8 +1772,8 @@
 						"Block type": "Wall",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Left wall material": "PolyHaven-sandstone_blocks_05"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -1959,8 +1959,8 @@
 						"Block type": "Wall",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -6371,8 +6371,8 @@
 						"Block type": "Wall",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Left wall material": "PolyHaven-sandstone_blocks_05"
 					},
 					{
 						"Type": "VirtualBlock",
