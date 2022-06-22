@@ -59,22 +59,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             */
         }
 
-        void LoadDefaultBuilding()
-        {
-            string fileLocation = Application.streamingAssetsPath + @"\Buildings";
-            string fileNameWithEnding = "DefaultBuilding.json";
-
-            string completeFilePath = fileLocation + @"\" + fileNameWithEnding;
-
-            CurrentBuilderController.CurrentBuilding = StaticSaveAndLoadSystem.LoadBaseObjectIntoSuperObject(completeFileLocation: completeFilePath, superObject: CurrentBuilderController.WorldController) as HumanBuildingController;
-
-            CurrentBuilderController.CurrentBuilding.ApplyBuildParameters();
-        }
-
-        // Start is called before the first frame update
-
-
-
         // Update is called once per frame
         protected override void Update()
         {

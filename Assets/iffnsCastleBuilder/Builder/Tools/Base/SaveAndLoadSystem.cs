@@ -52,15 +52,18 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             string[] parts = version.Split('.');
 
-            if (parts.Length != 3)
+            if (parts.Length < 3)
             {
-                Debug.Log("Error");
                 return Vector3Int.zero;
             }
 
-            int x = int.Parse(parts[0]);
-            int y = int.Parse(parts[1]);
-            int z = int.Parse(parts[2]);
+            int x, y, z;
+
+            bool xCorrect = int.TryParse(parts[0], out x);
+            bool yCorrect = int.TryParse(parts[1], out y);
+            bool zCorrect = int.TryParse(parts[2], out z);
+
+            if (!xCorrect || !yCorrect || !zCorrect) return Vector3Int.zero;
 
             return new Vector3Int(x, y, z);
         }
@@ -175,7 +178,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return;
             }
 
-
             EditTool.DeactivateEditOnMain();
 
             //Save floor number:
@@ -186,8 +188,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Load parameters from file:
             //stepwatch.Restart();
 
-
-
             StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(RawJSONString: fileInfo.LoadObjectString, baseObject: CurrentBuilding);
             //stepwatch.Stop();
             //Debug.Log("File load time = " + stepwatch.Elapsed.TotalSeconds);
@@ -195,6 +195,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             //Apply parameters:
             //stepwatch.Restart();
+            if (CurrentBuilding.Failed) LoadDefaultBuilding();
+
             CurrentBuilding.ApplyBuildParameters();
             //stepwatch.Stop();
             //Debug.Log("Apply build parameter time = " + stepwatch.Elapsed.TotalSeconds);
@@ -228,7 +230,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             Vector3Int version = GetVersionVector(version: loadInfo.version);
 
-            if (version.x == 0 && version.y == 0 && version.z == 0) return false;
+            if (version.x < 1 || version.y < 0 || version.z <0) return false;
 
             return true;
         }
@@ -293,12 +295,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                     CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Override;
                     CurrentSaveAndLoadUI.TitleMismatch = VersionType(GetVersionVector(version: file.version));
                 }
-
             }
         }
-
-        //File list
-        
 
         public List<SaveAndLoadUI.FileLineInfo> CurrentFileInfos
         {
