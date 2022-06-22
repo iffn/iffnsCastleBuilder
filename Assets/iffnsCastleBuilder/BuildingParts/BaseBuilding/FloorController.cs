@@ -235,8 +235,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         void SetupBuildParameters()
         {
-            bottomFloorHeightParam = new MailboxLineRanged("Bottom floor height", CurrentMailbox, Mailbox.ValueType.buildParameter, 1f, 0.05f, 0.2f);
-            wallBetweenHeightParam = new MailboxLineRanged("Wall height", CurrentMailbox, Mailbox.ValueType.buildParameter, 5f, 0.5f, 2.2f);
+            bottomFloorHeightParam = new MailboxLineRanged("Bottom floor height", CurrentMailbox, Mailbox.ValueType.buildParameter, 1f, 0.05f, 0.25f);
+            wallBetweenHeightParam = new MailboxLineRanged("Wall height", CurrentMailbox, Mailbox.ValueType.buildParameter, 10f, 0.2f, 2.75f);
             virtualBlocksParam = new MailboxLineMultipleSubObject(valueName: "Floor matrix", CurrentMailbox);
             onFloorObjectsParam = new MailboxLineMultipleSubObject("On floor objects", CurrentMailbox);
             nodeWallSystemParam = new MailboxLineSingleSubObject("Node wall system", CurrentMailbox);

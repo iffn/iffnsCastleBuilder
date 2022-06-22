@@ -1,7 +1,7 @@
 {
-	"Type": "CastleBuilder by iffn",
-	"Version": "1.0.0",
-	"MainBuilding":
+"Type": "CastleBuilder by iffn",
+"Version": "1.0.0",
+	MainBuilding:
 	{
 		"Type": "CastleController",
 		"Name": "",
@@ -12,8 +12,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.2,
-				"Wall height": 2.2,
+				"Bottom floor height": 0.25,
+				"Wall height": 2.75,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -15407,7 +15407,7 @@
 						"Name": "",
 						"Bottom left position": [60, 11],
 						"Top right position": [56, 12],
-						"FreeHeihgtSide [m]": 1.8,
+						"FreeHeihgtSide [m]": 2,
 						"Arc height [m]": 0.5,
 						"Main material": "PolyHaven-stone_brick_wall_001",
 						"Other side material": "PolyHaven-sandstone_blocks_05"
@@ -15447,6 +15447,7 @@
 						"Revolution angle [°]": 360,
 						"Step height [m]": 0.25,
 						"Back thickness [m]": 0.25,
+						"Number of floors": 1,
 						"Top step top material": "PolyHaven-wood_planks_dirt",
 						"Other steps top material": "PolyHaven-plywood",
 						"Steps front material": "PolyHaven-beige_wall_001",
@@ -15469,7 +15470,7 @@
 						"Name": "",
 						"Bottom Left Position": [20, 21],
 						"Top Right Position": [3, -1],
-						"Bottom height [m]": 0.75,
+						"Bottom height [m]": 0.8,
 						"Window height [m]": 1.25,
 						"Front wall material": "PolyHaven-beige_wall_001",
 						"Back wall material": "PolyHaven-beige_wall_001",
@@ -15493,7 +15494,7 @@
 						"Name": "",
 						"Bottom Left Position": [61, 28],
 						"Top Right Position": [3, -1],
-						"Bottom height [m]": 0.75,
+						"Bottom height [m]": 0.8,
 						"Window height [m]": 1.25,
 						"Front wall material": "PolyHaven-beige_wall_001",
 						"Back wall material": "PolyHaven-beige_wall_001",
@@ -15800,7 +15801,7 @@
 						"Name": "",
 						"Bottom Left Position": [71, 28],
 						"Top Right Position": [3, -1],
-						"Bottom height [m]": 0.75,
+						"Bottom height [m]": 0.8,
 						"Window height [m]": 1.25,
 						"Front wall material": "PolyHaven-beige_wall_001",
 						"Back wall material": "PolyHaven-beige_wall_001",
@@ -15813,7 +15814,7 @@
 						"Name": "",
 						"Bottom Left Position": [78, 28],
 						"Top Right Position": [3, -1],
-						"Bottom height [m]": 0.75,
+						"Bottom height [m]": 0.8,
 						"Window height [m]": 1.25,
 						"Front wall material": "PolyHaven-beige_wall_001",
 						"Back wall material": "PolyHaven-beige_wall_001",

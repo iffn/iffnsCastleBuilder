@@ -12,8 +12,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.3,
-				"Wall height": 2.2,
+				"Bottom floor height": 0.25,
+				"Wall height": 2.75,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
