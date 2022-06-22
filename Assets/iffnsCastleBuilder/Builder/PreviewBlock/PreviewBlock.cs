@@ -6,7 +6,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class PreviewBlock : MonoBehaviour
     {
-        public void SetCardinalPreviewBlock(VirtualBlock firstBlock, VirtualBlock secondBlock, HumanBuildingController currentBuilding)
+        public void SetCardinalPreviewBlock(VirtualBlock firstBlock, VirtualBlock secondBlock, CastleController currentBuilding)
         {
             /*
             float xSize = (Mathf.Abs(firstBlock.XPosition - secondBlock.XPosition) + 1) * currentBuilding.BlockSize + 0.05f;

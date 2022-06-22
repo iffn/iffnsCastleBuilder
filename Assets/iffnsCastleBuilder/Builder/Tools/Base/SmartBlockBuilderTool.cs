@@ -10,7 +10,7 @@ namespace iffnsStuff.iffnsCastleBuilder
     public class SmartBlockBuilderTool : MonoBehaviour
     {
         //Unity assignments
-        [SerializeField] HumanBuilderController currentBuilderController = null;
+        [SerializeField] CastleBuilderController currentBuilderController = null;
         [SerializeField] RTSController currentRTSController = null;
         //[SerializeField] BuildingToolController currentBuildingToolController = null;
 
@@ -23,7 +23,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         Vector3 previousEndPosition;
 
 
-        HumanBuildingController currentBuilding
+        CastleController currentBuilding
         {
             get
             {
@@ -364,7 +364,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
 
 
-        public static Vector3 GetPositionFromClick(RTSController currentRTSController, HumanBuildingController currentBuilding, bool cutoffAtFloor)
+        public static Vector3 GetPositionFromClick(RTSController currentRTSController, CastleController currentBuilding, bool cutoffAtFloor)
         {
             Ray ray = currentRTSController.GetRayFromCameraMouseLocation();
             //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -395,8 +395,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             return impactPoint;
         }
 
-        //public static Vector2Int GetNodeCoordinateFromClick(bool OnlyCheckCurrentFloor, HumanBuildingController currentBuilding, RTSController currentRTSController)
-        public static Vector2Int GetNodeCoordinateFromClick(HumanBuildingController currentBuilding, RTSController currentRTSController)
+        //public static Vector2Int GetNodeCoordinateFromClick(bool OnlyCheckCurrentFloor, CastleController currentBuilding, RTSController currentRTSController)
+        public static Vector2Int GetNodeCoordinateFromClick(CastleController currentBuilding, RTSController currentRTSController)
         {
             Ray ray = currentRTSController.GetRayFromCameraMouseLocation();
             //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -448,7 +448,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             return impactPoint;
         }
 
-        public static Vector2Int GetBlockCoordinateFromClick(bool OnlyCheckCurrentFloor, HumanBuildingController currentBuilding, RTSController currentRTSController)
+        public static Vector2Int GetBlockCoordinateFromClick(bool OnlyCheckCurrentFloor, CastleController currentBuilding, RTSController currentRTSController)
         {
             Ray ray = currentRTSController.GetRayFromCameraMouseLocation();
             //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -507,7 +507,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             return GetBlockCoordinateFromSurface();
         }
 
-        public static VirtualBlock GetBlockFromClick(bool OnlyCheckCurrentFloor, HumanBuildingController currentBuilding, RTSController currentRTSCamera)
+        public static VirtualBlock GetBlockFromClick(bool OnlyCheckCurrentFloor, CastleController currentBuilding, RTSController currentRTSCamera)
         {
             if (EventSystem.current.IsPointerOverGameObject()) //If over UI
             {

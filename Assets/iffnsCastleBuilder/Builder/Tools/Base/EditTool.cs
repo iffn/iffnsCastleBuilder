@@ -14,7 +14,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         //[SerializeField] UIResources UIResourcesHolder = null;
         [SerializeField] RTSController currentRTSController = null;
         [SerializeField] BuildingToolController currentBuildingToolController = null;
-        [SerializeField] HumanBuilderController currentBuilderController = null;
+        [SerializeField] CastleBuilderController currentBuilderController = null;
         [SerializeField] ControlBox PropertyMenu;
 
         //Runtime parameters
@@ -22,7 +22,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         ModificationNode activeNode;
         NodeWallSystem currentNodeWallSystem;
 
-        HumanBuildingController currentBuilding
+        CastleController currentBuilding
         {
             get
             {
@@ -310,7 +310,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             while (currentInvestigationObject != null)
             {
-                if (currentInvestigationObject is HumanBuildingTestWorldController) break; //Ignore world controller
+                if (currentInvestigationObject is CastleTestWorldController) break; //Ignore world controller
 
                 hierarchyList.Insert(0, currentInvestigationObject);
 
@@ -325,7 +325,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 List<DelegateLibrary.VoidFunction> additionalCalls = new List<DelegateLibrary.VoidFunction>();
 
-                if (hierarchyObject is HumanBuildingController tempBuilding)
+                if (hierarchyObject is CastleController tempBuilding)
                 {
                     additionalCalls.Add(delegate { currentBuildingToolController.CurrentNavigationTools.LinkedBlockLineController.UpdateAll(); });
                 }

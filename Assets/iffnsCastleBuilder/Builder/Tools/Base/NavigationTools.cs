@@ -10,7 +10,7 @@ namespace iffnsStuff.iffnsCastleBuilder
     public class NavigationTools : MonoBehaviour
     {
         //Unity assignments
-        [SerializeField] HumanBuilderController CurrentBuilderController;
+        [SerializeField] CastleBuilderController CurrentBuilderController;
         [SerializeField] RTSController CurrentRTSCamera;
         [SerializeField] Slider FloorSelector;
         [SerializeField] GameObject FloorNumberHolder;
@@ -46,7 +46,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         }
 
 
-        public HumanBuildingController CurrentBuilding
+        public CastleController CurrentBuilding
         {
             get
             {
@@ -130,7 +130,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             //CurrentBuilderController.CurrentBuilding.CurrentFloorObject.UpdateFloorDisplayComplete();
         }
 
-        public HumanBuildingController.FloorViewDirectionType ViewDirection
+        public CastleController.FloorViewDirectionType ViewDirection
         {
             get
             {

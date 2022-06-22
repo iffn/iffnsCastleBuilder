@@ -46,7 +46,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        //[SerializeField] HumanBuildingResources HumanBuildingResources;
+        //[SerializeField] CastleResources CastleResources;
 
         //Build parameters
         MailboxLineRanged bottomFloorHeightParam;
@@ -55,7 +55,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineMultipleSubObject onFloorObjectsParam;
         MailboxLineSingleSubObject nodeWallSystemParam;
 
-        HumanBuildingController buildingController;
+        CastleController buildingController;
 
         public enum BlockDirections
         {
@@ -65,7 +65,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             Right
         }
 
-        public HumanBuildingController LinkedBuildingController
+        public CastleController LinkedBuildingController
         {
             get
             {
@@ -556,7 +556,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             floorMeshBuilder = new BlockMeshBuilder(linkedFloor: this);
 
-            buildingController = superObject as HumanBuildingController;
+            buildingController = superObject as CastleController;
 
             SetupBuildParameters();
 
@@ -566,7 +566,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             AddModificationNode(GridScaleOrganizer);
         }
 
-        public void CompleteSetUpWithBuildParameters(HumanBuildingController buildingControler, VirtualBlock.BlockTypes blockType)
+        public void CompleteSetUpWithBuildParameters(CastleController buildingControler, VirtualBlock.BlockTypes blockType)
         {
             Setup(buildingControler);
 

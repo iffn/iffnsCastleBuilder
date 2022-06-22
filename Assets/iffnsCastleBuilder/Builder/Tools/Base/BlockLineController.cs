@@ -16,10 +16,10 @@ namespace iffnsStuff.iffnsCastleBuilder
         readonly List<GameObject> blockLines = new List<GameObject>();
         int BlockLineRadius = 3;
         static bool createWallLines = false;
-        HumanBuildingController linkedBuilding;
+        CastleController linkedBuilding;
         Vector2Int lastBlockGridSize = Vector2Int.zero;
 
-        public void Setup(HumanBuildingController linkedBuilding)
+        public void Setup(CastleController linkedBuilding)
         {
             this.linkedBuilding = linkedBuilding;
         }
@@ -43,8 +43,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        HumanBuildingController.FloorViewDirectionType viewDirection;
-        public HumanBuildingController.FloorViewDirectionType ViewDirection
+        CastleController.FloorViewDirectionType viewDirection;
+        public CastleController.FloorViewDirectionType ViewDirection
         {
             get
             {
@@ -85,7 +85,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             switch (viewDirection)
             {
-                case HumanBuildingController.FloorViewDirectionType.topDown:
+                case CastleController.FloorViewDirectionType.topDown:
                     BlockLineHolder.transform.position += Vector3.up * (linkedBuilding.CurrentFloorObject.BottomFloorHeight + MathHelper.SmallFloat);
                     BlockLineHolder.transform.localScale = Vector3.one;
                     /*
@@ -93,7 +93,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     DimensionInfo.transform.position += Vector3.up * CurrentBuilding.CurrentFloorObject.BottomFloorHeight;
                     */
                     break;
-                case HumanBuildingController.FloorViewDirectionType.bottomUp:
+                case CastleController.FloorViewDirectionType.bottomUp:
                     BlockLineHolder.transform.position += new Vector3(linkedBuilding.BlockGridSize.x * linkedBuilding.BlockSize, -MathHelper.SmallFloat, 0);
                     BlockLineHolder.transform.localScale = new Vector3(1, -1, 1);
                     BlockLineHolder.transform.Rotate(Vector3.forward * 180);
@@ -110,11 +110,11 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             switch (viewDirection)
             {
-                case HumanBuildingController.FloorViewDirectionType.topDown:
+                case CastleController.FloorViewDirectionType.topDown:
                     SizeInfo.transform.rotation = Quaternion.Euler(Vector3.right * 90);
                     SizeInfo.transform.position += Vector3.up * linkedBuilding.CurrentFloorObject.BottomFloorHeight;
                     break;
-                case HumanBuildingController.FloorViewDirectionType.bottomUp:
+                case CastleController.FloorViewDirectionType.bottomUp:
                     SizeInfo.transform.rotation = Quaternion.Euler(new Vector3(-90, -90, 0));
                     break;
                 default:
@@ -167,7 +167,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         }
 
         /*
-        public void UpdateBlockLines(HumanBuildingController.FloorViewDirectionType viewDirection)
+        public void UpdateBlockLines(CastleController.FloorViewDirectionType viewDirection)
         {
             //Check if floor lines activated
 

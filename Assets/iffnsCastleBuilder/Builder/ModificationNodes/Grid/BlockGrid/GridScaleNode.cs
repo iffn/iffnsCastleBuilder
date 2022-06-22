@@ -7,7 +7,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class GridScaleNode : ModificationNode
     {
-        HumanBuildingController linkedController;
+        CastleController linkedController;
         DirectionTypes directionType;
         GridScalerOrganizer organizer;
 
@@ -30,7 +30,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             zNeg
         }
 
-        public void Setup(HumanBuildingController linkedController, GridScalerOrganizer organizer, DirectionTypes directionType)
+        public void Setup(CastleController linkedController, GridScalerOrganizer organizer, DirectionTypes directionType)
         {
             base.setup(linkedObject: linkedController);
 

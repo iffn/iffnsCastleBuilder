@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class HumanBuilderController : MonoBehaviour
+    public class CastleBuilderController : MonoBehaviour
     {
-        public HumanBuildingTestWorldController WorldController;
+        public CastleTestWorldController WorldController;
 
-        [HideInInspector] public HumanBuildingController CurrentBuilding;
+        [HideInInspector] public CastleController CurrentBuilding;
         public BuildingToolController CurrentBuildingToolController;
 
-        public void Setup(HumanBuildingTestWorldController worldController)
+        public void Setup(CastleTestWorldController worldController)
         {
             CurrentBuildingToolController.Setup();
 

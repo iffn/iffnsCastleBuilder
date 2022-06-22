@@ -9,7 +9,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class Exporter : MonoBehaviour
     {
-        [SerializeField] HumanBuilderController currentBuilderController = null;
+        [SerializeField] CastleBuilderController currentBuilderController = null;
         [SerializeField] ExporterUI linkedExporterUI = null;
         [SerializeField] List<GameObject> FailedObjects = new List<GameObject>();
 
@@ -53,7 +53,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         ObjectGroupOrganizer currentObjectGroupOrganizer;
         //GameObject exportReadyObject;
-        HumanBuildingController exportBaseObject;
+        CastleController exportBaseObject;
 
         public void ExportObject()
         {

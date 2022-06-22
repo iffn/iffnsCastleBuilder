@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class HumanBuildingResources : MonoBehaviour
+    public class CastleResources : MonoBehaviour
     {
         //public VirtualBlock BlockTemplate;
         public FloorController FloorTemplate;

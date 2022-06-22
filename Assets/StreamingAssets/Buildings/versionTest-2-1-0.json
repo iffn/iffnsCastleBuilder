@@ -3,7 +3,7 @@
 "Version": "2.1.0",
 	MainBuilding:
 	{
-		"Type": "HumanBuildingController",
+		"Type": "CastleController",
 		"Name": "",
 		"Negative floors": 0,
 		"Grid size": [7, 7],

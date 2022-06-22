@@ -7,7 +7,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class GridScalerOrganizer : ModificationNode
     {
-        HumanBuildingController linkedController;
+        CastleController linkedController;
 
         //Public since used as assignment and script reference
         public GridScaleNode xPosNode;
@@ -25,7 +25,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         }
         */
 
-        public void Setup(HumanBuildingController linkedController)
+        public void Setup(CastleController linkedController)
         {
             base.setup(linkedController);
 

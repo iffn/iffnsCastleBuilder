@@ -83,62 +83,62 @@ namespace iffnsStuff.iffnsCastleBuilder
                 case StandardViews.XPos:
                     CameraTiltAngleDeg = 0;
                     CameraHeadingAngleDeg = 270;
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.complete;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.complete;
                     break;
                 case StandardViews.ZPos:
                     CameraTiltAngleDeg = 0;
                     CameraHeadingAngleDeg = 0;
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.complete;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.complete;
                     break;
                 case StandardViews.XNeg:
                     CameraTiltAngleDeg = 0;
                     CameraHeadingAngleDeg = 90;
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.complete;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.complete;
                     break;
                 case StandardViews.ZNeg:
                     CameraTiltAngleDeg = 0;
                     CameraHeadingAngleDeg = 180;
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.complete;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.complete;
                     break;
                 case StandardViews.TopXPos:
                     CameraTiltAngleDeg = 90;
                     CameraHeadingAngleDeg = 270;
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.topDown;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.topDown;
                     break;
                 case StandardViews.TopZPos:
                     CameraTiltAngleDeg = 90;
                     CameraHeadingAngleDeg = 0;
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.topDown;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.topDown;
                     break;
                 case StandardViews.TopXNeg:
                     CameraTiltAngleDeg = 90;
                     CameraHeadingAngleDeg = 90;
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.topDown;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.topDown;
                     break;
                 case StandardViews.TopZNeg:
                     CameraTiltAngleDeg = 90;
                     CameraHeadingAngleDeg = 180;
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.topDown;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.topDown;
                     break;
                 case StandardViews.BottomXPos:
                     CameraTiltAngleDeg = -90;
                     CameraHeadingAngleDeg = 270;
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.bottomUp;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.bottomUp;
                     break;
                 case StandardViews.BottomZPos:
                     CameraTiltAngleDeg = -90;
                     CameraHeadingAngleDeg = 0;
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.bottomUp;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.bottomUp;
                     break;
                 case StandardViews.BottomXNeg:
                     CameraTiltAngleDeg = -90;
                     CameraHeadingAngleDeg = 90;
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.bottomUp;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.bottomUp;
                     break;
                 case StandardViews.BottomZNeg:
                     CameraTiltAngleDeg = -90;
                     CameraHeadingAngleDeg = 180;
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.bottomUp;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.bottomUp;
                     break;
                 default:
                     break;
@@ -341,11 +341,11 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (CameraTiltAngleDeg < 180)
                 {
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.topDown;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.topDown;
                 }
                 else
                 {
-                    LinkedNavigationTools.ViewDirection = HumanBuildingController.FloorViewDirectionType.bottomUp;
+                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.bottomUp;
                 }
 
                 updateViewIdentifier = true;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class HumanBuildingTestWorldController : WorldController
+    public class CastleTestWorldController : WorldController
     {
         [SerializeField] Vector2Int BuildingGridSize;
         [SerializeField] ModificationNodeLibraryIntegrator CurrentModificationNodeLibraryIntegrator = null; //ToDo: Move to Builder library
@@ -15,9 +15,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         MailboxLineSingleSubObject currentBuildingParam;
 
-        //public List<HumanBuildingController> HumanBuildingControllers;
+        //public List<CastleController> CastleControllers;
 
-        public HumanBuilderController CurrentBuilderController;
+        public CastleBuilderController CurrentBuilderController;
 
         protected override void Start()
         {
@@ -46,7 +46,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         void SetupDefaultBuilding()
         {
-            CurrentBuilderController.CurrentBuilding = Instantiate(ResourceLibrary.TryGetTemplateFromStringIdentifier(nameof(HumanBuildingController)) as HumanBuildingController);
+            CurrentBuilderController.CurrentBuilding = Instantiate(ResourceLibrary.TryGetTemplateFromStringIdentifier(nameof(CastleController)) as CastleController);
 
             CurrentBuilderController.CurrentBuilding.Setup(superObject: this);
 

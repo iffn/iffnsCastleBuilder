@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class HumanBuildingController : BaseGameObject
+    public class CastleController : BaseGameObject
     {
         bool allowGridScaleModification = true;
         public bool AllowGridScaleModification

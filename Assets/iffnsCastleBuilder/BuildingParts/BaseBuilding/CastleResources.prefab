@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 629897738415750965}
   - component: {fileID: 2800350816795376627}
   m_Layer: 0
-  m_Name: HumanBuildingResources
+  m_Name: CastleResources
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

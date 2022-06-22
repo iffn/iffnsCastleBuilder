@@ -9,7 +9,7 @@ namespace iffnsStuff.iffnsCastleBuilder
     public class BlockWallBuilderTool : MonoBehaviour
     {
         //Setup in editor
-        [SerializeField] HumanBuilderController CurrentBuilderController;
+        [SerializeField] CastleBuilderController CurrentBuilderController;
         [SerializeField] RTSController currentRTSController;
         [SerializeField] PreviewBlock PreviewBlockTemplate;
 
@@ -20,7 +20,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         VirtualBlock originBlock;
         VirtualBlock endBlock;
 
-        HumanBuildingController CurrentBuilding
+        CastleController CurrentBuilding
         {
             get
             {

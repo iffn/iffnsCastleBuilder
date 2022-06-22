@@ -14,7 +14,7 @@ namespace iffnsStuff.iffnsCastleBuilder
     public class SaveAndLoadSystem : MonoBehaviour
     {
         //Set in Unity
-        [SerializeField] HumanBuilderController CurrentBuilderController;
+        [SerializeField] CastleBuilderController CurrentBuilderController;
         [SerializeField] SaveAndLoadUI CurrentSaveAndLoadUI;
         [SerializeField] BuildingToolController ToolController;
 
@@ -25,7 +25,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         List<StaticSaveAndLoadSystem.BaseLoadFileInfo> loadInfos;
         List<SaveAndLoadUI.FileLineInfo> fileInfos = new();
 
-        readonly static Vector3Int currentVersion = new Vector3Int(2, 1, 1);
+        readonly static Vector3Int currentVersion = new Vector3Int(1, 0, 0);
         /*
             Version types:
             x = Main version: File cannot be read when opening with an older version
@@ -114,7 +114,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        HumanBuildingController CurrentBuilding
+        CastleController CurrentBuilding
         {
             get
             {
@@ -145,7 +145,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void ClearBuilding()
         {
-            //Load default building -> Merge with HumanBuildingTestWorldController
+            //Load default building -> Merge with CastleTestWorldController
 
             EditTool.DeactivateEditOnMain();
 

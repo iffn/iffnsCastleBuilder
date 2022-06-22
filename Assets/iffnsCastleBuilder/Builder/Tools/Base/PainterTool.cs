@@ -13,7 +13,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public MaterialManager currentMaterial;
 
-        [SerializeField] HumanBuilderController CurrentBuilderController;
+        [SerializeField] CastleBuilderController CurrentBuilderController;
         [SerializeField] RTSController currentRTSController;
         [SerializeField] BuildingToolController LinkedBuildingToolController;
 
@@ -54,7 +54,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         }
 
 
-        HumanBuildingController CurrentBuilding
+        CastleController CurrentBuilding
         {
             get
             {

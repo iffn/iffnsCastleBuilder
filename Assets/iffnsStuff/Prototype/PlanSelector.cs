@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlanSelector : MonoBehaviour
 {
     [SerializeField] List<GameObject> Plans;
-    [SerializeField] HumanBuilderController linkedController;
+    [SerializeField] CastleBuilderController linkedController;
 
 
 
