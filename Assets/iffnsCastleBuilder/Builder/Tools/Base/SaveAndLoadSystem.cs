@@ -23,9 +23,14 @@ namespace iffnsStuff.iffnsCastleBuilder
         readonly static string mainBuildingIdentifier = "MainBuilding";
 
         List<StaticSaveAndLoadSystem.BaseLoadFileInfo> loadInfos;
-        List<SaveAndLoadUI.FileLineInfo> fileInfos = new();
+        readonly List<SaveAndLoadUI.FileLineInfo> fileInfos = new();
 
         readonly static Vector3Int currentVersion = new Vector3Int(1, 0, 0);
+
+        TextAsset DefaultBuildingFile;
+        readonly string fileEnding = ".castle";
+        static readonly string buildingFileLocation = StaticSaveAndLoadSystem.UserFileLocation + MyStringComponents.slash + "Buildings";
+
         /*
             Version types:
             x = Main version: File cannot be read when opening with an older version
@@ -100,11 +105,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             return UpgradeType.sameVersion;
         }
 
-        TextAsset DefaultBuildingFile;
-
-        readonly string fileEnding = ".json";
-
-        static readonly string buildingFileLocation = StaticSaveAndLoadSystem.UserFileLocation + MyStringComponents.slash + "Buildings";
+        
 
         string completeFileLocation
         {
