@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5779904207372613149}
   - component: {fileID: 2265457094458394928}
   - component: {fileID: 1982263377447353721}
-  - component: {fileID: 811187852540116508}
+  - component: {fileID: -5629543956075345973}
   - component: {fileID: 6636349496697473659}
   - component: {fileID: 7272292129854062164}
   m_Layer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 80dbf139b4d1af342b31ae59ce4c113e, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,7 +86,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &811187852540116508
+--- !u!64 &-5629543956075345973
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -33,6 +33,8 @@ public class SmartMeshManager : MeshManager
 
     public void Setup(BaseGameObject mainObject)
     {
+        //Debug.Log("Setup");
+
         base.setup(mainObject: mainObject);
 
         this.LinkedMainObject = mainObject;
@@ -43,7 +45,14 @@ public class SmartMeshManager : MeshManager
         currentClickForwarder = transform.GetComponent<ClickForwarder>();
         currentClickForwarder.MainObject = mainObject;
 
-        currentMeshFilter.mesh.Clear();
+        Mesh oldMesh = currentMeshFilter.sharedMesh;
+
+        if(oldMesh != null)
+        {
+            Destroy(oldMesh);
+        }
+
+        currentMeshFilter.mesh = new();
     }
 
     public void SetTriangleInfo(TriangleMeshInfo newInfo)
@@ -59,13 +68,15 @@ public class SmartMeshManager : MeshManager
             currentMeshFilter.mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
         }
 
-        currentMeshFilter.mesh.vertices = vertices.ToArray();
-        currentMeshFilter.mesh.triangles = newInfo.AllTrianglesDirectly.ToArray();
-        currentMeshFilter.mesh.uv = newInfo.UVs.ToArray();
+        Mesh mesh = currentMeshFilter.sharedMesh;
 
-        currentMeshFilter.mesh.RecalculateNormals();
-        currentMeshFilter.mesh.RecalculateTangents();
-        currentMeshFilter.mesh.RecalculateBounds();
+        mesh.vertices = vertices.ToArray();
+        mesh.triangles = newInfo.AllTrianglesDirectly.ToArray();
+        mesh.uv = newInfo.UVs.ToArray();
+
+        mesh.RecalculateNormals();
+        mesh.RecalculateTangents();
+        mesh.RecalculateBounds();
 
         //currentCollider.isTrigger = !newInfo.ActiveCollider;
 
@@ -156,5 +167,15 @@ public class SmartMeshManager : MeshManager
         {
             RefreshCollider();
         }
+    }
+
+    public void DestroyMesh()
+    {
+        Mesh mesh = currentMeshFilter.mesh;
+        currentMeshFilter.sharedMesh = null;
+
+        Destroy(mesh);
+        
+        //Debug.Log("Destroy");
     }
 }

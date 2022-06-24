@@ -37,6 +37,7 @@ public class MultiMeshManager : MonoBehaviour
     {
         while (MeshManagers.Count > 0)
         {
+            MeshManagers[0].DestroyMesh();
             GameObject.Destroy(MeshManagers[0].gameObject);
             MeshManagers.RemoveAt(0);
         }   
@@ -167,7 +168,6 @@ public class MultiMeshManager : MonoBehaviour
             newManager.SetTriangleInfo(info);
         }
     }
-    
 
     public void BuildMeshes()
     {
@@ -284,6 +284,14 @@ public class MultiMeshManager : MonoBehaviour
         }
 
         UnusedTriangleInfos.Clear();
+    }
+
+    public void DestroyMeshes()
+    {
+        foreach(SmartMeshManager manager in MeshManagers)
+        {
+            manager.DestroyMesh();
+        }
     }
 
     class ManagedMaterialHelper
