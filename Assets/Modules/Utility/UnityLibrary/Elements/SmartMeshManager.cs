@@ -12,6 +12,8 @@ public class SmartMeshManager : MeshManager
     ClickForwarder currentClickForwarder;
     public TriangleMeshInfo LinkedTriangleInfo { get; private set; }
 
+    Mesh currentMesh;
+    
     public override Material CurrentMaterial
     {
         get
@@ -45,14 +47,9 @@ public class SmartMeshManager : MeshManager
         currentClickForwarder = transform.GetComponent<ClickForwarder>();
         currentClickForwarder.MainObject = mainObject;
 
-        Mesh oldMesh = currentMeshFilter.sharedMesh;
+        currentMesh = MeshPoolManager.GetMesh();
 
-        if(oldMesh != null)
-        {
-            Destroy(oldMesh);
-        }
-
-        currentMeshFilter.mesh = new();
+        currentMeshFilter.sharedMesh = currentMesh;
     }
 
     public void SetTriangleInfo(TriangleMeshInfo newInfo)
@@ -65,18 +62,16 @@ public class SmartMeshManager : MeshManager
         {
             //Avoid vertex limit
             //https://answers.unity.com/questions/471639/mesh-with-more-than-65000-vertices.html
-            currentMeshFilter.mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
+            currentMesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
         }
 
-        Mesh mesh = currentMeshFilter.sharedMesh;
+        currentMesh.vertices = vertices.ToArray();
+        currentMesh.triangles = newInfo.AllTrianglesDirectly.ToArray();
+        currentMesh.uv = newInfo.UVs.ToArray();
 
-        mesh.vertices = vertices.ToArray();
-        mesh.triangles = newInfo.AllTrianglesDirectly.ToArray();
-        mesh.uv = newInfo.UVs.ToArray();
-
-        mesh.RecalculateNormals();
-        mesh.RecalculateTangents();
-        mesh.RecalculateBounds();
+        currentMesh.RecalculateNormals();
+        currentMesh.RecalculateTangents();
+        currentMesh.RecalculateBounds();
 
         //currentCollider.isTrigger = !newInfo.ActiveCollider;
 
@@ -152,7 +147,7 @@ public class SmartMeshManager : MeshManager
         void RefreshCollider()
         {
             currentCollider.sharedMesh = null;
-            currentCollider.sharedMesh = currentMeshFilter.mesh;
+            currentCollider.sharedMesh = currentMesh;
         }
 
         bool colliderActivationState = currentCollider.enabled;
@@ -171,10 +166,9 @@ public class SmartMeshManager : MeshManager
 
     public void DestroyMesh()
     {
-        Mesh mesh = currentMeshFilter.mesh;
-        currentMeshFilter.sharedMesh = null;
+        MeshPoolManager.ReturnMeshToQueue(currentMesh);
 
-        Destroy(mesh);
+        currentMesh = null;
         
         //Debug.Log("Destroy");
     }
