@@ -122,21 +122,33 @@ namespace iffnsStuff.iffnsCastleBuilder
                 hierarchyPosition[^1] += 1;
 
                 //Add object
+                
                 if (newObject is BaseGameObject)
                 {
-                    bool AddObject = true;
+                    bool stillNeedsToBeAdded = true;
 
-                    if (!CurrentExportProperties.IncludeFurniture)
+                    if (newObject is OnFloorObject floorObject)
                     {
-                        if (newObject is OnFloorObject)
+                        if (floorObject.IsStructural)
                         {
-                            OnFloorObject currentOnFloorObject = newObject as OnFloorObject;
+                            List<int> floorHierarchy = new(hierarchyPosition);
 
-                            AddObject = currentOnFloorObject.IsStructural;
+                            floorHierarchy.RemoveAt(floorHierarchy.Count - 1);
+
+                            AddMeshFromObject(newObject as BaseGameObject, floorHierarchy);
+}
+                        else
+                        {
+                            if (CurrentExportProperties.IncludeFurniture)
+                            {
+                                AddMeshFromObject(newObject as BaseGameObject, hierarchyPosition);
+                            }
                         }
+
+                        stillNeedsToBeAdded = false;
                     }
 
-                    if(AddObject) AddMeshFromObject(newObject as BaseGameObject, hierarchyPosition);
+                    if (stillNeedsToBeAdded) AddMeshFromObject(newObject as BaseGameObject, hierarchyPosition);
                 }
 
                 List<IBaseObject> SubObjects = newObject.SubObjects;
@@ -162,18 +174,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 foreach (UnityMeshManager manager in newObject.UnmanagedMeshes)
                 {
                     allMeshes.Add(manager.TriangleInfo);
-                }
-
-                string objectIdentifier = "";
-
-                if (newObject is OnFloorObject)
-                {
-                    OnFloorObject currentOnFloorObject = newObject as OnFloorObject;
-
-                    if (!currentOnFloorObject.IsStructural)
-                    {
-                        
-                    }
                 }
 
                 foreach (TriangleMeshInfo currentInfo in allMeshes)
@@ -212,7 +212,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         else materialIdentifier = currentInfo.AlternativeMaterial.name; //Only call when Alternative material is assigned!
                     }
 
-                    string name = objectIdentifier;
+                    string name = "";
 
                     Vector3 localPosition = newObject.transform.localPosition;
 
