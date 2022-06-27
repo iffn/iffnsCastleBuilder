@@ -119,8 +119,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             void GetAndAddMeshFromObject(IBaseObject newObject, List<int> hierarchyPosition)
             {
-                hierarchyPosition[^1] += 1;
-
                 //Add object
                 
                 if (newObject is BaseGameObject)
@@ -131,24 +129,40 @@ namespace iffnsStuff.iffnsCastleBuilder
                     {
                         if (floorObject.IsStructural)
                         {
+                            //Add structural object
                             List<int> floorHierarchy = new(hierarchyPosition);
 
                             floorHierarchy.RemoveAt(floorHierarchy.Count - 1);
-
                             AddMeshFromObject(newObject as BaseGameObject, floorHierarchy);
-}
+                        }
                         else
                         {
+                            //Add furniture
                             if (CurrentExportProperties.IncludeFurniture)
                             {
+                                hierarchyPosition[^1] += 1;
                                 AddMeshFromObject(newObject as BaseGameObject, hierarchyPosition);
                             }
                         }
 
                         stillNeedsToBeAdded = false;
                     }
+                    else if(newObject is NodeWallSystem)
+                    {
+                        List<int> floorHierarchy = new(hierarchyPosition);
 
-                    if (stillNeedsToBeAdded) AddMeshFromObject(newObject as BaseGameObject, hierarchyPosition);
+                        floorHierarchy.RemoveAt(floorHierarchy.Count - 1);
+                        AddMeshFromObject(newObject as BaseGameObject, floorHierarchy);
+
+                        stillNeedsToBeAdded = false;
+                    }
+
+                    if (stillNeedsToBeAdded)
+                    {
+                        //Add rest
+                        if(!(newObject is NodeWallSystem)) hierarchyPosition[^1] += 1;
+                        AddMeshFromObject(newObject as BaseGameObject, hierarchyPosition);
+                    }
                 }
 
                 List<IBaseObject> SubObjects = newObject.SubObjects;
@@ -212,7 +226,16 @@ namespace iffnsStuff.iffnsCastleBuilder
                         else materialIdentifier = currentInfo.AlternativeMaterial.name; //Only call when Alternative material is assigned!
                     }
 
-                    string name = "";
+                    string name;
+
+                    if(newObject.Name.Length > 0)
+                    {
+                        name = newObject.Name;
+                    }
+                    else
+                    {
+                        name = newObject.IdentifierString;
+                    }
 
                     Vector3 localPosition = newObject.transform.localPosition;
 

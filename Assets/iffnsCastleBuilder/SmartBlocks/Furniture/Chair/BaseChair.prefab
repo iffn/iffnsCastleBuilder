@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7607920596596846984}
   - component: {fileID: 287461671725414339}
   - component: {fileID: 4790477631573397488}
+  - component: {fileID: 4084415503665185113}
   m_Layer: 0
   m_Name: Front left leg
   m_TagString: Untagged
@@ -97,6 +98,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4084415503665185113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215831502251111878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2c3f87e515cd24bab81e34a859ab68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &470942447800191133
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +122,7 @@ GameObject:
   - component: {fileID: 4320657686921274565}
   - component: {fileID: 1270045350914719515}
   - component: {fileID: 1076321687518000907}
+  - component: {fileID: 3712798976258775263}
   m_Layer: 0
   m_Name: Back right leg
   m_TagString: Untagged
@@ -194,6 +208,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3712798976258775263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470942447800191133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2c3f87e515cd24bab81e34a859ab68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2638911234441844265
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +233,7 @@ GameObject:
   - component: {fileID: 4510426358243292470}
   - component: {fileID: 2211132617827790271}
   - component: {fileID: 1120089162632281773}
+  - component: {fileID: 6717456394979658942}
   m_Layer: 0
   m_Name: Click interactor
   m_TagString: Untagged
@@ -305,6 +332,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainObject: {fileID: 0}
+--- !u!114 &6717456394979658942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2638911234441844265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2c3f87e515cd24bab81e34a859ab68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3713197424088414021
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +356,7 @@ GameObject:
   - component: {fileID: 4548373351587011726}
   - component: {fileID: 5094545818534484881}
   - component: {fileID: 5395356305594762247}
+  - component: {fileID: 6890766198555361217}
   m_Layer: 0
   m_Name: Seat
   m_TagString: Untagged
@@ -402,6 +442,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6890766198555361217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713197424088414021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2c3f87e515cd24bab81e34a859ab68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4022113963205773248
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +466,7 @@ GameObject:
   - component: {fileID: 439656342800700633}
   - component: {fileID: 1935117460332979867}
   - component: {fileID: 2041674546503153569}
+  - component: {fileID: 8335333066703958977}
   m_Layer: 0
   m_Name: Front right leg
   m_TagString: Untagged
@@ -499,6 +552,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8335333066703958977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4022113963205773248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2c3f87e515cd24bab81e34a859ab68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4404958996316810199
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,6 +577,7 @@ GameObject:
   - component: {fileID: 8015773976581188967}
   - component: {fileID: 8050077132535668853}
   - component: {fileID: 8721872279985488536}
+  - component: {fileID: 7918664759909680914}
   m_Layer: 0
   m_Name: Click interactor
   m_TagString: Untagged
@@ -610,6 +676,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainObject: {fileID: 0}
+--- !u!114 &7918664759909680914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4404958996316810199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2c3f87e515cd24bab81e34a859ab68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5934950146113297555
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +726,7 @@ Transform:
   - {fileID: 3756161776619658883}
   - {fileID: 3853534962360974611}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3884435660361848360
 MonoBehaviour:
@@ -674,6 +752,7 @@ GameObject:
   - component: {fileID: 1454341109752412613}
   - component: {fileID: 3251180462334488167}
   - component: {fileID: 5490823289516035810}
+  - component: {fileID: 9010100087056646353}
   m_Layer: 0
   m_Name: Back left leg
   m_TagString: Untagged
@@ -759,6 +838,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9010100087056646353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476872966359794981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2c3f87e515cd24bab81e34a859ab68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7626606549727735156
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,6 +862,7 @@ GameObject:
   - component: {fileID: 3811951697960392186}
   - component: {fileID: 7043221434570677446}
   - component: {fileID: 56973825324000002}
+  - component: {fileID: 2354467416084204297}
   m_Layer: 0
   m_Name: Back face
   m_TagString: Untagged
@@ -856,3 +948,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2354467416084204297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7626606549727735156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2c3f87e515cd24bab81e34a859ab68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

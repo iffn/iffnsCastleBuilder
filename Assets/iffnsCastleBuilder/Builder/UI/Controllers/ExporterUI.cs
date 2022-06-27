@@ -27,10 +27,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             ExporterLines.AddMailboxLines(lines: linkedExporter.CurrentExportProperties.SingleMailboxLines, lineOwner: null);
 
-            ExporterLines.AddButtonLine(text: "Set VRC settings", call: delegate { linkedExporter.CurrentExportProperties.SetVrcObjProperties(); SetLines(); });
+            ExporterLines.AddButtonLine(text: "Set Unity settings", call: delegate { linkedExporter.CurrentExportProperties.SetVrcObjProperties(); SetLines(); });
             ExporterLines.AddButtonLine(text: "Set 3D printing settings", call: delegate { linkedExporter.CurrentExportProperties.Set3DPrintingObjProperties(); SetLines(); });
 
-            ExporterLines.AddButtonLine(text: "Export object", call: delegate { linkedExporter.ExportObject(); });
+            ExporterLines.AddButtonLine(text: "Export object (name required)", call: delegate { linkedExporter.ExportObject(); });
+
+            ExporterLines.AddTextLine(text: @"The exported files can be found in iffnsCastleBuilder_Data\StreamingAssets\Exports", bold: false);
         }
 
         void SetFileNameFromSaveSystem()

@@ -208,7 +208,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             SeparateFloors = true;
             MaterialIdentifier = true;
             ColliderIdentifier = true;
-            HierarchyIdentifier = false;
+            HierarchyIdentifier = true;
             IncludeFurniture = true;
             //GroupMaterials = true;
             IncludeInvisibleMeshes = true;

@@ -13,6 +13,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         //Build parameters
         MailboxLineVector2Int BottomLeftPositionParam;
         MailboxLineVector2Int TopRightPositionParam;
+        MailboxLineMaterial MainMaterialParam;
 
         BlockGridRectangleOrganizer ModificationNodeOrganizer;
 
@@ -72,6 +73,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             BottomLeftPositionParam = new MailboxLineVector2Int(name: "Bottom Left Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             TopRightPositionParam = new MailboxLineVector2Int(name: "Top Right Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
+            MainMaterialParam = new MailboxLineMaterial(name: "Main material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodSolid);
 
             BlockGridPositionModificationNode firstNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
             firstNode.Setup(linkedObject: this, value: BottomLeftPositionParam);
@@ -84,6 +86,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             ModificationNodeOrganizer = new BlockGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
 
             SetupEditButtons();
+
+            foreach (UnityMeshManager manager in UnmanagedMeshes)
+            {
+                manager.Setup(mainObject: this, currentMaterialReference: MainMaterialParam);
+            }
         }
 
         public void CompleteSetupWithBuildParameters(FloorController linkedFloor, Vector2Int bottomLeftPosition, Vector2Int topRightPosition)

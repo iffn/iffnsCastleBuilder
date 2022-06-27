@@ -14,6 +14,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineVector2Int BottomLeftPositionParam;
         MailboxLineDistinctNamed GridSizeParam;
         MailboxLineDistinctNamed OrientationParam;
+        MailboxLineMaterial MainMaterialParam;
 
         GridOrientationOrganizer ModificationNodeOrganizer;
 
@@ -117,6 +118,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             BottomLeftPositionParam = new MailboxLineVector2Int(name: "Bottom Left Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             OrientationParam = new MailboxLineDistinctNamed(name: "Orientation", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, entries: GridOrientationNode.OrientationStrings, DefaultValue: (int)GridOrientation.GridForwardOrientations.ZPositive);
+            MainMaterialParam = new MailboxLineMaterial(name: "Main material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodSolid);
 
             SetupGridSizeParam();
 
@@ -131,6 +133,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             SecondPositionNode = secondNode;
 
             ModificationNodeOrganizer = new GridOrientationOrganizer(linkedObject: this, positionNode: firstNode, orientationNode: secondNode);
+
+            foreach (UnityMeshManager manager in UnmanagedMeshes)
+            {
+                manager.Setup(mainObject: this, currentMaterialReference: MainMaterialParam);
+            }
         }
 
         public void CompleteSetupWithBuildParameters(FloorController linkedFloor, Vector2Int position, GridSizes GridSize, GridOrientation.GridForwardOrientations gridOrientation)

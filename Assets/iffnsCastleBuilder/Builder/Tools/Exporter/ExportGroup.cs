@@ -39,10 +39,18 @@ namespace iffnsStuff.iffnsCastleBuilder
                 {
                     if (hierarchyPosition.Count != group.hierarchyPosition.Count) continue;
 
+                    bool different = false;
+
                     for (int i = 0; i < hierarchyPosition.Count; i++)
                     {
-                        if (hierarchyPosition[i] != group.hierarchyPosition[i]) continue;
+                        if (hierarchyPosition[i] != group.hierarchyPosition[i])
+                        {
+                            different = true;
+                            break;
+                        }
                     }
+
+                    if (different) continue;
                 }
 
                 if (currentExportProperties.SeparateFloors)
@@ -126,6 +134,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         readonly string NameIdentifier = "Name";
         readonly string LocalPositionIdentifier = "Local position";
         readonly string HierarchyPositionIdentifier = "Hierarchy position";
+        readonly string MaterialIdentifier = "Material";
+        readonly string ColliderIdentifier = "Collider";
 
         public string IdentifierString
         {
@@ -137,17 +147,17 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (!name.Equals(""))
                 {
-                    returnString += $"Name = {name}";
+                    returnString += $"{NameIdentifier} = {name}";
                 }
 
                 AddSeparator();
 
-                returnString += $"Local position = {localPosition}";
+                returnString += $"{LocalPositionIdentifier} = {localPosition}";
 
                 if (organizer.currentExportProperties.HierarchyIdentifier)
                 {
                     AddSeparator();
-                    returnString += "Hierarchy position = ";
+                    returnString += $"{HierarchyPositionIdentifier} = ";
 
                     foreach (int pos in hierarchyPosition)
                     {
@@ -162,13 +172,13 @@ namespace iffnsStuff.iffnsCastleBuilder
                     || organizer.currentExportProperties.IncludeInvisibleMeshes && materialIdentifier.Equals("Invisible"))
                 {
                     AddSeparator();
-                    returnString += $"Material = {materialIdentifier}";
+                    returnString += $"{MaterialIdentifier} = {materialIdentifier}";
                 }
 
                 if (organizer.currentExportProperties.ColliderIdentifier)
                 {
                     AddSeparator();
-                    returnString += $"Collider = {hasCollider}";
+                    returnString += $"{ColliderIdentifier} = {hasCollider}";
                 }
 
                 //returnString.Replace(":", "=");

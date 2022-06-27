@@ -20,6 +20,13 @@
 					"Name": "",
 					"Node walls":
 					[
+						{
+							"Type": "NodeWall",
+							"Start position": [4, 4],
+							"End position": [12, 4],
+							"Right material": "PolyHaven-beige_wall_001",
+							"Left material": "PolyHaven-beige_wall_001"
+						}
 					]
 				},
 				"Floor matrix":
@@ -1507,7 +1514,8 @@
 						"Type": "TableGrid",
 						"Name": "",
 						"Bottom Left Position": [6, 10],
-						"Top Right Position": [3, -3]
+						"Top Right Position": [3, -3],
+						"Main material": "PolyHaven-plywood"
 					},
 					{
 						"Type": "Door",
@@ -1519,6 +1527,16 @@
 						"Back wall material": "PolyHaven-sandstone_blocks_05",
 						"Frame material": "PolyHaven-plywood",
 						"Wall type": "BlockGrid"
+					},
+					{
+						"Type": "VerticalArc",
+						"Name": "",
+						"Bottom left position": [11, 1],
+						"Top right position": [12, 4],
+						"FreeHeihgtSide [m]": 2,
+						"Arc height [m]": 0.5,
+						"Main material": "PolyHaven-book_pattern",
+						"Other side material": "PolyHaven-book_pattern"
 					}
 				]
 			},
@@ -2973,6 +2991,7 @@
 						"Name": "",
 						"Bottom Left Position": [8, 9],
 						"Orientation": "ZPositive",
+						"Main material": "PolyHaven-plywood",
 						"Preference type": "3x3"
 					}
 				]
