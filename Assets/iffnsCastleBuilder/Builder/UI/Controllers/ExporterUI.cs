@@ -27,8 +27,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             ExporterLines.AddMailboxLines(lines: linkedExporter.CurrentExportProperties.SingleMailboxLines, lineOwner: null);
 
-            ExporterLines.AddButtonLine(text: "Set 3D printing settings", call: delegate { linkedExporter.CurrentExportProperties.Set3DPrintingObjProperties(); SetLines(); });
             ExporterLines.AddButtonLine(text: "Set VRC settings", call: delegate { linkedExporter.CurrentExportProperties.SetVrcObjProperties(); SetLines(); });
+            ExporterLines.AddButtonLine(text: "Set 3D printing settings", call: delegate { linkedExporter.CurrentExportProperties.Set3DPrintingObjProperties(); SetLines(); });
 
             ExporterLines.AddButtonLine(text: "Export object", call: delegate { linkedExporter.ExportObject(); });
         }

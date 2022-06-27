@@ -48,8 +48,6 @@ namespace TMPro.Examples
             VertexCurve.preWrapMode = WrapMode.Clamp;
             VertexCurve.postWrapMode = WrapMode.Clamp;
 
-            //Mesh mesh = m_TextComponent.textInfo.meshInfo[0].mesh;
-
             Vector3[] vertices;
             Matrix4x4 matrix;
 

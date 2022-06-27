@@ -186,10 +186,6 @@ public class MeshTester : MonoBehaviour
         UVs.Add(new Vector2(4, 1));
         */
 
-        //TestingMesh.CurrentMeshFilter.mesh.uv = TestingMesh.TriangleInfo.UVs.ToArray();
-
-        //TestingMesh.Mesh.mesh.uv = UvCalculator.CalculateUVs(vertices: TestingMesh.TriangleInfo.AllVerticesDirectly.ToArray(), scale: 1);
-
 
 
         //Debug.Log(TestingMesh.TriangleInfo.AllVerticesDirectly.Count);

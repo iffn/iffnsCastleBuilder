@@ -45,10 +45,8 @@ namespace TMPro.Examples
         // Controls for Touches on Mobile devices
         //private float prev_ZoomDelta;
 
-
         private const string event_SmoothingValue = "Slider - Smoothing Value";
         private const string event_FollowDistance = "Slider - Camera Zoom";
-
 
         void Awake()
         {
@@ -63,7 +61,6 @@ namespace TMPro.Examples
             cameraTransform = transform;
             previousSmoothing = MovementSmoothing;
         }
-
 
         // Use this for initialization
         void Start()
@@ -80,7 +77,6 @@ namespace TMPro.Examples
         void LateUpdate()
         {
             GetPlayerInput();
-
 
             // Check if we still have a valid target
             if (CameraTarget != null)
@@ -214,10 +210,8 @@ namespace TMPro.Examples
                             OrbitalAngle = 0;
                             MovementSmoothing = previousSmoothing;
                         }
-
                     }
                 }
-
 
                 if (Input.GetMouseButton(2))
                 {
@@ -241,16 +235,13 @@ namespace TMPro.Examples
                         MovementSmoothing = false;
                     }
 
-
                     mouseY = Input.GetAxis("Mouse Y");
                     mouseX = Input.GetAxis("Mouse X");
 
                     moveVector = cameraTransform.TransformDirection(mouseX, mouseY, 0);
 
                     dummyTarget.Translate(-moveVector, Space.World);
-
                 }
-
             }
 
             // Check Pinching to Zoom in - out on Mobile device
@@ -273,8 +264,6 @@ namespace TMPro.Examples
                     // Limit FollowDistance between min & max values.
                     FollowDistance = Mathf.Clamp(FollowDistance, MinFollowDistance, MaxFollowDistance);
                 }
-
-
             }
 
             // Check MouseWheel to Zoom in-out
@@ -285,8 +274,6 @@ namespace TMPro.Examples
                 // Limit FollowDistance between min & max values.
                 FollowDistance = Mathf.Clamp(FollowDistance, MinFollowDistance, MaxFollowDistance);
             }
-
-
         }
     }
 }

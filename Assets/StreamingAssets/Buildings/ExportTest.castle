@@ -77,9 +77,9 @@
 						"Block type": "Wall",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
 						"Left wall material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -107,9 +107,1287 @@
 						"Block type": "Wall",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05",
 						"Left wall material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Left wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Left wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Left wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Left wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
 						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Front wall material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Back wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Left wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Wall",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-sandstone_blocks_05",
+						"Left wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -140,1237 +1418,7 @@
 						"Block type": "Wall",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Front wall material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Back wall material": "PolyHaven-sandstone_blocks_05",
+						"Left wall material": "PolyHaven-sandstone_blocks_05",
 						"Right wall material": "PolyHaven-sandstone_blocks_05"
 					},
 					{
@@ -1378,104 +1426,56 @@
 						"Block type": "Wall",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
+						"Left wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
 					},
 					{
 						"Type": "VirtualBlock",
 						"Block type": "Wall",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
+						"Left wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
 					},
 					{
 						"Type": "VirtualBlock",
 						"Block type": "Wall",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
+						"Left wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
 					},
 					{
 						"Type": "VirtualBlock",
 						"Block type": "Wall",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
+						"Left wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
 					},
 					{
 						"Type": "VirtualBlock",
 						"Block type": "Wall",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
+						"Left wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
 					},
 					{
 						"Type": "VirtualBlock",
 						"Block type": "Wall",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
+						"Left wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
 					},
 					{
 						"Type": "VirtualBlock",
 						"Block type": "Wall",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Wall",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-sandstone_blocks_05",
-						"Right wall material": "PolyHaven-sandstone_blocks_05",
-						"Left wall material": "PolyHaven-sandstone_blocks_05"
+						"Left wall material": "PolyHaven-sandstone_blocks_05",
+						"Right wall material": "PolyHaven-sandstone_blocks_05"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -1542,14 +1542,7 @@
 						"Block type": "Floor",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Left wall material": "PolyHaven-plywood",
-						"Back wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Back wall material": "PolyHaven-plywood",
 						"Left wall material": "PolyHaven-plywood"
 					},
 					{
@@ -1641,8 +1634,15 @@
 						"Block type": "Floor",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Left wall material": "PolyHaven-plywood",
-						"Front wall material": "PolyHaven-plywood"
+						"Left wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood",
+						"Left wall material": "PolyHaven-plywood"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -1855,6 +1855,901 @@
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-wood_planks_dirt",
 						"Right wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Empty"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Left wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Left wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Left wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Front wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt",
+						"Back wall material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
+					},
+					{
+						"Type": "VirtualBlock",
+						"Block type": "Floor",
+						"Ceiling material": "PolyHaven-old_planks_02",
+						"Top cap material": "PolyHaven-wood_planks_dirt"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -1929,902 +2824,7 @@
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-wood_planks_dirt",
 						"Back wall material": "PolyHaven-plywood",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Empty"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Left wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Left wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Left wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
-					},
-					{
-						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Right wall material": "PolyHaven-plywood",
-						"Back wall material": "PolyHaven-plywood"
+						"Right wall material": "PolyHaven-plywood"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -2922,8 +2922,8 @@
 						"Block type": "Floor",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Right wall material": "PolyHaven-plywood",
-						"Front wall material": "PolyHaven-plywood"
+						"Front wall material": "PolyHaven-plywood",
+						"Right wall material": "PolyHaven-plywood"
 					}
 				],
 				"On floor objects":

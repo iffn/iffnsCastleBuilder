@@ -19,7 +19,7 @@ public class MeshAnalyzer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Mesh mesh = LinkedMeshFilter.mesh;
+        Mesh mesh = LinkedMeshFilter.sharedMesh;
 
         foreach(Vector2 uv in mesh.uv)
         {

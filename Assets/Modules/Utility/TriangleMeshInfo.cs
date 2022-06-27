@@ -632,7 +632,7 @@ public class TriangleMeshInfo
         }
         */
 
-        //currentMesh.mesh.uv = UVs.ToArray();
+        //currentMesh.sharedMesh.uv = UVs.ToArray();
     }
 }
 

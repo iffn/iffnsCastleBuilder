@@ -33,7 +33,7 @@ public class UnityMeshManager : MeshManager
         {
             TriangleMeshInfo returnValue = new TriangleMeshInfo();
 
-            List<Vector3> localVerticies = currentMeshFilter.mesh.vertices.OfType<Vector3>().ToList();
+            List<Vector3> localVerticies = currentMeshFilter.sharedMesh.vertices.OfType<Vector3>().ToList();
             List<Vector3> correctVerticies = new List<Vector3>();
 
             foreach (Vector3 vertex in localVerticies)
@@ -44,8 +44,8 @@ public class UnityMeshManager : MeshManager
             }
 
             returnValue.AllVerticesDirectly = correctVerticies;
-            returnValue.AllTrianglesDirectly = currentMeshFilter.mesh.triangles.OfType<int>().ToList();
-            returnValue.UVs = currentMeshFilter.mesh.uv.OfType<Vector2>().ToList();
+            returnValue.AllTrianglesDirectly = currentMeshFilter.sharedMesh.triangles.OfType<int>().ToList();
+            returnValue.UVs = currentMeshFilter.sharedMesh.uv.OfType<Vector2>().ToList();
             returnValue.MaterialReference = currentMaterialReference;
 
             return returnValue;
