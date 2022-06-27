@@ -68,6 +68,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool IsStructural
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         void SetupBlockTypeParam(BlockTypes blockType = BlockTypes.Wall)
         {
             List<string> enumString = new List<string>();

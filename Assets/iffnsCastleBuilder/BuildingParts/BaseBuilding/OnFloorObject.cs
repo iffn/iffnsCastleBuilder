@@ -72,7 +72,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public abstract ModificationOrganizer Organizer { get; }
 
-        public bool IsStructural { get; protected set; } = true;
+        public abstract bool IsStructural { get; }
 
         public float BlockSize
         {

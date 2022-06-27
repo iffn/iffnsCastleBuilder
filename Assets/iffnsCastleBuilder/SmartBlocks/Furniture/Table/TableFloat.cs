@@ -67,11 +67,18 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return true;
             }
         }
+
+        public override bool IsStructural
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);
-
-            IsStructural = false;
 
             BottomLeftPositionParam = new MailboxLineVector2(name: "Bottom left position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             RelativeSizeParam = new MailboxLineVector2(name: "Relative size", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);

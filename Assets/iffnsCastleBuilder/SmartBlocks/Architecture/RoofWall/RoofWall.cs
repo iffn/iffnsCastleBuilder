@@ -111,6 +111,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool IsStructural
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public override float ModificationNodeHeight
         {
             get

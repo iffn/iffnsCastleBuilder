@@ -78,11 +78,17 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool IsStructural
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);
-
-            IsStructural = false;
 
             BottomLeftPositionParam = new MailboxLineVector2Int(name: "Bottom Left Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             MattressSizeParam = new MailboxLineDistinctNamed(name: "Mattress size", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, entries: BedBase.MattressTypeStrings, DefaultValue: (int)BedBase.MattressSizes.Single);

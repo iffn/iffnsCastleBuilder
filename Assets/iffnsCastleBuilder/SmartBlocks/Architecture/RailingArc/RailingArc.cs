@@ -82,6 +82,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool IsStructural
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);

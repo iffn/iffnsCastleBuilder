@@ -77,6 +77,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool IsStructural
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         float wallHeight
         {
             get

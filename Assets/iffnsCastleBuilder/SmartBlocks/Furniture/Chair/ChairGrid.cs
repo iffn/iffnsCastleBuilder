@@ -46,6 +46,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public override bool IsStructural
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public enum GridSizes
         {
             Size3x3,
@@ -106,8 +114,6 @@ namespace iffnsStuff.iffnsCastleBuilder
         public override void Setup(IBaseObject linkedFloor)
         {
             base.Setup(linkedFloor);
-
-            IsStructural = false;
 
             BottomLeftPositionParam = new MailboxLineVector2Int(name: "Bottom Left Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             OrientationParam = new MailboxLineDistinctNamed(name: "Orientation", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, entries: GridOrientationNode.OrientationStrings, DefaultValue: (int)GridOrientation.GridForwardOrientations.ZPositive);
