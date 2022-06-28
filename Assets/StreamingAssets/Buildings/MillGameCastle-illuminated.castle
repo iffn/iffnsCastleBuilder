@@ -19463,7 +19463,8 @@
 						"Type": "TableGrid",
 						"Name": "",
 						"Bottom Left Position": [29, 29],
-						"Top Right Position": [-2, -2]
+						"Top Right Position": [-2, -2],
+						"Main material": "PolyHaven-plywood"
 					},
 					{
 						"Type": "HorizontalArc",
