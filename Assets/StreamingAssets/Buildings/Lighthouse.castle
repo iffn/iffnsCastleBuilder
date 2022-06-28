@@ -14519,7 +14519,8 @@
 						"Type": "TableGrid",
 						"Name": "",
 						"Bottom Left Position": [1, 26],
-						"Top Right Position": [5, 1]
+						"Top Right Position": [5, 1],
+						"Main material": "PolyHaven-plywood"
 					},
 					{
 						"Type": "Window",
@@ -14552,7 +14553,8 @@
 						"Type": "TableGrid",
 						"Name": "",
 						"Bottom Left Position": [1, 18],
-						"Top Right Position": [5, 1]
+						"Top Right Position": [5, 1],
+						"Main material": "PolyHaven-plywood"
 					},
 					{
 						"Type": "Door",
@@ -14635,7 +14637,8 @@
 						"Type": "TableGrid",
 						"Name": "",
 						"Bottom Left Position": [1, 11],
-						"Top Right Position": [4, -1]
+						"Top Right Position": [4, -1],
+						"Main material": "PolyHaven-plywood"
 					},
 					{
 						"Type": "HorizontalArc",
@@ -19774,13 +19777,15 @@
 						"Type": "TableGrid",
 						"Name": "",
 						"Bottom Left Position": [4, 16],
-						"Top Right Position": [2, -7]
+						"Top Right Position": [2, -7],
+						"Main material": "PolyHaven-plywood"
 					},
 					{
 						"Type": "ChairGrid",
 						"Name": "",
 						"Bottom Left Position": [5, 17],
 						"Orientation": "ZNegative",
+						"Main material": "PolyHaven-plywood",
 						"Preference type": "3x3"
 					},
 					{
@@ -19788,6 +19793,7 @@
 						"Name": "",
 						"Bottom Left Position": [5, 8],
 						"Orientation": "ZPositive",
+						"Main material": "PolyHaven-plywood",
 						"Preference type": "3x3"
 					},
 					{
@@ -19795,6 +19801,7 @@
 						"Name": "",
 						"Bottom Left Position": [3, 10],
 						"Orientation": "XPositive",
+						"Main material": "PolyHaven-plywood",
 						"Preference type": "2x2"
 					},
 					{
@@ -19802,6 +19809,7 @@
 						"Name": "",
 						"Bottom Left Position": [3, 13],
 						"Orientation": "XPositive",
+						"Main material": "PolyHaven-plywood",
 						"Preference type": "2x2"
 					},
 					{
@@ -19809,6 +19817,7 @@
 						"Name": "",
 						"Bottom Left Position": [7, 12],
 						"Orientation": "XNegative",
+						"Main material": "PolyHaven-plywood",
 						"Preference type": "2x2"
 					},
 					{
@@ -19816,6 +19825,7 @@
 						"Name": "",
 						"Bottom Left Position": [7, 9],
 						"Orientation": "XNegative",
+						"Main material": "PolyHaven-plywood",
 						"Preference type": "2x2"
 					},
 					{
@@ -19823,6 +19833,7 @@
 						"Name": "",
 						"Bottom Left Position": [3, 16],
 						"Orientation": "XPositive",
+						"Main material": "PolyHaven-plywood",
 						"Preference type": "2x2"
 					},
 					{
@@ -19830,6 +19841,7 @@
 						"Name": "",
 						"Bottom Left Position": [7, 15],
 						"Orientation": "XNegative",
+						"Main material": "PolyHaven-plywood",
 						"Preference type": "2x2"
 					},
 					{

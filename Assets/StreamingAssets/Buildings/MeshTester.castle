@@ -15506,7 +15506,8 @@
 						"Type": "TableGrid",
 						"Name": "",
 						"Bottom Left Position": [27, 20],
-						"Top Right Position": [4, -1]
+						"Top Right Position": [4, -1],
+						"Main material": "PolyHaven-plywood"
 					},
 					{
 						"Type": "BedGrid",
@@ -15661,6 +15662,7 @@
 						"Name": "",
 						"Bottom Left Position": [40, 18],
 						"Orientation": "ZPositive",
+						"Main material": "PolyHaven-plywood",
 						"Preference type": "3x3"
 					},
 					{
