@@ -354,5 +354,12 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
             }
         }
+
+        public void OpenExportFolder()
+        {
+            string path = exportFolderPath.Replace('/', '\\');
+
+            StaticSaveAndLoadSystem.OpenFileLocationInExplorer(path);
+        }
     }
 }

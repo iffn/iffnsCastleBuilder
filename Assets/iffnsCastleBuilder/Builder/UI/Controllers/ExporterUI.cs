@@ -31,8 +31,10 @@ namespace iffnsStuff.iffnsCastleBuilder
             ExporterLines.AddButtonLine(text: "Set 3D printing settings", call: delegate { linkedExporter.CurrentExportProperties.Set3DPrintingObjProperties(); SetLines(); });
 
             ExporterLines.AddButtonLine(text: "Export object (name required)", call: delegate { linkedExporter.ExportObject(); });
+            
+            ExporterLines.AddButtonLine(text: "Open export folder", call: delegate { linkedExporter.OpenExportFolder(); });
 
-            ExporterLines.AddTextLine(text: @"The exported files can be found in iffnsCastleBuilder_Data\StreamingAssets\Exports", bold: false);
+            //ExporterLines.AddTextLine(text: @"The exported files can be found in iffnsCastleBuilder_Data\StreamingAssets\Exports", bold: false);
         }
 
         void SetFileNameFromSaveSystem()
