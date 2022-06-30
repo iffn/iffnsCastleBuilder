@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using iffnsStuff.iffnsBaseSystemForUnity;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
@@ -50,7 +51,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public string GetVersionString(Vector3Int version)
         {
-            return version.x + "." + version.y + "." + version.z;
+            return $"{version.x}.{version.y}.{version.z}";
         }
 
         public Vector3Int GetVersionVector(string version)
@@ -62,13 +63,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return Vector3Int.zero;
             }
 
-            int x, y, z;
+            int x = StringHelper.ConvertStringToInt(text: parts[0], globalFormat: true, out bool xWorked);
+            int y = StringHelper.ConvertStringToInt(text: parts[1], globalFormat: true, out bool yWorked);
+            int z = StringHelper.ConvertStringToInt(text: parts[2], globalFormat: true, out bool zWorked);
 
-            bool xCorrect = int.TryParse(parts[0], out x);
-            bool yCorrect = int.TryParse(parts[1], out y);
-            bool zCorrect = int.TryParse(parts[2], out z);
-
-            if (!xCorrect || !yCorrect || !zCorrect) return Vector3Int.zero;
+            if (!xWorked || !yWorked || !zWorked) return Vector3Int.zero;
 
             return new Vector3Int(x, y, z);
         }

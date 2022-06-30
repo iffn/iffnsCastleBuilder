@@ -98,7 +98,10 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             float previousValue = rangedLine.Val;
 
-            rangedLine.Val = float.Parse(newString);
+            float newValue = StringHelper.ConvertStringToFloat(text: newString, globalFormat: false, worked: out bool worked);
+
+            if (worked) rangedLine.Val = newValue;
+            else return;
 
             if(lineOwner != null)
             {
@@ -119,9 +122,28 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void ChangeDistinctUnnamedLineValue(string newString)
         {
-            distinctUnnamedLine.Val = int.Parse(newString);
+            int previousValue = distinctUnnamedLine.Val;
 
-            if (lineOwner != null) lineOwner.ApplyBuildParameters();
+            int newValue = StringHelper.ConvertStringToInt(text: newString, globalFormat: false, worked: out bool worked);
+
+            if (worked) rangedLine.Val = newValue;
+            else return;
+
+            distinctUnnamedLine.Val = newValue;
+
+            if (lineOwner != null)
+            {
+                bool previouslyFalied = lineOwner.Failed;
+
+                lineOwner.ApplyBuildParameters();
+
+                if (!previouslyFalied && lineOwner.Failed)
+                {
+                    InputField.text = previousValue.ToString();
+                    distinctUnnamedLine.Val = previousValue;
+                    lineOwner.ApplyBuildParameters();
+                }
+            }
 
             RunAllAdditionalCalls();
         }

@@ -44,17 +44,23 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void ChangeXValue(string value)
         {
-            ChangeValueIfItWorks(axis: MathHelper.Vector3Axis.x, newValue: float.Parse(value));
+            float newValue = StringHelper.ConvertStringToFloat(text: value, globalFormat: false, worked: out bool worked);
+
+            if (worked) ChangeValueIfItWorks(axis: MathHelper.Vector3Axis.x, newValue: newValue);
         }
 
         public void ChangeYValue(string value)
         {
-            ChangeValueIfItWorks(axis: MathHelper.Vector3Axis.y, newValue: float.Parse(value));
+            float newValue = StringHelper.ConvertStringToFloat(text: value, globalFormat: false, worked: out bool worked);
+
+            if (worked) ChangeValueIfItWorks(axis: MathHelper.Vector3Axis.y, newValue: newValue);
         }
 
         public void ChangeZValue(string value)
         {
-            ChangeValueIfItWorks(axis: MathHelper.Vector3Axis.z, newValue: float.Parse(value));
+            float newValue = StringHelper.ConvertStringToFloat(text: value, globalFormat: false, worked: out bool worked);
+
+            if (worked) ChangeValueIfItWorks(axis: MathHelper.Vector3Axis.z, newValue: newValue);
         }
 
         void ChangeValueIfItWorks(MathHelper.Vector3Axis axis, float newValue)

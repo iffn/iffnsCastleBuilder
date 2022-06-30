@@ -37,12 +37,16 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void ChangeXValue(string value)
         {
-            ChangeValueIfItWorks(axis: MathHelper.Vector2Axis.x, newValue: int.Parse(value));
+            int newValue = StringHelper.ConvertStringToInt(text: value, globalFormat: false, worked: out bool worked);
+
+            if(worked) ChangeValueIfItWorks(axis: MathHelper.Vector2Axis.x, newValue: newValue);
         }
 
         public void ChangeYValue(string value)
         {
-            ChangeValueIfItWorks(axis: MathHelper.Vector2Axis.y, newValue: int.Parse(value));
+            int newValue = StringHelper.ConvertStringToInt(text: value, globalFormat: false, worked: out bool worked);
+
+            if (worked) ChangeValueIfItWorks(axis: MathHelper.Vector2Axis.y, newValue: newValue);
         }
 
         void ChangeValueIfItWorks(MathHelper.Vector2Axis axis, int newValue)
