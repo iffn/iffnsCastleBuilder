@@ -53,7 +53,7 @@
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
      inkscape:cy="209.28571"
-     inkscape:cx="153.57143"
+     inkscape:cx="154.28571"
      inkscape:zoom="1.4"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -81,14 +81,14 @@
      inkscape:label="Layer 1">
     <g
        id="g2284"
-       transform="matrix(1.1577753,0,0,1.1578259,-7.9078834,-7.89158)"
-       style="stroke-width:0.863706">
+       transform="matrix(0.95196377,0,0,0.95194597,2.4076257,2.4023708)"
+       style="stroke-width:1.05047">
       <path
-         style="fill:none;stroke:#ff0000;stroke-width:6.04594;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:none;stroke:#ff0000;stroke-width:7.35328;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
          d="m 22.486228,22.463466 55.02754,55.06318"
          id="path872" />
       <path
-         style="fill:none;stroke:#ff0000;stroke-width:6.04594;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:none;stroke:#ff0000;stroke-width:7.35328;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
          d="M 22.463466,77.52559 77.778819,22.716693"
          id="path872-4" />
     </g>
