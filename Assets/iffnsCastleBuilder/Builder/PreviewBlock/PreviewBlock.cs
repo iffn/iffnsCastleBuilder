@@ -30,9 +30,9 @@ namespace iffnsStuff.iffnsCastleBuilder
             transform.position = transform.rotation * localPosition + currentBuilding.CurrentFloorObject.transform.position;
 
             transform.localScale = new Vector3(
-                Mathf.Abs(secondCenterPosition.x - firstCenterPosition.x) + currentBuilding.BlockSize,
-                currentBuilding.CurrentFloorObject.CompleteFloorHeight,
-                Mathf.Abs(secondCenterPosition.z - firstCenterPosition.z) + currentBuilding.BlockSize
+                Mathf.Abs(secondCenterPosition.x - firstCenterPosition.x) + currentBuilding.BlockSize + MathHelper.SmallFloat,
+                currentBuilding.CurrentFloorObject.CompleteFloorHeight + MathHelper.SmallFloat,
+                Mathf.Abs(secondCenterPosition.z - firstCenterPosition.z) + currentBuilding.BlockSize + MathHelper.SmallFloat
                 );
         }
 
