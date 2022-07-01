@@ -326,9 +326,10 @@ namespace iffnsStuff.iffnsCastleBuilder
                 updateViewIdentifier = true;
             }
 
+            //Pan
             if (Input.GetMouseButton(2)) //Middle Mouse Button
             {
-                gameObject.transform.Translate(new Vector3(Input.GetAxis("Mouse X") * movementSpeedMouse, 0, Input.GetAxis("Mouse Y") * movementSpeedMouse));
+                gameObject.transform.Translate(new Vector3(-Input.GetAxis("Mouse X") * movementSpeedMouse, 0, -Input.GetAxis("Mouse Y") * movementSpeedMouse));
             }
 
             if (Input.GetMouseButton(1)) //Right Mouse Button
