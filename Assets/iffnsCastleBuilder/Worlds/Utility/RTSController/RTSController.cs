@@ -44,6 +44,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
             set
             {
+                Debug.Log(value);
                 CameraTilt.transform.localEulerAngles = value * Vector3.right;
             }
         }
@@ -56,7 +57,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
             set
             {
-                transform.eulerAngles = value * Vector3.up;
+                float angle = value;
+                if (angle < 180 && angle > 90) angle = 90;
+                if (angle > 180 && angle < 270) angle = 270;
+
+                transform.eulerAngles = angle * Vector3.up;
             }
         }
 
