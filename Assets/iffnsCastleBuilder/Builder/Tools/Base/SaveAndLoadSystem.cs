@@ -126,6 +126,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             this.DefaultBuildingFile = DefaultBuildingFile;
 
+            UpdateFileList();
+
             LoadDefaultBuilding();
         }
         
