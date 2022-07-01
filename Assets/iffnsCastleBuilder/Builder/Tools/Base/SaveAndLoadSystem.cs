@@ -211,8 +211,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             // -> Chateau time: 8.9E-06 s
 
             //Update UI:
-            CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.Done;
-            CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Done;
+            CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Done;
             ToolController.CurrentNavigationTools.UpdateUI();
             // -> Chateau time: 0.005 s
 
@@ -266,8 +265,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             StaticSaveAndLoadSystem.SaveFileToFileLocation(fileInfo: fileInfo, completeFileLocation: completeFileLocation);
 
-            CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.Done;
-            CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Done;
+            CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Done;
         }
 
         //Update buttons
@@ -275,8 +273,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             if (CurrentSaveAndLoadUI.CurrentTitle.Length == 0)
             {
-                CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.Unknown;
-                CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Unknown;
+                CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Unable;
+                CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Unable;
                 CurrentSaveAndLoadUI.TitleMismatch = UpgradeType.sameVersion;
             }
             else
@@ -285,14 +283,14 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if(file == null)
                 {
-                    CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.New;
-                    CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Unknown;
+                    CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Normal;
+                    CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Unable;
                     CurrentSaveAndLoadUI.TitleMismatch = UpgradeType.sameVersion;
                 }
                 else
                 {
-                    CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveButtonStates.Override;
-                    CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.LoadButtonStates.Override;
+                    CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Normal;
+                    CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Normal;
                     CurrentSaveAndLoadUI.TitleMismatch = VersionType(GetVersionVector(version: file.version));
                 }
             }

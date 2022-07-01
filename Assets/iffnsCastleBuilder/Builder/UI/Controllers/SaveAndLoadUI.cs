@@ -12,14 +12,10 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] FileSelectionLine FileSelectionLineTemplate = null;
         [SerializeField] SaveAndLoadSystem CurrentSaveAndLoadSystem = null;
 
-        [SerializeField] VectorButton SaveNewButton = null;
-        [SerializeField] VectorButton SaveDoneButton = null;
-        [SerializeField] VectorButton SaveOverrideButton = null;
-        [SerializeField] VectorButton SaveUnknownButton = null;
-        [SerializeField] VectorButton LoadNewButton = null;
-        [SerializeField] VectorButton LoadDoneButton = null;
-        [SerializeField] VectorButton LoadOverrideButton = null;
-        [SerializeField] VectorButton LoadUnknownButton = null;
+        [SerializeField] GameObject SaveCheckmark = null;
+        [SerializeField] GameObject SaveUnavailable = null;
+        [SerializeField] GameObject LoadCheckmark = null;
+        [SerializeField] GameObject LoadUnavailable = null;
         [SerializeField] VectorButton NewButton = null;
         [SerializeField] TMP_InputField CastleTitle = null;
         [SerializeField] VersionMismatchController fileNameMismatch = null;
@@ -29,16 +25,15 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         readonly float saveMarkTimeSeconds = 1.5f;
 
-        public enum SaveButtonStates
+        public enum SaveAndLoadButtonStates
         {
-            New,
+            Normal,
             Done,
-            Override,
-            Unknown
+            Unable
         }
 
-        SaveButtonStates saveButtonState = SaveButtonStates.Unknown;
-        public SaveButtonStates SaveButtonState
+        SaveAndLoadButtonStates saveButtonState = SaveAndLoadButtonStates.Unable;
+        public SaveAndLoadButtonStates SaveButtonState
         {
             get
             {
@@ -50,46 +45,23 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 switch (value)
                 {
-                    case SaveButtonStates.New:
-                        ActiveSaveButton = SaveNewButton;
+                    case SaveAndLoadButtonStates.Normal:
+                        SaveCheckmark.SetActive(false);
+                        SaveUnavailable.SetActive(false);
                         break;
-                    case SaveButtonStates.Done:
-                        ActiveSaveButton = SaveDoneButton;
+                    case SaveAndLoadButtonStates.Done:
+                        SaveCheckmark.SetActive(true);
+                        SaveUnavailable.SetActive(false);
                         StartCoroutine(RestoreSaveButton(saveMarkTimeSeconds));
                         break;
-                    case SaveButtonStates.Override:
-                        ActiveSaveButton = SaveOverrideButton;
-                        break;
-                    case SaveButtonStates.Unknown:
-                        ActiveSaveButton = SaveUnknownButton;
+                    case SaveAndLoadButtonStates.Unable:
+                        SaveCheckmark.SetActive(false);
+                        SaveUnavailable.SetActive(true);
                         break;
                     default:
                         Debug.LogWarning("Error: Save button not defined");
                         break;
                 }
-            }
-        }
-
-        VectorButton activeSaveButton;
-        VectorButton ActiveSaveButton
-        {
-            /*
-            get
-            {
-                if (activeSaveButton == null) activeSaveButton = SaveNewButton;
-
-                return activeSaveButton;
-            }
-            */
-            set
-            {
-                if (activeSaveButton == null) activeSaveButton = SaveUnknownButton;
-
-                activeSaveButton.gameObject.SetActive(false);
-
-                activeSaveButton = value;
-
-                activeSaveButton.gameObject.SetActive(true);
             }
         }
 
@@ -105,26 +77,12 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             yield return new WaitForSeconds(seconds);
 
-            if(CurrentSaveAndLoadSystem.GetSelectedFile(updateList: true) == null)
-            {
-                SaveButtonState = SaveButtonStates.New;
-            }
-            else
-            {
-                SaveButtonState = SaveButtonStates.Override;
-            }
+            SaveCheckmark.SetActive(false);
         }
 
-        public enum LoadButtonStates
-        {
-            New,
-            Done,
-            Override,
-            Unknown
-        }
 
-        LoadButtonStates loadButtonState = LoadButtonStates.Unknown;
-        public LoadButtonStates LoadButtonState
+        SaveAndLoadButtonStates loadButtonState = SaveAndLoadButtonStates.Unable;
+        public SaveAndLoadButtonStates LoadButtonState
         {
             get
             {
@@ -136,46 +94,23 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 switch (value)
                 {
-                    case LoadButtonStates.New:
-                        ActiveLoadButton = LoadNewButton;
+                    case SaveAndLoadButtonStates.Normal:
+                        LoadCheckmark.SetActive(false);
+                        LoadUnavailable.SetActive(false);
                         break;
-                    case LoadButtonStates.Done:
-                        ActiveLoadButton = LoadDoneButton;
+                    case SaveAndLoadButtonStates.Done:
+                        LoadCheckmark.SetActive(true);
+                        LoadUnavailable.SetActive(false);
                         StartCoroutine(RestoreLoadButton(saveMarkTimeSeconds));
                         break;
-                    case LoadButtonStates.Override:
-                        ActiveLoadButton = LoadOverrideButton;
-                        break;
-                    case LoadButtonStates.Unknown:
-                        ActiveLoadButton = LoadUnknownButton;
+                    case SaveAndLoadButtonStates.Unable:
+                        LoadCheckmark.SetActive(false);
+                        LoadUnavailable.SetActive(true);
                         break;
                     default:
-                        Debug.LogWarning("Error: Load button not defined");
+                        Debug.LogWarning("Error: Save button not defined");
                         break;
                 }
-            }
-        }
-
-        VectorButton activeLoadButton;
-        VectorButton ActiveLoadButton
-        {
-            /*
-            get
-            {
-                if (activeLoadButton == null) activeLoadButton = LoadUnknownButton;
-
-                return activeLoadButton;
-            }
-            */
-            set
-            {
-                if (activeLoadButton == null) activeLoadButton = LoadUnknownButton;
-
-                activeLoadButton.gameObject.SetActive(false);
-
-                activeLoadButton = value;
-
-                activeLoadButton.gameObject.SetActive(true);
             }
         }
 
@@ -183,7 +118,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             yield return new WaitForSeconds(seconds);
 
-            LoadButtonState = LoadButtonStates.Override;
+            LoadButtonState = SaveAndLoadButtonStates.Normal;
         }
 
         public string CurrentTitle
