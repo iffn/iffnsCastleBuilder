@@ -44,7 +44,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
             set
             {
-                Debug.Log(value);
                 CameraTilt.transform.localEulerAngles = value * Vector3.right;
             }
         }
@@ -78,13 +77,23 @@ namespace iffnsStuff.iffnsCastleBuilder
             BottomXPos,
             BottomZPos,
             BottomXNeg,
-            BottomZNeg
+            BottomZNeg,
+            Home
         }
 
         public void SetStandardView(StandardViews direction)
         {
             switch (direction)
             {
+                case StandardViews.Home:
+                    transform.position = cameraHomePosition;
+                    CameraHeadingAngleDeg = cameraHomeHeading;
+                    CameraTiltAngleDeg = cameraHomeTiltAngle;
+
+                    CameraMover.transform.localPosition = Vector3.forward * cameraHomeZoomPosition;
+                    currentCameraOffset = cameraHomeZoomPosition;
+                    mainCamera.orthographicSize = isoCameraSize;
+                    break;
                 case StandardViews.XPos:
                     CameraTiltAngleDeg = 0;
                     CameraHeadingAngleDeg = 270;
@@ -150,6 +159,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             UpdateViewIdentifier();
+            UpdateViewDirection();
         }
 
         void SetHomePosition()
@@ -159,20 +169,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             cameraHomeTiltAngle = CameraTiltAngleDeg;
             cameraHomeZoomPosition = CameraMover.transform.localPosition.z;
             isoCameraSize = mainCamera.orthographicSize;
-        }
-
-        //Also assigned with UI home button
-        public void RestoreHomePosition()
-        {
-            transform.position = cameraHomePosition;
-            CameraHeadingAngleDeg = cameraHomeHeading;
-            CameraTiltAngleDeg = cameraHomeTiltAngle;
-
-            CameraMover.transform.localPosition = Vector3.forward * cameraHomeZoomPosition;
-            currentCameraOffset = cameraHomeZoomPosition;
-            mainCamera.orthographicSize = isoCameraSize;
-
-            UpdateViewIdentifier();
         }
 
         void UpdateViewIdentifier()
@@ -291,6 +287,18 @@ namespace iffnsStuff.iffnsCastleBuilder
             UpdateViewIdentifier();
         }
 
+        void UpdateViewDirection()
+        {
+            if (CameraTiltAngleDeg < 180)
+            {
+                LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.topDown;
+            }
+            else
+            {
+                LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.bottomUp;
+            }
+        }
+
         // Update is called once per frame
         void Update()
         {
@@ -345,14 +353,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 //Pitch
                 CameraTiltAngleDeg += Input.GetAxis("Mouse Y") * rotationSpeedMouse * deltaTime;
 
-                if (CameraTiltAngleDeg < 180)
-                {
-                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.topDown;
-                }
-                else
-                {
-                    LinkedNavigationTools.ViewDirection = CastleController.FloorViewDirectionType.bottomUp;
-                }
+                UpdateViewDirection();
 
                 updateViewIdentifier = true;
             }
@@ -427,11 +428,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
             
             if (updateViewIdentifier) UpdateViewIdentifier();
-
-            if (Input.GetKeyDown(KeyCode.Home))
-            {
-                RestoreHomePosition();
-            }
 
         }
     }

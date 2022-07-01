@@ -31797,7 +31797,7 @@ PrefabInstance:
     - target: {fileID: 4853653076402590121, guid: 68ef79fa4055ba0488d0e0a38530daff, type: 3}
       propertyPath: ClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 9043763560529459108}
+      objectReference: {fileID: 9043763560344494090}
     - target: {fileID: 4853653076402590121, guid: 68ef79fa4055ba0488d0e0a38530daff, type: 3}
       propertyPath: ClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -31808,7 +31808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4853653076402590121, guid: 68ef79fa4055ba0488d0e0a38530daff, type: 3}
       propertyPath: ClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: iffnsStuff.iffnsUnityResources.RTSController, Assembly-CSharp
+      value: iffnsStuff.iffnsCastleBuilder.NavigationTools, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4853653076402590121, guid: 68ef79fa4055ba0488d0e0a38530daff, type: 3}
       propertyPath: ClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

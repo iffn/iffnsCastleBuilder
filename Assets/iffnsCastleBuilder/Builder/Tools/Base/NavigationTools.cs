@@ -40,11 +40,15 @@ namespace iffnsStuff.iffnsCastleBuilder
             linkedOrientationCubeController.SetViewAngles(headingAngleDeg: headingAngleDeg, tiltAngleDeg: tiltAngleDeg);
         }
 
+        public void RestoreHomePosition()
+        {
+            CurrentRTSCamera.SetStandardView(RTSController.StandardViews.Home);
+        }
+
         public void SetStandardView(ViewDirectionPasser directionPasser)
         {
             CurrentRTSCamera.SetStandardView(directionPasser.ViewDirection);
         }
-
 
         public CastleController CurrentBuilding
         {
