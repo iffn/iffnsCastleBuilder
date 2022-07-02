@@ -345,8 +345,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             float stepHeight = stairHeight / numberOfSteps;
             float stepLength = length / numberOfSteps;
 
-            TriangleMeshInfo frontStepTemplate = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: Vector3.up * stepHeight, UVOffset: Vector2.zero);
-            TriangleMeshInfo topStepInfo = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: Vector3.forward * stepLength, UVOffset: Vector2.zero);
+            TriangleMeshInfo frontStepTemplate = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: Vector3.up * stepHeight, uvOffset: Vector2.zero);
+            TriangleMeshInfo topStepInfo = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: Vector3.forward * stepLength, uvOffset: Vector2.zero);
             Vector3 stepOffset = new Vector3(0, stepHeight, stepLength);
 
             //Move for the floor offset
@@ -371,15 +371,15 @@ namespace iffnsStuff.iffnsCastleBuilder
             TopStepTop.Add(topStepInfo);
 
             //End faces
-            BottomFrontFace.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: Vector3.up * LinkedFloor.BottomFloorHeight, UVOffset: Vector2.zero));
+            BottomFrontFace.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: Vector3.up * LinkedFloor.BottomFloorHeight, uvOffset: Vector2.zero));
 
             Vector3 TopBackEnd = new Vector3(0, stairHeight - topFloorHeight + LinkedFloor.BottomFloorHeight, length);
 
-            BackFaceVertical.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: Vector3.up * topFloorHeight, UVOffset: Vector2.zero));
+            BackFaceVertical.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: Vector3.up * topFloorHeight, uvOffset: Vector2.zero));
             BackFaceVertical.Move(TopBackEnd);
             BackFaceVertical.FlipTriangles();
 
-            BackFaceAngle.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: TopBackEnd, UVOffset: Vector2.zero));
+            BackFaceAngle.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: TopBackEnd, uvOffset: Vector2.zero));
             BackFaceAngle.FlipTriangles();
 
             //Side faces
@@ -395,7 +395,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             RightSide.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundStartPoint(startPoint: TopBackEnd, points: SidePoints));
 
             //Invisible collider
-            ColliderMesh.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: new Vector3(0, stepHeight * numberOfSteps, length - stepLength), UVOffset: Vector3.zero));
+            ColliderMesh.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: new Vector3(0, stepHeight * numberOfSteps, length - stepLength), uvOffset: Vector3.zero));
             ColliderMesh.Move(Vector3.up * LinkedFloor.BottomFloorHeight);
 
             //Add step triangles

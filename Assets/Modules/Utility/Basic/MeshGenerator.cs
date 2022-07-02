@@ -94,7 +94,7 @@ public static class MeshGenerator
             return returnValue;
         }
 
-        public static TriangleMeshInfo RectangleAtCorner(Vector3 baseLine, Vector3 secondLine, Vector2 UVOffset)
+        public static TriangleMeshInfo RectangleAtCorner(Vector3 baseLine, Vector3 secondLine, Vector2 uvOffset)
         {
             TriangleMeshInfo returnValue = new();
 
@@ -106,10 +106,10 @@ public static class MeshGenerator
             returnValue.Triangles.Add(new TriangleHolder(0, 1, 2));
             returnValue.Triangles.Add(new TriangleHolder(0, 2, 3));
 
-            returnValue.UVs.Add(new Vector2(0, 0) + UVOffset);
-            returnValue.UVs.Add(new Vector2(0, secondLine.magnitude) + UVOffset);
-            returnValue.UVs.Add(new Vector2(baseLine.magnitude, secondLine.magnitude) + UVOffset);
-            returnValue.UVs.Add(new Vector2(baseLine.magnitude, 0) + UVOffset);
+            returnValue.UVs.Add(new Vector2(0, 0) + uvOffset);
+            returnValue.UVs.Add(new Vector2(0, secondLine.magnitude) + uvOffset);
+            returnValue.UVs.Add(new Vector2(baseLine.magnitude, secondLine.magnitude) + uvOffset);
+            returnValue.UVs.Add(new Vector2(baseLine.magnitude, 0) + uvOffset);
 
             return returnValue;
         }
@@ -840,11 +840,11 @@ public static class MeshGenerator
             return returnValue;
         }
 
-        public static TriangleMeshInfo AddWallBetween2Points(Vector3 firstClockwiseFloorPoint, Vector3 secondClockwiseFloorPoint, float wallHeight, Vector3 offset)
+        public static TriangleMeshInfo AddWallBetween2Points(Vector3 firstClockwiseFloorPoint, Vector3 secondClockwiseFloorPoint, float wallHeight, Vector3 uvOffset)
         {
-            float UVXOffset = Mathf.Sqrt(offset.x * offset.x + offset.z * offset.z);
+            float uvXOffset = Mathf.Sqrt(uvOffset.x * uvOffset.x + uvOffset.z * uvOffset.z);
 
-            TriangleMeshInfo returnValue = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: secondClockwiseFloorPoint - firstClockwiseFloorPoint, secondLine: Vector3.up * wallHeight, UVOffset: new Vector2(UVXOffset, offset.y));
+            TriangleMeshInfo returnValue = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: secondClockwiseFloorPoint - firstClockwiseFloorPoint, secondLine: Vector3.up * wallHeight, uvOffset: new Vector2(uvXOffset, uvOffset.y));
 
             returnValue.Move(firstClockwiseFloorPoint);
 
@@ -864,35 +864,35 @@ public static class MeshGenerator
 
             return returnValue;
         }
-        public static TriangleMeshInfo AddVerticalWallsBetweenMultiplePoints(List<Vector3> floorPointsInClockwiseOrder, float height, bool closed, Vector3 offset)
+        public static TriangleMeshInfo AddVerticalWallsBetweenMultiplePoints(List<Vector3> floorPointsInClockwiseOrder, float height, bool closed, Vector3 uvOffset)
         {
             TriangleMeshInfo returnValue = new();
 
             for (int i = 0; i < floorPointsInClockwiseOrder.Count - 1; i++)
             {
-                returnValue.Add(AddWallBetween2Points(floorPointsInClockwiseOrder[i], floorPointsInClockwiseOrder[i + 1], height, offset));
+                returnValue.Add(AddWallBetween2Points(floorPointsInClockwiseOrder[i], floorPointsInClockwiseOrder[i + 1], height, uvOffset));
             }
 
             if (closed)
             {
-                returnValue.Add(AddWallBetween2Points(floorPointsInClockwiseOrder[^1], floorPointsInClockwiseOrder[0], height, offset));
+                returnValue.Add(AddWallBetween2Points(floorPointsInClockwiseOrder[^1], floorPointsInClockwiseOrder[0], height, uvOffset));
             }
 
             return returnValue;
         }
 
-        public static List<TriangleMeshInfo> AddVerticalWallsBetweenMultiplePointsAsList(List<Vector3> floorPointsInClockwiseOrder, float height, bool closed, Vector3 offset)
+        public static List<TriangleMeshInfo> AddVerticalWallsBetweenMultiplePointsAsList(List<Vector3> floorPointsInClockwiseOrder, float height, bool closed, Vector3 uvOffset)
         {
             List<TriangleMeshInfo> returnList = new();
 
             for (int i = 0; i < floorPointsInClockwiseOrder.Count - 1; i++)
             {
-                returnList.Add(AddWallBetween2Points(floorPointsInClockwiseOrder[i], floorPointsInClockwiseOrder[i + 1], height, offset));
+                returnList.Add(AddWallBetween2Points(floorPointsInClockwiseOrder[i], floorPointsInClockwiseOrder[i + 1], height, uvOffset));
             }
 
             if (closed)
             {
-                returnList.Add(AddWallBetween2Points(floorPointsInClockwiseOrder[^1], floorPointsInClockwiseOrder[0], height, offset));
+                returnList.Add(AddWallBetween2Points(floorPointsInClockwiseOrder[^1], floorPointsInClockwiseOrder[0], height, uvOffset));
             }
 
             return returnList;

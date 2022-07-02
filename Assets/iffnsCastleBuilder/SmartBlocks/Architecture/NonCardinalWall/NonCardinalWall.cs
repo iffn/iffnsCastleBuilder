@@ -257,7 +257,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             BottomCap = TopCap.CloneFlipped;
             TopCap.Move(Vector3.up * height);
 
-            Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePointsAsList(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: height, closed: true, offset: transform.localPosition);
+            Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePointsAsList(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: height, closed: true, uvOffset: transform.localPosition);
 
             foreach (TriangleMeshInfo info in Walls)
             {
@@ -284,7 +284,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 SetDiagonalWall();
                 
-                Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePointsAsList(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: height, closed: true, offset: transform.localPosition);
+                Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePointsAsList(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: height, closed: true, uvOffset: transform.localPosition);
 
                 foreach (TriangleMeshInfo info in Walls)
                 {

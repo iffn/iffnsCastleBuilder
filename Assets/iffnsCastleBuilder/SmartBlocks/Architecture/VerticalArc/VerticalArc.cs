@@ -204,11 +204,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             BackWall.FlipTriangles();
 
             //Top wall
-            TopWall = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: Vector3.forward * length, UVOffset: new Vector2(0, Height));
+            TopWall = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: Vector3.forward * length, uvOffset: new Vector2(0, Height));
             TopWall.Move(Vector3.up * Height);
 
             //Left wall
-            LeftWall = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.up * (Height - FreeHeightSide.Val), secondLine: Vector3.right * width, UVOffset: Vector2.zero);
+            LeftWall = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.up * (Height - FreeHeightSide.Val), secondLine: Vector3.right * width, uvOffset: Vector2.zero);
             LeftWall.FlipTriangles();
             LeftWall.Move(Vector3.up * FreeHeightSide.Val);
 

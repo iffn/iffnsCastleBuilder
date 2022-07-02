@@ -289,20 +289,20 @@ namespace iffnsStuff.iffnsCastleBuilder
             float xOffset = HeightThickness * size.y / Height;
 
             //Roof outside
-            RoofOutside = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: new Vector3(0, Height, -size.y), UVOffset: Vector2.zero);
+            RoofOutside = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: new Vector3(0, Height, -size.y), uvOffset: Vector2.zero);
             RoofOutside.Move(Vector3.forward * size.y);
 
             //Roof inside
-            RoofInside = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: new Vector3(0, Height - HeightThickness, -size.y + xOffset), UVOffset: Vector2.zero);
+            RoofInside = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: new Vector3(0, Height - HeightThickness, -size.y + xOffset), uvOffset: Vector2.zero);
             RoofInside.Move(new Vector3(size.x, 0, size.y - xOffset));
 
             //Top wrapper
-            TriangleMeshInfo tempWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: Vector3.up * HeightThickness, UVOffset: Vector2.zero);
+            TriangleMeshInfo tempWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: Vector3.up * HeightThickness, uvOffset: Vector2.zero);
             tempWrapper.Move(new Vector3(size.x, Height - HeightThickness, 0));
             RoofWrapper.Add(tempWrapper);
 
             //Bottom wrapper
-            tempWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: Vector3.forward * xOffset, UVOffset: Vector2.zero);
+            tempWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: Vector3.forward * xOffset, uvOffset: Vector2.zero);
             tempWrapper.Move(Vector3.forward * (size.y - xOffset));
             RoofWrapper.Add(tempWrapper);
 
@@ -352,20 +352,20 @@ namespace iffnsStuff.iffnsCastleBuilder
             TriangleMeshInfo tempShape;
 
             //Roof outside
-            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: new Vector3(0, Height, -halfWidth), UVOffset: Vector2.zero);
+            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: new Vector3(0, Height, -halfWidth), uvOffset: Vector2.zero);
             tempShape.Move(Vector3.forward * size.y);
             RoofOutside.Add(tempShape);
 
-            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: new Vector3(0, Height, halfWidth), UVOffset: Vector2.zero);
+            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: new Vector3(0, Height, halfWidth), uvOffset: Vector2.zero);
             tempShape.Move(Vector3.right * size.x);
             RoofOutside.Add(tempShape);
 
             //Roof inside
-            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: new Vector3(0, Height - HeightThickness, -halfWidth + xOffset), UVOffset: Vector2.zero);
+            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: new Vector3(0, Height - HeightThickness, -halfWidth + xOffset), uvOffset: Vector2.zero);
             tempShape.Move(new Vector3(size.x, 0, size.y - xOffset));
             RoofInside.Add(tempShape);
 
-            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: new Vector3(0, Height - HeightThickness, halfWidth - xOffset), UVOffset: Vector2.zero);
+            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: new Vector3(0, Height - HeightThickness, halfWidth - xOffset), uvOffset: Vector2.zero);
             tempShape.Move(Vector3.forward * xOffset);
             RoofInside.Add(tempShape);
 
@@ -389,7 +389,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             RoofWrapper.Add(tempShape);
 
             //Bottom wrapper
-            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * xOffset, secondLine: Vector3.right * size.x, UVOffset: Vector2.zero);
+            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * xOffset, secondLine: Vector3.right * size.x, uvOffset: Vector2.zero);
             RoofWrapper.Add(tempShape);
             tempShape = tempShape.Clone;
             tempShape.Move(Vector3.forward * (size.y - xOffset));

@@ -15104,6 +15104,7 @@ MonoBehaviour:
   CurrentBuilderController: {fileID: 9043763559161280165}
   currentRTSController: {fileID: 9043763560529459108}
   PreviewBlockTemplate: {fileID: 3996362296222896956, guid: 60d71a074159c524ea61dbf6a137a1fd, type: 3}
+  HollowedPreviewBlockTemplate: {fileID: 6744170591665764384, guid: 2746df521d020fd4cbb6c868ee5ff8d9, type: 3}
   CurrentBlockToolType: 0
   CurrentDrawToolType: 0
 --- !u!1 &9043763560956603937

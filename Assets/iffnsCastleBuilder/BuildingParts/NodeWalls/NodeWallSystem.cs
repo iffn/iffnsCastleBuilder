@@ -383,19 +383,19 @@ namespace iffnsStuff.iffnsCastleBuilder
                 firstWallInfo.MaterialReference = currentWall.RightMaterialParam;
                 */
 
-                TriangleMeshInfo startCap = MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: vertexPoints3D[0], secondClockwiseFloorPoint: vertexPoints3D[1], wallHeight: wallHeight, offset: offset);
+                TriangleMeshInfo startCap = MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: vertexPoints3D[0], secondClockwiseFloorPoint: vertexPoints3D[1], wallHeight: wallHeight, uvOffset: offset);
                 startCap.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: linkedFloor.LinkedBuildingController.transform);
                 startCap.MaterialReference = currentWall.RightMaterialParam;
 
-                TriangleMeshInfo firstWallInfo = MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: vertexPoints3D[1], secondClockwiseFloorPoint: vertexPoints3D[2], wallHeight: wallHeight, offset: offset);
+                TriangleMeshInfo firstWallInfo = MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: vertexPoints3D[1], secondClockwiseFloorPoint: vertexPoints3D[2], wallHeight: wallHeight, uvOffset: offset);
                 firstWallInfo.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: linkedFloor.LinkedBuildingController.transform);
                 firstWallInfo.MaterialReference = currentWall.RightMaterialParam;
 
-                TriangleMeshInfo endCap = MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: vertexPoints3D[2], secondClockwiseFloorPoint: vertexPoints3D[3], wallHeight: wallHeight, offset: offset);
+                TriangleMeshInfo endCap = MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: vertexPoints3D[2], secondClockwiseFloorPoint: vertexPoints3D[3], wallHeight: wallHeight, uvOffset: offset);
                 endCap.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: linkedFloor.LinkedBuildingController.transform);
                 endCap.MaterialReference = currentWall.RightMaterialParam;
 
-                TriangleMeshInfo secondWallInfo = MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: vertexPoints3D[3], secondClockwiseFloorPoint: vertexPoints3D[0], wallHeight: wallHeight, offset: offset);
+                TriangleMeshInfo secondWallInfo = MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: vertexPoints3D[3], secondClockwiseFloorPoint: vertexPoints3D[0], wallHeight: wallHeight, uvOffset: offset);
                 secondWallInfo.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: linkedFloor.LinkedBuildingController.transform);
                 secondWallInfo.MaterialReference = currentWall.LeftMaterialParam;
 

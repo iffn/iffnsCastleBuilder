@@ -245,13 +245,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             MainSide.Move(MathHelper.SmallFloat * Vector3.left);
             OtherSide.Move((thickness + MathHelper.SmallFloat) * Vector3.right);
 
-            WrapperStartSide = MeshGenerator.FilledShapes.RectangleAtCorner(thickness * Vector3.right, secondLine: trianglePoints[2], UVOffset: Vector2.zero);
+            WrapperStartSide = MeshGenerator.FilledShapes.RectangleAtCorner(thickness * Vector3.right, secondLine: trianglePoints[2], uvOffset: Vector2.zero);
             WrapperStartSide.Move(MathHelper.SmallFloat * Vector3.forward);
 
-            WrapperOtherSide = MeshGenerator.FilledShapes.RectangleAtCorner(thickness * Vector3.right, secondLine: trianglePoints[1] - trianglePoints[2], UVOffset: Vector2.zero);
+            WrapperOtherSide = MeshGenerator.FilledShapes.RectangleAtCorner(thickness * Vector3.right, secondLine: trianglePoints[1] - trianglePoints[2], uvOffset: Vector2.zero);
             WrapperOtherSide.Move(trianglePoints[2] + MathHelper.SmallFloat * Vector3.back);
 
-            WrapperBottom = MeshGenerator.FilledShapes.RectangleAtCorner(thickness * Vector3.right, secondLine: trianglePoints[1], UVOffset: Vector2.zero);
+            WrapperBottom = MeshGenerator.FilledShapes.RectangleAtCorner(thickness * Vector3.right, secondLine: trianglePoints[1], uvOffset: Vector2.zero);
             WrapperBottom.Move(Vector3.up * MathHelper.SmallFloat);
             WrapperBottom.FlipTriangles();
 

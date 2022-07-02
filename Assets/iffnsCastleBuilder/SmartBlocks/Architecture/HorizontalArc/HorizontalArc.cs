@@ -563,7 +563,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (!MathHelper.FloatIsZero(LadderStartingPoint.z - RadiusStartingPoint.z))
                 {
-                    XWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: RadiusStartingPoint, secondClockwiseFloorPoint: LadderStartingPoint, wallHeight: wallHeight, offset: Vector3.zero));
+                    XWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: RadiusStartingPoint, secondClockwiseFloorPoint: LadderStartingPoint, wallHeight: wallHeight, uvOffset: Vector3.zero));
                     ladderPoints.Add(LadderStartingPoint);
                 }
 
@@ -587,7 +587,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         else
                         {
                             currentEndPoint = rightPoint;
-                            InnerArc.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentStartPoint, secondClockwiseFloorPoint: currentEndPoint, wallHeight: wallHeight, offset: Vector3.zero));
+                            InnerArc.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentStartPoint, secondClockwiseFloorPoint: currentEndPoint, wallHeight: wallHeight, uvOffset: Vector3.zero));
                             ladderPoints.Add(currentEndPoint);
                             currentStartPoint = currentEndPoint;
                         }
@@ -600,7 +600,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         currentEndPoint = currentStartPoint + Vector3.back * BlockSize;
                         downSteps--;
 
-                        InnerArc.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentStartPoint, secondClockwiseFloorPoint: currentEndPoint, wallHeight: wallHeight, offset: Vector3.zero));
+                        InnerArc.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentStartPoint, secondClockwiseFloorPoint: currentEndPoint, wallHeight: wallHeight, uvOffset: Vector3.zero));
                         ladderPoints.Add(currentEndPoint);
                         currentStartPoint = currentEndPoint;
 
@@ -619,7 +619,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
                 */
 
-                ZWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentStartPoint, secondClockwiseFloorPoint: RadiusEndingPoint, wallHeight: wallHeight, offset: Vector3.zero));
+                ZWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentStartPoint, secondClockwiseFloorPoint: RadiusEndingPoint, wallHeight: wallHeight, uvOffset: Vector3.zero));
 
 
                 Floor = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(firstLine: outerArc, secondLine: ladderPoints, isClosed: false);
@@ -647,7 +647,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 if (hasStartCapWall)
                 {
                     currentEndPoint = currentStartPoint + Vector3.forward * (BlockSize - offset);
-                    ZWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentEndPoint, secondClockwiseFloorPoint: currentStartPoint, wallHeight: wallHeight, offset: Vector3.zero));
+                    ZWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentEndPoint, secondClockwiseFloorPoint: currentStartPoint, wallHeight: wallHeight, uvOffset: Vector3.zero));
                     ladderPoints.Add(currentEndPoint);
                     currentStartPoint = currentEndPoint;
                 }
@@ -676,7 +676,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         {
                             currentEndPoint = currentStartPoint + Vector3.right * BlockSize;
                             rightSteps--;
-                            XWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentEndPoint, secondClockwiseFloorPoint: currentStartPoint, wallHeight: wallHeight, offset: Vector3.zero));
+                            XWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentEndPoint, secondClockwiseFloorPoint: currentStartPoint, wallHeight: wallHeight, uvOffset: Vector3.zero));
                             ladderPoints.Add(currentEndPoint);
                             currentStartPoint = currentEndPoint;
                         }
@@ -697,7 +697,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         {
                             currentEndPoint = backPoint;
                             downSteps--;
-                            ZWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentEndPoint, secondClockwiseFloorPoint: currentStartPoint, wallHeight: wallHeight, offset: Vector3.zero));
+                            ZWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentEndPoint, secondClockwiseFloorPoint: currentStartPoint, wallHeight: wallHeight, uvOffset: Vector3.zero));
                             ladderPoints.Add(currentEndPoint);
                             currentStartPoint = currentEndPoint;
                         }
@@ -712,7 +712,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (hasEndCapWall)
                 {
-                    XWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: innerArc.Vertices[0], secondClockwiseFloorPoint: currentEndPoint, wallHeight: wallHeight, offset: Vector3.zero));
+                    XWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: innerArc.Vertices[0], secondClockwiseFloorPoint: currentEndPoint, wallHeight: wallHeight, uvOffset: Vector3.zero));
                 }
 
                 ladderPoints.Reverse();

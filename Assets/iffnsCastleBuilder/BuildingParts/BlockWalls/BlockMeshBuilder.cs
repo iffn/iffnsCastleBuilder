@@ -214,7 +214,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     if (!currentBlock.CurrentShapeInfo.HasFloorAndCeiling) continue;
 
                     //Add Ceiling
-                    TriangleMeshInfo floor = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * LinkedFloor.BlockSize, secondLine: Vector3.forward * LinkedFloor.BlockSize, UVOffset: new Vector2(xPos, zPos) * BlockSize);
+                    TriangleMeshInfo floor = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * LinkedFloor.BlockSize, secondLine: Vector3.forward * LinkedFloor.BlockSize, uvOffset: new Vector2(xPos, zPos) * BlockSize);
                     floor.Move(LinkedFloor.GetLocalNodePositionFromNodeIndex(new Vector2Int(xPos, zPos)));
                     TriangleMeshInfo ceiling = floor.CloneFlipped;
 
@@ -257,7 +257,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         height = HeightAndHeightOffset.x;
                         heightOffset = HeightAndHeightOffset.y;
 
-                        TriangleMeshInfo currentInfo = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * LinkedFloor.BlockSize, secondLine: Vector3.up * height, UVOffset: new Vector2(zPos, 0) * BlockSize);
+                        TriangleMeshInfo currentInfo = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * LinkedFloor.BlockSize, secondLine: Vector3.up * height, uvOffset: new Vector2(zPos, 0) * BlockSize);
                         currentInfo.Move(Vector3.up * heightOffset);
                         currentInfo.FlipTriangles();
                         currentInfo.Move(LinkedFloor.NodePositionFromBlockIndex(blockIndex: new Vector2Int(xPos, zPos), orientation: new GridOrientation(GridOrientation.GridQuarterOrientations.XPosZPos)));
@@ -273,7 +273,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         height = HeightAndHeightOffset.x;
                         heightOffset = HeightAndHeightOffset.y;
 
-                        TriangleMeshInfo currentInfo = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * LinkedFloor.BlockSize, secondLine: Vector3.up * height, UVOffset: new Vector2(zPos, 0) * BlockSize);
+                        TriangleMeshInfo currentInfo = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * LinkedFloor.BlockSize, secondLine: Vector3.up * height, uvOffset: new Vector2(zPos, 0) * BlockSize);
                         currentInfo.Move(Vector3.up * heightOffset);
                         currentInfo.Move(LinkedFloor.NodePositionFromBlockIndex(blockIndex: new Vector2Int(xPos, zPos), orientation: new GridOrientation(GridOrientation.GridQuarterOrientations.XNegZPos)));
                         currentInfo.AlternativeMaterial = currentBlock.RightWallMaterial;
@@ -300,7 +300,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         height = HeightAndHeightOffset.x;
                         heightOffset = HeightAndHeightOffset.y;
 
-                        TriangleMeshInfo currentInfo = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * LinkedFloor.BlockSize, secondLine: Vector3.up * height, UVOffset: new Vector2(zPos, 0) * BlockSize);
+                        TriangleMeshInfo currentInfo = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * LinkedFloor.BlockSize, secondLine: Vector3.up * height, uvOffset: new Vector2(zPos, 0) * BlockSize);
                         currentInfo.Move(Vector3.up * heightOffset);
                         currentInfo.Move(LinkedFloor.NodePositionFromBlockIndex(blockIndex: new Vector2Int(xPos, zPos), orientation: new GridOrientation(GridOrientation.GridQuarterOrientations.XPosZPos)));
                         currentInfo.AlternativeMaterial = currentBlock.BackWallMaterial;
@@ -315,7 +315,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         height = HeightAndHeightOffset.x;
                         heightOffset = HeightAndHeightOffset.y;
 
-                        TriangleMeshInfo currentInfo = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * LinkedFloor.BlockSize, secondLine: Vector3.up * height, UVOffset: new Vector2(zPos, 0) * BlockSize);
+                        TriangleMeshInfo currentInfo = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * LinkedFloor.BlockSize, secondLine: Vector3.up * height, uvOffset: new Vector2(zPos, 0) * BlockSize);
                         currentInfo.Move(Vector3.up * heightOffset);
                         currentInfo.FlipTriangles();
                         currentInfo.Move(LinkedFloor.NodePositionFromBlockIndex(blockIndex: new Vector2Int(xPos, zPos), orientation: new GridOrientation(GridOrientation.GridQuarterOrientations.XPosZNeg)));

@@ -12,9 +12,11 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] CastleBuilderController CurrentBuilderController;
         [SerializeField] RTSController currentRTSController;
         [SerializeField] PreviewBlock PreviewBlockTemplate;
+        [SerializeField] HollowedPreviewBlock HollowedPreviewBlockTemplate;
 
         //Runtime parameters
         PreviewBlock previewBlock;
+        HollowedPreviewBlock hollowedPreviewBlock;
         public BlockToolType CurrentBlockToolType = BlockToolType.Wall;
         public DrawToolType CurrentDrawToolType = DrawToolType.Dot;
         VirtualBlock originBlock;
@@ -255,7 +257,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-        void EmptySquareUpdate()
+        void HollowedSquareUpdate()
         {
             //Get initial object if button down
             if (Input.GetMouseButtonDown(0))
@@ -276,7 +278,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             endBlock = GetBlockFromClick(OnlyCheckCurrentFloor: true);
             if (endBlock != null)
             {
-                SetCardinalPreviewBlock(firstBlock: originBlock, secondBlock: endBlock);
+                SetHollowPreviewBlock(firstBlock: originBlock, secondBlock: endBlock);
             }
             else
             {
@@ -323,7 +325,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
 
                 originBlock = null;
-                if (previewBlock != null) previewBlock.Clear();
+                if (hollowedPreviewBlock != null) ClearHollowPreviewBlock();
             }
         }
 
@@ -348,7 +350,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     FilledSquareUpdate();
                     break;
                 case DrawToolType.HollowBlock:
-                    EmptySquareUpdate();
+                    HollowedSquareUpdate();
                     break;
                 default:
                     break;
@@ -360,22 +362,31 @@ namespace iffnsStuff.iffnsCastleBuilder
             if (previewBlock == null) previewBlock = Instantiate(PreviewBlockTemplate);
 
             previewBlock.SetCardinalPreviewBlock(firstBlock: firstBlock, secondBlock: secondBlock, currentBuilding: CurrentBuilding);
+        }
 
+        public void SetHollowPreviewBlock(VirtualBlock firstBlock, VirtualBlock secondBlock)
+        {
+            Vector2Int offset = secondBlock.Coordinate - firstBlock.Coordinate;
 
-            /*
-            previewBlock.transform.rotation = CurrentBuilding.transform.rotation;
+            int xOffset = System.Math.Abs(offset.x);
+            int yOffset = System.Math.Abs(offset.y);
 
-            float xSize = (Mathf.Abs(firstBlock.XPosition - secondBlock.XPosition) + 1) * CurrentBuilding.blockSize + 0.05f;
-            float zSize = (Mathf.Abs(firstBlock.ZPosition - secondBlock.ZPosition) + 1) * CurrentBuilding.blockSize + 0.05f;
-            float ySize = CurrentBuilding.CurrentFloorObject.completeFloorHeight + 0.05f;
+            if(xOffset > 1 && yOffset > 1)
+            {
+                if (previewBlock != null) ClearCardinalPreviewBlock();
+                
+                if (hollowedPreviewBlock == null) hollowedPreviewBlock = Instantiate(HollowedPreviewBlockTemplate);
 
-            float xPos = (0f + firstBlock.XPosition + secondBlock.XPosition) / 2 * CurrentBuilding.blockSize;
-            float zPos = (0f + firstBlock.ZPosition + secondBlock.ZPosition) / 2 * CurrentBuilding.blockSize;
-            float yPos = CurrentBuilding.CurrentFloorObject.transform.position.y + ySize / 2;
+                hollowedPreviewBlock.SetCardinalPreviewBlock(firstBlock: firstBlock, secondBlock: secondBlock, currentBuilding: CurrentBuilding);
+            }
+            else
+            {
+                if (hollowedPreviewBlock != null) ClearHollowPreviewBlock();
 
-            previewBlock.transform.position = transform.rotation * new Vector3(xPos, yPos, zPos) + transform.position;
-            previewBlock.transform.localScale = new Vector3(xSize, ySize, zSize);
-            */
+                if (previewBlock == null) previewBlock = Instantiate(PreviewBlockTemplate);
+
+                previewBlock.SetCardinalPreviewBlock(firstBlock: firstBlock, secondBlock: secondBlock, currentBuilding: CurrentBuilding);
+            }
         }
 
         public void ClearCardinalPreviewBlock()
@@ -387,6 +398,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public void ClearHollowPreviewBlock()
+        {
+            if (hollowedPreviewBlock != null)
+            {
+                hollowedPreviewBlock.Clear();
+                hollowedPreviewBlock = null;
+            }
+        }
 
         VirtualBlock GetBlockFromClick(bool OnlyCheckCurrentFloor)
         {

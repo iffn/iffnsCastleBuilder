@@ -200,12 +200,12 @@ namespace iffnsStuff.iffnsCastleBuilder
             Bottom = Top.CloneFlipped;
             Top.Move(Vector3.up * height);
 
-            Wall12 = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: ClockwisePoints[1], secondLine: Vector3.up * height, UVOffset: Vector2.zero);
+            Wall12 = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: ClockwisePoints[1], secondLine: Vector3.up * height, uvOffset: Vector2.zero);
             Wall12.FlipTriangles();
-            Wall23 = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: ClockwisePoints[2] - ClockwisePoints[1], secondLine: Vector3.up * height, UVOffset: Vector2.zero);
+            Wall23 = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: ClockwisePoints[2] - ClockwisePoints[1], secondLine: Vector3.up * height, uvOffset: Vector2.zero);
             Wall23.FlipTriangles();
             Wall23.Move(ClockwisePoints[1]);
-            Wall31 = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: ClockwisePoints[2], secondLine: Vector3.up * height, UVOffset: Vector2.zero);
+            Wall31 = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: ClockwisePoints[2], secondLine: Vector3.up * height, uvOffset: Vector2.zero);
 
             Top.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
             Wall12.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);

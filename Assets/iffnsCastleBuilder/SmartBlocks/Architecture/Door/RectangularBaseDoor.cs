@@ -118,19 +118,19 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 float topHeight = completeHeight - doorHeight - borderWidth;
 
-                FrontWall.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * completeWidth, secondLine: Vector3.up * topHeight, UVOffset: UVBaseObject.transform.InverseTransformDirection(transform.position)));
+                FrontWall.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * completeWidth, secondLine: Vector3.up * topHeight, uvOffset: UVBaseObject.transform.InverseTransformDirection(transform.position)));
                 FrontWall.Move(Vector3.up * (completeHeight - topHeight));
                 FrontWall.FlipTriangles();
 
                 //Wrapper
-                topWrap = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.forward * completeWidth, UVOffset: Vector2.zero);
+                topWrap = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.forward * completeWidth, uvOffset: Vector2.zero);
                 topWrap.Move(Vector3.up * completeHeight);
 
-                leftWraper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.down * topHeight, UVOffset: Vector2.zero);
+                leftWraper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.down * topHeight, uvOffset: Vector2.zero);
                 leftWraper.Move(Vector3.up * completeHeight);
                 leftWraper.FlipTriangles();
 
-                rightWraper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.down * topHeight, UVOffset: Vector2.zero);
+                rightWraper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.down * topHeight, uvOffset: Vector2.zero);
                 rightWraper.Move(Vector3.up * completeHeight + Vector3.forward * completeWidth);
 
                 BackWall.Add(FrontWall.CloneFlipped);

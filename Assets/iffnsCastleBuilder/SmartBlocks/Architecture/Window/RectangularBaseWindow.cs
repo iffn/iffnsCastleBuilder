@@ -129,13 +129,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Walls
             float topHeight = completeHeight - windowHeight - borderWidth - bottomHeight;
 
-            FrontTopWall.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * completeWidth, secondLine: Vector3.up * topHeight, UVOffset: Vector3.zero));
+            FrontTopWall.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * completeWidth, secondLine: Vector3.up * topHeight, uvOffset: Vector3.zero));
             FrontTopWall.FlipTriangles();
             FrontTopWall.Move(Vector3.up * (completeHeight - topHeight));
 
             BackTopWall.Add(FrontTopWall.CloneFlipped);
 
-            FrontBottomWall.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * completeWidth, secondLine: Vector3.up * (bottomHeight - borderWidth), UVOffset: Vector3.zero)); ;
+            FrontBottomWall.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * completeWidth, secondLine: Vector3.up * (bottomHeight - borderWidth), uvOffset: Vector3.zero)); ;
             FrontBottomWall.FlipTriangles();
             BackBottomkWall.Add(FrontBottomWall.CloneFlipped);
             BackBottomkWall.Move(Vector3.right * betweenDepth);
@@ -148,17 +148,17 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             //Wrapper
 
-            bottomWraper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.forward * completeWidth, UVOffset: Vector2.zero);
+            bottomWraper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.forward * completeWidth, uvOffset: Vector2.zero);
             bottomWraper.FlipTriangles();
 
             topWrapper = bottomWraper.CloneFlipped;
             topWrapper.Move(Vector3.up * completeHeight);
             bottomWraper.Move(Vector3.up * MathHelper.SmallFloat);
 
-            leftWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.down * topHeight, UVOffset: Vector2.zero);
+            leftWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.down * topHeight, uvOffset: Vector2.zero);
             leftWrapper.FlipTriangles();
             leftWrapper.Move(Vector3.up * completeHeight);
-            TriangleMeshInfo leftBottomWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.up * (bottomHeight - borderWidth), UVOffset: Vector2.zero);
+            TriangleMeshInfo leftBottomWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.up * (bottomHeight - borderWidth), uvOffset: Vector2.zero);
             leftWrapper.Add(leftBottomWrapper);
 
             rightWrapper = leftWrapper.CloneFlipped;
