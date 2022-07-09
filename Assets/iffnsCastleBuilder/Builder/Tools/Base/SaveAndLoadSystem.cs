@@ -19,25 +19,27 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] SaveAndLoadUI CurrentSaveAndLoadUI;
         [SerializeField] BuildingToolController ToolController;
 
+        //Settings
         readonly static string fileIdentifier = "CastleBuilder by iffn";
-        //readonly static string currentVersion = "1.0.0";
         readonly static string mainBuildingIdentifier = "MainBuilding";
-
-        List<StaticSaveAndLoadSystem.BaseLoadFileInfo> loadInfos;
-        readonly List<SaveAndLoadUI.FileLineInfo> fileInfos = new();
-
-        readonly static Vector3Int currentVersion = new Vector3Int(1, 0, 0);
-
-        TextAsset DefaultBuildingFile;
         readonly string fileEnding = ".castle";
         static readonly string buildingFileLocation = StaticSaveAndLoadSystem.UserFileLocation + MyStringComponents.slash + "Buildings";
+        readonly static Vector3Int currentVersion = new Vector3Int(1, 0, 0);
+            /*
+                Version types:
+                x = Main version: File cannot be read when opening with an older version
+                y = Secondary version: Existing parts may change when opening with an older version
+                z = Minor version: Some new parts not supported when opening with an older version
+            */
+        readonly float TimeUntilLoadOrClearConfirmationSeconds = 20;
 
-        /*
-            Version types:
-            x = Main version: File cannot be read when opening with an older version
-            y = Secondary version: Existing parts may change when opening with an older version
-            z = Minor version: Some new parts not supported when opening with an older version
-        */
+        //Runtime parameters
+        List<StaticSaveAndLoadSystem.BaseLoadFileInfo> loadInfos;
+        readonly List<SaveAndLoadUI.FileLineInfo> fileInfos = new();
+        TextAsset DefaultBuildingFile;
+        bool confirmOverride = true;
+        float LastSaveLoadOrClearTime = 0;
+
 
         public enum UpgradeType
         {
@@ -104,9 +106,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             return UpgradeType.sameVersion;
         }
 
-        
-
-        string completeFileLocation
+        string CompleteFileLocation
         {
             get
             {
@@ -145,8 +145,106 @@ namespace iffnsStuff.iffnsCastleBuilder
             CurrentBuilding.ApplyBuildParameters();
         }
 
+        bool ConfirmBeforeLoadOrClear
+        {
+            get
+            {
+                return Time.time > LastSaveLoadOrClearTime + TimeUntilLoadOrClearConfirmationSeconds;
+            }
+        }
+
+        void SetLastSaveLoadOrClearTime()
+        {
+            LastSaveLoadOrClearTime = Time.time;
+        }
+
+        void HideAllConfirmations()
+        {
+            CurrentSaveAndLoadUI.ShowOverrideConfirmation = false;
+            CurrentSaveAndLoadUI.ShowLoadConfirmation = false;
+            CurrentSaveAndLoadUI.ShowClearConfirmation = false;
+        }
+
+        public void RequestSave()
+        {
+            HideAllConfirmations();
+
+            if (!confirmOverride || !SelectedFileExists(updateList: true))
+            {
+                SaveBuilding();
+            }
+            else
+            {
+                CurrentSaveAndLoadUI.ShowOverrideConfirmation = true;
+            }
+        }
+
+        public void RequestLoad()
+        {
+            HideAllConfirmations();
+
+            if (ConfirmBeforeLoadOrClear)
+            {
+                CurrentSaveAndLoadUI.ShowLoadConfirmation = true;
+            }
+            else
+            {
+                LoadBuilding();
+            }
+        }
+
+        public void RequestClear()
+        {
+            HideAllConfirmations();
+
+            if (ConfirmBeforeLoadOrClear)
+            {
+                CurrentSaveAndLoadUI.ShowClearConfirmation = true;
+            }
+            else
+            {
+                ClearBuilding();
+            }
+        }
+
+        public void ConfirmSave()
+        {
+            SaveBuilding();
+            CurrentSaveAndLoadUI.ShowOverrideConfirmation = false;
+        }
+
+        public void ConfirmLoad()
+        {
+            LoadBuilding();
+            CurrentSaveAndLoadUI.ShowLoadConfirmation = false;
+        }
+        
+
+        public void ConfirmClear()
+        {
+            ClearBuilding();
+            CurrentSaveAndLoadUI.ShowClearConfirmation = false;
+        }
+
+        public void CancelSave()
+        {
+            CurrentSaveAndLoadUI.ShowOverrideConfirmation = false;
+        }
+
+        public void CancelLoad()
+        {
+            CurrentSaveAndLoadUI.ShowLoadConfirmation = false;
+        }
+
+        public void CancelClear()
+        {
+            CurrentSaveAndLoadUI.ShowClearConfirmation = false;
+        }
+
         public void ClearBuilding()
         {
+            SetLastSaveLoadOrClearTime();
+
             //Load default building -> Merge with CastleTestWorldController
 
             EditTool.DeactivateEditOnMain();
@@ -162,15 +260,16 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void LoadBuilding()
         {
+            SetLastSaveLoadOrClearTime();
+            confirmOverride = false;
+
             /*
             System.Diagnostics.Stopwatch stopwatch = new();
             stopwatch.Start();
             System.Diagnostics.Stopwatch stepwatch = new();
             */
 
-
-            
-            StaticSaveAndLoadSystem.FullLoadFileInfo fileInfo = StaticSaveAndLoadSystem.GetFileInfoFromFileLocation(completeFileLocation: completeFileLocation, fileEnding: fileEnding);
+            StaticSaveAndLoadSystem.FullLoadFileInfo fileInfo = StaticSaveAndLoadSystem.GetFileInfoFromFileLocation(completeFileLocation: CompleteFileLocation, fileEnding: fileEnding);
             if (!LoadInfoIsValid(fileInfo)) return;
             if (VersionType(GetVersionVector(fileInfo.version)) == UpgradeType.notSupported) return;
 
@@ -256,18 +355,27 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-
         public void SaveBuilding()
         {
+            SetLastSaveLoadOrClearTime();
+            confirmOverride = false;
+
             if (string.IsNullOrWhiteSpace(CurrentFileNameWithoutEnding)) return; //Don't save empty file, IsNullOrWhiteSpace also includes empty: https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace
 
             StaticSaveAndLoadSystem.SaveFileInfo.SaveObjectInfo saveObject = new(name: mainBuildingIdentifier, saveObject: CurrentBuilding);
 
             StaticSaveAndLoadSystem.SaveFileInfo fileInfo = new(type: fileIdentifier, version: GetVersionString(currentVersion), saveObject: saveObject);
 
-            StaticSaveAndLoadSystem.SaveFileToFileLocation(fileInfo: fileInfo, completeFileLocation: completeFileLocation);
+            StaticSaveAndLoadSystem.SaveFileToFileLocation(fileInfo: fileInfo, completeFileLocation: CompleteFileLocation);
 
             CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Done;
+        }
+
+        bool SelectedFileExists(bool updateList)
+        {
+            StaticSaveAndLoadSystem.BaseLoadFileInfo file = GetSelectedFile(updateList: updateList);
+
+            return file != null;
         }
 
         //Update buttons
@@ -344,6 +452,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             CurrentSaveAndLoadUI.HideFileList();
 
+            confirmOverride = true;
+
             //Update buttons not needed because the file name change already updates the buttons
             //UpdateButtons(updateList: true);
         }
@@ -351,6 +461,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         //Name change
         public void FileNameChange()
         {
+            confirmOverride = true;
             UpdateButtons(updateList: true);
         }
     }

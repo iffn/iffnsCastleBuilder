@@ -19,11 +19,38 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] VectorButton NewButton = null;
         [SerializeField] TMP_InputField CastleTitle = null;
         [SerializeField] VersionMismatchController fileNameMismatch = null;
+        [SerializeField] GameObject OverrideConfirmation;
+        [SerializeField] GameObject LoadConfirmation;
+        [SerializeField] GameObject ClearConfirmation;
 
         [SerializeField] RectTransform ExpandArea = null;
         [SerializeField] RectTransform ExpandIcon;
 
         readonly float saveMarkTimeSeconds = 1.5f;
+
+        public bool ShowOverrideConfirmation
+        {
+            set
+            {
+                OverrideConfirmation.SetActive(value);
+            }
+        }
+
+        public bool ShowLoadConfirmation
+        {
+            set
+            {
+                LoadConfirmation.SetActive(value);
+            }
+        }
+
+        public bool ShowClearConfirmation
+        {
+            set
+            {
+                ClearConfirmation.SetActive(value);
+            }
+        }
 
         public enum SaveAndLoadButtonStates
         {
@@ -31,6 +58,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             Done,
             Unable
         }
+
+
 
         SaveAndLoadButtonStates saveButtonState = SaveAndLoadButtonStates.Unable;
         public SaveAndLoadButtonStates SaveButtonState
