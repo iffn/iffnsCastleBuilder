@@ -2,9 +2,9 @@
 <svg
    inkscape:export-ydpi="96"
    inkscape:export-xdpi="96"
-   inkscape:export-filename="C:\Users\iffn1\Documents\UnityProjects\iffnsCastleBuilder\Assets\iffnsCastleBuilder\Builder\UI\Icons\Dark\UIExpander-Dark.png"
+   inkscape:export-filename="UIExpander-Dark.png"
    sodipodi:docname="UIExpander-Dark.svg"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    id="svg1397"
    version="1.1"
    viewBox="0 0 100 100"
@@ -51,7 +51,7 @@
        x2="869.9046"
        y2="311.90723"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(2.6118264,0,0,2.5465026,-1400.0607,-496.18534)" />
+       gradientTransform="matrix(2.6260961,0,0,2.5556351,-2186.1416,-747.13543)" />
   </defs>
   <sodipodi:namedview
      inkscape:window-maximized="1"
@@ -63,8 +63,8 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="197.5"
-     inkscape:cx="166.78571"
+     inkscape:cy="183.57143"
+     inkscape:cx="2.8571429"
      inkscape:zoom="1.4"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -72,7 +72,9 @@
      bordercolor="#666666"
      pagecolor="#ffffff"
      id="base"
-     inkscape:pagecheckerboard="0" />
+     inkscape:pagecheckerboard="0"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata1394">
     <rdf:RDF>
@@ -88,38 +90,33 @@
      id="layer1"
      inkscape:groupmode="layer"
      inkscape:label="Layer 1">
+    <path
+       id="path2393"
+       style="fill:url(#linearGradient2609);fill-opacity:1;stroke:#000500;stroke-width:5.99999;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+       d="M 3.0000532,3.0000078 V 96.935997 A 96.623579,94.031065 0 0 0 96.997699,3.0000078 Z" />
+    <path
+       id="rect302"
+       style="fill:#000000;fill-opacity:1;stroke:#333333;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       d="m 19.998263,21.023523 v 23.701396 l 7.908044,-7.908045 14.833203,14.833203 -7.908044,7.908045 H 58.532345 V 35.857243 L 50.6243,43.765287 35.791097,28.932084 43.699141,21.023523 Z" />
     <g
-       id="g3598"
-       transform="matrix(1.0054635,0,0,1.0035863,-778.43164,-249.17062)"
-       style="display:inline;stroke-width:0.995496">
+       id="g2029"
+       transform="rotate(90,39.2653,40.291015)">
       <path
-         id="path2393"
-         style="fill:url(#linearGradient2609);fill-opacity:1;stroke:#000500;stroke-width:5.97297;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
-         d="m 777.18554,251.2695 v 93.60031 a 96.098545,93.695046 0 0 0 93.48688,-93.60031 z" />
+         id="rect302-4"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+         d="m 30.637211,147.97953 23.70106,23.70106 v -23.70106 z" />
+      <path
+         id="rect302-7-9"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+         d="m 39.504811,186.51405 -23.70106,-23.70106 v 23.70106 z" />
       <rect
-         style="fill:#000000;stroke:#000500;stroke-width:5.97298;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
-         id="rect2845"
-         width="40.927731"
-         height="1.2402343"
-         x="354.59039"
-         y="798.8916"
-         transform="rotate(-45)" />
-      <rect
-         style="display:inline;fill:#000000;stroke:#000500;stroke-width:5.97298;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
-         id="rect2845-8"
-         width="40.927731"
-         height="1.2402343"
-         x="352.90952"
-         y="781.71741"
-         transform="rotate(-45)" />
-      <rect
-         style="display:inline;fill:#000000;stroke:#000500;stroke-width:5.97298;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
-         id="rect2845-0"
-         width="40.927731"
-         height="1.2402343"
-         x="351.22864"
-         y="764.54327"
-         transform="rotate(-45)" />
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+         id="rect1134-6"
+         width="11.150296"
+         height="29.671129"
+         x="-148.63544"
+         y="-108.29796"
+         transform="rotate(-135)" />
     </g>
   </g>
 </svg>
