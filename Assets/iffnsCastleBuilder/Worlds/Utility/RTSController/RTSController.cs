@@ -342,7 +342,18 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Pan
             if (Input.GetMouseButton(2)) //Middle Mouse Button
             {
-                gameObject.transform.Translate(new Vector3(-Input.GetAxis("Mouse X") * movementSpeedMouse, 0, -Input.GetAxis("Mouse Y") * movementSpeedMouse));
+                float direction;
+
+                if(CameraTiltAngleDeg < 180)
+                {
+                    direction = -1;
+                }
+                else
+                {
+                    direction = 1;
+                }
+
+                gameObject.transform.Translate(new Vector3(-Input.GetAxis("Mouse X") * movementSpeedMouse, 0, direction * Input.GetAxis("Mouse Y") * movementSpeedMouse));
             }
 
             if (Input.GetMouseButton(1)) //Right Mouse Button
