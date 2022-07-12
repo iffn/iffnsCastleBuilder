@@ -207,7 +207,7 @@ public static class JsonLineHelper
         }
     }
 
-    public static Vector3 ConvertJSONStringToVector3(string text, bool globalFormat, out bool worked)
+    public static Vector3 ConvertJSONStringToVector3(string text, out bool worked)
     {
         string usedText = text.Replace("[", "");
         usedText = usedText.Replace("]", "");
@@ -226,9 +226,9 @@ public static class JsonLineHelper
             }
         }
 
-        float x = StringHelper.ConvertStringToFloat(text: numbers[0], globalFormat: globalFormat, worked: out bool xWorked);
-        float y = StringHelper.ConvertStringToFloat(text: numbers[1], globalFormat: globalFormat, worked: out bool yWorked);
-        float z = StringHelper.ConvertStringToFloat(text: numbers[2], globalFormat: globalFormat, worked: out bool zWorked);
+        float x = StringHelper.ConvertStringToFloat(text: numbers[0], globalFormat: true, worked: out bool xWorked);
+        float y = StringHelper.ConvertStringToFloat(text: numbers[1], globalFormat: true, worked: out bool yWorked);
+        float z = StringHelper.ConvertStringToFloat(text: numbers[2], globalFormat: true, worked: out bool zWorked);
 
         if (!xWorked || !yWorked || !zWorked)
         {
