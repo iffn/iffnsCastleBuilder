@@ -63,8 +63,8 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="183.57143"
-     inkscape:cx="2.8571429"
+     inkscape:cy="181.42857"
+     inkscape:cx="43.571429"
      inkscape:zoom="1.4"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -96,7 +96,7 @@
        d="M 3.0000532,3.0000078 V 96.935997 A 96.623579,94.031065 0 0 0 96.997699,3.0000078 Z" />
     <path
        id="rect302"
-       style="fill:#000000;fill-opacity:1;stroke:#333333;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        d="m 19.998263,21.023523 v 23.701396 l 7.908044,-7.908045 14.833203,14.833203 -7.908044,7.908045 H 58.532345 V 35.857243 L 50.6243,43.765287 35.791097,28.932084 43.699141,21.023523 Z" />
     <g
        id="g2029"
