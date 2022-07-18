@@ -64,7 +64,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             base.SetUp(rangedLine.Name);
 
             InputField.contentType = InputField.ContentType.DecimalNumber;
-            InputField.text = rangedLine.Val.ToString();
+            InputField.text = StringHelper.ConvertFloatToString(value: rangedLine.Val, globalFormat: false); ;
             InputField.onEndEdit.AddListener(ChangeRangedLineValue);
 
             this.additionalCalls = additionalCalls;
@@ -78,7 +78,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             base.SetUp(distinctUnnamedLine.Name);
 
             InputField.contentType = InputField.ContentType.IntegerNumber;
-            InputField.text = distinctUnnamedLine.Val.ToString();
+            InputField.text = StringHelper.ConvertIntToString(value: distinctUnnamedLine.Val, globalFormat: false);
             InputField.onEndEdit.AddListener(ChangeDistinctUnnamedLineValue);
 
             this.additionalCalls = additionalCalls;
@@ -111,7 +111,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (!previouslyFalied && lineOwner.Failed)
                 {
-                    InputField.text = previousValue.ToString();
+                    InputField.text = StringHelper.ConvertFloatToString(value: previousValue, globalFormat: false);
                     rangedLine.Val = previousValue;
                     lineOwner.ApplyBuildParameters();
                 }
@@ -139,7 +139,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (!previouslyFalied && lineOwner.Failed)
                 {
-                    InputField.text = previousValue.ToString();
+                    InputField.text = StringHelper.ConvertFloatToString(value: previousValue, globalFormat: false);
                     distinctUnnamedLine.Val = previousValue;
                     lineOwner.ApplyBuildParameters();
                 }

@@ -149,7 +149,7 @@ public static class JsonLineHelper
         {
             get
             {
-                return value.ToString();
+                return StringHelper.ConvertIntToString(value: value, globalFormat: true);
             }
             set
             {
@@ -181,7 +181,7 @@ public static class JsonLineHelper
         {
             get
             {
-                return value.ToString();
+                return StringHelper.ConvertFloatToString(value: value, globalFormat: true);
             }
             set
             {
@@ -241,6 +241,14 @@ public static class JsonLineHelper
         return new Vector3(x, y, z);
     }
 
+    public static string ConvertVector3ToJSONString(Vector3 value)
+    {
+        string x = StringHelper.ConvertFloatToString(value: value.x, globalFormat: true);
+        string y = StringHelper.ConvertFloatToString(value: value.y, globalFormat: true);
+        string z = StringHelper.ConvertFloatToString(value: value.z, globalFormat: true);
+
+        return $"[{x}, {y}, {z}]";
+    }
 
     public static Vector2Int ConvertJSONStringToVector2Int(string text, out bool worked)
     {
@@ -273,6 +281,14 @@ public static class JsonLineHelper
 
         worked = true;
         return new Vector2Int(x, y);
+    }
+
+    public static string ConvertVector2IntToJSONString(Vector2Int value)
+    {
+        string x = StringHelper.ConvertIntToString(value: value.x, globalFormat: true);
+        string y = StringHelper.ConvertIntToString(value: value.y, globalFormat: true);
+
+        return $"[{x}, {y}]";
     }
 
     public static Vector2 ConvertJSONStringToVector2(string text, out bool worked)
@@ -308,6 +324,14 @@ public static class JsonLineHelper
         return new Vector2(x, y);
     }
 
+    public static string ConvertVector2ToJSONString(Vector2 value)
+    {
+        string x = StringHelper.ConvertFloatToString(value: value.x, globalFormat: true);
+        string y = StringHelper.ConvertFloatToString(value: value.y, globalFormat: true);
+
+        return $"[{x}, {y}]";
+    }
+
     public static Quaternion ConvertJSONStringToQuaternion(string text, out bool worked)
     {
         string usedText = text.Replace("[", "");
@@ -341,6 +365,16 @@ public static class JsonLineHelper
 
         worked = true;
         return new Quaternion(x, y, z, w);
+    }
+
+    public static string ConvertQuaternionToJSONString(Quaternion value)
+    {
+        string x = StringHelper.ConvertFloatToString(value: value.x, globalFormat: true);
+        string y = StringHelper.ConvertFloatToString(value: value.y, globalFormat: true);
+        string z = StringHelper.ConvertFloatToString(value: value.z, globalFormat: true);
+        string w = StringHelper.ConvertFloatToString(value: value.w, globalFormat: true);
+
+        return $"[{x}, {y}, {z}, {w}]";
     }
 
     public static Color ConvertJSONStringToColor(string text, out bool worked)
@@ -384,6 +418,16 @@ public static class JsonLineHelper
 
         worked = true;
         return new Color(r, g, b, a);
+    }
+
+    public static string ConvertColorToJSONString(Color value)
+    {
+        string r = StringHelper.ConvertFloatToString(value: value.r, globalFormat: true);
+        string g = StringHelper.ConvertFloatToString(value: value.g, globalFormat: true);
+        string b = StringHelper.ConvertFloatToString(value: value.b, globalFormat: true);
+        string a = StringHelper.ConvertFloatToString(value: value.a, globalFormat: true);
+
+        return $"[{r}, {g}, {b}, {a}]";
     }
 }
 

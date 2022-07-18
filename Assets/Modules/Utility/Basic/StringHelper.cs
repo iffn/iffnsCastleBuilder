@@ -46,4 +46,21 @@ public class StringHelper : MonoBehaviour
 
         return output;
     }
+
+    public static string ConvertFloatToString(float value, bool globalFormat)
+    {
+        if (globalFormat)
+        {
+            return value.ToString("0.#############################", CultureInfo.InvariantCulture);
+        }
+        else
+        {
+            return value.ToString("0.#############################");
+        }
+    }
+
+    public static string ConvertIntToString(int value, bool globalFormat)
+    {
+        return value.ToString();
+    }
 }

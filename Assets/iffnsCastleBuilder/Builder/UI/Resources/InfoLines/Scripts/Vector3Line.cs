@@ -30,13 +30,13 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             base.SetUp(vector3Line.Name);
 
-            InputFieldX.text = vector3Line.Val.x.ToString();
+            InputFieldX.text = StringHelper.ConvertFloatToString(value: vector3Line.Val.x, globalFormat: false);
             InputFieldX.onEndEdit.AddListener(ChangeXValue);
 
-            InputFieldY.text = vector3Line.Val.y.ToString();
+            InputFieldX.text = StringHelper.ConvertFloatToString(value: vector3Line.Val.y, globalFormat: false);
             InputFieldY.onEndEdit.AddListener(ChangeYValue);
 
-            InputFieldZ.text = vector3Line.Val.z.ToString();
+            InputFieldX.text = StringHelper.ConvertFloatToString(value: vector3Line.Val.z, globalFormat: false);
             InputFieldZ.onEndEdit.AddListener(ChangeZValue);
 
             this.additionalCalls = additionalCalls;
@@ -80,13 +80,13 @@ namespace iffnsStuff.iffnsCastleBuilder
                     switch (axis)
                     {
                         case MathHelper.Vector3Axis.x:
-                            InputFieldX.text = previousValue.x.ToString();
+                            InputFieldX.text = StringHelper.ConvertFloatToString(value: previousValue.x, globalFormat: false);
                             break;
                         case MathHelper.Vector3Axis.y:
-                            InputFieldY.text = previousValue.y.ToString();
+                            InputFieldX.text = StringHelper.ConvertFloatToString(value: previousValue.y, globalFormat: false);
                             break;
                         case MathHelper.Vector3Axis.z:
-                            InputFieldZ.text = previousValue.z.ToString();
+                            InputFieldX.text = StringHelper.ConvertFloatToString(value: previousValue.z, globalFormat: false);
                             break;
                         default:
                             Debug.LogWarning("Error: Unknown axis type");
