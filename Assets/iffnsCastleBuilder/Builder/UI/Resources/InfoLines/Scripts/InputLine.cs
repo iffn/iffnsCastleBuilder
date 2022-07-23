@@ -126,7 +126,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             int newValue = StringHelper.ConvertStringToInt(text: newString, globalFormat: false, worked: out bool worked);
 
-            if (worked) rangedLine.Val = newValue;
+            if (worked) distinctUnnamedLine.Val = newValue;
             else return;
 
             distinctUnnamedLine.Val = newValue;
