@@ -474,6 +474,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                 OuterRadiiSide.FlipTriangles();
                 InnerRadiiSide.FlipTriangles();
                 BackFace.FlipTriangles();
+                TopStepTop.FlipTriangles();
+                BackFaceTop.FlipTriangles();
             }
 
             FinishMeshes();
