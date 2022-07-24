@@ -32,7 +32,7 @@ public class StringHelper : MonoBehaviour
 
         if (globalFormat)
         {
-            worked = float.TryParse(text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out output);
+            worked = float.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out output);
         }
         else
         {
