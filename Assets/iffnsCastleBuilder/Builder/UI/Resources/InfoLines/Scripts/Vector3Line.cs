@@ -3,15 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
     public class Vector3Line : ControlLine
     {
 
-        public InputField InputFieldX;
-        public InputField InputFieldY;
-        public InputField InputFieldZ;
+        public TMP_InputField InputFieldX;
+        public TMP_InputField InputFieldY;
+        public TMP_InputField InputFieldZ;
 
         MailboxLineVector3 currentVector3Line;
 
@@ -38,6 +39,10 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             InputFieldX.text = StringHelper.ConvertFloatToString(value: vector3Line.Val.z, globalFormat: false);
             InputFieldZ.onEndEdit.AddListener(ChangeZValue);
+
+            InputFieldX.contentType = TMP_InputField.ContentType.DecimalNumber;
+            InputFieldY.contentType = TMP_InputField.ContentType.DecimalNumber;
+            InputFieldZ.contentType = TMP_InputField.ContentType.DecimalNumber;
 
             this.additionalCalls = additionalCalls;
         }

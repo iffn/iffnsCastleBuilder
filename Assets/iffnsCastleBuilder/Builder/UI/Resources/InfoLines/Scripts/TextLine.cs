@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
@@ -24,8 +25,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             base.SetUp(text);
 
-            if (bold) TitleText.fontStyle = FontStyle.Bold;
-            else TitleText.fontStyle = FontStyle.Normal;
+            if (bold) TitleText.fontStyle = FontStyles.Bold;
+            else TitleText.fontStyle = FontStyles.Normal;
 
         }
     }

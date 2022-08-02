@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
     public class SelectLine : ControlLine
     {
-        public Dropdown DropdownMenu;
+        public TMP_Dropdown DropdownMenu;
 
         MailboxLineDistinctNamed distinctLine;
         IBaseObject lineOwner;

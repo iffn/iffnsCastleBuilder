@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
     public abstract class ControlLine : MonoBehaviour
     {
-
-        public Text TitleText;
+        public TMP_Text TitleText;
 
         public string Title
         {

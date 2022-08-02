@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
     public class InfoLine : ControlLine
     {
-        public Text ValueText;
+        public TMP_Text ValueText;
 
         public string Value
         {

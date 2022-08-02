@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using iffnsStuff.iffnsBaseSystemForUnity;
+using TMPro;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
     public class Vector2IntLine : ControlLine
     {
-        public InputField InputFieldX;
-        public InputField InputFieldY;
+        public TMP_InputField InputFieldX;
+        public TMP_InputField InputFieldY;
 
         MailboxLineVector2Int currentVector2IntLine;
 
@@ -31,6 +32,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             InputFieldY.text = vector2IntLine.Val.y.ToString();
             InputFieldY.onEndEdit.AddListener(ChangeYValue);
+
+            InputFieldX.contentType = TMP_InputField.ContentType.IntegerNumber;
+            InputFieldY.contentType = TMP_InputField.ContentType.IntegerNumber;
 
             this.additionalCalls = additionalCalls;
         }

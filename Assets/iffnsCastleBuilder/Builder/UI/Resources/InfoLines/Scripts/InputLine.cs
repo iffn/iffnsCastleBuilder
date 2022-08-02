@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
     public class InputLine : ControlLine
     {
-        public InputField InputField;
+        public TMP_InputField InputField;
 
         MailboxLineString stringLine;
         MailboxLineRanged rangedLine;
@@ -63,7 +64,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             base.SetUp(rangedLine.Name);
 
-            InputField.contentType = InputField.ContentType.DecimalNumber;
+            InputField.contentType = TMP_InputField.ContentType.DecimalNumber;
             InputField.text = StringHelper.ConvertFloatToString(value: rangedLine.Val, globalFormat: false); ;
             InputField.onEndEdit.AddListener(ChangeRangedLineValue);
 
@@ -77,7 +78,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             base.SetUp(distinctUnnamedLine.Name);
 
-            InputField.contentType = InputField.ContentType.IntegerNumber;
+            InputField.contentType = TMP_InputField.ContentType.IntegerNumber;
             InputField.text = StringHelper.ConvertIntToString(value: distinctUnnamedLine.Val, globalFormat: false);
             InputField.onEndEdit.AddListener(ChangeDistinctUnnamedLineValue);
 
