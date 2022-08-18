@@ -125,7 +125,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             get
             {
                 float returnValue = LinkedFloor.CompleteFloorHeight;
-                float minWindowHeight = BottomHeight + WindowHeight;
+                float minWindowHeight = BottomHeight + WindowHeight + LinkedFloor.BottomFloorHeight;
 
                 int currentFloorNumber = LinkedFloor.FloorNumber;
 

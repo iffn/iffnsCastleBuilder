@@ -95,9 +95,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (Input.GetMouseButton(0))
             {
-                endNode = GetNodePositionFromClick();
+                NodeWallNode potentialEndNode = GetNodePositionFromClick();
 
-                if (endNode == null)
+                if (potentialEndNode == null)
                 {
                     if (Input.GetMouseButtonUp(0))
                     {
@@ -106,6 +106,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                     return;
                 }
+
+                endNode = potentialEndNode;
 
                 offset = endNode.Coordinate - originNode.Coordinate;
 

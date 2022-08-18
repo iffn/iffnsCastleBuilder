@@ -633,7 +633,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             //System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
             //watch.Start();
-            //Debug.Log("Time taken for rebuild = " + watch.ElapsedMilliseconds + "ms");
+            //Debug.Log("Time taken for rebuild = " + watch.Elapsed.TotalSeconds * 1000 + "ms");
 
             floorMeshBuilder.GenerateMeshesBasedOnInfo();
             //Debug.Log("Time taken for generating info = " + watch.ElapsedMilliseconds + "ms");
