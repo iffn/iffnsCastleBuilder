@@ -23889,7 +23889,7 @@
 						"Height thickness": 0.1,
 						"Roof overshoot [m]": 0,
 						"Raise to floor": false,
-						"Outside material": "PolyHaven-sandstone_blocks_05",
+						"Outside material": "PolyHaven-roof_09",
 						"Inside material": "PolyHaven-old_planks_02-illuminated",
 						"Wrapper material": "PolyHaven-beige_wall_001-illuminated",
 						"Roof type": "FullAngledSquareRoof"

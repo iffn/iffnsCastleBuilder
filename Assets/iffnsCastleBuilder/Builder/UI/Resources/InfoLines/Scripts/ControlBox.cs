@@ -175,16 +175,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 AddVector2IntLine(line as MailboxLineVector2Int, lineOwner: lineOwner, additionalCalls: additionalCalls);
             }
-            else if (line is MailboxLineDistinctNamed)
+            else if (line is MailboxLineDistinctNamed distinctLine)
             {
-                if (line.Name.Length < 10)
-                {
-                    AddMailboxLineDistinctNamed(line as MailboxLineDistinctNamed, lineOwner: lineOwner, longLine: false, additionalCalls: additionalCalls);
-                }
-                else
-                {
-                    AddMailboxLineDistinctNamed(line as MailboxLineDistinctNamed, lineOwner: lineOwner, longLine: true, additionalCalls: additionalCalls);
-                }
+                bool longLine = line.Name.Length > 10 || distinctLine.LongestStringLength > 10;
+
+                AddMailboxLineDistinctNamed(line as MailboxLineDistinctNamed, lineOwner: lineOwner, longLine: longLine, additionalCalls: additionalCalls);
             }
         }
 
