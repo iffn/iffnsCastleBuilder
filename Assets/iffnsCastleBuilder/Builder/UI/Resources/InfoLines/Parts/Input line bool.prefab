@@ -796,7 +796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4815776413852894910, guid: 0312774b3fcbef84e915eae95d1c9188, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 142.5
+      value: 255
       objectReference: {fileID: 0}
     - target: {fileID: 4815776413852894910, guid: 0312774b3fcbef84e915eae95d1c9188, type: 3}
       propertyPath: m_SizeDelta.y
@@ -849,6 +849,10 @@ PrefabInstance:
     - target: {fileID: 4815776413852894910, guid: 0312774b3fcbef84e915eae95d1c9188, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220465798248074742, guid: 0312774b3fcbef84e915eae95d1c9188, type: 3}
+      propertyPath: m_fontSize
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7546045306351028519, guid: 0312774b3fcbef84e915eae95d1c9188, type: 3}
       propertyPath: m_Name
