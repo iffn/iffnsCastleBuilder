@@ -150,6 +150,19 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        readonly MailboxLineBool optimizeMeshes;
+        public bool OptimizeMeshes
+        {
+            get
+            {
+                return optimizeMeshes.Val;
+            }
+            set
+            {
+                optimizeMeshes.Val = value;
+            }
+        }
+
         readonly MailboxLineBool hierarchyIdentifier;
         public bool HierarchyIdentifier
         {
@@ -194,6 +207,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             includeFurniture = new MailboxLineBool(name: "Include furniture", objectHolder: mailbox, valueType: Mailbox.ValueType.buildParameter);
             includeInvisibleMeshes = new MailboxLineBool(name: "Include invisible meshes", objectHolder: mailbox, valueType: Mailbox.ValueType.buildParameter);
+            optimizeMeshes = new MailboxLineBool(name: "Optimize meshes (same visual quality)", objectHolder: mailbox, valueType: Mailbox.ValueType.buildParameter);
 
             //groupMaterials = new MailboxLineBool(name: "Group materials", objectHolder: mailbox, valueType: Mailbox.ValueType.buildParameter);
 
@@ -210,6 +224,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             ColliderIdentifier = true;
             HierarchyIdentifier = true;
             IncludeFurniture = true;
+            OptimizeMeshes = true;
             //GroupMaterials = true;
             IncludeInvisibleMeshes = true;
             UpDirection = UpDirectionStates.Y;
@@ -227,6 +242,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             ColliderIdentifier = false;
             HierarchyIdentifier = false;
             IncludeFurniture = false;
+            OptimizeMeshes = false;
             //GroupMaterials = false;
             IncludeInvisibleMeshes = false;
             UpDirection = UpDirectionStates.Z;

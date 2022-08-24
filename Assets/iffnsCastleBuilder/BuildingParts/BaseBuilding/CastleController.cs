@@ -7,6 +7,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 {
     public class CastleController : BaseGameObject
     {
+        //Settings
+        public bool optimizeMeshes = false;
+
         bool allowGridScaleModification = true;
         public bool AllowGridScaleModification
         {

@@ -60,6 +60,10 @@ namespace iffnsStuff.iffnsCastleBuilder
         public void ExportObject()
         {
             //Prepare
+            currentBuilderController.CurrentBuilding.optimizeMeshes = CurrentExportProperties.OptimizeMeshes;
+
+            currentBuilderController.CurrentBuilding.ApplyBuildParameters();
+
             currentBuilderController.CurrentBuilding.BackupVisibilityAndShowAll();
 
             exportBaseObject = currentBuilderController.CurrentBuilding;
@@ -89,6 +93,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             void Restore()
             {
+                currentBuilderController.CurrentBuilding.optimizeMeshes = false;
                 currentBuilderController.CurrentBuilding.RestoreVisibility();
                 currentObjectGroupOrganizer = null;
                 //if (exportReadyObject != null) GameObject.Destroy(exportReadyObject);
@@ -98,7 +103,6 @@ namespace iffnsStuff.iffnsCastleBuilder
         public void PrepareExportInfo()
         {
             currentObjectGroupOrganizer = new ExportGroupOrganizer(exportReadyObject: exportBaseObject.transform, currentExportProperties: CurrentExportProperties, worldTransform: transform);
-            //exportReadyObject = new GameObject();
 
             List<int> hierarchyPosition = new();
 
@@ -120,7 +124,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             void GetAndAddMeshFromObject(IBaseObject newObject, List<int> hierarchyPosition)
             {
                 //Add object
-                
                 if (newObject is BaseGameObject)
                 {
                     bool stillNeedsToBeAdded = true;
@@ -192,9 +195,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 foreach (TriangleMeshInfo currentInfo in allMeshes)
                 {
-
-                    //MeshRenderer currentRenderer = currentMesh.transform.GetComponent<MeshRenderer>();
-
                     bool hasCollider;
 
                     switch (currentInfo.ActiveCollider)

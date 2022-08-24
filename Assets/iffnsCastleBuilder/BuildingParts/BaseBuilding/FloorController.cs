@@ -624,7 +624,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 block.GenerateMailboxLinesBasedOnShapeInfo();
             }
 
-            floorMeshBuilder.GenerateMeshesBasedOnInfo();
+            floorMeshBuilder.GenerateMeshesBasedOnInfo(optimize: LinkedBuildingController.optimizeMeshes);
 
             BuildAllMeshes();
         }
@@ -635,7 +635,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             //watch.Start();
             //Debug.Log("Time taken for rebuild = " + watch.Elapsed.TotalSeconds * 1000 + "ms");
 
-            floorMeshBuilder.GenerateMeshesBasedOnInfo();
+            floorMeshBuilder.GenerateMeshesBasedOnInfo(optimize: LinkedBuildingController.optimizeMeshes);
             //Debug.Log("Time taken for generating info = " + watch.ElapsedMilliseconds + "ms");
 
             //watch.Restart();
