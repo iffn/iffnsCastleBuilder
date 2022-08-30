@@ -7,15 +7,15 @@ namespace iffnsStuff.iffnsCastleBuilder
     public class BlockLineController : MonoBehaviour
     {
         //Unity assignments
-        [SerializeField] BlockLineType currentBlockLineType = BlockLineType.Complete;
+        //[SerializeField] BlockLineType currentBlockLineType = BlockLineType.Complete;
         [SerializeField] LineRenderer BlockLineTemplate;
         [SerializeField] GameObject SizeInfo;
         [SerializeField] Transform BlockLineHolder;
 
         //Runtime variables
         readonly List<GameObject> blockLines = new List<GameObject>();
-        int BlockLineRadius = 3;
-        static bool createWallLines = false;
+        //int BlockLineRadius = 3;
+        //static bool createWallLines = false;
         CastleController linkedBuilding;
         Vector2Int lastBlockGridSize = Vector2Int.zero;
 
