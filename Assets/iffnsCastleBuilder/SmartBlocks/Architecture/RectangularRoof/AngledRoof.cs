@@ -110,12 +110,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             //Side wrapper 1
             tempWrapper = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>()
-        {
-            new Vector3(0, height - heightOffset, 0),
-            new Vector3(0, height, 0),
-            new Vector3(size.x, 0, 0),
-            new Vector3(size.x - xOffset, 0, 0),
-        }
+            {
+                new Vector3(0, height - heightOffset, 0),
+                new Vector3(0, height, 0),
+                new Vector3(size.x, 0, 0),
+                new Vector3(size.x - xOffset, 0, 0),
+            }
             );
             RoofWrapper.Add(tempWrapper);
 
@@ -225,14 +225,14 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             //Side wrapper 1
             tempShape = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>()
-        {
-            new Vector3(halfWidth, height - heightOffset, 0),
-            new Vector3(xOffset, 0, 0),
-            new Vector3(0, 0, 0),
-            new Vector3(halfWidth, height, 0),
-            new Vector3(size.x, 0, 0),
-            new Vector3(size.x - xOffset, 0, 0)
-        }
+            {
+                new Vector3(halfWidth, height - heightOffset, 0),
+                new Vector3(xOffset, 0, 0),
+                new Vector3(0, 0, 0),
+                new Vector3(halfWidth, height, 0),
+                new Vector3(size.x, 0, 0),
+                new Vector3(size.x - xOffset, 0, 0)
+            }
             );
             RoofWrapper.Add(tempShape);
 
