@@ -136,7 +136,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                             List<int> floorHierarchy = new(hierarchyPosition);
 
                             floorHierarchy.RemoveAt(floorHierarchy.Count - 1);
-                            AddMeshFromObject(newObject as BaseGameObject, floorHierarchy);
+
+                            AddMeshFromObject(newObject: floorObject, hierarchyPosition: floorHierarchy, positionObject: floorObject.LinkedFloor.transform);
                         }
                         else
                         {
@@ -144,18 +145,22 @@ namespace iffnsStuff.iffnsCastleBuilder
                             if (CurrentExportProperties.IncludeFurniture)
                             {
                                 hierarchyPosition[^1] += 1;
-                                AddMeshFromObject(newObject as BaseGameObject, hierarchyPosition);
+
+                                BaseGameObject newGameObject = newObject as BaseGameObject;
+
+                                AddMeshFromObject(newObject: newGameObject, hierarchyPosition: hierarchyPosition, positionObject: newGameObject.transform);
                             }
                         }
 
                         stillNeedsToBeAdded = false;
                     }
-                    else if(newObject is NodeWallSystem)
+                    else if(newObject is NodeWallSystem nodeWallSystem)
                     {
                         List<int> floorHierarchy = new(hierarchyPosition);
 
                         floorHierarchy.RemoveAt(floorHierarchy.Count - 1);
-                        AddMeshFromObject(newObject as BaseGameObject, floorHierarchy);
+
+                        AddMeshFromObject(newObject: nodeWallSystem, hierarchyPosition: floorHierarchy, positionObject: nodeWallSystem.LinkedFloor.transform);
 
                         stillNeedsToBeAdded = false;
                     }
@@ -164,7 +169,10 @@ namespace iffnsStuff.iffnsCastleBuilder
                     {
                         //Add rest
                         if(!(newObject is NodeWallSystem)) hierarchyPosition[^1] += 1;
-                        AddMeshFromObject(newObject as BaseGameObject, hierarchyPosition);
+
+                        BaseGameObject newGameObject = newObject as BaseGameObject;
+
+                        AddMeshFromObject(newObject: newGameObject, hierarchyPosition: hierarchyPosition, positionObject: newGameObject.transform);
                     }
                 }
 
@@ -184,7 +192,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 hierarchyPosition.RemoveAt(hierarchyPosition.Count - 1);
             }
 
-            void AddMeshFromObject(BaseGameObject newObject, List<int> hierarchyPosition)
+            void AddMeshFromObject(BaseGameObject newObject, List<int> hierarchyPosition, Transform positionObject)
             {
                 List<TriangleMeshInfo> allMeshes = newObject.AllStaticTriangleInfosAsNewList;
 
@@ -237,7 +245,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         name = newObject.IdentifierString;
                     }
 
-                    Vector3 localPosition = newObject.transform.localPosition;
+                    Vector3 localPosition = positionObject.localPosition;
 
                     if (CurrentExportProperties.SeparateFloors)
                     {
