@@ -65,6 +65,12 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return;
             }
 
+            //Reset WallHeightScaler
+            if(WallHeightScaler.value < 0.99)
+            {
+                WallHeightScaler.value = 1; //Changing this will automatically update the build parameters
+            }
+
             //Set new floor number
             CurrentBuilding.CurrentFloorNumber = Mathf.RoundToInt(floor);
 
@@ -115,7 +121,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
 
         //Wall height scale
-
         public void UpdateWallHeightSlider()
         {
             if (CurrentBuilding == null)
@@ -129,9 +134,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             CurrentBuilding.WallDisplayHeightScaler = WallHeightScaler.value;
-
-
-            //CurrentBuilderController.CurrentBuilding.CurrentFloorObject.UpdateFloorDisplayComplete();
         }
 
         public CastleController.FloorViewDirectionType ViewDirection
@@ -152,7 +154,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         void UpdateFloorNumbers()
         {
-
             FloorSelector.minValue = -CurrentBuilding.NegativeFloors;
             FloorSelector.maxValue = CurrentBuilding.PositiveFloors;
 

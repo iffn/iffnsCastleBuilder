@@ -531,21 +531,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                             floor.gameObject.SetActive(false);
                         }
                     }
-                    
-                    /*
-                    for (int floor = -NegativeFloors; floor <= PositiveFloors; floor++)
-                    {
-                        if (floor <= CurrentFloorNumber)
-                        {
-                            Floor(floor).gameObject.SetActive(true);
-                        }
-                        else
-                        {
-                            Floor(floor).gameObject.SetActive(false);
-                        }
-                    }
-                    */
-
                     break;
                 case FloorViewDirectionType.bottomUp:
                     foreach (FloorController floor in Floors)
