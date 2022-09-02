@@ -227,7 +227,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             for(int i = 0; i < arc.Count - 1; i++)
             {
                 arcLengths.Add(arcLength);
-                arcLength += (arc.Vertices[i + 1] - arc.Vertices[i]).magnitude;
+                arcLength += (arc.VerticesDirectly[i + 1] - arc.VerticesDirectly[i]).magnitude;
             }
 
             arcLengths.Add(arcLength);
@@ -254,7 +254,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
 
                 //ToDo: Improve point accuracy
-                Vector3 postPoint = arc.Vertices[basePoint] + remainingDistacne * (arc.Vertices[basePoint + 1] - arc.Vertices[basePoint]).normalized;
+                Vector3 postPoint = arc.VerticesDirectly[basePoint] + remainingDistacne * (arc.VerticesDirectly[basePoint + 1] - arc.VerticesDirectly[basePoint]).normalized;
 
                 currentMesh = postTemplate.Clone;
                 currentMesh.Move(postPoint);

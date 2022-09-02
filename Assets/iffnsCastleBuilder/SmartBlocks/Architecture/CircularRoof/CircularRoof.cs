@@ -363,7 +363,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (isClosed)
             {
-                outerLineCone.Add(outerLine.Vertices[0]);
+                outerLineCone.Add(outerLine.VerticesDirectly[0]);
             }
 
             //Outside with correct UV
@@ -373,9 +373,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             uvXPoints.Add(0);
 
-            for(int i = 0; i< outerLineCone.Vertices.Count - 1; i++)
+            for(int i = 0; i< outerLineCone.VerticesDirectly.Count - 1; i++)
             {
-                float offset = (outerLineCone.Vertices[i + 1] - outerLineCone.Vertices[i]).magnitude;
+                float offset = (outerLineCone.VerticesDirectly[i + 1] - outerLineCone.VerticesDirectly[i]).magnitude;
                 outerCircumence += offset;
                 uvXPoints.Add(outerCircumence);
             }

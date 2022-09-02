@@ -216,7 +216,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             string meshName = $"{currentId} - {IdentifierString}";
 
-            returnList = ObjExporter.GetObjLines(meshName: meshName, vertices: currentInfo.VerticesHolder.Vertices, uvs: currentInfo.UVs, triangles: currentInfo.AllTrianglesDirectly, triangleIndexOffset: triangleIndexOffset, upDirection: ObjExporter.UpDirection.Y);
+            returnList = ObjExporter.GetObjLines(meshName: meshName, vertices: currentInfo.VerticesHolder.VerticesDirectly, uvs: currentInfo.UVs, triangles: currentInfo.AllTrianglesDirectly, triangleIndexOffset: triangleIndexOffset, upDirection: ObjExporter.UpDirection.Y);
 
             return returnList;
         }
@@ -227,7 +227,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (currentInfo.VerticesHolder.Count == 0) return returnList;
 
-            returnList = ObjExporter.GetObjLines(meshName: IdentifierString, vertices: currentInfo.VerticesHolder.Vertices, uvs: currentInfo.UVs, triangles: currentInfo.AllTrianglesDirectly, triangleIndexOffset: triangleIndexOffset, upDirection: ObjExporter.UpDirection.Y);
+            returnList = ObjExporter.GetObjLines(meshName: IdentifierString, vertices: currentInfo.VerticesHolder.VerticesDirectly, uvs: currentInfo.UVs, triangles: currentInfo.AllTrianglesDirectly, triangleIndexOffset: triangleIndexOffset, upDirection: ObjExporter.UpDirection.Y);
 
             return returnList;
         }

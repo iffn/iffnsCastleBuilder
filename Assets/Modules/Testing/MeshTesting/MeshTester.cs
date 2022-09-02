@@ -139,7 +139,7 @@ public class MeshTester : MonoBehaviour
         VerticesHolder leftArc = MeshGenerator.Lines.ArcAroundZ(radius: 3, angleDeg: 90, numberOfEdges: 12);
         leftArc.Rotate(Quaternion.Euler(0, 0, 90));
         Vector3 leftPoint = new Vector3(-3, 4, 0);
-        leftArc.Vertices.RemoveAt(0);
+        leftArc.VerticesDirectly.RemoveAt(0);
 
         fullInfo.Add(MeshGenerator.MeshesFromLines.KnitLines(point: leftPoint, line: leftArc, isClosed: false));
 

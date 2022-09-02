@@ -189,7 +189,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             leftArc.Scale(new Vector3(1, ArcHeight.Val / (length * 0.5f), 1));
             leftArc.Move(new Vector3(0, FreeHeightSide.Val, length * 0.5f));
             Vector3 leftPoint = new Vector3(0, Height, 0);
-            leftArc.Vertices.RemoveAt(0);
+            leftArc.VerticesDirectly.RemoveAt(0);
 
             FrontWall.Add(MeshGenerator.MeshesFromLines.KnitLines(point: leftPoint, line: leftArc, isClosed: false));
 

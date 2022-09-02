@@ -7,6 +7,45 @@ public static class MeshGenerator
 {
     public static class Lines
     {
+        public static VerticesHolder RectangleAroundCenterXY(float xSize, float ySize)
+        {
+            VerticesHolder returnValue = new();
+
+            float halfXSize = 0.5f * xSize;
+            float halfYSize = 0.5f * ySize;
+
+            returnValue.Add(new Vector3(-halfXSize, -halfYSize));
+            returnValue.Add(new Vector3(-halfXSize, halfYSize));
+            returnValue.Add(new Vector3(halfXSize, halfYSize));
+            returnValue.Add(new Vector3(halfXSize, -halfYSize));
+
+            return returnValue;
+        }
+
+        public static VerticesHolder RectangleAtCornerXY(float xSize, float ySize)
+        {
+            VerticesHolder returnValue = new();
+
+            returnValue.Add(new Vector3(0, 0, 0));
+            returnValue.Add(new Vector3(0, ySize, 0));
+            returnValue.Add(new Vector3(xSize, ySize, 0));
+            returnValue.Add(new Vector3(xSize, 0, 0));
+
+            return returnValue;
+        }
+
+        public static VerticesHolder RectangleAtCornerZY(float zSize, float ySize)
+        {
+            VerticesHolder returnValue = new();
+
+            returnValue.Add(new Vector3(0, 0, zSize));
+            returnValue.Add(new Vector3(0, ySize, zSize));
+            returnValue.Add(new Vector3(0, ySize, 0));
+            returnValue.Add(new Vector3(0, 0, 0));
+
+            return returnValue;
+        }
+
         public static VerticesHolder FullCircle(float radius, int numberOfEdges)
         {
             VerticesHolder returnValue = new();
@@ -272,11 +311,11 @@ public static class MeshGenerator
             {
                 if(closingType == ShapeClosingType.closedWithSharpEdge)
                 {
-                    returnValue.VerticesHolder.Add(firstLine.Vertices);
-                    returnValue.VerticesHolder.Add(firstLine.Vertices[0]);
+                    returnValue.VerticesHolder.Add(firstLine.VerticesDirectly);
+                    returnValue.VerticesHolder.Add(firstLine.VerticesDirectly[0]);
 
-                    returnValue.VerticesHolder.Add(secondLine.Vertices);
-                    returnValue.VerticesHolder.Add(secondLine.Vertices[0]);
+                    returnValue.VerticesHolder.Add(secondLine.VerticesDirectly);
+                    returnValue.VerticesHolder.Add(secondLine.VerticesDirectly[0]);
 
                     for (int i = 0; i < firstLine.Count; i++)
                     {
@@ -288,8 +327,8 @@ public static class MeshGenerator
                 }
                 else
                 {
-                    returnValue.VerticesHolder.Add(firstLine.Vertices);
-                    returnValue.VerticesHolder.Add(secondLine.Vertices);
+                    returnValue.VerticesHolder.Add(firstLine.VerticesDirectly);
+                    returnValue.VerticesHolder.Add(secondLine.VerticesDirectly);
 
                     for (int i = 0; i < firstLine.Count - 1; i++)
                     {
@@ -305,7 +344,7 @@ public static class MeshGenerator
                 }
 
                 //Generate UVs
-                int firstLineCount = returnValue.VerticesHolder.Vertices.Count / 2;
+                int firstLineCount = returnValue.VerticesHolder.VerticesDirectly.Count / 2;
 
                 //First UV line
                 float firstOffset = 0;
@@ -313,26 +352,26 @@ public static class MeshGenerator
 
                 for (int i = 1; i < firstLineCount; i++)
                 {
-                    firstOffset += (returnValue.VerticesHolder.Vertices[i] - firstLine.Vertices[i - 1]).magnitude;
+                    firstOffset += (returnValue.VerticesHolder.VerticesDirectly[i] - firstLine.VerticesDirectly[i - 1]).magnitude;
                     returnValue.UVs.Add(new Vector2(firstOffset, 0));
                 }
 
                 //Second UV line
                 float secondOffset = 0;
-                float verticalOffset = (secondLine.Vertices[0] - firstLine.Vertices[0]).magnitude;
+                float verticalOffset = (secondLine.VerticesDirectly[0] - firstLine.VerticesDirectly[0]).magnitude;
 
                 returnValue.UVs.Add(new Vector2(0, verticalOffset));
 
-                for (int i = firstLineCount + 1; i < returnValue.VerticesHolder.Vertices.Count; i++)
+                for (int i = firstLineCount + 1; i < returnValue.VerticesHolder.VerticesDirectly.Count; i++)
                 {
-                    secondOffset += (returnValue.VerticesHolder.Vertices[i] - returnValue.VerticesHolder.Vertices[i - 1]).magnitude;
+                    secondOffset += (returnValue.VerticesHolder.VerticesDirectly[i] - returnValue.VerticesHolder.VerticesDirectly[i - 1]).magnitude;
                     returnValue.UVs.Add(new Vector2(secondOffset, verticalOffset));
                 }
 
                 //Move second UV line
                 float secondLineMove = (firstOffset - secondOffset) / 2;
 
-                for (int i = firstLineCount; i < returnValue.VerticesHolder.Vertices.Count; i++)
+                for (int i = firstLineCount; i < returnValue.VerticesHolder.VerticesDirectly.Count; i++)
                 {
                     returnValue.UVs[i] += Vector2.right * secondLineMove;
                 }
@@ -342,7 +381,7 @@ public static class MeshGenerator
                 for (int i = 0; i < firstLine.Count - 1; i++)
                 {
                     //returnValue.Add(MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[i], line: new List<Vector3>() {secondLine.Vertices[i + 1], firstLine.Vertices[i + 1], firstLine.Vertices[i] }, isClosed: false));
-                    TriangleMeshInfo addition = MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[i], line: new List<Vector3>() { secondLine.Vertices[i + 1], firstLine.Vertices[i + 1], firstLine.Vertices[i] }, isClosed: false);
+                    TriangleMeshInfo addition = MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.VerticesDirectly[i], line: new List<Vector3>() { secondLine.VerticesDirectly[i + 1], firstLine.VerticesDirectly[i + 1], firstLine.VerticesDirectly[i] }, isClosed: false);
 
                     addition.GenerateUVMeshBasedOnCardinalDirectionsWithoutReference();
 
@@ -351,7 +390,7 @@ public static class MeshGenerator
 
                 if (closingType != ShapeClosingType.open)
                 {
-                    TriangleMeshInfo addition = MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[^1], line: new List<Vector3>() { secondLine.Vertices[0], firstLine.Vertices[0], firstLine.Vertices[^1] }, isClosed: false);
+                    TriangleMeshInfo addition = MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.VerticesDirectly[^1], line: new List<Vector3>() { secondLine.VerticesDirectly[0], firstLine.VerticesDirectly[0], firstLine.VerticesDirectly[^1] }, isClosed: false);
 
                     addition.GenerateUVMeshBasedOnCardinalDirectionsWithoutReference();
 
@@ -457,8 +496,8 @@ public static class MeshGenerator
 
                 if (sectionsAreClosed)
                 {
-                    float distance12 = (returnValue.VerticesHolder.Vertices[max1] - returnValue.VerticesHolder.Vertices[offset2]).magnitude;
-                    float distance21 = (returnValue.VerticesHolder.Vertices[max2] - returnValue.VerticesHolder.Vertices[offset1]).magnitude;
+                    float distance12 = (returnValue.VerticesHolder.VerticesDirectly[max1] - returnValue.VerticesHolder.VerticesDirectly[offset2]).magnitude;
+                    float distance21 = (returnValue.VerticesHolder.VerticesDirectly[max2] - returnValue.VerticesHolder.VerticesDirectly[offset1]).magnitude;
 
                     if (distance12 < distance21)
                     {
@@ -500,8 +539,8 @@ public static class MeshGenerator
                 {
                     if (!end1 && !end2)
                     {
-                        float distance12 = (returnValue.VerticesHolder.Vertices[offset2 + 1] - returnValue.VerticesHolder.Vertices[offset1]).magnitude;
-                        float distance21 = (returnValue.VerticesHolder.Vertices[offset1 + 1] - returnValue.VerticesHolder.Vertices[offset2]).magnitude;
+                        float distance12 = (returnValue.VerticesHolder.VerticesDirectly[offset2 + 1] - returnValue.VerticesHolder.VerticesDirectly[offset1]).magnitude;
+                        float distance21 = (returnValue.VerticesHolder.VerticesDirectly[offset1 + 1] - returnValue.VerticesHolder.VerticesDirectly[offset2]).magnitude;
 
                         if (distance12 < distance21)
                         {
@@ -539,8 +578,8 @@ public static class MeshGenerator
 
                 if (sectionsAreClosed)
                 {
-                    float distance12 = (returnValue.VerticesHolder.Vertices[max1] - returnValue.VerticesHolder.Vertices[offset2]).magnitude;
-                    float distance21 = (returnValue.VerticesHolder.Vertices[max2] - returnValue.VerticesHolder.Vertices[offset1]).magnitude;
+                    float distance12 = (returnValue.VerticesHolder.VerticesDirectly[max1] - returnValue.VerticesHolder.VerticesDirectly[offset2]).magnitude;
+                    float distance21 = (returnValue.VerticesHolder.VerticesDirectly[max2] - returnValue.VerticesHolder.VerticesDirectly[offset1]).magnitude;
 
                     if (distance12 < distance21)
                     {
@@ -584,8 +623,8 @@ public static class MeshGenerator
                 {
                     if (!end1 && !end2)
                     {
-                        float distance12 = (returnValue.VerticesHolder.Vertices[offset2 + 1] - returnValue.VerticesHolder.Vertices[offset1]).magnitude;
-                        float distance21 = (returnValue.VerticesHolder.Vertices[offset1 + 1] - returnValue.VerticesHolder.Vertices[offset2]).magnitude;
+                        float distance12 = (returnValue.VerticesHolder.VerticesDirectly[offset2 + 1] - returnValue.VerticesHolder.VerticesDirectly[offset1]).magnitude;
+                        float distance21 = (returnValue.VerticesHolder.VerticesDirectly[offset1 + 1] - returnValue.VerticesHolder.VerticesDirectly[offset2]).magnitude;
 
                         if (distance12 < distance21)
                         {
@@ -643,11 +682,11 @@ public static class MeshGenerator
                     return new TriangleMeshInfo();
                 }
 
-                return KnitLines(point: firstLine.Vertices[0], line: secondLine, isClosed: isClosed);
+                return KnitLines(point: firstLine.VerticesDirectly[0], line: secondLine, isClosed: isClosed);
             }
             else if(secondLine.Count == 1)
             {
-                return KnitLines(point: secondLine.Vertices[0], line: firstLine, isClosed: isClosed);
+                return KnitLines(point: secondLine.VerticesDirectly[0], line: firstLine, isClosed: isClosed);
             }
 
             int offset1 = 0;
@@ -661,8 +700,8 @@ public static class MeshGenerator
 
             if (isClosed)
             {
-                float distance12 = (returnValue.VerticesHolder.Vertices[max1] - returnValue.VerticesHolder.Vertices[offset2]).magnitude;
-                float distance21 = (returnValue.VerticesHolder.Vertices[max2] - returnValue.VerticesHolder.Vertices[offset1]).magnitude;
+                float distance12 = (returnValue.VerticesHolder.VerticesDirectly[max1] - returnValue.VerticesHolder.VerticesDirectly[offset2]).magnitude;
+                float distance21 = (returnValue.VerticesHolder.VerticesDirectly[max2] - returnValue.VerticesHolder.VerticesDirectly[offset1]).magnitude;
 
                 if (distance12 < distance21)
                 {
@@ -703,8 +742,8 @@ public static class MeshGenerator
             {
                 if (!end1 && !end2)
                 {
-                    float distance12 = (returnValue.VerticesHolder.Vertices[offset2 + 1] - returnValue.VerticesHolder.Vertices[offset1]).magnitude;
-                    float distance21 = (returnValue.VerticesHolder.Vertices[offset1 + 1] - returnValue.VerticesHolder.Vertices[offset2]).magnitude;
+                    float distance12 = (returnValue.VerticesHolder.VerticesDirectly[offset2 + 1] - returnValue.VerticesHolder.VerticesDirectly[offset1]).magnitude;
+                    float distance21 = (returnValue.VerticesHolder.VerticesDirectly[offset1 + 1] - returnValue.VerticesHolder.VerticesDirectly[offset2]).magnitude;
 
                     if (distance12 < distance21)
                     {
@@ -749,7 +788,7 @@ public static class MeshGenerator
 
             sections.Add(new VerticesHolder(sectionLine));
 
-            Vector3 lookDirection = guideLine.Vertices[1] - guideLine.Vertices[0];
+            Vector3 lookDirection = guideLine.VerticesDirectly[1] - guideLine.VerticesDirectly[0];
 
             if (lookDirection.magnitude != 0)
             {
@@ -760,14 +799,14 @@ public static class MeshGenerator
                 Debug.LogWarning("Error: Distance between points is 0");
             }
                 
-            sections[^1].Move(guideLine.Vertices[0]);
+            sections[^1].Move(guideLine.VerticesDirectly[0]);
 
             for (int i = 1; i < guideLine.Count - 1; i++)
             {
                 sections.Add(new VerticesHolder(sectionLine));
 
-                Vector3 vecAhead = guideLine.Vertices[i + 1] - guideLine.Vertices[i];
-                Vector3 vecBehind = guideLine.Vertices[i] - guideLine.Vertices[i - 1];
+                Vector3 vecAhead = guideLine.VerticesDirectly[i + 1] - guideLine.VerticesDirectly[i];
+                Vector3 vecBehind = guideLine.VerticesDirectly[i] - guideLine.VerticesDirectly[i - 1];
 
                 Vector3 tanDirection = (vecBehind).normalized + (vecAhead).normalized;
                 //Vector3 normDirection = -tanDirection / 2 + vecBehind;
@@ -781,12 +820,12 @@ public static class MeshGenerator
                     Debug.LogWarning("Error: Distance between points is 0");
                 }
 
-                sections[^1].Move(guideLine.Vertices[i]);
+                sections[^1].Move(guideLine.VerticesDirectly[i]);
             }
 
             sections.Add(new VerticesHolder(sectionLine));
-            sections[^1].Rotate(Quaternion.LookRotation(guideLine.Vertices[^1] - guideLine.Vertices[^2])); //ToDo: Improve if closed
-            sections[^1].Move(guideLine.Vertices[^1]);
+            sections[^1].Rotate(Quaternion.LookRotation(guideLine.VerticesDirectly[^1] - guideLine.VerticesDirectly[^2])); //ToDo: Improve if closed
+            sections[^1].Move(guideLine.VerticesDirectly[^1]);
 
             TriangleMeshInfo returnValue;
 
@@ -803,7 +842,7 @@ public static class MeshGenerator
                 {
                     for (int sectionIndex = 0; sectionIndex < sections.Count; sectionIndex++)
                     {
-                        guideElements[guideIndex].Add(sections[sectionIndex].Vertices[guideIndex]);
+                        guideElements[guideIndex].Add(sections[sectionIndex].VerticesDirectly[guideIndex]);
                     }
                 }
 

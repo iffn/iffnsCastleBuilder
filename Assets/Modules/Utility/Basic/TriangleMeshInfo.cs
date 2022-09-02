@@ -39,11 +39,11 @@ public class TriangleMeshInfo
     {
         get
         {
-            return VerticesHolder.Vertices;
+            return VerticesHolder.VerticesDirectly;
         }
         set
         {
-            VerticesHolder.Vertices = value;
+            VerticesHolder.VerticesDirectly = value;
         }
     }
 
@@ -640,7 +640,7 @@ public class VerticesHolder
 {
     List<Vector3> vertices;
 
-    public List<Vector3> Vertices
+    public List<Vector3> VerticesDirectly
     {
         get
         {
@@ -721,6 +721,11 @@ public class VerticesHolder
             Vector3 newLocalVector = thisTransform.InverseTransformDirection(worldVector);
             vertices.Add(newLocalVector);
         }
+    }
+
+    public void Insert(int index, Vector3 element)
+    {
+        vertices.Insert(index, element);
     }
 
     public void Remove(int index)

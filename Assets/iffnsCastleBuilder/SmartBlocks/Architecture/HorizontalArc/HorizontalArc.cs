@@ -455,17 +455,17 @@ namespace iffnsStuff.iffnsCastleBuilder
                 Floor.FlipTriangles();
 
                 XWall = MeshGenerator.MeshesFromPoints.MeshFrom4Points(
-                    upperArc.Vertices[0],
+                    upperArc.VerticesDirectly[0],
                     centerPoint + Vector3.up * wallHeight,
                     centerPoint,
-                    lowerArc.Vertices[0]
+                    lowerArc.VerticesDirectly[0]
                     );
 
                 ZWall = MeshGenerator.MeshesFromPoints.MeshFrom4Points(
-                    lowerArc.Vertices[^1],
+                    lowerArc.VerticesDirectly[^1],
                     centerPoint,
                     centerPoint + Vector3.up * wallHeight,
-                    upperArc.Vertices[^1]
+                    upperArc.VerticesDirectly[^1]
                     );
             }
 
@@ -531,17 +531,17 @@ namespace iffnsStuff.iffnsCastleBuilder
                 Floor = MeshGenerator.MeshesFromLines.KnitLines(firstLine: upperInnerArc, secondLine: upperOuterArc, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
 
                 XWall = MeshGenerator.MeshesFromPoints.MeshFrom4Points(
-                    lowerOuterArc.Vertices[0],
-                    lowerInnerArc.Vertices[0],
-                    upperInnerArc.Vertices[0],
-                    upperOuterArc.Vertices[0]
+                    lowerOuterArc.VerticesDirectly[0],
+                    lowerInnerArc.VerticesDirectly[0],
+                    upperInnerArc.VerticesDirectly[0],
+                    upperOuterArc.VerticesDirectly[0]
                     );
 
                 ZWall = MeshGenerator.MeshesFromPoints.MeshFrom4Points(
-                    lowerInnerArc.Vertices[^1],
-                    lowerOuterArc.Vertices[^1],
-                    upperOuterArc.Vertices[^1],
-                    upperInnerArc.Vertices[^1]
+                    lowerInnerArc.VerticesDirectly[^1],
+                    lowerOuterArc.VerticesDirectly[^1],
+                    upperOuterArc.VerticesDirectly[^1],
+                    upperInnerArc.VerticesDirectly[^1]
                     );
             }
 
@@ -634,9 +634,9 @@ namespace iffnsStuff.iffnsCastleBuilder
                 InnerArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: innerArc, offset: Vector3.up * wallHeight, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
 
                 //Start and end point
-                Vector3 currentStartPoint = innerArc.Vertices[^1];
+                Vector3 currentStartPoint = innerArc.VerticesDirectly[^1];
                 Vector3 currentEndPoint = currentStartPoint;
-                Vector3 endPoint = innerArc.Vertices[0];
+                Vector3 endPoint = innerArc.VerticesDirectly[0];
 
                 float offset = currentStartPoint.z % BlockSize;
 
@@ -708,18 +708,18 @@ namespace iffnsStuff.iffnsCastleBuilder
                     }
                 }
 
-                bool hasEndCapWall = !MathHelper.FloatIsZero((currentEndPoint - innerArc.Vertices[0]).magnitude);
+                bool hasEndCapWall = !MathHelper.FloatIsZero((currentEndPoint - innerArc.VerticesDirectly[0]).magnitude);
 
                 if (hasEndCapWall)
                 {
-                    XWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: innerArc.Vertices[0], secondClockwiseFloorPoint: currentEndPoint, wallHeight: wallHeight, uvOffset: Vector3.zero));
+                    XWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: innerArc.VerticesDirectly[0], secondClockwiseFloorPoint: currentEndPoint, wallHeight: wallHeight, uvOffset: Vector3.zero));
                 }
 
                 ladderPoints.Reverse();
 
-                if (MathHelper.FloatIsZero((ladderPoints.Vertices[0] - innerArc.Vertices[0]).magnitude))
+                if (MathHelper.FloatIsZero((ladderPoints.VerticesDirectly[0] - innerArc.VerticesDirectly[0]).magnitude))
                     ladderPoints.Remove(0);
-                if(MathHelper.FloatIsZero((ladderPoints.Vertices[^1] - innerArc.Vertices[^1]).magnitude))
+                if(MathHelper.FloatIsZero((ladderPoints.VerticesDirectly[^1] - innerArc.VerticesDirectly[^1]).magnitude))
                     ladderPoints.Remove(ladderPoints.Count - 1);
 
                 Floor = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(firstLine: innerArc, secondLine: ladderPoints, isClosed: false);

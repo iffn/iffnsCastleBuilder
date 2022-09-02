@@ -300,7 +300,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
-
         public override void ApplyBuildParameters()
         {
             //Parameter change
