@@ -12,10 +12,12 @@ namespace iffnsStuff.iffnsCastleBuilder
         //BuildParameters
         MailboxLineVector2Int BottomLeftPositionParam;
         MailboxLineVector2Int TopRightPositionParam;
+        MailboxLineDistinctNamed ShapeTypeParam;
+        MailboxLineRanged TotalHeightParam;
         MailboxLineMaterial TopMaterialParam;
         MailboxLineMaterial BaseMaterialParam;
 
-        BlockGridRectangleOrganizer ModificationNodeOrganizer;
+        NodeGridRectangleOrganizer ModificationNodeOrganizer;
 
         public override ModificationOrganizer Organizer
         {
@@ -51,6 +53,62 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        public float TotalHeight
+        {
+            get
+            {
+                return TotalHeightParam.Val;
+            }
+            set
+            {
+                TotalHeightParam.Val = value;
+                ApplyBuildParameters();
+            }
+        }
+
+        public enum ShapeTypes
+        {
+            BaseBox,
+            FlatTop,
+            RoofTop
+        }
+
+        public ShapeTypes ShapeType
+        {
+            get
+            {
+                ShapeTypes returnValue = (ShapeTypes)ShapeTypeParam.Val;
+
+                return returnValue;
+            }
+            set
+            {
+                ShapeTypeParam.Val = (int)value;
+                ApplyBuildParameters();
+            }
+        }
+
+        void SetupShapeTypeParam(ShapeTypes blockType = ShapeTypes.FlatTop)
+        {
+            List<string> enumString = new List<string>();
+
+            int enumValues = System.Enum.GetValues(typeof(ShapeTypes)).Length;
+
+            for (int i = 0; i < enumValues; i++)
+            {
+                ShapeTypes type = (ShapeTypes)i;
+
+                enumString.Add(type.ToString());
+            }
+
+            ShapeTypeParam = new MailboxLineDistinctNamed(
+                "Shape type",
+                CurrentMailbox,
+                Mailbox.ValueType.buildParameter,
+                enumString,
+                (int)blockType);
+        }
+
         public override bool RaiseToFloor
         {
             get
@@ -73,18 +131,21 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             BottomLeftPositionParam = new MailboxLineVector2Int(name: "Bottom Left Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             TopRightPositionParam = new MailboxLineVector2Int(name: "Top Right Position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
+            TotalHeightParam = new MailboxLineRanged(name: "Height", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 2, Min: 0.1f, DefaultValue: 0.8f);
             TopMaterialParam = new MailboxLineMaterial(name: "Top material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultPlaster);
             BaseMaterialParam = new MailboxLineMaterial(name: "Base material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultWoodSolid);
 
-            BlockGridPositionModificationNode firstNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
+            SetupShapeTypeParam();
+
+            NodeGridPositionModificationNode firstNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
             firstNode.Setup(linkedObject: this, value: BottomLeftPositionParam);
             FirstPositionNode = firstNode;
 
-            BlockGridPositionModificationNode secondNode = ModificationNodeLibrary.NewBlockGridPositionModificationNode;
+            NodeGridPositionModificationNode secondNode = ModificationNodeLibrary.NewNodeGridPositionModificationNode;
             secondNode.Setup(linkedObject: this, value: TopRightPositionParam, relativeReferenceHolder: BottomLeftPositionParam);
             SecondPositionNode = secondNode;
 
-            ModificationNodeOrganizer = new BlockGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
+            ModificationNodeOrganizer = new NodeGridRectangleOrganizer(linkedObject: this, firstNode: firstNode, secondNode: secondNode);
 
             SetupEditButtons();
 
@@ -137,7 +198,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Define mesh
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
-            AssistObjectManager.ValueContainer baseCounterInfo = LinkedBaseCounter.SetBuildParameters(mainObject: this, UVBaseObject: LinkedFloor.LinkedBuildingController.transform, width: size.y, length: size.x);
+            AssistObjectManager.ValueContainer baseCounterInfo = LinkedBaseCounter.SetBuildParameters(mainObject: this, UVBaseObject: LinkedFloor.LinkedBuildingController.transform, width: size.x, length: size.y, totalHeight: TotalHeight, shapeType: ShapeType);
 
             List<TriangleMeshInfo> counterInfo = baseCounterInfo.ConvertedStaticMeshes;
 
