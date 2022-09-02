@@ -15517,14 +15517,6 @@
 						"Orientation": "ZPositive"
 					},
 					{
-						"Type": "Counter",
-						"Name": "",
-						"Bottom Left Position": [50, 20],
-						"Top Right Position": [1, -2],
-						"Top material": "PolyHaven-plywood",
-						"Base material": "PolyHaven-plywood"
-					},
-					{
 						"Type": "Door",
 						"Name": "",
 						"Bottom Left Position": [14, 21],
@@ -15834,6 +15826,14 @@
 						"Back wall material": "PolyHaven-beige_wall_001",
 						"Frame material": "PolyHaven-plywood",
 						"Wall type": "NodeGrid"
+					},
+					{
+						"Type": "Counter",
+						"Name": "",
+						"Bottom Left Position": [51, 18],
+						"Top Right Position": [-2, 3],
+						"Top material": "PolyHaven-beige_wall_001",
+						"Base material": "PolyHaven-plywood"
 					}
 				]
 			}

@@ -20183,16 +20183,16 @@
 					{
 						"Type": "Counter",
 						"Name": "",
-						"Bottom Left Position": [0, 27],
-						"Top Right Position": [8, -1],
+						"Bottom Left Position": [0, 28],
+						"Top Right Position": [9, -2],
 						"Top material": "PolyHaven-beige_wall_001-illuminated",
 						"Base material": "PolyHaven-plywood-illuminated"
 					},
 					{
 						"Type": "Counter",
 						"Name": "",
-						"Bottom Left Position": [0, 22],
-						"Top Right Position": [8, -1],
+						"Bottom Left Position": [0, 23],
+						"Top Right Position": [9, -2],
 						"Top material": "PolyHaven-beige_wall_001-illuminated",
 						"Base material": "PolyHaven-plywood-illuminated"
 					}
