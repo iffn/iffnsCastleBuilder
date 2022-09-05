@@ -369,6 +369,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             StaticSaveAndLoadSystem.SaveFileToFileLocation(fileInfo: fileInfo, completeFileLocation: CompleteFileLocation);
 
             CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Done;
+            CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Normal;
         }
 
         bool SelectedFileExists(bool updateList)
