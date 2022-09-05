@@ -12,8 +12,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.25,
-				"Wall height": 2.75,
+				"Bottom floor height [m]": 0.25,
+				"Wall height [m]": 2.75,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -19911,8 +19911,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.25,
-				"Wall height": 1.125,
+				"Bottom floor height [m]": 0.25,
+				"Wall height [m]": 1.125,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -36995,8 +36995,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.25,
-				"Wall height": 1.125,
+				"Bottom floor height [m]": 0.25,
+				"Wall height [m]": 1.125,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -51247,8 +51247,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.25,
-				"Wall height": 1.125,
+				"Bottom floor height [m]": 0.25,
+				"Wall height [m]": 1.125,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -66777,8 +66777,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.25,
-				"Wall height": 1.125,
+				"Bottom floor height [m]": 0.25,
+				"Wall height [m]": 1.125,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -80689,8 +80689,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.2,
-				"Wall height": 0.8,
+				"Bottom floor height [m]": 0.2,
+				"Wall height [m]": 0.8,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -95313,8 +95313,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.2,
-				"Wall height": 0.5,
+				"Bottom floor height [m]": 0.2,
+				"Wall height [m]": 0.5,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",

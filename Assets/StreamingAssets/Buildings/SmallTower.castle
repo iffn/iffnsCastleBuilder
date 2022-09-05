@@ -12,8 +12,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.2,
-				"Wall height": 2.2,
+				"Bottom floor height [m]": 0.2,
+				"Wall height [m]": 2.2,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -1166,8 +1166,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.2,
-				"Wall height": 2.2,
+				"Bottom floor height [m]": 0.2,
+				"Wall height [m]": 2.2,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -2279,8 +2279,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.2,
-				"Wall height": 2.2,
+				"Bottom floor height [m]": 0.2,
+				"Wall height [m]": 2.2,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -3021,8 +3021,8 @@
 						"Block type": "Floor",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-stone_brick_wall_001",
-						"Back wall material": "PolyHaven-stone_brick_wall_001",
-						"Front wall material": "PolyHaven-plywood"
+						"Front wall material": "PolyHaven-plywood",
+						"Back wall material": "PolyHaven-stone_brick_wall_001"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -3477,7 +3477,7 @@
 						"Name": "",
 						"Bottom Left Position": [3, 13],
 						"Top Right Position": [2, -1],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "BaseBox"
@@ -3487,7 +3487,7 @@
 						"Name": "",
 						"Bottom Left Position": [8, 13],
 						"Top Right Position": [2, -1],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "BaseBox"
@@ -3497,7 +3497,7 @@
 						"Name": "",
 						"Bottom Left Position": [13, 10],
 						"Top Right Position": [-1, -2],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "BaseBox"
@@ -3507,7 +3507,7 @@
 						"Name": "",
 						"Bottom Left Position": [13, 5],
 						"Top Right Position": [-1, -2],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "BaseBox"
@@ -3517,7 +3517,7 @@
 						"Name": "",
 						"Bottom Left Position": [11, 0],
 						"Top Right Position": [-2, 1],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "BaseBox"
@@ -3527,7 +3527,7 @@
 						"Name": "",
 						"Bottom Left Position": [6, 0],
 						"Top Right Position": [-2, 1],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "BaseBox"
@@ -3537,7 +3537,7 @@
 						"Name": "",
 						"Bottom Left Position": [0, 2],
 						"Top Right Position": [1, 2],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "BaseBox"
@@ -3547,7 +3547,7 @@
 						"Name": "",
 						"Bottom Left Position": [13, 0],
 						"Top Right Position": [-1, 1],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "BaseBox"
@@ -3557,7 +3557,7 @@
 						"Name": "",
 						"Bottom Left Position": [0, 9],
 						"Top Right Position": [1, 2],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "BaseBox"
@@ -3567,8 +3567,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.2,
-				"Wall height": 1.6,
+				"Bottom floor height [m]": 0.2,
+				"Wall height [m]": 1.6,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -4645,7 +4645,7 @@
 						"Name": "",
 						"Bottom Left Position": [12, 0],
 						"Top Right Position": [-12, 1],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "BaseBox"
@@ -4655,7 +4655,7 @@
 						"Name": "",
 						"Bottom Left Position": [13, 12],
 						"Top Right Position": [-1, -12],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "BaseBox"
@@ -4665,7 +4665,7 @@
 						"Name": "",
 						"Bottom Left Position": [13, 12],
 						"Top Right Position": [-12, 1],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "BaseBox"
@@ -4675,7 +4675,7 @@
 						"Name": "",
 						"Bottom Left Position": [13, 13],
 						"Top Right Position": [-1, -3],
-						"Height": 1.5,
+						"Height [m]": 1.5,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "FlatTop"
@@ -4685,7 +4685,7 @@
 						"Name": "",
 						"Bottom Left Position": [13, 8],
 						"Top Right Position": [-1, -3],
-						"Height": 1.5,
+						"Height [m]": 1.5,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "FlatTop"
@@ -4695,7 +4695,7 @@
 						"Name": "",
 						"Bottom Left Position": [13, 3],
 						"Top Right Position": [-1, -3],
-						"Height": 1.5,
+						"Height [m]": 1.5,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "FlatTop"
@@ -4705,7 +4705,7 @@
 						"Name": "",
 						"Bottom Left Position": [13, 0],
 						"Top Right Position": [-3, 1],
-						"Height": 1.5,
+						"Height [m]": 1.5,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "FlatTop"
@@ -4715,7 +4715,7 @@
 						"Name": "",
 						"Bottom Left Position": [8, 0],
 						"Top Right Position": [-3, 1],
-						"Height": 1.5,
+						"Height [m]": 1.5,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "FlatTop"
@@ -4725,7 +4725,7 @@
 						"Name": "",
 						"Bottom Left Position": [3, 0],
 						"Top Right Position": [-3, 1],
-						"Height": 1.5,
+						"Height [m]": 1.5,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "FlatTop"
@@ -4735,7 +4735,7 @@
 						"Name": "",
 						"Bottom Left Position": [0, 0],
 						"Top Right Position": [1, 3],
-						"Height": 1.5,
+						"Height [m]": 1.5,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "FlatTop"
@@ -4745,7 +4745,7 @@
 						"Name": "",
 						"Bottom Left Position": [0, 5],
 						"Top Right Position": [1, 3],
-						"Height": 1.5,
+						"Height [m]": 1.5,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "FlatTop"
@@ -4755,7 +4755,7 @@
 						"Name": "",
 						"Bottom Left Position": [0, 10],
 						"Top Right Position": [1, 3],
-						"Height": 1.5,
+						"Height [m]": 1.5,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "FlatTop"
@@ -4765,7 +4765,7 @@
 						"Name": "",
 						"Bottom Left Position": [0, 13],
 						"Top Right Position": [3, -1],
-						"Height": 1.5,
+						"Height [m]": 1.5,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "FlatTop"
@@ -4775,7 +4775,7 @@
 						"Name": "",
 						"Bottom Left Position": [5, 13],
 						"Top Right Position": [3, -1],
-						"Height": 1.5,
+						"Height [m]": 1.5,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "FlatTop"
@@ -4785,7 +4785,7 @@
 						"Name": "",
 						"Bottom Left Position": [10, 13],
 						"Top Right Position": [3, -1],
-						"Height": 1.5,
+						"Height [m]": 1.5,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "FlatTop"
@@ -4795,7 +4795,7 @@
 						"Name": "",
 						"Bottom Left Position": [0, 1],
 						"Top Right Position": [1, 12],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-beige_wall_001",
 						"Base material": "PolyHaven-stone_brick_wall_001",
 						"Shape type": "BaseBox"

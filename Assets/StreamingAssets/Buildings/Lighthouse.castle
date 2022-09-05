@@ -12,8 +12,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.3,
-				"Wall height": 1.2,
+				"Bottom floor height [m]": 0.3,
+				"Wall height [m]": 1.2,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -4553,8 +4553,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.25,
-				"Wall height": 2.75,
+				"Bottom floor height [m]": 0.25,
+				"Wall height [m]": 2.75,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -9440,8 +9440,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.25,
-				"Wall height": 2.75,
+				"Bottom floor height [m]": 0.25,
+				"Wall height [m]": 2.75,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -14897,7 +14897,7 @@
 						"Name": "",
 						"Bottom Left Position": [0, 27],
 						"Top Right Position": [8, -1],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "PolyHaven-plywood",
 						"Base material": "PolyHaven-beige_wall_001",
 						"Shape type": "FlatTop"
@@ -14930,8 +14930,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.25,
-				"Wall height": 2.75,
+				"Bottom floor height [m]": 0.25,
+				"Wall height [m]": 2.75,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -20387,7 +20387,7 @@
 						"Name": "",
 						"Bottom Left Position": [0, 26],
 						"Top Right Position": [9, 3],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "ambientCG-Marble016",
 						"Base material": "PolyHaven-plywood",
 						"Shape type": "FlatTop"
@@ -20397,7 +20397,7 @@
 						"Name": "",
 						"Bottom Left Position": [0, 23],
 						"Top Right Position": [9, -2],
-						"Height": 0.8,
+						"Height [m]": 0.8,
 						"Top material": "ambientCG-Marble016",
 						"Base material": "PolyHaven-plywood",
 						"Shape type": "FlatTop"
@@ -20481,8 +20481,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.3,
-				"Wall height": 3.7,
+				"Bottom floor height [m]": 0.3,
+				"Wall height [m]": 3.7,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -24166,7 +24166,7 @@
 						"First position": [20, 0],
 						"Second position": [0, 29],
 						"Roof height [m]": 2,
-						"Height thickness": 0.1,
+						"Height thickness [m]": 0.1,
 						"Roof overshoot [m]": 0,
 						"Raise to floor": false,
 						"Outside material": "PolyHaven-roof_09",
@@ -24214,7 +24214,7 @@
 						"Second position": [7, 29],
 						"Third position": [7, 31],
 						"Height [m]": 2,
-						"Height thickness": 0.1,
+						"Height thickness [m]": 0.1,
 						"Raise to floor": false,
 						"Outside material": "PolyHaven-roof_09",
 						"Inside material": "PolyHaven-old_planks_02",
@@ -24246,8 +24246,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.3,
-				"Wall height": 3.7,
+				"Bottom floor height [m]": 0.3,
+				"Wall height [m]": 3.7,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -28045,8 +28045,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.2,
-				"Wall height": 1,
+				"Bottom floor height [m]": 0.2,
+				"Wall height [m]": 1,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -31661,8 +31661,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.25,
-				"Wall height": 2.75,
+				"Bottom floor height [m]": 0.25,
+				"Wall height [m]": 2.75,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -35595,8 +35595,8 @@
 			{
 				"Type": "FloorController",
 				"Name": "",
-				"Bottom floor height": 0.2,
-				"Wall height": 2.2,
+				"Bottom floor height [m]": 0.2,
+				"Wall height [m]": 2.2,
 				"Node wall system":
 				{
 					"Type": "NodeWallSystem",
@@ -39145,7 +39145,7 @@
 						"Second position": [8, 37],
 						"Third position": [10, 39],
 						"Height [m]": 2,
-						"Height thickness": 0.1,
+						"Height thickness [m]": 0.1,
 						"Raise to floor": false,
 						"Outside material": "PolyHaven-roof_09",
 						"Inside material": "PolyHaven-old_planks_02",
@@ -39159,7 +39159,7 @@
 						"Second position": [16, 37],
 						"Third position": [14, 39],
 						"Height [m]": 2,
-						"Height thickness": 0.1,
+						"Height thickness [m]": 0.1,
 						"Raise to floor": false,
 						"Outside material": "PolyHaven-roof_09",
 						"Inside material": "PolyHaven-old_planks_02",
@@ -39173,7 +39173,7 @@
 						"Second position": [16, 33],
 						"Third position": [14, 31],
 						"Height [m]": 2,
-						"Height thickness": 0.1,
+						"Height thickness [m]": 0.1,
 						"Raise to floor": false,
 						"Outside material": "PolyHaven-roof_09",
 						"Inside material": "PolyHaven-old_planks_02",
@@ -39187,7 +39187,7 @@
 						"Second position": [8, 33],
 						"Third position": [10, 31],
 						"Height [m]": 2,
-						"Height thickness": 0.1,
+						"Height thickness [m]": 0.1,
 						"Raise to floor": false,
 						"Outside material": "PolyHaven-roof_09",
 						"Inside material": "PolyHaven-old_planks_02",
@@ -39201,7 +39201,7 @@
 						"Second position": [8, 33],
 						"Third position": [8, 37],
 						"Height [m]": 2,
-						"Height thickness": 0.1,
+						"Height thickness [m]": 0.1,
 						"Raise to floor": false,
 						"Outside material": "PolyHaven-roof_09",
 						"Inside material": "PolyHaven-old_planks_02",
@@ -39215,7 +39215,7 @@
 						"Second position": [14, 39],
 						"Third position": [10, 39],
 						"Height [m]": 2,
-						"Height thickness": 0.1,
+						"Height thickness [m]": 0.1,
 						"Raise to floor": false,
 						"Outside material": "PolyHaven-roof_09",
 						"Inside material": "PolyHaven-old_planks_02",
@@ -39229,7 +39229,7 @@
 						"Second position": [16, 33],
 						"Third position": [16, 37],
 						"Height [m]": 2,
-						"Height thickness": 0.1,
+						"Height thickness [m]": 0.1,
 						"Raise to floor": false,
 						"Outside material": "PolyHaven-roof_09",
 						"Inside material": "PolyHaven-old_planks_02",
@@ -39243,7 +39243,7 @@
 						"Second position": [10, 31],
 						"Third position": [14, 31],
 						"Height [m]": 2,
-						"Height thickness": 0.1,
+						"Height thickness [m]": 0.1,
 						"Raise to floor": false,
 						"Outside material": "PolyHaven-roof_09",
 						"Inside material": "PolyHaven-old_planks_02",

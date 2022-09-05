@@ -83,7 +83,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             BottomLeftPositionParam = new MailboxLineVector2(name: "Bottom left position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             RelativeSizeParam = new MailboxLineVector2(name: "Relative size", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
-            RotationParam = new MailboxLineRanged(name: "Rotation", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 360, Min: 0, DefaultValue: 0);
+            RotationParam = new MailboxLineRanged(name: "Rotation [°]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 360, Min: 0, DefaultValue: 0);
 
             SetupEditButtons();
 

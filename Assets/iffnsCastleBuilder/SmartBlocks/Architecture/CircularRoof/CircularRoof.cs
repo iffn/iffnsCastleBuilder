@@ -201,7 +201,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             CenterPositionParam = new MailboxLineVector2Int(name: "Center position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             OuterRadiiParam = new MailboxLineVector2Int(name: "Outer Radii", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             EdgesBetweenParam = new MailboxLineDistinctUnnamed(name: "Edges between", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 16, Min: 0, DefaultValue: 8);
-            ThicknessParam = new MailboxLineRanged(name: "Thickness", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1f / 3, Min: 0.001f, DefaultValue: 0.1f);
+            ThicknessParam = new MailboxLineRanged(name: "Thickness [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1f / 3, Min: 0.001f, DefaultValue: 0.1f);
             HeightParam = new MailboxLineRanged(name: "Height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 10f, Min: 1f, DefaultValue: 2f);
             HeightOvershootParam = new MailboxLineRanged(name: "Height overshoot [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1, Min: 0, DefaultValue: 0.1f);
             RaiseToFloorParam = new MailboxLineBool(name: "Raise to floor", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: true);
