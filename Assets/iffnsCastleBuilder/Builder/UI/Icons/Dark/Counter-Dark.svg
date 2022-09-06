@@ -2,9 +2,9 @@
 <svg
    inkscape:export-ydpi="96"
    inkscape:export-xdpi="96"
-   inkscape:export-filename="C:\Users\iffn1\Documents\UnityProjects\CastleBuilder2\Assets\Modules\HumanBuildings\Builder\UI\Icons\Dark\Counter-Dark.png"
+   inkscape:export-filename="Counter-Dark.png"
    sodipodi:docname="Counter-Dark.svg"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    id="svg1397"
    version="1.1"
    viewBox="0 0 100 100"
@@ -52,16 +52,18 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="243.92857"
-     inkscape:cx="185.35714"
-     inkscape:zoom="1.4"
+     inkscape:cy="209.10158"
+     inkscape:cx="205.06097"
+     inkscape:zoom="1.979899"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
      bordercolor="#666666"
      pagecolor="#ffffff"
      id="base"
-     inkscape:pagecheckerboard="0" />
+     inkscape:pagecheckerboard="0"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata1394">
     <rdf:RDF>
@@ -79,55 +81,64 @@
      inkscape:groupmode="layer"
      inkscape:label="Layer 1">
     <g
-       id="g14342-5"
-       transform="translate(-694.19106,-795.69734)"
-       style="display:inline">
-      <rect
-         style="display:inline;fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:1.16487;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         id="rect1815-4-4-1-8-6-0-0-8-9-8-4"
-         width="34.118103"
-         height="28.960567"
-         x="776.76703"
-         y="534.64502"
-         transform="matrix(0.92263592,0.38567208,0,1,0,0)" />
-      <rect
-         style="display:inline;fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:1.16508;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         id="rect1815-4-4-1-8-6-0-0-8-9-8-7-1-6"
-         width="13.394836"
-         height="22.715811"
-         x="780.7265"
-         y="536.96631"
-         transform="matrix(0.92229285,0.38649179,0,1,0,0)" />
-      <rect
-         style="display:inline;fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:1.16508;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         id="rect1815-4-4-1-8-6-0-0-8-9-8-7-1-0-0"
-         width="13.394836"
-         height="22.715811"
-         x="794.12134"
-         y="536.96631"
-         transform="matrix(0.92229285,0.38649179,0,1,0,0)" />
-      <rect
-         style="fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:1.16487;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         id="rect1815-4-4-1-8-6-0-0-8-9-2"
-         width="34.118099"
-         height="7.8600554"
-         x="772.13251"
-         y="530.72925"
-         transform="matrix(0.92263592,0.38567208,0,1,0,0)" />
-      <path
-         id="rect1815-0-5-3-9-6-3-0-14-8"
-         style="fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:4.2289;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="M 2933.4746,3121.0352 2811.5,3181.1445 v 29.7071 l 16.1602,-7.9629 v 109.2675 l 94.8086,-46.7207 V 3156.166 l 11.0058,-5.4238 z"
-         transform="scale(0.26458333)" />
-      <rect
-         transform="matrix(-0.89686512,0.44230415,-0.91705117,-0.39876955,0,0)"
-         y="-1420.0986"
-         x="586.65948"
-         height="33.717995"
-         width="36.605747"
-         id="rect1815-9-5-5-11-6-2-7-4-5"
-         style="fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:1.28072;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         ry="0" />
+       id="g2437"
+       transform="matrix(0.85681095,0,0,0.85683591,7.899906,11.313655)"
+       style="stroke-width:1.1671">
+      <g
+         id="g14342-5"
+         transform="translate(-694.19106,-795.69734)"
+         style="display:inline;stroke-width:1.1671">
+        <g
+           id="g2405"
+           transform="matrix(0.8585574,0,0,0.85022442,100.53598,112.85481)"
+           style="stroke-width:1.36601">
+          <rect
+             transform="matrix(0.92263592,0.38567208,0,1,0,0)"
+             y="547.84229"
+             x="778.64441"
+             height="37.929947"
+             width="34.118221"
+             id="rect1815-4-4-1-8-6"
+             style="display:inline;fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:1.59124;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke" />
+          <rect
+             style="display:inline;fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:1.6138;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+             id="rect1815-0-5-3-9"
+             width="35.978661"
+             height="37.929955"
+             x="835.99048"
+             y="1230.8346"
+             transform="matrix(0.89700052,-0.44202948,0,1,0,0)" />
+        </g>
+        <g
+           id="g2427"
+           style="stroke-width:1.1671">
+          <rect
+             style="fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:1.35952;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+             id="rect1815-4-4-1-8-6-0-0-8-9-2"
+             width="34.118099"
+             height="7.8600554"
+             x="772.13251"
+             y="530.52087"
+             transform="matrix(0.92263592,0.38567208,0,1,0,0)" />
+          <rect
+             style="display:inline;fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:1.37439;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+             id="rect1815-4-4-1-8-6-0-0-8-9-2-0"
+             width="36.685162"
+             height="8.2767019"
+             x="823.83887"
+             y="1195.322"
+             transform="matrix(0.90293844,-0.4297699,0,1,0,0)" />
+          <rect
+             transform="matrix(-0.89686512,0.44230415,-0.91705117,-0.39876955,0,0)"
+             y="-1420.0841"
+             x="586.02301"
+             height="33.717995"
+             width="36.605747"
+             id="rect1815-9-5-5-11-6-2-7-4-5"
+             style="fill:#333333;fill-opacity:1;stroke:#dddddd;stroke-width:1.49473;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+             ry="0" />
+        </g>
+      </g>
     </g>
   </g>
 </svg>
