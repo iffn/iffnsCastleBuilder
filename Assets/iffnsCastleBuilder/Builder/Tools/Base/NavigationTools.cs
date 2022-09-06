@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using iffnsStuff.iffnsUnityResources;
+using System.Globalization;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
@@ -179,7 +180,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 {
                     positiveSign = "+";
                 }
-                currentNumber.transform.GetComponent<Text>().text = positiveSign + (-CurrentBuilding.NegativeFloors + i).ToString() + " >";
+                currentNumber.transform.GetComponent<TMPro.TMP_Text>().text = positiveSign + (-CurrentBuilding.NegativeFloors + i).ToString(CultureInfo.InvariantCulture) + " >";
             }
         }
 

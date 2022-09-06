@@ -111,11 +111,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             switch (viewDirection)
             {
                 case CastleController.FloorViewDirectionType.topDown:
-                    SizeInfo.transform.rotation = Quaternion.Euler(Vector3.right * 90);
+                    SizeInfo.transform.rotation = Quaternion.identity;
                     SizeInfo.transform.position += Vector3.up * linkedBuilding.CurrentFloorObject.BottomFloorHeight;
                     break;
                 case CastleController.FloorViewDirectionType.bottomUp:
-                    SizeInfo.transform.rotation = Quaternion.Euler(new Vector3(-90, -90, 0));
+                    SizeInfo.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 180));
                     break;
                 default:
                     break;
