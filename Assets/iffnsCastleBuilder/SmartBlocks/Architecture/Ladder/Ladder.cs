@@ -135,7 +135,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     }
                 }
 
-                return height + HeightOvershoot;
+                return height + HeightOvershoot + StepThickness * 0.5f;
             }
         }
 
@@ -229,7 +229,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             float width = ModificationNodeOrganizer.ObjectOrientationSize;
 
             float completeHeight = CompleteHeight;
-            float height = completeHeight - HeightOvershoot;
+            float height = completeHeight - HeightOvershoot - StepThickness * 0.5f;
 
             List<TriangleMeshInfo> OriginSide;
             List<TriangleMeshInfo> OtherSide;
