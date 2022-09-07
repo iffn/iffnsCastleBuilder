@@ -163,26 +163,41 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Define mesh
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
-            TriangleMeshInfo arcMantleTop;
-            TriangleMeshInfo arcMantleBottom;
-            TriangleMeshInfo posts = new();
+            List<TriangleMeshInfo> arcMantleTop;
+            List<TriangleMeshInfo> arcMantleBottom;
+            TriangleMeshInfo postWalls = new(planar: false);
+            List<TriangleMeshInfo> postCaps = new();
 
             //ToDo: Improve UV mesh
 
             void FinishMesh()
             {
-                arcMantleTop.MaterialReference = TopMaterialParam;
-                arcMantleBottom.MaterialReference = BottomMaterialParam;
-                posts.MaterialReference = PostMaterialParam;
+                foreach(TriangleMeshInfo info in arcMantleTop)
+                {
+                    info.MaterialReference = TopMaterialParam;
+                    StaticMeshManager.AddTriangleInfoIfValid(info);
+                }
 
-                StaticMeshManager.AddTriangleInfoIfValid(arcMantleTop);
-                StaticMeshManager.AddTriangleInfoIfValid(arcMantleBottom);
-                StaticMeshManager.AddTriangleInfoIfValid(posts);
+                foreach (TriangleMeshInfo info in arcMantleBottom)
+                {
+                    info.MaterialReference = BottomMaterialParam;
+                    StaticMeshManager.AddTriangleInfoIfValid(info);
+                }
+
+                foreach (TriangleMeshInfo info in postCaps)
+                {
+                    info.MaterialReference = PostMaterialParam;
+                    StaticMeshManager.AddTriangleInfoIfValid(info);
+                }
+
+                postWalls.MaterialReference = PostMaterialParam;
+
+                StaticMeshManager.AddTriangleInfoIfValid(postWalls);
 
                 BuildAllMeshes();
             }
 
-            TriangleMeshInfo currentMesh;
+            TriangleMeshInfo currentWalls;
 
             //Create circle
             VerticesHolder arc = MeshGenerator.Lines.ArcAroundY(radius: 1, angleDeg: 90, numberOfEdges: 12);
@@ -193,31 +208,47 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Railing rectangle
             TriangleMeshInfo rectangle = MeshGenerator.FilledShapes.RectangleAroundCenter(baseLineFull: Vector3.right * width, secondLineFull: Vector3.up * topHeight);
             arcMantleTop = MeshGenerator.MeshesFromLines.ExtrudeAlong(sectionLine: rectangle.VerticesHolder, guideLine: arc, sectionIsClosed: true, guideIsClosed: false, sharpGuideEdges: true);
-            arcMantleTop.Move((railingHeight - baseHeight * 0.5f) * Vector3.up);
+            
+            foreach(TriangleMeshInfo info in arcMantleTop)
+            {
+                info.Move((railingHeight - baseHeight * 0.5f) * Vector3.up);
+            }
 
             rectangle = MeshGenerator.FilledShapes.RectangleAroundCenter(baseLineFull: Vector3.right * width, secondLineFull: Vector3.up * baseHeight);
             arcMantleBottom = MeshGenerator.MeshesFromLines.ExtrudeAlong(sectionLine: rectangle.VerticesHolder, guideLine: arc, sectionIsClosed: true, guideIsClosed: false, sharpGuideEdges: true);
-            arcMantleBottom.Move((topHeight * 0.5f) * Vector3.up);
+
+            foreach (TriangleMeshInfo info in arcMantleBottom)
+            {
+                info.Move((topHeight * 0.5f) * Vector3.up);
+            }
+            
 
             //Posts
-            TriangleMeshInfo postTemplate = new TriangleMeshInfo();
+            TriangleMeshInfo postWallTemplate = MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: width * 0.5f, length: railingHeight, direction: Vector3.up, numberOfEdges: 24);
+            List<TriangleMeshInfo> postCapTemplate = MeshGenerator.FilledShapes.CylinderCaps(radius: width * 0.5f, length: railingHeight - MathHelper.SmallFloat * 2, direction: Vector3.up, numberOfEdges: 24);
 
-            postTemplate.Add(MeshGenerator.FilledShapes.CylinderCaps(radius: width * 0.5f, length: railingHeight - MathHelper.SmallFloat * 2, direction: Vector3.up, numberOfEdges: 24));
+            foreach (TriangleMeshInfo currentTemplate in postCapTemplate)
+            {
+                TriangleMeshInfo currentInfo;
+                
+                currentInfo = currentTemplate.Clone;
+                currentInfo.Move(new Vector3(size.x, railingHeight * 0.5f, 0));
 
-            postTemplate.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
+                currentInfo = currentTemplate.Clone;
+                currentInfo.Move(new Vector3(0, railingHeight * 0.5f, size.y));
 
-            postTemplate.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: width * 0.5f, length: railingHeight, direction: Vector3.up, numberOfEdges: 24));
+                postCaps.Add(currentInfo);
+            }
 
+            currentWalls = postWallTemplate.Clone;
+            currentWalls.Move(new Vector3(size.x, 0, 0));
+            postWalls.Add(currentWalls);
 
-            currentMesh = postTemplate.Clone;
-            currentMesh.Move(new Vector3(size.x, 0, 0));
-            posts.Add(currentMesh);
+            currentWalls = postWallTemplate.Clone;
+            currentWalls.Move(new Vector3(0, 0, size.y));
+            postWalls.Add(currentWalls);
 
-            currentMesh = postTemplate.Clone;
-            currentMesh.Move(new Vector3(0, 0, size.y));
-            posts.Add(currentMesh);
-
-            postTemplate = MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: width * 0.5f, length: railingHeight, direction: Vector3.up, numberOfEdges: 24);
+            postWallTemplate = MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: width * 0.5f, length: railingHeight, direction: Vector3.up, numberOfEdges: 24);
 
             //Posts along arc
             float arcLength = 0;
@@ -256,12 +287,12 @@ namespace iffnsStuff.iffnsCastleBuilder
                 //ToDo: Improve point accuracy
                 Vector3 postPoint = arc.VerticesDirectly[basePoint] + remainingDistacne * (arc.VerticesDirectly[basePoint + 1] - arc.VerticesDirectly[basePoint]).normalized;
 
-                currentMesh = postTemplate.Clone;
-                currentMesh.Move(postPoint);
-                posts.Add(currentMesh);
+                currentWalls = postWallTemplate.Clone;
+                currentWalls.Move(postPoint);
+                postWalls.Add(currentWalls);
             }
 
-            posts.Move(railingHeight * 0.5f * Vector3.up);
+            postWalls.Move(railingHeight * 0.5f * Vector3.up);
 
             FinishMesh();
         }

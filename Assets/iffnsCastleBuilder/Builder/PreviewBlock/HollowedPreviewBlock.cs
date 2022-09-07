@@ -17,7 +17,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             float wallHeight = currentBuilding.CurrentFloorObject.CompleteFloorHeight;
 
-            TriangleMeshInfo MeshInfo = new();
+            List<TriangleMeshInfo> MeshInfo = new();
 
             Vector3 firstCenterPosition = currentBuilding.CurrentFloorObject.CenterPositionFromBlockIndex(firstBlock.Coordinate);
             Vector3 secondCenterPosition = currentBuilding.CurrentFloorObject.CenterPositionFromBlockIndex(secondBlock.Coordinate);
@@ -73,13 +73,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             };
 
 
-            MeshInfo.Add(MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePoints(floorPointsInClockwiseOrder: outerPoints, height: wallHeight, closed: true, uvOffset: Vector3.zero));
-            MeshInfo.Add(MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePoints(floorPointsInClockwiseOrder: innerPointsReversed, height: wallHeight, closed: true, uvOffset: Vector3.zero));
+            MeshInfo.AddRange(MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePoints(floorPointsInClockwiseOrder: outerPoints, height: wallHeight, closed: true, uvOffset: Vector3.zero));
+            MeshInfo.AddRange(MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePoints(floorPointsInClockwiseOrder: innerPointsReversed, height: wallHeight, closed: true, uvOffset: Vector3.zero));
             
             VerticesHolder outerPointHolder = new(outerPoints);
             VerticesHolder innerPointHolder = new(innerPoints);
 
-            TriangleMeshInfo capBottom = MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerPointHolder, secondLine: innerPointHolder, closingType: MeshGenerator.ShapeClosingType.closedWithSmoothEdge, smoothTransition: true);
+            TriangleMeshInfo capBottom = MeshGenerator.MeshesFromLines.KnitLinesSmooth(firstLine: outerPointHolder, secondLine: innerPointHolder, closingType: MeshGenerator.ShapeClosingType.closedWithSmoothEdge, planar: true);
             TriangleMeshInfo capTop = capBottom.CloneFlipped;
 
             capTop.Move((wallHeight + MathHelper.SmallFloat) * Vector3.up);
@@ -95,7 +95,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             LinkedMeshFilter.sharedMesh = currentMesh;
 
-            List<Vector3> vertices = MeshInfo.AllVerticesDirectly;
+            TriangleMeshInfo finalInfo = TriangleMeshInfo.CompbineMultipleIntoSingleInfo(infos: MeshInfo);
+
+            List<Vector3> vertices = finalInfo.AllVerticesDirectly;
 
             if (vertices.Count > 65535)
             {
@@ -105,7 +107,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             currentMesh.vertices = vertices.ToArray();
-            currentMesh.triangles = MeshInfo.AllTrianglesDirectly.ToArray();
+            currentMesh.triangles = finalInfo.AllTrianglesDirectly.ToArray();
 
             currentMesh.RecalculateNormals();
             currentMesh.RecalculateTangents();

@@ -270,19 +270,28 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         void UpdateHalfRoof(Vector2 size)
         {
-            TriangleMeshInfo RoofOutside = new TriangleMeshInfo();
-            TriangleMeshInfo RoofInside = new TriangleMeshInfo();
-            TriangleMeshInfo RoofWrapper = new TriangleMeshInfo();
+            TriangleMeshInfo RoofOutside;
+            TriangleMeshInfo RoofInside;
+            TriangleMeshInfo TopWrapper;
+            TriangleMeshInfo BottomWrapper;
+            TriangleMeshInfo FrontWall;
+            TriangleMeshInfo BackWall;
 
             void FinishMesh()
             {
                 RoofOutside.MaterialReference = OutsideMaterialParam;
                 RoofInside.MaterialReference = InsideMaterialParam;
-                RoofWrapper.MaterialReference = WrapperMaterialParam;
+                TopWrapper.MaterialReference = WrapperMaterialParam;
+                BottomWrapper.MaterialReference = WrapperMaterialParam;
+                FrontWall.MaterialReference = WrapperMaterialParam;
+                BackWall.MaterialReference = WrapperMaterialParam;
 
                 AddStaticMesh(RoofOutside);
                 AddStaticMesh(RoofInside);
-                AddStaticMesh(RoofWrapper);
+                AddStaticMesh(TopWrapper);
+                AddStaticMesh(BottomWrapper);
+                AddStaticMesh(FrontWall);
+                AddStaticMesh(BackWall);
             }
 
             //Offset calculation
@@ -297,53 +306,62 @@ namespace iffnsStuff.iffnsCastleBuilder
             RoofInside.Move(new Vector3(size.x, 0, size.y - xOffset));
 
             //Top wrapper
-            TriangleMeshInfo tempWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: Vector3.up * HeightThickness, uvOffset: Vector2.zero);
-            tempWrapper.Move(new Vector3(size.x, Height - HeightThickness, 0));
-            RoofWrapper.Add(tempWrapper);
+            TopWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: Vector3.up * HeightThickness, uvOffset: Vector2.zero);
+            TopWrapper.Move(new Vector3(size.x, Height - HeightThickness, 0));
+            TopWrapper.FlipTriangles();
 
             //Bottom wrapper
-            tempWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: Vector3.forward * xOffset, uvOffset: Vector2.zero);
-            tempWrapper.Move(Vector3.forward * (size.y - xOffset));
-            RoofWrapper.Add(tempWrapper);
+            BottomWrapper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: Vector3.forward * xOffset, uvOffset: Vector2.zero);
+            BottomWrapper.Move(Vector3.forward * (size.y - xOffset));
+            BottomWrapper.FlipTriangles();
 
             //Side wrapper 1
-            tempWrapper = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>()
+            FrontWall = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: new List<Vector3>()
             {
-                new Vector3(0, Height - HeightThickness, 0),
-                new Vector3(0, Height, 0),
-                new Vector3(0,0, size.y),
                 new Vector3(0, 0, size.y - xOffset),
-            }
-            );
-            RoofWrapper.Add(tempWrapper);
+                new Vector3(0,0, size.y),
+                new Vector3(0, Height, 0),
+                new Vector3(0, Height - HeightThickness, 0),
+            }, planar: true);
+
 
             //Sided wrapper 2
-            tempWrapper = tempWrapper.CloneFlipped;
-            tempWrapper.Move(Vector3.right * size.x);
-            RoofWrapper.Add(tempWrapper);
+            BackWall = FrontWall.CloneFlipped;
+            BackWall.Move(Vector3.right * size.x);
 
             RoofOutside.FlipTriangles();
             RoofInside.FlipTriangles();
-            RoofWrapper.FlipTriangles();
 
             FinishMesh();
         }
 
         void UpdateFullRoof(Vector2 size)
         {
-            TriangleMeshInfo RoofOutside = new TriangleMeshInfo();
-            TriangleMeshInfo RoofInside = new TriangleMeshInfo();
-            TriangleMeshInfo RoofWrapper = new TriangleMeshInfo();
+            TriangleMeshInfo RoofOutsideA;
+            TriangleMeshInfo RoofOutsideB;
+            TriangleMeshInfo RoofInsideA;
+            TriangleMeshInfo RoofInsideB;
+            TriangleMeshInfo BottomWrapper = new(planar: true);
+            TriangleMeshInfo FrontWall;
+            TriangleMeshInfo BackWall;
 
             void FinishMesh()
             {
-                RoofOutside.MaterialReference = OutsideMaterialParam;
-                RoofInside.MaterialReference = InsideMaterialParam;
-                RoofWrapper.MaterialReference = WrapperMaterialParam;
+                RoofOutsideA.MaterialReference = OutsideMaterialParam;
+                RoofOutsideB.MaterialReference = OutsideMaterialParam;
+                RoofInsideA.MaterialReference = InsideMaterialParam;
+                RoofInsideB.MaterialReference = InsideMaterialParam;
+                BottomWrapper.MaterialReference = WrapperMaterialParam;
+                FrontWall.MaterialReference = WrapperMaterialParam;
+                BackWall.MaterialReference = WrapperMaterialParam;
 
-                AddStaticMesh(RoofOutside);
-                AddStaticMesh(RoofInside);
-                AddStaticMesh(RoofWrapper);
+                AddStaticMesh(RoofOutsideA);
+                AddStaticMesh(RoofOutsideB);
+                AddStaticMesh(RoofInsideA);
+                AddStaticMesh(RoofInsideB);
+                AddStaticMesh(BottomWrapper);
+                AddStaticMesh(FrontWall);
+                AddStaticMesh(BackWall);
             }
 
             float halfWidth = size.y * 0.5f;
@@ -352,25 +370,25 @@ namespace iffnsStuff.iffnsCastleBuilder
             TriangleMeshInfo tempShape;
 
             //Roof outside
-            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: new Vector3(0, Height, -halfWidth), uvOffset: Vector2.zero);
-            tempShape.Move(Vector3.forward * size.y);
-            RoofOutside.Add(tempShape);
+            RoofOutsideA = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: new Vector3(0, Height, -halfWidth), uvOffset: Vector2.zero);
+            RoofOutsideA.Move(Vector3.forward * size.y);
+            RoofOutsideA.FlipTriangles();
 
-            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: new Vector3(0, Height, halfWidth), uvOffset: Vector2.zero);
-            tempShape.Move(Vector3.right * size.x);
-            RoofOutside.Add(tempShape);
+            RoofOutsideB = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: new Vector3(0, Height, halfWidth), uvOffset: Vector2.zero);
+            RoofOutsideB.Move(Vector3.right * size.x);
+            RoofOutsideB.FlipTriangles();
 
             //Roof inside
-            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: new Vector3(0, Height - HeightThickness, -halfWidth + xOffset), uvOffset: Vector2.zero);
-            tempShape.Move(new Vector3(size.x, 0, size.y - xOffset));
-            RoofInside.Add(tempShape);
+            RoofInsideA = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.left * size.x, secondLine: new Vector3(0, Height - HeightThickness, -halfWidth + xOffset), uvOffset: Vector2.zero);
+            RoofInsideA.Move(new Vector3(size.x, 0, size.y - xOffset));
+            RoofInsideA.FlipTriangles();
 
-            tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: new Vector3(0, Height - HeightThickness, halfWidth - xOffset), uvOffset: Vector2.zero);
-            tempShape.Move(Vector3.forward * xOffset);
-            RoofInside.Add(tempShape);
+            RoofInsideB = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * size.x, secondLine: new Vector3(0, Height - HeightThickness, halfWidth - xOffset), uvOffset: Vector2.zero);
+            RoofInsideB.Move(Vector3.forward * xOffset);
+            RoofInsideB.FlipTriangles();
 
             //Side wrapper 1
-            tempShape = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>()
+            FrontWall = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: new List<Vector3>()
                 {
                     new Vector3(0, Height - HeightThickness, halfWidth),
                     new Vector3(0, 0, size.y - xOffset),
@@ -378,25 +396,18 @@ namespace iffnsStuff.iffnsCastleBuilder
                     new Vector3(0, Height, halfWidth),
                     new Vector3(0, 0, 0),
                     new Vector3(0, 0, xOffset)
-                }
-            );
-            
-            RoofWrapper.Add(tempShape);
+                }, planar: true);
 
             //Side wrapper 2
-            tempShape = tempShape.CloneFlipped;
-            tempShape.Move(Vector3.right * size.x);
-            RoofWrapper.Add(tempShape);
+            BackWall = FrontWall.CloneFlipped;
+            BackWall.Move(Vector3.right * size.x);
 
             //Bottom wrapper
             tempShape = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.forward * xOffset, secondLine: Vector3.right * size.x, uvOffset: Vector2.zero);
-            RoofWrapper.Add(tempShape);
+            BottomWrapper.Add(tempShape);
             tempShape = tempShape.Clone;
             tempShape.Move(Vector3.forward * (size.y - xOffset));
-            RoofWrapper.Add(tempShape);
-
-            RoofOutside.FlipTriangles();
-            RoofInside.FlipTriangles();
+            BottomWrapper.Add(tempShape);
 
             FinishMesh();
         }

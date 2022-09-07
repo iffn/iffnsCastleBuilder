@@ -28,7 +28,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             this.LinkedWindowController = linkedWindow;
         }
 
-        public ValueContainer SetBuildParameters(Window linkedWindow, float borderWidth, float completeWidth, float windowHeight, float completeHeight, float bottomHeight, float borderDepth, float betweenDepth, Transform UVBaseObject)
+        public List<TriangleMeshInfo> SetBuildParameters(Window linkedWindow, float borderWidth, float completeWidth, float windowHeight, float completeHeight, float bottomHeight, float borderDepth, float betweenDepth, Transform UVBaseObject)
         {
             this.LinkedWindowController = linkedWindow;
 
@@ -43,22 +43,23 @@ namespace iffnsStuff.iffnsCastleBuilder
             return ApplyBuildParameters(UVBaseObject: UVBaseObject);
         }
 
-        public override ValueContainer ApplyBuildParameters(Transform UVBaseObject)
+        public override List<TriangleMeshInfo> ApplyBuildParameters(Transform UVBaseObject)
         {
-            ValueContainer returnValue = new ValueContainer(originTransform: transform, targetTransform: LinkedWindowController.transform);
+            List<TriangleMeshInfo> returnValue = new ();
 
-            TriangleMeshInfo FrontTopWall = new TriangleMeshInfo();
-            TriangleMeshInfo FrontBottomWall = new TriangleMeshInfo();
-            TriangleMeshInfo BackTopWall = new TriangleMeshInfo();
-            TriangleMeshInfo BackBottomkWall = new TriangleMeshInfo();
-            TriangleMeshInfo bottomWraper = new TriangleMeshInfo();
-            TriangleMeshInfo topWrapper = new TriangleMeshInfo();
-            TriangleMeshInfo leftWrapper = new TriangleMeshInfo();
-            TriangleMeshInfo rightWrapper = new TriangleMeshInfo();
-            TriangleMeshInfo FrameFront = new TriangleMeshInfo();
-            TriangleMeshInfo FrameBack = new TriangleMeshInfo();
-            TriangleMeshInfo FrameBorder = new TriangleMeshInfo();
-            TriangleMeshInfo Glass = new TriangleMeshInfo();
+            TriangleMeshInfo FrontTopWall = new(planar: true);
+            TriangleMeshInfo FrontBottomWall = new(planar: true);
+            TriangleMeshInfo BackTopWall = new(planar: true);
+            TriangleMeshInfo BackBottomkWall = new(planar: true);
+            TriangleMeshInfo bottomWraper = new(planar: true);
+            TriangleMeshInfo topWrapper = new(planar: true);
+            TriangleMeshInfo leftWrapper = new(planar: true);
+            TriangleMeshInfo rightWrapper = new(planar: true);
+            TriangleMeshInfo FrameFront = new(planar: true);
+            TriangleMeshInfo FrameBack = new(planar: true);
+            List<TriangleMeshInfo> FrameBorder = new();
+            TriangleMeshInfo GlassFront = new(planar: true);
+            TriangleMeshInfo GlassBack = new(planar: true);
 
 
             void FinishMesh()
@@ -73,23 +74,34 @@ namespace iffnsStuff.iffnsCastleBuilder
                 bottomWraper.MaterialReference = FrontMaterial;
                 FrameFront.MaterialReference = FrameMaterial;
                 FrameBack.MaterialReference = FrameMaterial;
-                FrameBorder.MaterialReference = FrameMaterial;
-                Glass.MaterialReference = GlassMaterial;
+                
+                foreach(TriangleMeshInfo info in FrameBorder)
+                {
+                    info.MaterialReference = FrameMaterial;
+                }
+                
+                GlassFront.MaterialReference = GlassMaterial;
+                GlassBack.MaterialReference = GlassMaterial;
 
-                Glass.ActiveCollider = TriangleMeshInfo.ColliderStates.SeeThroughCollider;
+                GlassFront.ActiveCollider = TriangleMeshInfo.ColliderStates.SeeThroughCollider;
+                GlassBack.ActiveCollider = TriangleMeshInfo.ColliderStates.SeeThroughCollider;
 
-                returnValue.AddStaticMeshAndConvertToTarget(FrontTopWall);
-                returnValue.AddStaticMeshAndConvertToTarget(FrontBottomWall);
-                returnValue.AddStaticMeshAndConvertToTarget(BackTopWall);
-                returnValue.AddStaticMeshAndConvertToTarget(BackBottomkWall);
-                returnValue.AddStaticMeshAndConvertToTarget(bottomWraper);
-                returnValue.AddStaticMeshAndConvertToTarget(topWrapper);
-                returnValue.AddStaticMeshAndConvertToTarget(leftWrapper);
-                returnValue.AddStaticMeshAndConvertToTarget(rightWrapper);
-                returnValue.AddStaticMeshAndConvertToTarget(FrameFront);
-                returnValue.AddStaticMeshAndConvertToTarget(FrameBack);
-                returnValue.AddStaticMeshAndConvertToTarget(FrameBorder);
-                returnValue.AddStaticMeshAndConvertToTarget(Glass);
+                returnValue.Add(FrontTopWall);
+                returnValue.Add(FrontBottomWall);
+                returnValue.Add(BackTopWall);
+                returnValue.Add(BackBottomkWall);
+                returnValue.Add(topWrapper);
+                returnValue.Add(leftWrapper);
+                returnValue.Add(rightWrapper);
+                returnValue.Add(bottomWraper);
+                returnValue.Add(FrameFront);
+                returnValue.Add(FrameBack);
+                returnValue.AddRange(FrameBorder);
+
+                foreach (TriangleMeshInfo info in returnValue)
+                {
+                    info.Transorm(origin: transform, target: LinkedWindowController.transform);
+                }
             }
 
             //Frame
@@ -111,20 +123,23 @@ namespace iffnsStuff.iffnsCastleBuilder
             outerFrameBorder.Move(new Vector3(0, bottomHeight - borderWidth, completeWidth * 0.5f));
             innerFrameBorder.Move(new Vector3(0, bottomHeight, completeWidth * 0.5f));
 
-            FrameFront = MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerFrameBorder, secondLine: innerFrameBorder, closingType: MeshGenerator.ShapeClosingType.closedWithSharpEdge, smoothTransition: false);
+            FrameFront = MeshGenerator.MeshesFromLines.KnitLinesSmooth(firstLine: outerFrameBorder, secondLine: innerFrameBorder, closingType: MeshGenerator.ShapeClosingType.closedWithSmoothEdge, planar: true);
+            //FrameFront.Move(new Vector3(0, 0, 0));
             FrameBack = FrameFront.CloneFlipped;
             FrameBack.Move(completeDepth * Vector3.left);
 
-            FrameBorder.Add(MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: outerFrameBorder, offset: (betweenDepth + borderDepth * 2) * Vector3.left, closeType: MeshGenerator.ShapeClosingType.closedWithSharpEdge, smoothTransition: false));
-            FrameBorder.FlipTriangles();
-            FrameBorder.Add(MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: innerFrameBorder, offset: (betweenDepth + borderDepth * 2) * Vector3.left, closeType: MeshGenerator.ShapeClosingType.closedWithSharpEdge, smoothTransition: false));
+            FrameBorder.AddRange(MeshGenerator.MeshesFromLines.ExtrudeLinearWithSharpCorners(firstLine: outerFrameBorder, offset: (betweenDepth + borderDepth * 2) * Vector3.left, closed: true));
+            foreach(TriangleMeshInfo info in FrameBorder)
+            {
+                info.FlipTriangles();
+            }
+            FrameBorder.AddRange(MeshGenerator.MeshesFromLines.ExtrudeLinearWithSharpCorners(firstLine: innerFrameBorder, offset: (betweenDepth + borderDepth * 2) * Vector3.left, closed: true));
 
             //Glass
-            Glass = MeshGenerator.FilledShapes.RectangleAroundCenter(baseLineFull: completeWidth * Vector3.forward, secondLineFull: windowHeight * Vector3.up);
-            Glass.Move(new Vector3(betweenDepth * 0.5f + glassThickness * 0.5f, bottomHeight + windowHeight * 0.5f, completeWidth * 0.5f));
-            TriangleMeshInfo otherGlassSide = Glass.CloneFlipped;
-            otherGlassSide.Move(glassThickness * Vector3.left);
-            Glass.Add(otherGlassSide);
+            GlassFront = MeshGenerator.FilledShapes.RectangleAroundCenter(baseLineFull: completeWidth * Vector3.forward, secondLineFull: windowHeight * Vector3.up);
+            GlassFront.Move(new Vector3(betweenDepth * 0.5f + glassThickness * 0.5f, bottomHeight + windowHeight * 0.5f, completeWidth * 0.5f));
+            GlassBack = GlassFront.CloneFlipped;
+            GlassBack.Move(glassThickness * Vector3.left);
 
             //Walls
             float topHeight = completeHeight - windowHeight - borderWidth - bottomHeight;
@@ -147,7 +162,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             BackBottomkWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
 
             //Wrapper
-
             bottomWraper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.forward * completeWidth, uvOffset: Vector2.zero);
             bottomWraper.FlipTriangles();
 

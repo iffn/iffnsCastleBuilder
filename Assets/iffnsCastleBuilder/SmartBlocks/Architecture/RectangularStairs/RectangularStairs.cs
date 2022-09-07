@@ -259,15 +259,15 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             //Define mesh
-            TriangleMeshInfo StepFront = new();
-            TriangleMeshInfo TopStepTop = new();
-            TriangleMeshInfo StepTop = new();
-            TriangleMeshInfo LeftSide = new();
-            TriangleMeshInfo RightSide = new();
-            TriangleMeshInfo BackFaceAngle = new();
-            TriangleMeshInfo BackFaceVertical = new();
-            TriangleMeshInfo BottomFrontFace = new();
-            TriangleMeshInfo ColliderMesh = new();
+            TriangleMeshInfo StepFront = new(planar: true);
+            TriangleMeshInfo TopStepTop = new(planar: true);
+            TriangleMeshInfo StepTop = new(planar: true);
+            TriangleMeshInfo LeftSide = new(planar: true);
+            TriangleMeshInfo RightSide = new(planar: true);
+            TriangleMeshInfo BackFaceAngle = new(planar: true);
+            TriangleMeshInfo BackFaceVertical = new(planar: true);
+            TriangleMeshInfo BottomFrontFace = new(planar: true);
+            TriangleMeshInfo ColliderMesh = new(planar: true);
 
             void FinishMesh()
             {
@@ -392,7 +392,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 SidePoints.Add(new Vector3(0, stepHeight * stepNumber + LinkedFloor.BottomFloorHeight, stepLength * stepNumber));
             }
 
-            RightSide.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundStartPoint(startPoint: TopBackEnd, points: SidePoints));
+            RightSide.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundStartPoint(startPoint: TopBackEnd, points: SidePoints, planar: true));
 
             //Invisible collider
             ColliderMesh.Add(MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * width, secondLine: new Vector3(0, stepHeight * numberOfSteps, length - stepLength), uvOffset: Vector3.zero));

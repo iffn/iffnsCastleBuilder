@@ -119,12 +119,12 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             //Define mesh
-            TriangleMeshInfo FrontWall = new();
-            TriangleMeshInfo BackWall = new();
-            TriangleMeshInfo RightWall = new();
-            TriangleMeshInfo LeftWall = new();
-            TriangleMeshInfo TopWall = new();
-            TriangleMeshInfo InnerArc = new();
+            TriangleMeshInfo FrontWall;
+            TriangleMeshInfo BackWall;
+            TriangleMeshInfo RightWall;
+            TriangleMeshInfo LeftWall;
+            TriangleMeshInfo TopWall;
+            TriangleMeshInfo InnerArc;
 
             void FinishMeshes()
             {
@@ -172,7 +172,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             arcLine.Scale(new Vector3(1, ArcHeight.Val / (length * 0.5f), 1));
             arcLine.Move(Vector3.up * FreeHeightSide.Val + Vector3.forward * length * 0.5f);
 
-            InnerArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: arcLine, offset: Vector3.right * width, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
+            InnerArc = MeshGenerator.MeshesFromLines.ExtrudeLinearWithSmoothCorners(firstLine: arcLine, offset: Vector3.right * width, closeType: MeshGenerator.ShapeClosingType.open, planar: false);
 
             //Front wall
             VerticesHolder rightArc = MeshGenerator.Lines.ArcAroundX(radius: length * 0.5f, angleDeg: 90, numberOfEdges: 12);
@@ -180,7 +180,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             rightArc.Move(Vector3.up * FreeHeightSide.Val + Vector3.forward * length * 0.5f);
             Vector3 rightPoint = new Vector3(0, Height, length);
 
-            FrontWall = MeshGenerator.MeshesFromLines.KnitLines(point: rightPoint, line: rightArc, isClosed: false);
+            FrontWall = MeshGenerator.MeshesFromLines.KnitLinesSmooth(point: rightPoint, line: rightArc, isClosed: false, planar: true);
 
             int currentIndex = FrontWall.VerticesHolder.Count - 1;
 
@@ -191,7 +191,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             Vector3 leftPoint = new Vector3(0, Height, 0);
             leftArc.VerticesDirectly.RemoveAt(0);
 
-            FrontWall.Add(MeshGenerator.MeshesFromLines.KnitLines(point: leftPoint, line: leftArc, isClosed: false));
+            FrontWall.Add(MeshGenerator.MeshesFromLines.KnitLinesSmooth(point: leftPoint, line: leftArc, isClosed: false, planar: true));
 
             FrontWall.Triangles.Add(new TriangleHolder(baseOffset: currentIndex, t1: 0, t2: 1, t3: 2));
             FrontWall.Triangles.Add(new TriangleHolder(0, currentIndex + 1, currentIndex));

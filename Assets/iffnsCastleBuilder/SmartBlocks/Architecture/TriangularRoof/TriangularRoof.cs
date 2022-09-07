@@ -195,17 +195,21 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Define mesh
             TriangleMeshInfo RoofOutside;
             TriangleMeshInfo RoofInside;
-            TriangleMeshInfo RoofWrapper = new();
+            List<TriangleMeshInfo> RoofWrapper = new();
 
             void FinishMeshes()
             {
+                foreach (TriangleMeshInfo info in RoofWrapper)
+                {
+                    info.MaterialReference = WrapperMaterial;
+                    StaticMeshManager.AddTriangleInfoIfValid(info);
+                }
+
                 RoofOutside.MaterialReference = OutsideMaterial;
                 RoofInside.MaterialReference = InsideMaterial;
-                RoofWrapper.MaterialReference = WrapperMaterial;
 
                 StaticMeshManager.AddTriangleInfoIfValid(RoofOutside);
                 StaticMeshManager.AddTriangleInfoIfValid(RoofInside);
-                StaticMeshManager.AddTriangleInfoIfValid(RoofWrapper);
 
                 BuildAllMeshes();
             }
@@ -248,23 +252,23 @@ namespace iffnsStuff.iffnsCastleBuilder
                     break;
             }
 
-            RoofOutside = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(outerPoints);
-            RoofInside = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(innerPoints);
+            RoofOutside = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: outerPoints, planar: true);
+            RoofInside = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: innerPoints, planar: true);
 
             //Wrapper
             switch (RoofType)
             {
                 case RoofTypes.TwoAreLow:
-                    RoofWrapper.Add(MeshGenerator.MeshesFromLines.KnitLines(
+                    RoofWrapper = MeshGenerator.MeshesFromLines.KnitLinesWithSharpEdges(
                         firstLine: new VerticesHolder(new List<Vector3>() { innerPoints[1], innerPoints[0], innerPoints[2] }),
                         secondLine: new VerticesHolder(outerPoints),
-                        closingType: MeshGenerator.ShapeClosingType.closedWithSharpEdge, smoothTransition: false));
+                        closed: true);
                     break;
                 case RoofTypes.TwoAreHigh:
-                    RoofWrapper.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() { outerPoints[1], outerPoints[0], innerPoints[1], innerPoints[0] }));
-                    RoofWrapper.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() { outerPoints[2], outerPoints[1], innerPoints[0], innerPoints[3] }));
-                    RoofWrapper.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() { outerPoints[0], outerPoints[2], innerPoints[2], innerPoints[1] }));
-                    RoofWrapper.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() { outerPoints[2], innerPoints[3], innerPoints[2] }));
+                    RoofWrapper.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() { outerPoints[1], outerPoints[0], innerPoints[1], innerPoints[0] }, planar: true));
+                    RoofWrapper.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() { outerPoints[2], outerPoints[1], innerPoints[0], innerPoints[3] }, planar: true));
+                    RoofWrapper.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() { outerPoints[0], outerPoints[2], innerPoints[2], innerPoints[1] }, planar: true));
+                    RoofWrapper.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>() { outerPoints[2], innerPoints[3], innerPoints[2] }, planar: true));
                     break;
                 default:
                     break;

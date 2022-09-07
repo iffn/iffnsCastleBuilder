@@ -27,7 +27,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             this.LinkedDoorController = linkedDoor;
         }
 
-        public ValueContainer SetBuildParameters(Door linkedDoor, Transform UVBaseObject, float borderWidth, float completeWidth, float doorHeight, float completeHeight, float borderDepth, float betweenDepth, MailboxLineMaterial frontMaterial, MailboxLineMaterial backMaterial)
+        public List<TriangleMeshInfo> SetBuildParameters(Door linkedDoor, Transform UVBaseObject, float borderWidth, float completeWidth, float doorHeight, float completeHeight, float borderDepth, float betweenDepth, MailboxLineMaterial frontMaterial, MailboxLineMaterial backMaterial)
         {
             this.borderWidth = borderWidth;
             this.completeWidth = completeWidth;
@@ -44,18 +44,18 @@ namespace iffnsStuff.iffnsCastleBuilder
             return ApplyBuildParameters(UVBaseObject: UVBaseObject);
         }
 
-        public override ValueContainer ApplyBuildParameters(Transform UVBaseObject)
+        public override List<TriangleMeshInfo> ApplyBuildParameters(Transform UVBaseObject)
         {
-            ValueContainer returnValue = new ValueContainer(originTransform: transform, targetTransform: LinkedDoorController.transform);
+            List<TriangleMeshInfo> returnValue = new();
 
-            TriangleMeshInfo FrontWall = new TriangleMeshInfo();
-            TriangleMeshInfo BackWall = new TriangleMeshInfo();
-            TriangleMeshInfo topWrap = new TriangleMeshInfo();
-            TriangleMeshInfo leftWraper = new TriangleMeshInfo();
-            TriangleMeshInfo rightWraper = new TriangleMeshInfo();
-            TriangleMeshInfo FrameFront = new TriangleMeshInfo();
-            TriangleMeshInfo FrameBack = new TriangleMeshInfo();
-            TriangleMeshInfo FrameBorder = new TriangleMeshInfo();
+            TriangleMeshInfo FrontWall = new(planar: true);
+            TriangleMeshInfo BackWall = new(planar: true);
+            TriangleMeshInfo topWrap = new(planar: true);
+            TriangleMeshInfo leftWraper = new(planar: true);
+            TriangleMeshInfo rightWraper = new(planar: true);
+            TriangleMeshInfo FrameFront = new(planar: true);
+            TriangleMeshInfo FrameBack = new(planar: true);
+            List<TriangleMeshInfo> FrameBorder = new();
 
             void FinishMesh()
             {
@@ -66,19 +66,25 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BackWall.MaterialReference = BackMaterial;
                 FrameFront.MaterialReference = FrameMaterial;
                 FrameBack.MaterialReference = FrameMaterial;
-                FrameBorder.MaterialReference = FrameMaterial;
 
-                FrameFront.GenerateUVMeshBasedOnCardinalDirections(meshObject: LinkedDoorController.transform, originObjectForUV: UVBaseObject);
-                FrameBack.GenerateUVMeshBasedOnCardinalDirections(meshObject: LinkedDoorController.transform, originObjectForUV: UVBaseObject);
+                foreach(TriangleMeshInfo info in FrameBorder)
+                {
+                    info.MaterialReference = FrameMaterial;
+                }
 
-                returnValue.AddStaticMeshAndConvertToTarget(FrontWall);
-                returnValue.AddStaticMeshAndConvertToTarget(BackWall);
-                returnValue.AddStaticMeshAndConvertToTarget(topWrap);
-                returnValue.AddStaticMeshAndConvertToTarget(leftWraper);
-                returnValue.AddStaticMeshAndConvertToTarget(rightWraper);
-                returnValue.AddStaticMeshAndConvertToTarget(FrameFront);
-                returnValue.AddStaticMeshAndConvertToTarget(FrameBack);
-                returnValue.AddStaticMeshAndConvertToTarget(FrameBorder);
+                returnValue.Add(FrontWall);
+                returnValue.Add(BackWall);
+                returnValue.Add(topWrap);
+                returnValue.Add(leftWraper);
+                returnValue.Add(rightWraper);
+                returnValue.Add(FrameFront);
+                returnValue.Add(FrameBack);
+                returnValue.AddRange(FrameBorder);
+
+                foreach(TriangleMeshInfo info in returnValue)
+                {
+                    info.Transorm(origin: transform, target: LinkedDoorController.transform);
+                }
             }
 
             //Frame
@@ -105,11 +111,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             VerticesHolder combinedFrameBoder = outerFrameBorder.CloneReversed;
             combinedFrameBoder.Add(innerFrameBorder);
 
-            FrameFront = MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerFrameBorder, secondLine: innerFrameBorder, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: false);
+            FrameFront = MeshGenerator.MeshesFromLines.KnitLinesSmooth(firstLine: outerFrameBorder, secondLine: innerFrameBorder, closingType: MeshGenerator.ShapeClosingType.open, planar: true);
             FrameBack = FrameFront.CloneFlipped;
             FrameBack.Move(completeDepth * Vector3.left);
 
-            FrameBorder = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: combinedFrameBoder, offset: (betweenDepth + borderDepth * 2) * Vector3.left, closeType: MeshGenerator.ShapeClosingType.closedWithSharpEdge, smoothTransition: false);
+            FrameBorder = MeshGenerator.MeshesFromLines.ExtrudeLinearWithSharpCorners(firstLine: combinedFrameBoder, offset: (betweenDepth + borderDepth * 2) * Vector3.left, closed: true);
 
             //Wall
             if (completeHeight > doorHeight)

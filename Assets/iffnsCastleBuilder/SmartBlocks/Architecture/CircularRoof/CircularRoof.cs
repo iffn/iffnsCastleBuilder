@@ -274,8 +274,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             TriangleMeshInfo RoofOutside;
             TriangleMeshInfo RoofInside;
             TriangleMeshInfo BottomEdge;
-            TriangleMeshInfo RightEdge = new();
-            TriangleMeshInfo LeftEdge = new();
+            TriangleMeshInfo RightEdge = new(planar: true);
+            TriangleMeshInfo LeftEdge = new(planar: true);
 
             void FinishMeshes()
             {
@@ -423,7 +423,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
             }
 
-            RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(sections: Circles, sectionsAreClosed: false, shapeIsClosed: false);
+            RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(sections: Circles, sectionsAreClosed: false, shapeIsClosed: false, planar: false);
 
             RoofOutside.UVs = UVs;
 
@@ -437,14 +437,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             RoofInside.Scale(innderScaleFactor);
 
             //Bottom edge
-
             if (isClosed)
             {
-                BottomEdge = MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerLine, secondLine: innerLine, closingType: MeshGenerator.ShapeClosingType.closedWithSmoothEdge, smoothTransition: true);
+                BottomEdge = MeshGenerator.MeshesFromLines.KnitLinesSmooth(firstLine: outerLine, secondLine: innerLine, closingType: MeshGenerator.ShapeClosingType.closedWithSmoothEdge, planar: true);
             }
             else
             {
-                BottomEdge = MeshGenerator.MeshesFromLines.KnitLines(firstLine: outerLine, secondLine: innerLine, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
+                BottomEdge = MeshGenerator.MeshesFromLines.KnitLinesSmooth(firstLine: outerLine, secondLine: innerLine, closingType: MeshGenerator.ShapeClosingType.open, planar: true);
             }
             
             BottomEdge.FlipTriangles();

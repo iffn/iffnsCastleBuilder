@@ -1,6 +1,7 @@
 using iffnsStuff.iffnsBaseSystemForUnity;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static iffnsStuff.iffnsBaseSystemForUnity.BaseGameObject;
 
@@ -25,7 +26,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             this.mainObject = mainObject;
         }
 
-        public ValueContainer SetBuildParameters(BaseGameObject mainObject, Transform UVBaseObject, float width, float length, float totalHeight, Counter.ShapeTypes shapeType)
+        public List<TriangleMeshInfo> SetBuildParameters(BaseGameObject mainObject, Transform UVBaseObject, float width, float length, float totalHeight, Counter.ShapeTypes shapeType)
         {
             this.width = width;
             this.length = length;
@@ -35,7 +36,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             return ApplyBuildParameters(UVBaseObject: UVBaseObject);
         }
 
-        public override ValueContainer ApplyBuildParameters(Transform UVBaseObject)
+        public override List<TriangleMeshInfo> ApplyBuildParameters(Transform UVBaseObject)
         {
             switch (shapeType)
             {
@@ -50,83 +51,91 @@ namespace iffnsStuff.iffnsCastleBuilder
                     break;
             }
 
-            return new ValueContainer(originTransform: transform, targetTransform: mainObject.transform);
+            return new List<TriangleMeshInfo>();
         }
 
-        public ValueContainer GetBaseBox()
+        public List<TriangleMeshInfo> GetBaseBox()
         {
-            ValueContainer returnValue = new ValueContainer(originTransform: transform, targetTransform: mainObject.transform);
+            //ValueContainer returnValue = new ValueContainer(originTransform: transform, targetTransform: mainObject.transform);
+            List<TriangleMeshInfo> returnValue = new();
 
-            TriangleMeshInfo baseMesh;
-            void FinishMesh()
-            {
-                baseMesh.MaterialReference = baseMaterial;
-
-                returnValue.AddStaticMeshAndConvertToTarget(baseMesh);
-            }
-
-            baseMesh = MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(
+            returnValue = MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(
                 width,
                 totalHeight,
                 length
                 ));
-            baseMesh.Move(offset: new Vector3(
-                width / 2,
-                (totalHeight) / 2,
-                length / 2
+
+            foreach (TriangleMeshInfo mesh in returnValue)
+            {
+                mesh.Move(offset: new Vector3(
+                    width / 2,
+                    (totalHeight) / 2,
+                    length / 2
                 ));
 
-            FinishMesh();
+                mesh.MaterialReference = baseMaterial;
+
+                mesh.Transorm(origin: transform, target: mainObject.transform);
+            }
 
             return returnValue;
         }
 
-        public ValueContainer GetFlatTop()
+        public List<TriangleMeshInfo> GetFlatTop()
         {
-            ValueContainer returnValue = new ValueContainer(originTransform: transform, targetTransform: mainObject.transform);
+            List<TriangleMeshInfo> returnValue = new();
 
-            TriangleMeshInfo baseMesh;
-            TriangleMeshInfo topMesh;
+            List<TriangleMeshInfo> baseMesh;
+            List<TriangleMeshInfo> topMesh;
 
-            void FinishMesh()
-            {
-                baseMesh.MaterialReference = baseMaterial;
-                topMesh.MaterialReference = topMaterial;
-
-                returnValue.AddStaticMeshAndConvertToTarget(baseMesh);
-                returnValue.AddStaticMeshAndConvertToTarget(topMesh);
-            }
 
             baseMesh = MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(
                 width - Indent * 2,
                 totalHeight - topHeight,
                 length - Indent * 2
                 ));
-            baseMesh.Move(offset: new Vector3(
-                width / 2,
-                (totalHeight - topHeight) / 2,
-                length / 2
+
+            foreach (TriangleMeshInfo mesh in baseMesh)
+            {
+                mesh.Move(offset: new Vector3(
+                    width / 2,
+                    (totalHeight - topHeight) / 2,
+                    length / 2
                 ));
+
+                mesh.MaterialReference = baseMaterial;
+
+                mesh.Transorm(origin: transform, target: mainObject.transform);
+            }
 
             topMesh = MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(
                 width - MathHelper.SmallFloat,
                 topHeight,
                 length - MathHelper.SmallFloat
                 ));
-            topMesh.Move(offset: new Vector3(
-                width / 2,
-                totalHeight - topHeight / 2,
-                length / 2
+
+            foreach (TriangleMeshInfo mesh in topMesh)
+            {
+                mesh.Move(offset: new Vector3(
+                    width / 2,
+                    totalHeight - topHeight / 2,
+                    length / 2
                 ));
 
-            FinishMesh();
+                mesh.MaterialReference = topMaterial;
+
+                mesh.Transorm(origin: transform, target: mainObject.transform);
+            }
+
+            returnValue.AddRange(baseMesh);
+            returnValue.AddRange(topMesh);
 
             return returnValue;
         }
 
-        public ValueContainer GetRoofTop()
+        public List<TriangleMeshInfo> GetRoofTop()
         {
-            ValueContainer returnValue = new ValueContainer(originTransform: transform, targetTransform: mainObject.transform);
+            List<TriangleMeshInfo> returnValue = new();
 
             float heightRatio = 0.66f;
 
@@ -142,28 +151,43 @@ namespace iffnsStuff.iffnsCastleBuilder
             Vector3 topPoint = new Vector3(width * 0.5f, totalHeight);
             Vector3 extrudeVector = length * Vector3.forward;
 
-            //Cover faces
-            TriangleMeshInfo coverFaceFront = MeshGenerator.MeshesFromLines.KnitLines(point: topPoint, line: baseRectangle, isClosed: false);
+            //House faces
+            TriangleMeshInfo coverFaceFront = MeshGenerator.MeshesFromLines.KnitLinesSmooth(point: topPoint, line: baseRectangle, isClosed: false, planar: true);
+            coverFaceFront.GenerateUVMeshBasedOnCardinalDirectionsWithoutReference();
             coverFaceFront.MaterialReference = baseMaterial;
             TriangleMeshInfo coverFaceBack = coverFaceFront.CloneFlipped;
             coverFaceBack.Move(extrudeVector);
 
+
             //Base faces
-            TriangleMeshInfo baseFaces = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: baseRectangle, offset: extrudeVector, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: false); 
-            baseFaces.MaterialReference = baseMaterial;
+            List<TriangleMeshInfo> baseFaces = MeshGenerator.MeshesFromLines.ExtrudeLinearWithSharpCorners(firstLine: baseRectangle, offset: extrudeVector, closed: false);
+
+            foreach(TriangleMeshInfo info in baseFaces)
+            {
+                info.MaterialReference = baseMaterial;
+            }
 
             //Roof faces
             VerticesHolder roofOutline = new VerticesHolder();
             roofOutline.Add(baseRectangle.VerticesDirectly[3]);
             roofOutline.Add(topPoint);
             roofOutline.Add(baseRectangle.VerticesDirectly[0]);
-            TriangleMeshInfo roofShape = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: roofOutline, offset: extrudeVector, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: false);
-            roofShape.MaterialReference = topMaterial;
+            List<TriangleMeshInfo> roofShape = MeshGenerator.MeshesFromLines.ExtrudeLinearWithSharpCorners(firstLine: roofOutline, offset: extrudeVector, closed: false);
+            
+            foreach (TriangleMeshInfo info in roofShape)
+            {
+                info.MaterialReference = topMaterial;
+            }
 
-            returnValue.AddStaticMeshAndConvertToTarget(coverFaceFront);
-            returnValue.AddStaticMeshAndConvertToTarget(coverFaceBack);
-            returnValue.AddStaticMeshAndConvertToTarget(baseFaces);
-            returnValue.AddStaticMeshAndConvertToTarget(roofShape);
+            returnValue.Add(coverFaceFront);
+            returnValue.Add(coverFaceBack);
+            returnValue.AddRange(baseFaces);
+            returnValue.AddRange(roofShape);
+
+            foreach(TriangleMeshInfo info in returnValue)
+            {
+                info.Transorm(origin: transform, target: mainObject.transform);
+            }
 
             return returnValue;
         }

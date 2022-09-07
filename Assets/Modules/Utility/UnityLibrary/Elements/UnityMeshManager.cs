@@ -31,7 +31,7 @@ public class UnityMeshManager : MeshManager
     {
         get
         {
-            TriangleMeshInfo returnValue = new TriangleMeshInfo();
+            TriangleMeshInfo returnValue = new TriangleMeshInfo(planar: false);
 
             List<Vector3> localVerticies = currentMeshFilter.sharedMesh.vertices.OfType<Vector3>().ToList();
             List<Vector3> correctVerticies = new List<Vector3>();

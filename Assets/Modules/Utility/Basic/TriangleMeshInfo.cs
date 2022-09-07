@@ -11,6 +11,8 @@ public class TriangleMeshInfo
     //public MeshManager LinkedManager;
     public List<Vector2> UVs;
 
+    public bool planar = true;
+
     public MailboxLineMaterial MaterialReference;
     public Material AlternativeMaterial;
     public Material MaterialToBeUsed
@@ -126,30 +128,32 @@ public class TriangleMeshInfo
         }
     }
 
-    void Setup()
+    void Setup(bool planar)
     {
         VerticesHolder = new VerticesHolder();
         Triangles = new List<TriangleHolder>();
         AllTrianglesDirectly = new List<int>();
         UVs = new List<Vector2>();
+        this.planar = planar;
     }
 
-    public TriangleMeshInfo()
+    public TriangleMeshInfo(bool planar)
     {
-        Setup();
+        Setup(planar);
+        
     }
 
-    public TriangleMeshInfo(List<Vector3> vertices, List<int> triangles)
+    public TriangleMeshInfo(List<Vector3> vertices, List<int> triangles, bool planar)
     {
-        Setup();
+        Setup(planar);
 
         this.AllVerticesDirectly = vertices;
         this.AllTrianglesDirectly = triangles;
     }
 
-    public TriangleMeshInfo(List<Vector3> vertices, List<int> triangles, List<Vector2> UVs)
+    public TriangleMeshInfo(List<Vector3> vertices, List<int> triangles, List<Vector2> UVs, bool planar)
     {
-        Setup();
+        Setup(planar);
 
         this.AllVerticesDirectly = vertices;
         this.AllTrianglesDirectly = triangles;
@@ -158,6 +162,8 @@ public class TriangleMeshInfo
 
     public TriangleMeshInfo(TriangleMeshInfo template)
     {
+        planar = template.planar;
+
         VerticesHolder = template.VerticesHolder.Clone;
         Triangles = new List<TriangleHolder>();
         foreach(TriangleHolder holder in template.Triangles)
@@ -633,6 +639,38 @@ public class TriangleMeshInfo
         */
 
         //currentMesh.sharedMesh.uv = UVs.ToArray();
+    }
+
+    public static TriangleMeshInfo CompbineMultipleIntoSingleInfo(List<TriangleMeshInfo> infos)
+    {
+        TriangleMeshInfo returnValue = new TriangleMeshInfo(planar: false);
+
+        foreach(TriangleMeshInfo info in infos)
+        {
+            returnValue.Add(info);
+        }
+
+        return returnValue;
+    }
+
+    public static List<TriangleMeshInfo> GetCloneOfInfoList(List<TriangleMeshInfo> infos, bool flip)
+    {
+        List<TriangleMeshInfo> returnValue = new List<TriangleMeshInfo>();
+
+        foreach(TriangleMeshInfo info in infos)
+        {
+            if (flip)
+            {
+                returnValue.Add(info.CloneFlipped);
+            }
+            else
+            {
+                returnValue.Add(info.Clone);
+            }
+            
+        }
+
+        return returnValue;
     }
 }
 

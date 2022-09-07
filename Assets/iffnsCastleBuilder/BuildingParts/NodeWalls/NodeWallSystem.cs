@@ -400,7 +400,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 secondWallInfo.MaterialReference = currentWall.LeftMaterialParam;
 
 
-                TriangleMeshInfo capBottom = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: vertexPoints3D);
+                TriangleMeshInfo capBottom = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: vertexPoints3D, planar: true);
                 capBottom.Move(MathHelper.SmallFloat * Vector3.up);
                 TriangleMeshInfo capTop = capBottom.CloneFlipped;
 
@@ -475,22 +475,28 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             foreach (NodeWallNode node in CylinderNodes)
             {
+                Vector3 nodePosition = node.LocalPosition3D + 0.5f * wallHeight * Vector3.up;
 
-                TriangleMeshInfo cornerInfo = new TriangleMeshInfo();
-                cornerInfo.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: halfWallthickness, length: wallHeight, direction: Vector3.up, numberOfEdges: 24));
+                //Wall
+                TriangleMeshInfo cornerWall = MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: halfWallthickness, length: wallHeight, direction: Vector3.up, numberOfEdges: 24);
 
-                TriangleMeshInfo capInfo = MeshGenerator.FilledShapes.CylinderCaps(radius: halfWallthickness, length: wallHeight - 2 * MathHelper.SmallFloat, direction: Vector3.up, numberOfEdges: 24);
-                capInfo.Move(MathHelper.SmallFloat * Vector3.up);
+                cornerWall.Move(nodePosition);
 
-                capInfo.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: linkedFloor.LinkedBuildingController.transform);
+                cornerWall.MaterialReference = node.EndPoints[0].CornerMaterial;
 
-                cornerInfo.Add(capInfo);
+                StaticMeshManager.AddTriangleInfoIfValid(cornerWall);
 
-                cornerInfo.Move(node.LocalPosition3D + 0.5f * wallHeight * Vector3.up);
+                //Cap
+                List<TriangleMeshInfo> capInfo = MeshGenerator.FilledShapes.CylinderCaps(radius: halfWallthickness, length: wallHeight - 2 * MathHelper.SmallFloat, direction: Vector3.up, numberOfEdges: 24);
 
-                cornerInfo.MaterialReference = node.EndPoints[0].CornerMaterial;
+                foreach(TriangleMeshInfo info in capInfo)
+                {
+                    info.Move(nodePosition + MathHelper.SmallFloat * Vector3.up);
 
-                StaticMeshManager.AddTriangleInfoIfValid(cornerInfo);
+                    info.MaterialReference = node.EndPoints[0].CornerMaterial;
+
+                    StaticMeshManager.AddTriangleInfoIfValid(info);
+                }
             }
         }
 

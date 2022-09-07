@@ -115,7 +115,7 @@ public static class MeshGenerator
     {
         public static TriangleMeshInfo RectangleAroundCenter(Vector3 baseLineFull, Vector3 secondLineFull)
         {
-            TriangleMeshInfo returnValue = new();
+            TriangleMeshInfo returnValue = new(planar: true);
 
             returnValue.VerticesHolder.Add(0.5f * (baseLineFull + secondLineFull));
             returnValue.VerticesHolder.Add(0.5f * (baseLineFull - secondLineFull));
@@ -135,7 +135,7 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo RectangleAtCorner(Vector3 baseLine, Vector3 secondLine, Vector2 uvOffset)
         {
-            TriangleMeshInfo returnValue = new();
+            TriangleMeshInfo returnValue = new(planar: true);
 
             returnValue.VerticesHolder.Add(Vector3.zero);
             returnValue.VerticesHolder.Add(secondLine);
@@ -153,9 +153,9 @@ public static class MeshGenerator
             return returnValue;
         }
 
-        public static TriangleMeshInfo BoxAroundCenter(Vector3 size)
+        public static List<TriangleMeshInfo> BoxAroundCenter(Vector3 size)
         {
-            TriangleMeshInfo returnValue = new();
+            List<TriangleMeshInfo> returnValue = new();
 
             //up down
             TriangleMeshInfo face1 = RectangleAroundCenter(baseLineFull: Vector3.right * size.x, Vector3.forward * size.z);
@@ -192,7 +192,7 @@ public static class MeshGenerator
         {
             VerticesHolder circle = Lines.FullCircle(radius: radius, numberOfEdges: numberOfEdges);
 
-            TriangleMeshInfo returnValue = MeshesFromLines.ExtrudeLinear(firstLine: circle, offset: Vector3.forward * length, closeType: ShapeClosingType.closedWithSmoothEdge, smoothTransition: true);
+            TriangleMeshInfo returnValue = MeshesFromLines.ExtrudeLinearWithSmoothCorners(firstLine: circle, offset: Vector3.forward * length, closeType: ShapeClosingType.closedWithSmoothEdge, planar: false);
 
             returnValue.Move(length * 0.5f * Vector3.back);
 
@@ -201,17 +201,17 @@ public static class MeshGenerator
             return returnValue;
         }
 
-        public static TriangleMeshInfo CylinderCaps(float radius, float length, Vector3 direction, int numberOfEdges)
+        public static List<TriangleMeshInfo> CylinderCaps(float radius, float length, Vector3 direction, int numberOfEdges)
         {
             VerticesHolder circleLine = Lines.FullCircle(radius: radius, numberOfEdges: numberOfEdges);
 
-            TriangleMeshInfo returnValue = new();
+            List<TriangleMeshInfo> returnValue = new();
 
-            TriangleMeshInfo circle = MeshesFromLines.KnitLines(point: Vector3.zero, line: circleLine, isClosed: true);
+            TriangleMeshInfo circle = MeshesFromLines.KnitLinesSmooth(point: Vector3.zero, line: circleLine, isClosed: true, planar: true);
 
             circle.Move(length * 0.5f * Vector3.back);
 
-            returnValue.Add(circle);
+            returnValue.Add(circle.Clone);
 
             circle.FlipTriangles();
 
@@ -219,22 +219,25 @@ public static class MeshGenerator
             
             returnValue.Add(circle);
 
-            returnValue.Rotate(Quaternion.LookRotation(direction));
+            foreach(TriangleMeshInfo currentCircle in returnValue)
+            {
+                currentCircle.Rotate(Quaternion.LookRotation(direction));
+            }
 
             return returnValue;
         }
 
-        public static TriangleMeshInfo PointsClockwiseAroundStartPoint(Vector3 startPoint, List<Vector3> points)
+        public static TriangleMeshInfo PointsClockwiseAroundStartPoint(Vector3 startPoint, List<Vector3> points, bool planar)
         {
             List<Vector3> usedPoints = new(points);
             usedPoints.Insert(0, startPoint);
 
-            return PointsClockwiseAroundFirstPoint(usedPoints);
+            return PointsClockwiseAroundFirstPoint(points: usedPoints, planar: planar);
         }
 
-        public static TriangleMeshInfo PointsClockwiseAroundFirstPoint(List<Vector3> points)
+        public static TriangleMeshInfo PointsClockwiseAroundFirstPoint(List<Vector3> points, bool planar)
         {
-            TriangleMeshInfo returnValue = new();
+            TriangleMeshInfo returnValue = new(planar: true);
 
             if (points == null) return returnValue;
             if (points.Count < 3) return returnValue;
@@ -278,35 +281,138 @@ public static class MeshGenerator
 
     public static class MeshesFromLines
     {
-        public static TriangleMeshInfo KnitLines(VerticesHolder firstLine, VerticesHolder secondLine, ShapeClosingType closingType, bool smoothTransition)
+        public static List<TriangleMeshInfo> KnitLinesWithSharpEdges(VerticesHolder firstLine, VerticesHolder secondLine, bool closed)
+        {
+            List<TriangleMeshInfo> returnValue = new();
+
+            for (int i = 0; i < firstLine.Count - 1; i++)
+            {
+                List<Vector3> line = new()
+                {
+                    secondLine.VerticesDirectly[i + 1],
+                    firstLine.VerticesDirectly[i + 1],
+                    firstLine.VerticesDirectly[i]
+                };
+
+                TriangleMeshInfo addition = MeshGenerator.MeshesFromLines.KnitLinesSmooth(point: secondLine.VerticesDirectly[i], line: line, isClosed: false, planar: true);
+
+                returnValue.Add(addition);
+            }
+
+            if (closed)
+            {
+                List<Vector3> line = new()
+                {
+                    secondLine.VerticesDirectly[0],
+                    firstLine.VerticesDirectly[0],
+                    firstLine.VerticesDirectly[^1]
+                };
+
+                TriangleMeshInfo addition = MeshGenerator.MeshesFromLines.KnitLinesSmooth(point: secondLine.VerticesDirectly[^1], line: line, isClosed: false, planar: true);
+
+                returnValue.Add(addition);
+            }
+
+            return returnValue;
+        }
+
+
+
+        public static TriangleMeshInfo KnitLinesSmooth(VerticesHolder firstLine, VerticesHolder secondLine, ShapeClosingType closingType, bool planar)
         {
             // IsClosed = First and last point should be closed -> True if closed shape
             // IsSealed = Smooth transition between first first and last point
             // SmoothTransition = 
 
-            TriangleMeshInfo returnValue = new();
+            TriangleMeshInfo returnValue = new(planar: false);
 
             if (firstLine == null || secondLine == null)
             {
                 Debug.LogWarning("Error with MeshGenerator: At least one line is null");
 
-                return new TriangleMeshInfo();
+                return returnValue;
             }
 
             if (firstLine.Count != secondLine.Count)
             {
                 Debug.LogWarning("Error with MeshGenerator: Both lines do not have the same amount of vertices");
 
-                return new TriangleMeshInfo();
+                return returnValue;
             }
 
             if (firstLine.Count == 0)
             {
                 Debug.LogWarning("Error with MeshGenerator: Both elements have a length of 0");
 
-                return new TriangleMeshInfo();
+                return returnValue;
             }
 
+            if (closingType == ShapeClosingType.closedWithSharpEdge)
+            {
+                returnValue.VerticesHolder.Add(firstLine.VerticesDirectly);
+                returnValue.VerticesHolder.Add(firstLine.VerticesDirectly[0]);
+
+                returnValue.VerticesHolder.Add(secondLine.VerticesDirectly);
+                returnValue.VerticesHolder.Add(secondLine.VerticesDirectly[0]);
+
+                for (int i = 0; i < firstLine.Count; i++)
+                {
+                    returnValue.Triangles.Add(new TriangleHolder(baseOffset: i, t1: 0, t2: 1, t3: firstLine.Count + 1));
+                    returnValue.Triangles.Add(new TriangleHolder(baseOffset: i, t1: 1, t2: firstLine.Count + 2, t3: firstLine.Count + 1));
+                }
+            }
+            else
+            {
+                returnValue.VerticesHolder.Add(firstLine.VerticesDirectly);
+                returnValue.VerticesHolder.Add(secondLine.VerticesDirectly);
+
+                for (int i = 0; i < firstLine.Count - 1; i++)
+                {
+                    returnValue.Triangles.Add(new TriangleHolder(baseOffset: i, t1: 0, t2: 1, t3: firstLine.Count));
+                    returnValue.Triangles.Add(new TriangleHolder(baseOffset: i, t1: 1, t2: firstLine.Count + 1, t3: firstLine.Count));
+                }
+
+                if (closingType != ShapeClosingType.open)
+                {
+                    returnValue.Triangles.Add(new TriangleHolder(firstLine.Count - 1, 0, firstLine.Count * 2 - 1));
+                    returnValue.Triangles.Add(new TriangleHolder(0, firstLine.Count, firstLine.Count * 2 - 1));
+                }
+            }
+
+            //Generate UVs
+            int firstLineCount = returnValue.VerticesHolder.VerticesDirectly.Count / 2;
+
+            //First UV line
+            float firstOffset = 0;
+            returnValue.UVs.Add(Vector2.zero);
+
+            for (int i = 1; i < firstLineCount; i++)
+            {
+                firstOffset += (returnValue.VerticesHolder.VerticesDirectly[i] - firstLine.VerticesDirectly[i - 1]).magnitude;
+                returnValue.UVs.Add(new Vector2(firstOffset, 0));
+            }
+
+            //Second UV line
+            float secondOffset = 0;
+            float verticalOffset = (secondLine.VerticesDirectly[0] - firstLine.VerticesDirectly[0]).magnitude;
+
+            returnValue.UVs.Add(new Vector2(0, verticalOffset));
+
+            for (int i = firstLineCount + 1; i < returnValue.VerticesHolder.VerticesDirectly.Count; i++)
+            {
+                secondOffset += (returnValue.VerticesHolder.VerticesDirectly[i] - returnValue.VerticesHolder.VerticesDirectly[i - 1]).magnitude;
+                returnValue.UVs.Add(new Vector2(secondOffset, verticalOffset));
+            }
+
+            //Move second UV line
+            float secondLineMove = (firstOffset - secondOffset) / 2;
+
+            for (int i = firstLineCount; i < returnValue.VerticesHolder.VerticesDirectly.Count; i++)
+            {
+                returnValue.UVs[i] += Vector2.right * secondLineMove;
+            }
+
+            /*
             if (smoothTransition)
             {
                 if(closingType == ShapeClosingType.closedWithSharpEdge)
@@ -322,8 +428,6 @@ public static class MeshGenerator
                         returnValue.Triangles.Add(new TriangleHolder(baseOffset: i, t1: 0, t2: 1, t3: firstLine.Count + 1));
                         returnValue.Triangles.Add(new TriangleHolder(baseOffset: i, t1: 1, t2: firstLine.Count + 2, t3: firstLine.Count + 1));
                     }
-                    
-                    
                 }
                 else
                 {
@@ -378,32 +482,41 @@ public static class MeshGenerator
             }
             else
             {
-                for (int i = 0; i < firstLine.Count - 1; i++)
+                List<TriangleMeshInfo> elements = KnitLinesWithSharpEdges(firstLine: firstLine, secondLine: secondLine, closed: closingType != ShapeClosingType.open);
+
+                foreach(TriangleMeshInfo element in elements)
                 {
-                    //returnValue.Add(MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.Vertices[i], line: new List<Vector3>() {secondLine.Vertices[i + 1], firstLine.Vertices[i + 1], firstLine.Vertices[i] }, isClosed: false));
-                    TriangleMeshInfo addition = MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.VerticesDirectly[i], line: new List<Vector3>() { secondLine.VerticesDirectly[i + 1], firstLine.VerticesDirectly[i + 1], firstLine.VerticesDirectly[i] }, isClosed: false);
-
-                    addition.GenerateUVMeshBasedOnCardinalDirectionsWithoutReference();
-
-                    returnValue.Add(addition);
+                    returnValue.Add(element);
                 }
+            }
+            */
 
-                if (closingType != ShapeClosingType.open)
-                {
-                    TriangleMeshInfo addition = MeshGenerator.MeshesFromLines.KnitLines(point: secondLine.VerticesDirectly[^1], line: new List<Vector3>() { secondLine.VerticesDirectly[0], firstLine.VerticesDirectly[0], firstLine.VerticesDirectly[^1] }, isClosed: false);
+            return returnValue;
+        }
 
-                    addition.GenerateUVMeshBasedOnCardinalDirectionsWithoutReference();
+        public static List<TriangleMeshInfo> KnitLinesWithSharpEdges(Vector3 point, VerticesHolder line, bool isClosed)
+        {
+            List<TriangleMeshInfo> returnValue = new();
 
-                    returnValue.Add(addition);
-                }
+            if (line == null || line.Count < 2)
+            {
+                Debug.LogWarning("Error with MeshGenerator: Not enough information to build mesh");
+                return returnValue;
+            }
+
+            List<Vector3> lineVertices = line.VerticesDirectly;
+
+            for (int i = 1; i < line.Count; i++)
+            {
+                returnValue.Add(MeshesFromPoints.MeshFrom3Points(point, lineVertices[i], lineVertices[i-1]));
             }
 
             return returnValue;
         }
 
-        public static TriangleMeshInfo KnitLines(Vector3 point, VerticesHolder line, bool isClosed)
+        public static TriangleMeshInfo KnitLinesSmooth(Vector3 point, VerticesHolder line, bool isClosed, bool planar)
         {
-            TriangleMeshInfo returnValue = new();
+            TriangleMeshInfo returnValue = new(planar: planar);
 
             if (line == null || line.Count < 2)
             {
@@ -434,9 +547,9 @@ public static class MeshGenerator
             return returnValue;
         }
 
-        public static TriangleMeshInfo KnitLines(Vector3 point, List<Vector3> line, bool isClosed)
+        public static TriangleMeshInfo KnitLinesSmooth(Vector3 point, List<Vector3> line, bool isClosed, bool planar)
         {
-            TriangleMeshInfo returnValue = new();
+            TriangleMeshInfo returnValue = new(planar: planar);
 
             if (line == null || line.Count < 2)
             {
@@ -472,9 +585,9 @@ public static class MeshGenerator
             return returnValue;
         }
 
-        public static TriangleMeshInfo KnitLinesWithProximityPreference(List<VerticesHolder> sections, bool sectionsAreClosed, bool shapeIsClosed) //ToDo: Improve, since at the moment, the proximity preference is ignored at the ends
+        public static TriangleMeshInfo KnitLinesWithProximityPreference(List<VerticesHolder> sections, bool sectionsAreClosed, bool shapeIsClosed, bool planar) //ToDo: Improve, since at the moment, the proximity preference is ignored at the ends
         {
-            TriangleMeshInfo returnValue = new();
+            TriangleMeshInfo returnValue = new(planar: planar);
 
             if (sections == null || sections.Count < 2)
             {
@@ -653,24 +766,24 @@ public static class MeshGenerator
             return returnValue;
         }
 
-        public static TriangleMeshInfo KnitLinesWithProximityPreference(VerticesHolder firstLine, VerticesHolder secondLine, bool isClosed)
+        public static TriangleMeshInfo KnitLinesWithProximityPreference(VerticesHolder firstLine, VerticesHolder secondLine, bool isClosed, bool planar)
         {
             //ToDo: UVs
 
-            TriangleMeshInfo returnValue = new();
+            TriangleMeshInfo returnValue = new(planar: planar);
 
             if (firstLine == null || secondLine == null)
             {
                 Debug.LogWarning("Error with MeshGenerator: At least one line is null");
 
-                return new TriangleMeshInfo();
+                return new TriangleMeshInfo(planar: planar);
             }
 
             if (firstLine.Count == 0 || secondLine.Count == 0)
             {
                 Debug.LogWarning("Error with MeshGenerator: At least one line has a length of 0");
 
-                return new TriangleMeshInfo();
+                return new TriangleMeshInfo(planar: planar);
             }
 
             if(firstLine.Count == 1)
@@ -679,14 +792,14 @@ public static class MeshGenerator
                 {
                     Debug.LogWarning("Error with MeshGenerator: Both lines have a length of 1");
 
-                    return new TriangleMeshInfo();
+                    return new TriangleMeshInfo(planar: planar);
                 }
 
-                return KnitLines(point: firstLine.VerticesDirectly[0], line: secondLine, isClosed: isClosed);
+                return KnitLinesSmooth(point: firstLine.VerticesDirectly[0], line: secondLine, isClosed: isClosed, planar: planar);
             }
             else if(secondLine.Count == 1)
             {
-                return KnitLines(point: secondLine.VerticesDirectly[0], line: firstLine, isClosed: isClosed);
+                return KnitLinesSmooth(point: secondLine.VerticesDirectly[0], line: firstLine, isClosed: isClosed, planar: planar);
             }
 
             int offset1 = 0;
@@ -771,19 +884,45 @@ public static class MeshGenerator
             return returnValue;
         }
 
-        public static TriangleMeshInfo ExtrudeLinear(VerticesHolder firstLine, Vector3 offset, ShapeClosingType closeType, bool smoothTransition)
+        public static List<TriangleMeshInfo> ExtrudeLinearWithSharpCorners(VerticesHolder firstLine, Vector3 offset, bool closed)
+        {
+            List<TriangleMeshInfo> returnValue = new List<TriangleMeshInfo>();
+
+            List<Vector3> baseLine = firstLine.VerticesDirectly;
+
+            for(int i = 0; i< baseLine.Count - 1; i++)
+            {
+                returnValue.Add(MeshesFromPoints.MeshFrom4Points(baseLine[i], baseLine[i + 1], baseLine[i + 1] + offset, baseLine[i] + offset));
+            }
+
+            if (closed)
+            {
+                returnValue.Add(MeshesFromPoints.MeshFrom4Points(baseLine[^1], baseLine[0], baseLine[0] + offset, baseLine[^1] + offset));
+            }
+
+            return returnValue;
+        }
+
+        public static TriangleMeshInfo ExtrudeLinearWithSmoothCorners(VerticesHolder firstLine, Vector3 offset, ShapeClosingType closeType, bool planar)
         {
             VerticesHolder secondLine = new(firstLine);
 
             secondLine.Move(offset);
 
-            TriangleMeshInfo returnValue = KnitLines(firstLine: firstLine, secondLine: secondLine, closingType: closeType, smoothTransition: smoothTransition);
+            TriangleMeshInfo returnValue = KnitLinesSmooth(firstLine: firstLine, secondLine: secondLine, closingType: closeType, planar: planar);
+
+            if(closeType == ShapeClosingType.closedWithSharpEdge)
+            {
+
+            }
 
             return returnValue;
         }
 
-        public static TriangleMeshInfo ExtrudeAlong(VerticesHolder sectionLine, VerticesHolder guideLine, bool sectionIsClosed, bool guideIsClosed, bool sharpGuideEdges)
+        public static List<TriangleMeshInfo> ExtrudeAlong(VerticesHolder sectionLine, VerticesHolder guideLine, bool sectionIsClosed, bool guideIsClosed, bool sharpGuideEdges)
         {
+            List<TriangleMeshInfo> returnValue = new();
+
             List<VerticesHolder> sections = new();
 
             sections.Add(new VerticesHolder(sectionLine));
@@ -827,8 +966,6 @@ public static class MeshGenerator
             sections[^1].Rotate(Quaternion.LookRotation(guideLine.VerticesDirectly[^1] - guideLine.VerticesDirectly[^2])); //ToDo: Improve if closed
             sections[^1].Move(guideLine.VerticesDirectly[^1]);
 
-            TriangleMeshInfo returnValue;
-
             if (sharpGuideEdges)
             {
                 List<VerticesHolder> guideElements = new();
@@ -846,8 +983,6 @@ public static class MeshGenerator
                     }
                 }
 
-                returnValue = new TriangleMeshInfo();
-
                 ShapeClosingType closingType;
                 if (guideIsClosed)
                 {
@@ -860,20 +995,24 @@ public static class MeshGenerator
 
                 for (int i = 0; i < guideElements.Count - 1; i++)
                 {
-                    returnValue.Add(KnitLines(firstLine: guideElements[i], secondLine: guideElements[i + 1], closingType: closingType, smoothTransition: true));
+                    returnValue.Add(KnitLinesSmooth(firstLine: guideElements[i], secondLine: guideElements[i + 1], closingType: closingType, planar: false));
                 }
 
                 if (sectionIsClosed)
                 {
-                    returnValue.Add(KnitLines(firstLine: guideElements[^1], secondLine: guideElements[0], closingType: closingType, smoothTransition: true));
+                    returnValue.Add(KnitLinesSmooth(firstLine: guideElements[^1], secondLine: guideElements[0], closingType: closingType, planar: false));
                 }
 
             }
             else
             {
-                returnValue = KnitLinesWithProximityPreference(sections: sections, sectionsAreClosed: sectionIsClosed, shapeIsClosed: guideIsClosed);
+                TriangleMeshInfo smoothShape = KnitLinesWithProximityPreference(sections: sections, sectionsAreClosed: sectionIsClosed, shapeIsClosed: guideIsClosed, planar: false);
+                
+                smoothShape.FlipTriangles();
 
-                returnValue.FlipTriangles();
+                returnValue.Add(smoothShape);
+
+                //ToDo: add caps if closed
             }
 
             return returnValue;
@@ -903,9 +1042,9 @@ public static class MeshGenerator
 
             return returnValue;
         }
-        public static TriangleMeshInfo AddVerticalWallsBetweenMultiplePoints(List<Vector3> floorPointsInClockwiseOrder, float height, bool closed, Vector3 uvOffset)
+        public static List<TriangleMeshInfo> AddVerticalWallsBetweenMultiplePoints(List<Vector3> floorPointsInClockwiseOrder, float height, bool closed, Vector3 uvOffset)
         {
-            TriangleMeshInfo returnValue = new();
+            List<TriangleMeshInfo> returnValue = new();
 
             for (int i = 0; i < floorPointsInClockwiseOrder.Count - 1; i++)
             {
@@ -920,6 +1059,7 @@ public static class MeshGenerator
             return returnValue;
         }
 
+        /*
         public static List<TriangleMeshInfo> AddVerticalWallsBetweenMultiplePointsAsList(List<Vector3> floorPointsInClockwiseOrder, float height, bool closed, Vector3 uvOffset)
         {
             List<TriangleMeshInfo> returnList = new();
@@ -936,13 +1076,14 @@ public static class MeshGenerator
 
             return returnList;
         }
+        */
     }
 
     public static class MeshesFromPoints
     {
         public static TriangleMeshInfo MeshFrom3Points(Vector3 p0, Vector3 p1, Vector3 p2)
         {
-            TriangleMeshInfo returnValue = new();
+            TriangleMeshInfo returnValue = new(planar: true);
 
             returnValue.VerticesHolder.Add(p0);
             returnValue.VerticesHolder.Add(p1);
@@ -963,7 +1104,7 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo MeshFrom4Points(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
         {
-            TriangleMeshInfo returnValue = new();
+            TriangleMeshInfo returnValue = new(planar: true);
 
             returnValue.VerticesHolder.Add(p0);
             returnValue.VerticesHolder.Add(p1);

@@ -156,11 +156,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             if (Failed) return;
 
             //Define mesh
-            TriangleMeshInfo Top = new();
-            TriangleMeshInfo Wall12 = new();
-            TriangleMeshInfo Wall23 = new();
-            TriangleMeshInfo Wall31 = new();
-            TriangleMeshInfo Bottom = new();
+            TriangleMeshInfo Top;
+            TriangleMeshInfo Wall12;
+            TriangleMeshInfo Wall23;
+            TriangleMeshInfo Wall31;
+            TriangleMeshInfo Bottom;
 
             void FinishMeshes()
             {
@@ -196,7 +196,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             new Vector3(ModificationNodeOrganizer.SecondClockwiseOffsetPosition.x, 0, ModificationNodeOrganizer.SecondClockwiseOffsetPosition.y)
         };
 
-            Top = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(ClockwisePoints);
+            Top = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: ClockwisePoints, planar: true);
             Bottom = Top.CloneFlipped;
             Top.Move(Vector3.up * height);
 

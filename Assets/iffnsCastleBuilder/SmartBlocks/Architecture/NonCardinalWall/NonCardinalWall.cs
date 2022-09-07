@@ -204,9 +204,9 @@ namespace iffnsStuff.iffnsCastleBuilder
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
             float height = LinkedFloor.WallHeightWithScaler;
 
-            TriangleMeshInfo TopCap = new();
+            TriangleMeshInfo TopCap = new(planar: true);
             List<TriangleMeshInfo> Walls = new();
-            TriangleMeshInfo BottomCap = new();
+            TriangleMeshInfo BottomCap = new(planar: true);
 
             void FinishMesh()
             {
@@ -253,11 +253,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                 SetDiagonalWall();
             }
 
-            TopCap = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(clockwiseEdgePoints);
+            TopCap = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: clockwiseEdgePoints, planar: true);
             BottomCap = TopCap.CloneFlipped;
             TopCap.Move(Vector3.up * height);
 
-            Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePointsAsList(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: height, closed: true, uvOffset: transform.localPosition);
+            Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePoints(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: height, closed: true, uvOffset: transform.localPosition);
 
             foreach (TriangleMeshInfo info in Walls)
             {
@@ -284,7 +284,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 SetDiagonalWall();
                 
-                Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePointsAsList(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: height, closed: true, uvOffset: transform.localPosition);
+                Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePoints(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: height, closed: true, uvOffset: transform.localPosition);
 
                 foreach (TriangleMeshInfo info in Walls)
                 {

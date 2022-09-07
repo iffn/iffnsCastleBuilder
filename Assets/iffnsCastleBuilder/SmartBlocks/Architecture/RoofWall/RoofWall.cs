@@ -239,7 +239,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             //trianglePoints[2] += new Vector3(MathHelper.SmallFloat, -MathHelper.SmallFloat, -MathHelper.SmallFloat);
 
-            MainSide = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: trianglePoints);
+            MainSide = MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: trianglePoints, planar: true);
             OtherSide = MainSide.CloneFlipped;
 
             MainSide.Move(MathHelper.SmallFloat * Vector3.left);

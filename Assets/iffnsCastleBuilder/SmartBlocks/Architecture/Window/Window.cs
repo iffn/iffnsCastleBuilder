@@ -313,9 +313,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             //Aply parameters
-            AssistObjectManager.ValueContainer BaseWindowInfo = CurrentRectangularBaseWindow.ApplyBuildParameters(LinkedFloor.LinkedBuildingController.transform);
-
-            List<TriangleMeshInfo> WindowInfo = BaseWindowInfo.ConvertedStaticMeshes;
+            List<TriangleMeshInfo> WindowInfo = CurrentRectangularBaseWindow.ApplyBuildParameters(LinkedFloor.LinkedBuildingController.transform);
 
             foreach (TriangleMeshInfo info in WindowInfo)
             {

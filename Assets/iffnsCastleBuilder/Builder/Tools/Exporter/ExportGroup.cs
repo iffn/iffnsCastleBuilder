@@ -119,7 +119,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             meshInfo.transform.localRotation = Quaternion.identity;
             meshInfo.transform.localScale = Vector3.one;
             */
-            currentInfo = new TriangleMeshInfo();
+            currentInfo = new TriangleMeshInfo(planar: false);
 
             //Set properties
             this.localPosition = localPosition;

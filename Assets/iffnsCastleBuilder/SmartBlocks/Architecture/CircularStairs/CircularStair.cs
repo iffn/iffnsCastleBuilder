@@ -266,19 +266,33 @@ namespace iffnsStuff.iffnsCastleBuilder
             if (Failed) return;
 
             //Define mesh
-            TriangleMeshInfo TopStepTop = new();
-            TriangleMeshInfo StepTop = new();
-            TriangleMeshInfo StepFront = new();
-            TriangleMeshInfo OuterRadiiSide = new();
-            TriangleMeshInfo InnerRadiiSide = new();
-            TriangleMeshInfo BackFace = new();
+            TriangleMeshInfo TopStepTop = new(planar: true);
+            List<TriangleMeshInfo> StepTop = new();
+            List<TriangleMeshInfo> StepFront = new();
+            TriangleMeshInfo OuterRadiiSide = new(planar: false);
+            TriangleMeshInfo InnerRadiiSide = new(planar: false);
+            TriangleMeshInfo BackFace = new(planar: false);
             TriangleMeshInfo BackFaceTop;
             TriangleMeshInfo ColliderMesh;
 
             void FinishMeshes()
             {
-                StepFront.MaterialReference = SetpsFrontMaterialParam;
-                StepTop.MaterialReference = OtherSetpsTopMaterialParam;
+                foreach (TriangleMeshInfo info in StepFront)
+                {
+                    info.MaterialReference = SetpsFrontMaterialParam;
+                    info.FixUVCount();
+                    info.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
+                    StaticMeshManager.AddTriangleInfoIfValid(info);
+                }
+
+                foreach (TriangleMeshInfo info in StepTop)
+                {
+                    info.MaterialReference = OtherSetpsTopMaterialParam;
+                    info.FixUVCount();
+                    info.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
+                    StaticMeshManager.AddTriangleInfoIfValid(info);
+                }
+
                 TopStepTop.MaterialReference = TopSetpTopMaterialParam;
                 OuterRadiiSide.MaterialReference = SideMaterialParam;
                 InnerRadiiSide.MaterialReference = SideMaterialParam;
@@ -287,21 +301,15 @@ namespace iffnsStuff.iffnsCastleBuilder
                 ColliderMesh.AlternativeMaterial = DefaultCastleMaterials.InvisibleMaterial.LinkedMaterial;
 
                 TopStepTop.FixUVCount();
-                StepTop.FixUVCount();
-                StepFront.FixUVCount();
                 OuterRadiiSide.FixUVCount();
                 InnerRadiiSide.FixUVCount();
                 BackFace.FixUVCount();
                 BackFaceTop.FixUVCount();
                 ColliderMesh.FixUVCount();
-
-                StepTop.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
-                StepFront.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
+                
                 ColliderMesh.ActiveCollider = TriangleMeshInfo.ColliderStates.SeeThroughCollider;
 
                 StaticMeshManager.AddTriangleInfoIfValid(TopStepTop);
-                StaticMeshManager.AddTriangleInfoIfValid(StepTop);
-                StaticMeshManager.AddTriangleInfoIfValid(StepFront);
                 StaticMeshManager.AddTriangleInfoIfValid(OuterRadiiSide);
                 StaticMeshManager.AddTriangleInfoIfValid(InnerRadiiSide);
                 StaticMeshManager.AddTriangleInfoIfValid(BackFace);
@@ -372,12 +380,12 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (stepNumber == 0)
                 {
-                    StepFront.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>(){
+                    StepFront.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(points: new List<Vector3>(){
                         new Vector3(firstInnerLocation.x, -LinkedFloor.BottomFloorHeight, firstInnerLocation.y),
                         new Vector3(firstInnerLocation.x, upperHeight, firstInnerLocation.y),
                         new Vector3(firstOuterLocation.x, upperHeight, firstOuterLocation.y),
                         new Vector3(firstOuterLocation.x, -LinkedFloor.BottomFloorHeight, firstOuterLocation.y)
-                    }));
+                    }, planar: true));
                 }
                 else
                 {
@@ -386,7 +394,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         new Vector3(firstInnerLocation.x, upperHeight, firstInnerLocation.y),
                         new Vector3(firstOuterLocation.x, upperHeight, firstOuterLocation.y),
                         new Vector3(firstOuterLocation.x, baseHeight, firstOuterLocation.y)
-                    }));
+                    }, planar: true));
                 }
 
                 if (stepNumber == numberOfSteps - 1)
@@ -396,7 +404,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         new Vector3(secondInnerLocation.x, upperHeight, secondInnerLocation.y),
                         new Vector3(secondOuterLocation.x, upperHeight, secondOuterLocation.y),
                         new Vector3(firstOuterLocation.x, upperHeight, firstOuterLocation.y)
-                        }));
+                    }, planar: true));
                 }
                 else
                 {
@@ -405,7 +413,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                         new Vector3(secondInnerLocation.x, upperHeight, secondInnerLocation.y),
                         new Vector3(secondOuterLocation.x, upperHeight, secondOuterLocation.y),
                         new Vector3(firstOuterLocation.x, upperHeight, firstOuterLocation.y)
-                        }));
+                    }, planar: true));
                 }
 
                 OuterRadiiSide.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>(){
@@ -413,14 +421,14 @@ namespace iffnsStuff.iffnsCastleBuilder
                         new Vector3(secondOuterLocation.x, upperHeight, secondOuterLocation.y),
                         new Vector3(secondOuterLocation.x, backLowerHeight, secondOuterLocation.y),
                         new Vector3(firstOuterLocation.x, frontLowerHeight, firstOuterLocation.y),
-                        }));
+                        }, planar: false));
 
                 InnerRadiiSide.Add(MeshGenerator.FilledShapes.PointsClockwiseAroundFirstPoint(new List<Vector3>(){
                         new Vector3(secondInnerLocation.x, backLowerHeight, secondInnerLocation.y),
                         new Vector3(secondInnerLocation.x, upperHeight, secondInnerLocation.y),
                         new Vector3(firstInnerLocation.x, upperHeight, firstInnerLocation.y),
                         new Vector3(firstInnerLocation.x, frontLowerHeight, firstInnerLocation.y),
-                        }));
+                        }, planar: false));
 
                 if (stepNumber == 0)
                 {
@@ -469,8 +477,16 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             if (RevolutionAngleDeg < 0)
             {
-                StepFront.FlipTriangles();
-                StepTop.FlipTriangles();
+                foreach(TriangleMeshInfo info in StepFront)
+                {
+                    info.FlipTriangles();
+                }
+
+                foreach (TriangleMeshInfo info in StepTop)
+                {
+                    info.FlipTriangles();
+                }
+                
                 OuterRadiiSide.FlipTriangles();
                 InnerRadiiSide.FlipTriangles();
                 BackFace.FlipTriangles();

@@ -198,9 +198,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Define mesh
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
-            AssistObjectManager.ValueContainer baseCounterInfo = LinkedBaseCounter.SetBuildParameters(mainObject: this, UVBaseObject: LinkedFloor.LinkedBuildingController.transform, width: size.x, length: size.y, totalHeight: TotalHeight, shapeType: ShapeType);
-
-            List<TriangleMeshInfo> counterInfo = baseCounterInfo.ConvertedStaticMeshes;
+            List<TriangleMeshInfo> counterInfo = LinkedBaseCounter.SetBuildParameters(mainObject: this, UVBaseObject: LinkedFloor.LinkedBuildingController.transform, width: size.x, length: size.y, totalHeight: TotalHeight, shapeType: ShapeType);
 
             foreach (TriangleMeshInfo info in counterInfo)
             {

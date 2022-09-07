@@ -328,13 +328,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Define mesh
             Vector2 size = ModificationNodeOrganizer.ObjectOrientationSize;
 
-            TriangleMeshInfo OuterArc = new TriangleMeshInfo();
+            TriangleMeshInfo OuterArc = new(planar: false);
 
-            TriangleMeshInfo InnerArc = new TriangleMeshInfo();
-            TriangleMeshInfo Floor = new TriangleMeshInfo();
-            TriangleMeshInfo Ceiling = new TriangleMeshInfo();
-            TriangleMeshInfo XWall = new TriangleMeshInfo();
-            TriangleMeshInfo ZWall = new TriangleMeshInfo();
+            TriangleMeshInfo InnerArc = new(planar: false);
+            TriangleMeshInfo Floor = new(planar: true);
+            TriangleMeshInfo Ceiling = new(planar: true);
+            TriangleMeshInfo XWall = new(planar: true);
+            TriangleMeshInfo ZWall = new(planar: true);
 
             void FinishMesh()
             {
@@ -448,10 +448,10 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 Vector3 centerPoint = new Vector3(CutoffRangeRotated.x, 0, CutoffRangeRotated.y);
 
-                OuterArc = MeshGenerator.MeshesFromLines.KnitLines(firstLine: lowerArc, secondLine: upperArc, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
+                OuterArc = MeshGenerator.MeshesFromLines.KnitLinesSmooth(firstLine: lowerArc, secondLine: upperArc, closingType: MeshGenerator.ShapeClosingType.open, planar: false);
 
-                Ceiling = MeshGenerator.MeshesFromLines.KnitLines(point: centerPoint, line: lowerArc, isClosed: false);
-                Floor = MeshGenerator.MeshesFromLines.KnitLines(point: centerPoint + Vector3.up * wallHeight, line: upperArc, isClosed: false);
+                Ceiling = MeshGenerator.MeshesFromLines.KnitLinesSmooth(point: centerPoint, line: lowerArc, isClosed: false, planar: true);
+                Floor = MeshGenerator.MeshesFromLines.KnitLinesSmooth(point: centerPoint + Vector3.up * wallHeight, line: upperArc, isClosed: false, planar: true);
                 Floor.FlipTriangles();
 
                 XWall = MeshGenerator.MeshesFromPoints.MeshFrom4Points(
@@ -522,13 +522,13 @@ namespace iffnsStuff.iffnsCastleBuilder
                 upperOuterArc.Move(Vector3.up * wallHeight);
                 upperInnerArc.Move(Vector3.up * wallHeight);
 
-                OuterArc = MeshGenerator.MeshesFromLines.KnitLines(firstLine: lowerOuterArc, secondLine: upperOuterArc, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
-                InnerArc = MeshGenerator.MeshesFromLines.KnitLines(firstLine: lowerInnerArc, secondLine: upperInnerArc, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
+                OuterArc = MeshGenerator.MeshesFromLines.KnitLinesSmooth(firstLine: lowerOuterArc, secondLine: upperOuterArc, closingType: MeshGenerator.ShapeClosingType.open, planar: false);
+                InnerArc = MeshGenerator.MeshesFromLines.KnitLinesSmooth(firstLine: lowerInnerArc, secondLine: upperInnerArc, closingType: MeshGenerator.ShapeClosingType.open, planar: false);
 
                 OuterArc.FlipTriangles();
 
-                Ceiling = MeshGenerator.MeshesFromLines.KnitLines(firstLine: lowerOuterArc, secondLine: lowerInnerArc, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
-                Floor = MeshGenerator.MeshesFromLines.KnitLines(firstLine: upperInnerArc, secondLine: upperOuterArc, closingType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
+                Ceiling = MeshGenerator.MeshesFromLines.KnitLinesSmooth(firstLine: lowerOuterArc, secondLine: lowerInnerArc, closingType: MeshGenerator.ShapeClosingType.open, planar: true);
+                Floor = MeshGenerator.MeshesFromLines.KnitLinesSmooth(firstLine: upperInnerArc, secondLine: upperOuterArc, closingType: MeshGenerator.ShapeClosingType.open, planar: true);
 
                 XWall = MeshGenerator.MeshesFromPoints.MeshFrom4Points(
                     lowerOuterArc.VerticesDirectly[0],
@@ -549,7 +549,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 VerticesHolder outerArc = CreateCutoffArc(radii: size, cutoffRange: CutoffRangeRotated);
                 outerArc.Reverse();
-                OuterArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: outerArc, offset: Vector3.up * wallHeight, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
+                OuterArc = MeshGenerator.MeshesFromLines.ExtrudeLinearWithSmoothCorners(firstLine: outerArc, offset: Vector3.up * wallHeight, closeType: MeshGenerator.ShapeClosingType.open, planar: false);
 
                 Vector3 RadiusStartingPoint = new Vector3(CutoffRangeRotated.x, 0, Mathf.Sqrt(size.y * size.y - CutoffRangeRotated.x * CutoffRangeRotated.x));
                 Vector3 RadiusEndingPoint = new Vector3(Mathf.Sqrt(size.x * size.x - CutoffRangeRotated.y * CutoffRangeRotated.y), 0, CutoffRangeRotated.y);
@@ -622,7 +622,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 ZWall.Add(MeshGenerator.MeshesFromLines.AddWallBetween2Points(firstClockwiseFloorPoint: currentStartPoint, secondClockwiseFloorPoint: RadiusEndingPoint, wallHeight: wallHeight, uvOffset: Vector3.zero));
 
 
-                Floor = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(firstLine: outerArc, secondLine: ladderPoints, isClosed: false);
+                Floor = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(firstLine: outerArc, secondLine: ladderPoints, isClosed: false, planar: true);
                 Ceiling = Floor.CloneFlipped;
                 Floor.Move(Vector3.up * wallHeight);
             }
@@ -631,7 +631,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 //Inner arc
                 VerticesHolder innerArc = CreateCutoffArc(radii: size, cutoffRange: CutoffRangeRotated);
-                InnerArc = MeshGenerator.MeshesFromLines.ExtrudeLinear(firstLine: innerArc, offset: Vector3.up * wallHeight, closeType: MeshGenerator.ShapeClosingType.open, smoothTransition: true);
+                InnerArc = MeshGenerator.MeshesFromLines.ExtrudeLinearWithSmoothCorners(firstLine: innerArc, offset: Vector3.up * wallHeight, closeType: MeshGenerator.ShapeClosingType.open, planar: false);
 
                 //Start and end point
                 Vector3 currentStartPoint = innerArc.VerticesDirectly[^1];
@@ -722,7 +722,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 if(MathHelper.FloatIsZero((ladderPoints.VerticesDirectly[^1] - innerArc.VerticesDirectly[^1]).magnitude))
                     ladderPoints.Remove(ladderPoints.Count - 1);
 
-                Floor = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(firstLine: innerArc, secondLine: ladderPoints, isClosed: false);
+                Floor = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(firstLine: innerArc, secondLine: ladderPoints, isClosed: false, planar: true);
                 Ceiling = Floor.CloneFlipped;
                 Floor.Move(Vector3.up * wallHeight);
             }

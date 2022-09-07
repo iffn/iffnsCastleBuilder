@@ -1,6 +1,7 @@
 using iffnsStuff.iffnsBaseSystemForUnity;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
@@ -230,34 +231,30 @@ namespace iffnsStuff.iffnsCastleBuilder
             float completeHeight = CompleteHeight;
             float height = completeHeight - HeightOvershoot;
 
-            TriangleMeshInfo OriginSide = new();
-            TriangleMeshInfo OtherSide = new();
-            TriangleMeshInfo Steps = new();
-
-            void FinishMesh()
-            {
-                OriginSide.MaterialReference = EdgeMaterialParam;
-                OtherSide.MaterialReference = EdgeMaterialParam;
-                Steps.MaterialReference = StepMaterialParam;
-
-                AddStaticMesh(OriginSide);
-                AddStaticMesh(OtherSide);
-                AddStaticMesh(Steps);
-
-                BuildAllMeshes();
-            }
+            List<TriangleMeshInfo> OriginSide;
+            List<TriangleMeshInfo> OtherSide;
+            TriangleMeshInfo Steps = new(planar: false);
 
             OriginSide = MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(SideThickness, completeHeight, SideThickness));
-            OtherSide = OriginSide.Clone;
+            OtherSide = MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(SideThickness, completeHeight, SideThickness));
 
-            OriginSide.Move(new Vector3((-width + SideThickness) * 0.5f, completeHeight * 0.5f, 0));
-            OtherSide.Move(new Vector3((width - SideThickness) * 0.5f, completeHeight * 0.5f, 0));
+            foreach(TriangleMeshInfo info in OriginSide)
+            {
+                info.Move(new Vector3((-width + SideThickness) * 0.5f, completeHeight * 0.5f, 0));
+                info.MaterialReference = EdgeMaterialParam;
+                AddStaticMesh(info);
+            }
+
+            foreach (TriangleMeshInfo info in OtherSide)
+            {
+                info.Move(new Vector3((width - SideThickness) * 0.5f, completeHeight * 0.5f, 0));
+                info.MaterialReference = EdgeMaterialParam;
+                AddStaticMesh(info);
+            }
 
             int numberOfSteps = (int)(height / DistanceBetweenSteps);
 
             TriangleMeshInfo baseStep = MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: StepThickness * 0.5f, length: width, direction: Vector3.right, numberOfEdges: 12);
-
-            //baseStep.Move(width * 0.5f * Vector3.left);
 
             for (int i = 0; i < numberOfSteps; i++)
             {
@@ -265,14 +262,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                 Steps.Add(baseStep.Clone);
             }
 
-            FinishMesh();
+            Steps.MaterialReference = StepMaterialParam;
 
-            //LinkedBaseLadder.SetMainParameters(width: size, height: LinkedFloor.CompleteFloorHeight);
+            AddStaticMesh(Steps);
 
-            /*
-            UnmanagedMeshes.Clear();
-            UnmanagedMeshes.AddRange(LinkedBaseLadder.UnmanagedStaticMeshes);
-            */
+            BuildAllMeshes();
         }
 
         void SetupEditButtons()

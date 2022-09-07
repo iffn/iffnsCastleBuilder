@@ -164,19 +164,34 @@ namespace iffnsStuff.iffnsCastleBuilder
                 return;
             }
 
-            TriangleMeshInfo TopBorder;
-            TriangleMeshInfo BottomBorder;
-            TriangleMeshInfo Posts = new();
+            List<TriangleMeshInfo> TopBorder;
+            List<TriangleMeshInfo> BottomBorder;
+            List<TriangleMeshInfo> Caps = new();
+            TriangleMeshInfo Posts = new(planar: false);
 
             void FinishMesh()
             {
-                TopBorder.MaterialReference = TopMaterialParam;
-                BottomBorder.MaterialReference = BottomMaterialParam;
                 Posts.MaterialReference = PostMaterialParam;
 
-                AddStaticMesh(TopBorder);
-                AddStaticMesh(BottomBorder);
                 AddStaticMesh(Posts);
+
+                foreach (TriangleMeshInfo info in TopBorder)
+                {
+                    AddStaticMesh(info);
+                    info.MaterialReference = TopMaterialParam;
+                }
+
+                foreach (TriangleMeshInfo info in BottomBorder)
+                {
+                    AddStaticMesh(info);
+                    info.MaterialReference = BottomMaterialParam;
+                }
+
+                foreach (TriangleMeshInfo info in Caps)
+                {
+                    AddStaticMesh(info);
+                    info.MaterialReference = PostMaterialParam;
+                }
 
                 BuildAllMeshes();
             }
@@ -190,19 +205,25 @@ namespace iffnsStuff.iffnsCastleBuilder
                 size.y
                 ));
 
-            BottomBorder = TopBorder.Clone;
+            BottomBorder = TriangleMeshInfo.GetCloneOfInfoList(infos: TopBorder, flip: false);
 
-            TopBorder.Move(new Vector3(
-                0,
-                railingHeight - topHeight * 0.5f,
-                size.y * 0.5f
-                ));
+            foreach(TriangleMeshInfo info in TopBorder)
+            {
+                info.Move(new Vector3(
+                    0,
+                    railingHeight - topHeight * 0.5f,
+                    size.y * 0.5f
+                    ));
+            }
 
-            BottomBorder.Move(new Vector3(
-                0,
-                bottomHeight * 0.5f,
-                size.y * 0.5f
-                ));
+            foreach (TriangleMeshInfo info in BottomBorder)
+            {
+                info.Move(new Vector3(
+                    0,
+                    bottomHeight * 0.5f,
+                    size.y * 0.5f
+                    ));
+            }
 
             //Railing posts
             float baseDistance = size.y;
@@ -217,7 +238,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             float halfRailingHeight = railingHeight * 0.5f;
 
             TriangleMeshInfo currentPost;
-            TriangleMeshInfo currentCap;
+            List<TriangleMeshInfo> currentCap;
 
             for (int i = 1; i < betweenCount; i++)
             {
@@ -235,7 +256,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             //Start post
             currentPost = MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: cylinderDiameter * 0.5f, length: railingHeight, direction: Vector3.up, numberOfEdges: 24);
             currentCap = MeshGenerator.FilledShapes.CylinderCaps(radius: cylinderDiameter * 0.5f, length: railingHeight + MathHelper.SmallFloat, direction: Vector3.up, numberOfEdges: 24);
-            currentCap.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
 
             currentPost.Move(new Vector3(
                     0,
@@ -243,19 +263,21 @@ namespace iffnsStuff.iffnsCastleBuilder
                     0
                     ));
 
-            currentCap.Move(new Vector3(
+            foreach(TriangleMeshInfo info in currentCap)
+            {
+                info.Move(new Vector3(
                     0,
                     halfRailingHeight,
                     0
                     ));
+            }
 
-            Posts.Add(currentCap);
+            Caps.AddRange(currentCap);
             Posts.Add(currentPost);
 
             //End post
             currentPost = MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: cylinderDiameter * 0.5f, length: railingHeight, direction: Vector3.up, numberOfEdges: 24);
             currentCap = MeshGenerator.FilledShapes.CylinderCaps(radius: cylinderDiameter * 0.5f, length: railingHeight + MathHelper.SmallFloat, direction: Vector3.up, numberOfEdges: 24);
-            currentCap.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
 
             currentPost.Move(new Vector3(
                     0,
@@ -263,13 +285,16 @@ namespace iffnsStuff.iffnsCastleBuilder
                     baseDistance
                     ));
 
-            currentCap.Move(new Vector3(
+            foreach (TriangleMeshInfo info in currentCap)
+            {
+                info.Move(new Vector3(
                     0,
                     halfRailingHeight,
                     baseDistance
                     ));
+            }
 
-            Posts.Add(currentCap);
+            Caps.AddRange(currentCap);
             Posts.Add(currentPost);
 
             FinishMesh();

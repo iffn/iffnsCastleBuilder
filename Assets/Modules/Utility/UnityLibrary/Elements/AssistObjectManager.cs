@@ -6,9 +6,9 @@ using iffnsStuff.iffnsCastleBuilder;
 
 public abstract class AssistObjectManager : MonoBehaviour
 {
+    public abstract List<TriangleMeshInfo> ApplyBuildParameters(Transform UVBaseObject);
 
-    public abstract ValueContainer ApplyBuildParameters(Transform UVBaseObject);
-
+    /*
     public class ValueContainer
     {
         Transform originTransform;
@@ -40,4 +40,5 @@ public abstract class AssistObjectManager : MonoBehaviour
             }
         }
     }
+    */
 }
