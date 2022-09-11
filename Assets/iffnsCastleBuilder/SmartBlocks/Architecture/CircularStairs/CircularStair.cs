@@ -472,9 +472,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             BackFaceTop.Rotate(Quaternion.Euler((StartingAngleDeg + RevolutionAngleDeg) * Vector3.down));
 
-
-            TopStepTop.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-
             if (RevolutionAngleDeg < 0)
             {
                 foreach(TriangleMeshInfo info in StepFront)

@@ -210,15 +210,11 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             void FinishMesh()
             {
-                TopCap.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-                BottomCap.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-
                 StaticMeshManager.AddTriangleInfoIfValid(TopCap);
                 TopCap.MaterialReference = MainMaterial;
 
                 foreach (TriangleMeshInfo info in Walls)
                 {
-                    info.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
                     info.MaterialReference = MainMaterial;
                     StaticMeshManager.AddTriangleInfoIfValid(info);
                 }

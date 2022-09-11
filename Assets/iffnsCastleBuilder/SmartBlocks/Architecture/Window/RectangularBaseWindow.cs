@@ -156,11 +156,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             BackBottomkWall.Move(Vector3.right * betweenDepth);
             BackTopWall.Move(Vector3.right * betweenDepth);
 
-            FrontTopWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
-            BackTopWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
-            FrontBottomWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
-            BackBottomkWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
-
             //Wrapper
             bottomWraper = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.right * betweenDepth, secondLine: Vector3.forward * completeWidth, uvOffset: Vector2.zero);
             bottomWraper.FlipTriangles();
@@ -177,11 +172,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             rightWrapper = leftWrapper.CloneFlipped;
             rightWrapper.Move(Vector3.forward * completeWidth);
-
-            bottomWraper.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
-            topWrapper.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
-            leftWrapper.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
-            rightWrapper.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
 
             FinishMesh();
 

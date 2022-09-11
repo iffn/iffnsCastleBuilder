@@ -18,14 +18,6 @@ public class MultiMeshManager : MonoBehaviour
         }
     }
 
-    public void UpdateCardinalUVMapsForAllUnusedTriangleInfos(Transform originObjectForUV)
-    {
-        foreach(TriangleMeshInfo info in UnusedTriangleInfos)
-        {
-            info.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: originObjectForUV);
-        }
-    }
-
     public void Setup(BaseGameObject linkedObject)
     {
         MeshManagers = new List<SmartMeshManager>();

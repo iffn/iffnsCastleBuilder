@@ -286,15 +286,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 StepFront.ActiveCollider = TriangleMeshInfo.ColliderStates.VisbleWithoutCollider;
                 ColliderMesh.ActiveCollider = TriangleMeshInfo.ColliderStates.SeeThroughCollider;
 
-                StepFront.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-                TopStepTop.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-                StepTop.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-                LeftSide.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-                RightSide.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-                //BackFaceAngle.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-                BackFaceVertical.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-                BottomFrontFace.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-
                 StaticMeshManager.AddTriangleInfoIfValid(StepFront);
                 StaticMeshManager.AddTriangleInfoIfValid(TopStepTop);
                 StaticMeshManager.AddTriangleInfoIfValid(StepTop);

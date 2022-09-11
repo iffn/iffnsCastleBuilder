@@ -177,12 +177,14 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 foreach (TriangleMeshInfo info in TopBorder)
                 {
+                    info.planar = false; //Non-planar since it would look weird when at an angle
                     AddStaticMesh(info);
                     info.MaterialReference = TopMaterialParam;
                 }
 
                 foreach (TriangleMeshInfo info in BottomBorder)
                 {
+                    info.planar = false; //Non-planar since it would look weird when at an angle
                     AddStaticMesh(info);
                     info.MaterialReference = BottomMaterialParam;
                 }

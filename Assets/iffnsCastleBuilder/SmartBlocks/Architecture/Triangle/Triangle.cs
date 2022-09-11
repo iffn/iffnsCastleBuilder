@@ -207,12 +207,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             Wall23.Move(ClockwisePoints[1]);
             Wall31 = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: ClockwisePoints[2], secondLine: Vector3.up * height, uvOffset: Vector2.zero);
 
-            Top.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-            Wall12.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-            Wall23.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-            Wall31.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-            Bottom.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-
             Top.MaterialReference = TopMaterial;
             Bottom.MaterialReference = BottomMaterial;
             Wall12.MaterialReference = MaterialWall12;

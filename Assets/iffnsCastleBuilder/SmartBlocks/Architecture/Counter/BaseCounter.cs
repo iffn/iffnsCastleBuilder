@@ -153,7 +153,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             //House faces
             TriangleMeshInfo coverFaceFront = MeshGenerator.MeshesFromLines.KnitLinesSmooth(point: topPoint, line: baseRectangle, isClosed: false, planar: true);
-            coverFaceFront.GenerateUVMeshBasedOnCardinalDirectionsWithoutReference();
             coverFaceFront.MaterialReference = baseMaterial;
             TriangleMeshInfo coverFaceBack = coverFaceFront.CloneFlipped;
             coverFaceBack.Move(extrudeVector);

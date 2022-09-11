@@ -266,14 +266,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 WrapperBottom.Move(offset);
             }
 
-            MainSide.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.transform);
-            OtherSide.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.transform);
-
-            if (RoofType == RectangularRoof.RoofTypes.HalfAngledSquareRoof)
-            {
-                WrapperStartSide.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.transform);
-            }
-
             FinishMesh();
         }
 

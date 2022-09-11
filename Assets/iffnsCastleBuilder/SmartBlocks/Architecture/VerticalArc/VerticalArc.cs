@@ -128,12 +128,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             void FinishMeshes()
             {
-                FrontWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-                BackWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-                RightWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-                LeftWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-                TopWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.LinkedBuildingController.transform);
-
                 StaticMeshManager.AddTriangleInfoIfValid(FrontWall);
                 StaticMeshManager.AddTriangleInfoIfValid(BackWall);
                 StaticMeshManager.AddTriangleInfoIfValid(RightWall);

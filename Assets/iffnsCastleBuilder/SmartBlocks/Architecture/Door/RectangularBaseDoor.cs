@@ -141,13 +141,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 BackWall.Add(FrontWall.CloneFlipped);
                 BackWall.Move(Vector3.right * betweenDepth);
-
-                FrontWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
-                BackWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
-
-                topWrap.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
-                leftWraper.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
-                rightWraper.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: UVBaseObject);
             }
 
             FinishMesh();

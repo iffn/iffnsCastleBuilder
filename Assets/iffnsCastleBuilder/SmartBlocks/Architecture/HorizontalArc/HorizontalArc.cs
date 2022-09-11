@@ -345,11 +345,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 XWall.MaterialReference = FirstWallMaterialParam;
                 ZWall.MaterialReference = SecondWallMaterialParam;
 
-                Floor.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.transform);
-                Ceiling.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.transform);
-                XWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.transform);
-                ZWall.GenerateUVMeshBasedOnCardinalDirections(meshObject: transform, originObjectForUV: LinkedFloor.transform);
-
                 StaticMeshManager.AddTriangleInfoIfValid(OuterArc);
                 StaticMeshManager.AddTriangleInfoIfValid(InnerArc);
                 StaticMeshManager.AddTriangleInfoIfValid(Floor);
