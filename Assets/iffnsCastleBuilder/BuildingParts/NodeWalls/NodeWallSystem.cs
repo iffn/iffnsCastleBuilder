@@ -22,7 +22,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         //Build parameters
         MailboxLineMultipleSubObject nodeWallsParam;
 
-        List<DummyNodeWall> dummyNodeWalls = new();
+        readonly List<DummyNodeWall> dummyNodeWalls = new();
         public List<DummyNodeWall> DummyNodeWalls
         {
             get
@@ -237,6 +237,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             BuildWallsAndDefineCorners();
 
             BuildCorners();
+
+            GeneratePlanarUVMaps(meshTransform: transform, refernceTransform: linkedFloor.LinkedBuildingController.transform);
 
             BuildAllMeshes();
         }

@@ -18,9 +18,9 @@ namespace iffnsStuff.iffnsCastleBuilder
             StaticMeshManager.AddTriangleInfoIfValid(staticMesh);
         }
 
-        public void UpdateAllCradinalUVs()
+        public void UpdateAllUVs()
         {
-            StaticMeshManager.UpdateCardinalUVMapsForAllUnusedTriangleInfos(originObjectForUV: LinkedBuildingController.transform);
+            GeneratePlanarUVMaps(meshTransform: transform, refernceTransform: LinkedBuildingController.transform);
         }
 
         public BlockMeshBuilder FloorMeshBuilder

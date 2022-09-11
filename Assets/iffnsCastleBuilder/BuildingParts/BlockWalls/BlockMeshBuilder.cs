@@ -213,7 +213,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 GenerateWallsBasedOnInfoWithoutOptimization();
             }
 
-            LinkedFloor.UpdateAllCradinalUVs();
+            LinkedFloor.UpdateAllUVs();
         }
 
         enum CapType

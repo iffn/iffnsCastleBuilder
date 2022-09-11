@@ -228,6 +228,13 @@ namespace iffnsStuff.iffnsCastleBuilder
             EditTool.DeactivateEditOnMain();
         }
 
+        protected override void BuildAllMeshes()
+        {
+            GeneratePlanarUVMaps(meshTransform: transform, refernceTransform: LinkedFloor.LinkedBuildingController.transform);
+
+            base.BuildAllMeshes();
+        }
+
         /*
         public float FloorBaseHeightBasedOnFirstNode
         {

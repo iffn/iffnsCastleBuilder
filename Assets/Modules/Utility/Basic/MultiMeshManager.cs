@@ -10,6 +10,14 @@ public class MultiMeshManager : MonoBehaviour
     List<TriangleMeshInfo> UnusedTriangleInfos;
     List<TriangleMeshInfo> UsedTriangleInfos;
 
+    public List<TriangleMeshInfo> AllUnusedTriagnleInfosDirectly
+    {
+        get
+        {
+            return UnusedTriangleInfos;
+        }
+    }
+
     public void UpdateCardinalUVMapsForAllUnusedTriangleInfos(Transform originObjectForUV)
     {
         foreach(TriangleMeshInfo info in UnusedTriangleInfos)

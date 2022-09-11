@@ -437,6 +437,45 @@ public class TriangleMeshInfo
         }
     }
 
+    public void GenerateUVMapIfPlanar(Transform meshTransform, Transform refernceTransform)
+    {
+        if (!planar) return;
+
+        if (AllVerticesDirectly.Count < 3) return;
+
+        UpdateLinkedInfo();
+
+        TriangleHolder currentTriangle = Triangles[0];
+
+        Vector3 normal = currentTriangle.NormalVector;
+
+        UVs.Clear();
+
+        Transform helperObject = new GameObject().transform;
+
+        helperObject.transform.parent = refernceTransform;
+
+        //If looking directly down or up:
+        if (MathHelper.FloatIsZero(normal.x) && MathHelper.FloatIsZero(normal.z))
+        {
+            helperObject.transform.LookAt(worldPosition: -refernceTransform.up, worldUp: refernceTransform.forward);
+        }
+        else
+        {
+            //Project 3D
+            Vector3 worldPosition = meshTransform.TransformDirection(normal);
+
+            helperObject.transform.LookAt(worldPosition: meshTransform.TransformDirection(normal), worldUp: refernceTransform.up);
+        }
+
+        foreach (Vector3 vertex in AllVerticesDirectly)
+        {
+            Vector3 transformedPoint = helperObject.InverseTransformPoint(meshTransform.TransformPoint(vertex));
+
+            UVs.Add(new Vector2(transformedPoint.x, transformedPoint.y));
+        }
+    }
+
     public void GenerateUVMeshBasedOnCardinalDirectionsWithoutReference()
     {
         if (AllVerticesDirectly.Count < 3) return;
