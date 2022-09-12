@@ -3473,7 +3473,7 @@
 						"Post material": "PolyHaven-plywood"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [3, 13],
 						"Top Right Position": [2, -1],
@@ -3483,7 +3483,7 @@
 						"Shape type": "BaseBox"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [8, 13],
 						"Top Right Position": [2, -1],
@@ -3493,7 +3493,7 @@
 						"Shape type": "BaseBox"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [13, 10],
 						"Top Right Position": [-1, -2],
@@ -3503,7 +3503,7 @@
 						"Shape type": "BaseBox"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [13, 5],
 						"Top Right Position": [-1, -2],
@@ -3513,7 +3513,7 @@
 						"Shape type": "BaseBox"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [11, 0],
 						"Top Right Position": [-2, 1],
@@ -3523,7 +3523,7 @@
 						"Shape type": "BaseBox"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [6, 0],
 						"Top Right Position": [-2, 1],
@@ -3533,7 +3533,7 @@
 						"Shape type": "BaseBox"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [0, 2],
 						"Top Right Position": [1, 2],
@@ -3543,7 +3543,7 @@
 						"Shape type": "BaseBox"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [13, 0],
 						"Top Right Position": [-1, 1],
@@ -3553,7 +3553,7 @@
 						"Shape type": "BaseBox"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [0, 9],
 						"Top Right Position": [1, 2],
@@ -4641,7 +4641,7 @@
 						"Post material": "PolyHaven-plywood"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [12, 0],
 						"Top Right Position": [-12, 1],
@@ -4651,7 +4651,7 @@
 						"Shape type": "BaseBox"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [13, 12],
 						"Top Right Position": [-1, -12],
@@ -4661,7 +4661,7 @@
 						"Shape type": "BaseBox"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [13, 12],
 						"Top Right Position": [-12, 1],
@@ -4671,7 +4671,7 @@
 						"Shape type": "BaseBox"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [13, 13],
 						"Top Right Position": [-1, -3],
@@ -4681,7 +4681,7 @@
 						"Shape type": "FlatTop"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [13, 8],
 						"Top Right Position": [-1, -3],
@@ -4691,7 +4691,7 @@
 						"Shape type": "FlatTop"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [13, 3],
 						"Top Right Position": [-1, -3],
@@ -4701,7 +4701,7 @@
 						"Shape type": "FlatTop"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [13, 0],
 						"Top Right Position": [-3, 1],
@@ -4711,7 +4711,7 @@
 						"Shape type": "FlatTop"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [8, 0],
 						"Top Right Position": [-3, 1],
@@ -4721,7 +4721,7 @@
 						"Shape type": "FlatTop"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [3, 0],
 						"Top Right Position": [-3, 1],
@@ -4731,7 +4731,7 @@
 						"Shape type": "FlatTop"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [0, 0],
 						"Top Right Position": [1, 3],
@@ -4741,7 +4741,7 @@
 						"Shape type": "FlatTop"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [0, 5],
 						"Top Right Position": [1, 3],
@@ -4751,7 +4751,7 @@
 						"Shape type": "FlatTop"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [0, 10],
 						"Top Right Position": [1, 3],
@@ -4761,7 +4761,7 @@
 						"Shape type": "FlatTop"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [0, 13],
 						"Top Right Position": [3, -1],
@@ -4771,7 +4771,7 @@
 						"Shape type": "FlatTop"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [5, 13],
 						"Top Right Position": [3, -1],
@@ -4781,7 +4781,7 @@
 						"Shape type": "FlatTop"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [10, 13],
 						"Top Right Position": [3, -1],
@@ -4791,7 +4791,7 @@
 						"Shape type": "FlatTop"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [0, 1],
 						"Top Right Position": [1, 12],

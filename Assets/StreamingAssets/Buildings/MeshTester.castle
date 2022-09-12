@@ -15828,7 +15828,7 @@
 						"Wall type": "NodeGrid"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [51, 18],
 						"Top Right Position": [-2, 3],

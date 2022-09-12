@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class Counter : OnFloorObject
+    public class HalfTop : OnFloorObject
     {
-        [SerializeField] BaseCounter LinkedBaseCounter;
+        [SerializeField] BaseHalfTop LinkedBaseCounter;
 
         //BuildParameters
         MailboxLineVector2Int BottomLeftPositionParam;

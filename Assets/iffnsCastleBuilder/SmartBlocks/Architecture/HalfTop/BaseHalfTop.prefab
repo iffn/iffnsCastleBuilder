@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5887357136632171588}
   - component: {fileID: 5887357136632171589}
   m_Layer: 0
-  m_Name: BaseCounter
+  m_Name: BaseHalfTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

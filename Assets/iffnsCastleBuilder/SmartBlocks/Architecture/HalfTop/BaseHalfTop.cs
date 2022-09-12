@@ -7,7 +7,7 @@ using static iffnsStuff.iffnsBaseSystemForUnity.BaseGameObject;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
-    public class BaseCounter : AssistObjectManager
+    public class BaseHalfTop : AssistObjectManager
     {
         BaseGameObject mainObject;
 
@@ -16,7 +16,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         public float Indent = 0.05f;
         public float topHeight = 0.1f;
         public float totalHeight = 0.8f;
-        Counter.ShapeTypes shapeType;
+        HalfTop.ShapeTypes shapeType;
 
         public MailboxLineMaterial baseMaterial;
         public MailboxLineMaterial topMaterial;
@@ -26,7 +26,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             this.mainObject = mainObject;
         }
 
-        public List<TriangleMeshInfo> SetBuildParameters(BaseGameObject mainObject, Transform UVBaseObject, float width, float length, float totalHeight, Counter.ShapeTypes shapeType)
+        public List<TriangleMeshInfo> SetBuildParameters(BaseGameObject mainObject, Transform UVBaseObject, float width, float length, float totalHeight, HalfTop.ShapeTypes shapeType)
         {
             this.width = width;
             this.length = length;
@@ -40,11 +40,11 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             switch (shapeType)
             {
-                case Counter.ShapeTypes.BaseBox:
+                case HalfTop.ShapeTypes.BaseBox:
                     return GetBaseBox();
-                case Counter.ShapeTypes.FlatTop:
+                case HalfTop.ShapeTypes.FlatTop:
                     return GetFlatTop();
-                case Counter.ShapeTypes.RoofTop:
+                case HalfTop.ShapeTypes.RoofTop:
                     return GetRoofTop();
                 default:
                     Debug.LogWarning($"Error: Counter shape {shapeType} not defined during mesh creation");
@@ -137,7 +137,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             List<TriangleMeshInfo> returnValue = new();
 
-            float heightRatio = 0.66f;
+            float heightRatio = 0.75f;
 
             //Create base rectangle and shape
             VerticesHolder baseRectangle = new VerticesHolder(new List<Vector3>()
@@ -167,7 +167,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             //Roof faces
-            VerticesHolder roofOutline = new VerticesHolder();
+            VerticesHolder roofOutline = new();
             roofOutline.Add(baseRectangle.VerticesDirectly[3]);
             roofOutline.Add(topPoint);
             roofOutline.Add(baseRectangle.VerticesDirectly[0]);

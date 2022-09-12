@@ -320,7 +320,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     currentIdentiefierString = nameof(Column);
                     break;
                 case SmartBlockToolType.Counter:
-                    currentIdentiefierString = nameof(Counter);
+                    currentIdentiefierString = nameof(HalfTop);
                     break;
                 case SmartBlockToolType.Ladder:
                     currentIdentiefierString = nameof(Ladder);

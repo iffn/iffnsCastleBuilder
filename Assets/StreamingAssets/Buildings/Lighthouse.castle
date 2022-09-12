@@ -14893,7 +14893,7 @@
 						"Edge type": "Ring"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [0, 27],
 						"Top Right Position": [8, -1],
@@ -20383,7 +20383,7 @@
 						"Post material": "PolyHaven-plywood"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [0, 26],
 						"Top Right Position": [9, 3],
@@ -20393,7 +20393,7 @@
 						"Shape type": "FlatTop"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [0, 23],
 						"Top Right Position": [9, -2],

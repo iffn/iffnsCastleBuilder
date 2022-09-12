@@ -20181,7 +20181,7 @@
 						"Post material": "PolyHaven-plywood-illuminated"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [0, 28],
 						"Top Right Position": [9, -2],
@@ -20189,7 +20189,7 @@
 						"Base material": "PolyHaven-plywood-illuminated"
 					},
 					{
-						"Type": "Counter",
+						"Type": "HalfTop",
 						"Name": "",
 						"Bottom Left Position": [0, 23],
 						"Top Right Position": [9, -2],
