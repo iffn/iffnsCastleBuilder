@@ -742,47 +742,27 @@
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood",
-						"Left wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Left wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Left wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Left wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Left wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Left wall material": "PolyHaven-plywood",
-						"Front wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -850,41 +830,27 @@
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -952,41 +918,27 @@
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -1054,41 +1006,27 @@
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -1156,41 +1094,27 @@
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Front wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -1258,47 +1182,27 @@
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Back wall material": "PolyHaven-plywood",
-						"Right wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Right wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Right wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Right wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Right wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
-						"Block type": "Floor",
-						"Ceiling material": "PolyHaven-old_planks_02",
-						"Top cap material": "PolyHaven-wood_planks_dirt",
-						"Right wall material": "PolyHaven-plywood",
-						"Front wall material": "PolyHaven-plywood"
+						"Block type": "Empty"
 					},
 					{
 						"Type": "VirtualBlock",
@@ -1620,49 +1524,64 @@
 				"On floor objects":
 				[
 					{
-						"Type": "CircularRoof",
+						"Type": "RailingLinear",
 						"Name": "",
-						"Center position": [3, 13],
-						"Outer Radii": [2, 2],
-						"Edges between": 8,
-						"Thickness [m]": 0.1,
-						"Height [m]": 3,
-						"Height overshoot [m]": 0.1,
-						"Raise to floor": true,
-						"Outside material": "PolyHaven-roof_09",
-						"Inside material": "PolyHaven-old_planks_02",
-						"Wrapper material": "PolyHaven-beige_wall_001",
-						"Roof angle": "180°"
+						"Start coordinate": [8, 3],
+						"End coordinate": [8, 9],
+						"Cylinder distance target [m]": 0.3333333,
+						"Top material": "PolyHaven-plywood",
+						"Bottom material": "PolyHaven-plywood",
+						"Post material": "PolyHaven-plywood"
 					},
 					{
-						"Type": "HalfTop",
+						"Type": "RailingLinear",
 						"Name": "",
-						"Bottom Left Position": [8, 9],
-						"Top Right Position": [1, -2],
-						"Height [m]": 1,
-						"Top material": "PolyHaven-beige_wall_001",
-						"Base material": "PolyHaven-medieval_blocks_03",
-						"Shape type": "RoofTop"
+						"Start coordinate": [8, 9],
+						"End coordinate": [12, 9],
+						"Cylinder distance target [m]": 0.3333333,
+						"Top material": "PolyHaven-plywood",
+						"Bottom material": "PolyHaven-plywood",
+						"Post material": "PolyHaven-plywood"
 					},
 					{
-						"Type": "HalfTop",
+						"Type": "RailingArc",
 						"Name": "",
-						"Bottom Left Position": [9, 9],
-						"Top Right Position": [2, -1],
-						"Height [m]": 1.5,
-						"Top material": "PolyHaven-beige_wall_001",
-						"Base material": "PolyHaven-medieval_blocks_03",
-						"Shape type": "RoofTop"
+						"Center coordinate": [12, 6],
+						"Radii coordinate": [15, 9],
+						"Cylinder distance target [m]": 2,
+						"Top material": "PolyHaven-plywood",
+						"Bottom material": "PolyHaven-plywood",
+						"Post material": "PolyHaven-plywood"
 					},
 					{
-						"Type": "HalfTop",
+						"Type": "RailingArc",
 						"Name": "",
-						"Bottom Left Position": [11, 8],
-						"Top Right Position": [3, 1],
-						"Height [m]": 1.5,
-						"Top material": "PolyHaven-beige_wall_001",
-						"Base material": "PolyHaven-medieval_blocks_03",
-						"Shape type": "RoofTop"
+						"Center coordinate": [12, 6],
+						"Radii coordinate": [15, 3],
+						"Cylinder distance target [m]": 2,
+						"Top material": "PolyHaven-plywood",
+						"Bottom material": "PolyHaven-plywood",
+						"Post material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "RailingLinear",
+						"Name": "",
+						"Start coordinate": [12, 3],
+						"End coordinate": [8, 3],
+						"Cylinder distance target [m]": 0.3333333,
+						"Top material": "PolyHaven-plywood",
+						"Bottom material": "PolyHaven-plywood",
+						"Post material": "PolyHaven-plywood"
+					},
+					{
+						"Type": "RailingArc",
+						"Name": "",
+						"Center coordinate": [9, 15],
+						"Radii coordinate": [12, 18],
+						"Cylinder distance target [m]": 2,
+						"Top material": "PolyHaven-plywood",
+						"Bottom material": "PolyHaven-plywood",
+						"Post material": "PolyHaven-plywood"
 					}
 				]
 			},

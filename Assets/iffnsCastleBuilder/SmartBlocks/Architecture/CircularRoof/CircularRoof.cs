@@ -16,7 +16,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         MailboxLineDistinctNamed AngleParam;
         MailboxLineRanged ThicknessParam;
         MailboxLineRanged HeightParam;
-        MailboxLineRanged HeightOvershootParam;
+        //MailboxLineRanged HeightOvershootParam;
         MailboxLineBool RaiseToFloorParam;
 
         MailboxLineMaterial OutsideMaterial;
@@ -98,6 +98,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        /*
         public float HeightOvershoot
         {
             get
@@ -110,6 +111,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 ApplyBuildParameters();
             }
         }
+        */
 
         Vector2Int OuterRadiiAbsolute
         {
@@ -203,7 +205,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             EdgesBetweenParam = new MailboxLineDistinctUnnamed(name: "Edges between", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 16, Min: 0, DefaultValue: 8);
             ThicknessParam = new MailboxLineRanged(name: "Thickness [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1f / 3, Min: 0.001f, DefaultValue: 0.1f);
             HeightParam = new MailboxLineRanged(name: "Height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 10f, Min: 1f, DefaultValue: 2f);
-            HeightOvershootParam = new MailboxLineRanged(name: "Height overshoot [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1, Min: 0, DefaultValue: 0.1f);
+            //HeightOvershootParam = new MailboxLineRanged(name: "Height overshoot [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 1, Min: 0, DefaultValue: 0.1f);
             RaiseToFloorParam = new MailboxLineBool(name: "Raise to floor", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: true);
 
             OutsideMaterial = new MailboxLineMaterial(name: "Outside material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultRoof);
@@ -225,7 +227,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             SetupEditButtons();
         }
 
-        public void CompleteSetupWithBuildParameters(IBaseObject linkedFloor, Vector2Int centerPosition, Vector2Int outerRadii, int edgesBetween, float thickness, float height, float heightOvershoot)
+        public void CompleteSetupWithBuildParameters(IBaseObject linkedFloor, Vector2Int centerPosition, Vector2Int outerRadii, int edgesBetween, float thickness, float height)
+        //public void CompleteSetupWithBuildParameters(IBaseObject linkedFloor, Vector2Int centerPosition, Vector2Int outerRadii, int edgesBetween, float thickness, float height, float heightOvershoot)
         {
             Setup(linkedFloor);
 
@@ -234,7 +237,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             EdgesBetweenParam.Val = edgesBetween;
             ThicknessParam.Val = thickness;
             HeightParam.Val = height;
-            HeightOvershootParam.Val = heightOvershoot;
+            //HeightOvershootParam.Val = heightOvershoot;
         }
 
         public override void ResetObject()
@@ -318,11 +321,13 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             Vector2 outerSize = ModificationNodeOrganizer.ObjectOrientationSize;
 
-            float ratio = Height / (outerSize.x + outerSize.y) / 2;
+            float ratio = Height / (outerSize.x + outerSize.y) * 2;
 
-            Vector2 OuterRadii = new(outerSize.x + HeightOvershoot / ratio, outerSize.y + HeightOvershoot / ratio);
+            Vector2 OuterRadii = new(outerSize.x, outerSize.y);
+            //Vector2 OuterRadii = new(outerSize.x + HeightOvershoot / ratio, outerSize.y + HeightOvershoot / ratio);
 
-            Vector2 InnerRadii = new(outerSize.x + HeightOvershoot / ratio - Thickness, outerSize.y + HeightOvershoot / ratio - Thickness);
+            Vector2 InnerRadii = new(outerSize.x - Thickness, outerSize.y - Thickness);
+            //Vector2 InnerRadii = new(outerSize.x + HeightOvershoot / ratio - Thickness, outerSize.y + HeightOvershoot / ratio - Thickness);
 
             VerticesHolder outerLine = new();
 
@@ -352,7 +357,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             outerLine.Rotate(Quaternion.LookRotation(Vector3.up, Vector3.right));
-            outerLine.Move(Vector3.down * HeightOvershoot);
+            //outerLine.Move(Vector3.down * HeightOvershoot);
             
             VerticesHolder innerLine = outerLine.Clone;
 
@@ -412,7 +417,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 VerticesHolder nextLine = outerLineCone.Clone;
                 nextLine.Scale((1 - heightRatio * i + MathHelper.SmallFloat * 5) * Vector3.one);
-                nextLine.Move(heightRatio * i * Height * Vector3.up);
+                nextLine.Move(heightRatio * i * (Height - MathHelper.SmallFloat * ratio) * Vector3.up);
                 Circles.Add(nextLine);
 
                 float heigh = uvYOffset * i;
@@ -423,7 +428,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
             }
 
-            RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(sections: Circles, sectionsAreClosed: false, shapeIsClosed: false, planar: false);
+            //RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(sections: Circles, sectionsAreClosed: false, shapeIsClosed: false, planar: false);
+            RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesSmooth(sections: Circles, isClosed: true, planar: false);
 
             RoofOutside.UVs = UVs;
 
@@ -455,8 +461,10 @@ namespace iffnsStuff.iffnsCastleBuilder
                 RightEdge = MeshGenerator.MeshesFromPoints.MeshFrom4Points(
                     Vector3.up * Height,
                     Vector3.up * (Height - Thickness * ratio),
-                    Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.y + HeightOvershoot / ratio - Thickness),
-                    Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.y + HeightOvershoot / ratio)
+                    Vector3.forward * (outerSize.y - Thickness),
+                    //Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.y + HeightOvershoot / ratio - Thickness),
+                    Vector3.forward * outerSize.y
+                    //Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.y + HeightOvershoot / ratio)
                     );
 
                 switch (Angle)
@@ -465,8 +473,10 @@ namespace iffnsStuff.iffnsCastleBuilder
                         LeftEdge = MeshGenerator.MeshesFromPoints.MeshFrom4Points(
                             Vector3.up * Height,
                             Vector3.up * (Height - Thickness * ratio),
-                            Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio - Thickness),
-                            Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio)
+                            Vector3.forward * (outerSize.x - Thickness),
+                            //Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio - Thickness),
+                            Vector3.forward * outerSize.x
+                            //Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio)
                             );
                         LeftEdge.FlipTriangles();
                         LeftEdge.Rotate(Quaternion.Euler(Vector3.up * 90));
@@ -479,8 +489,10 @@ namespace iffnsStuff.iffnsCastleBuilder
                         LeftEdge = MeshGenerator.MeshesFromPoints.MeshFrom4Points(
                             Vector3.up * Height,
                             Vector3.up * (Height - Thickness * ratio),
-                            Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio - Thickness),
-                            Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio)
+                            Vector3.forward * (outerSize.x - Thickness),
+                            //Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio - Thickness),
+                            Vector3.forward * outerSize.x
+                            //Vector3.down * HeightOvershoot + Vector3.forward * (outerSize.x + HeightOvershoot / ratio)
                             );
                         LeftEdge.FlipTriangles();
                         LeftEdge.Rotate(Quaternion.Euler(Vector3.up * 270));
@@ -512,12 +524,13 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             newArc.CompleteSetupWithBuildParameters(
                 linkedFloor: LinkedFloor,
-                centerPosition: new Vector2Int(CenterPosition.x - System.Math.Sign(Radii.x), CenterPosition.y),
+                centerPosition: new Vector2Int(CenterPosition.x, CenterPosition.y),
                 outerRadii: new Vector2Int(-Radii.x, Radii.y),
                 edgesBetween: EdgesBetween,
                 thickness: Thickness,
-                height: Height,
-                heightOvershoot: HeightOvershoot);
+                height: Height
+                //heightOvershoot: HeightOvershoot
+                );
 
             newArc.ApplyBuildParameters();
         }
@@ -528,12 +541,13 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             newArc.CompleteSetupWithBuildParameters(
                 linkedFloor: LinkedFloor,
-                centerPosition: new Vector2Int(CenterPosition.x, CenterPosition.y - System.Math.Sign(Radii.y)),
+                centerPosition: new Vector2Int(CenterPosition.x, CenterPosition.y),
                 outerRadii: new Vector2Int(Radii.x, -Radii.y),
                 edgesBetween: EdgesBetween,
                 thickness: Thickness,
-                height: Height,
-                heightOvershoot: HeightOvershoot);
+                height: Height
+                //heightOvershoot: HeightOvershoot
+                );
 
             newArc.ApplyBuildParameters();
         }
@@ -544,12 +558,13 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             newArc.CompleteSetupWithBuildParameters(
                 linkedFloor: LinkedFloor,
-                centerPosition: new Vector2Int(CenterPosition.x - System.Math.Sign(Radii.x), CenterPosition.y - System.Math.Sign(Radii.y)),
+                centerPosition: new Vector2Int(CenterPosition.x, CenterPosition.y),
                 outerRadii: new Vector2Int(-Radii.x, -Radii.y),
                 edgesBetween: EdgesBetween,
                 thickness: Thickness,
-                height: Height,
-                heightOvershoot: HeightOvershoot);
+                height: Height
+                //heightOvershoot: HeightOvershoot
+                );
 
             newArc.ApplyBuildParameters();
         }

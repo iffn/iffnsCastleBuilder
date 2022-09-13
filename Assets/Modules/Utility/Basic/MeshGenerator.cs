@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static System.Collections.Specialized.BitVector32;
 
 
 public static class MeshGenerator
@@ -316,8 +317,6 @@ public static class MeshGenerator
             return returnValue;
         }
 
-
-
         public static TriangleMeshInfo KnitLinesSmooth(VerticesHolder firstLine, VerticesHolder secondLine, ShapeClosingType closingType, bool planar)
         {
             // IsClosed = First and last point should be closed -> True if closed shape
@@ -412,85 +411,6 @@ public static class MeshGenerator
                 returnValue.UVs[i] += Vector2.right * secondLineMove;
             }
 
-            /*
-            if (smoothTransition)
-            {
-                if(closingType == ShapeClosingType.closedWithSharpEdge)
-                {
-                    returnValue.VerticesHolder.Add(firstLine.VerticesDirectly);
-                    returnValue.VerticesHolder.Add(firstLine.VerticesDirectly[0]);
-
-                    returnValue.VerticesHolder.Add(secondLine.VerticesDirectly);
-                    returnValue.VerticesHolder.Add(secondLine.VerticesDirectly[0]);
-
-                    for (int i = 0; i < firstLine.Count; i++)
-                    {
-                        returnValue.Triangles.Add(new TriangleHolder(baseOffset: i, t1: 0, t2: 1, t3: firstLine.Count + 1));
-                        returnValue.Triangles.Add(new TriangleHolder(baseOffset: i, t1: 1, t2: firstLine.Count + 2, t3: firstLine.Count + 1));
-                    }
-                }
-                else
-                {
-                    returnValue.VerticesHolder.Add(firstLine.VerticesDirectly);
-                    returnValue.VerticesHolder.Add(secondLine.VerticesDirectly);
-
-                    for (int i = 0; i < firstLine.Count - 1; i++)
-                    {
-                        returnValue.Triangles.Add(new TriangleHolder(baseOffset: i, t1: 0, t2: 1, t3: firstLine.Count));
-                        returnValue.Triangles.Add(new TriangleHolder(baseOffset: i, t1: 1, t2: firstLine.Count + 1, t3: firstLine.Count));
-                    }
-
-                    if (closingType != ShapeClosingType.open)
-                    {
-                        returnValue.Triangles.Add(new TriangleHolder(firstLine.Count - 1, 0, firstLine.Count * 2 - 1));
-                        returnValue.Triangles.Add(new TriangleHolder(0, firstLine.Count, firstLine.Count * 2 - 1));
-                    }
-                }
-
-                //Generate UVs
-                int firstLineCount = returnValue.VerticesHolder.VerticesDirectly.Count / 2;
-
-                //First UV line
-                float firstOffset = 0;
-                returnValue.UVs.Add(Vector2.zero);
-
-                for (int i = 1; i < firstLineCount; i++)
-                {
-                    firstOffset += (returnValue.VerticesHolder.VerticesDirectly[i] - firstLine.VerticesDirectly[i - 1]).magnitude;
-                    returnValue.UVs.Add(new Vector2(firstOffset, 0));
-                }
-
-                //Second UV line
-                float secondOffset = 0;
-                float verticalOffset = (secondLine.VerticesDirectly[0] - firstLine.VerticesDirectly[0]).magnitude;
-
-                returnValue.UVs.Add(new Vector2(0, verticalOffset));
-
-                for (int i = firstLineCount + 1; i < returnValue.VerticesHolder.VerticesDirectly.Count; i++)
-                {
-                    secondOffset += (returnValue.VerticesHolder.VerticesDirectly[i] - returnValue.VerticesHolder.VerticesDirectly[i - 1]).magnitude;
-                    returnValue.UVs.Add(new Vector2(secondOffset, verticalOffset));
-                }
-
-                //Move second UV line
-                float secondLineMove = (firstOffset - secondOffset) / 2;
-
-                for (int i = firstLineCount; i < returnValue.VerticesHolder.VerticesDirectly.Count; i++)
-                {
-                    returnValue.UVs[i] += Vector2.right * secondLineMove;
-                }
-            }
-            else
-            {
-                List<TriangleMeshInfo> elements = KnitLinesWithSharpEdges(firstLine: firstLine, secondLine: secondLine, closed: closingType != ShapeClosingType.open);
-
-                foreach(TriangleMeshInfo element in elements)
-                {
-                    returnValue.Add(element);
-                }
-            }
-            */
-
             return returnValue;
         }
 
@@ -580,6 +500,60 @@ public static class MeshGenerator
             for(int i = 0; i<line.Count; i++)
             {
                 returnValue.UVs.Add(new Vector2(Mathf.Sin(angle * i), Mathf.Cos(angle * i)));
+            }
+
+            return returnValue;
+        }
+
+        public static TriangleMeshInfo KnitLinesSmooth(List<VerticesHolder> sections, bool isClosed, bool planar)
+        {
+            TriangleMeshInfo returnValue = new(planar: planar);
+
+            if (sections == null || sections.Count < 2)
+            {
+                Debug.LogWarning("Error with MeshGenerator: Not enough information to build mesh");
+                return returnValue;
+            }
+
+            returnValue.VerticesHolder.Add(sections[0]);
+
+            int firstLineStartVertex = 0;
+            int secondLineStartVertex = sections[0].Count;
+
+            for (int i = 1; i < sections.Count; i++)
+            {
+                VerticesHolder firstLine = sections[i - 1];
+                VerticesHolder secondLine = sections[i];
+
+                returnValue.VerticesHolder.Add(secondLine);
+
+                int maxVertecies;
+                if (firstLine.Count < secondLine.Count)
+                {
+                    maxVertecies = firstLine.Count;
+                }
+                else
+                {
+                    maxVertecies = secondLine.Count;
+                }
+
+                for (int j = 0; j < maxVertecies - 1; j++)
+                {
+                    returnValue.Triangles.Add(new TriangleHolder(
+                        secondLineStartVertex + j,
+                        firstLineStartVertex + j,
+                        secondLineStartVertex + 1 + j
+                        ));
+
+                    returnValue.Triangles.Add(new TriangleHolder(
+                        firstLineStartVertex + j,
+                        firstLineStartVertex + 1 + j,
+                        secondLineStartVertex + 1 + j
+                        ));
+                }
+
+                firstLineStartVertex = secondLineStartVertex;
+                secondLineStartVertex += secondLine.Count;
             }
 
             return returnValue;
