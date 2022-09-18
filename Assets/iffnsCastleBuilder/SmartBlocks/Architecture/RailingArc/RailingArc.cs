@@ -234,6 +234,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                 currentInfo = currentTemplate.Clone;
                 currentInfo.Move(new Vector3(size.x, railingHeight * 0.5f, 0));
 
+                postCaps.Add(currentInfo);
+
                 currentInfo = currentTemplate.Clone;
                 currentInfo.Move(new Vector3(0, railingHeight * 0.5f, size.y));
 
