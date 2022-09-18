@@ -331,25 +331,21 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             VerticesHolder outerLine = new();
 
-            bool isClosed = true;
+            bool isClosed = Angle == Angles.Deg360;
 
             switch (Angle)
             {
                 case Angles.Deg90:
                     outerLine = MeshGenerator.Lines.ArcAroundZ(radius: 1, angleDeg: 90, numberOfEdges: EdgesBetween + 2);
-                    isClosed = false;
                     break;
                 case Angles.Deg180:
                     outerLine = MeshGenerator.Lines.ArcAroundZ(radius: 1, angleDeg: 180, numberOfEdges: EdgesBetween * 2 + 3);
-                    isClosed = false;
                     break;
                 case Angles.Deg270:
                     outerLine = MeshGenerator.Lines.ArcAroundZ(radius: 1, angleDeg: 270, numberOfEdges: EdgesBetween * 3 + 4);
-                    isClosed = false;
                     break;
                 case Angles.Deg360:
                     outerLine = MeshGenerator.Lines.FullCircle(radius: 1, numberOfEdges: EdgesBetween * 4 + 4);
-                    isClosed = true;
                     break;
                 default:
                     Debug.Log("Angle type not defined");
@@ -365,11 +361,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             innerLine.Scale(new Vector3(InnerRadii.x, 1, InnerRadii.y));
 
             VerticesHolder outerLineCone = outerLine.Clone;
-
-            if (isClosed)
-            {
-                outerLineCone.Add(outerLine.VerticesDirectly[0]);
-            }
 
             //Outside with correct UV
             float outerCircumence = 0;
@@ -429,7 +420,9 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
 
             //RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(sections: Circles, sectionsAreClosed: false, shapeIsClosed: false, planar: false);
-            RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesSmooth(sections: Circles, isClosed: true, planar: false);
+            //RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesSmooth(sections: Circles, isClosed: true, planar: false);
+
+            RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesSmooth(sections: Circles, sectionsAreClosed: isClosed, shapeIsClosed: false, planar: false);
 
             RoofOutside.UVs = UVs;
 

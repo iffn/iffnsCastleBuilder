@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static System.Collections.Specialized.BitVector32;
 
@@ -238,7 +239,7 @@ public static class MeshGenerator
 
         public static TriangleMeshInfo PointsClockwiseAroundFirstPoint(List<Vector3> points, bool planar)
         {
-            TriangleMeshInfo returnValue = new(planar: true);
+            TriangleMeshInfo returnValue = new(planar: planar);
 
             if (points == null) return returnValue;
             if (points.Count < 3) return returnValue;
@@ -323,7 +324,7 @@ public static class MeshGenerator
             // IsSealed = Smooth transition between first first and last point
             // SmoothTransition = 
 
-            TriangleMeshInfo returnValue = new(planar: false);
+            TriangleMeshInfo returnValue = new(planar: planar);
 
             if (firstLine == null || secondLine == null)
             {
@@ -431,6 +432,11 @@ public static class MeshGenerator
                 returnValue.Add(MeshesFromPoints.MeshFrom3Points(point, lineVertices[i], lineVertices[i-1]));
             }
 
+            if (isClosed)
+            {
+                returnValue.Add(MeshesFromPoints.MeshFrom3Points(point, lineVertices[0], lineVertices[line.Count - 1]));
+            }
+
             return returnValue;
         }
 
@@ -505,58 +511,87 @@ public static class MeshGenerator
             return returnValue;
         }
 
-        public static TriangleMeshInfo KnitLinesSmooth(List<VerticesHolder> sections, bool isClosed, bool planar)
+        public static TriangleMeshInfo KnitLinesSmooth(List<VerticesHolder> sections, bool sectionsAreClosed, bool shapeIsClosed, bool planar)
         {
             TriangleMeshInfo returnValue = new(planar: planar);
 
+            //Check validity
             if (sections == null || sections.Count < 2)
             {
                 Debug.LogWarning("Error with MeshGenerator: Not enough information to build mesh");
                 return returnValue;
             }
 
-            returnValue.VerticesHolder.Add(sections[0]);
+            int pointCount = sections[0].Count;
 
-            int firstLineStartVertex = 0;
-            int secondLineStartVertex = sections[0].Count;
+            foreach (VerticesHolder holder in sections)
+            {
+                if (holder.Count != pointCount)
+                {
+                    Debug.LogWarning($"Mesh generation error: KnitLinesSmooth was attempted with lines that don't have the same length");
+                    return returnValue;
+                }
+            }
+
+            //Add each vertex
+            foreach (VerticesHolder holder in sections)
+            {
+                returnValue.VerticesHolder.Add(holder);
+            }
+
+            int firstLineStartIndex = 0;
+            int secondLineStartIndex = pointCount;
 
             for (int i = 1; i < sections.Count; i++)
             {
-                VerticesHolder firstLine = sections[i - 1];
-                VerticesHolder secondLine = sections[i];
+                merge2Lines(firstLineStartIndex: firstLineStartIndex, secondLineStartIndex: secondLineStartIndex);
 
-                returnValue.VerticesHolder.Add(secondLine);
+                firstLineStartIndex = secondLineStartIndex;
+                secondLineStartIndex += pointCount;
+            }
 
-                int maxVertecies;
-                if (firstLine.Count < secondLine.Count)
-                {
-                    maxVertecies = firstLine.Count;
-                }
-                else
-                {
-                    maxVertecies = secondLine.Count;
-                }
+            firstLineStartIndex = secondLineStartIndex;
+            secondLineStartIndex = 0;
 
-                for (int j = 0; j < maxVertecies - 1; j++)
-                {
-                    returnValue.Triangles.Add(new TriangleHolder(
-                        secondLineStartVertex + j,
-                        firstLineStartVertex + j,
-                        secondLineStartVertex + 1 + j
-                        ));
-
-                    returnValue.Triangles.Add(new TriangleHolder(
-                        firstLineStartVertex + j,
-                        firstLineStartVertex + 1 + j,
-                        secondLineStartVertex + 1 + j
-                        ));
-                }
-
-                firstLineStartVertex = secondLineStartVertex;
-                secondLineStartVertex += secondLine.Count;
+            if (shapeIsClosed)
+            {
+                merge2Lines(firstLineStartIndex: firstLineStartIndex, secondLineStartIndex: secondLineStartIndex);
             }
 
             return returnValue;
+
+            void merge2Lines(int firstLineStartIndex, int secondLineStartIndex)
+            {
+                for (int i = 0; i < pointCount - 1; i++)
+                {
+                    returnValue.Triangles.Add(new TriangleHolder(
+                        secondLineStartIndex + i,
+                        firstLineStartIndex + i,
+                        secondLineStartIndex + 1 + i
+                        ));
+
+                    returnValue.Triangles.Add(new TriangleHolder(
+                        firstLineStartIndex + i,
+                        firstLineStartIndex + 1 + i,
+                        secondLineStartIndex + 1 + i
+                        ));
+                }
+
+                if (sectionsAreClosed)
+                {
+                    returnValue.Triangles.Add(new TriangleHolder(
+                        secondLineStartIndex + pointCount - 1,
+                        firstLineStartIndex + pointCount - 1,
+                        secondLineStartIndex + 0
+                        ));
+
+                    returnValue.Triangles.Add(new TriangleHolder(
+                        firstLineStartIndex + pointCount - 1,
+                        firstLineStartIndex + 0,
+                        secondLineStartIndex + 0
+                        ));
+                }
+            }
         }
 
         public static TriangleMeshInfo KnitLinesWithProximityPreference(List<VerticesHolder> sections, bool sectionsAreClosed, bool shapeIsClosed, bool planar) //ToDo: Improve, since at the moment, the proximity preference is ignored at the ends
@@ -860,7 +895,7 @@ public static class MeshGenerator
 
         public static List<TriangleMeshInfo> ExtrudeLinearWithSharpCorners(VerticesHolder firstLine, Vector3 offset, bool closed)
         {
-            List<TriangleMeshInfo> returnValue = new List<TriangleMeshInfo>();
+            List<TriangleMeshInfo> returnValue = new();
 
             List<Vector3> baseLine = firstLine.VerticesDirectly;
 
