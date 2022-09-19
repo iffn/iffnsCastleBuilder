@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/iffnsCastleBuilder/Worlds/Scenes/CastleBuilder.unity
+    guid: 934d873f669be944889c6ce4c586277e
   m_configObjects: {}
