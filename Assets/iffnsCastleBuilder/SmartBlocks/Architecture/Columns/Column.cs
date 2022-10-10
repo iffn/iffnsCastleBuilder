@@ -422,16 +422,19 @@ namespace iffnsStuff.iffnsCastleBuilder
             List<TriangleMeshInfo> ColumnMesh = new();
             List<TriangleMeshInfo> BottomEndingMesh = new();
 
+            float averageRadius = (radii.x + radii.y) * 0.5f;
+
+
             switch (TopEndingType)
             {
                 case EndingTypes.None:
                     break;
                 case EndingTypes.Cylinder:
-                    TopEndingMesh.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: 1, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
-                    TopEndingMesh.AddRange(MeshGenerator.FilledShapes.CylinderCaps(radius: 1, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
+                    TopEndingMesh.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: averageRadius, length: topHeight, direction: Vector3.up, numberOfEdges: fullCircleVertices));
+                    TopEndingMesh.AddRange(MeshGenerator.FilledShapes.CylinderCaps(radius: averageRadius, length: topHeight, direction: Vector3.up, numberOfEdges: fullCircleVertices));
                     break;
                 case EndingTypes.Box:
-                    TopEndingMesh.AddRange(MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(2, 1, 2)));
+                    TopEndingMesh.AddRange(MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(2 * averageRadius, topHeight, 2 * averageRadius)));
                     break;
                 default:
                     break;
@@ -440,16 +443,16 @@ namespace iffnsStuff.iffnsCastleBuilder
             switch (ColumnType)
             {
                 case ColumnTypes.Cylinder:
-                    ColumnMesh.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: columnRadiusFactor, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
+                    ColumnMesh.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: columnRadiusFactor * averageRadius, length: middleHeight, direction: Vector3.up, numberOfEdges: fullCircleVertices));
 
                     if (TopEndingType == EndingTypes.None || BottomEndingType == EndingTypes.None)
                     {
-                        ColumnMesh.AddRange(MeshGenerator.FilledShapes.CylinderCaps(radius: columnRadiusFactor, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
+                        ColumnMesh.AddRange(MeshGenerator.FilledShapes.CylinderCaps(radius: columnRadiusFactor * averageRadius, length: middleHeight, direction: Vector3.up, numberOfEdges: fullCircleVertices));
                     }
 
                     break;
                 case ColumnTypes.Box:
-                    ColumnMesh.AddRange(MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(2 * columnRadiusFactor, 1, 2 * columnRadiusFactor)));
+                    ColumnMesh.AddRange(MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(2 * columnRadiusFactor * averageRadius, middleHeight, 2 * columnRadiusFactor * averageRadius)));
                     break;
                 default:
                     break;
@@ -460,19 +463,21 @@ namespace iffnsStuff.iffnsCastleBuilder
                 case EndingTypes.None:
                     break;
                 case EndingTypes.Cylinder:
-                    BottomEndingMesh.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: 1, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
-                    BottomEndingMesh.AddRange(MeshGenerator.FilledShapes.CylinderCaps(radius: 1, length: 1, direction: Vector3.up, numberOfEdges: fullCircleVertices));
+                    BottomEndingMesh.Add(MeshGenerator.FilledShapes.CylinderAroundCenterWithoutCap(radius: averageRadius, length: bottomHeight, direction: Vector3.up, numberOfEdges: fullCircleVertices));
+                    BottomEndingMesh.AddRange(MeshGenerator.FilledShapes.CylinderCaps(radius: averageRadius, length: bottomHeight, direction: Vector3.up, numberOfEdges: fullCircleVertices));
                     break;
                 case EndingTypes.Box:
-                    BottomEndingMesh.AddRange(MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(2, 1, 2)));
+                    BottomEndingMesh.AddRange(MeshGenerator.FilledShapes.BoxAroundCenter(size: new Vector3(2 * averageRadius, bottomHeight, 2 * averageRadius)));
                     break;
                 default:
                     break;
             }
 
+            float inverseAverageRadius = 1 / averageRadius;
+
             foreach (TriangleMeshInfo info in TopEndingMesh)
             {
-                info.Scale(new Vector3(radii.x, topHeight, radii.y));
+                info.Scale(new Vector3(radii.x * inverseAverageRadius, 1, radii.y * inverseAverageRadius));
                 info.Move((bottomHeight + middleHeight + topHeight * 0.5f) * Vector3.up);
                 info.Move(offset);
                 info.MaterialReference = ColumnMaterialParam;
@@ -481,7 +486,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             foreach (TriangleMeshInfo info in ColumnMesh)
             {
-                info.Scale(new Vector3(radii.x, middleHeight, radii.y));
+                info.Scale(new Vector3(radii.x * inverseAverageRadius, 1, radii.y * inverseAverageRadius));
                 info.Move((bottomHeight + middleHeight * 0.5f) * Vector3.up);
                 info.Move(offset);
                 info.MaterialReference = ColumnMaterialParam;
@@ -490,7 +495,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             foreach (TriangleMeshInfo info in BottomEndingMesh)
             {
-                info.Scale(new Vector3(radii.x, bottomHeight, radii.y));
+                info.Scale(new Vector3(radii.x * inverseAverageRadius, 1, radii.y * inverseAverageRadius));
                 info.Move((bottomHeight * 0.5f) * Vector3.up);
                 info.Move(offset);
                 info.MaterialReference = ColumnMaterialParam;

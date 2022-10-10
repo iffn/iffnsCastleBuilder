@@ -194,7 +194,7 @@ public static class MeshGenerator
         {
             VerticesHolder circle = Lines.FullCircle(radius: radius, numberOfEdges: numberOfEdges);
 
-            TriangleMeshInfo returnValue = MeshesFromLines.ExtrudeLinearWithSmoothCorners(firstLine: circle, offset: Vector3.forward * length, closeType: ShapeClosingType.closedWithSmoothEdge, planar: false);
+            TriangleMeshInfo returnValue = MeshesFromLines.ExtrudeLinearWithSmoothCorners(firstLine: circle, offset: Vector3.forward * length, closeType: ShapeClosingType.closedWithSharpEdge, planar: false);
 
             returnValue.Move(length * 0.5f * Vector3.back);
 
@@ -386,9 +386,24 @@ public static class MeshGenerator
             float firstOffset = 0;
             returnValue.UVs.Add(Vector2.zero);
 
-            for (int i = 1; i < firstLineCount; i++)
+            int uvSubtractor = 0;
+
+            if (closingType != ShapeClosingType.open)
             {
-                firstOffset += (returnValue.VerticesHolder.VerticesDirectly[i] - firstLine.VerticesDirectly[i - 1]).magnitude;
+                uvSubtractor = 1;
+            }
+
+            for (int i = 1; i < firstLineCount - uvSubtractor; i++)
+            {
+                float addition = (returnValue.VerticesHolder.VerticesDirectly[i] - firstLine.VerticesDirectly[i - 1]).magnitude;
+                firstOffset += addition;
+                returnValue.UVs.Add(new Vector2(firstOffset, 0));
+            }
+
+            if (closingType != ShapeClosingType.open)
+            {
+                float addition = (firstLine.VerticesDirectly[^1] - firstLine.VerticesDirectly[0]).magnitude;
+                firstOffset += addition;
                 returnValue.UVs.Add(new Vector2(firstOffset, 0));
             }
 
@@ -398,9 +413,17 @@ public static class MeshGenerator
 
             returnValue.UVs.Add(new Vector2(0, verticalOffset));
 
-            for (int i = firstLineCount + 1; i < returnValue.VerticesHolder.VerticesDirectly.Count; i++)
+            for (int i = firstLineCount + 1; i < returnValue.VerticesHolder.VerticesDirectly.Count - uvSubtractor; i++)
             {
-                secondOffset += (returnValue.VerticesHolder.VerticesDirectly[i] - returnValue.VerticesHolder.VerticesDirectly[i - 1]).magnitude;
+                float addition = (returnValue.VerticesHolder.VerticesDirectly[i] - returnValue.VerticesHolder.VerticesDirectly[i - 1]).magnitude;
+                secondOffset += addition;
+                returnValue.UVs.Add(new Vector2(secondOffset, verticalOffset));
+            }
+
+            if (closingType != ShapeClosingType.open)
+            {
+                float addition = (secondLine.VerticesDirectly[^1] - secondLine.VerticesDirectly[0]).magnitude;
+                secondOffset += addition;
                 returnValue.UVs.Add(new Vector2(secondOffset, verticalOffset));
             }
 
@@ -919,11 +942,6 @@ public static class MeshGenerator
             secondLine.Move(offset);
 
             TriangleMeshInfo returnValue = KnitLinesSmooth(firstLine: firstLine, secondLine: secondLine, closingType: closeType, planar: planar);
-
-            if(closeType == ShapeClosingType.closedWithSharpEdge)
-            {
-
-            }
 
             return returnValue;
         }
