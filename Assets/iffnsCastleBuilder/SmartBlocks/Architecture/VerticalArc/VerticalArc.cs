@@ -12,8 +12,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         //Build parameters
         MailboxLineVector2Int BottomLeftPositionParam;
         MailboxLineVector2Int TopRightPositionParam;
-        MailboxLineRanged FreeHeightSide;
-        MailboxLineRanged ArcHeight;
+        MailboxLineRanged FreeHeightSideParam;
+        MailboxLineRanged ArcHeightParam;
         MailboxLineMaterial MainMaterialParam;
         MailboxLineMaterial OtherSideMaterialParam;
 
@@ -27,29 +27,65 @@ namespace iffnsStuff.iffnsCastleBuilder
             }
         }
 
+        float FreeHeightSide
+        {
+            get
+            {
+                return FreeHeightSideParam.Val;
+            }
+        }
+
+        float ArcHeight
+        {
+            get
+            {
+                return ArcHeightParam.Val;
+            }
+        }
+
+        /*
         void LimitHeights()
         {
-            float remainingHeight = Height - FreeHeightSide.Val - ArcHeight.Val;
+            float remainingHeight = Height - FreeHeightSideParam.Val - ArcHeightParam.Val;
 
             if (remainingHeight < 0)
             {
-                ArcHeight.Val += remainingHeight;
+                ArcHeightParam.Val += remainingHeight;
 
-                remainingHeight = Height - FreeHeightSide.Val - ArcHeight.Val;
+                remainingHeight = Height - FreeHeightSideParam.Val - ArcHeightParam.Val;
 
                 if (remainingHeight < 0)
                 {
-                    FreeHeightSide.Val -= remainingHeight;
+                    FreeHeightSideParam.Val -= remainingHeight;
                 }
             }
         }
+        */
 
         //Derived parameters
         float Height
         {
             get
             {
-                return LinkedFloor.WallBetweenHeight;
+                float returnValue = LinkedFloor.WallBetweenHeight;
+                float minHeight = FreeHeightSide + ArcHeight;
+
+                int currentFloorNumber = LinkedFloor.FloorNumber;
+
+                float lastFloorHeight = 0;
+
+                while (currentFloorNumber + 1 <= LinkedFloor.LinkedBuildingController.PositiveFloors && returnValue < minHeight)
+                {
+                    currentFloorNumber += 1;
+
+                    FloorController floor = LinkedFloor.LinkedBuildingController.Floor(floorNumber: currentFloorNumber);
+
+                    returnValue += floor.CompleteFloorHeight;
+                }
+
+                returnValue -= lastFloorHeight;
+
+                return returnValue;
             }
         }
 
@@ -73,8 +109,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             BottomLeftPositionParam = new MailboxLineVector2Int(name: "Bottom left position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             TopRightPositionParam = new MailboxLineVector2Int(name: "Top right position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
-            FreeHeightSide = new MailboxLineRanged(name: "FreeHeihgtSide [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 5f, Min: 0f, DefaultValue: 2f);
-            ArcHeight = new MailboxLineRanged(name: "Arc height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 2f, Min: 0.3f, DefaultValue: 0.5f);
+            FreeHeightSideParam = new MailboxLineRanged(name: "FreeHeihgtSide [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 5f, Min: 0f, DefaultValue: 2f);
+            ArcHeightParam = new MailboxLineRanged(name: "Arc height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 2f, Min: 0.3f, DefaultValue: 0.5f);
             MainMaterialParam = new MailboxLineMaterial(name: "Main material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
             OtherSideMaterialParam = new MailboxLineMaterial(name: "Other side material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
         }
@@ -159,19 +195,17 @@ namespace iffnsStuff.iffnsCastleBuilder
                 width = size.x;
             }
 
-            LimitHeights();
-
             //Inner arc
             VerticesHolder arcLine = MeshGenerator.Lines.ArcAroundX(radius: length * 0.5f, angleDeg: 180, numberOfEdges: 24);
-            arcLine.Scale(new Vector3(1, ArcHeight.Val / (length * 0.5f), 1));
-            arcLine.Move(Vector3.up * FreeHeightSide.Val + Vector3.forward * length * 0.5f);
+            arcLine.Scale(new Vector3(1, ArcHeightParam.Val / (length * 0.5f), 1));
+            arcLine.Move(Vector3.up * FreeHeightSideParam.Val + Vector3.forward * length * 0.5f);
 
             InnerArc = MeshGenerator.MeshesFromLines.ExtrudeLinearWithSmoothCorners(firstLine: arcLine, offset: Vector3.right * width, closeType: MeshGenerator.ShapeClosingType.open, planar: false);
 
             //Front wall
             VerticesHolder rightArc = MeshGenerator.Lines.ArcAroundX(radius: length * 0.5f, angleDeg: 90, numberOfEdges: 12);
-            rightArc.Scale(new Vector3(1, ArcHeight.Val / (length * 0.5f), 1));
-            rightArc.Move(Vector3.up * FreeHeightSide.Val + Vector3.forward * length * 0.5f);
+            rightArc.Scale(new Vector3(1, ArcHeightParam.Val / (length * 0.5f), 1));
+            rightArc.Move(Vector3.up * FreeHeightSideParam.Val + Vector3.forward * length * 0.5f);
             Vector3 rightPoint = new Vector3(0, Height, length);
 
             FrontWall = MeshGenerator.MeshesFromLines.KnitLinesSmooth(point: rightPoint, line: rightArc, isClosed: false, planar: true);
@@ -180,8 +214,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             VerticesHolder leftArc = MeshGenerator.Lines.ArcAroundX(radius: length * 0.5f, angleDeg: 90, numberOfEdges: 12);
             leftArc.Rotate(Quaternion.Euler(-90, 0, 0));
-            leftArc.Scale(new Vector3(1, ArcHeight.Val / (length * 0.5f), 1));
-            leftArc.Move(new Vector3(0, FreeHeightSide.Val, length * 0.5f));
+            leftArc.Scale(new Vector3(1, ArcHeightParam.Val / (length * 0.5f), 1));
+            leftArc.Move(new Vector3(0, FreeHeightSideParam.Val, length * 0.5f));
             Vector3 leftPoint = new Vector3(0, Height, 0);
             leftArc.VerticesDirectly.RemoveAt(0);
 
@@ -202,9 +236,9 @@ namespace iffnsStuff.iffnsCastleBuilder
             TopWall.Move(Vector3.up * Height);
 
             //Left wall
-            LeftWall = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.up * (Height - FreeHeightSide.Val), secondLine: Vector3.right * width, uvOffset: Vector2.zero);
+            LeftWall = MeshGenerator.FilledShapes.RectangleAtCorner(baseLine: Vector3.up * (Height - FreeHeightSideParam.Val), secondLine: Vector3.right * width, uvOffset: Vector2.zero);
             LeftWall.FlipTriangles();
-            LeftWall.Move(Vector3.up * FreeHeightSide.Val);
+            LeftWall.Move(Vector3.up * FreeHeightSideParam.Val);
 
             //RightWall
             RightWall = LeftWall.Clone;
