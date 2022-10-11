@@ -97,6 +97,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                 returnValue.Add(FrameFront);
                 returnValue.Add(FrameBack);
                 returnValue.AddRange(FrameBorder);
+                returnValue.Add(GlassFront);
+                returnValue.Add(GlassBack);
 
                 foreach (TriangleMeshInfo info in returnValue)
                 {
