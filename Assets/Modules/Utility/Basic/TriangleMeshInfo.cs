@@ -474,6 +474,8 @@ public class TriangleMeshInfo
 
             UVs.Add(new Vector2(transformedPoint.x, transformedPoint.y));
         }
+
+        GameObject.Destroy(helperObject.gameObject);
     }
 
     public void GenerateUVMeshBasedOnCardinalDirectionsWithoutReference()
