@@ -451,43 +451,6 @@ public class TriangleMeshInfo
 
         UVs.Clear();
 
-        Transform helperObject = new GameObject().transform;
-
-        helperObject.transform.parent = refernceTransform;
-
-        //If looking directly down or up:
-        if (MathHelper.FloatIsZero(normal.x) && MathHelper.FloatIsZero(normal.z))
-        {
-            helperObject.transform.LookAt(worldPosition: -refernceTransform.up, worldUp: refernceTransform.forward);
-        }
-        else
-        {
-            //Project 3D
-            Vector3 worldPosition = meshTransform.TransformDirection(normal);
-
-            helperObject.transform.LookAt(worldPosition: meshTransform.TransformDirection(normal), worldUp: refernceTransform.up);
-        }
-
-        foreach (Vector3 vertex in AllVerticesDirectly)
-        {
-            Vector3 transformedPoint = helperObject.InverseTransformPoint(meshTransform.TransformPoint(vertex));
-
-            UVs.Add(new Vector2(transformedPoint.x, transformedPoint.y));
-        }
-
-        GameObject.Destroy(helperObject.gameObject);
-    }
-
-    public void GenerateUVMeshBasedOnCardinalDirectionsWithoutReference()
-    {
-        if (AllVerticesDirectly.Count < 3) return;
-
-        UpdateLinkedInfo();
-
-        TriangleHolder currentTriangle = Triangles[0];
-
-        Vector3 normal = currentTriangle.NormalVector;
-
         Direction direction;
 
         if (MathHelper.FloatIsZero(normal.y) && MathHelper.FloatIsZero(normal.z))
@@ -537,12 +500,53 @@ public class TriangleMeshInfo
                 }
                 break;
             case Direction.Tilted:
-                //ToDo: Not normal, ignore
+                GeneratePlanarUVMeshIfTilted(normal: normal, meshTransform: meshTransform, refernceTransform: refernceTransform);
                 break;
             default:
                 Debug.LogWarning("Error: UV direction not defined");
                 break;
         }
+
+    }
+
+    void GeneratePlanarUVMeshIfTilted(Vector3 normal, Transform meshTransform, Transform refernceTransform)
+    {
+        //ToDo: Rewrite code to do it without the Helper transform. Then check if faster than cardinal direction if statement
+
+        Transform helperObject = new GameObject().transform;
+
+        helperObject.transform.parent = refernceTransform;
+        //Debug.Log("1: " + watch.Elapsed.TotalSeconds);
+
+        //If looking directly down or up:
+        //Quaternion rotation;
+
+        if (MathHelper.FloatIsZero(normal.x) && MathHelper.FloatIsZero(normal.z))
+        {
+            helperObject.transform.LookAt(worldPosition: -refernceTransform.up, worldUp: refernceTransform.forward);
+
+            //rotation = Quaternion.LookRotation(forward: -refernceTransform.up, upwards: refernceTransform.forward);
+        }
+        else
+        {
+            //Project 3D
+            Vector3 worldPosition = meshTransform.TransformDirection(normal);
+
+            helperObject.transform.LookAt(worldPosition: meshTransform.TransformDirection(normal), worldUp: refernceTransform.up);
+
+            //rotation = Quaternion.LookRotation(forward: meshTransform.TransformDirection(normal), upwards: refernceTransform.up);
+        }
+        //Debug.Log("2: " + watch.Elapsed.TotalSeconds);
+
+        foreach (Vector3 vertex in AllVerticesDirectly)
+        {
+            Vector3 transformedPoint = helperObject.InverseTransformPoint(meshTransform.TransformPoint(vertex));
+
+            UVs.Add(new Vector2(transformedPoint.x, transformedPoint.y));
+        }
+        //Debug.Log("3: " + watch.Elapsed.TotalSeconds);
+
+        GameObject.Destroy(helperObject.gameObject);
     }
 
     public static TriangleMeshInfo CompbineMultipleIntoSingleInfo(List<TriangleMeshInfo> infos)
