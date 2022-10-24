@@ -90,7 +90,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 ChangeBlockBasedOnCurrentTool(block);
 
-                block.LinkedFloorController.ApplyBuildParameters();
+                block.LinkedFloorController.GenerateFloorMesh();
             }
         }
 
