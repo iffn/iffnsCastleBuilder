@@ -331,8 +331,6 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             VerticesHolder outerLine = new();
 
-            bool isClosed = Angle == Angles.Deg360;
-
             switch (Angle)
             {
                 case Angles.Deg90:
@@ -345,7 +343,8 @@ namespace iffnsStuff.iffnsCastleBuilder
                     outerLine = MeshGenerator.Lines.ArcAroundZ(radius: 1, angleDeg: 270, numberOfEdges: EdgesBetween * 3 + 4);
                     break;
                 case Angles.Deg360:
-                    outerLine = MeshGenerator.Lines.FullCircle(radius: 1, numberOfEdges: EdgesBetween * 4 + 4);
+                    outerLine = MeshGenerator.Lines.ArcAroundZ(radius: 1, angleDeg: 360, numberOfEdges: EdgesBetween * 4 + 4);
+                    //outerLine = MeshGenerator.Lines.FullCircle(radius: 1, numberOfEdges: EdgesBetween * 4 + 4);
                     break;
                 default:
                     Debug.Log("Angle type not defined");
@@ -422,7 +421,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             //RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesWithProximityPreference(sections: Circles, sectionsAreClosed: false, shapeIsClosed: false, planar: false);
             //RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesSmooth(sections: Circles, isClosed: true, planar: false);
 
-            RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesSmooth(sections: Circles, sectionsAreClosed: isClosed, shapeIsClosed: false, planar: false);
+            RoofOutside = MeshGenerator.MeshesFromLines.KnitLinesSmooth(sections: Circles, sectionsAreClosed: false, shapeIsClosed: false, planar: false);
 
             RoofOutside.UVs = UVs;
 
@@ -436,14 +435,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             RoofInside.Scale(innderScaleFactor);
 
             //Bottom edge
-            if (isClosed)
-            {
-                BottomEdge = MeshGenerator.MeshesFromLines.KnitLinesSmooth(firstLine: outerLine, secondLine: innerLine, closingType: MeshGenerator.ShapeClosingType.closedWithSmoothEdge, planar: true);
-            }
-            else
-            {
-                BottomEdge = MeshGenerator.MeshesFromLines.KnitLinesSmooth(firstLine: outerLine, secondLine: innerLine, closingType: MeshGenerator.ShapeClosingType.open, planar: true);
-            }
+            BottomEdge = MeshGenerator.MeshesFromLines.KnitLinesSmooth(firstLine: outerLine, secondLine: innerLine, closingType: MeshGenerator.ShapeClosingType.open, planar: true);
             
             BottomEdge.FlipTriangles();
 
