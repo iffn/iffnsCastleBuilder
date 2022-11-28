@@ -293,7 +293,23 @@ namespace iffnsStuff.iffnsCastleBuilder
                     for (int z = zMin; z <= zMax; z++)
                     {
                         VirtualBlock currentBlock = currentFloorController.BlockAtPosition(xPos: x, zPos: z);
-                        if (currentBlock.FloorMaterialParam != null) currentBlock.FloorMaterialParam.Val = currentMaterial;
+                        if (currentBlock.FloorMaterialParam != null)
+                        {
+                            switch (CurrentBuilderController.CurrentBuildingToolController.CurrentNavigationTools.ViewDirection)
+                            {
+                                case CastleController.FloorViewDirectionType.topDown:
+                                    currentBlock.FloorMaterialParam.Val = currentMaterial;
+                                    break;
+                                case CastleController.FloorViewDirectionType.bottomUp:
+                                    currentBlock.CeilingMaterialParam.Val = currentMaterial;
+                                    break;
+                                case CastleController.FloorViewDirectionType.complete:
+                                    currentBlock.FloorMaterialParam.Val = currentMaterial;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
                     }
                 }
 
