@@ -1192,6 +1192,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CastleController
       objectReference: {fileID: 0}
+    - target: {fileID: 9043763560315661888, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9215214831687505885, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

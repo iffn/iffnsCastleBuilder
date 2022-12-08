@@ -449,6 +449,8 @@ public class TriangleMeshInfo
 
         Vector3 normal = currentTriangle.NormalVector;
 
+        normal = refernceTransform.InverseTransformDirection(meshTransform.TransformDirection(normal));
+
         UVs.Clear();
 
         Direction direction;
@@ -477,8 +479,10 @@ public class TriangleMeshInfo
                 //meshObject.transform.name += " x0";
                 foreach (Vector3 baseVector in AllVerticesDirectly)
                 {
+                    Vector3 buildingVector = refernceTransform.InverseTransformPoint(meshTransform.TransformPoint(baseVector));
+
                     //UVs.Add(new Vector2(originVector.z + localOffset.z, originVector.y + localOffset.y));
-                    UVs.Add(new Vector2(baseVector.z, baseVector.y));
+                    UVs.Add(new Vector2(buildingVector.z, buildingVector.y));
                 }
                 break;
             case Direction.xz0:
@@ -486,8 +490,9 @@ public class TriangleMeshInfo
                 //meshObject.transform.name += " y0";
                 foreach (Vector3 baseVector in AllVerticesDirectly)
                 {
+                    Vector3 buildingVector = refernceTransform.InverseTransformPoint(meshTransform.TransformPoint(baseVector));
                     //UVs.Add(new Vector2(originVector.x + localOffset.x, originVector.z + localOffset.z));
-                    UVs.Add(new Vector2(baseVector.x, baseVector.z));
+                    UVs.Add(new Vector2(buildingVector.x, buildingVector.z));
                 }
                 break;
             case Direction.xy0:
@@ -495,8 +500,9 @@ public class TriangleMeshInfo
                 //meshObject.transform.name += " z0";
                 foreach (Vector3 baseVector in AllVerticesDirectly)
                 {
+                    Vector3 buildingVector = refernceTransform.InverseTransformPoint(meshTransform.TransformPoint(baseVector));
                     //UVs.Add(new Vector2(originVector.x + localOffset.x, originVector.y + localOffset.y));
-                    UVs.Add(new Vector2(baseVector.x, baseVector.y));
+                    UVs.Add(new Vector2(buildingVector.x, buildingVector.y));
                 }
                 break;
             case Direction.Tilted:
