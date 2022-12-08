@@ -1,5 +1,7 @@
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 namespace iffnsStuff.iffnsCastleBuilder
@@ -7,15 +9,44 @@ namespace iffnsStuff.iffnsCastleBuilder
     public class LightController : MonoBehaviour
     {
         [SerializeField] Transform SunPlane;
-        [SerializeField] Transform SunRotation;
-        [SerializeField] Light LinkedLight;
+        [SerializeField] Transform SunRotator;
+        [SerializeField] Light SunLight;
+
+        [SerializeField] Gradient ambientLightGradient;
+        [SerializeField] AnimationCurve SunIntensityCurve;
 
         float lightRotationAngleRad = Mathf.PI * 0.5f;
+
+        float dayCicleRatio = 0.5f;
+
+        public float DayCicleRatio
+        {
+            set
+            {
+                dayCicleRatio = value;
+
+                float sunHeight = (dayCicleRatio < 0.5f) ? dayCicleRatio * 2 : 2 - dayCicleRatio * 2f;
+                float sunIntensity = SunIntensityCurve.Evaluate(sunHeight);
+
+                sunIntensity = Mathf.Clamp(sunIntensity, 0.01f, 1f);
+
+                SunRotator.transform.localRotation = Quaternion.Euler(0, 0, dayCicleRatio * 360);
+
+                UnityEngine.RenderSettings.ambientLight = ambientLightGradient.Evaluate(sunHeight);
+
+                SunLight.intensity = sunIntensity;
+            }
+            get
+            {
+                return dayCicleRatio;
+            }
+        }
+
         public float LightRotationAngleRad
         {
             set
             {
-                SunRotation.transform.localRotation = Quaternion.Euler(value * Mathf.Rad2Deg * Vector3.up);
+                SunRotator.transform.localRotation = Quaternion.Euler(value * Mathf.Rad2Deg * Vector3.forward);
                 lightRotationAngleRad = value;
 
                 float angle = value * Mathf.Rad2Deg;    
@@ -28,13 +59,13 @@ namespace iffnsStuff.iffnsCastleBuilder
                 {
                     RenderSettings.ambientIntensity = 0.2f;
                     RenderSettings.reflectionIntensity = 0.2f;
-                    LinkedLight.intensity = 0;
+                    SunLight.intensity = 0;
                 }
                 else
                 {
                     RenderSettings.ambientIntensity = 1f;
                     RenderSettings.reflectionIntensity = 1f;
-                    LinkedLight.intensity = 1;
+                    SunLight.intensity = 1;
                 }
 
                 //
@@ -49,7 +80,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         // Start is called before the first frame update
         void Start()
         {
-            LightRotationAngleRad = lightRotationAngleRad;
+            DayCicleRatio = dayCicleRatio;
         }
 
         // Update is called once per frame
@@ -58,5 +89,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         }
 
+        private void OnApplicationQuit()
+        {
+            UnityEngine.RenderSettings.ambientLight = Color.white;
+        }
     }
 }

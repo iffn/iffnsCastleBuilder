@@ -424,6 +424,58 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 998173958480313465, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: ambientLightGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 998173958480313465, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: ambientLightGradient.ctime1
+      value: 22166
+      objectReference: {fileID: 0}
+    - target: {fileID: 998173958480313465, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: ambientLightGradient.ctime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 998173958480313465, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: ambientLightGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 998173958480313465, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: ambientLightGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 998173958480313465, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: ambientLightGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 998173958480313465, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: ambientLightGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 998173958480313465, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: ambientLightGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 998173958480313465, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: ambientLightGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 998173958480313465, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: ambientLightGradient.key2.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 998173958480313465, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: ambientLightGradient.key2.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 998173958480313465, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: ambientLightGradient.m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 998173958480313465, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
+      propertyPath: ambientLightGradient.m_NumColorKeys
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1278706654770334452, guid: 3e04a24e1a71f3b4e8daa5630d7ccd9f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

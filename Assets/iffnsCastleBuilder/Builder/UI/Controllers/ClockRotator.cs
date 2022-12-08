@@ -12,6 +12,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         // Start is called before the first frame update
         void Start()
         {
+            float angle = 1.5f * Mathf.PI - LinkedLightController.DayCicleRatio;
+
             ClockFingerAngleRad = LinkedLightController.LightRotationAngleRad;
         }
 
@@ -31,7 +33,10 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             float angle = Mathf.Atan2(offset.y, offset.x);
 
-            LinkedLightController.LightRotationAngleRad = angle;
+            float dayCicleRatio = 0.75f - 0.5f / Mathf.PI * angle;
+            if (dayCicleRatio < 0) dayCicleRatio += 1;
+
+            LinkedLightController.DayCicleRatio = dayCicleRatio;
             ClockFingerAngleRad = angle;
 
         }
