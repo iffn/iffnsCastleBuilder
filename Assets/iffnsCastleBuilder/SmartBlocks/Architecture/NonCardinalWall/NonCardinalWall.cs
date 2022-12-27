@@ -230,13 +230,17 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             List<Vector3> clockwiseEdgePoints = new List<Vector3>();
 
+            bool planar = false;
+
             if (gridSize.x == 1)
             {
                 SetZWall();
+                planar = true;
             }
             else if (gridSize.y == 1)
             {
                 SetXWall();
+                planar = true;
             }
             else if(gridSize.x == 2 && gridSize.y == 2)
             {
@@ -254,6 +258,11 @@ namespace iffnsStuff.iffnsCastleBuilder
             TopCap.Move(Vector3.up * height);
 
             Walls = MeshGenerator.MeshesFromLines.AddVerticalWallsBetweenMultiplePoints(floorPointsInClockwiseOrder: clockwiseEdgePoints, height: height, closed: true, uvOffset: transform.localPosition);
+
+            foreach(TriangleMeshInfo info in Walls)
+            {
+                info.planar = planar;
+            }
 
             foreach (TriangleMeshInfo info in Walls)
             {
@@ -285,6 +294,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 foreach (TriangleMeshInfo info in Walls)
                 {
                     info.FlipTriangles();
+                    info.planar = false;
                 }
 
                 TopCap.Add(MeshGenerator.MeshesFromPoints.MeshFrom3Points(clockwiseEdgePoints[0], clockwiseEdgePoints[1], clockwiseEdgePoints[2]));

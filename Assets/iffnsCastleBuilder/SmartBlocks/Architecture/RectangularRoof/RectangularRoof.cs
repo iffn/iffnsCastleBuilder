@@ -286,6 +286,9 @@ namespace iffnsStuff.iffnsCastleBuilder
                 FrontWall.MaterialReference = WrapperMaterialParam;
                 BackWall.MaterialReference = WrapperMaterialParam;
 
+                RoofOutside.planar = false;
+                RoofInside.planar = false;
+
                 AddStaticMesh(RoofOutside);
                 AddStaticMesh(RoofInside);
                 AddStaticMesh(TopWrapper);
@@ -354,6 +357,11 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BottomWrapper.MaterialReference = WrapperMaterialParam;
                 FrontWall.MaterialReference = WrapperMaterialParam;
                 BackWall.MaterialReference = WrapperMaterialParam;
+
+                RoofOutsideA.planar = false;
+                RoofOutsideB.planar = false;
+                RoofInsideA.planar = false;
+                RoofInsideB.planar = false;
 
                 AddStaticMesh(RoofOutsideA);
                 AddStaticMesh(RoofOutsideB);
