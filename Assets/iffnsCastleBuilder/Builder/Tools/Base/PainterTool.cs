@@ -260,10 +260,10 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (materialLine == null) return;
 
-                if (materialLine.Val == currentMaterial) return;
-
                 if(illuminationToolState == IlluminationToolStates.None)
                 {
+                    if (materialLine.Val == currentMaterial) return;
+
                     materialLine.Val = currentMaterial;
                 }
                 else
