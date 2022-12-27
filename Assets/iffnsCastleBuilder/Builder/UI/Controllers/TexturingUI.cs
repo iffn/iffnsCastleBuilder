@@ -15,6 +15,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] VectorButton PaintRectangleButton = null;
         [SerializeField] VectorButton PipetteButton = null;
         [SerializeField] GameObject MaterialLibraryHolder = null;
+        [SerializeField] VectorButton IlluminationDisabledButton = null;
+        [SerializeField] VectorButton IlluminationEnabledButton = null;
 
         List<MaterialLibraryUI> libraryUIs = new List<MaterialLibraryUI>();
         MaterialLibraryUI previousLibrary;
@@ -48,6 +50,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             else if (ClickedButton == PipetteButton)
             {
                 linkedPainterTool.CurrentToolType = PainterTool.ToolType.Pipette;
+                UnhighlightIlluminationButtons();
             }
         }
 
@@ -65,13 +68,37 @@ namespace iffnsStuff.iffnsCastleBuilder
                     break;
                 case PainterTool.ToolType.Pipette:
                     PipetteButton.Highlight = true;
+                    UnhighlightIlluminationButtons();
                     break;
                 default:
                     break;
             }
         }
 
-        public void UnhighlightPrevious(MaterialLibraryUI newLibrary)
+        public void UnhighlightIlluminationButtons()
+        {
+            IlluminationDisabledButton.Highlight = false;
+            IlluminationEnabledButton.Highlight = false;
+        }
+
+        public void SelectIlluminationType(VectorButton ClickedButton)
+        {
+            UnhighlightIlluminationButtons();
+            UnhighlightPreviousMaterialButton(null);
+
+            ClickedButton.Highlight = true;
+
+            if (ClickedButton == IlluminationDisabledButton)
+            {
+                linkedPainterTool.IlluminationToolState = PainterTool.IlluminationToolStates.DisableIllumination;
+            }
+            else if(ClickedButton == IlluminationEnabledButton)
+            {
+                linkedPainterTool.IlluminationToolState = PainterTool.IlluminationToolStates.Illuminate;
+            }
+        }
+
+        public void UnhighlightPreviousMaterialButton(MaterialLibraryUI newLibrary)
         {
             if (previousLibrary != null) previousLibrary.UnhighlightPrevious();
             previousLibrary = newLibrary;

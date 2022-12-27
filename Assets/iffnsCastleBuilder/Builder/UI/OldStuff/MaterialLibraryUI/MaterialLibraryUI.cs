@@ -67,9 +67,10 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void SetMaterial(MaterialButton clickedButton)
         {
-            LinkedTexturingUI.LinkedPainterTool.currentMaterial = clickedButton.MaterialReference;
+            LinkedTexturingUI.LinkedPainterTool.CurrentMaterial = clickedButton.MaterialReference;
 
-            LinkedTexturingUI.UnhighlightPrevious(newLibrary: this);
+            LinkedTexturingUI.UnhighlightPreviousMaterialButton(newLibrary: this);
+            LinkedTexturingUI.UnhighlightIlluminationButtons();
 
             if (previousButton != null) previousButton.Highlight = false;
 

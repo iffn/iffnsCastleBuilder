@@ -11,11 +11,25 @@ namespace iffnsStuff.iffnsCastleBuilder
     {
         [SerializeField] TexturingUI LinkedTexturingUI;
 
-        public MaterialManager currentMaterial;
+        MaterialManager currentMaterial;
+        public MaterialManager CurrentMaterial
+        {
+            get
+            {
+                return currentMaterial;
+            }
+            set
+            {
+                illuminationToolState = IlluminationToolStates.None;
+                currentMaterial = value;
+            }
+        }
 
         [SerializeField] CastleBuilderController CurrentBuilderController;
         [SerializeField] RTSController currentRTSController;
         [SerializeField] BuildingToolController LinkedBuildingToolController;
+
+        const string illuminationIdentifier = "-illuminated";
 
         VirtualBlock startBlock;
         VirtualBlock endBlock;
@@ -36,6 +50,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 if (value == ToolType.Pipette)
                 {
                     previousToolType = currentToolType;
+                    illuminationToolState = IlluminationToolStates.None;
                 }
                 else
                 {
@@ -43,6 +58,26 @@ namespace iffnsStuff.iffnsCastleBuilder
                 }
 
                 currentToolType = value;
+            }
+        }
+
+        public enum IlluminationToolStates
+        {
+            None,
+            Illuminate,
+            DisableIllumination
+        }
+
+        IlluminationToolStates illuminationToolState = IlluminationToolStates.None;
+        public IlluminationToolStates IlluminationToolState
+        {
+            get
+            {
+                return illuminationToolState;
+            }
+            set
+            {
+                illuminationToolState = value;
             }
         }
 
@@ -175,6 +210,34 @@ namespace iffnsStuff.iffnsCastleBuilder
             return materialLine;
         }
 
+        void SwitchMaterialIlluminationLine(MailboxLineMaterial materialLine, bool shouldBeIlluminated)
+        {
+            if (shouldBeIlluminated)
+            {
+                string identifier = materialLine.Val.Identifier;
+
+                if (identifier.EndsWith(illuminationIdentifier)) return;
+
+                MaterialManager newMaterial = MaterialLibrary.GetMaterialFromIdentifier(identifier + illuminationIdentifier);
+
+                if (newMaterial == null) return;
+
+                materialLine.Val = newMaterial;
+            }
+            else
+            {
+                string identifier = materialLine.Val.Identifier;
+
+                if (!identifier.EndsWith(illuminationIdentifier)) return;
+
+                MaterialManager newMaterial = MaterialLibrary.GetMaterialFromIdentifier(identifier.Replace(illuminationIdentifier, ""));
+
+                if(newMaterial == null) return;
+
+                materialLine.Val = newMaterial;
+            }
+        }
+
         void PainterUpdate()
         {
             if (Input.GetMouseButton(0))
@@ -199,7 +262,14 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (materialLine.Val == currentMaterial) return;
 
-                materialLine.Val = currentMaterial;
+                if(illuminationToolState == IlluminationToolStates.None)
+                {
+                    materialLine.Val = currentMaterial;
+                }
+                else
+                {
+                    SwitchMaterialIlluminationLine(materialLine, illuminationToolState == IlluminationToolStates.Illuminate);
+                }
 
                 if (currentFloorController != null)
                 {
@@ -288,26 +358,56 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 FloorController currentFloorController = startBlock.LinkedFloorController;
 
-                for (int x = xMin; x <= xMax; x++)
+                if (illuminationToolState == IlluminationToolStates.None)
                 {
-                    for (int z = zMin; z <= zMax; z++)
+                    for (int x = xMin; x <= xMax; x++)
                     {
-                        VirtualBlock currentBlock = currentFloorController.BlockAtPosition(xPos: x, zPos: z);
-                        if (currentBlock.FloorMaterialParam != null)
+                        for (int z = zMin; z <= zMax; z++)
                         {
-                            switch (CurrentBuilderController.CurrentBuildingToolController.CurrentNavigationTools.ViewDirection)
+                            VirtualBlock currentBlock = currentFloorController.BlockAtPosition(xPos: x, zPos: z);
+                            if (currentBlock.FloorMaterialParam != null)
                             {
-                                case CastleController.FloorViewDirectionType.topDown:
-                                    currentBlock.FloorMaterialParam.Val = currentMaterial;
-                                    break;
-                                case CastleController.FloorViewDirectionType.bottomUp:
-                                    currentBlock.CeilingMaterialParam.Val = currentMaterial;
-                                    break;
-                                case CastleController.FloorViewDirectionType.complete:
-                                    currentBlock.FloorMaterialParam.Val = currentMaterial;
-                                    break;
-                                default:
-                                    break;
+                                switch (CurrentBuilderController.CurrentBuildingToolController.CurrentNavigationTools.ViewDirection)
+                                {
+                                    case CastleController.FloorViewDirectionType.topDown:
+                                        currentBlock.FloorMaterialParam.Val = currentMaterial;
+                                        break;
+                                    case CastleController.FloorViewDirectionType.bottomUp:
+                                        currentBlock.CeilingMaterialParam.Val = currentMaterial;
+                                        break;
+                                    case CastleController.FloorViewDirectionType.complete:
+                                        currentBlock.FloorMaterialParam.Val = currentMaterial;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    for (int x = xMin; x <= xMax; x++)
+                    {
+                        for (int z = zMin; z <= zMax; z++)
+                        {
+                            VirtualBlock currentBlock = currentFloorController.BlockAtPosition(xPos: x, zPos: z);
+                            if (currentBlock.FloorMaterialParam != null)
+                            {
+                                switch (CurrentBuilderController.CurrentBuildingToolController.CurrentNavigationTools.ViewDirection)
+                                {
+                                    case CastleController.FloorViewDirectionType.topDown:
+                                        SwitchMaterialIlluminationLine(currentBlock.FloorMaterialParam, illuminationToolState == IlluminationToolStates.Illuminate);
+                                        break;
+                                    case CastleController.FloorViewDirectionType.bottomUp:
+                                        SwitchMaterialIlluminationLine(currentBlock.CeilingMaterialParam, illuminationToolState == IlluminationToolStates.Illuminate);
+                                        break;
+                                    case CastleController.FloorViewDirectionType.complete:
+                                        SwitchMaterialIlluminationLine(currentBlock.FloorMaterialParam, illuminationToolState == IlluminationToolStates.Illuminate);
+                                        break;
+                                    default:
+                                        break;
+                                }
                             }
                         }
                     }
