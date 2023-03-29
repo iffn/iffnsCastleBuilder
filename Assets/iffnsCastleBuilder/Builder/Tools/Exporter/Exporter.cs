@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using iffnsStuff.iffnsBaseSystemForUnity;
 using iffnsStuff.iffnsBaseSystemForUnity.Tools;
+using static iffnsStuff.iffnsBaseSystemForUnity.StaticSaveAndLoadSystem;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
@@ -56,6 +57,60 @@ namespace iffnsStuff.iffnsCastleBuilder
         ExportGroupOrganizer currentObjectGroupOrganizer;
         //GameObject exportReadyObject;
         CastleController exportBaseObject;
+
+        List<string> GetExportText()
+        {
+            currentBuilderController.CurrentBuilding.optimizeMeshes = CurrentExportProperties.OptimizeMeshes;
+
+            currentBuilderController.CurrentBuilding.ApplyBuildParameters();
+
+            currentBuilderController.CurrentBuilding.BackupVisibilityAndShowAll();
+
+            exportBaseObject = currentBuilderController.CurrentBuilding;
+
+            if (exportBaseObject == null)
+            {
+                Restore();
+                return new List<string>();
+            }
+
+            string fileNamewihtoutEnding = CurrentExportProperties.FileNameWithoutEnding;
+
+            //No need to check file name for clipboard
+
+            //Prepare export info
+            PrepareExportInfo();
+
+            //Export object
+            List<string> returnStrings = GetPreparedSingleObjFile();
+
+            //Restore
+            Restore();
+
+            void Restore()
+            {
+                currentBuilderController.CurrentBuilding.optimizeMeshes = false;
+                currentBuilderController.CurrentBuilding.RestoreVisibility();
+                currentObjectGroupOrganizer = null;
+                //if (exportReadyObject != null) GameObject.Destroy(exportReadyObject);
+            }
+
+            return returnStrings;
+        }
+
+        public void CopyExportTextToClipboard()
+        {
+            List<string> lines = GetExportText();
+
+            Debug.Log(lines.Count);
+
+            if (lines == null || lines.Count == 0) return;
+
+            string output = string.Join(separator: MyStringComponents.newLine, values: lines);
+
+
+            GUIUtility.systemCopyBuffer = output;
+        }
 
         public void ExportObject()
         {
@@ -286,6 +341,15 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         void SaveAsSingleObjFile()
         {
+            List<string> lines = GetPreparedSingleObjFile();
+
+            string completeFileLocation = Path.Combine(exportFolderPath, CurrentExportProperties.FileNameWithoutEnding + ".obj");
+
+            StaticSaveAndLoadSystem.SaveLinesTextToFile(fileContent: lines, completeFileLocation: completeFileLocation);
+        }
+
+        List<string> GetPreparedSingleObjFile()
+        {
             List<string> fileLines = new();
 
             fileLines.Add("# Created with iffn's Castle Buiilder");
@@ -315,13 +379,10 @@ namespace iffnsStuff.iffnsCastleBuilder
                 id++;
             }
 
-            
-
             fileLines.InsertRange(index: 4, identifiers.ToArray());
 
-            string completeFileLocation = Path.Combine(exportFolderPath, CurrentExportProperties.FileNameWithoutEnding + ".obj");
 
-            StaticSaveAndLoadSystem.SaveLinesTextToFile(fileContent: fileLines, completeFileLocation: completeFileLocation);
+            return fileLines;
         }
 
         void SaveAsMultipleObjFiles()

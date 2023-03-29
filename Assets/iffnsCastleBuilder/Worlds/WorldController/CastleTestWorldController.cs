@@ -12,6 +12,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] ResourceLibraryIntegrator CurrentResourceLibraryIntegrator = null; //ToDo: Rename to Human building Resource Library
         [SerializeField] MaterialLibraryIntegrator CurrentMaterialLibraryIntegrator = null;
         [SerializeField] TextAsset DefaultBuildingFile;
+        [SerializeField] DefaultCastles DefaultCastlesForWebGL;
 
         MailboxLineSingleSubObject currentBuildingParam;
 
@@ -21,6 +22,13 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         protected override void Start()
         {
+            #if UNITY_WEBGL
+            StaticSaveAndLoadSystem.SaveType = StaticSaveAndLoadSystem.SaveTypes.InternalStrings;
+            DefaultCastlesForWebGL.Setup();
+            #else
+            StaticSaveAndLoadSystem.SaveType = StaticSaveAndLoadSystem.SaveTypes.FileSystem;
+            #endif
+
             Setup(null);
         }
 
@@ -29,6 +37,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             base.Setup(superObject);
 
             //LoadDefaultBuilding();
+
             CurrentResourceLibraryIntegrator.Setup();
             CurrentModificationNodeLibraryIntegrator.Setup();
             CurrentMaterialLibraryIntegrator.Setup();

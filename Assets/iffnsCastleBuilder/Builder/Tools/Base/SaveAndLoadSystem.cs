@@ -7,6 +7,7 @@ using System.Linq;
 using iffnsStuff.iffnsBaseSystemForUnity;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using static iffnsStuff.iffnsBaseSystemForUnity.StaticSaveAndLoadSystem;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
@@ -40,6 +41,10 @@ namespace iffnsStuff.iffnsCastleBuilder
         bool confirmOverride = true;
         float LastSaveLoadOrClearTime = 0;
 
+        public void AddFileToDictionary(string key, List<string> lines)
+        {
+            internalSaveData.Add(key, lines);
+        }
 
         public enum UpgradeType
         {
@@ -54,6 +59,191 @@ namespace iffnsStuff.iffnsCastleBuilder
         public string GetVersionString(Vector3Int version)
         {
             return $"{version.x}.{version.y}.{version.z}";
+        }
+
+        #region Save type dependent functions
+        public void SaveBuilding()
+        {
+            SetLastSaveLoadOrClearTime();
+            confirmOverride = false;
+
+            if (string.IsNullOrWhiteSpace(CurrentFileNameWithoutEnding)) return; //Don't save empty file, IsNullOrWhiteSpace also includes empty: https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace
+
+            StaticSaveAndLoadSystem.SaveFileInfo.SaveObjectInfo saveObject = new(name: mainBuildingIdentifier, saveObject: CurrentBuilding);
+            StaticSaveAndLoadSystem.SaveFileInfo fileInfo = new(type: fileIdentifier, version: GetVersionString(currentVersion), saveObject: saveObject);
+
+            switch (SaveType)
+            {
+                case SaveTypes.FileSystem:
+                    StaticSaveAndLoadSystem.SaveFileToFileLocation(fileInfo: fileInfo, completeFileLocation: CompleteFileLocation);
+                    break;
+                case SaveTypes.InternalStrings:
+                    if (!internalSaveData.ContainsKey(CurrentFileNameWithoutEnding))
+                    {
+                        internalSaveData.Add(CurrentFileNameWithoutEnding, fileInfo.JsonString);
+                    }
+                    else
+                    {
+                        internalSaveData[CurrentFileNameWithoutEnding] = fileInfo.JsonString;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Done;
+            CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Normal;
+        }
+
+        public void CopyCurrentBuildingToClipboard()
+        {
+            StaticSaveAndLoadSystem.SaveFileInfo.SaveObjectInfo saveObject = new(name: mainBuildingIdentifier, saveObject: CurrentBuilding);
+            StaticSaveAndLoadSystem.SaveFileInfo fileInfo = new(type: fileIdentifier, version: GetVersionString(currentVersion), saveObject: saveObject);
+
+            string text = string.Join(separator: MyStringComponents.newLine, values: fileInfo.JsonString);
+
+            GUIUtility.systemCopyBuffer = text;
+        }
+
+        public void LoadBuildingFromClipboard()
+        {
+            string text = GUIUtility.systemCopyBuffer;
+
+            List<string> content = new(Regex.Split(text, MyStringComponents.newLine));
+
+            StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(RawJSONString: content, baseObject: CurrentBuilding);
+        }
+
+        void UpdateFileList()
+        {
+            fileInfos.Clear();
+
+            switch (SaveType)
+            {
+                case SaveTypes.FileSystem:
+                    loadInfos = StaticSaveAndLoadSystem.GetBaseFileInfosFromFolderLocation(completeFolderLocation: buildingFileLocation, fileEnding: fileEnding);
+                    break;
+                case SaveTypes.InternalStrings:
+                    List<string> allFiles = internalSaveData.Keys.ToList();
+                    loadInfos = new();
+                    foreach(string key in allFiles)
+                    {
+                        loadInfos.Add(StaticSaveAndLoadSystem.GetBaseFileInfoFromJson(key, internalSaveData[key]));
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            foreach (StaticSaveAndLoadSystem.BaseLoadFileInfo loadInfo in loadInfos)
+            {
+                if (!LoadInfoIsValid(loadInfo)) continue;
+
+                fileInfos.Add(new SaveAndLoadUI.FileLineInfo(fileNameWithoutEnding: loadInfo.FileNameWithoutEnding, upgradeType: VersionType(GetVersionVector(loadInfo.version))));
+            }
+        }
+
+        public void LoadBuilding()
+        {
+            SetLastSaveLoadOrClearTime();
+            confirmOverride = false;
+
+            /*
+            System.Diagnostics.Stopwatch stopwatch = new();
+            stopwatch.Start();
+            System.Diagnostics.Stopwatch stepwatch = new();
+            */
+
+            StaticSaveAndLoadSystem.FullLoadFileInfo fileInfo = null;
+
+            switch (SaveType)
+            {
+                case SaveTypes.FileSystem:
+                    fileInfo = StaticSaveAndLoadSystem.GetFileInfoFromFileLocation(completeFileLocation: CompleteFileLocation, fileEnding: fileEnding);
+                    break;
+                case SaveTypes.InternalStrings:
+                    List<string> allLines = internalSaveData[CurrentFileNameWithoutEnding];
+                    fileInfo = StaticSaveAndLoadSystem.GetFileInfoFromJson(CurrentFileNameWithoutEnding, allLines);
+                    break;
+                default:
+                    break;
+            }
+
+            if (fileInfo == null) return;
+            
+            if (!LoadInfoIsValid(fileInfo)) return;
+            if (VersionType(GetVersionVector(fileInfo.version)) == UpgradeType.notSupported) return;
+
+            if (GetSelectedFile(updateList: true) == null)
+            {
+                UpdateButtons(updateList: false);
+                return;
+            }
+
+            EditTool.DeactivateEditOnMain();
+
+            //Save floor number:
+            int storedFloorNumber = CurrentBuilding.CurrentFloorNumber;
+            CurrentBuilding.CurrentFloorNumber = 0;
+            // -> Chateau time: 9.1E-06 s
+
+            //Load parameters from file:
+            //stepwatch.Restart();
+
+            StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(RawJSONString: fileInfo.LoadObjectString, baseObject: CurrentBuilding);
+            //stepwatch.Stop();
+            //Debug.Log("File load time = " + stepwatch.Elapsed.TotalSeconds);
+            // -> Chateau time: 3.3s
+
+            //Apply parameters:
+            //stepwatch.Restart();
+            if (CurrentBuilding.Failed) LoadDefaultBuilding();
+
+            CurrentBuilding.ApplyBuildParameters();
+            //stepwatch.Stop();
+            //Debug.Log("Apply build parameter time = " + stepwatch.Elapsed.TotalSeconds);
+            // -> Chateau time: 1.7s
+
+            //Destroy failed objects:
+            CurrentBuilding.DestroyFailedSubObjects();
+            // -> Chateau time: 0.025s
+
+            //Restore floor number:
+            CurrentBuilding.CurrentFloorNumber = storedFloorNumber;
+            // -> Chateau time: 8.9E-06 s
+
+            //Update UI:
+            CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Done;
+            ToolController.CurrentNavigationTools.UpdateUI();
+            // -> Chateau time: 0.005 s
+
+            //stopwatch.Stop();
+            //Debug.Log("Total load time = " + stopwatch.Elapsed.TotalSeconds);
+            // -> Chateau time: 5.037s
+        }
+
+        #endregion
+
+        public void SetupAndLoadDefaultBuilding(TextAsset DefaultBuildingFile)
+        {
+            this.DefaultBuildingFile = DefaultBuildingFile;
+
+            UpdateFileList();
+
+            LoadDefaultBuilding();
+        }
+
+        void LoadDefaultBuilding()
+        {
+            string text = DefaultBuildingFile.text;
+
+            List<string> RawJSONString = new(Regex.Split(text, MyStringComponents.newLine));
+
+            StaticSaveAndLoadSystem.FullLoadFileInfo fileInfo = StaticSaveAndLoadSystem.GetFileInfoFromJson(fileNameWithoutEnding: DefaultBuildingFile.name, jsonString: RawJSONString);
+
+            StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(RawJSONString: fileInfo.LoadObjectString, baseObject: CurrentBuilding);
+
+            CurrentBuilding.ApplyBuildParameters();
         }
 
         public Vector3Int GetVersionVector(string version)
@@ -120,29 +310,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 return CurrentBuilderController.CurrentBuilding;
             }
-        }
-
-        public void SetupAndLoadDefaultBuilding(TextAsset DefaultBuildingFile)
-        {
-            this.DefaultBuildingFile = DefaultBuildingFile;
-
-            UpdateFileList();
-
-            LoadDefaultBuilding();
-        }
-        
-        void LoadDefaultBuilding()
-        {
-            string text = DefaultBuildingFile.text;
-
-            List<string> RawJSONString = new List<string>(Regex.Split(text, System.Environment.NewLine));
-
-            StaticSaveAndLoadSystem.FullLoadFileInfo fileInfo = StaticSaveAndLoadSystem.GetFileInfoFromJson(fileNameWithoutEnding: DefaultBuildingFile.name, jsonString: RawJSONString);
-
-            //StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(completeFileLocation: completeFileLocation, baseObject: CurrentBuilding);
-            StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(RawJSONString: fileInfo.LoadObjectString, baseObject: CurrentBuilding);
-
-            CurrentBuilding.ApplyBuildParameters();
         }
 
         bool ConfirmBeforeLoadOrClear
@@ -258,69 +425,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             CurrentSaveAndLoadUI.CurrentTitle = "";
         }
 
-        public void LoadBuilding()
-        {
-            SetLastSaveLoadOrClearTime();
-            confirmOverride = false;
-
-            /*
-            System.Diagnostics.Stopwatch stopwatch = new();
-            stopwatch.Start();
-            System.Diagnostics.Stopwatch stepwatch = new();
-            */
-
-            StaticSaveAndLoadSystem.FullLoadFileInfo fileInfo = StaticSaveAndLoadSystem.GetFileInfoFromFileLocation(completeFileLocation: CompleteFileLocation, fileEnding: fileEnding);
-            if (!LoadInfoIsValid(fileInfo)) return;
-            if (VersionType(GetVersionVector(fileInfo.version)) == UpgradeType.notSupported) return;
-
-            if (GetSelectedFile(updateList: true) == null)
-            {
-                UpdateButtons(updateList: false);
-                return;
-            }
-
-            EditTool.DeactivateEditOnMain();
-
-            //Save floor number:
-            int storedFloorNumber = CurrentBuilding.CurrentFloorNumber;
-            CurrentBuilding.CurrentFloorNumber = 0;
-            // -> Chateau time: 9.1E-06 s
-
-            //Load parameters from file:
-            //stepwatch.Restart();
-
-            StaticSaveAndLoadSystem.LoadBaseObjectParametersToExistingObject(RawJSONString: fileInfo.LoadObjectString, baseObject: CurrentBuilding);
-            //stepwatch.Stop();
-            //Debug.Log("File load time = " + stepwatch.Elapsed.TotalSeconds);
-            // -> Chateau time: 3.3s
-
-            //Apply parameters:
-            //stepwatch.Restart();
-            if (CurrentBuilding.Failed) LoadDefaultBuilding();
-
-            CurrentBuilding.ApplyBuildParameters();
-            //stepwatch.Stop();
-            //Debug.Log("Apply build parameter time = " + stepwatch.Elapsed.TotalSeconds);
-            // -> Chateau time: 1.7s
-
-            //Destroy failed objects:
-            CurrentBuilding.DestroyFailedSubObjects();
-            // -> Chateau time: 0.025s
-
-            //Restore floor number:
-            CurrentBuilding.CurrentFloorNumber = storedFloorNumber;
-            // -> Chateau time: 8.9E-06 s
-
-            //Update UI:
-            CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Done;
-            ToolController.CurrentNavigationTools.UpdateUI();
-            // -> Chateau time: 0.005 s
-
-            //stopwatch.Stop();
-            //Debug.Log("Total load time = " + stopwatch.Elapsed.TotalSeconds);
-            // -> Chateau time: 5.037s
-        }
-
         bool LoadInfoIsValid(StaticSaveAndLoadSystem.LoadFileInfo loadInfo)
         {
             if (loadInfo == null) return false;
@@ -353,23 +457,6 @@ namespace iffnsStuff.iffnsCastleBuilder
             {
                 return CurrentSaveAndLoadUI.CurrentTitle;
             }
-        }
-
-        public void SaveBuilding()
-        {
-            SetLastSaveLoadOrClearTime();
-            confirmOverride = false;
-
-            if (string.IsNullOrWhiteSpace(CurrentFileNameWithoutEnding)) return; //Don't save empty file, IsNullOrWhiteSpace also includes empty: https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace
-
-            StaticSaveAndLoadSystem.SaveFileInfo.SaveObjectInfo saveObject = new(name: mainBuildingIdentifier, saveObject: CurrentBuilding);
-
-            StaticSaveAndLoadSystem.SaveFileInfo fileInfo = new(type: fileIdentifier, version: GetVersionString(currentVersion), saveObject: saveObject);
-
-            StaticSaveAndLoadSystem.SaveFileToFileLocation(fileInfo: fileInfo, completeFileLocation: CompleteFileLocation);
-
-            CurrentSaveAndLoadUI.SaveButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Done;
-            CurrentSaveAndLoadUI.LoadButtonState = SaveAndLoadUI.SaveAndLoadButtonStates.Normal;
         }
 
         bool SelectedFileExists(bool updateList)
@@ -414,20 +501,6 @@ namespace iffnsStuff.iffnsCastleBuilder
                 UpdateFileList();
 
                 return fileInfos;
-            }
-        }
-
-        void UpdateFileList()
-        {
-            fileInfos.Clear();
-
-            loadInfos = StaticSaveAndLoadSystem.GetBaseFileInfosFromFolderLocation(completeFolderLocation: buildingFileLocation, fileEnding: fileEnding);
-
-            foreach (StaticSaveAndLoadSystem.BaseLoadFileInfo loadInfo in loadInfos)
-            {
-                if (!LoadInfoIsValid(loadInfo)) continue;
-
-                fileInfos.Add(new SaveAndLoadUI.FileLineInfo(fileNameWithoutEnding: loadInfo.FileNameWithoutEnding, upgradeType: VersionType(GetVersionVector(loadInfo.version))));
             }
         }
 

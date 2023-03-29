@@ -9,7 +9,7 @@ public static class MyStringComponents
     public static readonly char backslash = '\\';
     //public static readonly char tab = '\t';
     public static readonly string tab = "\t";
-    public static readonly string newLine = System.Environment.NewLine;
+    public static readonly string newLine = "" + (char)13 + (char)10;
 }
 
 public static class JsonLineHelper
