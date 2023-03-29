@@ -36,8 +36,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             ExporterLines.AddButtonLine("Export lines to text field", delegate { linkedExporter.ExportToExportField(); });
 
             exportFieldToCopy = ExporterLines.AddOutputField("Export text", null, null);
-            exportFieldToCopy.InputField.lineType = TMPro.TMP_InputField.LineType.MultiLineNewline;
-            exportFieldToCopy.InputField.readOnly = true;
+            exportFieldToCopy.InputFieldLegacy.lineType = UnityEngine.UI.InputField.LineType.MultiLineNewline;
+            exportFieldToCopy.InputFieldLegacy.readOnly = true;
 
             #if !UNITY_WEBGL
             ExporterLines.AddButtonLine(text: "Export object (name required)", call: delegate { linkedExporter.ExportObject(); });
@@ -49,7 +49,7 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void WriteExportText(string text)
         {
-            exportFieldToCopy.InputField.text = text; 
+            exportFieldToCopy.InputFieldLegacy.SetTextWithoutNotify(text);
         }
 
         void SetFileNameFromSaveSystem()

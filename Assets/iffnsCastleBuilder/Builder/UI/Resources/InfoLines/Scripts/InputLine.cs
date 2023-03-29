@@ -11,6 +11,7 @@ namespace iffnsStuff.iffnsCastleBuilder
     public class InputLine : ControlLine
     {
         public TMP_InputField InputField;
+        public InputField InputFieldLegacy;
 
         MailboxLineString stringLine;
         MailboxLineRanged rangedLine;
@@ -35,7 +36,11 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             base.SetUp(text);
 
-            if(ReturnFunctionScript != null) InputField.onEndEdit.AddListener(ReturnFunctionScript);
+            if(ReturnFunctionScript != null)
+            {
+                if(InputField) InputField.onEndEdit.AddListener(ReturnFunctionScript);
+                if(InputFieldLegacy) InputFieldLegacy.onEndEdit.AddListener(ReturnFunctionScript);
+            }
 
             this.additionalCalls = additionalCalls;
         }
@@ -49,8 +54,18 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             base.SetUp(stringLine.Name);
 
-            InputField.text = stringLine.Val;
-            InputField.onEndEdit.AddListener(ChangeStringLineValue);
+            if (InputField)
+            {
+                InputField.text = stringLine.Val;
+                InputField.onEndEdit.AddListener(ChangeStringLineValue);
+            }
+
+            if (InputFieldLegacy)
+            {
+                InputFieldLegacy.text = stringLine.Val;
+                InputFieldLegacy.onEndEdit.AddListener(ChangeStringLineValue);
+            }
+
 
             this.additionalCalls = additionalCalls;
         }
@@ -64,9 +79,19 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             base.SetUp(rangedLine.Name);
 
-            InputField.contentType = TMP_InputField.ContentType.DecimalNumber;
-            InputField.text = StringHelper.ConvertFloatToString(value: rangedLine.Val, globalFormat: false); ;
-            InputField.onEndEdit.AddListener(ChangeRangedLineValue);
+            if (InputField)
+            {
+                InputField.contentType = TMP_InputField.ContentType.DecimalNumber;
+                InputField.text = StringHelper.ConvertFloatToString(value: rangedLine.Val, globalFormat: false); ;
+                InputField.onEndEdit.AddListener(ChangeRangedLineValue);
+            }
+
+            if (InputFieldLegacy)
+            {
+                InputFieldLegacy.contentType = UnityEngine.UI.InputField.ContentType.DecimalNumber;
+                InputFieldLegacy.text = StringHelper.ConvertFloatToString(value: rangedLine.Val, globalFormat: false); ;
+                InputFieldLegacy.onEndEdit.AddListener(ChangeRangedLineValue);
+            }
 
             this.additionalCalls = additionalCalls;
         }
@@ -78,9 +103,19 @@ namespace iffnsStuff.iffnsCastleBuilder
 
             base.SetUp(distinctUnnamedLine.Name);
 
-            InputField.contentType = TMP_InputField.ContentType.IntegerNumber;
-            InputField.text = StringHelper.ConvertIntToString(value: distinctUnnamedLine.Val, globalFormat: false);
-            InputField.onEndEdit.AddListener(ChangeDistinctUnnamedLineValue);
+            if (InputField)
+            {
+                InputField.contentType = TMP_InputField.ContentType.IntegerNumber;
+                InputField.text = StringHelper.ConvertIntToString(value: distinctUnnamedLine.Val, globalFormat: false);
+                InputField.onEndEdit.AddListener(ChangeDistinctUnnamedLineValue);
+            }
+
+            if (InputFieldLegacy)
+            {
+                InputFieldLegacy.contentType = UnityEngine.UI.InputField.ContentType.IntegerNumber;
+                InputFieldLegacy.text = StringHelper.ConvertIntToString(value: distinctUnnamedLine.Val, globalFormat: false);
+                InputFieldLegacy.onEndEdit.AddListener(ChangeDistinctUnnamedLineValue);
+            }
 
             this.additionalCalls = additionalCalls;
         }
@@ -112,7 +147,9 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (!previouslyFalied && lineOwner.Failed)
                 {
-                    InputField.text = StringHelper.ConvertFloatToString(value: previousValue, globalFormat: false);
+                    if(InputField) InputField.text = StringHelper.ConvertFloatToString(value: previousValue, globalFormat: false);
+                    if(InputFieldLegacy) InputFieldLegacy.text = StringHelper.ConvertFloatToString(value: previousValue, globalFormat: false);
+
                     rangedLine.Val = previousValue;
                     lineOwner.ApplyBuildParameters();
                 }
@@ -140,7 +177,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
                 if (!previouslyFalied && lineOwner.Failed)
                 {
-                    InputField.text = StringHelper.ConvertFloatToString(value: previousValue, globalFormat: false);
+                    if (InputField) InputField.text = StringHelper.ConvertFloatToString(value: previousValue, globalFormat: false);
+                    if (InputFieldLegacy) InputFieldLegacy.text = StringHelper.ConvertFloatToString(value: previousValue, globalFormat: false);
                     distinctUnnamedLine.Val = previousValue;
                     lineOwner.ApplyBuildParameters();
                 }

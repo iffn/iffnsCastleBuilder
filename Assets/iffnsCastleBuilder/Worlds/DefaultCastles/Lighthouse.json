@@ -1,7 +1,7 @@
 {
 	"Type": "CastleBuilder by iffn",
 	"Version": "1.0.0",
-	MainBuilding:
+	"MainBuilding":
 	{
 		"Type": "CastleController",
 		"Name": "",
