@@ -10,6 +10,8 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         Exporter linkedExporter;
 
+        InputLine exportFieldToCopy;
+
         public void Setup(Exporter linkedExporter)
         {
             this.linkedExporter = linkedExporter;
@@ -30,7 +32,12 @@ namespace iffnsStuff.iffnsCastleBuilder
             ExporterLines.AddButtonLine(text: "Set Unity settings", call: delegate { linkedExporter.CurrentExportProperties.SetVrcObjProperties(); SetLines(); });
             ExporterLines.AddButtonLine(text: "Set 3D printing settings", call: delegate { linkedExporter.CurrentExportProperties.Set3DPrintingObjProperties(); SetLines(); });
 
-            ExporterLines.AddButtonLine("Copy export text to clipboard", delegate { linkedExporter.CopyExportTextToClipboard(); });
+            //ExporterLines.AddButtonLine("Copy export text to clipboard", delegate { linkedExporter.CopyExportTextToClipboard(); });
+            ExporterLines.AddButtonLine("Export lines to text field", delegate { linkedExporter.ExportToExportField(); });
+
+            exportFieldToCopy = ExporterLines.AddOutputField("Export text", null, null);
+            exportFieldToCopy.InputField.lineType = TMPro.TMP_InputField.LineType.MultiLineNewline;
+            exportFieldToCopy.InputField.readOnly = true;
 
             #if !UNITY_WEBGL
             ExporterLines.AddButtonLine(text: "Export object (name required)", call: delegate { linkedExporter.ExportObject(); });
@@ -40,7 +47,10 @@ namespace iffnsStuff.iffnsCastleBuilder
             //ExporterLines.AddTextLine(text: @"The exported files can be found in iffnsCastleBuilder_Data\StreamingAssets\Exports", bold: false);
         }
 
-
+        public void WriteExportText(string text)
+        {
+            exportFieldToCopy.InputField.text = text; 
+        }
 
         void SetFileNameFromSaveSystem()
         {

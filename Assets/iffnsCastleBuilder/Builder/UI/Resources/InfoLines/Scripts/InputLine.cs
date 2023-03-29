@@ -35,7 +35,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             base.SetUp(text);
 
-            InputField.onEndEdit.AddListener(ReturnFunctionScript);
+            if(ReturnFunctionScript != null) InputField.onEndEdit.AddListener(ReturnFunctionScript);
 
             this.additionalCalls = additionalCalls;
         }

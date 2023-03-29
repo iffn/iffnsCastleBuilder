@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using iffnsStuff.iffnsBaseSystemForUnity;
+using TMPro;
 
 namespace iffnsStuff.iffnsCastleBuilder
 {
@@ -68,8 +69,17 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             Transform newObject;
 
-            if (longLine) newObject = SpawnLine(uiResources.InputLineLargeTemplate.gameObject);
+            if (longLine) newObject = SpawnLine(uiResources.InputLineMediumTemplate.gameObject);
             else newObject = SpawnLine(uiResources.InputLineSmallTemplate.gameObject);
+
+            return newObject;
+        }
+
+        public InputLine AddOutputField(string title, UnityEngine.Events.UnityAction<string> ReturnFunctionScript, List<DelegateLibrary.VoidFunction> additionalCalls = null)
+        {
+            InputLine newObject = SpawnLine(uiResources.InputLineLargeTemplate.gameObject).GetComponent<InputLine>();
+
+            newObject.SetUp(text: title, ReturnFunctionScript: ReturnFunctionScript, additionalCalls: additionalCalls);
 
             return newObject;
         }
@@ -78,7 +88,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             Transform newObject = getInputLineTemplate(longLine: longLine);
 
-            if (longLine) newObject = SpawnLine(uiResources.InputLineLargeTemplate.gameObject);
+            if (longLine) newObject = SpawnLine(uiResources.InputLineMediumTemplate.gameObject);
             else newObject = SpawnLine(uiResources.InputLineSmallTemplate.gameObject);
 
             newObject.GetComponent<InputLine>().SetUp(text: title, ReturnFunctionScript: ReturnFunctionScript, additionalCalls: additionalCalls);

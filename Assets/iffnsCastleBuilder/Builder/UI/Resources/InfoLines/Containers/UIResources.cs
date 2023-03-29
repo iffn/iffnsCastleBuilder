@@ -9,6 +9,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         public ButtonLine ButtonLineTemplate;
         public InfoLine InfoLineTemplate;
         public InputLine InputLineSmallTemplate;
+        public InputLine InputLineMediumTemplate;
         public InputLine InputLineLargeTemplate;
         public InputLineBool InputLineBool;
         public Vector2IntLine Vector2IntLineTemplate;

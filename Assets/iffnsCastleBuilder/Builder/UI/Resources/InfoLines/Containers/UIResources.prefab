@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 575.6112, y: 357.44614, z: 37.333992}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,7 +47,8 @@ MonoBehaviour:
   ButtonLineTemplate: {fileID: 114015914205984936, guid: 19b53330f0b55a44cae845cc0ad4d08f, type: 3}
   InfoLineTemplate: {fileID: 114118054199775996, guid: 645a90a988ccf6e4ebde4667fd19e6cf, type: 3}
   InputLineSmallTemplate: {fileID: 114375707053458002, guid: d2371bde6134c1a4f877c85bdcb4283d, type: 3}
-  InputLineLargeTemplate: {fileID: 114556284794321266, guid: 3e6eba2ff6fbe3948ba11b2d0923f35b, type: 3}
+  InputLineMediumTemplate: {fileID: 114556284794321266, guid: 3e6eba2ff6fbe3948ba11b2d0923f35b, type: 3}
+  InputLineLargeTemplate: {fileID: 114556284794321266, guid: 69ebacbdf31f6484c98f44e3f98cc6f2, type: 3}
   InputLineBool: {fileID: 7627278933919932860, guid: 05f0a6e83b3be28488b0d487508a1363, type: 3}
   Vector2IntLineTemplate: {fileID: 8002676694463815721, guid: 977f97a8633ddf042ba55d9185b25a88, type: 3}
   Vector3LineTemplate: {fileID: 114255113949372504, guid: eb7a850d1f20545478764fa95564d6a2, type: 3}

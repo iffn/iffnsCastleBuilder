@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 224580209041721980}
   - component: {fileID: 114556284794321266}
   m_Layer: 0
-  m_Name: Input line large
+  m_Name: Input line medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 285, y: 125}
+  m_SizeDelta: {x: 285, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &114556284794321266
 MonoBehaviour:
@@ -58,7 +58,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
+    serializedVersion: 2
     m_TransformParent: {fileID: 224580209041721980}
     m_Modifications:
     - target: {fileID: 2271076766371444, guid: 48e6298534d61b64bb11690d9dc79d76, type: 3}
@@ -150,9 +150,7 @@ PrefabInstance:
       value: Info title
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48e6298534d61b64bb11690d9dc79d76, type: 3}
 --- !u!224 &2016723792839407486 stripped
 RectTransform:
@@ -175,7 +173,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
+    serializedVersion: 2
     m_TransformParent: {fileID: 224580209041721980}
     m_Modifications:
     - target: {fileID: 237848803504403913, guid: 36725c2494f48da458fc750e86e53f5e, type: 3}
@@ -212,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 237848803504403913, guid: 36725c2494f48da458fc750e86e53f5e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 237848803504403913, guid: 36725c2494f48da458fc750e86e53f5e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -267,9 +265,7 @@ PrefabInstance:
       value: InputField (TMP)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36725c2494f48da458fc750e86e53f5e, type: 3}
 --- !u!114 &4111999214438134362 stripped
 MonoBehaviour:

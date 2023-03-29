@@ -98,11 +98,20 @@ namespace iffnsStuff.iffnsCastleBuilder
             return returnStrings;
         }
 
-        public void CopyExportTextToClipboard()
+        public void ExportToExportField()
         {
             List<string> lines = GetExportText();
 
-            Debug.Log(lines.Count);
+            if (lines == null) return;
+
+            string output = string.Join(separator: MyStringComponents.newLine, values: lines);
+
+            linkedExporterUI.WriteExportText(output);
+        }
+
+        public void CopyExportTextToClipboard()
+        {
+            List<string> lines = GetExportText();
 
             if (lines == null || lines.Count == 0) return;
 
