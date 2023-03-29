@@ -362,7 +362,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 CameraHeadingAngleDeg += Input.GetAxis("Mouse X") * rotationSpeedMouse * deltaTime;
 
                 //Pitch
-                CameraTiltAngleDeg += Input.GetAxis("Mouse Y") * rotationSpeedMouse * deltaTime;
+                CameraTiltAngleDeg -= Input.GetAxis("Mouse Y") * rotationSpeedMouse * deltaTime;
 
                 UpdateViewDirection();
 
