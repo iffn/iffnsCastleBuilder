@@ -86,7 +86,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             switch (viewDirection)
             {
                 case CastleController.FloorViewDirectionType.topDown:
-                    BlockLineHolder.transform.position += Vector3.up * (linkedBuilding.CurrentFloorObject.BottomFloorHeight + MathHelper.SmallFloat);
+                    BlockLineHolder.transform.position += Vector3.up * (linkedBuilding.CurrentFloorObject.BottomFloorHeight + MathHelper.SmallFloat * 3);
                     BlockLineHolder.transform.localScale = Vector3.one;
                     /*
                     DimensionInfo.transform.rotation = Quaternion.Euler(Vector3.right * 90);
@@ -94,7 +94,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                     */
                     break;
                 case CastleController.FloorViewDirectionType.bottomUp:
-                    BlockLineHolder.transform.position += new Vector3(linkedBuilding.BlockGridSize.x * linkedBuilding.BlockSize, -MathHelper.SmallFloat, 0);
+                    BlockLineHolder.transform.position += new Vector3(linkedBuilding.BlockGridSize.x * linkedBuilding.BlockSize, -MathHelper.SmallFloat * 3, 0);
                     BlockLineHolder.transform.localScale = new Vector3(1, -1, 1);
                     BlockLineHolder.transform.Rotate(Vector3.forward * 180);
                     /*
