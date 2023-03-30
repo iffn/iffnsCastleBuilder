@@ -43,6 +43,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             CurrentMaterialLibraryIntegrator.Setup();
             
             SetupDefaultBuilding();
+
             currentBuildingParam = new MailboxLineSingleSubObject(valueName: "MainBuilding", subObject: CurrentBuilderController.CurrentBuilding, objectHolder: CurrentMailbox);
 
             CurrentBuilderController.Setup(worldController: this);

@@ -22,6 +22,7 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] GameObject OverrideConfirmation;
         [SerializeField] GameObject LoadConfirmation;
         [SerializeField] GameObject ClearConfirmation;
+        [SerializeField] GameObject WebGLSaveAndLoadNote;
 
         [SerializeField] RectTransform ExpandArea = null;
         [SerializeField] RectTransform ExpandIcon;
@@ -59,7 +60,21 @@ namespace iffnsStuff.iffnsCastleBuilder
             Unable
         }
 
+        private void Start()
+        {
+            #if UNITY_WEBGL
+            WebGLSaveAndLoadNote.SetActive(true);
+            #else
+            WebGLSaveAndLoadNote.SetActive(false);
+            #endif
+        }
 
+        private void Update()
+        {
+            #if UNITY_WEBGL
+            if(Input.GetKeyDown(KeyCode.F2)) WebGLSaveAndLoadNote.SetActive(!WebGLSaveAndLoadNote.activeSelf);
+            #endif
+        }
 
         SaveAndLoadButtonStates saveButtonState = SaveAndLoadButtonStates.Unable;
         public SaveAndLoadButtonStates SaveButtonState

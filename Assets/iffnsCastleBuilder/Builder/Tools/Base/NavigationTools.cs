@@ -401,7 +401,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 PositionPlayer();
             }
 
-            if (Input.GetKeyDown(KeyCode.F1))
+            if (Input.GetKeyDown(KeyCode.F2))
             {
                 LinkedBlockLineController.SizeInfoActivation = !LinkedBlockLineController.SizeInfoActivation;
             }
