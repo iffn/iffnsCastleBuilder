@@ -1,7 +1,7 @@
 {
 	"Type": "CastleBuilder by iffn",
 	"Version": "1.0.0",
-	MainBuilding:
+	"MainBuilding":
 	{
 		"Type": "CastleController",
 		"Name": "Small tower",
@@ -3021,7 +3021,7 @@
 						"Block type": "Floor",
 						"Ceiling material": "PolyHaven-old_planks_02",
 						"Top cap material": "PolyHaven-stone_brick_wall_001",
-						"Front wall material": "PolyHaven-plywood",
+						"Front wall material": "PolyHaven-stone_brick_wall_001",
 						"Back wall material": "PolyHaven-stone_brick_wall_001"
 					},
 					{
