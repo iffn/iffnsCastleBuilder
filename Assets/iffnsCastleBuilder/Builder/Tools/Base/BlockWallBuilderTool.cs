@@ -35,6 +35,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             Wall,
             Empty,
             Floor,
+            CopyUpWithFloor,
+            CopyUpWithoutFloor
         }
 
         void ChangeBlockBasedOnCurrentTool(VirtualBlock block)
@@ -50,9 +52,27 @@ namespace iffnsStuff.iffnsCastleBuilder
                 case BlockToolType.Floor:
                     block.BlockType = VirtualBlock.BlockTypes.Floor;
                     break;
+                case BlockToolType.CopyUpWithFloor:
+                    CopyUp(false);
+                    break;
+                case BlockToolType.CopyUpWithoutFloor:
+                    CopyUp(true);
+                    break;
                 default:
                     Debug.LogWarning("Error: Enum type not defined");
                     break;
+            }
+
+            void CopyUp(bool replaceFloorWithEmpty)
+            {
+                FloorController floorBelow = CurrentBuilding.Floor(CurrentBuilding.CurrentFloorIndex - 1);
+
+                if (floorBelow == CurrentBuilding.CurrentFloorObject) return;
+
+                VirtualBlock blockBelow = floorBelow.BlockAtPosition(block.Coordinate);
+
+                if (replaceFloorWithEmpty && blockBelow.BlockType == VirtualBlock.BlockTypes.Floor) block.BlockType = VirtualBlock.BlockTypes.Empty;
+                else block.BlockType = blockBelow.BlockType;
             }
         }
 

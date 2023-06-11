@@ -12,6 +12,8 @@ namespace iffnsStuff.iffnsCastleBuilder
         [SerializeField] VectorButton WallButton;
         [SerializeField] VectorButton EmptyBlockButton;
         [SerializeField] VectorButton FloorButton;
+        [SerializeField] VectorButton CopyUpWithFloor;
+        [SerializeField] VectorButton CopyUpWithoutFloor;
 
         [SerializeField] VectorButton SingleWallButton;
         [SerializeField] VectorButton CardinalWallButton;
@@ -23,6 +25,8 @@ namespace iffnsStuff.iffnsCastleBuilder
             WallButton.Highlight = false;
             EmptyBlockButton.Highlight = false;
             FloorButton.Highlight = false;
+            CopyUpWithFloor.Highlight = false;
+            CopyUpWithoutFloor.Highlight = false;
         }
 
         public void SetBlockToolType(VectorButton ClickedButton)
@@ -42,6 +46,14 @@ namespace iffnsStuff.iffnsCastleBuilder
             else if (ClickedButton == FloorButton)
             {
                 CurrentWallBuilderTool.CurrentBlockToolType = BlockWallBuilderTool.BlockToolType.Floor;
+            }
+            else if (ClickedButton == CopyUpWithFloor)
+            {
+                CurrentWallBuilderTool.CurrentBlockToolType = BlockWallBuilderTool.BlockToolType.CopyUpWithFloor;
+            }
+            else if (ClickedButton == CopyUpWithoutFloor)
+            {
+                CurrentWallBuilderTool.CurrentBlockToolType = BlockWallBuilderTool.BlockToolType.CopyUpWithoutFloor;
             }
             else
             {
@@ -93,6 +105,12 @@ namespace iffnsStuff.iffnsCastleBuilder
                 case BlockWallBuilderTool.BlockToolType.Floor:
                     FloorButton.Highlight = true;
                     break;
+                case BlockWallBuilderTool.BlockToolType.CopyUpWithFloor:
+                    CopyUpWithFloor.Highlight = true;
+                    break;
+                case BlockWallBuilderTool.BlockToolType.CopyUpWithoutFloor:
+                    CopyUpWithoutFloor.Highlight = true;
+                    break;
                 default:
                     Debug.Log("Errror in Wall Builder UI: New block type enum handling not defined");
                     break;
@@ -132,7 +150,6 @@ namespace iffnsStuff.iffnsCastleBuilder
         {
             SetBlockToolType(WallButton);
             SetToolType(SingleWallButton);
-
         }
     }
 }
