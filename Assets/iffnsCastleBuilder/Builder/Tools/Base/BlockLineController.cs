@@ -78,10 +78,36 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         void UpdateBlockLinePosition()
         {
+            Vector2 size = Vector2.zero;
+
+            size.x = linkedBuilding.BlockGridSize.x * linkedBuilding.BlockSize;
+            size.y = linkedBuilding.BlockGridSize.y * linkedBuilding.BlockSize;
+
+            Vector3 position = linkedBuilding.CurrentFloorObject.transform.position + new Vector3(size.x * 0.5f, -0.001f, size.y * 0.5f);
+
+            switch (ViewDirection)
+            {
+                case CastleController.FloorViewDirectionType.topDown:
+                    position.y += linkedBuilding.CurrentFloorObject.BottomFloorHeight + 0.002f;
+                    BlockLineHolder.transform.rotation = Quaternion.identity;
+                    break;
+                case CastleController.FloorViewDirectionType.bottomUp:
+                    BlockLineHolder.transform.rotation = Quaternion.Euler(180 * Vector3.right);
+                    break;
+                case CastleController.FloorViewDirectionType.complete:
+                    break;
+                default:
+                    break;
+            }
+
+            BlockLineHolder.transform.position = position;
+
+            SizeInfo.transform.position = linkedBuilding.CurrentFloorObject.transform.position;
+
+            return;
             BlockLineHolder.transform.position = linkedBuilding.CurrentFloorObject.transform.position;
             BlockLineHolder.transform.rotation = linkedBuilding.CurrentFloorObject.transform.rotation;
 
-            SizeInfo.transform.position = linkedBuilding.CurrentFloorObject.transform.position;
 
             switch (viewDirection)
             {
@@ -124,6 +150,19 @@ namespace iffnsStuff.iffnsCastleBuilder
 
         public void SetCompleteGrid()
         {
+            Vector2 size = Vector2.zero;
+
+            size.x = linkedBuilding.BlockGridSize.x * linkedBuilding.BlockSize;
+            size.y = linkedBuilding.BlockGridSize.y * linkedBuilding.BlockSize;
+
+            BlockLineHolder.transform.localScale = new Vector3(size.x, 1, size.y);
+
+            //BlockLineHolder.transform.position = linkedBuilding.CurrentFloorObject.transform.position + new Vector3(size.x * 0.5f, linkedBuilding.CurrentFloorObject.BottomFloorHeight + 0.001f, size.y * 0.5f);
+
+
+            return;
+
+
             if (lastBlockGridSize.x == linkedBuilding.BlockGridSize.x && lastBlockGridSize.y == linkedBuilding.BlockGridSize.y) return;
 
             lastBlockGridSize = linkedBuilding.BlockGridSize;
