@@ -447,7 +447,7 @@ namespace iffnsStuff.iffnsCastleBuilder
                 BackFace.UVs.Add(new Vector2(secondOuterLocation.x, secondOuterLocation.y));
             }
 
-            ColliderMesh = BackFace.CloneFlipped;
+            ColliderMesh = (RevolutionAngleDeg > 0) ? BackFace.CloneFlipped : BackFace.Clone;
 
             float scaleFactor = height / ColliderMesh.AllVerticesDirectly[^1].y;
 
