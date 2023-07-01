@@ -110,7 +110,7 @@ namespace iffnsStuff.iffnsCastleBuilder
             BottomLeftPositionParam = new MailboxLineVector2Int(name: "Bottom left position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             TopRightPositionParam = new MailboxLineVector2Int(name: "Top right position", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter);
             FreeHeightSideParam = new MailboxLineRanged(name: "FreeHeihgtSide [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 5f, Min: 0f, DefaultValue: 2f);
-            ArcHeightParam = new MailboxLineRanged(name: "Arc height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 2f, Min: 0.3f, DefaultValue: 0.5f);
+            ArcHeightParam = new MailboxLineRanged(name: "Arc height [m]", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, Max: 2f, Min: 0f, DefaultValue: 0.5f);
             MainMaterialParam = new MailboxLineMaterial(name: "Main material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
             OtherSideMaterialParam = new MailboxLineMaterial(name: "Other side material", objectHolder: CurrentMailbox, valueType: Mailbox.ValueType.buildParameter, DefaultValue: DefaultCastleMaterials.DefaultStoneBricks);
         }
